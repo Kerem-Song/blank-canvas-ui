@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const BASE_PIXEL = 16;
 const pxToRem = (px, base = BASE_PIXEL) => `${px / base}rem`;
-const rem = [...Array(5000).keys()].reduce((acc, px) => {
+const rem = [...Array(1000).keys()].reduce((acc, px) => {
   acc[`${px}pxr`] = pxToRem(px);
   return acc;
 }, {});
@@ -12,6 +12,9 @@ export default {
   theme: {
     extend: {
       spacing: {
+        ...rem,
+      },
+      fontSize: {
         ...rem,
       },
     },

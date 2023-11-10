@@ -28,7 +28,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <p className="w-1pxr h-100pxr">test</p>
+      <p className="h-96 text-100pxr bg-blue-500">test</p>
     </>
   );
 }
