@@ -37,7 +37,7 @@ function App() {
       />
       <TextAreaWithTitleCounter
         label="label"
-        direction={"right"}
+        direction={"bottom"}
         show={true}
         showCount={true}
         maxLength={20}

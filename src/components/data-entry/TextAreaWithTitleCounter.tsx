@@ -88,7 +88,7 @@ export const TextAreaWithTitleCounter = forwardRef<
         ref={ref}
         readOnly={readOnly}
       />
-      {showCount && direction ? (
+      {showCount && direction === "bottom" ? (
         <span className={classNames(`text-counter-${direction}`)}>
           {textLength || 0}
           {`/${args.maxLength}`}

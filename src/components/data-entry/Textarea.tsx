@@ -32,7 +32,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       [args]
     );
 
-    const resultClassName = classNames("textInput", args.className);
+    const resultClassName = classNames("textarea-border", args.className);
 
     return (
       <TextareaAutosize

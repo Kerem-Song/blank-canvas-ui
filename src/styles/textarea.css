@@ -1,0 +1,7 @@
+.textarea {
+  @apply border-transparent w-full resize-none
+}
+
+.textarea-border {
+  @apply rounded-md border-slate-300 w-full resize-none
+}
