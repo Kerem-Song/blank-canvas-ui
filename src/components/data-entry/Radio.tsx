@@ -12,7 +12,7 @@ export interface IRadioProps
 export const Radio = forwardRef<HTMLInputElement, IRadioProps>((args, ref) => {
   const { children, ...inputArgs } = args;
   return (
-    <label className="radioContainer">
+    <label className="radio-container">
       <input
         {...inputArgs}
         className="radio"

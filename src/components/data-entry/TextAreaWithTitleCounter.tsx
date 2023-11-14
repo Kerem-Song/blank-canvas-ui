@@ -7,7 +7,7 @@ interface TitleCounterProps extends TextareaProps {
   label?: string;
   isLight?: boolean;
   textLength?: number;
-  direction?: "top" | "bottom" | "right";
+  direction?: "top" | "bottom" | "inside";
 }
 export const TextAreaWithTitleCounter = forwardRef<
   HTMLTextAreaElement,
@@ -27,8 +27,10 @@ export const TextAreaWithTitleCounter = forwardRef<
   } = args;
   const [count, setCount] = useState<number>();
 
-  const resultClassName = classNames("textarea-border", args.className, {
+  const resultClassName = classNames(args.className, {
     invalid: isError,
+    "textarea-border": direction !== "inside",
+    "textarea-middle": direction === "inside",
   });
 
   const handleTextArea = useCallback(
@@ -41,31 +43,39 @@ export const TextAreaWithTitleCounter = forwardRef<
 
   return (
     <>
-      <div className="textareaWrapper">
-        <p className={classNames("textareaLabel", { light: isLight })}>
+      <div className="textarea-title-counter-wrapper">
+        <span className={classNames("textarea-label", { light: isLight })}>
           {label}
           {required && <span className="required"> *</span>}
-        </p>
+        </span>
         {showCount && direction === "top" ? (
-          <span className={classNames(`text-counter-${direction}`)}>
+          <span className={classNames(`textarea-counter-${direction}`)}>
             {count || 0}
             {`/${args.maxLength}`}
           </span>
         ) : null}
       </div>
 
-      <TextareaAutosize
-        {...inputProps}
-        className={resultClassName}
-        onChange={handleTextArea}
-        placeholder={args.placeholder}
-        maxLength={args.maxLength}
-        ref={ref}
-        readOnly={readOnly}
-        autoComplete={args.autoComplete ? "true" : "false"}
-      />
+      <div className={classNames(`textarea-counter-wrapper`, direction)}>
+        <TextareaAutosize
+          {...inputProps}
+          className={resultClassName}
+          onChange={handleTextArea}
+          placeholder={args.placeholder}
+          maxLength={args.maxLength}
+          ref={ref}
+          readOnly={readOnly}
+          autoComplete={args.autoComplete ? "true" : "false"}
+        />
+        {showCount && direction === "inside" ? (
+          <span className={`textarea-counter-${direction}`}>
+            {count || 0}
+            {`/${args.maxLength}`}
+          </span>
+        ) : null}
+      </div>
       {showCount && direction === "bottom" ? (
-        <span className={classNames(`text-counter-${direction}`)}>
+        <span className={classNames(`textarea-counter-${direction}`)}>
           {count || 0}
           {`/${args.maxLength}`}
         </span>

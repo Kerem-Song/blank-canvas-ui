@@ -6,10 +6,38 @@
   @apply rounded-md border-slate-300 w-full resize-none
 }
 
-.text-counter-bottom {
-  @apply flex justify-end align-middle
+.textarea-middle {
+  @apply rounded-md w-full resize-none
 }
 
-.text-counter-top {
-  @apply flex justify-end align-middle
+.textarea-title-counter-wrapper {
+  @apply flex justify-between items-center
+}
+
+.textarea-counter-top {
+  @apply flex justify-end items-center
+}
+
+.textarea-counter-inside {
+  @apply flex items-center px-10pxr;
+}
+
+.textarea-counter-bottom {
+  @apply flex justify-end items-center;
+}
+
+.textarea-counter-wrapper {
+  @apply flex justify-between w-full
+}
+
+.textarea-counter-wrapper {
+  @apply rounded-md flex justify-between items-center w-full resize-none;
+
+  &.inside {
+    @apply border-solid border border-slate-300;
+
+    textarea {
+      @apply border-transparent;
+    }
+  }
 }
