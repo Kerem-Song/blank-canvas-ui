@@ -47,7 +47,7 @@ export const TextAreaWithTitleCounter = forwardRef<
           {required && <span className="required"> *</span>}
         </p>
         {showCount && direction === "top" ? (
-          <span className="textCounter">
+          <span className={classNames(`text-counter-${direction}`)}>
             {count || 0}
             {`/${args.maxLength}`}
           </span>

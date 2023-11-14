@@ -9,3 +9,7 @@
 .text-counter-bottom {
   @apply flex justify-end align-middle
 }
+
+.text-counter-top {
+  @apply flex justify-end align-middle
+}
