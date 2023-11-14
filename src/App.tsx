@@ -1,8 +1,8 @@
+import { Button, TextAreaWithTitleCounter, Textarea } from "@components";
 import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { Button, TextAreaWithTitleCounter, Textarea } from "@components";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,9 +29,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <p className="h-96 text-100pxr bg-blue-500">test</p>
+      <p className="h-96 bg-blue-500 text-100pxr">test</p>
       <Textarea
-        className="border border-spacing-3 border-r-8 bg-red-400"
+        className="border-spacing-3 border border-r-8 bg-red-400 p-2"
         maxLength={12}
         autoComplete={"true"}
       />
@@ -41,6 +41,12 @@ function App() {
         showCount={true}
         maxLength={20}
       />
+      <Button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
+        button..
+      </Button>
+      <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
+        ..
+      </button>
     </>
   );
 }

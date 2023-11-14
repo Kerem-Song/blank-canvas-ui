@@ -6,6 +6,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:storybook/recommended",
+    "plugin:tailwindcss/recommended",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
@@ -20,4 +21,10 @@ module.exports = {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
   },
+  overrides: [
+    {
+      files: ["*.ts", "*.tsx", "*.js"],
+      parser: "@typescript-eslint/parser",
+    },
+  ],
 };

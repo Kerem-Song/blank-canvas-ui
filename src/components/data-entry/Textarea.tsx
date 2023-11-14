@@ -5,7 +5,6 @@ import TextareaAutosize from "react-textarea-autosize";
 export interface TextareaProps
   extends InputHTMLAttributes<HTMLTextAreaElement> {
   maxLength?: number;
-  count?: number;
   showCount?: boolean;
   maxRows?: number;
   minRows?: number;
@@ -34,7 +33,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         maxLength={args.maxLength}
         ref={ref}
         readOnly={readOnly}
-        autoComplete={args.autoComplete ? "true" : "false"}
+        autoComplete={args.autoComplete}
       />
     );
   }
