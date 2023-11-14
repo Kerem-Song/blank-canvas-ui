@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { TextAreaWithTitleCounter, Textarea } from "@components";
+import { Button, TextAreaWithTitleCounter, Textarea } from "@components";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,7 +33,7 @@ function App() {
       <Textarea
         className="border border-spacing-3 border-r-8 bg-red-400"
         maxLength={12}
-        autoComplete={true}
+        autoComplete={"true"}
       />
       <TextAreaWithTitleCounter
         label="label"

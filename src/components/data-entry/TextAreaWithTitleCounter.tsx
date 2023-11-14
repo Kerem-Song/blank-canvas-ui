@@ -8,6 +8,7 @@ interface TitleCounterProps extends TextareaProps {
   isLight?: boolean;
   textLength?: number;
   direction?: "top" | "bottom" | "inside";
+  isError?: boolean;
 }
 export const TextAreaWithTitleCounter = forwardRef<
   HTMLTextAreaElement,

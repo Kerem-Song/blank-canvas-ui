@@ -27,7 +27,7 @@
 }
 
 .textarea-counter-wrapper {
-  @apply flex justify-between w-full
+  @apply flex justify-between w-full;
 }
 
 .textarea-counter-wrapper {

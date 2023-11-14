@@ -1,11 +1,10 @@
-import { IHasChildren, IHasClassNameNStyle } from "@models";
 import classNames from "classnames";
-import { FC, createElement } from "react";
+import { ButtonHTMLAttributes, FC, createElement } from "react";
 
 export type ButtonShape = "default" | "circle" | "round" | "ghost";
 
-export interface ButtonProps extends IHasChildren, IHasClassNameNStyle {
-  type?:
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  types?:
     | "default"
     | "primary"
     | "secondary"
@@ -25,12 +24,10 @@ export interface ButtonProps extends IHasChildren, IHasClassNameNStyle {
   href?: string;
   htmlType?: string;
   icon?: string;
-  value?: string;
   draggable?: boolean;
   data?: string;
   form?: string;
-  tabIndex?: number;
-  className?: string;
+
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   onDrag?: (e: React.DragEvent<HTMLButtonElement>) => void;
   onDragStart?: (e: React.DragEvent<HTMLButtonElement>) => void;

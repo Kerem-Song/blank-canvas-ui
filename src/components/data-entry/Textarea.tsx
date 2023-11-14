@@ -1,33 +1,17 @@
-import { IHasClassNameNStyle } from "@models";
 import classNames from "classnames";
-import React, {
-  ChangeEvent,
-  FocusEvent,
-  forwardRef,
-  useCallback,
-  useState,
-} from "react";
+import React, { InputHTMLAttributes, forwardRef, useCallback } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-export interface TextareaProps extends IHasClassNameNStyle {
+export interface TextareaProps
+  extends InputHTMLAttributes<HTMLTextAreaElement> {
   maxLength?: number;
-  placeholder?: string;
   count?: number;
   showCount?: boolean;
   maxRows?: number;
   minRows?: number;
-  disabled?: boolean;
-  id?: string;
-  name?: string;
-  value?: string;
-  isError?: boolean;
-  required?: boolean;
-  readOnly?: boolean;
-  autoComplete?: boolean;
-  onBlur?: (e: FocusEvent<HTMLTextAreaElement>) => void;
-  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
-
+export interface ITestInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {}
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (args, ref) => {
     const { style, readOnly, ...inputProps } = args;

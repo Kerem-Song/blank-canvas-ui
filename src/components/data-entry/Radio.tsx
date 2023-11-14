@@ -1,15 +1,9 @@
-import { IDataEntryProps, IHasChildren, IHasClassNameNStyle } from "@models";
-import { forwardRef } from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 
-export interface IRadioProps
-  extends IHasChildren,
-    IDataEntryProps,
-    IHasClassNameNStyle {
-  disabled?: boolean;
-  checked?: boolean;
-}
-
-export const Radio = forwardRef<HTMLInputElement, IRadioProps>((args, ref) => {
+export const Radio = forwardRef<
+  HTMLInputElement,
+  InputHTMLAttributes<HTMLInputElement>
+>((args, ref) => {
   const { children, ...inputArgs } = args;
   return (
     <label className="radio-container">
