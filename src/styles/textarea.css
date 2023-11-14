@@ -5,3 +5,7 @@
 .textarea-border {
   @apply rounded-md border-slate-300 w-full resize-none
 }
+
+.text-counter-bottom {
+  @apply flex justify-end align-middle
+}

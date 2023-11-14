@@ -1,11 +1,18 @@
-import { IHasClassNameNStyle, ShowCountFormatter } from "@models";
+import { IHasClassNameNStyle } from "@models";
 import classNames from "classnames";
-import React, { ChangeEvent, FocusEvent, forwardRef, useCallback } from "react";
+import React, {
+  ChangeEvent,
+  FocusEvent,
+  forwardRef,
+  useCallback,
+  useState,
+} from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 export interface TextareaProps extends IHasClassNameNStyle {
   maxLength?: number;
   placeholder?: string;
+  count?: number;
   showCount?: boolean;
   maxRows?: number;
   minRows?: number;
@@ -23,10 +30,12 @@ export interface TextareaProps extends IHasClassNameNStyle {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (args, ref) => {
+    const [counts, setCount] = useState<number>();
     const { style, readOnly, ...inputProps } = args;
 
     const handleTextArea = useCallback(
       (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setCount(e.target.value?.length);
         return args.onChange?.(e);
       },
       [args]

@@ -1,14 +1,12 @@
-import { Textarea, TextareaProps } from "@components";
-import { useCount } from "@hooks";
-import { CountConfig } from "@models";
+import { TextareaProps } from "@components";
 import classNames from "classnames";
-import { forwardRef, useState } from "react";
+import { forwardRef, useCallback, useState } from "react";
+import TextareaAutosize from "react-textarea-autosize";
 
-interface TitleCounterProps extends CountConfig, TextareaProps {
+interface TitleCounterProps extends TextareaProps {
   label?: string;
   isLight?: boolean;
   textLength?: number;
-  count?: CountConfig;
   direction?: "top" | "bottom" | "right";
 }
 export const TextAreaWithTitleCounter = forwardRef<
@@ -16,6 +14,7 @@ export const TextAreaWithTitleCounter = forwardRef<
   TitleCounterProps
 >((args, ref) => {
   const {
+    style,
     label,
     isLight,
     textLength,
@@ -23,49 +22,22 @@ export const TextAreaWithTitleCounter = forwardRef<
     required,
     readOnly,
     isError,
-    count,
     direction,
     ...inputProps
   } = args;
+  const [count, setCount] = useState<number>();
 
-  const [value, setValue] = useState();
-  const formatValue =
-    value === undefined || value === null ? "" : String(value);
-  const countConfig = useCount(count, showCount);
-  const mergedMax = countConfig.max || args.maxLength;
-  const valueLength = countConfig.strategy(formatValue);
+  const resultClassName = classNames("textarea-border", args.className, {
+    invalid: isError,
+  });
 
-  const getCount = () => {
-    // Max length value
-    const hasMaxLength = Number(mergedMax) > 0;
-
-    if (showCount || countConfig.show) {
-      const dataCount = countConfig.showFormatter
-        ? countConfig.showFormatter({
-            value: formatValue,
-            count: valueLength,
-            maxLength: mergedMax,
-          })
-        : `${valueLength}${hasMaxLength ? ` / ${mergedMax}` : ""}`;
-
-      return (
-        <>
-          {countConfig.show && (
-            <span
-              className={classNames(`show-count-suffix`, {
-                [`${args.className}-show-count-has-suffix`]: !!showCount,
-              })}
-              style={args.style}
-            >
-              {dataCount}
-            </span>
-          )}
-          {showCount}
-        </>
-      );
-    }
-    return null;
-  };
+  const handleTextArea = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setCount(e.target.value?.length);
+      return args.onChange?.(e);
+    },
+    [args]
+  );
 
   return (
     <>
@@ -76,26 +48,28 @@ export const TextAreaWithTitleCounter = forwardRef<
         </p>
         {showCount && direction === "top" ? (
           <span className="textCounter">
-            {textLength || 0}
+            {count || 0}
             {`/${args.maxLength}`}
           </span>
         ) : null}
       </div>
-      <Textarea
+
+      <TextareaAutosize
         {...inputProps}
-        className={classNames({ invalid: isError })}
-        required={required}
+        className={resultClassName}
+        onChange={handleTextArea}
+        placeholder={args.placeholder}
+        maxLength={args.maxLength}
         ref={ref}
         readOnly={readOnly}
+        autoComplete={args.autoComplete ? "true" : "false"}
       />
       {showCount && direction === "bottom" ? (
         <span className={classNames(`text-counter-${direction}`)}>
-          {textLength || 0}
+          {count || 0}
           {`/${args.maxLength}`}
         </span>
       ) : null}
     </>
   );
 });
-
-TextAreaWithTitleCounter.displayName = "text-area-with-title-counter";
