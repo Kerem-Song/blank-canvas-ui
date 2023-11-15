@@ -44,18 +44,20 @@ export const TextAreaWithTitleCounter = forwardRef<
 
   return (
     <>
-      <div className="textarea-title-counter-wrapper">
-        <span className={classNames("textarea-label", { light: isLight })}>
-          {label}
-          {required && <span className="required"> *</span>}
-        </span>
-        {showCount && direction === "top" ? (
-          <span className={classNames(`textarea-counter-${direction}`)}>
-            {count || 0}
-            {`/${args.maxLength}`}
+      {direction !== "bottom" ? (
+        <div className="textarea-title-counter-wrapper">
+          <span className={classNames("textarea-label", { light: isLight })}>
+            {label}
+            {required && <span className="required"> *</span>}
           </span>
-        ) : null}
-      </div>
+          {showCount && direction === "top" ? (
+            <span className={classNames(`textarea-counter ${direction}`)}>
+              {count || 0}
+              {`/${args.maxLength}`}
+            </span>
+          ) : null}
+        </div>
+      ) : null}
 
       <div className={classNames(`textarea-counter-wrapper`, direction)}>
         <TextareaAutosize
@@ -69,17 +71,25 @@ export const TextAreaWithTitleCounter = forwardRef<
           autoComplete={args.autoComplete ? "true" : "false"}
         />
         {showCount && direction === "inside" ? (
-          <span className={`textarea-counter-${direction}`}>
+          <span className={`textarea-counter ${direction}`}>
             {count || 0}
             {`/${args.maxLength}`}
           </span>
         ) : null}
       </div>
-      {showCount && direction === "bottom" ? (
-        <span className={classNames(`textarea-counter-${direction}`)}>
-          {count || 0}
-          {`/${args.maxLength}`}
-        </span>
+      {direction === "bottom" ? (
+        <div className="textarea-title-counter-wrapper">
+          <span className={classNames("textarea-label", { light: isLight })}>
+            {label}
+            {required && <span className="required"> *</span>}
+          </span>
+          {showCount && direction === "bottom" ? (
+            <span className={classNames(`textarea-counter ${direction}`)}>
+              {count || 0}
+              {`/${args.maxLength}`}
+            </span>
+          ) : null}
+        </div>
       ) : null}
     </>
   );

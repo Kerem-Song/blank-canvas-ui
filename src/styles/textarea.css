@@ -1,5 +1,5 @@
 .textarea {
-  @apply border-transparent w-full resize-none
+  @apply rounded-md border-transparent w-full resize-none;
 }
 
 .textarea-border {
@@ -7,27 +7,11 @@
 }
 
 .textarea-middle {
-  @apply rounded-md w-full resize-none
+  @apply rounded-md w-full resize-none;
 }
 
 .textarea-title-counter-wrapper {
-  @apply flex justify-between items-center
-}
-
-.textarea-counter-top {
-  @apply flex justify-end items-center
-}
-
-.textarea-counter-inside {
-  @apply flex items-center px-10pxr;
-}
-
-.textarea-counter-bottom {
-  @apply flex justify-end items-center;
-}
-
-.textarea-counter-wrapper {
-  @apply flex justify-between w-full;
+  @apply flex justify-between items-center;
 }
 
 .textarea-counter-wrapper {
@@ -36,8 +20,12 @@
   &.inside {
     @apply border-solid border border-slate-300;
 
+    &:focus {
+      @apply border border-solid border-blue-400;
+    }
+
     textarea {
-      @apply border-transparent;
+      @apply border-transparent focus-visible:border-transparent focus:outline-none;
     }
   }
 }

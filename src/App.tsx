@@ -30,11 +30,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <p className="h-96 bg-blue-500 text-100pxr">test</p>
-      <Textarea
-        className="border-spacing-3 border border-r-8 bg-red-400 p-2"
-        maxLength={12}
-        autoComplete={"true"}
-      />
+      <Textarea className="" maxLength={12} autoComplete={"true"} />
       <TextAreaWithTitleCounter
         label="label"
         direction={"inside"}
@@ -44,9 +40,21 @@ function App() {
       <Button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
         button..
       </Button>
-      <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
+      <button className=" bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
         ..
       </button>
+      <TextAreaWithTitleCounter
+        label="top"
+        direction="top"
+        showCount={true}
+        maxLength={20}
+      />
+      <TextAreaWithTitleCounter
+        label="bottom"
+        direction="bottom"
+        showCount={true}
+        maxLength={20}
+      />
     </>
   );
 }
