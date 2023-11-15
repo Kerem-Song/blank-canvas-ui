@@ -20,25 +20,16 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   shape?: ButtonShape;
   block?: boolean;
   label?: string;
-  disabled?: boolean;
   href?: string;
   htmlType?: string;
   icon?: string;
   draggable?: boolean;
   data?: string;
   form?: string;
-
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onDrag?: (e: React.DragEvent<HTMLButtonElement>) => void;
-  onDragStart?: (e: React.DragEvent<HTMLButtonElement>) => void;
-  onDrop?: (e: React.DragEvent<HTMLButtonElement>) => void;
-  onDragEnd?: (e: React.DragEvent<HTMLButtonElement>) => void;
-  onPointerDown?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onMouseDown?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export const Button: FC<ButtonProps> = ({
-  type = "default",
+export const Button = ({
+  types = "default",
   small,
   large,
   block,
@@ -63,7 +54,7 @@ export const Button: FC<ButtonProps> = ({
   onDragEnd,
   onPointerDown,
   onMouseDown,
-}) => {
+}:ButtonProps) => {
   if (children && label) {
     throw new Error("children과 label은 동시에 설정할 수 없다.");
   }
@@ -78,9 +69,9 @@ export const Button: FC<ButtonProps> = ({
       "btn-disabled": disabled,
       "btn-block": block,
       "btn-circle": shape === "circle",
-      "btn-primary": type === "primary",
-      "btn-success": type === "success",
-      "btn-error": type === "error",
+      "btn-primary": types === "primary",
+      "btn-success": types === "success",
+      "btn-error": types === "error",
       "btn-ghost": shape === "ghost",
     },
     className
