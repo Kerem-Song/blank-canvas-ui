@@ -7,10 +7,11 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:storybook/recommended",
     "plugin:tailwindcss/recommended",
+    'plugin:prettier/recommended',
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh"],
+  plugins: ["react-refresh", "prettier", "react-hooks"],
   rules: {
     "react-refresh/only-export-components": [
       "warn",
@@ -20,6 +21,8 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   overrides: [
     {
