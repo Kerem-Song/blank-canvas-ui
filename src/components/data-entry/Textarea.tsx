@@ -8,7 +8,6 @@ export interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> 
   maxRows?: number;
   minRows?: number;
 }
-export interface ITestInputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((args, ref) => {
   const { style, readOnly, ...inputProps } = args;
