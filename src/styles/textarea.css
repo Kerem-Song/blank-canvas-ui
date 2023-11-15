@@ -24,6 +24,10 @@
       @apply border border-solid border-blue-400;
     }
 
+    .textarea-counter {
+      @apply pr-10pxr py-2pxr;
+    }
+
     textarea {
       @apply border-transparent focus-visible:border-transparent focus:outline-none;
     }
