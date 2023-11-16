@@ -1,9 +1,5 @@
-import { TextAreaWithTitleCounter, Textarea, TextareaProps, TitleCounterProps } from "@components";
+import { Textarea, TextareaProps } from "@components";
 import { Meta, StoryObj } from "@storybook/react";
-
-/**
- * Textarea 태그 Autosize 기능 지원
- */
 
 const meta: Meta ={
   title: 'components/data-entry/Textarea',
@@ -20,7 +16,7 @@ export const Default: Story = {
     return(
       <div>
         <Textarea {...args} />
-      </div>
+      </div> 
     )
   },
 }

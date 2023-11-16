@@ -1,5 +1,9 @@
 .textarea {
   @apply rounded-md border-transparent w-full resize-none;
+
+  &.invalid {
+    @apply border-red-500;
+  }
 }
 
 .textarea-border {
@@ -19,6 +23,10 @@
 
   &.inside {
     @apply border-solid border border-slate-300;
+
+    &.invalid {
+      @apply border border-solid border-red-500;
+    }
 
     &:focus {
       @apply border border-solid border-blue-400;
