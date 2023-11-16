@@ -93,10 +93,10 @@ export const TextAreaWithTitleCounter = forwardRef<
           autoComplete={args.autoComplete ? "true" : "false"}
         />
         {showCount && direction === "inside" ? (
-          <span className={`textarea-counter`}>
+          <p className={`textarea-counter`}>
             {count || 0}
             {`/${args.maxLength}`}
-          </span>
+          </p>
         ) : null}
       </div>
       {direction === "bottom" ? (
