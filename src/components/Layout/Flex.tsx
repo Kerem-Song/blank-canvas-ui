@@ -3,10 +3,10 @@ export interface IFlexProps extends React.HTMLAttributes<HTMLElement> {
   wrap?: React.CSSProperties['flexWrap'];
   justify?: React.CSSProperties['justifyContent'];
   align?: React.CSSProperties['alignItems'];
-  flex?: React.CSSProperties['flex'];
   gap?: React.CSSProperties['gap'];
   children: React.ReactNode;
   reverse?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const Flex = ({
@@ -14,16 +14,16 @@ export const Flex = ({
   wrap,
   justify,
   align,
-  flex,
   gap,
   children,
   reverse,
+  style,
 }: IFlexProps) => {
   return (
     <div
       style={{
+        ...style,
         display: 'flex',
-        flex,
         flexDirection: vertical
           ? reverse
             ? 'column-reverse'
