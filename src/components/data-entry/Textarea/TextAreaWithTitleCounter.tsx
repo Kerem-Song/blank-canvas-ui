@@ -16,7 +16,7 @@ export interface TitleCounterProps extends TextareaProps {
   isLight?: boolean;
 
   /**
-   * Input에 입력된 글자 수 카운팅
+   * Input에 입력된 글자 수 카운팅('showCount' true일때만 확인 가능)
    */
   textLength?: number;
 
@@ -53,8 +53,6 @@ export const TextAreaWithTitleCounter = forwardRef<
 
   const resultClassName = classNames('textarea', args.className, {
     invalid: isError,
-    "textarea-border": direction !== "inside",
-    "textarea-middle": direction === "inside",
   });
   
 
@@ -67,9 +65,9 @@ export const TextAreaWithTitleCounter = forwardRef<
   );
 
   return (
-    <>
+    <div className="wrapper group">
       {direction !== "bottom" ? (
-        <div className="textarea-title-counter-wrapper">
+        <div className="textarea-title-counter-wrapper ">
           <span className={classNames("textarea-label", { light: isLight })}>
             {label}
             {required && <span className="required"> *</span>}
@@ -83,10 +81,10 @@ export const TextAreaWithTitleCounter = forwardRef<
         </div>
       ) : null}
 
-      <div className={classNames(`textarea-counter-wrapper`, direction, {'invalid': isError})}>
+      <div className={classNames(`textarea-title-counter-wrapper ${direction}`, { 'invalid': isError }, {'group-focus-within:border-blue-400': direction === 'inside'})}>
         <TextareaAutosize
           {...inputProps}
-          className={resultClassName}
+          className={classNames(resultClassName)}
           onChange={handleTextArea}
           placeholder={args.placeholder}
           maxLength={args.maxLength}
@@ -95,7 +93,7 @@ export const TextAreaWithTitleCounter = forwardRef<
           autoComplete={args.autoComplete ? "true" : "false"}
         />
         {showCount && direction === "inside" ? (
-          <span className={`textarea-counter ${direction}`}>
+          <span className={`textarea-counter`}>
             {count || 0}
             {`/${args.maxLength}`}
           </span>
@@ -115,6 +113,6 @@ export const TextAreaWithTitleCounter = forwardRef<
           ) : null}
         </div>
       ) : null}
-    </>
+    </div>
   );
 });

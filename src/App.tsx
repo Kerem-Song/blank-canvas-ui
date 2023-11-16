@@ -1,4 +1,4 @@
-import { Button, TextAreaWithTitleCounter, Textarea } from "@components";
+import { Button, Radio, TextAreaWithTitleCounter, Textarea } from "@components";
 import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
@@ -29,7 +29,6 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <p className="h-96 bg-blue-500 text-100pxr">test</p>
       <Textarea className="" maxLength={12} autoComplete={"true"} />
       <TextAreaWithTitleCounter
         label="label"
@@ -55,6 +54,7 @@ function App() {
         showCount={true}
         maxLength={20}
       />
+      <Radio>asdf</Radio>
     </>
   );
 }
