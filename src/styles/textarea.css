@@ -11,8 +11,8 @@
 .textarea-title-counter-wrapper {
   @apply rounded-md flex justify-between items-center w-full resize-none;
 
-  >textarea:focus {
-    @apply border border-solid border-yellow-500;
+  textarea:focus {
+    @apply focus:outline-none border-blue-500;
   }
 
   &.inside {
