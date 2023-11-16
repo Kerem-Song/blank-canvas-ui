@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { forwardRef, useCallback, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-interface TitleCounterProps extends TextareaProps {
+export interface TitleCounterProps extends TextareaProps {
   label?: string;
   isLight?: boolean;
   textLength?: number;

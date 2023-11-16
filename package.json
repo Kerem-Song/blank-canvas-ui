@@ -1,6 +1,7 @@
 {
   "name": "@lunasoft-org/luna-design",
   "private": false,
+  "license": "UNLICENSED",
   "repository": "https://github.com/lunasoft-org/luna-design",
   "version": "0.0.2",
   "type": "module",
