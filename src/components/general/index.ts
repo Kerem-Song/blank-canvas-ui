@@ -1,4 +1,2 @@
-export * from './Button';
-
-export { default as ButtonBase } from './button-base';
-export * from './button-base';
+export { default as Button } from './button';
+export * from './button';
