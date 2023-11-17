@@ -7,8 +7,8 @@ const rem = [...Array(2000).keys()].reduce((acc, px) => {
 }, {});
 
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: ["class", '[data-mode="dark"]'],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: ['class', '[data-mode="dark"]'],
   theme: {
     extend: {
       spacing: {
@@ -20,7 +20,4 @@ export default {
     },
   },
   plugins: [],
-  corePlugins: {
-    preflight: true,
-  },
 };

@@ -1,3 +1,3 @@
-export * from "./Radio";
-export * from "./Textarea";
-export * from "./TextAreaWithTitleCounter";
+export * from "./Radio/Radio";
+export * from "./Textarea/Textarea";
+export * from "./Textarea/TextAreaWithTitleCounter";

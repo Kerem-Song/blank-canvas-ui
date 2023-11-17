@@ -1,35 +1,23 @@
 .textarea {
-  @apply rounded-md border-transparent w-full resize-none;
+  @apply rounded-md border border-solid w-full resize-none;
 
   &.invalid {
     @apply border-red-500;
   }
 }
 
-.textarea-border {
-  @apply rounded-md border-slate-300 w-full resize-none
-}
-
-.textarea-middle {
-  @apply rounded-md w-full resize-none;
-}
-
 .textarea-title-counter-wrapper {
-  @apply flex justify-between items-center;
-}
-
-.textarea-counter-wrapper {
   @apply rounded-md flex justify-between items-center w-full resize-none;
 
+  textarea:focus {
+    @apply focus:outline-none border-blue-500;
+  }
+
   &.inside {
-    @apply border-solid border border-slate-300;
+    @apply block border-solid border border-slate-300 text-right;
 
     &.invalid {
       @apply border border-solid border-red-500;
-    }
-
-    &:focus {
-      @apply border border-solid border-blue-400;
     }
 
     .textarea-counter {

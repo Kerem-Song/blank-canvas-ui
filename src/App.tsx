@@ -1,8 +1,8 @@
-import { Button, TextAreaWithTitleCounter, Textarea } from "@components";
-import { useState } from "react";
-import "./App.css";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Button, Radio, TextAreaWithTitleCounter, Textarea } from '@components';
+import { useState } from 'react';
+import './App.css';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,21 +19,16 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <p className="h-96 bg-blue-500 text-100pxr">test</p>
-      <Textarea className="" maxLength={12} autoComplete={"true"} />
+      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <Textarea className="" maxLength={12} autoComplete={'true'} />
       <TextAreaWithTitleCounter
         label="label"
-        direction={"inside"}
+        direction={'inside'}
         showCount={true}
         maxLength={20}
       />
@@ -55,6 +50,7 @@ function App() {
         showCount={true}
         maxLength={20}
       />
+      <Radio>asdf</Radio>
     </>
   );
 }
