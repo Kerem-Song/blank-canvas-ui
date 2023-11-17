@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ButtonHTMLAttributes, FC, createElement } from 'react';
+import { ButtonHTMLAttributes, createElement } from 'react';
 
 export type ButtonShape = 'default' | 'circle' | 'round' | 'ghost';
 
