@@ -4,8 +4,6 @@
   &.invalid {
     @apply border-red-500;
   }
-
-
 }
 
 .textarea-title-counter-wrapper {

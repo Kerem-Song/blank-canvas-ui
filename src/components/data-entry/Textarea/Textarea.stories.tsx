@@ -1,7 +1,7 @@
-import { Textarea, TextareaProps } from "@components";
-import { Meta, StoryObj } from "@storybook/react";
+import { Textarea, ITextareaProps } from '@components';
+import { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta ={
+const meta: Meta = {
   title: 'components/data-entry/Textarea',
   component: Textarea,
   tags: ['autodocs'],
@@ -9,16 +9,14 @@ const meta: Meta ={
 
 export default meta;
 
-type Story = StoryObj<TextareaProps>;
+type Story = StoryObj<ITextareaProps>;
 
 export const Default: Story = {
   render: (args) => {
-    return(
+    return (
       <div>
         <Textarea {...args} />
-      </div> 
-    )
+      </div>
+    );
   },
-}
-
-
+};

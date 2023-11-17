@@ -2,15 +2,15 @@ import classNames from 'classnames';
 import React, { InputHTMLAttributes, forwardRef, useCallback } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
-export interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+export interface ITextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   /**
-   * 숫자 카운터의 최대 길이.('showCount' true일때만 확인 가능)
+   * 숫자 카운터의 최대 길이('showCount' true일때만 확인 가능)
    * @default 0
    */
   maxLength?: number;
 
   /**
-   * 숫자 카운터 노출 유무.
+   * 숫자 카운터 노출 유무
    * @default false
    */
   showCount?: boolean;
@@ -26,7 +26,7 @@ export interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> 
   minRows?: number;
 }
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((args, ref) => {
+export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, ref) => {
   const { style, readOnly, ...inputProps } = args;
 
   const handleTextArea = useCallback(
