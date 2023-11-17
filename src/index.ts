@@ -5,5 +5,6 @@ export { TextAreaWithTitleCounter } from '@components';
 export { Flex } from '@components';
 export { ButtonBase } from '@components';
 export { Divider } from '@components';
+export { Tag } from '@components';
 
 export * from './index.css';

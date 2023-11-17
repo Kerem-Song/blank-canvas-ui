@@ -41,11 +41,7 @@ export interface IFlexProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * component를 전달
    */
-  children: React.ReactNode;
-  /**
-   * css 속성 설정
-   */
-  style?: React.CSSProperties;
+  children: React.ReactNode | React.ReactNode[];
 }
 
 export const Flex = ({
@@ -57,9 +53,11 @@ export const Flex = ({
   children,
   reverse,
   style,
+  ...props
 }: IFlexProps) => {
   return (
     <div
+      {...props}
       style={{
         ...style,
         display: 'flex',

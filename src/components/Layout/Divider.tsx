@@ -7,10 +7,7 @@ export interface IDividerProps extends React.HTMLAttributes<HTMLElement> {
    * @type string
    */
   type?: 'horizontal' | 'vertical';
-  /**
-   * css 속성 설정
-   */
-  style?: React.CSSProperties;
+
   /**
    * css 속성 설정
    * `solid` `dotted` `dashed`
@@ -20,9 +17,10 @@ export interface IDividerProps extends React.HTMLAttributes<HTMLElement> {
   borderStyle?: React.CSSProperties['borderStyle'];
 }
 
-export const Divider = ({ type, style, borderStyle }: IDividerProps) => {
+export const Divider = ({ type, borderStyle, style, ...props }: IDividerProps) => {
   return (
     <div
+      {...props}
       className={classNames(type === 'vertical' ? 'divider-vertical' : 'divider')}
       style={{ ...style, borderStyle: borderStyle }}
     ></div>
