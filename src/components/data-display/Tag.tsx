@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { relative } from 'path';
 
 export interface ITagProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
@@ -18,9 +17,9 @@ export interface ITagProps extends React.HTMLAttributes<HTMLSpanElement> {
    * 태그 끝에 x 아이콘 추가할지 여부
    * 색상 변경시 글자색은 하얀색
    * @default false
-   * @type boolean
+   * @type React.ReactNode
    */
-  closeIcon?: boolean;
+  closeIcon?: React.ReactNode;
   /**
    * 태그 테두리 여부
    * @default true
@@ -49,6 +48,7 @@ export const Tag = ({
   style,
   ...props
 }: ITagProps) => {
+  console.log(closeIcon);
   return (
     <span
       {...props}
@@ -77,7 +77,7 @@ export const Tag = ({
           color: color ? 'white' : 'auto',
         }}
       >
-        &#88;
+        {closeIcon !== true ? closeIcon : <>&#88;</>}
       </span>
     </span>
   );
