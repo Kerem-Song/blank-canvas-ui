@@ -17,6 +17,9 @@ export default {
       fontSize: {
         ...rem,
       },
+      minWidth: {
+        200: '200px',
+      },
     },
   },
   plugins: [],
