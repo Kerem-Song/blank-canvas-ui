@@ -1,20 +1,20 @@
-import classNames from "classnames";
-import { ButtonHTMLAttributes, FC, createElement } from "react";
+import classNames from 'classnames';
+import { ButtonHTMLAttributes, FC, createElement } from 'react';
 
-export type ButtonShape = "default" | "circle" | "round" | "ghost";
+export type ButtonShape = 'default' | 'circle' | 'round' | 'ghost';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   types?:
-    | "default"
-    | "primary"
-    | "secondary"
-    | "lineBlue"
-    | "error"
-    | "warning"
-    | "info"
-    | "dark"
-    | "light"
-    | "success";
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'lineBlue'
+    | 'error'
+    | 'warning'
+    | 'info'
+    | 'dark'
+    | 'light'
+    | 'success';
   small?: boolean;
   large?: boolean;
   shape?: ButtonShape;
@@ -29,7 +29,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({
-  types = "default",
+  types = 'default',
   small,
   large,
   block,
@@ -37,8 +37,8 @@ export const Button = ({
   label,
   disabled,
   href,
-  htmlType = "button",
-  shape = "default",
+  htmlType = 'button',
+  shape = 'default',
   icon,
   style,
   className,
@@ -54,27 +54,27 @@ export const Button = ({
   onDragEnd,
   onPointerDown,
   onMouseDown,
-}:ButtonProps) => {
+}: ButtonProps) => {
   if (children && label) {
-    throw new Error("children과 label은 동시에 설정할 수 없다.");
+    throw new Error('children과 label은 동시에 설정할 수 없다.');
   }
 
   const labelNode = <span>{label || children}</span>;
 
   const controlCss = classNames(
-    "btn",
+    'btn',
     {
-      "btn-small": small,
-      "btn-large": large,
-      "btn-disabled": disabled,
-      "btn-block": block,
-      "btn-circle": shape === "circle",
-      "btn-primary": types === "primary",
-      "btn-success": types === "success",
-      "btn-error": types === "error",
-      "btn-ghost": shape === "ghost",
+      'btn-small': small,
+      'btn-large': large,
+      'btn-disabled': disabled,
+      'btn-block': block,
+      'btn-circle': shape === 'circle',
+      'btn-primary': types === 'primary',
+      'btn-success': types === 'success',
+      'btn-error': types === 'error',
+      'btn-ghost': shape === 'ghost',
     },
-    className
+    className,
   );
 
   const iconNode = icon ? (
@@ -84,7 +84,7 @@ export const Button = ({
   ) : undefined;
 
   const control = createElement(
-    href ? "a" : "button",
+    href ? 'a' : 'button',
     {
       className: controlCss,
       disabled: disabled && !href,
@@ -105,7 +105,7 @@ export const Button = ({
       onMouseDown,
     },
     iconNode,
-    labelNode
+    labelNode,
   );
 
   return control;
