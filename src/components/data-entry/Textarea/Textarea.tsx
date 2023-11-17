@@ -5,7 +5,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 export interface ITextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   /**
    * 숫자 카운터의 최대 길이('showCount' true일때만 확인 가능)
-   * @default 0
+   *
    */
   maxLength?: number;
 

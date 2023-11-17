@@ -1,0 +1,27 @@
+import { IRadioOptions, RadioGroup } from '@components';
+import { Meta, StoryObj } from '@storybook/react';
+
+const meta: Meta = {
+  title: 'components/data-entry/RadioGroup',
+  component: RadioGroup,
+  tags: ['autodocs'],
+};
+
+export default meta;
+
+type Story = StoryObj<IRadioOptions>;
+
+export const TitleCounter: Story = {
+  render: (args) => {
+    return <RadioGroup options={args.options} name={args.name} />;
+  },
+  args: {
+    name: 'test1',
+    options: [
+      { label: '1', value: '1' },
+      { label: '2', value: 2 },
+      { label: '3', value: '3', disabled: true },
+      { label: '4', value: '4' },
+    ],
+  },
+};
