@@ -13,7 +13,14 @@ type Story = StoryObj<IRadioOptions>;
 
 export const TitleCounter: Story = {
   render: (args) => {
-    return <RadioGroup options={args.options} name={args.name} />;
+    return (
+      <RadioGroup
+        options={args.options}
+        name={args.name}
+        vertical={args.vertical}
+        gap={args.gap}
+      />
+    );
   },
   args: {
     name: 'test1',
@@ -23,5 +30,7 @@ export const TitleCounter: Story = {
       { label: '3', value: '3', disabled: true },
       { label: '4', value: '4' },
     ],
+    vertical: false,
+    gap: 20,
   },
 };
