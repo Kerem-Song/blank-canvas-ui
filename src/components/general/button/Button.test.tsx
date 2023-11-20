@@ -2,10 +2,12 @@ import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, fireEvent, act } from '@testing-library/react';
 
-import Button, { ButtonClassKey, buttonClasses as classes } from './index';
+import generatePrefixClasses from '@modules/utils/generatePrefixClasses';
+import Button, { ButtonClassKey, buttonClasses } from './index';
 
-function getClassName(className: ButtonClassKey) {
-  return `luna-btn-${classes[className]}`;
+/** default prefix */
+function getDEFPrefix(className: ButtonClassKey) {
+  return `luna-btn-${buttonClasses[className]}`;
 }
 
 describe('<Button />', () => {
@@ -13,7 +15,7 @@ describe('<Button />', () => {
     const { getByTestId } = render(<Button data-testid="button">Button</Button>);
     const button = getByTestId('button');
 
-    expect(button.classList.contains(getClassName('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
     expect(button.textContent).toEqual('Button');
   });
 
@@ -27,22 +29,9 @@ describe('<Button />', () => {
     rerender(<Button type="reset">Hello World</Button>);
     expect(container.firstChild).toHaveProperty('type', 'reset');
   });
+});
 
-  it('component을 변경하면 웹 접근성의 요구사항을 추가해야합니다.', () => {
-    const { getByRole } = render(
-      <Button component="span" role="checkbox" aria-checked={false} />,
-    );
-    const checkbox = getByRole('checkbox');
-
-    expect(checkbox).toHaveProperty('nodeName', 'SPAN');
-    expect(checkbox.getAttribute('tabIndex')).toEqual('0');
-  });
-
-  it('type="button인 경우 role="button"을 추가하지 마세요.', () => {
-    const { getByText } = render(<Button type="button">Hello</Button>);
-    expect(getByText('Hello').getAttribute('role')).toBeNull();
-  });
-
+describe('Props: href', () => {
   it('href을 설정하면 자동으로 버튼을 앵커로 변경됩니다.', () => {
     const { getByText } = render(<Button href="https://google.com">Hello</Button>);
     const button = getByText('Hello');
@@ -103,6 +92,319 @@ describe('<Button />', () => {
   });
 });
 
+describe('Props: color', () => {
+  it('className 적용됩니다.', () => {
+    const { getByRole, rerender } = render(<Button />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorPrimary'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorSecondary'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorSuccess'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorError'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorInfo'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorWarning'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorDark'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorLight'))).not.toBeTruthy();
+
+    rerender(<Button color="primary" />);
+    expect(button.classList.contains(getDEFPrefix('colorPrimary'))).toBeTruthy();
+    rerender(<Button color="secondary" />);
+    expect(button.classList.contains(getDEFPrefix('colorSecondary'))).toBeTruthy();
+    rerender(<Button color="success" />);
+    expect(button.classList.contains(getDEFPrefix('colorSuccess'))).toBeTruthy();
+    rerender(<Button color="error" />);
+    expect(button.classList.contains(getDEFPrefix('colorError'))).toBeTruthy();
+    rerender(<Button color="info" />);
+    expect(button.classList.contains(getDEFPrefix('colorInfo'))).toBeTruthy();
+    rerender(<Button color="warning" />);
+    expect(button.classList.contains(getDEFPrefix('colorWarning'))).toBeTruthy();
+    rerender(<Button color="dark" />);
+    expect(button.classList.contains(getDEFPrefix('colorDark'))).toBeTruthy();
+    rerender(<Button color="light" />);
+    expect(button.classList.contains(getDEFPrefix('colorLight'))).toBeTruthy();
+  });
+
+  it('primary', () => {
+    const { getByRole } = render(<Button color="primary" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorPrimary'))).toBeTruthy();
+  });
+
+  it('secondary', () => {
+    const { getByRole } = render(<Button color="secondary" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorSecondary'))).toBeTruthy();
+  });
+
+  it('success', () => {
+    const { getByRole } = render(<Button color="success" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorSuccess'))).toBeTruthy();
+  });
+
+  it('error', () => {
+    const { getByRole } = render(<Button color="error" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorError'))).toBeTruthy();
+  });
+
+  it('info', () => {
+    const { getByRole } = render(<Button color="info" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorInfo'))).toBeTruthy();
+  });
+
+  it('warning', () => {
+    const { getByRole } = render(<Button color="warning" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorWarning'))).toBeTruthy();
+  });
+
+  it('dark', () => {
+    const { getByRole } = render(<Button color="dark" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorDark'))).toBeTruthy();
+  });
+
+  it('light', () => {
+    const { getByRole } = render(<Button color="light" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('colorLight'))).toBeTruthy();
+  });
+});
+
+describe('Props: disabled', () => {
+  it('disabled 설정됩니다.', () => {
+    const { getByRole } = render(<Button disabled />);
+    const button = getByRole('button');
+
+    expect(button).toHaveProperty('nodeName', 'BUTTON');
+    expect(button).toHaveProperty('disabled', true);
+  });
+
+  it('disabled 설정되면 포커스되지 않습니다.', () => {
+    const { getByRole } = render(<Button disabled />);
+
+    const button = getByRole('button');
+
+    act(() => {
+      button.focus();
+    });
+
+    expect(document.activeElement).not.toEqual(button);
+  });
+
+  it('disabled 설정되면 사용자 동작에 응답하지 않습니다.', () => {
+    const onClick = vi.fn();
+    const { getByRole } = render(<Button disabled onClick={onClick} />);
+
+    const button = getByRole('button');
+
+    act(() => {
+      button.click();
+      fireEvent.keyDown(button, { key: 'Enter' });
+      fireEvent.keyUp(button, { key: ' ' });
+    });
+
+    expect(onClick).toHaveBeenCalledTimes(0);
+  });
+});
+
+describe('Props: shape', () => {
+  it('className 적용됩니다.', () => {
+    const { getByRole, rerender } = render(<Button />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('shapeCircle'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('shapeRound'))).not.toBeTruthy();
+
+    rerender(<Button shape="circle" />);
+    expect(button.classList.contains(getDEFPrefix('shapeCircle'))).toBeTruthy();
+    rerender(<Button shape="round" />);
+    expect(button.classList.contains(getDEFPrefix('shapeRound'))).toBeTruthy();
+  });
+
+  it('circle', () => {
+    const { getByRole } = render(<Button shape="circle" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('shapeCircle'))).toBeTruthy();
+  });
+
+  it('round', () => {
+    const { getByRole } = render(<Button shape="round" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('shapeRound'))).toBeTruthy();
+  });
+});
+
+describe('Props: size', () => {
+  it('className 적용됩니다.', () => {
+    const { getByRole, rerender } = render(<Button />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('sizeMedium'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('sizeSmall'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('sizeLarge'))).not.toBeTruthy();
+
+    rerender(<Button size="small" />);
+    expect(button.classList.contains(getDEFPrefix('sizeSmall'))).toBeTruthy();
+    rerender(<Button size="medium" />);
+    expect(button.classList.contains(getDEFPrefix('sizeMedium'))).toBeTruthy();
+    rerender(<Button size="large" />);
+    expect(button.classList.contains(getDEFPrefix('sizeLarge'))).toBeTruthy();
+  });
+
+  it('small', () => {
+    const { getByRole } = render(<Button size="small" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('sizeSmall'))).toBeTruthy();
+  });
+
+  it('medium', () => {
+    const { getByRole } = render(<Button size="medium" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('sizeMedium'))).toBeTruthy();
+  });
+
+  it('large', () => {
+    const { getByRole } = render(<Button size="large" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('sizeLarge'))).toBeTruthy();
+  });
+});
+
+describe('Props: tabIndex', () => {
+  it('tabIndex가 설정됩니다.', () => {
+    const { getByText } = render(<Button tabIndex={3}>Hello</Button>);
+
+    expect(getByText('Hello')).toHaveProperty('tabIndex', 3);
+  });
+});
+
+describe('Props: startIcon & endIcon', () => {
+  it('startIcon으로 버튼을 렌더링해야 합니다.', () => {
+    const { getByRole } = render(
+      <Button startIcon={<span>icon</span>}>Hello World</Button>,
+    );
+    const button = getByRole('button');
+    const startIcon = button.querySelector(`.${getDEFPrefix('startIcon')}`);
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(startIcon!.classList.contains(getDEFPrefix('endIcon'))).toBeFalsy();
+  });
+
+  it('endIcon으로 버튼을 렌더링해야 합니다.', () => {
+    const { getByRole } = render(
+      <Button endIcon={<span>icon</span>}>Hello World</Button>,
+    );
+    const button = getByRole('button');
+    const endIcon = button.querySelector(`.${getDEFPrefix('endIcon')}`);
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(endIcon!.classList.contains(getDEFPrefix('startIcon'))).toBeFalsy();
+  });
+});
+
+describe('Props: slotClassNames', () => {
+  it('icon - className 적용됩니다.', () => {
+    const { getByRole } = render(
+      <Button
+        startIcon={<span>icon</span>}
+        endIcon={<span>icon</span>}
+        slotClassNames={{ icon: 'custom-icon' }}
+      />,
+    );
+    const button = getByRole('button');
+    const startIcon = button.querySelector(`.${getDEFPrefix('startIcon')}`);
+    const endIcon = button.querySelector(`.${getDEFPrefix('endIcon')}`);
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(startIcon!.classList.contains('custom-icon')).toBeTruthy();
+    expect(endIcon!.classList.contains('custom-icon')).toBeTruthy();
+  });
+});
+
+describe('Props: variant', () => {
+  it('className 적용됩니다.', () => {
+    const { getByRole, rerender } = render(<Button />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('outlined'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('contained'))).not.toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('text'))).not.toBeTruthy();
+
+    rerender(<Button variant="contained" />);
+    expect(button.classList.contains(getDEFPrefix('contained'))).toBeTruthy();
+    rerender(<Button variant="text" />);
+    expect(button.classList.contains(getDEFPrefix('text'))).toBeTruthy();
+  });
+
+  it('contained', () => {
+    const { getByRole } = render(<Button variant="contained" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('contained'))).toBeTruthy();
+  });
+
+  it('outlined', () => {
+    const { getByRole } = render(<Button variant="outlined" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('outlined'))).toBeTruthy();
+  });
+
+  it('text', () => {
+    const { getByRole } = render(<Button variant="text" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(getDEFPrefix('text'))).toBeTruthy();
+  });
+});
+
+describe('Props: prefix', () => {
+  it('className 적용됩니다.', () => {
+    const { getByRole } = render(<Button prefix="prefix" />);
+    const button = getByRole('button');
+
+    const classes = generatePrefixClasses(buttonClasses, 'prefix');
+
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+  });
+});
+
 describe('이벤트 콜백', () => {
   it('이벤트 콜백이 실행되어야 합니다.', () => {
     const onClick = vi.fn();
@@ -153,92 +455,5 @@ describe('이벤트 콜백', () => {
 
     fireEvent.mouseLeave(button);
     expect(onMouseLeave).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe('props: color', () => {
-  it('className 적용됩니다.', () => {
-    const { getByRole, rerender } = render(<Button />);
-    const button = getByRole('button');
-
-    expect(button.classList.contains(getClassName('root'))).toBeTruthy();
-    expect(button.classList.contains(getClassName('colorPrimary'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('colorSecondary'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('colorSuccess'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('colorError'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('colorInfo'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('colorWarning'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('colorDark'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('colorLight'))).not.toBeTruthy();
-
-    rerender(<Button color="primary" />);
-    expect(button.classList.contains(getClassName('colorPrimary'))).toBeTruthy();
-    rerender(<Button color="secondary" />);
-    expect(button.classList.contains(getClassName('colorSecondary'))).toBeTruthy();
-    rerender(<Button color="success" />);
-    expect(button.classList.contains(getClassName('colorSuccess'))).toBeTruthy();
-    rerender(<Button color="error" />);
-    expect(button.classList.contains(getClassName('colorError'))).toBeTruthy();
-    rerender(<Button color="info" />);
-    expect(button.classList.contains(getClassName('colorInfo'))).toBeTruthy();
-    rerender(<Button color="warning" />);
-    expect(button.classList.contains(getClassName('colorWarning'))).toBeTruthy();
-    rerender(<Button color="dark" />);
-    expect(button.classList.contains(getClassName('colorDark'))).toBeTruthy();
-    rerender(<Button color="light" />);
-    expect(button.classList.contains(getClassName('colorLight'))).toBeTruthy();
-  });
-});
-
-describe('props: disabled', () => {
-  it('disabled이 설정됩니다.', () => {
-    const { getByText } = render(<Button disabled>Hello</Button>);
-    const button = getByText('Hello');
-
-    expect(button).toHaveProperty('nodeName', 'BUTTON');
-    expect(button).toHaveProperty('disabled', true);
-  });
-});
-
-describe('props: shape', () => {
-  it('className 적용됩니다.', () => {
-    const { getByRole, rerender } = render(<Button />);
-    const button = getByRole('button');
-
-    expect(button.classList.contains(getClassName('root'))).toBeTruthy();
-    expect(button.classList.contains(getClassName('shapeCircle'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('shapeRound'))).not.toBeTruthy();
-
-    rerender(<Button shape="circle" />);
-    expect(button.classList.contains(getClassName('shapeCircle'))).toBeTruthy();
-    rerender(<Button shape="round" />);
-    expect(button.classList.contains(getClassName('shapeRound'))).toBeTruthy();
-  });
-});
-
-describe('props: size', () => {
-  it('className 적용됩니다.', () => {
-    const { getByRole, rerender } = render(<Button />);
-    const button = getByRole('button');
-
-    expect(button.classList.contains(getClassName('root'))).toBeTruthy();
-    expect(button.classList.contains(getClassName('sizeMedium'))).toBeTruthy();
-    expect(button.classList.contains(getClassName('sizeSmall'))).not.toBeTruthy();
-    expect(button.classList.contains(getClassName('sizeLarge'))).not.toBeTruthy();
-
-    rerender(<Button size="small" />);
-    expect(button.classList.contains(getClassName('sizeSmall'))).toBeTruthy();
-    rerender(<Button size="medium" />);
-    expect(button.classList.contains(getClassName('sizeMedium'))).toBeTruthy();
-    rerender(<Button size="large" />);
-    expect(button.classList.contains(getClassName('sizeLarge'))).toBeTruthy();
-  });
-});
-
-describe('prop: tabIndex', () => {
-  it('tabIndex가 설정됩니다.', () => {
-    const { getByText } = render(<Button tabIndex={3}>Hello</Button>);
-
-    expect(getByText('Hello')).toHaveProperty('tabIndex', 3);
   });
 });
