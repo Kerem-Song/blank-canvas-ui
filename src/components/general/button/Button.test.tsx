@@ -334,13 +334,17 @@ describe('Props: startIcon & endIcon', () => {
   });
 });
 
-describe('Props: slotClassNames', () => {
-  it('icon - className 적용됩니다.', () => {
+describe('Props: slotProps', () => {
+  it('슬롯 icon - wrapper className 적용됩니다.', () => {
     const { getByRole } = render(
       <Button
         startIcon={<span>icon</span>}
         endIcon={<span>icon</span>}
-        slotClassNames={{ icon: 'custom-icon' }}
+        slotProps={{
+          iconWrapper: {
+            className: 'custom-icon-wrapper',
+          },
+        }}
       />,
     );
     const button = getByRole('button');
@@ -348,8 +352,8 @@ describe('Props: slotClassNames', () => {
     const endIcon = button.querySelector(`.${getDEFPrefix('endIcon')}`);
 
     expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(startIcon!.classList.contains('custom-icon')).toBeTruthy();
-    expect(endIcon!.classList.contains('custom-icon')).toBeTruthy();
+    expect(startIcon!.classList.contains('custom-icon-wrapper')).toBeTruthy();
+    expect(endIcon!.classList.contains('custom-icon-wrapper')).toBeTruthy();
   });
 });
 

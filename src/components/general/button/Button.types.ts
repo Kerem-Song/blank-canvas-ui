@@ -1,4 +1,5 @@
 import { OverridableComponent, OverrideProps, OverridableTypeMap } from '@models/types';
+import React from 'react';
 
 export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'button'> {
   props: {
@@ -49,13 +50,11 @@ export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'but
      */
     startIcon?: React.ReactNode;
     /**
-     * slot 커스텀 classNames
+     * 슬롯 커스텀 속성
      */
-    slotClassNames?: { icon?: string };
-    /**
-     * slot 커스텀 styles
-     */
-    slotStyles?: { icon?: React.CSSProperties };
+    slotProps?: {
+      iconWrapper?: React.HTMLAttributes<HTMLSpanElement>;
+    };
     /**
      * @default 0
      */

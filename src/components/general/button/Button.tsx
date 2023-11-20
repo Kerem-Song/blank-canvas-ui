@@ -1,3 +1,5 @@
+import '../../../styles/button.css';
+
 import React, { useState, useRef } from 'react';
 import classNames from 'classnames';
 
@@ -6,7 +8,7 @@ import { composeRef, generatePrefixClasses } from '@modules/utils';
 import { ButtonProps, ExtendButton, ButtonTypeMap } from './Button.types';
 import buttonClasses from './buttonClasses';
 
-const Button = React.forwardRef(function ButtonBase<
+const Button = React.forwardRef(function Button<
   RootComponentType extends React.ElementType,
 >(props: ButtonProps<RootComponentType>, ref: React.ForwardedRef<Element>) {
   const {
@@ -19,8 +21,7 @@ const Button = React.forwardRef(function ButtonBase<
     shape = 'default',
     size = 'medium',
     startIcon: startIconProp,
-    slotClassNames,
-    slotStyles,
+    slotProps,
     tabIndex,
     type,
     prefix = 'luna-btn',
@@ -101,10 +102,17 @@ const Button = React.forwardRef(function ButtonBase<
     className,
   );
 
+  const {
+    className: iconClassName,
+    style: iconStyle,
+    ...iconRest
+  } = slotProps?.iconWrapper ?? {};
+
   const startIcon = startIconProp && (
     <span
-      className={classNames(classes.startIcon, `icon-${size}`, slotClassNames?.icon)}
-      style={slotStyles?.icon}
+      className={classNames(classes.startIcon, `icon-${size}`, iconClassName)}
+      style={iconStyle}
+      {...iconRest}
     >
       {startIconProp}
     </span>
@@ -112,8 +120,9 @@ const Button = React.forwardRef(function ButtonBase<
 
   const endIcon = endIconProp && (
     <span
-      className={classNames(classes.endIcon, `icon-${size}`, slotClassNames?.icon)}
-      style={slotStyles?.icon}
+      className={classNames(classes.endIcon, `icon-${size}`, iconClassName)}
+      style={iconStyle}
+      {...iconRest}
     >
       {endIconProp}
     </span>
@@ -134,7 +143,5 @@ const Button = React.forwardRef(function ButtonBase<
     </RootComponent>
   );
 });
-
-Button.displayName = 'general.Button';
 
 export default Button as ExtendButton<ButtonTypeMap>;
