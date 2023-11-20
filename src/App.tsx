@@ -56,7 +56,7 @@ function App() {
         maxLength={20}
       />
       <Radio>asdf</Radio>
-      <RadioGroup options={option} name="haha" />
+      <RadioGroup options={option} name="haha" vertical={false} gap={20} />
     </>
   );
 }

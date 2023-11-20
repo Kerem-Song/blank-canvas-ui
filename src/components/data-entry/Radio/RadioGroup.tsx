@@ -24,13 +24,26 @@ export interface IRadioOptions extends InputHTMLAttributes<HTMLInputElement> {
    * 라디오 옵션사항
    */
   options: IRadioOption[];
+
+  /**
+   * 수평, 수직 여부
+   * @default false
+   */
+  vertical?: boolean;
+
+  /**
+   * Radio 사이의 gap
+   * @type number
+   * @default 0
+   */
+  gap?: React.CSSProperties['gap'];
 }
 
 export const RadioGroup = forwardRef<HTMLInputElement, IRadioOptions>((args, ref) => {
-  const { style, options, name, disabled, ...inputProps } = args;
+  const { style, options, name, disabled, vertical, gap, ...inputProps } = args;
 
   return (
-    <Flex>
+    <Flex vertical={vertical} gap={gap}>
       {options.map((option, i) => (
         <Radio name={name} key={i} disabled={option.disabled}>
           <span>{option.label}</span>
