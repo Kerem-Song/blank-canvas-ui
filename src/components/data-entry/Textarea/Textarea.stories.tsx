@@ -2,7 +2,7 @@ import { Textarea, ITextareaProps } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
-  title: 'components/data-entry/Textarea',
+  title: 'components/data-entry/Textarea/Textarea',
   component: Textarea,
   tags: ['autodocs'],
 };

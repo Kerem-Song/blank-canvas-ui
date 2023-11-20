@@ -1,4 +1,5 @@
 import { Button, Radio, TextAreaWithTitleCounter, Textarea } from '@components';
+import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGroup';
 import { useState } from 'react';
 import './App.css';
 import reactLogo from './assets/react.svg';
@@ -6,7 +7,11 @@ import viteLogo from '/vite.svg';
 
 function App() {
   const [count, setCount] = useState(0);
-
+  const option: IRadioOption[] = [
+    { label: '1', value: '1' },
+    { label: '2', value: 2 },
+    { label: '3', value: '3', disabled: true },
+  ];
   return (
     <>
       <div>
@@ -51,6 +56,7 @@ function App() {
         maxLength={20}
       />
       <Radio>asdf</Radio>
+      <RadioGroup options={option} name="haha" vertical={false} gap={20} />
     </>
   );
 }

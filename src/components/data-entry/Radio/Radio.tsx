@@ -2,10 +2,18 @@ import { InputHTMLAttributes, forwardRef } from 'react';
 
 export const Radio = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
   (args, ref) => {
-    const { children, ...inputArgs } = args;
+    const { children, name, ...inputArgs } = args;
+
     return (
       <label className="radio-container">
-        <input {...inputArgs} className="radio" type="radio" name={args.name} ref={ref} />
+        <input
+          {...inputArgs}
+          className="radio"
+          type="radio"
+          name={name}
+          ref={ref}
+          disabled={args.disabled}
+        />
         {children}
       </label>
     );
