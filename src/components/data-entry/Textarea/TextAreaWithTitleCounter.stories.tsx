@@ -2,7 +2,7 @@ import { TextAreaWithTitleCounter, TitleCounterProps } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
-  title: 'components/data-entry/TextAreaWithTitleCounter',
+  title: 'components/data-entry/Textarea/TextAreaWithTitleCounter',
   component: TextAreaWithTitleCounter,
   tags: ['autodocs'],
 };
@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<TitleCounterProps>;
 
-export const TitleCounter: Story = {
+export const Default: Story = {
   render: (args) => {
     return (
       <div>

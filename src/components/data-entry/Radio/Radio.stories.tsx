@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { InputHTMLAttributes } from 'react';
 
 const meta: Meta = {
-  title: 'components/data-entry/Radio',
+  title: 'components/data-entry/Radio/Radio',
   component: Radio,
   tags: ['autodocs'],
 };
@@ -12,7 +12,7 @@ export default meta;
 
 type Story = StoryObj<InputHTMLAttributes<HTMLInputElement>>;
 
-export const TitleCounter: Story = {
+export const Default: Story = {
   render: (args) => {
     return (
       <div>
