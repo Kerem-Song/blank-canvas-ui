@@ -1,0 +1,23 @@
+.luna-input-wrap {
+  @apply flex w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300 focus-within:border-blue-500;
+
+  .prefixWrapper {
+    @apply flex-none;
+  }
+
+  .suffixWrapper {
+    @apply flex-none text-end;
+  }
+
+  input {
+    @apply grow w-full pl-2 focus:outline-none placeholder:not-italic placeholder:text-slate-400;
+  }
+
+  &.invalid {
+    @apply ring-red-500;
+  }
+}
+
+.luna-input-normal {
+  @apply w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
+}
