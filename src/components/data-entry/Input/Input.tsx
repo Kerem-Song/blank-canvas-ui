@@ -1,10 +1,10 @@
-import { Button, Flex } from '@components';
+import { Button } from '@components';
 import classNames from 'classnames';
 import {
   ChangeEvent,
   FocusEvent,
-  KeyboardEvent,
   InputHTMLAttributes,
+  KeyboardEvent,
   ReactNode,
   forwardRef,
   useRef,
@@ -33,26 +33,9 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   isSearch?: boolean;
 
   /**
-   * Input의 title
-   */
-  label?: string;
-
-  /**
-   * Input title의 폰트 굵기(굵게/얇게)
-   * @default false
-   */
-  isLight?: boolean;
-
-  /**
    * Input에 입력된 글자 수 카운팅('showCount' true일때만 확인 가능)
    */
   textLength?: number;
-
-  /**
-   * Input에서 노출되는 title과 counter의 위치(label은 값이 없을 경우 노출되지 않음)
-   * @type "top" | "bottom" | "inside"
-   */
-  direction?: 'top' | 'bottom' | 'inside';
 
   /**
    * Input의 에러 유무
@@ -117,10 +100,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     args.value?.toString().length || 0,
   );
   const {
-    label,
-    isLight,
     showCount,
-    direction,
     isError,
     size,
     isSearch,
@@ -220,7 +200,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
         <div className="prefixWrapper">{customPrefix}</div>
         <div className="grow">{input}</div>
         <div className="suffixWrapper">
-          {showCount && direction === 'inside' ? (
+          {showCount ? (
             <span className="count">
               <>
                 {textLength}

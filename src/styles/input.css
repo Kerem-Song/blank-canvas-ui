@@ -21,3 +21,19 @@
 .luna-input-normal {
   @apply w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
 }
+
+.input-title-counter-wrapper {
+  @apply rounded-md flex justify-between items-center w-full resize-none;
+
+  &.inside {
+    @apply block border-solid border border-slate-300 text-right;
+
+    &.invalid {
+      @apply border border-solid ring-red-500;
+    }
+
+    .input-counter {
+      @apply pr-10pxr py-2pxr;
+    }
+  }
+}
