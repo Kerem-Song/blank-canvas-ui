@@ -7,7 +7,7 @@ const meta: Meta = {
   component: Switch,
   tags: ['autodocs'],
   parameters: {
-    componentSubTitle: '스위치',
+    componentSubtitle: '스위치',
   },
 };
 
@@ -17,9 +17,13 @@ type Story = StoryObj<InputHTMLAttributes<HTMLInputElement>>;
 
 export const Default: Story = {
   render: (args) => {
-    return <Switch onClick={() => alert('on click')} />;
-  },
-  args: {
-    checked: false,
+    return (
+      <Switch
+        onChange={() => {
+          alert('on click');
+        }}
+        checked={args.checked}
+      />
+    );
   },
 };
