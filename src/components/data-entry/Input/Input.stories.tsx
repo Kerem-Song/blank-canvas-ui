@@ -5,6 +5,9 @@ const meta: Meta = {
   title: 'components/data-entry/Input/Input',
   component: Input,
   tags: ['autodocs'],
+  parameters: {
+    componentSubtitle: '인풋',
+  },
 };
 
 export default meta;

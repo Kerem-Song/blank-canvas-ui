@@ -6,6 +6,9 @@ const meta: Meta = {
   title: 'components/data-entry/Input/InputWithTitleCounter',
   component: InputWithTitleCounter,
   tags: ['autodocs'],
+  parameters: {
+    componentSubtitle: '제목과 입력한 글자수 표시가 가능한 입력창',
+  },
 };
 
 export default meta;

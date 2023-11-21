@@ -5,6 +5,9 @@ const meta: Meta = {
   title: 'components/data-entry/Textarea/Textarea',
   component: Textarea,
   tags: ['autodocs'],
+  parameters: {
+    componentSubtitle: '텍스트 입력',
+  },
 };
 
 export default meta;
@@ -18,5 +21,11 @@ export const Default: Story = {
         <Textarea {...args} />
       </div>
     );
+  },
+  args: {
+    maxRows: 5,
+    minRows: 2,
+    showCount: true,
+    maxLength: 100,
   },
 };

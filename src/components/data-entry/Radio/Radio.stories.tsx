@@ -6,6 +6,9 @@ const meta: Meta = {
   title: 'components/data-entry/Radio/Radio',
   component: Radio,
   tags: ['autodocs'],
+  parameters: {
+    componentSubtitle: '라디오 버튼',
+  },
 };
 
 export default meta;

@@ -5,6 +5,9 @@ const meta: Meta = {
   title: 'components/data-entry/Radio/RadioGroup',
   component: RadioGroup,
   tags: ['autodocs'],
+  parameters: {
+    componentSubtitle: '라디오 버튼이 여러개 있는 컴포넌트',
+  },
 };
 
 export default meta;

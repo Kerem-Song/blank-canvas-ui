@@ -248,7 +248,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     </div>
   );
 
-  console.log('@is search', isSearch);
   const inputChildren = wrappingType ? wrappedInput : input;
 
   return inputChildren;
