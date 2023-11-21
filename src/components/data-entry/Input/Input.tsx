@@ -207,21 +207,23 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
                 {args.maxLength ? `/${args.maxLength}` : undefined}
               </>
             </span>
-          ) : undefined}
+          ) : null}
           {isSearch ? (
-            <Button
-              small
-              shape="ghost"
-              className="input-button"
-              onClick={() => {
-                util.TriggerInputOnChange(inputRef.current, '');
-                setTextLength(0);
-                args.onSearch?.('');
-              }}
-            >
-              <div className={classNames('search', { clear: textLength })} />
-            </Button>
-          ) : undefined}
+            <>
+              <Button
+                small
+                shape="ghost"
+                className="input-button"
+                onClick={() => {
+                  util.TriggerInputOnChange(inputRef.current, '');
+                  setTextLength(0);
+                  args.onSearch?.('');
+                }}
+              >
+                <div className={classNames('search', { clear: textLength })} />
+              </Button>
+            </>
+          ) : null}
           {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
             <Button
               small
@@ -239,13 +241,14 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
             >
               <div className="clear" />
             </Button>
-          ) : undefined}
+          ) : null}
           {suffix}
         </div>
       </div>
     </div>
   );
 
+  console.log('@is search', isSearch);
   const inputChildren = wrappingType ? wrappedInput : input;
 
   return inputChildren;

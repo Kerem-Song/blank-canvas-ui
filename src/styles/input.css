@@ -6,7 +6,7 @@
   }
 
   .suffixWrapper {
-    @apply flex-none text-end;
+    @apply flex items-center text-end;
   }
 
   input {
@@ -34,6 +34,22 @@
 
     .input-counter {
       @apply pr-10pxr py-2pxr;
+    }
+  }
+}
+
+.input-button {
+  @apply w-16pxr h-20pxr py-2pxr;
+
+  span {
+    @apply w-16pxr h-16pxr;
+
+    .search {
+      @apply w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search.svg')] hover:bg-[url('@icons/ic_search_active.svg')];
+    }
+
+    .clear {
+      @apply w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search_delete.svg')] hover:bg-[url('@icons/ic_search_delete_active.svg')];
     }
   }
 }

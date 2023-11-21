@@ -1,4 +1,4 @@
-import { Button, Radio, TextAreaWithTitleCounter, Textarea } from '@components';
+import { Button, Input, Radio, TextAreaWithTitleCounter, Textarea } from '@components';
 import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGroup';
 import { useState } from 'react';
 import './App.css';
@@ -57,6 +57,7 @@ function App() {
       />
       <Radio>asdf</Radio>
       <RadioGroup options={option} name="haha" vertical={false} gap={20} />
+      <Input isSearch={true} />
     </>
   );
 }
