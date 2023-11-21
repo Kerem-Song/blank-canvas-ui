@@ -4,3 +4,4 @@ export * from './Textarea/Textarea';
 export * from './Textarea/TextAreaWithTitleCounter';
 export * from './Input/Input';
 export * from './Input/InputWithTitleCounter';
+export * from './Switch/Switch';
