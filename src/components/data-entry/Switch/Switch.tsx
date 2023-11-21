@@ -15,7 +15,7 @@ export const Switch = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInput
           disabled={args.disabled}
         />
         <label htmlFor={args.id} className="hidden" />
-        <div className="switch-bar peer peer-checked:bg-green-300 peer-checked:after:translate-x-full peer-focus:ring-green-300" />
+        <div className="switch-bar peer peer-checked:bg-green-200 peer-checked:after:translate-x-full peer-checked:after:bg-green-400 peer-focus:ring-green-500" />
       </label>
     );
   },
