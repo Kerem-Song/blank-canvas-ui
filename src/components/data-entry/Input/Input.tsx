@@ -102,7 +102,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const {
     showCount,
     isError,
-    size,
     isSearch,
     isClearable,
     isShowAlwaysClear,

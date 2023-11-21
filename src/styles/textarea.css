@@ -9,6 +9,14 @@
 .textarea-title-counter-wrapper {
   @apply rounded-md flex justify-between items-center w-full resize-none;
 
+  .textarea-label {
+    @apply font-semibold;
+
+    &.light {
+      @apply font-normal;
+    }
+  }
+
   textarea:focus {
     @apply focus:outline-none border-blue-500;
   }

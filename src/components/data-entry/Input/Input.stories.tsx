@@ -6,7 +6,7 @@ const meta: Meta = {
   component: Input,
   tags: ['autodocs'],
   parameters: {
-    componentSubtitle: '인풋',
+    componentSubtitle: '입력창',
   },
 };
 

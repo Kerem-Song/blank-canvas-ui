@@ -25,5 +25,7 @@ export const Default: Story = {
     isError: false,
     label: 'title',
     maxLength: 100,
+    customPrefix: '$',
+    suffix: 'USD',
   },
 };
