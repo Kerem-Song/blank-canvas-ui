@@ -30,5 +30,6 @@ export const Default: Story = {
     showCount: true,
     isError: false,
     maxLength: 100,
+    disabled: false,
   },
 };

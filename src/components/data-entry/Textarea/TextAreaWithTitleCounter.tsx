@@ -96,6 +96,7 @@ export const TextAreaWithTitleCounter = forwardRef<
           ref={ref}
           readOnly={readOnly}
           autoComplete={args.autoComplete ? 'true' : 'false'}
+          disabled={args.disabled}
         />
         {showCount && direction === 'inside' ? (
           <p className={`textarea-counter`}>

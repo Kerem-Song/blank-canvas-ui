@@ -51,6 +51,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, r
       ref={ref}
       readOnly={readOnly}
       autoComplete={args.autoComplete}
+      disabled={args.disabled}
     />
   );
 });

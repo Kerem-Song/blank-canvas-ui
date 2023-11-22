@@ -24,6 +24,10 @@
   &.inside {
     @apply block border-solid border border-slate-300 text-right;
 
+    &:has(textarea:disabled) {
+      @apply bg-gray-200;
+    }
+
     &.invalid {
       @apply border border-solid border-red-500;
     }

@@ -1,5 +1,5 @@
 .luna-input-wrap {
-  @apply flex w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300 focus-within:border-blue-500;
+  @apply flex w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
 
   .prefixWrapper {
     @apply flex-none;
@@ -11,6 +11,14 @@
 
   input {
     @apply grow w-full pl-2 focus:outline-none placeholder:not-italic placeholder:text-slate-400;
+
+    &:disabled {
+      @apply bg-gray-200;
+    }
+  }
+
+  &:has(input:disabled) {
+    @apply bg-gray-200;
   }
 
   &.invalid {

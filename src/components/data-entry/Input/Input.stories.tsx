@@ -27,5 +27,6 @@ export const Default: Story = {
     // customPrefix: '$',
     // suffix: 'USD',
     placeholder: '입력해주세요',
+    disabled: false,
   },
 };

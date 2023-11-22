@@ -64,7 +64,7 @@ function App() {
       />
       <Radio>asdf</Radio>
       <RadioGroup options={option} name="haha" vertical={false} gap={20} />
-      <Input isSearch={true} />
+      <Input isSearch={true} disabled={true} />
       <Switch />
     </>
   );

@@ -27,5 +27,6 @@ export const Default: Story = {
     minRows: 2,
     showCount: true,
     maxLength: 100,
+    disabled: false,
   },
 };

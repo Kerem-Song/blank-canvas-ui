@@ -92,8 +92,7 @@ export const InputWithTitleCounter = forwardRef<
     false || showCount || isSearch || isClearable || customPrefix || suffix;
 
   const inputClassName = classNames(
-    wrappingType ? '' : `${args.className} luna-input-normal`,
-    'group/input-focus-within:ring-blue-500',
+    wrappingType ? '' : `${args.className} luna-input-normal `,
     {
       invalid: isError,
     },
@@ -101,7 +100,6 @@ export const InputWithTitleCounter = forwardRef<
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className} luna-input-wrap` : '',
-    'group/input-focus-within:ring-blue-500',
     {
       invalid: isError,
     },
@@ -136,7 +134,7 @@ export const InputWithTitleCounter = forwardRef<
   );
 
   const wrappedInput = (
-    <div className="group/input">
+    <div className="group">
       <div className={inputWrapClassName}>
         <div className="prefixWrapper">{customPrefix}</div>
         <div className="grow">{input}</div>
