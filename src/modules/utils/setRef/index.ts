@@ -1,1 +1,1 @@
-export { default } from './setRef';
+export * from './setRef';
