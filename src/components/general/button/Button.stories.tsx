@@ -1,4 +1,7 @@
+import '../../../index.css';
+
 import * as React from 'react';
+import classNames from 'classnames';
 import {
   withRouter,
   reactRouterParameters,
@@ -7,7 +10,7 @@ import {
 import { Meta, StoryObj } from '@storybook/react';
 import { useLocation, Link as ReactRouterLink, Outlet } from 'react-router-dom';
 
-import Button, { ButtonProps } from '@components/general/button';
+import { Button, ButtonProps } from '@components/general/button';
 
 const meta: Meta<ButtonProps> = {
   title: 'components/general/Button',
@@ -18,6 +21,15 @@ const meta: Meta<ButtonProps> = {
 
 export default meta;
 type Story = StoryObj<ButtonProps>;
+
+const FlexBox = ({
+  className,
+  children,
+}: React.PropsWithChildren<React.AnchorHTMLAttributes<HTMLDivElement>>) => {
+  return (
+    <div className={classNames('flex items-center gap-4 p-2', className)}>{children}</div>
+  );
+};
 
 export const Default: Story = {
   render: ({ children, ...args }) => {
@@ -57,9 +69,11 @@ export const BasicButton: Story = {
   render: () => {
     return (
       <>
-        <Button variant="text">Text</Button>
-        <Button variant="contained">Contained</Button>
-        <Button variant="outlined">Outlined</Button>
+        <FlexBox>
+          <Button variant="text">Text</Button>
+          <Button variant="contained">Contained</Button>
+          <Button variant="outlined">Outlined</Button>
+        </FlexBox>
       </>
     );
   },
@@ -68,11 +82,83 @@ export const BasicButton: Story = {
 export const TextButton: Story = {
   render: () => {
     return (
-      <div>
-        <Button>Primary</Button>
-        <Button disabled>Disabled</Button>
-        <Button href="#text-buttons">Link</Button>
-      </div>
+      <>
+        <FlexBox>
+          <Button variant="text">Default</Button>
+          <Button variant="text" disabled>
+            Disabled
+          </Button>
+          <Button variant="text" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="text" color="primary">
+            Primary
+          </Button>
+          <Button variant="text" color="primary" disabled>
+            Disabled
+          </Button>
+          <Button variant="text" color="primary" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="text" color="secondary">
+            Secondary
+          </Button>
+          <Button variant="text" color="secondary" disabled>
+            Disabled
+          </Button>
+          <Button variant="text" color="secondary" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="text" color="success">
+            Success
+          </Button>
+          <Button variant="text" color="success" disabled>
+            Disabled
+          </Button>
+          <Button variant="text" color="success" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="text" color="error">
+            Error
+          </Button>
+          <Button variant="text" color="error" disabled>
+            Disabled
+          </Button>
+          <Button variant="text" color="error" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="text" color="warning">
+            Warning
+          </Button>
+          <Button variant="text" color="warning" disabled>
+            Disabled
+          </Button>
+          <Button variant="text" color="warning" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="text" color="dark">
+            Dark
+          </Button>
+          <Button variant="text" color="dark" disabled>
+            Disabled
+          </Button>
+          <Button variant="text" color="dark" href="#">
+            Link
+          </Button>
+        </FlexBox>
+      </>
     );
   },
 };
@@ -81,13 +167,81 @@ export const ContainedButton: Story = {
   render: () => {
     return (
       <>
-        <Button variant="contained">Contained</Button>
-        <Button variant="contained" disabled>
-          Disabled
-        </Button>
-        <Button variant="contained" href="#contained-buttons">
-          Link
-        </Button>
+        <FlexBox>
+          <Button variant="contained">Default</Button>
+          <Button variant="contained" disabled>
+            Disabled
+          </Button>
+          <Button variant="contained" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="contained" color="primary">
+            Primary
+          </Button>
+          <Button variant="contained" color="primary" disabled>
+            Disabled
+          </Button>
+          <Button variant="contained" color="primary" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="contained" color="secondary">
+            Secondary
+          </Button>
+          <Button variant="contained" color="secondary" disabled>
+            Disabled
+          </Button>
+          <Button variant="contained" color="secondary" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="contained" color="success">
+            Success
+          </Button>
+          <Button variant="contained" color="success" disabled>
+            Disabled
+          </Button>
+          <Button variant="contained" color="success" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="contained" color="error">
+            Error
+          </Button>
+          <Button variant="contained" color="error" disabled>
+            Disabled
+          </Button>
+          <Button variant="contained" color="error" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="contained" color="warning">
+            Warning
+          </Button>
+          <Button variant="contained" color="warning" disabled>
+            Disabled
+          </Button>
+          <Button variant="contained" color="warning" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="contained" color="dark">
+            Dark
+          </Button>
+          <Button variant="contained" color="dark" disabled>
+            Disabled
+          </Button>
+          <Button variant="contained" color="dark" href="#">
+            Link
+          </Button>
+        </FlexBox>
       </>
     );
   },
@@ -97,13 +251,165 @@ export const OutlinedButton: Story = {
   render: () => {
     return (
       <>
-        <Button variant="outlined">Primary</Button>
-        <Button variant="outlined" disabled>
-          Disabled
-        </Button>
-        <Button variant="outlined" href="#outlined-buttons">
-          Link
-        </Button>
+        <FlexBox>
+          <Button variant="outlined">Default</Button>
+          <Button variant="outlined" disabled>
+            Disabled
+          </Button>
+          <Button variant="outlined" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="outlined" color="primary">
+            Primary
+          </Button>
+          <Button variant="outlined" color="primary" disabled>
+            Disabled
+          </Button>
+          <Button variant="outlined" color="primary" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="outlined" color="secondary">
+            Secondary
+          </Button>
+          <Button variant="outlined" color="secondary" disabled>
+            Disabled
+          </Button>
+          <Button variant="outlined" color="secondary" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="outlined" color="success">
+            Success
+          </Button>
+          <Button variant="outlined" color="success" disabled>
+            Disabled
+          </Button>
+          <Button variant="outlined" color="success" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="outlined" color="error">
+            Error
+          </Button>
+          <Button variant="outlined" color="error" disabled>
+            Disabled
+          </Button>
+          <Button variant="outlined" color="error" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="outlined" color="warning">
+            Warning
+          </Button>
+          <Button variant="outlined" color="warning" disabled>
+            Disabled
+          </Button>
+          <Button variant="outlined" color="warning" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="outlined" color="dark">
+            Dark
+          </Button>
+          <Button variant="outlined" color="dark" disabled>
+            Disabled
+          </Button>
+          <Button variant="outlined" color="dark" href="#">
+            Link
+          </Button>
+        </FlexBox>
+      </>
+    );
+  },
+};
+
+export const DashedButton: Story = {
+  render: () => {
+    return (
+      <>
+        <FlexBox>
+          <Button variant="dashed">Default</Button>
+          <Button variant="dashed" disabled>
+            Disabled
+          </Button>
+          <Button variant="dashed" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="dashed" color="primary">
+            Primary
+          </Button>
+          <Button variant="dashed" color="primary" disabled>
+            Disabled
+          </Button>
+          <Button variant="dashed" color="primary" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="dashed" color="secondary">
+            Secondary
+          </Button>
+          <Button variant="dashed" color="secondary" disabled>
+            Disabled
+          </Button>
+          <Button variant="dashed" color="secondary" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="dashed" color="success">
+            Success
+          </Button>
+          <Button variant="dashed" color="success" disabled>
+            Disabled
+          </Button>
+          <Button variant="dashed" color="success" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="dashed" color="error">
+            Error
+          </Button>
+          <Button variant="dashed" color="error" disabled>
+            Disabled
+          </Button>
+          <Button variant="dashed" color="error" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="dashed" color="warning">
+            Warning
+          </Button>
+          <Button variant="dashed" color="warning" disabled>
+            Disabled
+          </Button>
+          <Button variant="dashed" color="warning" href="#">
+            Link
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="dashed" color="dark">
+            Dark
+          </Button>
+          <Button variant="dashed" color="dark" disabled>
+            Disabled
+          </Button>
+          <Button variant="dashed" color="dark" href="#">
+            Link
+          </Button>
+        </FlexBox>
       </>
     );
   },
@@ -113,16 +419,93 @@ export const Color: Story = {
   render: () => {
     return (
       <>
-        <Button color="primary">Primary</Button>
-        <Button variant="text" color="secondary">
-          Secondary
-        </Button>
-        <Button variant="contained" color="success">
-          Success
-        </Button>
-        <Button variant="outlined" color="error">
-          Error
-        </Button>
+        <FlexBox>
+          <Button variant="text">Default</Button>
+          <Button variant="text" color="primary">
+            Primary
+          </Button>
+          <Button variant="text" color="secondary">
+            Secondary
+          </Button>
+          <Button variant="text" color="success">
+            Success
+          </Button>
+          <Button variant="text" color="error">
+            Error
+          </Button>
+          <Button variant="text" color="info">
+            Info
+          </Button>
+          <Button variant="text" color="warning">
+            Warning
+          </Button>
+          <Button variant="text" color="dark">
+            Dark
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button>Default</Button>
+          <Button color="primary">Primary</Button>
+          <Button color="secondary">Secondary</Button>
+          <Button color="success">Success</Button>
+          <Button color="error">Error</Button>
+          <Button color="info">Info</Button>
+          <Button color="warning">Warning</Button>
+          <Button color="dark">Dark</Button>
+        </FlexBox>
+        <FlexBox>
+          <Button variant="contained">Default</Button>
+          <Button variant="contained" color="primary">
+            Primary
+          </Button>
+          <Button variant="contained" color="secondary">
+            Secondary
+          </Button>
+          <Button variant="contained" color="success">
+            Success
+          </Button>
+          <Button variant="contained" color="error">
+            Error
+          </Button>
+          <Button variant="contained" color="info">
+            Info
+          </Button>
+          <Button variant="contained" color="warning">
+            Warning
+          </Button>
+          <Button variant="contained" color="dark">
+            Dark
+          </Button>
+        </FlexBox>
+      </>
+    );
+  },
+};
+
+export const Block: Story = {
+  render: () => {
+    return (
+      <>
+        <FlexBox className="flex-col">
+          <Button variant="contained" color="primary" block>
+            Primary
+          </Button>
+          <Button variant="contained" block>
+            Default
+          </Button>
+          <Button variant="outlined" block>
+            Outlined
+          </Button>
+          <Button variant="dashed" block>
+            Dashed
+          </Button>
+          <Button variant="contained" block disabled>
+            Disabled
+          </Button>
+          <Button variant="text" block>
+            Text
+          </Button>
+        </FlexBox>
       </>
     );
   },
@@ -132,39 +515,48 @@ export const Size: Story = {
   render: () => {
     return (
       <>
-        <div>
-          <Button variant="text" size="small">
+        <FlexBox>
+          <Button variant="text" size="xs">
+            Tiny
+          </Button>
+          <Button variant="text" size="sm">
             Small
           </Button>
-          <Button variant="text" size="medium">
+          <Button variant="text" size="md">
             Medium
           </Button>
-          <Button variant="text" size="large">
+          <Button variant="text" size="lg">
             Large
           </Button>
-        </div>
-        <div>
-          <Button variant="outlined" size="small">
+        </FlexBox>
+        <FlexBox>
+          <Button variant="outlined" size="xs">
+            Tiny
+          </Button>
+          <Button variant="outlined" size="sm">
             Small
           </Button>
-          <Button variant="outlined" size="medium">
+          <Button variant="outlined" size="md">
             Medium
           </Button>
-          <Button variant="outlined" size="large">
+          <Button variant="outlined" size="lg">
             Large
           </Button>
-        </div>
-        <div>
-          <Button variant="contained" size="small">
+        </FlexBox>
+        <FlexBox>
+          <Button variant="contained" size="xs">
+            Tiny
+          </Button>
+          <Button variant="contained" size="sm">
             Small
           </Button>
-          <Button variant="contained" size="medium">
+          <Button variant="contained" size="md">
             Medium
           </Button>
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="lg">
             Large
           </Button>
-        </div>
+        </FlexBox>
       </>
     );
   },
@@ -205,12 +597,14 @@ export const ButtonsWithIconsAndLabel: Story = {
 
     return (
       <>
-        <Button variant="outlined" startIcon={<MapIcon />}>
-          Map
-        </Button>
-        <Button variant="contained" endIcon={<SearchIcon />}>
-          Search
-        </Button>
+        <FlexBox>
+          <Button variant="outlined" color="success" startIcon={<MapIcon />}>
+            Map
+          </Button>
+          <Button variant="contained" color="dark" endIcon={<SearchIcon />}>
+            Search
+          </Button>
+        </FlexBox>
       </>
     );
   },
@@ -253,23 +647,108 @@ export const IconButton: Story = {
       },
     );
 
+    const DownloadIcon = React.forwardRef(
+      (props: React.SVGProps<SVGSVGElement>, ref: React.ForwardedRef<SVGSVGElement>) => {
+        return (
+          <svg viewBox="0 0 20 20" ref={ref} {...props}>
+            <path d="M15.608,6.262h-2.338v0.935h2.338c0.516,0,0.934,0.418,0.934,0.935v8.879c0,0.517-0.418,0.935-0.934,0.935H4.392c-0.516,0-0.935-0.418-0.935-0.935V8.131c0-0.516,0.419-0.935,0.935-0.935h2.336V6.262H4.392c-1.032,0-1.869,0.837-1.869,1.869v8.879c0,1.031,0.837,1.869,1.869,1.869h11.216c1.031,0,1.869-0.838,1.869-1.869V8.131C17.478,7.099,16.64,6.262,15.608,6.262z M9.513,11.973c0.017,0.082,0.047,0.162,0.109,0.226c0.104,0.106,0.243,0.143,0.378,0.126c0.135,0.017,0.274-0.02,0.377-0.126c0.064-0.065,0.097-0.147,0.115-0.231l1.708-1.751c0.178-0.183,0.178-0.479,0-0.662c-0.178-0.182-0.467-0.182-0.645,0l-1.101,1.129V1.588c0-0.258-0.204-0.467-0.456-0.467c-0.252,0-0.456,0.209-0.456,0.467v9.094L8.443,9.553c-0.178-0.182-0.467-0.182-0.645,0c-0.178,0.184-0.178,0.479,0,0.662L9.513,11.973z"></path>
+          </svg>
+        );
+      },
+    );
+
+    const FacebookIcon = React.forwardRef(
+      (props: React.SVGProps<SVGSVGElement>, ref: React.ForwardedRef<SVGSVGElement>) => {
+        return (
+          <svg viewBox="0 0 20 20" ref={ref} {...props} style={{ fontSize: '30px' }}>
+            <path
+              fill="#4691f6"
+              d="M11.344,5.71c0-0.73,0.074-1.122,1.199-1.122h1.502V1.871h-2.404c-2.886,0-3.903,1.36-3.903,3.646v1.765h-1.8V10h1.8v8.128h3.601V10h2.403l0.32-2.718h-2.724L11.344,5.71z"
+            ></path>
+          </svg>
+        );
+      },
+    );
+
     return (
       <>
-        <Button size="small" aria-label="delete">
-          <DeleteIcon />
-        </Button>
-        <Button size="medium" aria-label="delete">
-          <DeleteIcon />
-        </Button>
-        <Button size="large" aria-label="delete">
-          <DeleteIcon />
-        </Button>
-        <Button color="error" aria-label="error print page">
-          <PrintIcon />
-        </Button>
-        <Button color="success" aria-label="success print page">
-          <PrintIcon />
-        </Button>
+        <FlexBox>
+          <Button
+            variant="contained"
+            color="error"
+            size="md"
+            shape="circle"
+            className="text-3xl"
+            aria-label="delete"
+          >
+            <DeleteIcon />
+          </Button>
+          <Button
+            variant="outlined"
+            color="error"
+            size="md"
+            shape="circle"
+            className="text-3xl"
+            aria-label="delete"
+          >
+            <DeleteIcon />
+          </Button>
+          <Button
+            variant="dashed"
+            color="error"
+            size="md"
+            shape="circle"
+            className="text-3xl"
+            aria-label="delete"
+          >
+            <DeleteIcon />
+          </Button>
+          <Button
+            variant="text"
+            color="error"
+            size="md"
+            shape="circle"
+            className="text-3xl"
+            aria-label="delete"
+          >
+            <DeleteIcon />
+          </Button>
+          <Button
+            variant="text"
+            color="error"
+            size="md"
+            shape="circle"
+            className="text-3xl"
+            aria-label="delete"
+            disabled
+          >
+            <DeleteIcon />
+          </Button>
+        </FlexBox>
+        <FlexBox>
+          <Button
+            variant="text"
+            color="success"
+            size="md"
+            shape="circle"
+            className="text-3xl"
+            aria-label="print"
+          >
+            <PrintIcon />
+          </Button>
+          <Button
+            variant="text"
+            size="md"
+            shape="circle"
+            className="text-3xl"
+            aria-label="download"
+          >
+            <DownloadIcon />
+          </Button>
+          <Button variant="text" size="md" shape="circle" aria-label="facebook">
+            <FacebookIcon />
+          </Button>
+        </FlexBox>
       </>
     );
   },
@@ -279,18 +758,18 @@ export const PolymorphicComponent: Story = {
   render: () => {
     return (
       <>
-        <div>
+        <FlexBox>
           <Button component="button">Button Component</Button>
-        </div>
-        <div>
+        </FlexBox>
+        <FlexBox>
           <Button component="span">Span Component</Button>
-        </div>
-        <div>
+        </FlexBox>
+        <FlexBox>
           <Button component="label">Label Component</Button>
-        </div>
-        <div>
+        </FlexBox>
+        <FlexBox>
           <Button component="a">Anchor Component</Button>
-        </div>
+        </FlexBox>
       </>
     );
   },
@@ -309,14 +788,16 @@ export const Link: Story = {
 
     return (
       <>
-        <Button
-          component={AnchorLink}
-          href="https://google.com"
-          target="_blank"
-          referrerPolicy="no-referrer"
-        >
-          Anchor Target Link
-        </Button>
+        <FlexBox>
+          <Button
+            component={AnchorLink}
+            href="https://google.com"
+            target="_blank"
+            referrerPolicy="no-referrer"
+          >
+            Anchor Target Link
+          </Button>
+        </FlexBox>
       </>
     );
   },
@@ -330,19 +811,19 @@ export const Routing: Story = {
     return (
       <>
         <div>
-          <Button component={ReactRouterLink} to="/">
-            /index
-          </Button>
-          <Button component={ReactRouterLink} to="/dashboard">
-            /dashboard
-          </Button>
-        </div>
-        <div>
           <p>React-Router: {location.pathname}</p>
         </div>
         <div>
           <Outlet />
         </div>
+        <FlexBox>
+          <Button component={ReactRouterLink} to="/">
+            🏠 인덱스 페이지 이동
+          </Button>
+          <Button component={ReactRouterLink} to="/setting">
+            ⚙️ 세팅 페이지 이동
+          </Button>
+        </FlexBox>
       </>
     );
   },
@@ -351,11 +832,11 @@ export const Routing: Story = {
       routing: reactRouterOutlets([
         {
           path: '',
-          element: <p>Index Page</p>,
+          element: <p>index</p>,
         },
         {
-          path: 'dashboard',
-          element: <p>Dashboard Page</p>,
+          path: 'setting',
+          element: <p>setting</p>,
         },
       ]),
     }),

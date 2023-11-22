@@ -1,14 +1,12 @@
-import '../../../styles/button.css';
-
 import React, { useState, useRef } from 'react';
 import classNames from 'classnames';
 
 import { composeRef, generatePrefixClasses } from '@modules/utils';
 
 import { ButtonProps, ExtendButton, ButtonTypeMap } from './Button.types';
-import buttonClasses from './buttonClasses';
+import { buttonClasses } from './buttonClasses';
 
-const Button = React.forwardRef(function Button<
+export const Button = React.forwardRef(function Button<
   RootComponentType extends React.ElementType,
 >(props: ButtonProps<RootComponentType>, ref: React.ForwardedRef<Element>) {
   const {
@@ -17,14 +15,15 @@ const Button = React.forwardRef(function Button<
     color = 'default',
     component = 'button',
     disabled = false,
+    block = false,
     endIcon: endIconProp,
-    shape = 'default',
-    size = 'medium',
+    shape = 'round',
+    size = 'sm',
     startIcon: startIconProp,
     slotProps,
     tabIndex,
     type,
-    prefix = 'luna-btn',
+    prefix,
     variant = 'outlined',
     onClick,
     ...other
@@ -71,17 +70,23 @@ const Button = React.forwardRef(function Button<
     }
   }
 
-  const classes = generatePrefixClasses(buttonClasses, prefix ?? '');
+  const classes = generatePrefixClasses(
+    buttonClasses,
+    `${prefix ? `${prefix}-` : ''}btn`,
+  );
 
   const rootClassName = classNames(
     classes.root,
     {
       // disabled
       [classes.disabled]: disabled,
+      // block
+      [classes.block]: block,
       // variant
+      [classes.text]: variant === 'text',
       [classes.contained]: variant === 'contained',
       [classes.outlined]: variant === 'outlined',
-      [classes.text]: variant === 'text',
+      [classes.dashed]: variant === 'dashed',
       // color
       [classes.colorPrimary]: color === 'primary',
       [classes.colorSecondary]: color === 'secondary',
@@ -90,14 +95,14 @@ const Button = React.forwardRef(function Button<
       [classes.colorInfo]: color === 'info',
       [classes.colorWarning]: color === 'warning',
       [classes.colorDark]: color === 'dark',
-      [classes.colorLight]: color === 'light',
       // shape
       [classes.shapeCircle]: shape === 'circle',
       [classes.shapeRound]: shape === 'round',
       // size
-      [classes.sizeSmall]: size === 'small',
-      [classes.sizeMedium]: size === 'medium',
-      [classes.sizeLarge]: size === 'large',
+      [classes.sizeXSmall]: size === 'xs',
+      [classes.sizeSmall]: size === 'sm',
+      [classes.sizeMedium]: size === 'md',
+      [classes.sizeLarge]: size === 'lg',
     },
     className,
   );
@@ -142,6 +147,4 @@ const Button = React.forwardRef(function Button<
       {endIcon}
     </RootComponent>
   );
-});
-
-export default Button as ExtendButton<ButtonTypeMap>;
+}) as ExtendButton<ButtonTypeMap>;

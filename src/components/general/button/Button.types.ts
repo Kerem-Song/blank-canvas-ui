@@ -19,13 +19,17 @@ export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'but
       | 'error'
       | 'info'
       | 'warning'
-      | 'dark'
-      | 'light';
+      | 'dark';
     /**
      * `true`인 경우 구성 요소가 비활성화됩니다.
      * @default false
      */
     disabled?: boolean;
+    /**
+     * `true`인 경우 버튼 너비를 상위 부모의 너비에 맞춥니다.
+     * @default false
+     */
+    block?: boolean;
     /**
      * 자식 뒤에 배치되는 icon 요소입니다.
      */
@@ -37,14 +41,14 @@ export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'but
     href?: string;
     /**
      * 구성 요소의 모양입니다.
-     * @default 'default'
+     * @default 'round'
      */
     shape?: 'default' | 'circle' | 'round';
     /**
      * 구성 요소의 크기입니다.
-     * @default 'medium'
+     * @default 'sm'
      */
-    size?: 'small' | 'medium' | 'large';
+    size?: 'xs' | 'sm' | 'md' | 'lg';
     /**
      * 자식 앞에 배치되는 icon 요소입니다.
      */
@@ -61,14 +65,13 @@ export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'but
     tabIndex?: number;
     /**
      * 클래스 이름 접두사
-     * @default 'luna-btn'
      */
     prefix?: string;
     /**
      * 구성 요소의 사용할 변형입니다.
      * @default 'outlined'
      */
-    variant?: 'contained' | 'outlined' | 'text';
+    variant?: 'contained' | 'outlined' | 'text' | 'dashed';
   };
   defaultComponent: DefaultComponent;
 }

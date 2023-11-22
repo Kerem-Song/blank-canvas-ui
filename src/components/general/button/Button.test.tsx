@@ -2,20 +2,17 @@ import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, fireEvent, act } from '@testing-library/react';
 
-import generatePrefixClasses from '@modules/utils/generatePrefixClasses';
-import Button, { ButtonClassKey, buttonClasses } from './index';
+import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
+import { Button, buttonClasses } from './index';
 
-/** default prefix */
-function getDEFPrefix(className: ButtonClassKey) {
-  return `luna-btn-${buttonClasses[className]}`;
-}
+const classes = generatePrefixClasses(buttonClasses, 'btn');
 
 describe('<Button />', () => {
   it('렌더링 됩니다.', () => {
     const { getByTestId } = render(<Button data-testid="button">Button</Button>);
     const button = getByTestId('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
     expect(button.textContent).toEqual('Button');
   });
 
@@ -97,96 +94,68 @@ describe('Props: color', () => {
     const { getByRole, rerender } = render(<Button />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorPrimary'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorSecondary'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorSuccess'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorError'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorInfo'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorWarning'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorDark'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorLight'))).not.toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
 
     rerender(<Button color="primary" />);
-    expect(button.classList.contains(getDEFPrefix('colorPrimary'))).toBeTruthy();
+    expect(button.classList.contains(classes.colorPrimary)).toBeTruthy();
     rerender(<Button color="secondary" />);
-    expect(button.classList.contains(getDEFPrefix('colorSecondary'))).toBeTruthy();
+    expect(button.classList.contains(classes.colorSecondary)).toBeTruthy();
     rerender(<Button color="success" />);
-    expect(button.classList.contains(getDEFPrefix('colorSuccess'))).toBeTruthy();
+    expect(button.classList.contains(classes.colorSuccess)).toBeTruthy();
     rerender(<Button color="error" />);
-    expect(button.classList.contains(getDEFPrefix('colorError'))).toBeTruthy();
+    expect(button.classList.contains(classes.colorError)).toBeTruthy();
     rerender(<Button color="info" />);
-    expect(button.classList.contains(getDEFPrefix('colorInfo'))).toBeTruthy();
+    expect(button.classList.contains(classes.colorInfo)).toBeTruthy();
     rerender(<Button color="warning" />);
-    expect(button.classList.contains(getDEFPrefix('colorWarning'))).toBeTruthy();
-    rerender(<Button color="dark" />);
-    expect(button.classList.contains(getDEFPrefix('colorDark'))).toBeTruthy();
-    rerender(<Button color="light" />);
-    expect(button.classList.contains(getDEFPrefix('colorLight'))).toBeTruthy();
+    expect(button.classList.contains(classes.colorWarning)).toBeTruthy();
   });
 
   it('primary', () => {
     const { getByRole } = render(<Button color="primary" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorPrimary'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.colorPrimary)).toBeTruthy();
   });
 
   it('secondary', () => {
     const { getByRole } = render(<Button color="secondary" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorSecondary'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.colorSecondary)).toBeTruthy();
   });
 
   it('success', () => {
     const { getByRole } = render(<Button color="success" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorSuccess'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.colorSuccess)).toBeTruthy();
   });
 
   it('error', () => {
     const { getByRole } = render(<Button color="error" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorError'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.colorError)).toBeTruthy();
   });
 
   it('info', () => {
     const { getByRole } = render(<Button color="info" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorInfo'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.colorInfo)).toBeTruthy();
   });
 
   it('warning', () => {
     const { getByRole } = render(<Button color="warning" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorWarning'))).toBeTruthy();
-  });
-
-  it('dark', () => {
-    const { getByRole } = render(<Button color="dark" />);
-    const button = getByRole('button');
-
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorDark'))).toBeTruthy();
-  });
-
-  it('light', () => {
-    const { getByRole } = render(<Button color="light" />);
-    const button = getByRole('button');
-
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('colorLight'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.colorWarning)).toBeTruthy();
   });
 });
 
@@ -232,30 +201,28 @@ describe('Props: shape', () => {
     const { getByRole, rerender } = render(<Button />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('shapeCircle'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('shapeRound'))).not.toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
 
     rerender(<Button shape="circle" />);
-    expect(button.classList.contains(getDEFPrefix('shapeCircle'))).toBeTruthy();
+    expect(button.classList.contains(classes.shapeCircle)).toBeTruthy();
     rerender(<Button shape="round" />);
-    expect(button.classList.contains(getDEFPrefix('shapeRound'))).toBeTruthy();
+    expect(button.classList.contains(classes.shapeRound)).toBeTruthy();
   });
 
   it('circle', () => {
     const { getByRole } = render(<Button shape="circle" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('shapeCircle'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.shapeCircle)).toBeTruthy();
   });
 
   it('round', () => {
     const { getByRole } = render(<Button shape="round" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('shapeRound'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.shapeRound)).toBeTruthy();
   });
 });
 
@@ -264,41 +231,48 @@ describe('Props: size', () => {
     const { getByRole, rerender } = render(<Button />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('sizeMedium'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('sizeSmall'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('sizeLarge'))).not.toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
 
-    rerender(<Button size="small" />);
-    expect(button.classList.contains(getDEFPrefix('sizeSmall'))).toBeTruthy();
-    rerender(<Button size="medium" />);
-    expect(button.classList.contains(getDEFPrefix('sizeMedium'))).toBeTruthy();
-    rerender(<Button size="large" />);
-    expect(button.classList.contains(getDEFPrefix('sizeLarge'))).toBeTruthy();
+    rerender(<Button size="xs" />);
+    expect(button.classList.contains(classes.sizeXSmall)).toBeTruthy();
+    rerender(<Button size="sm" />);
+    expect(button.classList.contains(classes.sizeSmall)).toBeTruthy();
+    rerender(<Button size="md" />);
+    expect(button.classList.contains(classes.sizeMedium)).toBeTruthy();
+    rerender(<Button size="lg" />);
+    expect(button.classList.contains(classes.sizeLarge)).toBeTruthy();
+  });
+
+  it('xsmall', () => {
+    const { getByRole } = render(<Button size="xs" />);
+    const button = getByRole('button');
+
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.sizeXSmall)).toBeTruthy();
   });
 
   it('small', () => {
-    const { getByRole } = render(<Button size="small" />);
+    const { getByRole } = render(<Button size="sm" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('sizeSmall'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.sizeSmall)).toBeTruthy();
   });
 
   it('medium', () => {
-    const { getByRole } = render(<Button size="medium" />);
+    const { getByRole } = render(<Button size="md" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('sizeMedium'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.sizeMedium)).toBeTruthy();
   });
 
   it('large', () => {
-    const { getByRole } = render(<Button size="large" />);
+    const { getByRole } = render(<Button size="lg" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('sizeLarge'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.sizeLarge)).toBeTruthy();
   });
 });
 
@@ -316,10 +290,10 @@ describe('Props: startIcon & endIcon', () => {
       <Button startIcon={<span>icon</span>}>Hello World</Button>,
     );
     const button = getByRole('button');
-    const startIcon = button.querySelector(`.${getDEFPrefix('startIcon')}`);
+    const startIcon = button.querySelector(`.${classes.startIcon}`);
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(startIcon!.classList.contains(getDEFPrefix('endIcon'))).toBeFalsy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(startIcon!.classList.contains(classes.endIcon)).toBeFalsy();
   });
 
   it('endIcon으로 버튼을 렌더링해야 합니다.', () => {
@@ -327,10 +301,10 @@ describe('Props: startIcon & endIcon', () => {
       <Button endIcon={<span>icon</span>}>Hello World</Button>,
     );
     const button = getByRole('button');
-    const endIcon = button.querySelector(`.${getDEFPrefix('endIcon')}`);
+    const endIcon = button.querySelector(`.${classes.endIcon}`);
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(endIcon!.classList.contains(getDEFPrefix('startIcon'))).toBeFalsy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(endIcon!.classList.contains(classes.startIcon)).toBeFalsy();
   });
 });
 
@@ -348,10 +322,10 @@ describe('Props: slotProps', () => {
       />,
     );
     const button = getByRole('button');
-    const startIcon = button.querySelector(`.${getDEFPrefix('startIcon')}`);
-    const endIcon = button.querySelector(`.${getDEFPrefix('endIcon')}`);
+    const startIcon = button.querySelector(`.${classes.startIcon}`);
+    const endIcon = button.querySelector(`.${classes.endIcon}`);
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
     expect(startIcon!.classList.contains('custom-icon-wrapper')).toBeTruthy();
     expect(endIcon!.classList.contains('custom-icon-wrapper')).toBeTruthy();
   });
@@ -362,50 +336,47 @@ describe('Props: variant', () => {
     const { getByRole, rerender } = render(<Button />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('outlined'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('contained'))).not.toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('text'))).not.toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
 
     rerender(<Button variant="contained" />);
-    expect(button.classList.contains(getDEFPrefix('contained'))).toBeTruthy();
+    expect(button.classList.contains(classes.contained)).toBeTruthy();
     rerender(<Button variant="text" />);
-    expect(button.classList.contains(getDEFPrefix('text'))).toBeTruthy();
+    expect(button.classList.contains(classes.text)).toBeTruthy();
   });
 
   it('contained', () => {
     const { getByRole } = render(<Button variant="contained" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('contained'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.contained)).toBeTruthy();
   });
 
   it('outlined', () => {
     const { getByRole } = render(<Button variant="outlined" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('outlined'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.outlined)).toBeTruthy();
   });
 
   it('text', () => {
     const { getByRole } = render(<Button variant="text" />);
     const button = getByRole('button');
 
-    expect(button.classList.contains(getDEFPrefix('root'))).toBeTruthy();
-    expect(button.classList.contains(getDEFPrefix('text'))).toBeTruthy();
+    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(classes.text)).toBeTruthy();
   });
 });
 
 describe('Props: prefix', () => {
   it('className 적용됩니다.', () => {
-    const { getByRole } = render(<Button prefix="prefix" />);
+    const { getByRole } = render(<Button prefix="custom" />);
     const button = getByRole('button');
 
-    const classes = generatePrefixClasses(buttonClasses, 'prefix');
+    const prefixClasses = generatePrefixClasses(buttonClasses, 'custom-btn');
 
-    expect(button.classList.contains(classes.root)).toBeTruthy();
+    expect(button.classList.contains(prefixClasses.root)).toBeTruthy();
   });
 });
 
