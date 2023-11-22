@@ -25,7 +25,7 @@
     @apply block border-solid border border-slate-300 text-right;
 
     &:has(textarea:disabled) {
-      @apply bg-gray-200;
+      @apply bg-gray-100;
     }
 
     &.invalid {
