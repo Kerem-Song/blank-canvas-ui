@@ -68,10 +68,10 @@ export default {
       fontFamily: {
         pretendard: ['Pretendard', ...fontFamily.sans],
       },
+      minWidth: {
+        200: '200px',
+      },
     },
   },
   plugins: [],
-  corePlugins: {
-    preflight: false,
-  },
 };

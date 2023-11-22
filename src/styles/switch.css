@@ -1,0 +1,16 @@
+.switch-wrapper {
+  @apply relative inline-flex cursor-pointer items-center;
+
+  .switch-input {
+    @apply sr-only;
+  }
+
+  .switch-bar {
+    @apply h-8pxr w-20pxr rounded-full border bg-slate-200;
+
+    &::after {
+      @apply absolute -top-2pxr left-0 h-12pxr w-12pxr rounded-full border border-gray-300 bg-white transition-all content-[''];
+    }
+
+  }
+}

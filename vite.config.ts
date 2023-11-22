@@ -9,6 +9,12 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@icons': path.resolve(__dirname, './src/assets/icons'),
+      '@images': path.resolve(__dirname, '.src/assets/images'),
+    },
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),

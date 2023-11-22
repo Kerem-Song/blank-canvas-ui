@@ -1,0 +1,12 @@
+.tag {
+  @apply h-fit text-center rounded py-px ps-1 pe-1 bg-gray-100 text-xs text-slate-500;
+}
+.tag-bordered {
+  @apply border border-zinc-300;
+}
+.tag-close {
+  @apply text-9pxr cursor-pointer;
+}
+.tag-pd {
+  @apply px-1;
+}
