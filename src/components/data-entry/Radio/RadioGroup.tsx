@@ -1,5 +1,5 @@
 import { Flex, Radio } from '@components';
-import { InputHTMLAttributes, forwardRef } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 
 export interface IRadioOption {
   /**

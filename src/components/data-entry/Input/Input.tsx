@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import {
   ChangeEvent,
   FocusEvent,
+  forwardRef,
   InputHTMLAttributes,
   KeyboardEvent,
   ReactNode,
-  forwardRef,
   useRef,
   useState,
 } from 'react';
@@ -210,8 +210,8 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
           {isSearch ? (
             <>
               <Button
-                small
-                shape="ghost"
+                variant="text"
+                size="sm"
                 className="input-button"
                 onClick={() => {
                   util.TriggerInputOnChange(inputRef.current, '');
@@ -225,8 +225,8 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
           ) : null}
           {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
             <Button
-              small
-              shape="ghost"
+              variant="text"
+              size="sm"
               className="input-button"
               onClick={(e) => {
                 util.TriggerInputOnChange(inputRef.current, '');

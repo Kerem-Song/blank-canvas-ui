@@ -1526,6 +1526,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/selector-specificity@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@csstools/selector-specificity@npm:3.0.0"
+  peerDependencies:
+    postcss-selector-parser: ^6.0.13
+  checksum: 6f0e2fa9a3c5dcbc7a446fd827d3eb85ca775cc884f73f0bbb119ab49b4f5f0af8763dd23a37d423f4e7989069c09bb977e7e5f017db296e1417abb1fba75c30
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.3":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -1997,16 +2006,21 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.0.1"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.3"
+    eslint-plugin-simple-import-sort: "npm:^10.0.0"
     eslint-plugin-storybook: "npm:^0.6.15"
     eslint-plugin-tailwindcss: "npm:^3.13.0"
     jsdom: "npm:^22.1.0"
     postcss: "npm:^8.4.31"
     postcss-import: "npm:^15.1.0"
+    postcss-nesting: "npm:^12.0.1"
+    postcss-simple-vars: "npm:^7.0.1"
     prettier: "npm:^3.1.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-router-dom: "npm:^6.19.0"
     react-textarea-autosize: "npm:^8.5.3"
     storybook: "npm:^7.5.3"
+    storybook-addon-react-router-v6: "npm:^2.0.10"
     tailwindcss: "npm:^3.3.5"
     typescript: "npm:^5.0.2"
     vite: "npm:^4.4.5"
@@ -2726,6 +2740,13 @@ __metadata:
   dependencies:
     "@babel/runtime": "npm:^7.13.10"
   checksum: 4c5159661340acc31b11e1f2ebd87a1521d39bfa287544dd2cd75b399539a4b625d38a1501c90ceae21fcca18ed164b0c3735817ff140ae334098192c110e571
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@remix-run/router@npm:1.13.0"
+  checksum: 99ca0354b14172fe3b552bb6583dbfa9c55d93eb107ac981cdf6cb406798062f65966444e12be3d7effbaac919e3488ae61cbc7f4db688caf01b2a0ae0e56943
   languageName: node
   linkType: hard
 
@@ -5629,6 +5650,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"compare-versions@npm:^6.0.0":
+  version: 6.1.0
+  resolution: "compare-versions@npm:6.1.0"
+  checksum: 5378edc8a53ac98ed907da463e1d6c26f1ed2664006d6a0d54bbdf7f046a36c43e244740854fc0edfc1e09253b9a0b7c98d1282dfee9f6f1a87199599f611218
+  languageName: node
+  linkType: hard
+
 "compressible@npm:~2.0.16":
   version: 2.0.18
   resolution: "compressible@npm:2.0.18"
@@ -6425,6 +6453,15 @@ __metadata:
   peerDependencies:
     eslint: ">=7"
   checksum: 7c606de39b7d81f878f9747d96a8e626652c9133b90c7f9bd2921f314c3525393bbd97affc3640351dd4108465e2fb87c8883dab5557242d764be32811c6ae69
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-simple-import-sort@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "eslint-plugin-simple-import-sort@npm:10.0.0"
+  peerDependencies:
+    eslint: ">=5.0.0"
+  checksum: 1ae0814d23816d51d010cfbc5ee0a0dde8d825a3093876b2e8219a0562d53f4d4794508551e503ebe2ea98904cb35204dbe54dfbf9d7fc8b8e3ea25c52aa68ac
   languageName: node
   linkType: hard
 
@@ -9663,13 +9700,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:^6.0.11":
+"postcss-nesting@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "postcss-nesting@npm:12.0.1"
+  dependencies:
+    "@csstools/selector-specificity": "npm:^3.0.0"
+    postcss-selector-parser: "npm:^6.0.13"
+  peerDependencies:
+    postcss: ^8.4
+  checksum: 7e59febfdae1fb5f95b77c2a9040193a552db435acaa6399a80c83d0c10920f5b7d05a2965d40717433a1f4820667fbcf16da86fd21a589a482850b2cef8f7c2
+  languageName: node
+  linkType: hard
+
+"postcss-selector-parser@npm:^6.0.11, postcss-selector-parser@npm:^6.0.13":
   version: 6.0.13
   resolution: "postcss-selector-parser@npm:6.0.13"
   dependencies:
     cssesc: "npm:^3.0.0"
     util-deprecate: "npm:^1.0.2"
   checksum: 51f099b27f7c7198ea1826470ef0adfa58b3bd3f59b390fda123baa0134880a5fa9720137b6009c4c1373357b144f700b0edac73335d0067422063129371444e
+  languageName: node
+  linkType: hard
+
+"postcss-simple-vars@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "postcss-simple-vars@npm:7.0.1"
+  peerDependencies:
+    postcss: ^8.2.1
+  checksum: b59c750b2f406a18b133184144b5ffefbd21a2179c5bf5d54651269c0b6bb0110c2bbed33a9161d8b93f8a11cf7725da0a65653e7c2786c8a59f937591115a33
   languageName: node
   linkType: hard
 
@@ -10048,7 +10106,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-inspector@npm:^6.0.0":
+"react-inspector@npm:6.0.2, react-inspector@npm:^6.0.0":
   version: 6.0.2
   resolution: "react-inspector@npm:6.0.2"
   peerDependencies:
@@ -10124,6 +10182,30 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 4952657e6a7b9d661d4ad4dfcef81b9c7fa493e35164abff99c35c0b27b3d172ef7ad70c09416dc44dd14ff2e6b38a5ec7da27e27e90a15cbad36b8fd2fd8054
+  languageName: node
+  linkType: hard
+
+"react-router-dom@npm:^6.19.0":
+  version: 6.20.0
+  resolution: "react-router-dom@npm:6.20.0"
+  dependencies:
+    "@remix-run/router": "npm:1.13.0"
+    react-router: "npm:6.20.0"
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: b5a1875ae802d6b8e5035fec8ee6c3d3b345d8613b4a982adbb69c9c13e8e1b6a30e8e350e669d52774bb554f7f3fc2326187222cd008ac80edb3a2d81604f16
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.20.0":
+  version: 6.20.0
+  resolution: "react-router@npm:6.20.0"
+  dependencies:
+    "@remix-run/router": "npm:1.13.0"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 34bced7be5112aa239830dc7160498d844fc251827c3ae35bd5e0461a388b1d84fd458e8eb33bb8364468b32bfcff8b741aa3b0de247387b6cc92416ce4b18d2
   languageName: node
   linkType: hard
 
@@ -10910,6 +10992,32 @@ __metadata:
   version: 2.14.2
   resolution: "store2@npm:2.14.2"
   checksum: 2f27c3eaa7207b81410e170e7c41379816d22c1566308a9d97fbf853c4facff531fcb2a85f085c7503c578736570972f747c26018ebeaba7d1341fb82a7b6d52
+  languageName: node
+  linkType: hard
+
+"storybook-addon-react-router-v6@npm:^2.0.10":
+  version: 2.0.10
+  resolution: "storybook-addon-react-router-v6@npm:2.0.10"
+  dependencies:
+    compare-versions: "npm:^6.0.0"
+    react-inspector: "npm:6.0.2"
+  peerDependencies:
+    "@storybook/blocks": ^7.0.0
+    "@storybook/channels": ^7.0.0
+    "@storybook/components": ^7.0.0
+    "@storybook/core-events": ^7.0.0
+    "@storybook/manager-api": ^7.0.0
+    "@storybook/preview-api": ^7.0.0
+    "@storybook/theming": ^7.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-router-dom: ^6.4.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: c7a9684956122563aad0443bf09a264de026c953b492c572d571d7eb9cd2ba692a638d7aa899fb944c158710fe9295668480dcabe6cd11ff5679f9c698b928e1
   languageName: node
   linkType: hard
 

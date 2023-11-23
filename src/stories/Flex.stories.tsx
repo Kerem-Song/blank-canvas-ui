@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
 import { Flex, IFlexProps } from '@components';
+import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<IFlexProps> = {
   title: 'components/layout/Flex',

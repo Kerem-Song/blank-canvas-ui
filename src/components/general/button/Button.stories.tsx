@@ -1,16 +1,15 @@
 import '../../../index.css';
 
-import * as React from 'react';
-import classNames from 'classnames';
-import {
-  withRouter,
-  reactRouterParameters,
-  reactRouterOutlets,
-} from 'storybook-addon-react-router-v6';
-import { Meta, StoryObj } from '@storybook/react';
-import { useLocation, Link as ReactRouterLink, Outlet } from 'react-router-dom';
-
 import { Button, ButtonProps } from '@components/general/button';
+import { Meta, StoryObj } from '@storybook/react';
+import classNames from 'classnames';
+import * as React from 'react';
+import { Link as ReactRouterLink, Outlet, useLocation } from 'react-router-dom';
+import {
+  reactRouterOutlets,
+  reactRouterParameters,
+  withRouter,
+} from 'storybook-addon-react-router-v6';
 
 const meta: Meta<ButtonProps> = {
   title: 'components/general/Button',

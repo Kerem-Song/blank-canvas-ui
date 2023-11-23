@@ -1,5 +1,5 @@
+import { Card, Flex, ICardProps } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
-import { Flex, ICardProps, Card } from '@components';
 
 const meta: Meta<ICardProps> = {
   title: 'components/data-display/Card',

@@ -1,9 +1,8 @@
-import React, { useState, useRef } from 'react';
-import classNames from 'classnames';
-
 import { composeRef, generatePrefixClasses } from '@modules/utils';
+import classNames from 'classnames';
+import React, { useRef, useState } from 'react';
 
-import { ButtonProps, ExtendButton, ButtonTypeMap } from './Button.types';
+import { ButtonProps, ButtonTypeMap, ExtendButton } from './Button.types';
 import { buttonClasses } from './buttonClasses';
 
 export const Button = React.forwardRef(function Button<

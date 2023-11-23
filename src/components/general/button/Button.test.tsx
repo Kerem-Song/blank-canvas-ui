@@ -1,8 +1,8 @@
-import React from 'react';
-import { describe, it, expect, vi } from 'vitest';
-import { render, fireEvent, act } from '@testing-library/react';
-
 import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
+import { act, fireEvent, render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
+
 import { Button, buttonClasses } from './index';
 
 const classes = generatePrefixClasses(buttonClasses, 'btn');
