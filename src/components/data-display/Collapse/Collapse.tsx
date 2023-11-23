@@ -55,7 +55,7 @@ export const Collapse = ({
     <div className="collapse-wrapper" key={key}>
       <div className="header" onClick={handleCollapse} role="presentation">
         {showIcon && expandIcon && expandIconPosition === 'start' ? (
-          <Button shape="ghost" className={expandIconClass}>
+          <Button variant="text" className={expandIconClass}>
             <img src={expandIcon} alt="expand-icon" />
           </Button>
         ) : null}
@@ -63,7 +63,7 @@ export const Collapse = ({
           <span className="label-content">{label}</span>
         </div>
         {showIcon && expandIcon && expandIconPosition === 'end' ? (
-          <Button shape="ghost" className={expandIconClass}>
+          <Button variant="text" className={expandIconClass}>
             <img src={expandIcon} alt="expand-icon" />
           </Button>
         ) : null}

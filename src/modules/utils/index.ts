@@ -1,2 +1,3 @@
-export { default as setRef } from './setRef';
-export { default as composeRef } from './composeRef';
+export * from './composeRef';
+export * from './generatePrefixClasses';
+export * from './setRef';

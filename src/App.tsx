@@ -1,16 +1,19 @@
+import './App.css';
+
 import {
   Button,
   Input,
   Radio,
   Switch,
-  TextAreaWithTitleCounter,
   Textarea,
+  TextAreaWithTitleCounter,
 } from '@components';
 import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGroup';
 import { useState } from 'react';
-import './App.css';
-import reactLogo from './assets/react.svg';
+
 import viteLogo from '/vite.svg';
+
+import reactLogo from './assets/react.svg';
 
 function App() {
   const [count, setCount] = useState(0);

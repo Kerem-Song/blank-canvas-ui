@@ -1,4 +1,4 @@
-function setRef<T>(
+export function setRef<T>(
   ref:
     | React.MutableRefObject<T | null>
     | ((instance: T | null) => void)
@@ -12,5 +12,3 @@ function setRef<T>(
     ref.current = node;
   }
 }
-
-export default setRef;

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { InputHTMLAttributes, forwardRef, useCallback } from 'react';
+import React, { forwardRef, InputHTMLAttributes, useCallback } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export interface ITextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
