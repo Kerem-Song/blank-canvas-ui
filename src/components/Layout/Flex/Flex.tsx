@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 export interface IFlexProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * 아이템들이 배치되는 축의 방향을 결정
@@ -58,16 +60,18 @@ export const Flex = ({
   return (
     <div
       {...props}
+      className={classNames(
+        'flex',
+        vertical
+          ? reverse
+            ? 'flex-col-reverse'
+            : 'flex-col'
+          : reverse
+            ? 'flex-row-reverse'
+            : 'felx-row',
+      )}
       style={{
         ...style,
-        display: 'flex',
-        flexDirection: vertical
-          ? reverse
-            ? 'column-reverse'
-            : 'column'
-          : reverse
-            ? 'row-reverse'
-            : 'row',
         flexWrap: wrap,
         justifyContent: justify,
         alignItems: align,

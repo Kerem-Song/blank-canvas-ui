@@ -1,3 +1,3 @@
-export * from './Card';
-export * from './Tag';
+export * from './Card/Card';
+export * from './Tag/Tag';
 export * from './Collapse/Collapse';
