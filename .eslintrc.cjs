@@ -1,6 +1,14 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+    project: ['./tsconfig.json'],
+  },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
@@ -11,7 +19,7 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'prettier', 'react-hooks'],
+  plugins: ['react-refresh', 'simple-import-sort', 'prettier', 'react-hooks'],
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'react/prop-types': 'off',
@@ -20,6 +28,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
   },
   overrides: [
     {

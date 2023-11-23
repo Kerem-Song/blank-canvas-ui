@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
 import { Flex, ITagProps, Tag } from '@components';
+import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<ITagProps> = {
   title: 'components/data-display/Tag',

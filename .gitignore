@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 
+.nvmrc
 .envrc
 
 # Editor directories and files

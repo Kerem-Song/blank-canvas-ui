@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import {
   ChangeEvent,
   FocusEvent,
-  KeyboardEvent,
   forwardRef,
+  KeyboardEvent,
   useRef,
   useState,
 } from 'react';
@@ -149,8 +149,8 @@ export const InputWithTitleCounter = forwardRef<
           ) : undefined}
           {isSearch ? (
             <Button
-              small
-              shape="ghost"
+              variant="text"
+              size="sm"
               className="input-button"
               onClick={() => {
                 util.TriggerInputOnChange(inputRef.current, '');
@@ -163,8 +163,8 @@ export const InputWithTitleCounter = forwardRef<
           ) : undefined}
           {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
             <Button
-              small
-              shape="ghost"
+              variant="text"
+              size="sm"
               className="input-button"
               onClick={(e) => {
                 util.TriggerInputOnChange(inputRef.current, '');
