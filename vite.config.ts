@@ -1,11 +1,9 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
 import dts from 'vite-plugin-dts';
+import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vitest/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -33,7 +31,7 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
   },
-  plugins: [react(), dts(), tsconfigPaths()],
+  plugins: [react(), svgr(), dts(), tsconfigPaths()],
   test: {
     globals: true,
     environment: 'jsdom',
