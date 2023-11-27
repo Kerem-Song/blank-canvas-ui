@@ -132,7 +132,7 @@ export const InputWithTitleCounter = forwardRef<
       />
     </div>
   );
-  const searchIcon = <IcSearch />;
+
   const wrappedInput = (
     <div className="group">
       <div className={inputWrapClassName}>
@@ -152,7 +152,7 @@ export const InputWithTitleCounter = forwardRef<
               className="input-button"
               variant="text"
               size="sm"
-              startIcon={searchIcon}
+              // startIcon={<IcSearch />}
               onClick={() => {
                 util.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
