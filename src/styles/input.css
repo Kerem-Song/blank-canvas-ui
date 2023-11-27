@@ -1,8 +1,8 @@
 .luna-input-wrap {
-  @apply flex w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
+  @apply flex w-full items-center rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
 
   .prefixWrapper {
-    @apply flex-none;
+    /* @apply flex-none; */
   }
 
   .suffixWrapper {

@@ -8,8 +8,8 @@ import {
   useRef,
   useState,
 } from 'react';
+import IcSearch from 'src/assets/icons/ic_search.svg?react';
 import { util } from 'src/utils/utils';
-
 export interface IInputWithTitleCounterProps extends IInputProps {
   /**
    * Input의 title
@@ -132,7 +132,7 @@ export const InputWithTitleCounter = forwardRef<
       />
     </div>
   );
-
+  const searchIcon = <IcSearch />;
   const wrappedInput = (
     <div className="group">
       <div className={inputWrapClassName}>
@@ -149,9 +149,10 @@ export const InputWithTitleCounter = forwardRef<
           ) : undefined}
           {isSearch ? (
             <Button
+              className="input-button"
               variant="text"
               size="sm"
-              className="input-button"
+              startIcon={searchIcon}
               onClick={() => {
                 util.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
