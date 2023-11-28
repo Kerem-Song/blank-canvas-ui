@@ -1,3 +1,4 @@
+export * from './checkbox';
 export * from './Input/Input';
 export * from './Input/InputWithTitleCounter';
 export * from './Radio/Radio';
