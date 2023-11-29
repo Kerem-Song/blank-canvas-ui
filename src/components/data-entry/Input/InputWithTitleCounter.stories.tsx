@@ -29,5 +29,7 @@ export const Default: Story = {
     customPrefix: '$',
     suffix: 'USD',
     disabled: false,
+    // isClearable: true,
+    isSearch: true,
   },
 };

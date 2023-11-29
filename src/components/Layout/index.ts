@@ -1,2 +1,2 @@
-export * from './Divider';
-export * from './Flex';
+export * from './Divider/Divider';
+export * from './Flex/Flex';

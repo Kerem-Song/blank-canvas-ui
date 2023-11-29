@@ -10,7 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@icons': path.resolve(__dirname, './src/assets/icons'),
-      '@images': path.resolve(__dirname, '.src/assets/images'),
+      '@images': path.resolve(__dirname, './src/assets/images'),
     },
   },
   build: {
@@ -31,7 +31,7 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
   },
-  plugins: [react(), svgr(), dts(), tsconfigPaths()],
+  plugins: [react(), dts(), tsconfigPaths(), svgr()],
   test: {
     globals: true,
     environment: 'jsdom',

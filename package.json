@@ -33,10 +33,12 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@types/node": "^20.8.10",
     "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-popper": "^2.3.0",
     "react-textarea-autosize": "^8.5.3",
     "vite-tsconfig-paths": "^4.2.1"
   },
@@ -75,13 +77,14 @@
     "prettier": "^3.1.0",
     "react-router-dom": "^6.19.0",
     "storybook": "^7.5.3",
+    "storybook-addon-mock": "^4.3.0",
     "storybook-addon-react-router-v6": "^2.0.10",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-dts": "^3.6.3",
     "vite-plugin-svgr": "^4.2.0",
-    "vitest": "0.34.3"
+    "vitest": "^0.34.6"
   },
   "packageManager": "yarn@4.0.2"
 }

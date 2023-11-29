@@ -70,6 +70,7 @@ export const Card = ({
         className={classNames(
           { 'card-head': title || extra },
           { 'card-small': size === 'small' },
+          { 'card-head-rounded': rounded },
         )}
         style={{ backgroundColor: titleBgColor }}
       >

@@ -10,6 +10,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import IcSearch from 'src/assets/icons/ic_search.svg?react';
 import { util } from 'src/utils/utils';
 
 export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -225,9 +226,10 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
           ) : null}
           {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
             <Button
+              className="input-button"
               variant="text"
               size="sm"
-              className="input-button"
+              startIcon={<IcSearch />}
               onClick={(e) => {
                 util.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);

@@ -1,8 +1,8 @@
 .luna-input-wrap {
-  @apply flex w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
+  @apply flex w-full items-center rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
 
   .prefixWrapper {
-    @apply flex-none;
+    /* @apply flex-none; */
   }
 
   .suffixWrapper {
@@ -55,17 +55,17 @@
 }
 
 .input-button {
-  @apply w-16pxr h-20pxr py-2pxr;
+  @apply w-16pxr h-20pxr py-2pxr !px-0;
 
-  span {
-    @apply w-16pxr h-16pxr;
+  &:hover {
+    @apply !bg-transparent;
+  }
 
-    .search {
-      @apply w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search.svg')] hover:bg-[url('@icons/ic_search_active.svg')];
-    }
+  .search {
+    @apply pr-10pxr w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search.svg')] hover:bg-[url('@icons/ic_search_active.svg')];
+  }
 
-    .clear {
-      @apply w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search_delete.svg')] hover:bg-[url('@icons/ic_search_delete_active.svg')];
-    }
+  .clear {
+    @apply pr-10pxr w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search_delete.svg')] hover:bg-[url('@icons/ic_search_delete_active.svg')];
   }
 }

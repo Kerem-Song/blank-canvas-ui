@@ -3,7 +3,7 @@ import icon from '@icons/ic_collapse_arrow_up.svg';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
-  title: 'components/data-display/Collapse/Collapse',
+  title: 'components/data-display/Collapse',
   component: Collapse,
   tags: ['autodocs'],
   parameters: {

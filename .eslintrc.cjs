@@ -28,6 +28,7 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
   },
