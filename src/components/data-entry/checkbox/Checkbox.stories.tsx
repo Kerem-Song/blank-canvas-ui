@@ -5,10 +5,11 @@ import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 
-import { Checkbox, CheckboxProps } from './';
+import { Checkbox } from './Checkbox';
+import { CheckboxProps } from './Checkbox.types';
 
 const meta: Meta<CheckboxProps> = {
-  title: 'components/data-entry/Checkbox',
+  title: 'components/data-entry/Checkbox/Checkbox',
   component: Checkbox,
   decorators: [
     (Story) => (
@@ -19,8 +20,12 @@ const meta: Meta<CheckboxProps> = {
   ],
   tags: ['autodocs'],
   argTypes: {
-    onChange: { action: 'onChange' },
+    checkedIcon: { control: { type: null } },
+    uncheckedIcon: { control: { type: null } },
+    indeterminateIcon: { control: { type: null } },
+    checked: { control: { type: null } },
     slotProps: { control: { type: null } },
+    onChange: { action: 'onChange' },
   },
 };
 
@@ -36,11 +41,10 @@ export const Default: Story = {
     );
   },
   argTypes: {
-    checked: { control: { type: null } },
-    checkedIcon: { control: { type: null } },
-    uncheckedIcon: { control: { type: null } },
-    indeterminateIcon: { control: { type: null } },
     color: {
+      control: 'select',
+    },
+    size: {
       control: 'select',
     },
   },
@@ -50,6 +54,7 @@ export const Default: Story = {
     readOnly: false,
     required: false,
     size: 'sm',
+    color: 'primary',
     prefix: '',
   },
 };
@@ -182,7 +187,14 @@ export const Controlled: Story = {
 
     return (
       <>
-        <Checkbox name="controlled-value" checked={value} onChange={onChange} />
+        <Checkbox
+          name="controlled-value"
+          value={['1', '2']}
+          // value={3}
+          // value="john"
+          checked={value}
+          onChange={onChange}
+        />
       </>
     );
   },

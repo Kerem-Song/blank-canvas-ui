@@ -2,12 +2,13 @@ import IndeterminateRoundedIcon from '@assets/icons/ic_checkbox_indeterminate_ro
 import OutlineBlankRoundedIcon from '@assets/icons/ic_checkbox_outline_blank_rounded.svg?react';
 import CheckboxRoundedIcon from '@assets/icons/ic_checkbox_rounded.svg?react';
 import { useControlled } from '@hooks/useControlled';
-import { composeRef, generatePrefixClasses } from '@modules/utils';
+import { composeRef, createChainedFunction, generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import React, { useId } from 'react';
+import React, { useContext, useId } from 'react';
 
 import { CheckboxProps } from './Checkbox.types';
 import { checkboxClasses } from './checkboxClasses';
+import CheckboxGroupContext from './CheckboxGroupContext';
 
 const defaultCheckedIcon = <CheckboxRoundedIcon />;
 const defaultUncheckedIcon = <OutlineBlankRoundedIcon />;
@@ -21,28 +22,36 @@ export const Checkbox = React.forwardRef(function Checkbox(
     checkedIcon = defaultCheckedIcon,
     uncheckedIcon = defaultUncheckedIcon,
     indeterminateIcon = defaultIndeterminateIcon,
-    checked: checkedProps,
+    checked: checkedProp,
     defaultChecked,
     indeterminate,
     color = 'primary',
     disabled = false,
     id: idOverride,
-    name,
+    name: nameProp,
     slotProps = {},
     size = 'sm',
     prefix,
     readOnly = false,
     required = false,
     label,
-    onChange,
-    ...other
+    onChange: onChangeProp,
+    ...inputProps
   } = props;
 
   const defaultId = useId();
   const id = idOverride ?? defaultId;
 
+  const checkboxGroup = useContext(CheckboxGroupContext);
+
+  let name = nameProp;
+
+  if (checkboxGroup) {
+    name = checkboxGroup.name;
+  }
+
   const [checked, setCheckedState] = useControlled({
-    controlled: checkedProps,
+    controlled: checkedProp,
     defaultValue: defaultChecked,
   });
 
@@ -90,8 +99,13 @@ export const Checkbox = React.forwardRef(function Checkbox(
     }
 
     setCheckedState(event.target.checked);
-    onChange?.(event);
+    onChangeProp?.(event);
   };
+
+  const onChange = createChainedFunction(
+    handleChange,
+    checkboxGroup && checkboxGroup.onChange,
+  );
 
   let icon = uncheckedIcon;
 
@@ -108,7 +122,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
         className={classNames(classes.checkbox, checkboxSlot.className)}
       >
         <input
-          {...other}
+          {...inputProps}
           {...inputSlot}
           type="checkbox"
           ref={inputRef}
@@ -123,7 +137,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
             // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked#values
             'aria-checked': 'mixed',
           })}
-          onChange={handleChange}
+          onChange={disabled ? undefined : onChange}
         />
         {icon}
       </span>
