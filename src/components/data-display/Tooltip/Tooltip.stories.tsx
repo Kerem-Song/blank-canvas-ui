@@ -7,8 +7,7 @@ const meta: Meta<ITooltipProps> = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
-    componentSubtitle:
-      '간단한 텍스트 팝업 - arrow true이고 placement left, right일 때, storybook에서만 이상하게 보임',
+    componentSubtitle: '간단한 텍스트 팝업',
   },
 };
 

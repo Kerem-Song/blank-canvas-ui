@@ -19,19 +19,19 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   placement?: Placement;
   /**
-   * tooltip을 처음부터 표시할지 선택
+   * tooltip을 처음에 표시할지 선택
    * @default false
    * @type boolean
    */
   defaultOpen?: boolean;
   /**
-   * 기준이 되는 데이터에 tooltip 화살표 표시 할지 여부 선택
+   * tooltip에 화살표 표시 할지 여부 선택
    * @default false
    * @type boolean
    */
   arrow?: boolean;
   /**
-   * 기준이 되는 데이터의 위치 변경(위/아래, 왼/오)
+   * 기준이 되는 데이터에서 tooltip 위치 변경(위/아래, 왼/오)
    * @default [0, 8]
    * @type [number, number]
    */
@@ -49,11 +49,11 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   disable?: boolean;
   /**
-   * 기준이 되는 데이터에 표시할 방법 선택
+   * 기준이 되는 데이터에 tooltip 표시할 방법 선택
    * @default fixed
-   * @type Strategy
+   * @type 'absolute' | 'fixed'
    */
-  strategy?: 'absolute' | 'fixed';
+  strategy?: Strategy;
   /**
    * 기준이 되는 데이터에 마우스를 올렸을 때 툴팁이 나타나는 시간
    * @default
