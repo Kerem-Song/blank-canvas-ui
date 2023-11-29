@@ -1,20 +1,8 @@
 import './App.css';
 
-import {
-  Button,
-  Input,
-  Radio,
-  Switch,
-  Textarea,
-  TextAreaWithTitleCounter,
-  Tooltip,
-} from '@components';
-import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGroup';
+import { Tooltip } from '@components';
+import { IRadioOption } from '@components/data-entry/Radio/RadioGroup';
 import { useState } from 'react';
-
-import viteLogo from '/vite.svg';
-
-import reactLogo from './assets/react.svg';
 
 function App() {
   const [count, setCount] = useState(0);
