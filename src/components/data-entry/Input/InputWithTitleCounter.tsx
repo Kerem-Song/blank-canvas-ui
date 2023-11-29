@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import IcSearch from 'src/assets/icons/ic_search.svg?react';
 import { util } from 'src/utils/utils';
 export interface IInputWithTitleCounterProps extends IInputProps {
   /**

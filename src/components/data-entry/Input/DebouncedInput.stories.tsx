@@ -45,14 +45,6 @@ interface IMovieRes {
   popularity: number;
   title: string;
 }
-
-interface IGetList {
-  page: number;
-  results: IMovieRes[];
-  total_pages: number;
-  total_results: number;
-}
-
 interface IMockData {
   url: string;
   method: 'GET' | 'POST';
@@ -75,13 +67,14 @@ export const Default: Story = {
 
     return (
       <div>
-        <DebouncedInput {...args} handleDebounce={handleDebounce} />
-        {state?.map((item, i) => (
-          <div key={i}>
-            <span>{item.title}</span>
-            <span>{item.popularity}</span>
-          </div>
-        ))}
+        <DebouncedInput {...args} handleDebounce={handleDebounce}>
+          {state?.map((item, i) => (
+            <div key={i}>
+              <span>{item.title}</span>
+              <span>{item.popularity}</span>
+            </div>
+          ))}
+        </DebouncedInput>
       </div>
     );
   },
