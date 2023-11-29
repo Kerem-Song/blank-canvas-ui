@@ -7,6 +7,7 @@ import {
   Switch,
   Textarea,
   TextAreaWithTitleCounter,
+  Tooltip,
 } from '@components';
 import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGroup';
 import { useState } from 'react';
@@ -23,53 +24,33 @@ function App() {
     { label: '3', value: '3', disabled: true },
   ];
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div style={{ height: '10000000000px' }}>
+      <div style={{ background: 'green' }}>
+        <Tooltip
+          text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sapiente
+          ipsam omnis harum dignissimos eos, unde atque enim necessitatibus aliquid
+          perspiciatis nemo natus consequatur incidunt tempore, qui, sint ut nisi!"
+          color="pink"
+          offset={[0, 0]}
+          arrow={true}
+          open
+          placement="left"
+          // color
+          // defaultOpen
+          // open={false}
+          // mouseLeaveDelay={4}
+        >
+          <div>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sapiente
+            ipsam omnis harum dignissimos eos, unde atque enim necessitatibus aliquid
+            perspiciatis nemo natus consequatur incidunt tempore, qui, sint ut nisi!
+          </div>
+          <div>asdlfkjl</div>
+          <div>asdlfkjl</div>
+          <div>asdlfkjl</div>
+        </Tooltip>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-      <Textarea className="" maxLength={12} autoComplete={'true'} />
-      <TextAreaWithTitleCounter
-        label="label"
-        direction={'inside'}
-        showCount={true}
-        maxLength={20}
-      />
-      <Button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
-        button..
-      </Button>
-      <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
-        ..
-      </button>
-      <TextAreaWithTitleCounter
-        label="top"
-        direction="top"
-        showCount={true}
-        maxLength={20}
-      />
-      <TextAreaWithTitleCounter
-        label="bottom"
-        direction="bottom"
-        showCount={true}
-        maxLength={20}
-      />
-      <Radio>asdf</Radio>
-      <RadioGroup options={option} name="haha" vertical={false} gap={20} />
-      <Input isSearch={true} disabled={true} />
-      <Switch />
-    </>
+    </div>
   );
 }
 
