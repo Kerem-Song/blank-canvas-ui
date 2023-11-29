@@ -83,5 +83,6 @@ export const Default: Story = {
     isClearable: true,
     maxLength: 1000,
     showCount: true,
+    isSearch: true,
   },
 };
