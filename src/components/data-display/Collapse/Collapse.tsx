@@ -1,7 +1,7 @@
 import { Button, Divider } from '@components';
+import IcCollapseArrow from '@icons/ic_collapse_arrow_up.svg?react';
 import classNames from 'classnames';
 import { DOMAttributes, ReactNode, useState } from 'react';
-
 export interface ICollapseProps extends DOMAttributes<HTMLDivElement> {
   /**
    * Collapse의 제목
