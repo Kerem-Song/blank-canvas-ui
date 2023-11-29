@@ -10,7 +10,7 @@ const meta: Meta = {
   component: DebouncedInput,
   tags: ['autodocs'],
   parameters: {
-    // componentSubtitle: '디바운스 기능이 있는 입력창',
+    componentSubtitle: '디바운스 기능이 있는 입력창',
     mockData: [
       {
         url: `https://api.themoviedb.org/3/search/movie?query=happy&api_key=${API_KEY}`,
@@ -67,7 +67,7 @@ export const Default: Story = {
 
     return (
       <div>
-        <DebouncedInput {...args} handleDebounce={handleDebounce}>
+        <DebouncedInput {...args} handleDebounce={handleDebounce} isClearable={true}>
           {state?.map((item, i) => (
             <div key={i}>
               <span>{item.title}</span>
@@ -80,5 +80,8 @@ export const Default: Story = {
   },
   args: {
     debounceTimeout: 1000,
+    isClearable: true,
+    maxLength: 1000,
+    showCount: true,
   },
 };

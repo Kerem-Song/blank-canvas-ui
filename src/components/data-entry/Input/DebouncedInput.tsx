@@ -24,8 +24,6 @@ export const DebouncedInput = forwardRef<HTMLInputElement, IDebounceProps>(
     const fetchDataList = useMemo(
       () => (val: string) => {
         try {
-          console.log('@val', val);
-          console.log('@debounce time', debounceTimeout);
           setQuery(val);
 
           debounce(debounceTimeout, handleDebounce);
@@ -35,7 +33,7 @@ export const DebouncedInput = forwardRef<HTMLInputElement, IDebounceProps>(
       },
       [deferredQuery],
     );
-    console.log('@deferred query', deferredQuery);
+
     return (
       <div>
         <Input ref={ref} onChange={(e) => fetchDataList(e.currentTarget.value)} />

@@ -229,7 +229,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
               className="input-button"
               variant="text"
               size="sm"
-              startIcon={<IcSearch />}
               onClick={(e) => {
                 util.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
