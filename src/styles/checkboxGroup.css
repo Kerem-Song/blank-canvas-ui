@@ -1,0 +1,12 @@
+$ns: .checkbox-group;
+
+/* prettier-ignore */
+$(ns) {
+  /* wrapper */
+  &-wrapper {
+    @apply
+      flex
+      gap-1
+      relative;
+  }
+}

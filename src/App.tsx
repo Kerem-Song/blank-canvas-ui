@@ -10,7 +10,6 @@ import {
   Tooltip,
 } from '@components';
 import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGroup';
-import { useState } from 'react';
 
 function App() {
   const option: IRadioOption[] = [
@@ -18,6 +17,7 @@ function App() {
     { label: '2', value: 2 },
     { label: '3', value: '3', disabled: true },
   ];
+
   return (
     <>
       <Textarea className="" maxLength={12} autoComplete={'true'} />

@@ -1,12 +1,9 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
-import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vitest/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
