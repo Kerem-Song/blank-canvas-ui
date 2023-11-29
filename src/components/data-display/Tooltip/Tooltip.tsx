@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
 
 type Placement = 'top' | 'bottom' | 'right' | 'left';
@@ -153,42 +154,44 @@ export const Tooltip = ({
       >
         {children}
       </div>
-
-      <div
-        id="tooltip"
-        role="tooltip"
-        {...attributes.popper}
-        className={classNames('tooltip-base')}
-        style={{
-          ...styles.popper,
-          visibility:
-            open === undefined
-              ? defaultShow || isShow
-                ? 'visible'
-                : 'hidden'
-              : open
-                ? 'visible'
-                : 'hidden',
-          background: color,
-        }}
-        ref={popperElement}
-        data-arrow-visible={
-          open === undefined ? defaultShow || isShow : open ? true : false
-        }
-      >
-        <div>{text}</div>
-        {arrow && (
-          <div
-            id="arrow"
-            ref={arrowElement}
-            data-popper-arrow
-            style={{
-              ...styles.arrow,
-              background: color,
-            }}
-          ></div>
-        )}
-      </div>
+      {ReactDOM.createPortal(
+        <div
+          id="tooltip"
+          role="tooltip"
+          {...attributes.popper}
+          className={classNames('tooltip-base')}
+          style={{
+            ...styles.popper,
+            visibility:
+              open === undefined
+                ? defaultShow || isShow
+                  ? 'visible'
+                  : 'hidden'
+                : open
+                  ? 'visible'
+                  : 'hidden',
+            background: color,
+          }}
+          ref={popperElement}
+          data-arrow-visible={
+            open === undefined ? defaultShow || isShow : open ? true : false
+          }
+        >
+          <div>{text}</div>
+          {arrow && (
+            <div
+              id="arrow"
+              ref={arrowElement}
+              data-popper-arrow
+              style={{
+                ...styles.arrow,
+                background: color,
+              }}
+            ></div>
+          )}
+        </div>,
+        document.querySelector('body')!,
+      )}
     </div>
   );
 };
