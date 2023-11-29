@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-// import { http, HttpResponse } from 'msw';
 import { useState } from 'react';
 
 import { DebouncedInput, IDebounceProps } from './DebouncedInput';
@@ -54,13 +53,23 @@ interface IGetList {
   total_results: number;
 }
 
+interface IMockData {
+  url: string;
+  method: 'GET' | 'POST';
+  status: number;
+  response: {
+    data: IMovieRes[];
+  };
+}
+
 export const Default: Story = {
   render: function Render(args) {
     const [state, setState] = useState<IMovieRes[] | null>(null);
     const handleDebounce = () => {
-      console.log('@meta', meta.parameters?.mockData[0].response.data);
       if (meta.parameters?.mockData) {
-        setState(meta.parameters?.mockData[0].response.data);
+        const mockData = meta.parameters?.mockData as IMockData[];
+
+        setState(mockData[0].response.data);
       }
     };
 
