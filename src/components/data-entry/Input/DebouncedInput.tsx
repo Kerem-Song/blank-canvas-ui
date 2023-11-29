@@ -39,19 +39,7 @@ export const DebouncedInput = forwardRef<HTMLInputElement, IDebounceProps>(
         <Input
           ref={ref}
           onChange={(e) => fetchDataList(e.currentTarget.value)}
-          isClearable={args.isClearable}
-          isError={args.isError}
-          isSearch={args.isSearch}
-          showCount={args.showCount}
-          maxLength={args.maxLength}
-          textLength={args.textLength}
-          isShowAlwaysClear={args.isShowAlwaysClear}
-          customPrefix={args.customPrefix}
-          suffix={args.suffix}
-          onSearch={args.onSearch}
-          onPressEnter={args.onPressEnter}
-          onPressEsc={args.onPressEsc}
-          onClear={args.onClear}
+          {...inputProps}
         />
         {deferredQuery ? children : null}
       </div>
