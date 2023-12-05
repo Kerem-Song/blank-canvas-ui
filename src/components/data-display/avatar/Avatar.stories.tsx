@@ -1,5 +1,3 @@
-import '../../../index.css';
-
 import StarIcon from '@assets/icons/ic_star.svg?react';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
@@ -17,12 +15,9 @@ const FlexBox = ({
 };
 
 const meta: Meta<AvatarProps> = {
-  title: 'components/data-display/Avatar',
+  title: 'components/data-display/Avatar/Avatar',
   component: Avatar,
   tags: ['autodocs'],
-  argTypes: {
-    component: { control: { type: null } },
-  },
 };
 
 export default meta;
@@ -46,9 +41,11 @@ export const Default: Story = {
       https://images.unsplash.com/photo-1619476266550-bc9f04e57952?w=480 2x,
     `,
     sizes: ``,
-    children: undefined,
+    component: 'div',
+    children: 'Bear',
     variant: 'circular',
     size: 'md',
+    className: '',
     style: {},
     imgProps: {},
     prefix: '',

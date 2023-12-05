@@ -2,30 +2,38 @@ import AvatarFallbackIcon from '@assets/icons/ic_avatar.svg?react';
 import { OverridableComponent } from '@models/types';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import React from 'react';
+import * as React from 'react';
 
 import { AvatarProps, AvatarTypeMap } from './Avatar.types';
 import { avatarClasses } from './avatarClasses';
+import AvatarGroupContext from './AvatarGroupContext';
 import { useLoaded } from './useLoaded';
 
 export const Avatar = React.forwardRef(function Avatar<
   RootComponentType extends React.ElementType,
 >(props: AvatarProps<RootComponentType>, ref: React.ForwardedRef<Element>) {
+  const avatarGroup = React.useContext(AvatarGroupContext);
+
   const {
     alt,
     children: childrenProp,
     className,
     style,
-    component: RootComponent = 'div',
-    imgProps,
-    size = 'md',
+    component: componentProp = 'div',
     sizes,
     src,
     srcSet,
-    prefix,
-    variant = 'circular',
+    imgProps,
+    size: sizeProp = 'md',
+    variant: variantProp = 'circular',
+    prefix: prefixProp,
     ...other
   } = props;
+  const RootComponent =
+    (props.component as any) || avatarGroup?.component || componentProp;
+  const size = props.size || avatarGroup?.size || sizeProp;
+  const variant = props.variant || avatarGroup?.variant || variantProp;
+  const prefix = props.prefix || avatarGroup?.prefix || prefixProp;
 
   let children = null;
   const loaded = useLoaded({ ...imgProps, src, srcSet });
@@ -40,8 +48,7 @@ export const Avatar = React.forwardRef(function Avatar<
   if (hasImgNotFailing) {
     children = (
       <img
-        // alt={loaded === 'error' ? alt : undefined}
-        alt={alt}
+        alt={loaded === 'error' ? alt : undefined}
         srcSet={srcSet}
         src={src}
         sizes={sizes}

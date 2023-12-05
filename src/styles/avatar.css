@@ -22,23 +22,6 @@ $(ns) {
       select-none;
   }
 
-  /* svg */
-  svg {
-    @apply
-      select-none;
-    @apply
-      shrink-0
-      inline-block
-      w-[1em]
-      h-[1em]
-      fill-current
-      transition-[fill]
-      duration-200
-      ease-in-out
-      delay-[0ms]
-      select-none;
-  }
-
   /* variant */
   &-circular {
     @apply
@@ -84,15 +67,29 @@ $(ns) {
       bg-[rgb(189,189,189)];
   }
 
-  /* image */
-  &-img {
+  /* svg */
+  svg {
     @apply
+      shrink-0
+      inline-block
+      w-[1em]
+      h-[1em]
+      fill-current
+      transition-[fill]
+      duration-200
+      ease-in-out
+      delay-[0ms]
+      select-none;
+  }
+  /* img */
+  img {
+    @apply 
       w-full
       h-full
       text-center
       object-cover
       text-transparent
-      indent-[10000px];
+      [text-indent:10000px];
   }
 
   /* fallback */
