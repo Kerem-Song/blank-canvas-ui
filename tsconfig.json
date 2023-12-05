@@ -14,6 +14,7 @@
     "isolatedModules": true,
     "declaration": true,
     "typeRoots": ["./dist/index.d.ts", "node_modules/@types"],
+    "types": ["vitest/globals"],
     "noEmit": true,
     "jsx": "react-jsx",
 

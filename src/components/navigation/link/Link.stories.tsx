@@ -207,7 +207,7 @@ export const Overlay: Story = {
     return (
       <FlexBox>
         <Card rounded>
-          <div className="flex flex-col gap-4 relative p-2 m-[-0.75rem]">
+          <div className="relative m-[-0.75rem] flex flex-col gap-4 p-2">
             <img
               src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               title="web design"
