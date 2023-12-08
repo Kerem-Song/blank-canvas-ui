@@ -204,6 +204,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     droppedFiles.forEach((file) => {
       const reader = new FileReader();
 
+      // not a function 문제 해결 필요
       reader.onloadend = () => setValue();
       reader.onerror = () => errCallback();
 
@@ -213,6 +214,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     });
   };
   console.log('@file format', fileFormat.toString());
+  console.log('@file format []', fileFormat);
 
   return (
     <>

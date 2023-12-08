@@ -21,7 +21,7 @@ export const Default: Story = {
   },
   args: {
     htmlForId: 'id',
-    fileFormat: ['png'],
+    fileFormat: ['image/png'],
     fileSize: 3 * 1024 * 1024,
     shape: 'button',
   },
@@ -33,7 +33,7 @@ export const ButtonUpload: Story = {
   },
   args: {
     htmlForId: 'id',
-    fileFormat: ['png'],
+    fileFormat: ['image/png'],
     fileSize: 3 * 1024 * 1024,
     shape: 'button',
     prefixIcon: <IcImg />,
@@ -47,7 +47,7 @@ export const AreaUpload: Story = {
   },
   args: {
     htmlForId: 'id',
-    fileFormat: ['image/jpg', 'image/jpeg'],
+    fileFormat: ['image/jpeg', 'image/jpg', 'image/png'],
     fileSize: 3 * 1024 * 1024,
     shape: 'area',
     height: 10,
@@ -66,7 +66,7 @@ export const DragAndDropUpload: Story = {
   },
   args: {
     htmlForId: 'id',
-    fileFormat: ['image/jpg', 'image/jpeg'],
+    fileFormat: ['image/png', 'image/jpg'],
     fileSize: 3 * 1024 * 1024,
     shape: 'drag',
   },
