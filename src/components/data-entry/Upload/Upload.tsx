@@ -106,6 +106,8 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     ...uploadProps
   } = args;
   const uploadRef = useRef<HTMLInputElement | null>(null);
+  const FILE_SIZE = fileSize;
+  const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
   const classes = generatePrefixClasses(
     uploadClasses,
@@ -130,9 +132,6 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
   );
 
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const FILE_SIZE = fileSize;
-    const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
-
     if (e.target.files) {
       if (!SUPPORTED_FORMATS.includes(e.target.files[0]?.type)) {
         // errCallback();
@@ -155,7 +154,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       targetFiles.forEach((file) => {
         const reader = new FileReader();
 
-        reader.onloadend = () => files && setValue();
+        reader.onloadend = () => setValue();
         reader.onerror = () => errCallback();
 
         reader.readAsDataURL(file);
@@ -180,13 +179,28 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     e.preventDefault();
     setIsOver(false);
 
+    if (e.dataTransfer.files) {
+      if (!SUPPORTED_FORMATS.includes(e.dataTransfer.files[0]?.type)) {
+        // errCallback();
+        console.log('@e target 1', e.dataTransfer.files[0]?.type);
+        return;
+      } else if (e.dataTransfer.files[0].size > FILE_SIZE) {
+        console.log('@e target failed');
+        // e.dataTransfer.files = null;
+        // e.dataTransfer.value = '';
+        // errCallback();
+
+        return;
+      }
+    }
     const droppedFiles = Array.from(e.dataTransfer.files);
+
     setFiles(e.dataTransfer.files);
 
     droppedFiles.forEach((file) => {
       const reader = new FileReader();
 
-      reader.onloadend = () => files && setValue();
+      reader.onloadend = () => setValue();
       reader.onerror = () => errCallback();
 
       reader.readAsDataURL(file);
