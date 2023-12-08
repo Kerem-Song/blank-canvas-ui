@@ -52,13 +52,17 @@ export const AreaUpload: Story = {
     shape: 'area',
     height: 10,
     suffixIcon: <IcImg />,
-    suffixText: `asdfasdf`,
+    suffixText: `파일 업로드`,
   },
 };
 
-export const DragabbleUpload: Story = {
+export const DragAndDropUpload: Story = {
   render: (args) => {
-    return <Upload {...args}></Upload>;
+    return (
+      <>
+        <Upload {...args}></Upload>
+      </>
+    );
   },
   args: {
     htmlForId: 'id',
