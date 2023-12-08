@@ -45,10 +45,10 @@ export interface IUploadFileeStyle {
 export type TUploadImageStyleClassKey = keyof IUploadFileeStyle;
 
 export const uploadFileStyle: IUploadFileeStyle = {
-  jpg: '.jpg',
-  jpeg: '.jpeg',
-  png: '.png',
-  svg: '.svg',
+  jpg: 'image/jpg',
+  jpeg: 'image/jpeg',
+  png: 'image/png',
+  svg: 'image/svg',
   image: 'image/*',
   video: 'video/*',
   audio: 'audio/*',
@@ -63,3 +63,5 @@ export const uploadFileStyle: IUploadFileeStyle = {
   // 특정 타입의 모든 파일(for example, a WAV or PDF)
   filetype: '.FILETYPE',
 };
+
+export type TUploadFileFormat = (typeof uploadFileStyle)[keyof typeof uploadFileStyle];

@@ -9,7 +9,11 @@ import {
   useState,
 } from 'react';
 
-import { TUploadImageStyleClassKey, uploadClasses } from './uploadClasses';
+import {
+  TUploadFileFormat,
+  TUploadImageStyleClassKey,
+  uploadClasses,
+} from './uploadClasses';
 
 export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -35,7 +39,7 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 파일 형식 제한
    */
-  fileFormat: TUploadImageStyleClassKey;
+  fileFormat: TUploadFileFormat[];
 
   /**
    *  버튼 형식일 때 들어가는 prefix 텍스트
@@ -208,6 +212,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       return reader;
     });
   };
+  console.log('@file format', fileFormat.toString());
 
   return (
     <>
@@ -236,7 +241,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         <input
           type="file"
           id={htmlForId}
-          accept=".png, .jpeg, .jpg"
+          accept={fileFormat.toString()}
           onChange={handleChangeFile}
           style={{ display: 'none' }}
           autoComplete="off"
