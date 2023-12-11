@@ -257,9 +257,11 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     });
   };
 
-  const handleDeleteFile = (name: string) => {
+  const handleDeleteFile = (name: string, lastModified: number) => {
     if (files) {
-      setFiles(files.filter((item) => item.name !== name));
+      setFiles(
+        files.filter((item) => item.name !== name && item.lastModified !== lastModified),
+      );
     }
   };
 
@@ -299,7 +301,10 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
                 <p>{file.size}</p>
                 <p>{file.lastModified}</p>
               </div>
-              <Button variant="text" onClick={() => handleDeleteFile(file.name)}>
+              <Button
+                variant="text"
+                onClick={() => handleDeleteFile(file.name, file.lastModified)}
+              >
                 <img src={icDelete} alt="expand-icon" />
               </Button>
             </div>
