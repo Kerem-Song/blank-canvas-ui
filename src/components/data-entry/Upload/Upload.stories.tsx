@@ -39,6 +39,14 @@ export const ButtonUpload: Story = {
     prefixIcon: <IcImg />,
     prefixText: '파일 찾기',
     width: 10,
+    filePath: 'image path',
+    callback: () => {
+      alert('파일 업로드 완료');
+    },
+    errCallback: () => {
+      alert('파일 업로드 실패');
+    },
+    setValue: () => {},
   },
 };
 
@@ -54,6 +62,14 @@ export const AreaUpload: Story = {
     height: 10,
     suffixIcon: <IcImg />,
     suffixText: `파일 업로드`,
+    filePath: 'image path',
+    callback: () => {
+      alert('파일 업로드 완료');
+    },
+    errCallback: () => {
+      alert('파일 업로드 실패');
+    },
+    setValue: () => {},
   },
 };
 
@@ -73,6 +89,14 @@ export const DragAndDropUpload: Story = {
     height: 10,
     suffixIcon: <IcImg />,
     suffixText: `Drag and Drop`,
+    filePath: 'image path',
+    callback: () => {
+      alert('파일 업로드 완료');
+    },
+    errCallback: () => {
+      alert('파일 업로드 실패');
+    },
+    setValue: () => {},
   },
 };
 
@@ -85,5 +109,13 @@ export const NoneDesignUpload: Story = {
     fileFormat: ['image/jpg', 'image/jpeg'],
     fileSize: 3 * 1024 * 1024,
     shape: 'none',
+    filePath: 'image path',
+    callback: () => {
+      alert('파일 업로드 완료');
+    },
+    errCallback: () => {
+      alert('파일 업로드 실패');
+    },
+    setValue: () => {},
   },
 };

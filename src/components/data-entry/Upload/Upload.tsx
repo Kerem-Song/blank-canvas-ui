@@ -153,17 +153,11 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     className,
   );
 
-  const test = (e: DragEvent<HTMLLabelElement>) => {
-    // setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
-    const a = 1;
-    const b = 2;
-    console.log('@a+b', a + b);
-    return a + b;
-  };
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       if (!SUPPORTED_FORMATS.includes(e.target.files[0]?.type)) {
         console.log('@e target 1', e.target.files[0]?.type);
+
         alert('파일 확장자를 확인 부탁드립니다.');
         return;
       } else if (e.target.files[0].size > FILE_SIZE) {
@@ -184,14 +178,11 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         const reader = new FileReader();
 
         reader.onloadend = () => {
-          // setValue(filePath, e.target.files, { shouldDirty: true });
-
-          console.log('@onlodend');
+          callback();
+          setValue(filePath, e.target.files, { shouldDirty: true });
         };
 
-        reader.onerror = () => {
-          console.log('@onerror');
-        };
+        reader.onerror = () => errCallback();
 
         reader.readAsDataURL(file);
 
@@ -217,16 +208,16 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
 
     if (e.dataTransfer.files) {
       if (!SUPPORTED_FORMATS.includes(e.dataTransfer.files[0]?.type)) {
-        // errCallback();
-        alert('파일 확장자를 확인 부탁드립니다.');
         console.log('@e target 1', e.dataTransfer.files[0]?.type);
+        // alert('파일 확장자를 확인 부탁드립니다.');
+        errCallback();
         return;
       } else if (e.dataTransfer.files[0].size > FILE_SIZE) {
         console.log('@e target failed');
-        alert(`파일 크기는 ${fileSize}를 초과할 수 없습니다.`);
+        // alert(`파일 크기는 ${fileSize}를 초과할 수 없습니다.`);
         // e.dataTransfer.files = null;
         // e.dataTransfer.value = '';
-        // errCallback();
+        errCallback();
 
         return;
       }
@@ -238,15 +229,9 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     droppedFiles.forEach((file) => {
       const reader = new FileReader();
 
-      // not a function 문제 해결 필요
-      reader.onload = () => {
-        console.log('@on load');
-        // setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
-      };
-
       reader.onloadend = () => {
-        test(e);
-        // setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
+        callback();
+        setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
       };
 
       reader.onerror = () => errCallback();
@@ -293,13 +278,11 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       {files
         ? files?.map((file) => (
             <div
-              className="flex justify-between rounded-md border hover:bg-gray-100"
+              className="flex items-center justify-between rounded-md hover:bg-gray-100"
               key={file.name + '-' + file.lastModified}
             >
               <div>
                 <p>{file.name}</p>
-                <p>{file.size}</p>
-                <p>{file.lastModified}</p>
               </div>
               <Button
                 variant="text"
