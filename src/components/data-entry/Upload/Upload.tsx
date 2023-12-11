@@ -1,3 +1,5 @@
+import { Button } from '@components';
+import icDelete from '@icons/ic_search_delete.svg';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import {
@@ -30,6 +32,11 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
    * 업로드 input에 할당할 id
    */
   htmlForId: string;
+
+  /**
+   * 파일이 등록될 경로(react-hook-form)
+   */
+  filePath: string;
 
   /**
    * 파일 사이즈 제한
@@ -84,18 +91,29 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 업로드 이후에 해당 값에 업르드된 결과를 세팅하는 함수
    */
-  setValue: () => void;
+  setValue: (
+    name: string,
+    value: any,
+    options?:
+      | Partial<{
+          shouldValidate: boolean;
+          shouldDirty: boolean;
+          shouldTouch: boolean;
+        }>
+      | undefined,
+  ) => void;
 }
 
 export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => {
   const [isOver, setIsOver] = useState(false);
-  const [files, setFiles] = useState<FileList>();
+  const [files, setFiles] = useState<File[]>();
 
   const {
     prefix,
     children,
     className,
     htmlForId,
+    filePath,
     fileSize,
     fileFormat,
     prefixIcon,
@@ -135,31 +153,45 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     className,
   );
 
+  const test = (e: DragEvent<HTMLLabelElement>) => {
+    // setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
+    const a = 1;
+    const b = 2;
+    console.log('@a+b', a + b);
+    return a + b;
+  };
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       if (!SUPPORTED_FORMATS.includes(e.target.files[0]?.type)) {
-        // errCallback();
         console.log('@e target 1', e.target.files[0]?.type);
+        alert('파일 확장자를 확인 부탁드립니다.');
         return;
       } else if (e.target.files[0].size > FILE_SIZE) {
         console.log('@e target failed');
         e.target.files = null;
         e.target.value = '';
-        // errCallback();
+        alert(`파일 크기는 ${fileSize}를 초과할 수 없습니다.`);
 
         return;
       }
       console.log('@e target', e.target.files);
-      setFiles(e.target.files);
 
       const targetFiles = Array.from(e.target.files);
+      setFiles(targetFiles);
 
       // Use FileReader to read file content
       targetFiles.forEach((file) => {
         const reader = new FileReader();
 
-        reader.onloadend = () => setValue();
-        reader.onerror = () => errCallback();
+        reader.onloadend = () => {
+          // setValue(filePath, e.target.files, { shouldDirty: true });
+
+          console.log('@onlodend');
+        };
+
+        reader.onerror = () => {
+          console.log('@onerror');
+        };
 
         reader.readAsDataURL(file);
 
@@ -186,10 +218,12 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     if (e.dataTransfer.files) {
       if (!SUPPORTED_FORMATS.includes(e.dataTransfer.files[0]?.type)) {
         // errCallback();
+        alert('파일 확장자를 확인 부탁드립니다.');
         console.log('@e target 1', e.dataTransfer.files[0]?.type);
         return;
       } else if (e.dataTransfer.files[0].size > FILE_SIZE) {
         console.log('@e target failed');
+        alert(`파일 크기는 ${fileSize}를 초과할 수 없습니다.`);
         // e.dataTransfer.files = null;
         // e.dataTransfer.value = '';
         // errCallback();
@@ -199,13 +233,22 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     }
     const droppedFiles = Array.from(e.dataTransfer.files);
 
-    setFiles(e.dataTransfer.files);
+    setFiles(droppedFiles);
 
     droppedFiles.forEach((file) => {
       const reader = new FileReader();
 
       // not a function 문제 해결 필요
-      reader.onloadend = () => setValue();
+      reader.onload = () => {
+        console.log('@on load');
+        // setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
+      };
+
+      reader.onloadend = () => {
+        test(e);
+        // setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
+      };
+
       reader.onerror = () => errCallback();
 
       reader.readAsDataURL(file);
@@ -213,8 +256,12 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       return reader;
     });
   };
-  console.log('@file format', fileFormat.toString());
-  console.log('@file format []', fileFormat);
+
+  const handleDeleteFile = (name: string) => {
+    if (files) {
+      setFiles(files.filter((item) => item.name !== name));
+    }
+  };
 
   return (
     <>
@@ -242,11 +289,16 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         </div>
       </label>
       {files
-        ? Array.from(files)?.map((file) => (
-            <div key={file.name + '-' + file.lastModified}>
-              <p>{file.name}</p>
-              <p>{file.size}</p>
-              <p>{file.lastModified}</p>
+        ? files?.map((file) => (
+            <div className="flex justify-between rounded-md border hover:bg-gray-100">
+              <div key={file.name + '-' + file.lastModified}>
+                <p>{file.name}</p>
+                <p>{file.size}</p>
+                <p>{file.lastModified}</p>
+              </div>
+              <Button variant="text" onClick={() => handleDeleteFile(file.name)}>
+                <img src={icDelete} alt="expand-icon" />
+              </Button>
             </div>
           ))
         : null}

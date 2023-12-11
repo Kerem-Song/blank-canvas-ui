@@ -3,7 +3,7 @@ import IcImg from '@icons/ic_img.svg?react';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
-  title: 'components/data-entry/Input/Upload',
+  title: 'components/data-entry/Upload/Upload',
   component: Upload,
   tags: ['autodocs'],
   parameters: {
@@ -38,6 +38,7 @@ export const ButtonUpload: Story = {
     shape: 'button',
     prefixIcon: <IcImg />,
     prefixText: '파일 찾기',
+    width: 10,
   },
 };
 
@@ -71,6 +72,7 @@ export const DragAndDropUpload: Story = {
     shape: 'drag',
     height: 10,
     suffixIcon: <IcImg />,
+    suffixText: `Drag and Drop`,
   },
 };
 
