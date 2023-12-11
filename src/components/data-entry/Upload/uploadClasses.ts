@@ -1,3 +1,5 @@
+import { ValueOf } from '@models';
+
 export interface IUploadClasses {
   root: string;
   disabled: string;
@@ -44,11 +46,11 @@ export interface IUploadFileeStyle {
 
 export type TUploadImageStyleClassKey = keyof IUploadFileeStyle;
 
-export const uploadFileStyle: IUploadFileeStyle = {
-  jpg: '.jpg',
-  jpeg: '.jpeg',
-  png: '.png',
-  svg: '.svg',
+export const uploadFileStyle = {
+  jpg: 'image/jpg',
+  jpeg: 'image/jpeg',
+  png: 'image/png',
+  svg: 'image/svg',
   image: 'image/*',
   video: 'video/*',
   audio: 'audio/*',
@@ -62,4 +64,6 @@ export const uploadFileStyle: IUploadFileeStyle = {
   html: '.text/html',
   // 특정 타입의 모든 파일(for example, a WAV or PDF)
   filetype: '.FILETYPE',
-};
+} as const;
+
+export type TUploadFileFormat = ValueOf<typeof uploadFileStyle>;

@@ -1,8 +1,21 @@
+import { Button } from '@components';
+import icDelete from '@icons/ic_search_delete.svg';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import { forwardRef, InputHTMLAttributes, ReactNode, useRef } from 'react';
+import {
+  DragEvent,
+  forwardRef,
+  InputHTMLAttributes,
+  ReactNode,
+  useRef,
+  useState,
+} from 'react';
 
-import { TUploadImageStyleClassKey, uploadClasses } from './uploadClasses';
+import {
+  TUploadFileFormat,
+  TUploadImageStyleClassKey,
+  uploadClasses,
+} from './uploadClasses';
 
 export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -21,6 +34,11 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   htmlForId: string;
 
   /**
+   * 파일이 등록될 경로(react-hook-form)
+   */
+  filePath: string;
+
+  /**
    * 파일 사이즈 제한
    */
   fileSize: number;
@@ -28,7 +46,7 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 파일 형식 제한
    */
-  fileFormat: TUploadImageStyleClassKey;
+  fileFormat: TUploadFileFormat[];
 
   /**
    *  버튼 형식일 때 들어가는 prefix 텍스트
@@ -73,15 +91,29 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 업로드 이후에 해당 값에 업르드된 결과를 세팅하는 함수
    */
-  setValue: () => void;
+  setValue: (
+    name: string,
+    value: any,
+    options?:
+      | Partial<{
+          shouldValidate: boolean;
+          shouldDirty: boolean;
+          shouldTouch: boolean;
+        }>
+      | undefined,
+  ) => void;
 }
 
 export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => {
+  const [isOver, setIsOver] = useState(false);
+  const [files, setFiles] = useState<File[]>();
+
   const {
     prefix,
     children,
     className,
     htmlForId,
+    filePath,
     fileSize,
     fileFormat,
     prefixIcon,
@@ -96,6 +128,8 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     ...uploadProps
   } = args;
   const uploadRef = useRef<HTMLInputElement | null>(null);
+  const FILE_SIZE = fileSize;
+  const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
   const classes = generatePrefixClasses(
     uploadClasses,
@@ -120,44 +154,145 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
   );
 
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const FILE_SIZE = fileSize;
-    const SUPPORTED_FORMATS = ['.jpg', '.jpeg', '.png'];
-
     if (e.target.files) {
       if (!SUPPORTED_FORMATS.includes(e.target.files[0]?.type)) {
-        callback();
+        console.log('@e target 1', e.target.files[0]?.type);
+
+        alert('파일 확장자를 확인 부탁드립니다.');
         return;
       } else if (e.target.files[0].size > FILE_SIZE) {
+        console.log('@e target failed');
         e.target.files = null;
         e.target.value = '';
+        alert(`파일 크기는 ${fileSize}를 초과할 수 없습니다.`);
+
+        return;
+      }
+      console.log('@e target', e.target.files);
+
+      const targetFiles = Array.from(e.target.files);
+      setFiles(targetFiles);
+
+      // Use FileReader to read file content
+      targetFiles.forEach((file) => {
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+          callback();
+          setValue(filePath, e.target.files, { shouldDirty: true });
+        };
+
+        reader.onerror = () => errCallback();
+
+        reader.readAsDataURL(file);
+
+        return reader;
+      });
+    }
+    return;
+  };
+
+  const handleDragOver = (e: DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    setIsOver(true);
+  };
+
+  const handleDragLeave = (e: DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    setIsOver(false);
+  };
+
+  const handleDrop = (e: DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    setIsOver(false);
+
+    if (e.dataTransfer.files) {
+      if (!SUPPORTED_FORMATS.includes(e.dataTransfer.files[0]?.type)) {
+        console.log('@e target 1', e.dataTransfer.files[0]?.type);
+        // alert('파일 확장자를 확인 부탁드립니다.');
+        errCallback();
+        return;
+      } else if (e.dataTransfer.files[0].size > FILE_SIZE) {
+        console.log('@e target failed');
+        // alert(`파일 크기는 ${fileSize}를 초과할 수 없습니다.`);
+        // e.dataTransfer.files = null;
+        // e.dataTransfer.value = '';
         errCallback();
 
         return;
       }
-      setValue();
+    }
+    const droppedFiles = Array.from(e.dataTransfer.files);
+
+    setFiles(droppedFiles);
+
+    droppedFiles.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        callback();
+        setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
+      };
+
+      reader.onerror = () => errCallback();
+
+      reader.readAsDataURL(file);
+
+      return reader;
+    });
+  };
+
+  const handleDeleteFile = (name: string, lastModified: number) => {
+    if (files) {
+      setFiles(
+        files.filter((item) => item.name !== name && item.lastModified !== lastModified),
+      );
     }
   };
 
   return (
-    <label
-      className={rootClassName}
-      htmlFor={htmlForId}
-      style={{ height: `${height}rem`, width: `${width}rem` }}
-    >
-      {args.shape === 'button' ? prefixIcon : null}
-      <span className="prefix-text">{args.shape === 'button' ? prefixText : null}</span>
-      <input
-        type="file"
-        id={htmlForId}
-        accept=".png, .jpeg, .jpg"
-        onChange={handleChangeFile}
-        style={{ display: 'none' }}
-        autoComplete="off"
-      />
-      <div className="suffix-wrapper">
-        <p className="suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
-        <p>{args.shape !== 'button' ? suffixText : null}</p>
-      </div>
-    </label>
+    <>
+      <label
+        className={rootClassName}
+        htmlFor={htmlForId}
+        style={{ height: `${height}rem`, width: `${width}rem` }}
+        onDragOver={args.shape === 'drag' ? handleDragOver : undefined}
+        onDragLeave={args.shape === 'drag' ? handleDragLeave : undefined}
+        onDrop={args.shape === 'drag' ? handleDrop : undefined}
+      >
+        {args.shape === 'button' ? prefixIcon : null}
+        <span className="prefix-text">{args.shape === 'button' ? prefixText : null}</span>
+        <input
+          type="file"
+          id={htmlForId}
+          accept={fileFormat.toString()}
+          onChange={handleChangeFile}
+          style={{ display: 'none' }}
+          autoComplete="off"
+        />
+        <div className="suffix-wrapper">
+          <p className="suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
+          <p>{args.shape !== 'button' ? suffixText : null}</p>
+        </div>
+      </label>
+      {files
+        ? files?.map((file) => (
+            <div
+              className="flex items-center justify-between rounded-md hover:bg-gray-100"
+              key={file.name + '-' + file.lastModified}
+            >
+              <div>
+                <p>{file.name}</p>
+              </div>
+              <Button
+                variant="text"
+                onClick={() => handleDeleteFile(file.name, file.lastModified)}
+              >
+                <img src={icDelete} alt="expand-icon" />
+              </Button>
+            </div>
+          ))
+        : null}
+    </>
   );
 });

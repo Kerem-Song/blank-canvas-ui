@@ -6,4 +6,6 @@ export { Divider } from '@components';
 export { Tag } from '@components';
 export { Card } from '@components';
 export { Badge } from '@components';
+export { Row } from '@components';
+export { Col } from '@components';
 export * from '@components/general/button';
