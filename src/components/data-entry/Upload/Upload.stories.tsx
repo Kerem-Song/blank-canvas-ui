@@ -69,6 +69,8 @@ export const DragAndDropUpload: Story = {
     fileFormat: ['image/png', 'image/jpg'],
     fileSize: 3 * 1024 * 1024,
     shape: 'drag',
+    height: 10,
+    suffixIcon: <IcImg />,
   },
 };
 

@@ -221,19 +221,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       <label
         className={rootClassName}
         htmlFor={htmlForId}
-        style={
-          args.shape === 'drag'
-            ? {
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '50px',
-                width: '300px',
-                border: '1px dotted',
-                backgroundColor: isOver ? 'lightgray' : 'white',
-              }
-            : { height: `${height}rem`, width: `${width}rem` }
-        }
+        style={{ height: `${height}rem`, width: `${width}rem` }}
         onDragOver={args.shape === 'drag' ? handleDragOver : undefined}
         onDragLeave={args.shape === 'drag' ? handleDragLeave : undefined}
         onDrop={args.shape === 'drag' ? handleDrop : undefined}
