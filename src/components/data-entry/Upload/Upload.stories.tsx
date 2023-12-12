@@ -99,23 +99,3 @@ export const DragAndDropUpload: Story = {
     setValue: () => {},
   },
 };
-
-export const NoneDesignUpload: Story = {
-  render: (args) => {
-    return <Upload {...args} />;
-  },
-  args: {
-    htmlForId: 'id',
-    fileFormat: ['image/jpg', 'image/jpeg'],
-    fileSize: 3 * 1024 * 1024,
-    shape: 'none',
-    filePath: 'image path',
-    callback: () => {
-      alert('파일 업로드 완료');
-    },
-    errCallback: () => {
-      alert('파일 업로드 실패');
-    },
-    setValue: () => {},
-  },
-};
