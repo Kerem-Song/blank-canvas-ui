@@ -52,7 +52,7 @@ export const Tag = ({
   return (
     <span
       {...props}
-      className={classNames('tag', { 'tag-bordered': bordered })}
+      className={classNames('tag-area', { 'tag-bordered': bordered })}
       style={{
         ...style,
         backgroundColor: color,
