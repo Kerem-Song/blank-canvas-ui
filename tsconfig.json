@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "declaration": true,
-    "typeRoots": ["./dist/index.d.ts", "node_modules/@types"],
+    "typeRoots": ["./dist/index.d.ts", "node_modules/@types", "./node_modules"],
     "types": ["vitest/globals"],
     "noEmit": true,
     "jsx": "react-jsx",
@@ -40,6 +40,6 @@
       "@store/*": ["src/store/*"]
     }
   },
-  "include": ["src", "./index.ts"],
+  "include": ["src", "./index.ts", "./tailwind.config.js", "./postcss.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
