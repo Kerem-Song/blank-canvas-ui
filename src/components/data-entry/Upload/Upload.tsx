@@ -12,11 +12,19 @@ import {
 } from 'react';
 
 import {
+  TFormatAll,
   TUploadFileFormat,
   TUploadImageStyleClassKey,
   uploadClasses,
+  uploadFileFormat,
 } from './uploadClasses';
 
+const formatAll: TFormatAll[] = [
+  uploadFileFormat.image,
+  uploadFileFormat.video,
+  uploadFileFormat.audio,
+  uploadFileFormat.application,
+];
 export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 업로드 에러일 때 디자인하기 위한 boolean 값
@@ -45,6 +53,7 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
 
   /**
    * 파일 형식 제한
+   * @type "image/jpg" | "image/jpeg" | "image/png" | "image/svg" | "image/*" | "video/*" | "audio/*" | ".pdf" | ".csv" | ".xls" | ".xlsx" | ".text/plain" | ".text/html" | ".FILETYPE"
    */
   fileFormat: TUploadFileFormat[];
 
@@ -129,7 +138,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
   } = args;
   const uploadRef = useRef<HTMLInputElement | null>(null);
   const FILE_SIZE = fileSize;
-  const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
+  const SUPPORTED_FORMATS = fileFormat;
 
   const classes = generatePrefixClasses(
     uploadClasses,
@@ -155,11 +164,11 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
 
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      if (!SUPPORTED_FORMATS.includes(e.target.files[0]?.type)) {
+      if (!SUPPORTED_FORMATS.includes(e.target.files[0]?.type as TUploadFileFormat)) {
         console.log('@e target 1', e.target.files[0]?.type);
 
         alert('파일 확장자를 확인 부탁드립니다.');
-        return;
+        // return;
       } else if (e.target.files[0].size > FILE_SIZE) {
         console.log('@e target failed');
         e.target.files = null;
@@ -207,14 +216,18 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     setIsOver(false);
 
     if (e.dataTransfer.files) {
-      if (!SUPPORTED_FORMATS.includes(e.dataTransfer.files[0]?.type)) {
+      if (
+        !fileFormat.some((item) => formatAll.includes(item)) &&
+        !SUPPORTED_FORMATS.includes(e.dataTransfer.files[0]?.type as TUploadFileFormat)
+      ) {
         console.log('@e target 1', e.dataTransfer.files[0]?.type);
-        // alert('파일 확장자를 확인 부탁드립니다.');
+
+        alert('파일 확장자를 확인 부탁드립니다.');
         errCallback();
         return;
       } else if (e.dataTransfer.files[0].size > FILE_SIZE) {
         console.log('@e target failed');
-        // alert(`파일 크기는 ${fileSize}를 초과할 수 없습니다.`);
+        alert(`파일 크기는 ${fileSize}를 초과할 수 없습니다.`);
         // e.dataTransfer.files = null;
         // e.dataTransfer.value = '';
         errCallback();
@@ -265,7 +278,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         <input
           type="file"
           id={htmlForId}
-          accept={fileFormat.toString()}
+          accept={'.pdf'}
           onChange={handleChangeFile}
           style={{ display: 'none' }}
           autoComplete="off"

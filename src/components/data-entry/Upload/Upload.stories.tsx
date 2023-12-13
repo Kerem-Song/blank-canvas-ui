@@ -2,6 +2,8 @@ import { IUploadProps, Upload } from '@components';
 import IcImg from '@icons/ic_img.svg?react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { uploadFileFormat } from './uploadClasses';
+
 const meta: Meta = {
   title: 'components/data-entry/Upload/Upload',
   component: Upload,
@@ -83,7 +85,7 @@ export const DragAndDropUpload: Story = {
   },
   args: {
     htmlForId: 'id',
-    fileFormat: ['image/png', 'image/jpg'],
+    fileFormat: [uploadFileFormat.image],
     fileSize: 3 * 1024 * 1024,
     shape: 'drag',
     height: 10,
