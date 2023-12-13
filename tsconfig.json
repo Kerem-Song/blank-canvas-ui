@@ -40,6 +40,6 @@
       "@store/*": ["src/store/*"]
     }
   },
-  "include": ["src", "./index.ts", "./tailwind.config.js", "./postcss.config.js"],
+  "include": ["src", "./index.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
