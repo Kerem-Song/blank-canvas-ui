@@ -1,0 +1,55 @@
+#container::before,
+#container::after {
+  content: '';
+  @apply block w-[1px];
+}
+
+#tooltip {
+  @apply text-start flex items-center bg-white font-bold text-red-950 py-[5px] px-[10px] rounded-[4px] max-w-[250px];
+}
+
+#tooltip-data {
+  @apply inline-block;
+}
+
+#arrow,
+#arrow::before {
+  @apply absolute w-[8px] h-[8px] bg-inherit;
+}
+
+#arrow {
+  @apply invisible;
+}
+
+#arrow::before {
+  content: '';
+  @apply visible rotate-45;
+}
+
+#tooltip[data-popper-placement^='top'] > #arrow {
+  @apply -bottom-[4px];
+}
+
+#tooltip[data-popper-placement^='bottom'] > #arrow {
+  @apply -top-[4px];
+}
+
+#tooltip[data-popper-placement^='left'] > #arrow {
+  @apply -right-[4px];
+}
+
+#tooltip[data-popper-placement^='right'] > #arrow {
+  @apply -left-[4px];
+}
+
+#tooltip[data-arrow-visible^='false'] > #arrow::before {
+  @apply invisible;
+}
+
+#tooltip[data-arrow-visible^='true'] > #arrow::before {
+  @apply visible;
+}
+
+.tooltip-base {
+  @apply min-w-[250px] h-auto break-all shadow-[0_6px_16px_0_rgba(0,0,0,0.08),0_3px_6px_-4px_rgba(0,0,0,0.12),0_9px_28px_8px_rgba(0,0,0,0.05)];
+}

@@ -1,0 +1,67 @@
+.luna-input-wrap {
+  @apply flex w-full items-center rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
+
+  .suffixWrapper {
+    @apply flex items-center text-end;
+  }
+
+  input {
+    @apply grow w-full pl-2 focus:outline-none placeholder:not-italic placeholder:text-slate-400;
+
+    &:disabled {
+      @apply bg-gray-100;
+    }
+  }
+
+  &:has(input:disabled) {
+    @apply bg-gray-100;
+  }
+
+  &.invalid {
+    @apply ring-red-500;
+  }
+}
+
+.luna-input-normal {
+  @apply w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
+}
+
+.input-title-counter-wrapper {
+  @apply rounded-md flex justify-between items-center w-full resize-none;
+
+  .input-label {
+    @apply font-semibold;
+
+    &.light {
+      @apply font-normal;
+    }
+  }
+
+  &.inside {
+    @apply block border-solid border border-slate-300 text-right;
+
+    &.invalid {
+      @apply border border-solid ring-red-500;
+    }
+
+    .input-counter {
+      @apply pr-10pxr py-2pxr;
+    }
+  }
+}
+
+.input-button {
+  @apply w-16pxr h-20pxr py-2pxr !px-0;
+
+  &:hover {
+    @apply !bg-transparent;
+  }
+
+  .search {
+    @apply pr-10pxr w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search.svg')] hover:bg-[url('@icons/ic_search_active.svg')];
+  }
+
+  .clear {
+    @apply pr-10pxr w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search_delete.svg')] hover:bg-[url('@icons/ic_search_delete_active.svg')];
+  }
+}

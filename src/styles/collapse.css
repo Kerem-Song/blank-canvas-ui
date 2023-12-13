@@ -1,0 +1,17 @@
+.collapse-wrapper {
+  .header {
+    @apply flex;
+
+    .expand-icon {
+      @apply flex-none;
+
+      &.expand {
+        @apply rotate-180;
+      }
+    }
+
+    .label {
+      @apply grow w-full;
+    }
+  }
+}

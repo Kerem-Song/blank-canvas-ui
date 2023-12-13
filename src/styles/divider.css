@@ -1,0 +1,7 @@
+.divider {
+  @apply border-t border-zinc-300;
+}
+
+.divider-vertical {
+  @apply border-l border-zinc-300 h-3 inline-block ms-2.5 me-2.5;
+}

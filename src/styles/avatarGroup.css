@@ -1,0 +1,22 @@
+$ns: .avatar-group;
+$ns-children: .avatar;
+$AvatarGroup-gap: -8px;
+
+/* prettier-ignore */
+$(ns) {
+  /* default */
+  & {
+    @apply
+      flex;
+    margin-inline-start: calc(-1 * $AvatarGroup-gap);
+  }
+
+  > $ns-children {
+    @apply
+      box-content
+      border-2
+      border-solid
+    border-[white];
+    margin-inline-start: $AvatarGroup-gap;
+  }
+}
