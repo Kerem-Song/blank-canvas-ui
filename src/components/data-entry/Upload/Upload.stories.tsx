@@ -1,4 +1,5 @@
 import { IUploadProps, Upload } from '@components';
+import IcImg2 from '@icons/ic_img.svg';
 import IcImg from '@icons/ic_img.svg?react';
 import { Meta, StoryObj } from '@storybook/react';
 
