@@ -9,6 +9,7 @@ export const Button = React.forwardRef(function Button<
   RootComponentType extends React.ElementType,
 >(props: ButtonProps<RootComponentType>, ref: React.ForwardedRef<Element>) {
   const {
+    baseButton = false,
     children,
     className,
     color = 'default',
@@ -71,38 +72,40 @@ export const Button = React.forwardRef(function Button<
 
   const classes = generatePrefixClasses(
     buttonClasses,
-    `${prefix ? `${prefix}-` : ''}btn`,
+    `${prefix ? `${prefix}-` : ''}${baseButton ? 'BaseButton' : 'btn'}`,
   );
 
   const rootClassName = classNames(
     classes.root,
-    {
-      // disabled
-      [classes.disabled]: disabled,
-      // block
-      [classes.block]: block,
-      // variant
-      [classes.text]: variant === 'text',
-      [classes.contained]: variant === 'contained',
-      [classes.outlined]: variant === 'outlined',
-      [classes.dashed]: variant === 'dashed',
-      // color
-      [classes.colorPrimary]: color === 'primary',
-      [classes.colorSecondary]: color === 'secondary',
-      [classes.colorSuccess]: color === 'success',
-      [classes.colorError]: color === 'error',
-      [classes.colorInfo]: color === 'info',
-      [classes.colorWarning]: color === 'warning',
-      [classes.colorDark]: color === 'dark',
-      // shape
-      [classes.shapeCircle]: shape === 'circle',
-      [classes.shapeRound]: shape === 'round',
-      // size
-      [classes.sizeXSmall]: size === 'xs',
-      [classes.sizeSmall]: size === 'sm',
-      [classes.sizeMedium]: size === 'md',
-      [classes.sizeLarge]: size === 'lg',
-    },
+    baseButton
+      ? {}
+      : {
+          // disabled
+          [classes.disabled]: disabled,
+          // block
+          [classes.block]: block,
+          // variant
+          [classes.text]: variant === 'text',
+          [classes.contained]: variant === 'contained',
+          [classes.outlined]: variant === 'outlined',
+          [classes.dashed]: variant === 'dashed',
+          // color
+          [classes.colorPrimary]: color === 'primary',
+          [classes.colorSecondary]: color === 'secondary',
+          [classes.colorSuccess]: color === 'success',
+          [classes.colorError]: color === 'error',
+          [classes.colorInfo]: color === 'info',
+          [classes.colorWarning]: color === 'warning',
+          [classes.colorDark]: color === 'dark',
+          // shape
+          [classes.shapeCircle]: shape === 'circle',
+          [classes.shapeRound]: shape === 'round',
+          // size
+          [classes.sizeXSmall]: size === 'xs',
+          [classes.sizeSmall]: size === 'sm',
+          [classes.sizeMedium]: size === 'md',
+          [classes.sizeLarge]: size === 'lg',
+        },
     className,
   );
 

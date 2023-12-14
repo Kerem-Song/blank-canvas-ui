@@ -4,6 +4,11 @@ import React from 'react';
 export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'button'> {
   props: {
     /**
+     * `true`인 경우 구성요소의 스타일은 기본 버튼 스타일로 적용됩니다.
+     * @default false
+     */
+    baseButton?: boolean;
+    /**
      * 구성품의 내용입니다.
      */
     children?: React.ReactNode;
