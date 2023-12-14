@@ -7,7 +7,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname,
   },
   extends: [
@@ -38,6 +38,10 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx', '*.js'],
       parser: '@typescript-eslint/parser',
+    },
+    {
+      extends: ['plugin:@typescript-eslint/disable-type-checked'],
+      files: ['*.js', './**.config.ts'],
     },
   ],
 };

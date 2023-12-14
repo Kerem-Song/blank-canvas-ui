@@ -21,7 +21,8 @@
     }
   }
 
-  &-area {
+  &-area,
+  &-drag {
     @apply flex justify-center items-center w-full border rounded-md border-gray-300 bg-no-repeat bg-center;
 
     .suffix-icon {

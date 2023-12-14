@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "declaration": true,
-    "typeRoots": ["./dist/index.d.ts", "node_modules/@types"],
+    // "typeRoots": ["./dist/index.d.ts", "node_modules/@types", "./node_modules"],
     "types": ["vitest/globals"],
     "noEmit": true,
     "jsx": "react-jsx",

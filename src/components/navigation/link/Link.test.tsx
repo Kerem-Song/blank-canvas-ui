@@ -52,7 +52,7 @@ describe('이벤트 콜백', () => {
         Home
       </Link>,
     );
-    const anchor = container.querySelector('a');
+    const anchor = container.querySelector('a') as HTMLAnchorElement;
 
     fireEvent.mouseDown(anchor);
     expect(onMouseDown).toHaveBeenCalledTimes(1);

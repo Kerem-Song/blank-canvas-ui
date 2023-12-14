@@ -2,7 +2,7 @@
   "name": "@lunasoft-org/luna-design",
   "license": "UNLICENSED",
   "repository": "https://github.com/lunasoft-org/luna-design",
-  "version": "0.0.2",
+  "version": "0.0.8",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist/style.css --watch && tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:debug": "eslint ./src --debug",
     "lint:fix": "eslint ./src --fix",
@@ -81,7 +81,7 @@
     "storybook-addon-react-router-v6": "^2.0.10",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5",
+    "vite": "5.0.3",
     "vite-plugin-dts": "^3.6.3",
     "vite-plugin-svgr": "^4.2.0",
     "vitest": "^0.34.6"

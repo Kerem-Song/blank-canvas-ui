@@ -2,8 +2,10 @@ import { IUploadProps, Upload } from '@components';
 import IcImg from '@icons/ic_img.svg?react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { uploadFileFormat } from './uploadClasses';
+
 const meta: Meta = {
-  title: 'components/data-entry/Input/Upload',
+  title: 'components/data-entry/Upload/Upload',
   component: Upload,
   tags: ['autodocs'],
   parameters: {
@@ -21,7 +23,7 @@ export const Default: Story = {
   },
   args: {
     htmlForId: 'id',
-    fileFormat: 'png',
+    fileFormat: ['image/png'],
     fileSize: 3 * 1024 * 1024,
     shape: 'button',
   },
@@ -33,11 +35,20 @@ export const ButtonUpload: Story = {
   },
   args: {
     htmlForId: 'id',
-    fileFormat: 'png',
+    fileFormat: ['image/png'],
     fileSize: 3 * 1024 * 1024,
     shape: 'button',
     prefixIcon: <IcImg />,
     prefixText: '파일 찾기',
+    width: 10,
+    filePath: 'image path',
+    callback: () => {
+      alert('파일 업로드 완료');
+    },
+    errCallback: () => {
+      alert('파일 업로드 실패');
+    },
+    setValue: () => {},
   },
 };
 
@@ -47,35 +58,46 @@ export const AreaUpload: Story = {
   },
   args: {
     htmlForId: 'id',
-    fileFormat: 'png',
+    fileFormat: ['image/jpeg', 'image/jpg', 'image/png'],
     fileSize: 3 * 1024 * 1024,
     shape: 'area',
     height: 10,
     suffixIcon: <IcImg />,
-    suffixText: `asdfasdf`,
+    suffixText: `파일 업로드`,
+    filePath: 'image path',
+    callback: () => {
+      alert('파일 업로드 완료');
+    },
+    errCallback: () => {
+      alert('파일 업로드 실패');
+    },
+    setValue: () => {},
   },
 };
 
-export const DragabbleUpload: Story = {
+export const DragAndDropUpload: Story = {
   render: (args) => {
-    return <Upload {...args}></Upload>;
+    return (
+      <>
+        <Upload {...args}></Upload>
+      </>
+    );
   },
   args: {
     htmlForId: 'id',
-    fileFormat: 'png',
+    fileFormat: [uploadFileFormat.image],
     fileSize: 3 * 1024 * 1024,
     shape: 'drag',
-  },
-};
-
-export const NoneDesignUpload: Story = {
-  render: (args) => {
-    return <Upload {...args} />;
-  },
-  args: {
-    htmlForId: 'id',
-    fileFormat: 'png',
-    fileSize: 3 * 1024 * 1024,
-    shape: 'none',
+    height: 10,
+    suffixIcon: <IcImg />,
+    suffixText: `Drag and Drop`,
+    filePath: 'image path',
+    callback: () => {
+      alert('파일 업로드 완료');
+    },
+    errCallback: () => {
+      alert('파일 업로드 실패');
+    },
+    setValue: () => {},
   },
 };
