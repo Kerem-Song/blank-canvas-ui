@@ -8,4 +8,4 @@ export * from './rating';
 export * from './Switch/Switch';
 export * from './Textarea/Textarea';
 export * from './Textarea/TextAreaWithTitleCounter';
-export * from './Upload/Upload';
+export * from './Upload';
