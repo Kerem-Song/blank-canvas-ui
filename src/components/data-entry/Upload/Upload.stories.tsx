@@ -27,6 +27,7 @@ export const Default: Story = {
     fileFormat: ['image/png'],
     fileSize: 3 * 1024 * 1024,
     shape: 'button',
+    prefixText: 'File Upload',
   },
 };
 
@@ -100,5 +101,6 @@ export const DragAndDropUpload: Story = {
       alert('파일 업로드 실패');
     },
     setValue: () => {},
+    multiple: true,
   },
 };

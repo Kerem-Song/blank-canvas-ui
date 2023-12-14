@@ -51,7 +51,8 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   fileSize: number;
 
   /**
-   * 파일 형식 제한(uploadFileFormat을 패키지로부터 import 후 사용.ex: uploadFileFormat.png, uploadFileFormat.pdf)
+   * 파일 형식 제한(uploadFileFormat을 패키지로부터 import 후 배열에 넣어 사용.
+   * ex: fileFormat={[uploadFileFormat.png, uploadFileFormat.pdf]} )
    * @type "image/jpg" | "image/jpeg" | "image/png" | "image/svg" | "image/*" | "video/*" | "audio/*" | ".pdf" | ".csv" | ".xls" | ".xlsx" | ".text/plain" | ".text/html" | ".FILETYPE"
    */
   fileFormat: TUploadFileFormat[];
@@ -132,6 +133,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     suffixText,
     width,
     height = 2,
+    multiple = false,
     callback,
     errCallback,
     setValue,
@@ -282,6 +284,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
           onChange={handleChangeFile}
           style={{ display: 'none' }}
           autoComplete="off"
+          multiple={multiple}
         />
         <div className="suffix-wrapper">
           <p className="suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
