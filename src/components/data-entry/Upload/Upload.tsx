@@ -14,7 +14,6 @@ import {
 import {
   TFormatAll,
   TUploadFileFormat,
-  TUploadImageStyleClassKey,
   uploadClasses,
   uploadFileFormat,
 } from './uploadClasses';
@@ -116,6 +115,7 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => {
   const [isOver, setIsOver] = useState(false);
   const [files, setFiles] = useState<File[]>();
+  const [imageUrl, setImageUrl] = useState<string[]>([]);
 
   const {
     prefix,
@@ -245,6 +245,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       reader.onloadend = () => {
         callback();
         setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
+        setImageUrl([URL.createObjectURL(file)]);
       };
 
       reader.onerror = () => errCallback();
@@ -260,9 +261,10 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       setFiles(
         files.filter((item) => item.name !== name && item.lastModified !== lastModified),
       );
+      setImageUrl([]);
     }
   };
-
+  console.log('@file', imageUrl);
   return (
     <>
       <label
@@ -306,6 +308,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
             </div>
           ))
         : null}
+      {imageUrl?.map((image, i) => <img src={image} alt="uploadImage" key={i} />)}
     </>
   );
 });
