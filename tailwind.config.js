@@ -71,6 +71,9 @@ export default {
       minWidth: {
         200: '200px',
       },
+      zIndex: {
+        100: '100',
+      },
     },
   },
   plugins: [],

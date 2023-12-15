@@ -1,6 +1,6 @@
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, forwardRef, useState } from 'react';
+import { AnchorHTMLAttributes, forwardRef, useState } from 'react';
 
 import { floatingActionButtonClasses } from './FloatingActionButtonClasses';
 export type RenderFunction = () => React.ReactNode;
@@ -38,7 +38,7 @@ export type FloatButtonBadgeProps = {
 
 export type IFloatingActionMenuProps = Omit<
   IFloatingActionButtonProps,
-  'menu' | 'trigger' | 'isGroup' | 'closeIcon'
+  'menu' | 'trigger' | 'closeIcon' | 'right' | 'bottom' | 'shape'
 >;
 
 export interface IFloatingActionButtonProps
@@ -59,6 +59,16 @@ export interface IFloatingActionButtonProps
   description?: React.ReactNode;
 
   /**
+   * 플로팅 버튼의 right위치 조정(px)
+   */
+  right: number;
+
+  /**
+   * 플로팅 버튼의 bottom위치 조정(px)
+   */
+  bottom: number;
+
+  /**
    * 플로팅버튼에 호버시 노출되는 툴팁
    */
   tooltip?: React.ReactNode | RenderFunction;
@@ -77,11 +87,6 @@ export interface IFloatingActionButtonProps
    * aria-label
    */
   ['aria-label']?: React.HtmlHTMLAttributes<HTMLElement>['aria-label'];
-
-  /**
-   * 플로팅 버튼의 단독 / 그룹 메뉴 형태 여부
-   */
-  isGroup?: boolean;
 
   /**
    * 플로팅 버튼이 그룹 메뉴 형태일 때 사용되는 메뉴들
@@ -122,8 +127,9 @@ export const FloatingActionButton = forwardRef<
     style,
     icon,
     description,
+    right,
+    bottom,
     closeIcon,
-    isGroup,
     menu,
     children,
     callback,
@@ -155,22 +161,33 @@ export const FloatingActionButton = forwardRef<
   );
 
   const handleClick = () => {
-    isGroup && setIsOpen(!isOpen);
+    console.log('@handle click');
+    menu && setIsOpen(!isOpen);
     callback();
   };
-
+  console.log('@close', closeIcon);
+  console.log('@is open', isOpen);
   return (
-    <div className={rootClassName}>
-      {menu?.map((item, i) => (
-        <button className="floating-action-button" onClick={handleClick} key={i}>
-          <div className="icon">{item.icon}</div>
-          <div className="description">{item.description}</div>
+    <div
+      className={classNames('floating-action-button-wrapper', { open: isOpen })}
+      style={{ right: `${right}px`, bottom: `${bottom}px` }}
+    >
+      {isOpen
+        ? menu?.map((item, i) => (
+            <div className={rootClassName} key={i}>
+              <button className="floating-action-button" onClick={item.callback} key={i}>
+                <div className="icon">{item.icon}</div>
+                <div className="description">{item.description}</div>
+              </button>
+            </div>
+          ))
+        : null}
+      <div className={rootClassName}>
+        <button className="floating-action-button" onClick={handleClick}>
+          <div className="icon">{isOpen ? closeIcon : icon}</div>
+          <div className="description">{description}</div>
         </button>
-      ))}
-      <button className="floating-action-button" onClick={handleClick}>
-        <div className="icon">{isOpen ? closeIcon : icon}</div>
-        <div className="description">{description}</div>
-      </button>
+      </div>
     </div>
   );
 });

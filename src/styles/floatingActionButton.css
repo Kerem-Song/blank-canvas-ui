@@ -1,3 +1,11 @@
+.floating-action-button-wrapper {
+  @apply block fixed z-100;
+
+  &.open {
+    @apply flex flex-col gap-y-2 transition delay-1000 duration-1000 ease-in-out;
+  }
+}
+
 .floating-action-button {
   @apply flex justify-center items-center;
 

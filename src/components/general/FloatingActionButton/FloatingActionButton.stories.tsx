@@ -1,4 +1,6 @@
+import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
 import IcImg from '@icons/ic_img.svg?react';
+import IcImg2 from '@icons/ic_search.svg?react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { FloatingActionButton, IFloatingActionButtonProps } from './FloatingActionButton';
@@ -31,6 +33,8 @@ export const Default: Story = {
     callback: () => {
       alert('floating button');
     },
+    right: 30,
+    bottom: 50,
   },
 };
 
@@ -44,5 +48,43 @@ export const Square: Story = {
     callback: () => {
       alert('floating button');
     },
+    right: 30,
+    bottom: 50,
+  },
+};
+
+export const Group: Story = {
+  render: (args) => {
+    return <FloatingActionButton {...args} />;
+  },
+  args: {
+    shape: 'circle',
+    icon: <IcImg />,
+    callback: () => {
+      alert('floating button');
+    },
+    right: 30,
+    bottom: 50,
+    menu: [
+      {
+        icon: <IcImg2 />,
+        callback: () => {
+          console.log('@1');
+        },
+      },
+      {
+        icon: <IcImg2 />,
+        callback: () => {
+          console.log('@2');
+        },
+      },
+      {
+        icon: <IcImg2 />,
+        callback: () => {
+          console.log('@3');
+        },
+      },
+    ],
+    closeIcon: <IcImg3 />,
   },
 };
