@@ -8,6 +8,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: 'Collapse(Accordion)',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 

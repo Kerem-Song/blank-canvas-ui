@@ -9,6 +9,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '플로팅 버튼',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 

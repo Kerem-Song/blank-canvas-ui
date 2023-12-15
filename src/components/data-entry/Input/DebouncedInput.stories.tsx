@@ -11,6 +11,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '디바운스 기능이 있는 입력창',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
     mockData: [
       {
         url: `https://api.themoviedb.org/3/search/movie?query=happy&api_key=${API_KEY}`,

@@ -1,6 +1,10 @@
 .floating-action-button {
   @apply flex justify-center items-center;
 
+  &:hover {
+    @apply opacity-70;
+  }
+
   &-circle {
     @apply border rounded-full w-30pxr h-30pxr;
   }

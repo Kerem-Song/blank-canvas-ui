@@ -11,6 +11,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '파일 업로드 입력',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 
