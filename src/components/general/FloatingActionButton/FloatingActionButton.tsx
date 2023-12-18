@@ -1,3 +1,4 @@
+import { Badge, IBadgeProps } from '@components';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { AnchorHTMLAttributes, forwardRef, useState } from 'react';
@@ -81,7 +82,7 @@ export interface IFloatingActionButtonProps
   /**
    * 뱃지의 타입(text, title, children)
    */
-  badge?: FloatButtonBadgeProps;
+  badge?: IBadgeProps;
 
   /**
    * aria-label
@@ -132,6 +133,7 @@ export const FloatingActionButton = forwardRef<
     closeIcon,
     menu,
     children,
+    badge,
     callback,
     onOpenChange,
     ...buttonProps
@@ -172,22 +174,59 @@ export const FloatingActionButton = forwardRef<
       className={classNames('floating-action-button-wrapper', { open: isOpen })}
       style={{ right: `${right}px`, bottom: `${bottom}px` }}
     >
-      {isOpen
-        ? menu?.map((item, i) => (
-            <div className={rootClassName} key={i}>
-              <button className="floating-action-button" onClick={item.callback} key={i}>
-                <div className="icon">{item.icon}</div>
-                <div className="description">{item.description}</div>
-              </button>
-            </div>
-          ))
-        : null}
+      {menu?.map((item, i) => (
+        <Badge
+          key={i}
+          count={item.badge?.count}
+          overflowCount={item.badge?.overflowCount}
+          color={item.badge?.color}
+          dot={item.badge?.dot}
+          showZero={item.badge?.showZero}
+          offset={[5, 10]}
+        >
+          <div
+            className={classNames(rootClassName, { 'hidden-menu': menu, open: isOpen })}
+          >
+            <button
+              className={classNames('hidden-button')}
+              onClick={item.callback}
+              key={i}
+            >
+              <div className="icon">{item.icon}</div>
+              <div className="description">{item.description}</div>
+            </button>
+          </div>
+        </Badge>
+      ))}
+      <Badge
+        count={badge?.count}
+        overflowCount={badge?.overflowCount}
+        color={badge?.color}
+        dot={badge?.dot}
+        showZero={badge?.showZero}
+        offset={[5, 10]}
+      >
+        <div className={rootClassName}>
+          <button onClick={handleClick}>
+            <div className="icon">{isOpen ? closeIcon : icon}</div>
+            <div className="description">{description}</div>
+          </button>
+        </div>
+      </Badge>
+      {/* {menu?.map((item, i) => (
+        <div className={classNames(rootClassName, { 'hidden-menu': menu, open: isOpen })}>
+          <button className={classNames('hidden-button')} onClick={item.callback} key={i}>
+            <div className="icon">{item.icon}</div>
+            <div className="description">{item.description}</div>
+          </button>
+        </div>
+      ))}
       <div className={rootClassName}>
-        <button className="floating-action-button" onClick={handleClick}>
+        <button onClick={handleClick}>
           <div className="icon">{isOpen ? closeIcon : icon}</div>
           <div className="description">{description}</div>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 });

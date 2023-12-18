@@ -1,20 +1,44 @@
 .floating-action-button-wrapper {
   @apply block fixed z-100;
 
+  .base-badge-area {
+    @apply invisible;
+
+    &:last-child {
+      @apply visible;
+    }
+  }
+
   &.open {
-    @apply flex flex-col gap-y-2 transition delay-1000 duration-1000 ease-in-out;
+    @apply flex flex-col;
+
+    .base-badge-area {
+      @apply visible;
+    }
   }
 }
 
 .floating-action-button {
   @apply flex justify-center items-center;
 
+  &.hidden-menu {
+    @apply invisible opacity-0 pointer-events-none;
+
+    &:hover {
+      @apply opacity-0;
+    }
+
+    &.open {
+      @apply visible transition-opacity ease-in duration-300 opacity-100;
+    }
+  }
+
   &:hover {
     @apply opacity-70;
   }
 
   &-circle {
-    @apply border rounded-full w-30pxr h-30pxr;
+    @apply border rounded-full w-40pxr h-40pxr;
   }
 
   &-square {

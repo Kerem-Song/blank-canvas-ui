@@ -15,6 +15,7 @@ import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGrou
 import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
 import IcImg from '@icons/ic_img.svg?react';
 import IcImg2 from '@icons/ic_search.svg?react';
+import { offset } from '@popperjs/core';
 
 function App() {
   const option: IRadioOption[] = [
