@@ -165,11 +165,12 @@ export const FloatingActionButton = forwardRef<
 
   const handleClick = () => {
     console.log('@handle click');
-    menu && setIsOpen(!isOpen);
-    callback();
+    if (trigger === 'click') {
+      menu && setIsOpen(!isOpen);
+      callback();
+    }
   };
-  console.log('@close', closeIcon);
-  console.log('@is open', isOpen);
+
   return (
     <div
       className={classNames('floating-action-button-wrapper', {
@@ -177,6 +178,10 @@ export const FloatingActionButton = forwardRef<
         'badge-counter': useBadge,
       })}
       style={{ right: `${right}px`, bottom: `${bottom}px` }}
+      onMouseLeave={(e) => {
+        e.stopPropagation();
+        trigger === 'hover' && menu && setIsOpen(false);
+      }}
     >
       {menu?.map((item, i) => (
         <Badge
@@ -212,14 +217,9 @@ export const FloatingActionButton = forwardRef<
       >
         <div
           className={rootClassName}
-          onMouseOver={(e) => {
+          onMouseEnter={(e) => {
             e.stopPropagation();
-            // handleClick();
-            console.log('@@@');
-          }}
-          onMouseOut={(e) => {
-            e.stopPropagation();
-            console.log('@@!');
+            trigger === 'hover' && menu && setIsOpen(true);
           }}
         >
           <button onClick={handleClick}>

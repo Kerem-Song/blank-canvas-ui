@@ -86,6 +86,7 @@ function App() {
         menu={menu}
         closeIcon={<IcImg3 />}
         useBadge={true}
+        trigger="click"
       />
     </>
   );
