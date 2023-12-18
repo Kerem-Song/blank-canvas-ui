@@ -19,5 +19,6 @@ export {
   Tooltip,
 } from '@components';
 export * from '@components/general/button';
+export * from '@components/general/FloatingActionButton';
 export * from '@components/navigation/link';
 export * from '@components/navigation/pagination';

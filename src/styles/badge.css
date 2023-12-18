@@ -1,5 +1,5 @@
 .base-badge-area {
-  @apply inline-block relative m-10pxr;
+  @apply block relative m-10pxr;
 }
 
 .base-badge {

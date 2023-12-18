@@ -1,4 +1,5 @@
 import { IUploadProps, Upload } from '@components';
+import IcImg2 from '@icons/ic_img.svg';
 import IcImg from '@icons/ic_img.svg?react';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -10,6 +11,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '파일 업로드 입력',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 
@@ -26,6 +32,7 @@ export const Default: Story = {
     fileFormat: ['image/png'],
     fileSize: 3 * 1024 * 1024,
     shape: 'button',
+    prefixText: 'File Upload',
   },
 };
 
@@ -99,5 +106,6 @@ export const DragAndDropUpload: Story = {
       alert('파일 업로드 실패');
     },
     setValue: () => {},
+    multiple: true,
   },
 };

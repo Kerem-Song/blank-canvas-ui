@@ -7,6 +7,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '텍스트 입력',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 
