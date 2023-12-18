@@ -85,6 +85,7 @@ function App() {
         bottom={50}
         menu={menu}
         closeIcon={<IcImg3 />}
+        useBadge={true}
       />
     </>
   );

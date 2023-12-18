@@ -134,6 +134,7 @@ export const FloatingActionButton = forwardRef<
     menu,
     children,
     badge,
+    useBadge,
     callback,
     onOpenChange,
     ...buttonProps
@@ -171,7 +172,10 @@ export const FloatingActionButton = forwardRef<
   console.log('@is open', isOpen);
   return (
     <div
-      className={classNames('floating-action-button-wrapper', { open: isOpen })}
+      className={classNames('floating-action-button-wrapper', {
+        open: isOpen,
+        'badge-counter': useBadge,
+      })}
       style={{ right: `${right}px`, bottom: `${bottom}px` }}
     >
       {menu?.map((item, i) => (
@@ -206,27 +210,24 @@ export const FloatingActionButton = forwardRef<
         showZero={badge?.showZero}
         offset={[5, 10]}
       >
-        <div className={rootClassName}>
+        <div
+          className={rootClassName}
+          onMouseOver={(e) => {
+            e.stopPropagation();
+            // handleClick();
+            console.log('@@@');
+          }}
+          onMouseOut={(e) => {
+            e.stopPropagation();
+            console.log('@@!');
+          }}
+        >
           <button onClick={handleClick}>
             <div className="icon">{isOpen ? closeIcon : icon}</div>
             <div className="description">{description}</div>
           </button>
         </div>
       </Badge>
-      {/* {menu?.map((item, i) => (
-        <div className={classNames(rootClassName, { 'hidden-menu': menu, open: isOpen })}>
-          <button className={classNames('hidden-button')} onClick={item.callback} key={i}>
-            <div className="icon">{item.icon}</div>
-            <div className="description">{item.description}</div>
-          </button>
-        </div>
-      ))}
-      <div className={rootClassName}>
-        <button onClick={handleClick}>
-          <div className="icon">{isOpen ? closeIcon : icon}</div>
-          <div className="description">{description}</div>
-        </button>
-      </div> */}
     </div>
   );
 });

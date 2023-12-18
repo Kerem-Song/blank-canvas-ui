@@ -6,14 +6,36 @@
 
     &:last-child {
       @apply visible;
+
+      .base-badge {
+        @apply invisible;
+      }
     }
   }
 
   &.open {
-    /* @apply flex flex-col; */
-
     .base-badge-area {
       @apply visible;
+
+      .base-badge {
+        @apply invisible;
+      }
+    }
+  }
+
+  &.badge-counter {
+    .base-badge-area {
+      &:last-child {
+        .base-badge {
+          @apply visible;
+        }
+      }
+    }
+
+    &.open {
+      .base-badge {
+        @apply visible;
+      }
     }
   }
 }
