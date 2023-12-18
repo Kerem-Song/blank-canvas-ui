@@ -71,12 +71,14 @@ export const Group: Story = {
         callback: () => {
           console.log('@1');
         },
+        tooltip: 'test1',
       },
       {
         icon: <IcImg2 />,
         callback: () => {
           console.log('@2');
         },
+        tooltip: 'test2',
       },
       {
         icon: <IcImg2 />,
@@ -86,5 +88,7 @@ export const Group: Story = {
       },
     ],
     closeIcon: <IcImg3 />,
+    trigger: 'click',
+    useBadge: true,
   },
 };
