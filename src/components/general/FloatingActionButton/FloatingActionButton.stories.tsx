@@ -6,7 +6,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { FloatingActionButton, IFloatingActionButtonProps } from './FloatingActionButton';
 
 const meta: Meta = {
-  title: 'components/general/FloatingActionButton/FloatingActionButton',
+  title: 'components/general/FloatingActionButton',
   component: FloatingActionButton,
   tags: ['autodocs'],
   parameters: {

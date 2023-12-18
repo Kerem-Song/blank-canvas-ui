@@ -2,7 +2,7 @@
   @apply block fixed z-100;
 
   .base-badge-area {
-    @apply block invisible;
+    @apply invisible;
 
     &:last-child {
       @apply visible;
@@ -42,6 +42,6 @@
   }
 
   &-square {
-    @apply border rounded-lg w-30pxr h-30pxr;
+    @apply border rounded-lg w-40pxr h-40pxr;
   }
 }
