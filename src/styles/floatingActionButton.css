@@ -2,7 +2,7 @@
   @apply block fixed z-100;
 
   .base-badge-area {
-    @apply invisible;
+    @apply block invisible;
 
     &:last-child {
       @apply visible;
@@ -10,7 +10,7 @@
   }
 
   &.open {
-    @apply flex flex-col;
+    /* @apply flex flex-col; */
 
     .base-badge-area {
       @apply visible;
