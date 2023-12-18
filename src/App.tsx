@@ -30,12 +30,14 @@ function App() {
       callback: () => {
         console.log('@1');
       },
+      tooltip: 'test1',
     },
     {
       icon: <IcImg2 />,
       callback: () => {
         console.log('@2');
       },
+      tooltip: 'test2',
     },
     {
       icon: <IcImg2 />,

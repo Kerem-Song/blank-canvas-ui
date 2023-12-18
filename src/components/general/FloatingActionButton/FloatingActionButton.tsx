@@ -1,7 +1,7 @@
-import { Badge, IBadgeProps } from '@components';
+import { Badge, IBadgeProps, Tooltip } from '@components';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import { AnchorHTMLAttributes, forwardRef, useState } from 'react';
+import { AnchorHTMLAttributes, forwardRef, useRef, useState } from 'react';
 
 import { floatingActionButtonClasses } from './FloatingActionButtonClasses';
 export type RenderFunction = () => React.ReactNode;
@@ -72,7 +72,7 @@ export interface IFloatingActionButtonProps
   /**
    * 플로팅버튼에 호버시 노출되는 툴팁
    */
-  tooltip?: React.ReactNode | RenderFunction;
+  tooltip?: string;
 
   /**
    * 뱃지 사용 여부
@@ -121,6 +121,7 @@ export const FloatingActionButton = forwardRef<
   IFloatingActionButtonProps
 >((args, ref) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const floatingAtionButtonRef = useRef<HTMLDivElement>(null);
   const {
     className,
     prefix,
@@ -135,6 +136,7 @@ export const FloatingActionButton = forwardRef<
     children,
     badge,
     useBadge,
+    tooltip,
     callback,
     onOpenChange,
     ...buttonProps
@@ -193,18 +195,20 @@ export const FloatingActionButton = forwardRef<
           showZero={item.badge?.showZero}
           offset={[5, 10]}
         >
-          <div
-            className={classNames(rootClassName, { 'hidden-menu': menu, open: isOpen })}
-          >
-            <button
-              className={classNames('hidden-button')}
-              onClick={item.callback}
-              key={i}
+          <Tooltip text={item.tooltip ?? ''} disable={!item.tooltip}>
+            <div
+              className={classNames(rootClassName, { 'hidden-menu': menu, open: isOpen })}
             >
-              <div className="icon">{item.icon}</div>
-              <div className="description">{item.description}</div>
-            </button>
-          </div>
+              <button
+                className={classNames('hidden-button')}
+                onClick={item.callback}
+                key={i}
+              >
+                <div className="icon">{item.icon}</div>
+                <div className="description">{item.description}</div>
+              </button>
+            </div>
+          </Tooltip>
         </Badge>
       ))}
       <Badge
@@ -215,18 +219,20 @@ export const FloatingActionButton = forwardRef<
         showZero={badge?.showZero}
         offset={[5, 10]}
       >
-        <div
-          className={rootClassName}
-          onMouseEnter={(e) => {
-            e.stopPropagation();
-            trigger === 'hover' && menu && setIsOpen(true);
-          }}
-        >
-          <button onClick={handleClick}>
-            <div className="icon">{isOpen ? closeIcon : icon}</div>
-            <div className="description">{description}</div>
-          </button>
-        </div>
+        <Tooltip text={tooltip ?? ''} disable={!tooltip}>
+          <div
+            className={rootClassName}
+            onMouseEnter={(e) => {
+              e.stopPropagation();
+              trigger === 'hover' && menu && setIsOpen(true);
+            }}
+          >
+            <button onClick={handleClick}>
+              <div className="icon">{isOpen ? closeIcon : icon}</div>
+              <div className="description">{description}</div>
+            </button>
+          </div>
+        </Tooltip>
       </Badge>
     </div>
   );
