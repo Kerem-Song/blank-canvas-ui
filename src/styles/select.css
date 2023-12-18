@@ -1,0 +1,18 @@
+.select-item-hover {
+  @apply bg-neutral-100;
+}
+.selected-item {
+  @apply bg-blue-100 font-bold;
+}
+.select-bordered-none {
+  @apply border-none;
+}
+.select-bordered {
+  @apply border-solid border-[1px];
+}
+.select-overflow {
+  @apply overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];
+  input {
+    @apply w-full;
+  }
+}

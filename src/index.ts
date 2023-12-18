@@ -11,15 +11,13 @@ export {
   Radio,
   RadioGroup,
   Row,
+  Select,
   Switch,
   Tag,
   Textarea,
   TextAreaWithTitleCounter,
+  Tooltip,
 } from '@components';
-export * from '@components/data-display/avatar';
-export * from '@components/data-entry/checkbox';
-export * from '@components/data-entry/rating';
-export * from '@components/data-entry/Upload';
 export * from '@components/general/button';
 export * from '@components/general/FloatingActionButton';
 export * from '@components/navigation/link';
