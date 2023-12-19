@@ -68,7 +68,7 @@ export const Flex = ({
             : 'flex-col'
           : reverse
             ? 'flex-row-reverse'
-            : 'felx-row',
+            : 'flex-row',
       )}
       style={{
         ...style,

@@ -41,6 +41,7 @@ export const Default: Story = {
             mouseLeaveDelay={args.mouseLeaveDelay}
             open={args.open}
             text={args.text}
+            tooltipWidth={args.tooltipWidth}
           >
             <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda
@@ -63,6 +64,7 @@ export const Default: Story = {
     disable: false,
     strategy: 'fixed',
     mouseEnterDelay: 2,
+    tooltipWidth: 150,
     open: true,
     mouseLeaveDelay: 2,
   },
