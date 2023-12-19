@@ -10,7 +10,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * tooltip에 표시할 내용
    * @default
-   * @type string
+   * @type React.ReactNode
    */
   text: React.ReactNode;
   /**
@@ -75,7 +75,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   /**
    * 툴팁의 크기 지정 px 기준
-   * @default
+   * @default 250px
    * @type number | string;
    */
   tooltipWidth?: number | string;
@@ -175,7 +175,7 @@ export const Tooltip = ({
           className={classNames('tooltip-base')}
           style={{
             ...styles.popper,
-            width: width,
+            maxWidth: width,
             visibility:
               open === undefined
                 ? defaultShow || isShow
