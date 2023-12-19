@@ -43,6 +43,7 @@ export const Row = ({
   align,
   children,
   style,
+  className,
   ...props
 }: IRowProps) => {
   const rowValue = Array.isArray(gutter) ? gutter[1] : gutter ? gutter : 0;
@@ -59,7 +60,7 @@ export const Row = ({
   return (
     <div
       {...props}
-      className={classNames('box-border', 'flex')}
+      className={classNames('box-border', 'flex', className)}
       style={{
         ...style,
         flexWrap: wrap,

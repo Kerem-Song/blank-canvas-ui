@@ -17,11 +17,20 @@ export interface IDividerProps extends React.HTMLAttributes<HTMLElement> {
   borderStyle?: React.CSSProperties['borderStyle'];
 }
 
-export const Divider = ({ type, borderStyle, style, ...props }: IDividerProps) => {
+export const Divider = ({
+  type,
+  borderStyle,
+  style,
+  className,
+  ...props
+}: IDividerProps) => {
   return (
     <div
       {...props}
-      className={classNames(type === 'vertical' ? 'divider-vertical' : 'divider')}
+      className={classNames(
+        type === 'vertical' ? 'divider-vertical' : 'divider',
+        className,
+      )}
       style={{ ...style, borderStyle: borderStyle }}
     ></div>
   );

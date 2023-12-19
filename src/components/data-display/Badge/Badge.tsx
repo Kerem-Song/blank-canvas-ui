@@ -40,7 +40,7 @@ export interface IBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * component를 전달
    */
-  children: React.ReactNode | React.ReactNode[];
+  children?: React.ReactNode | React.ReactNode[];
 }
 
 export const Badge = ({
@@ -52,6 +52,7 @@ export const Badge = ({
   showZero,
   children,
   style,
+  className,
   ...props
 }: IBadgeProps) => {
   const division = Number.isNaN(count)
@@ -66,7 +67,7 @@ export const Badge = ({
       {children}
       {dot ? (
         <span
-          className={classNames('base-dot-badge')}
+          className={classNames('base-dot-badge', className)}
           style={{
             ...style,
             right: offset !== undefined ? -offset[0] : -1,
@@ -76,7 +77,7 @@ export const Badge = ({
         ></span>
       ) : (
         <span
-          className={classNames('base-badge', `-right-[${division}]`)}
+          className={classNames('base-badge', `-right-[${division}]`, className)}
           style={{
             ...style,
             right: offset !== undefined ? -offset[0] : -digit,
