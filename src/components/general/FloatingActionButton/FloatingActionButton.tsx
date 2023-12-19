@@ -195,7 +195,7 @@ export const FloatingActionButton = forwardRef<
           showZero={item.badge?.showZero}
           offset={[5, 10]}
         >
-          <Tooltip text={item.tooltip ?? ''} disable={!item.tooltip}>
+          <Tooltip text={item.tooltip ?? ''} disable={!item.tooltip} placement="left">
             <div
               className={classNames(rootClassName, { 'hidden-menu': menu, open: isOpen })}
             >
@@ -219,7 +219,7 @@ export const FloatingActionButton = forwardRef<
         showZero={badge?.showZero}
         offset={[5, 10]}
       >
-        <Tooltip text={tooltip ?? ''} disable={!tooltip}>
+        <Tooltip text={tooltip ?? ''} disable={!tooltip} placement="left">
           <div
             className={rootClassName}
             onMouseEnter={(e) => {
