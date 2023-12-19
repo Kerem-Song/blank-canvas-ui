@@ -5,6 +5,7 @@ import {
   FloatingActionButton,
   IFloatingActionMenuProps,
   Input,
+  Modal,
   Radio,
   Switch,
   Textarea,
@@ -16,8 +17,10 @@ import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
 import IcImg from '@icons/ic_img.svg?react';
 import IcImg2 from '@icons/ic_search.svg?react';
 import { offset } from '@popperjs/core';
+import { useState } from 'react';
 
 function App() {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const option: IRadioOption[] = [
     { label: '1', value: '1' },
     { label: '2', value: 2 },
@@ -89,6 +92,19 @@ function App() {
         closeIcon={<IcImg3 />}
         useBadge={true}
         trigger="click"
+      />
+      <button onClick={() => setModalOpen(!modalOpen)}>모달테스트</button>
+      <Modal
+        isOpen={modalOpen}
+        message={'모달테스트'}
+        description={'상세 설명입니다 진행하시겠습니까?'}
+        overalyClassName="modalOverlay"
+        confirmButton="확인"
+        callbackFunc={() => {
+          console.log('@모달 확인');
+        }}
+        cancelButton="취소"
+        customButton="커스텀"
       />
     </>
   );

@@ -1,0 +1,31 @@
+.modal {
+  @apply w-600pxr h-fit m-auto mt-300pxr p-0 bg-white border rounded-md;
+
+  &-sm {
+    @apply w-400pxr h-192pxr;
+  }
+
+  .title {
+    @apply px-20pxr py-14pxr;
+  }
+
+  .content {
+    @apply p-20pxr;
+  }
+
+  &-button-row {
+    /* @apply pt-0 px-20pxr pb-20pxr gap-8pxr; */
+  }
+
+  .cancelBtn {
+    @apply border border-gray-200;
+  }
+
+  .customBtn {
+    @apply border border-gray-200;
+  }
+}
+
+.modalOverlay {
+  @apply flex fixed inset-0 bg-black bg-opacity-50 z-999;
+}
