@@ -166,7 +166,7 @@ export const Tooltip = ({
       >
         {children}
       </div>
-      {width}
+
       {ReactDOM.createPortal(
         <div
           id="tooltip"
