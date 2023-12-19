@@ -1,8 +1,20 @@
 .modal {
-  @apply w-600pxr h-fit m-auto mt-300pxr p-0 bg-white border rounded-md;
+  @apply h-fit m-auto mt-300pxr p-0 bg-white border rounded-md;
 
   &-sm {
-    @apply w-400pxr h-192pxr;
+    @apply w-400pxr;
+  }
+
+  &-md {
+    @apply w-510pxr;
+  }
+
+  &-lg {
+    @apply w-600pxr;
+  }
+
+  &-xl {
+    @apply w-1112pxr;
   }
 
   .title {
@@ -13,8 +25,8 @@
     @apply p-20pxr;
   }
 
-  &-button-row {
-    /* @apply pt-0 px-20pxr pb-20pxr gap-8pxr; */
+  .children {
+    @apply p-20pxr;
   }
 
   .cancelBtn {
