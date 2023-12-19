@@ -12,7 +12,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default
    * @type string
    */
-  text: string;
+  text: React.ReactNode;
   /**
    * tooltip 표시 위치 지정
    * @default 'right'
@@ -74,6 +74,12 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   open?: boolean;
   /**
+   * 툴팁의 크기 지정 px 기준
+   * @default
+   * @type number | string;
+   */
+  tooltipWidth?: number | string;
+  /**
    * component를 전달
    */
   children?: React.ReactNode | React.ReactNode[];
@@ -90,9 +96,15 @@ export const Tooltip = ({
   strategy = 'fixed',
   mouseEnterDelay,
   mouseLeaveDelay,
+  tooltipWidth,
   open,
   children,
 }: ITooltipProps) => {
+  const width = tooltipWidth
+    ? typeof tooltipWidth === 'string'
+      ? `${tooltipWidth.replace(/[^0-9]/g, '')}px`
+      : `${tooltipWidth}px`
+    : '250px';
   const referenceElement = useRef<HTMLDivElement>(null);
   const popperElement = useRef<HTMLDivElement>(null);
   const arrowElement = useRef<HTMLDivElement>(null);
@@ -154,6 +166,7 @@ export const Tooltip = ({
       >
         {children}
       </div>
+      {width}
       {ReactDOM.createPortal(
         <div
           id="tooltip"
@@ -162,6 +175,7 @@ export const Tooltip = ({
           className={classNames('tooltip-base')}
           style={{
             ...styles.popper,
+            width: width,
             visibility:
               open === undefined
                 ? defaultShow || isShow
