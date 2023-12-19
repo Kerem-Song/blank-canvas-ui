@@ -14,11 +14,11 @@ import {
 } from '@components';
 import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGroup';
 import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
+import icImgTest from '@icons/ic_img.svg';
 import IcImg from '@icons/ic_img.svg?react';
 import IcImg2 from '@icons/ic_search.svg?react';
 import { offset } from '@popperjs/core';
 import { useState } from 'react';
-
 function App() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const option: IRadioOption[] = [
@@ -49,6 +49,21 @@ function App() {
       },
     },
   ];
+
+  const modalChild = (
+    <div className="contents">
+      {/* <ReactLoading type="spin" color="#4478FF" height={50} width={50} /> */}
+      <div className="title">
+        <span>title</span>
+      </div>
+      <div className="text">
+        <p>desc</p>
+      </div>
+      <input type="password" />
+      <IcImg2 />
+      <img src={icImgTest} alt="" />
+    </div>
+  );
 
   return (
     <>
@@ -105,6 +120,8 @@ function App() {
         }}
         cancelButton="취소"
         customButton="커스텀"
+        size="lg"
+        children={modalChild}
       />
     </>
   );

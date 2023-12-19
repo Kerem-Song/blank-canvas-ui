@@ -1,9 +1,14 @@
 import { Button, Divider, Flex, Row } from '@components';
-import { useEffect } from 'react';
+import { generatePrefixClasses } from '@modules/utils';
+import classNames from 'classnames';
+import { HTMLAttributes, useEffect } from 'react';
 import ReactModal from 'react-modal';
 
-export interface ISystemModalStatusType {
+import { modalClasses } from './ModalClasses';
+
+export interface ISystemModalStatusType extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
+  size: 'sm' | 'md' | 'lg' | 'xl';
   message?: React.ReactNode;
   description?: React.ReactNode;
   confirmButton?: string;
@@ -20,6 +25,24 @@ export interface ISystemModalStatusType {
 }
 
 export const Modal = (modalInfo: ISystemModalStatusType) => {
+  const { className, prefix, style, children, ...modalProps } = modalInfo;
+  const classes = generatePrefixClasses(
+    modalClasses,
+    `${prefix ? `${prefix}-` : ''}modal`,
+  );
+
+  const rootClassName = classNames(
+    classes.root,
+    {
+      // size
+      [classes.sizeSmall]: modalProps.size === 'sm',
+      [classes.sizeMedium]: modalProps.size === 'md',
+      [classes.sizeLarge]: modalProps.size === 'lg',
+      [classes.sizeXLarge]: modalProps.size === 'xl',
+    },
+    className,
+  );
+
   const handleClose = () => {
     modalInfo.closeFunc?.();
   };
@@ -40,7 +63,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
 
   return (
     <ReactModal
-      className={'modal'}
+      className={rootClassName}
       isOpen={modalInfo.isOpen}
       overlayClassName={modalInfo.overalyClassName}
       shouldCloseOnOverlayClick={modalInfo.shouldCloseOnOverlayClick}
@@ -57,6 +80,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
       </div>
       <Divider style={{ margin: 0 }} />
       <div className="content">{modalInfo.description}</div>
+      {children ? <div className="children">{modalInfo.children}</div> : null}
       <Flex justify="end" gap={8} style={{ padding: '0 20px 20px 20px' }}>
         {modalInfo.cancelButton ? (
           <Button className="cancelBtn" onClick={handleClose}>
