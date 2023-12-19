@@ -14,3 +14,7 @@ export const util = {
     input.dispatchEvent(ev2);
   },
 };
+
+export const pxToRem = (size: number) => {
+  return size / 16;
+};
