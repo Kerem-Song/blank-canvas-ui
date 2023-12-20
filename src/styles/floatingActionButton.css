@@ -19,7 +19,7 @@
   /* 메뉴 floating action button 사용시 open 상태*/
   &.open {
     .base-badge-area {
-      @apply visible;
+      @apply visible cursor-pointer;
 
       /* 뱃지 사용 활성화 하지 않은 경우 */
       .base-badge {
@@ -49,6 +49,7 @@
         @apply visible transition-opacity ease-in duration-500 opacity-100;
       }
 
+      /* 메뉴 오픈 상태일 때 처음 노출되는 버튼의 뱃지는 사라지도록 설정*/
       .base-badge-area:last-child {
         .base-badge {
           @apply invisible;
