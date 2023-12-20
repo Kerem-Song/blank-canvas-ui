@@ -1,4 +1,5 @@
 import { Button, Divider, Flex, Row } from '@components';
+import IcEsc from '@icons/ic_search_delete.svg?react';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { HTMLAttributes, useEffect } from 'react';
@@ -14,6 +15,7 @@ export interface ISystemModalStatusType extends HTMLAttributes<HTMLDivElement> {
   confirmButton?: string;
   cancelButton?: string;
   customButton?: string;
+  useEscButton?: boolean;
   overalyClassName: string;
   shouldCloseOnOverlayClick?: boolean;
   shouldCloseOnEsc?: boolean;
@@ -23,6 +25,8 @@ export interface ISystemModalStatusType extends HTMLAttributes<HTMLDivElement> {
   closeFunc?: () => void;
   customFunc?: () => void;
 }
+
+// ReactModal.setAppElement('#root');
 
 export const Modal = (modalInfo: ISystemModalStatusType) => {
   const { className, prefix, style, children, ...modalProps } = modalInfo;
@@ -78,13 +82,16 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
     >
       <div className="title">
         <h4>{modalInfo.message}</h4>
+        {modalInfo.useEscButton ? (
+          <Button variant="text" className="esc-btn" onClick={handleClose}></Button>
+        ) : null}
       </div>
       <Divider style={{ margin: 0 }} />
       <div className="content">{modalInfo.description}</div>
       {children ? <div className="children">{modalInfo.children}</div> : null}
       <Flex justify="end" gap={8} style={{ padding: '0 20px 20px 20px' }}>
         {modalInfo.cancelButton ? (
-          <Button className="cancelBtn" onClick={handleClose}>
+          <Button className="cancel-btn" onClick={handleClose}>
             {modalInfo.cancelButton}
           </Button>
         ) : (
@@ -92,7 +99,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
         )}
 
         <Button
-          className="confirmBtn"
+          className="confirm-btn"
           type="submit"
           variant="contained"
           color="primary"
@@ -102,7 +109,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
         </Button>
 
         {modalInfo.customButton ? (
-          <Button className="customBtn" onClick={handleCustom}>
+          <Button className="custom-btn" onClick={handleCustom}>
             {modalInfo.customButton}
           </Button>
         ) : null}

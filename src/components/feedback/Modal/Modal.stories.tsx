@@ -37,7 +37,7 @@ export const Default: Story = {
   args: {
     message: '모달테스트',
     description: '상세 설명입니다 진행하시겠습니까?',
-    overalyClassName: 'modalOverlay',
+    overalyClassName: 'modal-overlay',
     confirmButton: '확인',
     callbackFunc: () => {
       console.log('@모달 확인');
