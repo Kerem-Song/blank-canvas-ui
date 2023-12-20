@@ -173,6 +173,10 @@ export const FloatingActionButton = forwardRef<
     }
   };
 
+  const badgeCounter = menu?.reduce((sum, obj) => {
+    return sum + Number(obj.badge?.count);
+  }, 0);
+
   return (
     <div
       className={classNames('floating-action-button-wrapper', {
@@ -212,7 +216,7 @@ export const FloatingActionButton = forwardRef<
         </Badge>
       ))}
       <Badge
-        count={badge?.count}
+        count={badgeCounter}
         overflowCount={badge?.overflowCount}
         color={badge?.color}
         dot={badge?.dot}

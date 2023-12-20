@@ -72,6 +72,7 @@ export const Group: Story = {
           console.log('@1');
         },
         tooltip: 'test1',
+        badge: { count: 1 },
       },
       {
         icon: <IcImg2 />,
@@ -79,12 +80,14 @@ export const Group: Story = {
           console.log('@2');
         },
         tooltip: 'test2',
+        badge: { count: 2 },
       },
       {
         icon: <IcImg2 />,
         callback: () => {
           console.log('@3');
         },
+        badge: { count: 3 },
       },
     ],
     closeIcon: <IcImg3 />,

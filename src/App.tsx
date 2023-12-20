@@ -34,6 +34,7 @@ function App() {
         console.log('@1');
       },
       tooltip: 'test1',
+      badge: { count: 1 },
     },
     {
       icon: <IcImg2 />,
@@ -41,12 +42,14 @@ function App() {
         console.log('@2');
       },
       tooltip: 'test2',
+      badge: { count: 10 },
     },
     {
       icon: <IcImg2 />,
       callback: () => {
         console.log('@3');
       },
+      badge: { count: 2 },
     },
   ];
 

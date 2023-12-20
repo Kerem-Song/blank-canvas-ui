@@ -48,6 +48,12 @@
       .base-badge {
         @apply visible transition-opacity ease-in duration-500 opacity-100;
       }
+
+      .base-badge-area:last-child {
+        .base-badge {
+          @apply invisible;
+        }
+      }
     }
   }
 }
