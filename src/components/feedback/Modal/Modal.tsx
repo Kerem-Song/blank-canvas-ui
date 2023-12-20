@@ -63,6 +63,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
 
   return (
     <ReactModal
+      appElement={document.body}
       className={rootClassName}
       isOpen={modalInfo.isOpen}
       overlayClassName={modalInfo.overalyClassName}

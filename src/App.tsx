@@ -117,11 +117,15 @@ function App() {
         confirmButton="확인"
         callbackFunc={() => {
           console.log('@모달 확인');
+          setModalOpen(false);
         }}
+        closeFunc={() => setModalOpen(false)}
+        customFunc={() => setModalOpen(false)}
         cancelButton="취소"
         customButton="커스텀"
         size="lg"
         children={modalChild}
+        shouldCloseOnEsc={true}
       />
     </>
   );

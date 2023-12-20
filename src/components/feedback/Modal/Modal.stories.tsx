@@ -1,3 +1,4 @@
+import { Button } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
@@ -20,8 +21,16 @@ export const Default: Story = {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
       <>
-        <button onClick={() => setIsOpen(!isOpen)}>Modal test button</button>
-        <Modal {...args} isOpen={isOpen}></Modal>
+        <Button onClick={() => setIsOpen(!isOpen)}>Modal test button</Button>
+        <Modal
+          {...args}
+          isOpen={isOpen}
+          shouldCloseOnEsc={true}
+          tabIndex={-1}
+          callbackFunc={() => setIsOpen(false)}
+          closeFunc={() => setIsOpen(false)}
+          customFunc={() => setIsOpen(false)}
+        ></Modal>
       </>
     );
   },
@@ -33,7 +42,14 @@ export const Default: Story = {
     callbackFunc: () => {
       console.log('@모달 확인');
     },
+    closeFunc: () => {
+      console.log('@모달 취소');
+    },
+    customFunc: () => {
+      console.log('@커스텀');
+    },
     cancelButton: '취소',
     customButton: '커스텀',
+    shouldCloseOnEsc: true,
   },
 };
