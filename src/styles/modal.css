@@ -20,12 +20,12 @@
   .title {
     @apply flex justify-between items-center px-20pxr py-14pxr font-bold;
 
-    button {
-      @apply bg-center bg-no-repeat bg-[url('@icons/ic_search_delete.svg')];
-    }
+    .esc-btn {
+      @apply w-10pxr h-10pxr bg-center bg-no-repeat bg-[url('@icons/ic_search_delete.svg')];
 
-    button:hover {
-      @apply bg-transparent bg-[url('@icons/ic_search_delete_active.svg')];
+      &:hover {
+        @apply bg-transparent bg-[url('@icons/ic_search_delete_active.svg')];
+      }
     }
   }
 

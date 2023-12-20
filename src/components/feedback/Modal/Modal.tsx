@@ -83,7 +83,12 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
       <div className="title">
         <h4>{modalInfo.message}</h4>
         {modalInfo.useEscButton ? (
-          <Button variant="text" className="esc-btn" onClick={handleClose}></Button>
+          <Button
+            variant="text"
+            className="esc-btn"
+            onClick={handleClose}
+            baseButton={true}
+          />
         ) : null}
       </div>
       <Divider style={{ margin: 0 }} />
