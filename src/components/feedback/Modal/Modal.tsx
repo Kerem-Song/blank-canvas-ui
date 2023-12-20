@@ -7,28 +7,87 @@ import ReactModal from 'react-modal';
 
 import { modalClasses } from './ModalClasses';
 
-export interface ISystemModalStatusType extends HTMLAttributes<HTMLDivElement> {
+export interface IModalProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * 모달 오픈 여부
+   */
   isOpen: boolean;
+
+  /**
+   * 모달의 사이즈
+   * @type 'sm' | 'md' | 'lg' | 'xl'
+   */
   size: 'sm' | 'md' | 'lg' | 'xl';
+
+  /**
+   * 모달의 제목 또는 header 메시지
+   */
   message?: React.ReactNode;
+
+  /**
+   * 모달의 상세 메시지
+   */
   description?: React.ReactNode;
+
+  /**
+   * 확인 버튼 문구
+   */
   confirmButton?: string;
+
+  /**
+   * 취소 버튼 문구
+   */
   cancelButton?: string;
+
+  /**
+   * 커스텀 버튼 문구
+   */
   customButton?: string;
+
+  /**
+   * message(제목이나 header 메시지) 위치의 오른쪽 영역 esc(x 모양버튼) 버튼 사용 유무
+   */
   useEscButton?: boolean;
+
+  /**
+   * overlay영역 class name
+   */
   overalyClassName: string;
+
+  /**
+   * overlay영역 클릭 시 모달의 닫힘 여부
+   */
   shouldCloseOnOverlayClick?: boolean;
+
+  /**
+   * 키보드 esc 누를 시 모달의 닫힘 여부
+   */
   shouldCloseOnEsc?: boolean;
+
+  /**
+   * 모달이 열린 후 실행되어야 할 함수
+   */
   onAfterOpen?: () => void;
-  callbackFunc?: () => void;
+
+  /**
+   * 확인 버튼을 누를 때 실행되는 함수
+   */
+  confirmFunc?: () => void;
+
+  /**
+   * 취소 버튼을 누를 때 실행되는 함수
+   */
   cancelFunc?: () => void;
-  closeFunc?: () => void;
+
+  /**
+   * 커스텀 버튼 누를 때 실행되는 함수
+   */
   customFunc?: () => void;
 }
 
 // ReactModal.setAppElement('#root');
 
-export const Modal = (modalInfo: ISystemModalStatusType) => {
+export const Modal = (modalInfo: IModalProps) => {
   const { className, prefix, style, children, ...modalProps } = modalInfo;
   const classes = generatePrefixClasses(
     modalClasses,
@@ -47,12 +106,12 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
     className,
   );
 
-  const handleClose = () => {
-    modalInfo.closeFunc?.();
+  const handleCancel = () => {
+    modalInfo.cancelFunc?.();
   };
 
   const handleConfirm = () => {
-    modalInfo.callbackFunc?.();
+    modalInfo.confirmFunc?.();
   };
 
   const handleCustom = () => {
@@ -61,7 +120,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
 
   useEffect(() => {
     return () => {
-      handleClose();
+      handleCancel();
     };
   }, []);
 
@@ -74,7 +133,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
       shouldCloseOnOverlayClick={modalInfo.shouldCloseOnOverlayClick}
       shouldCloseOnEsc={modalInfo.shouldCloseOnEsc}
       onRequestClose={() => {
-        modalInfo.closeFunc?.();
+        modalInfo.cancelFunc?.();
       }}
       onAfterOpen={() => {
         modalInfo.onAfterOpen?.();
@@ -86,7 +145,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
           <Button
             variant="text"
             className="esc-btn"
-            onClick={handleClose}
+            onClick={handleCancel}
             baseButton={true}
           />
         ) : null}
@@ -96,7 +155,7 @@ export const Modal = (modalInfo: ISystemModalStatusType) => {
       {children ? <div className="children">{modalInfo.children}</div> : null}
       <Flex justify="end" gap={8} style={{ padding: '0 20px 20px 20px' }}>
         {modalInfo.cancelButton ? (
-          <Button className="cancel-btn" onClick={handleClose}>
+          <Button className="cancel-btn" onClick={handleCancel}>
             {modalInfo.cancelButton}
           </Button>
         ) : (

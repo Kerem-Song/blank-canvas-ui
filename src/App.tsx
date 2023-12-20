@@ -115,11 +115,11 @@ function App() {
         description={'상세 설명입니다 진행하시겠습니까?'}
         overalyClassName="modal-overlay"
         confirmButton="확인"
-        callbackFunc={() => {
+        confirmFunc={() => {
           console.log('@모달 확인');
           setModalOpen(false);
         }}
-        closeFunc={() => setModalOpen(false)}
+        cancelFunc={() => setModalOpen(false)}
         customFunc={() => setModalOpen(false)}
         cancelButton="취소"
         customButton="커스텀"
