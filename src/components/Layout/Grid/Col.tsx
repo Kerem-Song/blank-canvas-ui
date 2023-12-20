@@ -36,6 +36,7 @@ export const Col = ({
   children,
   style,
   paddingValue,
+  className,
   ...props
 }: IColProps) => {
   const basis = span && span > 0 ? (span * 100) / 24 : 0;
@@ -53,7 +54,7 @@ export const Col = ({
   return (
     <div
       {...props}
-      className={classNames(props.className)}
+      className={classNames(className)}
       style={{
         display: span === 0 ? 'none' : 'block',
         maxWidth: maxWidth,

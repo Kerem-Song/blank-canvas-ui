@@ -42,6 +42,8 @@ export const Default: Story = {
             open={args.open}
             text={args.text}
             tooltipWidth={args.tooltipWidth}
+            arrowClassName={args.arrowClassName}
+            tooltipClassName={args.tooltipClassName}
           >
             <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda
@@ -67,5 +69,7 @@ export const Default: Story = {
     tooltipWidth: 150,
     open: true,
     mouseLeaveDelay: 2,
+    tooltipClassName: 'tooltipClass',
+    arrowClassName: 'arrowClass',
   },
 };

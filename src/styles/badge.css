@@ -3,9 +3,9 @@
 }
 
 .base-badge {
-  @apply bg-rose-500 absolute text-10pxr px-5pxr text-white rounded-full -top-3 shadow-[0_0_0_1px_rgb(255,252,252)] min-w-[15px] min-h-[15px];
+  @apply bg-rose-500 absolute text-white rounded-full -top-3 shadow-[0_0_0_1px_rgb(255,252,252)] min-w-[15px] min-h-[15px];
 }
 
 .base-dot-badge {
-  @apply bg-rose-500 w-3pxr h-3pxr shadow-[0_0_0_0.5px_rgb(255,255,255)] rounded-full -top-px absolute;
+  @apply bg-rose-500 shadow-[0_0_0_0.5px_rgb(255,255,255)] rounded-full -top-[3px] absolute;
 }

@@ -55,6 +55,7 @@ export const Card = ({
   bordered = true,
   children,
   style,
+  className,
   ...props
 }: ICardProps) => {
   return (
@@ -64,6 +65,7 @@ export const Card = ({
         'card',
         { 'card-rounded': rounded },
         bordered ? 'card-border' : 'card-none-border',
+        className,
       )}
     >
       <div
