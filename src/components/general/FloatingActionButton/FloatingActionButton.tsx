@@ -217,7 +217,7 @@ export const FloatingActionButton = forwardRef<
         color={badge?.color}
         dot={badge?.dot}
         showZero={badge?.showZero}
-        offset={[5, 10]}
+        offset={[3, 10]}
       >
         <Tooltip text={tooltip ?? ''} disable={!tooltip} placement="left">
           <div
