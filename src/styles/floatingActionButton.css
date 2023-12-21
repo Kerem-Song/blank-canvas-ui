@@ -85,4 +85,8 @@
   &-square {
     @apply border rounded-lg w-40pxr h-40pxr;
   }
+
+  .icon {
+    @apply w-20pxr h-20pxr bg-center bg-no-repeat;
+  }
 }

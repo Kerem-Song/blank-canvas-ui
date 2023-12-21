@@ -17,6 +17,7 @@ import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg from '@icons/ic_img.svg?react';
 import IcImg2 from '@icons/ic_search.svg?react';
+import icImgTest2 from '@icons/ic_search_delete.svg';
 import { offset } from '@popperjs/core';
 import { useState } from 'react';
 function App() {
@@ -29,7 +30,7 @@ function App() {
 
   const menu: IFloatingActionMenuProps[] = [
     {
-      icon: <IcImg2 />,
+      icon: icImgTest,
       callback: () => {
         console.log('@1');
       },
@@ -37,7 +38,7 @@ function App() {
       badge: { count: 1 },
     },
     {
-      icon: <IcImg2 />,
+      icon: icImgTest,
       callback: () => {
         console.log('@2');
       },
@@ -45,7 +46,7 @@ function App() {
       badge: { count: 10 },
     },
     {
-      icon: <IcImg2 />,
+      icon: icImgTest,
       callback: () => {
         console.log('@3');
       },
@@ -103,11 +104,11 @@ function App() {
       <FloatingActionButton
         callback={() => {}}
         shape="circle"
-        icon={<IcImg />}
+        icon={icImgTest}
         right={30}
         bottom={50}
         menu={menu}
-        closeIcon={<IcImg3 />}
+        closeIcon={icImgTest2}
         useBadge={true}
         trigger="click"
       />

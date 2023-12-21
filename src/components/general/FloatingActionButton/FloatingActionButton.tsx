@@ -1,4 +1,5 @@
 import { Badge, IBadgeProps, Tooltip } from '@components';
+import { useOutsideClick } from '@hooks';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { AnchorHTMLAttributes, forwardRef, useRef, useState } from 'react';
@@ -52,7 +53,7 @@ export interface IFloatingActionButtonProps
   /**
    * 플로팅 버튼에 들어가는 아이콘
    */
-  icon: React.ReactNode;
+  icon: string;
 
   /**
    * 플로팅버튼 아이콘 밑에 들어가는 텍스트
@@ -102,7 +103,7 @@ export interface IFloatingActionButtonProps
   /**
    * 플로팅 버튼이 그룹 메뉴 형태일 때 메뉴를 닫고 버튼 하나로 변경하기 위한 아이콘
    */
-  closeIcon?: React.ReactNode;
+  closeIcon?: string;
 
   /**
    * 플로팅 버튼 클릭 시 실행되는 함수
@@ -177,6 +178,11 @@ export const FloatingActionButton = forwardRef<
     return sum + Number(obj.badge?.count);
   }, 0);
 
+  useOutsideClick(floatingAtionButtonRef, () => {
+    setIsOpen(false);
+  });
+
+  console.log('@icons', closeIcon, icon);
   return (
     <div
       className={classNames('floating-action-button-wrapper', {
@@ -188,6 +194,7 @@ export const FloatingActionButton = forwardRef<
         e.stopPropagation();
         trigger === 'hover' && menu && setIsOpen(false);
       }}
+      ref={floatingAtionButtonRef}
     >
       {menu?.map((item, i) => (
         <Badge
@@ -208,7 +215,7 @@ export const FloatingActionButton = forwardRef<
                 onClick={item.callback}
                 key={i}
               >
-                <div className="icon">{item.icon}</div>
+                <div className="icon" style={{ backgroundImage: `url(${item.icon})` }} />
                 <div className="description">{item.description}</div>
               </button>
             </div>
@@ -232,7 +239,10 @@ export const FloatingActionButton = forwardRef<
             }}
           >
             <button onClick={handleClick}>
-              <div className="icon">{isOpen ? closeIcon : icon}</div>
+              <div
+                className="icon"
+                style={{ backgroundImage: isOpen ? `url(${closeIcon})` : `url(${icon})` }}
+              />
               <div className="description">{description}</div>
             </button>
           </div>

@@ -1,5 +1,4 @@
-import { Button, Divider, Flex, Row } from '@components';
-import IcEsc from '@icons/ic_search_delete.svg?react';
+import { Button, Divider, Flex } from '@components';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { HTMLAttributes, useEffect } from 'react';

@@ -1,6 +1,6 @@
-import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
-import IcImg from '@icons/ic_img.svg?react';
-import IcImg2 from '@icons/ic_search.svg?react';
+import IcImg3 from '@icons/ic_collapse_arrow_up.svg';
+import IcImg from '@icons/ic_img.svg';
+import IcImg2 from '@icons/ic_search.svg';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { FloatingActionButton, IFloatingActionButtonProps } from './FloatingActionButton';
@@ -29,7 +29,7 @@ export const Default: Story = {
   },
   args: {
     shape: 'circle',
-    icon: <IcImg />,
+    icon: IcImg,
     callback: () => {
       alert('floating button');
     },
@@ -44,7 +44,7 @@ export const Square: Story = {
   },
   args: {
     shape: 'square',
-    icon: <IcImg />,
+    icon: IcImg,
     callback: () => {
       alert('floating button');
     },
@@ -59,7 +59,7 @@ export const Group: Story = {
   },
   args: {
     shape: 'circle',
-    icon: <IcImg />,
+    icon: IcImg,
     callback: () => {
       alert('floating button');
     },
@@ -67,7 +67,7 @@ export const Group: Story = {
     bottom: 50,
     menu: [
       {
-        icon: <IcImg2 />,
+        icon: IcImg2,
         callback: () => {
           console.log('@1');
         },
@@ -75,7 +75,7 @@ export const Group: Story = {
         badge: { count: 1 },
       },
       {
-        icon: <IcImg2 />,
+        icon: IcImg2,
         callback: () => {
           console.log('@2');
         },
@@ -83,14 +83,14 @@ export const Group: Story = {
         badge: { count: 2 },
       },
       {
-        icon: <IcImg2 />,
+        icon: IcImg2,
         callback: () => {
           console.log('@3');
         },
         badge: { count: 3 },
       },
     ],
-    closeIcon: <IcImg3 />,
+    closeIcon: IcImg3,
     trigger: 'click',
     useBadge: true,
   },
