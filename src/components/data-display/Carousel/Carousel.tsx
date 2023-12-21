@@ -14,12 +14,19 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
   width?: number;
 
   /**
+   * 캐로셀 타입(edit 버전 선택시 캐로셀 슬라이드를 추가 및 삭제할 수 있는 기능)
+   * @default 'default'
+   */
+  type: 'default' | 'editable';
+
+  /**
    * 캐로셀에 들어갈 슬라이드 내용들
    */
   children: React.ReactNode[];
 
   /**
    * 슬라이드가 시작하는 인덱스(index = 3 => 3번 인덱스 슬라이드부터 시작)
+   * @default 0
    */
   index: number;
 
@@ -32,6 +39,12 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
    * readonly 속성
    */
   readOnly?: boolean;
+
+  /**
+   * 캐로셀 indicator 버튼 사용 여부
+   * @default true
+   */
+  useIndicator?: boolean;
 
   /**
    * 캐로셀 슬라이더 갯수와 일치하는 indicator 버튼의 위치를 bottom css속성으로 조절
@@ -62,10 +75,12 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
   const {
     viewId,
     width,
+    type = 'default',
     children,
-    index,
+    index = 0,
     limit,
     readOnly,
+    useIndicator = true,
     dotsBottom,
     addCarousel,
     deleteCarousel,
@@ -137,7 +152,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
 
   return (
     <div className="carousel-wrapper" ref={carouselWrapperRef}>
-      {addCarousel && deleteCarousel && (
+      {type === 'editable' && addCarousel && deleteCarousel && (
         <Row justify="space-between" align="center" className="carousel-btn-wrapper">
           <Row justify="center" align="center" gutter={4}>
             <Col>
@@ -215,16 +230,18 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
           })}
         </div>
       </div>
-      <div className="dots">
-        {children.map((child, i) => (
-          <button
-            className="dots-button"
-            data-carousel-index={current === i}
-            key={i}
-            onClick={() => setCurrent(i)}
-          ></button>
-        ))}
-      </div>
+      {useIndicator ? (
+        <div className="dots">
+          {children.map((child, i) => (
+            <button
+              className="dots-button"
+              data-carousel-index={current === i}
+              key={i}
+              onClick={() => setCurrent(i)}
+            ></button>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 });

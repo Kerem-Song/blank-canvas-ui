@@ -155,6 +155,7 @@ function App() {
         <Carousel
           viewId="viewId"
           // width={1140}
+          type="editable"
           index={5}
           limit={10}
           setCarouselIndex={setCarouselIndex}
