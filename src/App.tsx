@@ -151,44 +151,46 @@ function App() {
         shouldCloseOnEsc={true}
         useEscButton={true}
       />
-      <Carousel
-        viewId="viewId"
-        // width={1140}
-        index={5}
-        limit={10}
-        setCarouselIndex={setCarouselIndex}
-        addCarousel={handleAddButton}
-        deleteCarousel={handleDeleteButton}
-        dotsBottom={150}
-      >
-        <div>
-          <h3 style={contentStyle}>1</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>2</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>3</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>4</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>5</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>6</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>7</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>8</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>9</h3>
-        </div>
-      </Carousel>
+      <div style={{ width: `200px` }}>
+        <Carousel
+          viewId="viewId"
+          // width={1140}
+          index={5}
+          limit={10}
+          setCarouselIndex={setCarouselIndex}
+          addCarousel={handleAddButton}
+          deleteCarousel={handleDeleteButton}
+          dotsBottom={150}
+        >
+          <div>
+            <h3 style={contentStyle}>1</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>2</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>3</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>4</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>5</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>6</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>7</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>8</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>9</h3>
+          </div>
+        </Carousel>
+      </div>
     </>
   );
 }
