@@ -33,8 +33,8 @@ export const Default: Story = {
     callback: () => {
       alert('floating button');
     },
-    right: 30,
-    bottom: 50,
+    right: 0,
+    bottom: 0,
   },
 };
 

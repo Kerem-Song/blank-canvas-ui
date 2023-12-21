@@ -89,4 +89,12 @@
   .icon {
     @apply w-20pxr h-20pxr bg-center bg-no-repeat;
   }
+
+  .description {
+    @apply text-10pxr font-light;
+  }
+
+  button {
+    @apply flex flex-col justify-center items-center;
+  }
 }

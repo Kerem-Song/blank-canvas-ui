@@ -47,11 +47,13 @@ export interface IFloatingActionButtonProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
    * 플로팅 버튼의 모양
+   * @default 'circle'
    */
   shape: 'circle' | 'square';
 
   /**
-   * 플로팅 버튼에 들어가는 아이콘
+   * 플로팅 버튼에 들어가는 아이콘 경로
+   * (ex: import icEx from * 'src/assets/icons/ic_ex.svg'로 import 후 icEx를 입력)
    */
   icon: string;
 
@@ -62,11 +64,13 @@ export interface IFloatingActionButtonProps
 
   /**
    * 플로팅 버튼의 right위치 조정(px)
+   * @default 30
    */
   right: number;
 
   /**
    * 플로팅 버튼의 bottom위치 조정(px)
+   * @default 50
    */
   bottom: number;
 
@@ -77,6 +81,7 @@ export interface IFloatingActionButtonProps
 
   /**
    * 뱃지 사용 여부
+   * @default false
    */
   useBadge?: boolean;
 
@@ -97,11 +102,13 @@ export interface IFloatingActionButtonProps
 
   /**
    * 플로팅 버튼이 그룹 메뉴 형태일 때 메뉴들을 보여주기 위한 방식
+   * @default 'click'
    */
   trigger?: 'click' | 'hover';
 
   /**
    * 플로팅 버튼이 그룹 메뉴 형태일 때 메뉴를 닫고 버튼 하나로 변경하기 위한 아이콘
+   * (ex: import icEx from * 'src/assets/icons/ic_ex.svg'로 import 후 icEx를 입력)
    */
   closeIcon?: string;
 
@@ -126,17 +133,18 @@ export const FloatingActionButton = forwardRef<
   const {
     className,
     prefix,
-    trigger,
+    shape = 'circle',
+    trigger = 'click',
     style,
     icon,
     description,
-    right,
-    bottom,
+    right = 30,
+    bottom = 50,
     closeIcon,
     menu,
     children,
     badge,
-    useBadge,
+    useBadge = false,
     tooltip,
     callback,
     onOpenChange,
@@ -167,7 +175,6 @@ export const FloatingActionButton = forwardRef<
   );
 
   const handleClick = () => {
-    console.log('@handle click');
     if (trigger === 'click') {
       menu && setIsOpen(!isOpen);
       callback();
@@ -182,7 +189,6 @@ export const FloatingActionButton = forwardRef<
     setIsOpen(false);
   });
 
-  console.log('@icons', closeIcon, icon);
   return (
     <div
       className={classNames('floating-action-button-wrapper', {
