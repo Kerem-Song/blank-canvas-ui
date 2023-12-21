@@ -3,6 +3,7 @@ import { useOutsideClick } from '@hooks';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { AnchorHTMLAttributes, forwardRef, useRef, useState } from 'react';
+import { util } from 'src/utils/utils';
 
 import { floatingActionButtonClasses } from './FloatingActionButtonClasses';
 export type RenderFunction = () => React.ReactNode;
@@ -195,7 +196,7 @@ export const FloatingActionButton = forwardRef<
         open: isOpen,
         'badge-counter': useBadge,
       })}
-      style={{ right: `${right}px`, bottom: `${bottom}px` }}
+      style={{ right: `${util.rem(right)}`, bottom: `${util.rem(bottom)}` }}
       onMouseLeave={(e) => {
         e.stopPropagation();
         trigger === 'hover' && menu && setIsOpen(false);

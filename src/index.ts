@@ -18,6 +18,8 @@ export {
   TextAreaWithTitleCounter,
   Tooltip,
 } from '@components';
+export * from '@components/data-display/Carousel';
+export * from '@components/data-entry/Upload';
 export * from '@components/general/button';
 export * from '@components/general/FloatingActionButton';
 export * from '@components/navigation/link';
