@@ -16,6 +16,7 @@ export interface IModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * 모달의 사이즈
    * @type 'sm' | 'md' | 'lg' | 'xl'
+   * @default 'sm'
    */
   size: 'sm' | 'md' | 'lg' | 'xl';
 
@@ -46,6 +47,7 @@ export interface IModalProps extends HTMLAttributes<HTMLDivElement> {
 
   /**
    * message(제목이나 header 메시지) 위치의 오른쪽 영역 esc(x 모양버튼) 버튼 사용 유무
+   * @default false
    */
   useEscButton?: boolean;
 
@@ -88,7 +90,7 @@ export interface IModalProps extends HTMLAttributes<HTMLDivElement> {
 // ReactModal.setAppElement('#root');
 
 export const Modal = (modalInfo: IModalProps) => {
-  const { className, prefix, style, children, ...modalProps } = modalInfo;
+  const { className, prefix, style, children, size = 'sm', ...modalProps } = modalInfo;
   const classes = generatePrefixClasses(
     modalClasses,
     `${prefix ? `${prefix}-` : ''}modal`,
@@ -98,10 +100,10 @@ export const Modal = (modalInfo: IModalProps) => {
     classes.root,
     {
       // size
-      [classes.sizeSmall]: modalProps.size === 'sm',
-      [classes.sizeMedium]: modalProps.size === 'md',
-      [classes.sizeLarge]: modalProps.size === 'lg',
-      [classes.sizeXLarge]: modalProps.size === 'xl',
+      [classes.sizeSmall]: size === 'sm',
+      [classes.sizeMedium]: size === 'md',
+      [classes.sizeLarge]: size === 'lg',
+      [classes.sizeXLarge]: size === 'xl',
     },
     className,
   );
