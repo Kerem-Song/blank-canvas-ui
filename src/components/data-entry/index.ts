@@ -6,7 +6,7 @@ export * from './Radio/Radio';
 export * from './Radio/RadioGroup';
 export * from './rating';
 export * from './Select/Select';
-export * from './Switch/Switch';
+export * from './Switch';
 export * from './Textarea/Textarea';
 export * from './Textarea/TextAreaWithTitleCounter';
 export * from './Upload';
