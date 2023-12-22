@@ -1,4 +1,6 @@
-import { Col, Row } from '@components';
+import { carouselClasses, Col, Row } from '@components';
+import { generatePrefixClasses } from '@modules/utils';
+import classNames from 'classnames';
 import React, { forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { util } from 'src/utils/utils';
 
@@ -51,6 +53,12 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
   arrowBtnMarginTop?: number;
 
   /**
+   * 캐로셀 이동 버튼의 모양
+   * @default 'square'
+   */
+  arrowBtnShape?: 'square' | 'circle';
+
+  /**
    * 캐로셀 indicator 버튼 사용 여부
    * @default true
    */
@@ -60,6 +68,12 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
    * 캐로셀 슬라이더 갯수와 일치하는 indicator 버튼의 위치를 bottom css속성으로 조절
    */
   dotsBottom?: number;
+
+  /**
+   * arrow button, indicator button의 opacity. 속성을 주지 않을 경우 기본이 100인 상태
+   * @default 30
+   */
+  opacity?: 30 | 50 | 70;
 
   /**
    * 캐로셀 추가 버튼을 누를 때 실행되는 함수
@@ -83,6 +97,8 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) => {
   const {
+    prefix,
+    className,
     viewId,
     width,
     type = 'default',
@@ -92,8 +108,10 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
     readOnly,
     useArrowBtn = true,
     arrowBtnMarginTop = 0,
+    arrowBtnShape = 'square',
     useIndicator = true,
     dotsBottom = 20,
+    opacity = 30,
     addCarousel,
     deleteCarousel,
     setCarouselIndex,
@@ -112,6 +130,32 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
   });
 
   const length = children.length;
+
+  const classes = generatePrefixClasses(
+    carouselClasses,
+    `${prefix ? `${prefix}-` : ''}carousel`,
+  );
+
+  const rootClassName = classNames(
+    classes.root,
+    {
+      // 캐로셀 버튼과 indicator의 opacity
+      [classes.opacity30]: opacity === 30,
+      [classes.opacity50]: opacity === 50,
+      [classes.opacity70]: opacity === 70,
+    },
+    className,
+  );
+
+  const arrowBtnClassName = classNames(
+    'carousel-btn',
+    {
+      // 캐로셀 버튼의 shape
+      [classes.btnSquare]: arrowBtnShape === 'square',
+      [classes.btnCircle]: arrowBtnShape === 'circle',
+    },
+    className,
+  );
 
   useEffect(() => {
     if (!index) {
@@ -163,7 +207,10 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
   console.log('@util.rem(CAROUSEL_WIDTH ?? 0)', util.rem(CAROUSEL_WIDTH ?? 0));
 
   return (
-    <div className="carousel-wrapper" ref={carouselWrapperRef}>
+    <div
+      className={classNames('carousel-wrapper', rootClassName)}
+      ref={carouselWrapperRef}
+    >
       {type === 'editable' && addCarousel && deleteCarousel && (
         <Row justify="space-between" align="center" className="carousel-btn-wrapper">
           <Row justify="center" align="center" gutter={4}>
@@ -266,7 +313,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
         >
           <Col>
             <button
-              className="carousel-btn"
+              className={arrowBtnClassName}
               onClick={handlePrevClick}
               disabled={current === 0}
               data-button={'prev'}
@@ -274,7 +321,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
           </Col>
           <Col>
             <button
-              className="carousel-btn"
+              className={arrowBtnClassName}
               onClick={handleNextClick}
               disabled={NextDisabled()}
               data-button={'next'}

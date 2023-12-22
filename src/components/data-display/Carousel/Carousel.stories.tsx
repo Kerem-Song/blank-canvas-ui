@@ -30,15 +30,6 @@ export const Default: Story = {
       background: '#364d79',
     };
 
-    const handleDeleteButton = (index: number) => {
-      console.log('@handle delete btn');
-    };
-
-    const handleAddButton = (e: React.MouseEvent<HTMLButtonElement>) => {
-      console.log('@handle add btn');
-    };
-    const setCarouselIndex = ({ id, index }: { id: string; index: number }) => {};
-
     return (
       <Carousel {...args}>
         <div>
@@ -87,6 +78,7 @@ export const Default: Story = {
     },
     dotsBottom: 10,
     arrowBtnMarginTop: 100,
+    opacity: 30,
   },
 };
 
@@ -99,15 +91,6 @@ export const Editable: Story = {
       textAlign: 'center',
       background: '#364d79',
     };
-
-    const handleDeleteButton = (index: number) => {
-      console.log('@handle delete btn');
-    };
-
-    const handleAddButton = (e: React.MouseEvent<HTMLButtonElement>) => {
-      console.log('@handle add btn');
-    };
-    const setCarouselIndex = ({ id, index }: { id: string; index: number }) => {};
 
     return (
       <Carousel {...args}>
