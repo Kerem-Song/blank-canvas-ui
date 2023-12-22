@@ -85,7 +85,8 @@ export const Default: Story = {
     deleteCarousel: () => {
       console.log('@handle delete btn');
     },
-    dotsBottom: 150,
+    dotsBottom: 10,
+    arrowBtnMarginTop: 100,
   },
 };
 
@@ -154,6 +155,6 @@ export const Editable: Story = {
     deleteCarousel: () => {
       console.log('@handle delete btn');
     },
-    dotsBottom: 150,
+    dotsBottom: 10,
   },
 };

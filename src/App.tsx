@@ -161,7 +161,8 @@ function App() {
           setCarouselIndex={setCarouselIndex}
           addCarousel={handleAddButton}
           deleteCarousel={handleDeleteButton}
-          dotsBottom={150}
+          dotsBottom={20}
+          arrowBtnMarginTop={100}
         >
           <div>
             <h3 style={contentStyle}>1</h3>

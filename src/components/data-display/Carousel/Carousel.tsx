@@ -1,6 +1,6 @@
 import { Col, Row } from '@components';
 import React, { forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react';
-import { pxToRem, util } from 'src/utils/utils';
+import { util } from 'src/utils/utils';
 
 export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -39,6 +39,16 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
    * readonly 속성
    */
   readOnly?: boolean;
+
+  /**
+   * 캐로셀 이동 버튼 사용 유무(editable에서는 기본 제공)
+   */
+  useArrowBtn?: boolean;
+
+  /**
+   * 캐로셀 이동 버튼의 수직(vertical)위치(숫자 입력시 rem으로 환산 됨)
+   */
+  arrowBtnMarginTop?: number;
 
   /**
    * 캐로셀 indicator 버튼 사용 여부
@@ -80,8 +90,10 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
     index = 0,
     limit,
     readOnly,
+    useArrowBtn = true,
+    arrowBtnMarginTop = 0,
     useIndicator = true,
-    dotsBottom,
+    dotsBottom = 20,
     addCarousel,
     deleteCarousel,
     setCarouselIndex,
@@ -230,6 +242,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
           })}
         </div>
       </div>
+
       {useIndicator ? (
         <div className="dots">
           {children.map((child, i) => (
@@ -238,9 +251,36 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
               data-carousel-index={current === i}
               key={i}
               onClick={() => setCurrent(i)}
+              style={{ bottom: `${util.rem(dotsBottom)}` }}
             ></button>
           ))}
         </div>
+      ) : null}
+
+      {useArrowBtn ? (
+        <Row
+          className="arrow-btn-wrapper"
+          style={{
+            marginTop: `-${util.rem(arrowBtnMarginTop)}`,
+          }}
+        >
+          <Col>
+            <button
+              className="carousel-btn"
+              onClick={handlePrevClick}
+              disabled={current === 0}
+              data-button={'prev'}
+            />
+          </Col>
+          <Col>
+            <button
+              className="carousel-btn"
+              onClick={handleNextClick}
+              disabled={NextDisabled()}
+              data-button={'next'}
+            />
+          </Col>
+        </Row>
       ) : null}
     </div>
   );

@@ -63,9 +63,12 @@
   }
 }
 
+.arrow-btn-wrapper {
+  @apply flex justify-between items-center z-20;
+}
 
 .dots {
-  @apply flex justify-center items-center gap-1 -mt-20pxr start-0 end-0 z-20;
+  @apply flex justify-center items-center gap-1 start-0 end-0 z-20;
 
   &-button {
     @apply relative w-5pxr h-5pxr rounded-full bg-gray-200;
