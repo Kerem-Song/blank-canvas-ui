@@ -5,6 +5,11 @@ import { forwardRef, InputHTMLAttributes } from 'react';
 
 export interface ISwitchProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
+   * 스위치 타입
+   */
+  type?: 'outside' | 'inside';
+
+  /**
    * 스위치의 사이즈
    * @default sm
    */
@@ -18,7 +23,14 @@ export interface ISwitchProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => {
-  const { prefix, className, switchSize = 'sm', color = 'green', ...switchProps } = args;
+  const {
+    prefix,
+    className,
+    type = 'inside',
+    switchSize = 'sm',
+    color = 'green',
+    ...switchProps
+  } = args;
   const classes = generatePrefixClasses(
     switchClasses,
     `${prefix ? `${prefix}-` : ''}switch`,
@@ -26,10 +38,13 @@ export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => 
 
   const rootClassName = classNames(
     classes.root,
-
+    {
+      // type {
+      [classes.inside]: type === 'inside',
+      [classes.outside]: type === 'outside',
+    },
     className,
   );
-
   const switchBarClassName = classNames(
     'switch-bar',
     {

@@ -61,5 +61,54 @@
         }
       }
     }
+
+    /* type이 inside인 스위치 */
+    &.switch-inside {
+      @apply rounded-full border bg-slate-200;
+
+      .switch-sm {
+        @apply h-10pxr w-17pxr
+      }
+
+      .switch-md {
+        @apply h-14pxr w-25pxr
+      }
+
+      .switch-lg {
+        @apply h-16pxr w-27pxr
+      }
+
+      .switch-xl {
+        @apply h-17pxr w-31pxr
+      }
+
+      .switch-bar {
+        &::after {
+          @apply absolute top-1pxr left-0 h-8pxr w-8pxr rounded-full border border-gray-300 bg-white transition-all content-[''];
+
+          &.switch-sm {
+            @apply h-8pxr w-8pxr
+          }
+
+          &.switch-md {
+            @apply h-12pxr w-12pxr
+          }
+
+          &.switch-lg {
+            @apply h-13pxr w-13pxr
+          }
+
+          &.switch-xl {
+            @apply h-15pxr w-15pxr
+          }
+        }
+      }
+
+      input[type='checkbox']:checked~.switch-bar {
+        &::after {
+          @apply translate-x-full;
+        }
+      }
+    }
   }
 }

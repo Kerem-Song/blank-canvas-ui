@@ -24,6 +24,7 @@ export const Default: Story = {
         checked={args.checked}
         color={args.color}
         switchSize={args.switchSize}
+        type={args.type}
       />
     );
   },
