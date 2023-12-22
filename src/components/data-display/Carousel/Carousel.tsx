@@ -304,7 +304,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
         </div>
       ) : null}
 
-      {useArrowBtn ? (
+      {type === 'default' && useArrowBtn ? (
         <Row
           className="arrow-btn-wrapper"
           style={{
