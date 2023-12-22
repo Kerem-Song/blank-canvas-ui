@@ -38,27 +38,27 @@
   }
 
   &[data-button='prev'] {
-    @apply bg-center bg-no-repeat bg-[url('@icons/ic_switch_carousel_prev_active.svg')];
+    @apply bg-center bg-no-repeat bg-[url('@icons/ic_carousel_prev_active.svg')];
 
     &:hover {
-      @apply bg-[url('@icons/ic_switch_carousel_prev_hover.svg')];
+      @apply bg-[url('@icons/ic_carousel_prev_hover.svg')];
     }
 
     &:disabled {
-      @apply bg-[url('@icons/ic_switch_carousel_prev_disable.svg')];
+      @apply bg-[url('@icons/ic_carousel_prev_disable.svg')];
     }
   }
 
   &[data-button='next'] {
-    @apply bg-center bg-no-repeat bg-[url('@icons/ic_switch_carousel_next_active.svg')];
+    @apply bg-center bg-no-repeat bg-[url('@icons/ic_carousel_next_active.svg')];
 
 
     &:hover {
-      @apply bg-[url('@icons/ic_switch_carousel_next_hover.svg')];
+      @apply bg-[url('@icons/ic_carousel_next_hover.svg')];
     }
 
     &:disabled {
-      @apply bg-[url('@icons/ic_switch_carousel_next_disable.svg')];
+      @apply bg-[url('@icons/ic_carousel_next_disable.svg')];
     }
   }
 }
