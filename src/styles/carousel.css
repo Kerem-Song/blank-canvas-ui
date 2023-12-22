@@ -12,14 +12,14 @@
 
   /* editable 타입에서의 상단 버튼 */
   &-btn {
-    @apply flex justify-self-center items-center p-10pxr cursor-pointer bg-white border border-gray-200 rounded-md w-32pxr h-32pxr;
+    @apply flex justify-self-center items-center p-10pxr cursor-pointer bg-center bg-no-repeat bg-white border border-gray-200 rounded-md w-32pxr h-32pxr;
 
     &-wrapper {
       @apply pb-12pxr border-b-2;
     }
 
     &[data-button='add'] {
-      @apply bg-center bg-no-repeat bg-[url('@icons/ic_add_case.svg')] bg-blue-500;
+      @apply bg-[url('@icons/ic_add_case.svg')] bg-blue-500;
 
       &:hover {
         @apply bg-blue-700;
@@ -31,7 +31,7 @@
     }
 
     &[data-button='delete'] {
-      @apply bg-center bg-no-repeat bg-[url('@icons/ic_delete_default.svg')];
+      @apply bg-[url('@icons/ic_delete_default.svg')];
 
       &:hover {
         @apply bg-[url('@icons/ic_delete.svg')];
@@ -43,7 +43,7 @@
     }
 
     &[data-button='prev'] {
-      @apply bg-center bg-no-repeat bg-[url('@icons/ic_carousel_prev_active.svg')];
+      @apply bg-[url('@icons/ic_carousel_prev_active.svg')];
 
       &:hover {
         @apply bg-[url('@icons/ic_carousel_prev_hover.svg')];
@@ -55,7 +55,7 @@
     }
 
     &[data-button='next'] {
-      @apply bg-center bg-no-repeat bg-[url('@icons/ic_carousel_next_active.svg')];
+      @apply bg-[url('@icons/ic_carousel_next_active.svg')];
 
 
       &:hover {
@@ -95,31 +95,31 @@
   &-opacity {
     &-30 {
       .arrow-btn-wrapper {
-        @apply opacity-30
+        @apply opacity-30;
       }
 
       .dots {
-        @apply opacity-30
+        @apply opacity-30;
       }
     }
 
     &-50 {
       .arrow-btn-wrapper {
-        @apply opacity-50
+        @apply opacity-50;
       }
 
       .dots {
-        @apply opacity-50
+        @apply opacity-50;
       }
     }
 
     &-70 {
       .arrow-btn-wrapper {
-        @apply opacity-70
+        @apply opacity-70;
       }
 
       .dots {
-        @apply opacity-70
+        @apply opacity-70;
       }
     }
   }
