@@ -6,6 +6,7 @@ import { forwardRef, InputHTMLAttributes } from 'react';
 export interface ISwitchProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 스위치 타입
+   * @default outside
    */
   type?: 'outside' | 'inside';
 
@@ -26,7 +27,7 @@ export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => 
   const {
     prefix,
     className,
-    type = 'inside',
+    type = 'outside',
     switchSize = 'sm',
     color = 'green',
     ...switchProps
