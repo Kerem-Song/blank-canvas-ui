@@ -76,6 +76,18 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
   opacity?: 30 | 50 | 70;
 
   /**
+   * 슬라이더 자동 슬라이딩 여부
+   * @defalt false
+   */
+  auto?: boolean;
+
+  /**
+   * 슬라이더 작동이 auto일 경우 delay(ms단위 1000ms = 1초)
+   * @default 3000
+   */
+  delay?: number;
+
+  /**
    * 캐로셀 추가 버튼을 누를 때 실행되는 함수
    * @param e
    */
@@ -112,6 +124,8 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
     useIndicator = true,
     dotsBottom = 20,
     opacity = 30,
+    auto = false,
+    delay = 3000,
     addCarousel,
     deleteCarousel,
     setCarouselIndex,
@@ -172,6 +186,15 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
     });
 
     setCarouselIndex({ id: viewId, index: current });
+
+    if (auto) {
+      const delaySlider = setTimeout(
+        () => setCurrent((prev) => (prev === children.length - 1 ? 0 : prev + 1)),
+        delay,
+      );
+
+      return () => clearTimeout(delaySlider);
+    }
   }, [current]);
 
   const NextDisabled = () => {
@@ -203,8 +226,6 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
     e.stopPropagation();
     setCurrent(current !== 0 ? current - 1 : 0);
   };
-
-  console.log('@util.rem(CAROUSEL_WIDTH ?? 0)', util.rem(CAROUSEL_WIDTH ?? 0));
 
   return (
     <div
@@ -272,7 +293,10 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
         }}
         className="carousel-component"
       >
-        <div style={{ display: 'flex', ...style }} className="carousel-content-wrapper">
+        <div
+          style={{ display: 'flex', ...style }}
+          className={classNames('carousel-content-wrapper', { auto: auto })}
+        >
           {children.map((child, i) => {
             return (
               <div

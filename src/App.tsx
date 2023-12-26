@@ -156,7 +156,7 @@ function App() {
           viewId="viewId"
           // width={1140}
           type="editable"
-          index={5}
+          index={0}
           limit={10}
           setCarouselIndex={setCarouselIndex}
           addCarousel={handleAddButton}
