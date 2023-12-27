@@ -1,9 +1,10 @@
+import { Button } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { ISystemModalStatusType, Modal } from './Modal';
+import { IModalProps, Modal } from './Modal';
 
-const meta: Meta<ISystemModalStatusType> = {
+const meta: Meta<IModalProps> = {
   title: 'components/feedback/Modal',
   component: Modal,
   tags: ['autodocs'],
@@ -13,27 +14,43 @@ const meta: Meta<ISystemModalStatusType> = {
 };
 
 export default meta;
-type Story = StoryObj<ISystemModalStatusType>;
+type Story = StoryObj<IModalProps>;
 
 export const Default: Story = {
   render: function Render(args) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
       <>
-        <button onClick={() => setIsOpen(!isOpen)}>Modal test button</button>
-        <Modal {...args} isOpen={isOpen}></Modal>
+        <Button onClick={() => setIsOpen(!isOpen)}>Modal test button</Button>
+        <Modal
+          {...args}
+          isOpen={isOpen}
+          shouldCloseOnEsc={true}
+          tabIndex={-1}
+          confirmFunc={() => setIsOpen(false)}
+          cancelFunc={() => setIsOpen(false)}
+          customFunc={() => setIsOpen(false)}
+        ></Modal>
       </>
     );
   },
   args: {
     message: '모달테스트',
     description: '상세 설명입니다 진행하시겠습니까?',
-    overalyClassName: 'modalOverlay',
+    overalyClassName: 'modal-overlay',
     confirmButton: '확인',
-    callbackFunc: () => {
+    confirmFunc: () => {
       console.log('@모달 확인');
+    },
+    cancelFunc: () => {
+      console.log('@모달 취소');
+    },
+    customFunc: () => {
+      console.log('@커스텀');
     },
     cancelButton: '취소',
     customButton: '커스텀',
+    shouldCloseOnEsc: true,
+    size: 'lg',
   },
 };

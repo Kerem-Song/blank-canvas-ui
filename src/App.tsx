@@ -2,6 +2,7 @@ import './App.css';
 
 import {
   Button,
+  Carousel,
   FloatingActionButton,
   IFloatingActionMenuProps,
   Input,
@@ -17,8 +18,10 @@ import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg from '@icons/ic_img.svg?react';
 import IcImg2 from '@icons/ic_search.svg?react';
+import icImgTest2 from '@icons/ic_search_delete.svg';
 import { offset } from '@popperjs/core';
 import { useState } from 'react';
+
 function App() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const option: IRadioOption[] = [
@@ -29,24 +32,27 @@ function App() {
 
   const menu: IFloatingActionMenuProps[] = [
     {
-      icon: <IcImg2 />,
+      icon: icImgTest,
       callback: () => {
         console.log('@1');
       },
       tooltip: 'test1',
+      badge: { count: 1 },
     },
     {
-      icon: <IcImg2 />,
+      icon: icImgTest,
       callback: () => {
         console.log('@2');
       },
       tooltip: 'test2',
+      badge: { count: 10 },
     },
     {
-      icon: <IcImg2 />,
+      icon: icImgTest,
       callback: () => {
         console.log('@3');
       },
+      badge: { count: 2 },
     },
   ];
 
@@ -64,6 +70,22 @@ function App() {
       <img src={icImgTest} alt="" />
     </div>
   );
+
+  const contentStyle: React.CSSProperties = {
+    height: '160px',
+    color: '#fff',
+    lineHeight: '160px',
+    textAlign: 'center',
+    background: '#364d79',
+  };
+  const handleDeleteButton = (index: number) => {
+    console.log('@handle delete btn');
+  };
+
+  const handleAddButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log('@handle add btn');
+  };
+  const setCarouselIndex = ({ id, index }: { id: string; index: number }) => {};
 
   return (
     <>
@@ -100,29 +122,77 @@ function App() {
       <FloatingActionButton
         callback={() => {}}
         shape="circle"
-        icon={<IcImg />}
+        icon={icImgTest}
         right={30}
         bottom={50}
         menu={menu}
-        closeIcon={<IcImg3 />}
+        closeIcon={icImgTest2}
         useBadge={true}
         trigger="click"
+        // description={'hiasdf'}
       />
       <button onClick={() => setModalOpen(!modalOpen)}>모달테스트</button>
       <Modal
         isOpen={modalOpen}
         message={'모달테스트'}
         description={'상세 설명입니다 진행하시겠습니까?'}
-        overalyClassName="modalOverlay"
+        overalyClassName="modal-overlay"
         confirmButton="확인"
-        callbackFunc={() => {
+        confirmFunc={() => {
           console.log('@모달 확인');
+          setModalOpen(false);
         }}
+        cancelFunc={() => setModalOpen(false)}
+        customFunc={() => setModalOpen(false)}
         cancelButton="취소"
         customButton="커스텀"
         size="lg"
         children={modalChild}
+        shouldCloseOnEsc={true}
+        useEscButton={true}
       />
+      <div style={{ width: `200px` }}>
+        <Carousel
+          viewId="viewId"
+          // width={1140}
+          type="editable"
+          index={0}
+          limit={10}
+          setCarouselIndex={setCarouselIndex}
+          addCarousel={handleAddButton}
+          deleteCarousel={handleDeleteButton}
+          dotsBottom={20}
+          arrowBtnMarginTop={100}
+        >
+          <div>
+            <h3 style={contentStyle}>1</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>2</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>3</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>4</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>5</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>6</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>7</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>8</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>9</h3>
+          </div>
+        </Carousel>
+      </div>
     </>
   );
 }

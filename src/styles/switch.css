@@ -1,16 +1,114 @@
-.switch-wrapper {
-  @apply relative inline-flex cursor-pointer items-center;
+.switch {
+  &-wrapper {
+    @apply relative inline-flex cursor-pointer items-center;
 
-  .switch-input {
-    @apply sr-only;
-  }
-
-  .switch-bar {
-    @apply h-8pxr w-20pxr rounded-full border bg-slate-200;
-
-    &::after {
-      @apply absolute -top-2pxr left-0 h-12pxr w-12pxr rounded-full border border-gray-300 bg-white transition-all content-[''];
+    .switch-input {
+      @apply sr-only;
     }
 
+    .switch-bar {
+      @apply h-8pxr w-20pxr rounded-full border bg-slate-200;
+
+      &.switch-sm {
+        @apply h-8pxr w-20pxr
+      }
+
+      &.switch-md {
+        @apply h-12pxr w-30pxr
+      }
+
+      &.switch-lg {
+        @apply h-14pxr w-35pxr
+      }
+
+      &.switch-xl {
+        @apply h-16pxr w-40pxr
+      }
+
+      &::after {
+        @apply absolute -top-2pxr left-0 h-12pxr w-12pxr rounded-full border border-gray-300 bg-white transition-all content-[''];
+
+        &.switch-sm {
+          @apply h-12pxr w-12pxr
+        }
+
+        &.switch-md {
+          @apply -top-3pxr h-18pxr w-18pxr
+        }
+
+        &.switch-lg {
+          @apply -top-4pxr h-21pxr w-21pxr
+        }
+
+        &.switch-xl {
+          @apply -top-4pxr h-24pxr w-24pxr
+        }
+      }
+    }
+
+    input[type='checkbox']:checked~.switch-bar {
+      @apply bg-green-200;
+
+      &.switch-blue {
+        @apply bg-blue-200;
+      }
+
+      &::after {
+        @apply translate-x-3/4 bg-green-400;
+
+        &.switch-blue {
+          @apply bg-blue-400;
+        }
+      }
+    }
+
+    /* type이 inside인 스위치 */
+    &.switch-inside {
+      @apply rounded-full border bg-slate-200;
+
+      .switch-sm {
+        @apply h-10pxr w-17pxr
+      }
+
+      .switch-md {
+        @apply h-14pxr w-25pxr
+      }
+
+      .switch-lg {
+        @apply h-16pxr w-27pxr
+      }
+
+      .switch-xl {
+        @apply h-17pxr w-31pxr
+      }
+
+      .switch-bar {
+        &::after {
+          @apply absolute top-1pxr left-0 h-8pxr w-8pxr rounded-full border border-gray-300 bg-white transition-all content-[''];
+
+          &.switch-sm {
+            @apply h-8pxr w-8pxr
+          }
+
+          &.switch-md {
+            @apply h-12pxr w-12pxr
+          }
+
+          &.switch-lg {
+            @apply h-13pxr w-13pxr
+          }
+
+          &.switch-xl {
+            @apply h-15pxr w-15pxr
+          }
+        }
+      }
+
+      input[type='checkbox']:checked~.switch-bar {
+        &::after {
+          @apply translate-x-full;
+        }
+      }
+    }
   }
 }

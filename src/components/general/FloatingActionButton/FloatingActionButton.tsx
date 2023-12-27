@@ -1,7 +1,9 @@
 import { Badge, IBadgeProps, Tooltip } from '@components';
+import { useOutsideClick } from '@hooks';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { AnchorHTMLAttributes, forwardRef, useRef, useState } from 'react';
+import { util } from 'src/utils/utils';
 
 import { floatingActionButtonClasses } from './FloatingActionButtonClasses';
 export type RenderFunction = () => React.ReactNode;
@@ -46,13 +48,15 @@ export interface IFloatingActionButtonProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
    * 플로팅 버튼의 모양
+   * @default 'circle'
    */
   shape: 'circle' | 'square';
 
   /**
-   * 플로팅 버튼에 들어가는 아이콘
+   * 플로팅 버튼에 들어가는 아이콘 경로
+   * (ex: import icEx from * 'src/assets/icons/ic_ex.svg'로 import 후 icEx를 입력)
    */
-  icon: React.ReactNode;
+  icon: string;
 
   /**
    * 플로팅버튼 아이콘 밑에 들어가는 텍스트
@@ -61,11 +65,13 @@ export interface IFloatingActionButtonProps
 
   /**
    * 플로팅 버튼의 right위치 조정(px)
+   * @default 30
    */
   right: number;
 
   /**
    * 플로팅 버튼의 bottom위치 조정(px)
+   * @default 50
    */
   bottom: number;
 
@@ -76,6 +82,7 @@ export interface IFloatingActionButtonProps
 
   /**
    * 뱃지 사용 여부
+   * @default false
    */
   useBadge?: boolean;
 
@@ -96,13 +103,15 @@ export interface IFloatingActionButtonProps
 
   /**
    * 플로팅 버튼이 그룹 메뉴 형태일 때 메뉴들을 보여주기 위한 방식
+   * @default 'click'
    */
   trigger?: 'click' | 'hover';
 
   /**
    * 플로팅 버튼이 그룹 메뉴 형태일 때 메뉴를 닫고 버튼 하나로 변경하기 위한 아이콘
+   * (ex: import icEx from * 'src/assets/icons/ic_ex.svg'로 import 후 icEx를 입력)
    */
-  closeIcon?: React.ReactNode;
+  closeIcon?: string;
 
   /**
    * 플로팅 버튼 클릭 시 실행되는 함수
@@ -125,17 +134,18 @@ export const FloatingActionButton = forwardRef<
   const {
     className,
     prefix,
-    trigger,
+    shape = 'circle',
+    trigger = 'click',
     style,
     icon,
     description,
-    right,
-    bottom,
+    right = 30,
+    bottom = 50,
     closeIcon,
     menu,
     children,
     badge,
-    useBadge,
+    useBadge = false,
     tooltip,
     callback,
     onOpenChange,
@@ -166,12 +176,19 @@ export const FloatingActionButton = forwardRef<
   );
 
   const handleClick = () => {
-    console.log('@handle click');
     if (trigger === 'click') {
       menu && setIsOpen(!isOpen);
       callback();
     }
   };
+
+  const badgeCounter = menu?.reduce((sum, obj) => {
+    return sum + Number(obj.badge?.count);
+  }, 0);
+
+  useOutsideClick(floatingAtionButtonRef, () => {
+    setIsOpen(false);
+  });
 
   return (
     <div
@@ -179,11 +196,12 @@ export const FloatingActionButton = forwardRef<
         open: isOpen,
         'badge-counter': useBadge,
       })}
-      style={{ right: `${right}px`, bottom: `${bottom}px` }}
+      style={{ right: `${util.rem(right)}`, bottom: `${util.rem(bottom)}` }}
       onMouseLeave={(e) => {
         e.stopPropagation();
         trigger === 'hover' && menu && setIsOpen(false);
       }}
+      ref={floatingAtionButtonRef}
     >
       {menu?.map((item, i) => (
         <Badge
@@ -204,7 +222,7 @@ export const FloatingActionButton = forwardRef<
                 onClick={item.callback}
                 key={i}
               >
-                <div className="icon">{item.icon}</div>
+                <div className="icon" style={{ backgroundImage: `url(${item.icon})` }} />
                 <div className="description">{item.description}</div>
               </button>
             </div>
@@ -212,12 +230,12 @@ export const FloatingActionButton = forwardRef<
         </Badge>
       ))}
       <Badge
-        count={badge?.count}
+        count={badgeCounter}
         overflowCount={badge?.overflowCount}
         color={badge?.color}
         dot={badge?.dot}
         showZero={badge?.showZero}
-        offset={[5, 10]}
+        offset={[3, 10]}
       >
         <Tooltip text={tooltip ?? ''} disable={!tooltip} placement="left">
           <div
@@ -228,7 +246,10 @@ export const FloatingActionButton = forwardRef<
             }}
           >
             <button onClick={handleClick}>
-              <div className="icon">{isOpen ? closeIcon : icon}</div>
+              <div
+                className="icon"
+                style={{ backgroundImage: isOpen ? `url(${closeIcon})` : `url(${icon})` }}
+              />
               <div className="description">{description}</div>
             </button>
           </div>

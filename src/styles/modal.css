@@ -18,26 +18,34 @@
   }
 
   .title {
-    @apply px-20pxr py-14pxr;
+    @apply flex justify-between items-center px-20pxr py-14pxr font-bold;
+
+    .esc-btn {
+      @apply w-10pxr h-10pxr bg-center bg-no-repeat bg-[url('@icons/ic_search_delete.svg')];
+
+      &:hover {
+        @apply bg-transparent bg-[url('@icons/ic_search_delete_active.svg')];
+      }
+    }
   }
 
   .content {
-    @apply p-20pxr;
+    @apply p-20pxr text-13pxr font-medium
   }
 
   .children {
     @apply p-20pxr;
   }
 
-  .cancelBtn {
+  .cancel-btn {
     @apply border border-gray-200;
   }
 
-  .customBtn {
+  .custom-btn {
     @apply border border-gray-200;
   }
 }
 
-.modalOverlay {
+.modal-overlay {
   @apply flex fixed inset-0 bg-black bg-opacity-50 z-999;
 }
