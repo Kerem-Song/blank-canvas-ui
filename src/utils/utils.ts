@@ -1,4 +1,7 @@
+import parse from 'html-react-parser';
+
 const BASE_PIXEL = 16;
+
 export const util = {
   TriggerInputOnChange: (input: HTMLInputElement | null, value: string) => {
     if (!input) {
@@ -17,6 +20,27 @@ export const util = {
 
   rem: (size: number, baseSize: number = BASE_PIXEL) => {
     return `${size / baseSize}rem`;
+  },
+
+  replaceKeywordMark: (text: string, keyword?: string, isStart = false) => {
+    if (!keyword) {
+      return text;
+    }
+
+    const escapeKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/gi, '\\$&');
+
+    return parse(
+      text.replace(
+        new RegExp(`${isStart ? '\\s|^' : ''}${escapeKeyword}`, 'gi'),
+        (match) => {
+          if (match) {
+            return `<mark>${match}</mark>`;
+          } else {
+            return '';
+          }
+        },
+      ),
+    );
   },
 };
 
