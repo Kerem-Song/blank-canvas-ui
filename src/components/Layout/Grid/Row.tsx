@@ -52,7 +52,7 @@ export const Row = ({
   const addStyleChildren = React.Children.map<ReactNode, ReactNode>(children, (child) => {
     const element = child as React.ReactElement<any>;
     return React.cloneElement(element, {
-      paddingValue: colValue,
+      padding: colValue,
       className: classNames('box-border'),
     });
   });
