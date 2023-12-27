@@ -50,6 +50,7 @@ export interface IBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   direction?: 'right' | 'left';
   /**
    * 크기 지정 가능 px을 rem 계산하여 적용
+   * 최소값 10 그보다 작으면 적용안됨
    * @default 10
    * @type number | string;
    */
@@ -80,7 +81,7 @@ export const Badge = ({
     tmpSize > baseSize ? `${pxToRem(tmpSize)}rem` : `${pxToRem(baseSize)}rem`;
   const circle =
     tmpSize > baseSize ? `${pxToRem(tmpSize) / 2}rem` : `${pxToRem(baseSize) / 2}rem`;
-  console.log(fontSize, circle);
+
   return (showZero && Number(count) === 0) ||
     Number(count) > 0 ||
     Number.isNaN(division) ? (
