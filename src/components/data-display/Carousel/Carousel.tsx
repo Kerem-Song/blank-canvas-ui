@@ -124,7 +124,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
     useIndicator = true,
     dotsBottom = 20,
     opacity = 30,
-    auto = false,
+    auto = true,
     delay = 3000,
     addCarousel,
     deleteCarousel,
@@ -188,10 +188,13 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
     setCarouselIndex({ id: viewId, index: current });
 
     if (auto) {
-      const delaySlider = setTimeout(
-        () => setCurrent((prev) => (prev === children.length - 1 ? 0 : prev + 1)),
-        delay,
-      );
+      const delaySlider = setTimeout(() => {
+        setCurrent((prev) => (prev === children.length - 1 ? 0 : prev + 1));
+        setStyle({
+          ...style,
+          marginLeft: `${util.rem(-1 * -(CAROUSEL_WIDTH ?? 0))}`,
+        });
+      }, delay);
 
       return () => clearTimeout(delaySlider);
     }
