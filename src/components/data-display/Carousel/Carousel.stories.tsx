@@ -67,15 +67,9 @@ export const Default: Story = {
     // width:{1140},
     index: 0,
     limit: 9,
-    setCarouselIndex: () => {
-      console.log('@handle set carousel index btn');
-    },
-    addCarousel: () => {
-      console.log('@handle add btn');
-    },
-    deleteCarousel: () => {
-      console.log('@handle delete btn');
-    },
+    setCarouselIndex: () => {},
+    addCarousel: () => {},
+    deleteCarousel: () => {},
     dotsBottom: 10,
     arrowBtnMarginTop: 100,
     opacity: 30,
@@ -129,15 +123,9 @@ export const Editable: Story = {
     type: 'editable',
     index: 0,
     limit: 9,
-    setCarouselIndex: () => {
-      console.log('@handle set carousel index btn');
-    },
-    addCarousel: () => {
-      console.log('@handle add btn');
-    },
-    deleteCarousel: () => {
-      console.log('@handle delete btn');
-    },
+    setCarouselIndex: () => {},
+    addCarousel: () => {},
+    deleteCarousel: () => {},
     dotsBottom: 10,
   },
 };
