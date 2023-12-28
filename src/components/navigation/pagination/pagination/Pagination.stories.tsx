@@ -237,7 +237,7 @@ export const PaginationRanges: Story = {
 };
 
 /**
- * `value` 와 `onChange` 속성을 사용하여 Rating을 제어할 수 있습니다.
+ * `page` 와 `onChange` 속성을 사용하여 Pagination을 제어할 수 있습니다.
  */
 export const Controlled: Story = {
   render: () => {
