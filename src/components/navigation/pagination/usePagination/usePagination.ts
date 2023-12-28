@@ -31,7 +31,7 @@ export function usePagination(props?: UsePaginationProps): UsePaginationResult {
     perPage = 10,
     showFirstButton = false,
     showLastButton = false,
-    siblingCount = 10,
+    maxPageCount = 10,
     ...other
   } = props ?? {};
 
@@ -43,27 +43,27 @@ export function usePagination(props?: UsePaginationProps): UsePaginationResult {
   const count = Math.floor(total / perPage) + (total % perPage ? 1 : 0);
   const startPages = range(1, Math.min(boundaryCount, count));
   const endPages = range(Math.max(count - boundaryCount + 1, boundaryCount + 1), count);
+  let siblingsStart;
+  let siblingsEnd;
 
-  const siblingsStart = Math.max(
-    Math.min(
-      // 현재 페이지를 중심으로 왼쪽으로 이동
-      page - Math.floor(siblingCount / 2),
-      // 하한선
-      count - siblingCount + 1,
-    ),
-    // 시작 페이지보다 큼
-    boundaryCount + 1,
-  );
+  if (maxPageCount) {
+    siblingsStart = Math.min(
+      Math.max(page - Math.floor(maxPageCount / 2), 1),
+      count - maxPageCount + 1,
+    );
 
-  const siblingsEnd = Math.min(
-    Math.max(
-      // 현재 페이지를 중심으로 오른쪽으로 이동
-      page + Math.floor(siblingCount / 2),
-      // 상한선
-      siblingsStart - boundaryCount + siblingCount - 1,
-    ),
-    endPages.length > 0 ? endPages[0] - 1 : count,
-  );
+    siblingsEnd = Math.min(
+      Math.min(siblingsStart + maxPageCount - 1, count),
+      boundaryCount > 0 ? endPages[0] - 1 : count,
+    );
+
+    if (boundaryCount > 0 && siblingsStart < boundaryCount + 1) {
+      siblingsStart = boundaryCount + 1;
+    }
+  } else {
+    siblingsStart = boundaryCount + 1;
+    siblingsEnd = boundaryCount > 0 ? endPages[0] - 1 : count;
+  }
 
   /**
    * 렌더링할 기본 목록
@@ -82,7 +82,7 @@ export function usePagination(props?: UsePaginationProps): UsePaginationResult {
     ...range(siblingsStart, siblingsEnd),
 
     // 끝 줄임표
-    ...(!hideEllipsis && siblingsEnd < count - boundaryCount - 1 ? ['end-ellipsis'] : []),
+    ...(!hideEllipsis && siblingsEnd < count - boundaryCount ? ['end-ellipsis'] : []),
 
     ...endPages,
     ...(hideNextButton ? [] : ['next']),

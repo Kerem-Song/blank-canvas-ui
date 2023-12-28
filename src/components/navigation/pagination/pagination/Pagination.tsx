@@ -34,13 +34,13 @@ export const Pagination = React.forwardRef(function Pagination(
     perPage,
     showFirstButton,
     showLastButton,
-    siblingCount,
+    maxPageCount,
     prefix,
     className,
     color = 'primary',
     shape = 'round',
     size = 'sm',
-    variant = 'outlined',
+    variant = 'contained',
     onChange,
     renderItem = (item) => <PaginationItem {...item} />,
     ...other
@@ -58,7 +58,7 @@ export const Pagination = React.forwardRef(function Pagination(
     perPage,
     showFirstButton,
     showLastButton,
-    siblingCount,
+    maxPageCount,
     onChange,
   });
 

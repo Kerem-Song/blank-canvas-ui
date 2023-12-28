@@ -65,10 +65,10 @@ export interface UsePaginationProps {
    */
   showLastButton?: boolean;
   /**
-   * `boundaryCount`를 제외한 형제 페이지의 최대로 표시되는 페이지 수입니다.
+   * 표시되는 최대 페이지 수입니다. 0 인경우 전체 페이지가 표시됩니다.
    * @default 10
    */
-  siblingCount?: number;
+  maxPageCount?: number;
 }
 
 export interface UsePaginationItem {
