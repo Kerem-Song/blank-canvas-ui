@@ -18,7 +18,7 @@ describe('<PaginationItem />', () => {
   });
 
   it('aria-current가 정상적으로 적용됩니다.', () => {
-    const { getAllByRole } = render(<Pagination count={3} page={1} />);
+    const { getAllByRole } = render(<Pagination total={30} page={1} />);
 
     // previous, page 1
     const [, page1] = getAllByRole('button');
@@ -28,7 +28,7 @@ describe('<PaginationItem />', () => {
   it('다른 페이지를 클릭하면 onChange가 실행됩니다.', () => {
     const handleChange = vi.fn();
     const { getAllByRole } = render(
-      <Pagination count={3} page={1} onChange={handleChange} />,
+      <Pagination total={30} page={1} onChange={handleChange} />,
     );
 
     // previous, page 1, page 2
@@ -41,7 +41,7 @@ describe('<PaginationItem />', () => {
   it('줄임표를 클릭할 때 onChange를 실행하면 안 됩니다.', () => {
     const handleChange = vi.fn();
     const { container } = render(
-      <Pagination count={10} page={1} onChange={handleChange} />,
+      <Pagination total={111} page={1} onChange={handleChange} />,
     );
 
     const ellipsisDiv = container.querySelector(

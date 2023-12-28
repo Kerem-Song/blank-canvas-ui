@@ -37,7 +37,7 @@ export interface PaginationProps
   prefix?: string;
   /**
    * 구성요소의 사용할 변형입니다.
-   * @default 'outlined'
+   * @default 'contained'
    */
   variant?: 'contained' | 'outlined' | 'text';
   /**
