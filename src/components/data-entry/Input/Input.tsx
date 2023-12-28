@@ -108,6 +108,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     customPrefix,
     suffix,
     onPressEnter,
+    onPressEsc,
+    onSearch,
+    onClear,
     ...inputProps
   } = args;
 
@@ -121,15 +124,15 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     switch (e.key) {
       case 'Enter':
         onPressEnter?.(inputRef.current?.value);
-        args.onSearch?.(inputRef.current?.value);
-        if (onPressEnter || args.onSearch) {
+        onSearch?.(inputRef.current?.value);
+        if (onPressEnter || onSearch) {
           e.preventDefault();
           e.stopPropagation();
         }
         break;
       case 'Escape':
-        args.onPressEsc?.();
-        if (args.onPressEsc) {
+        onPressEsc?.();
+        if (onPressEsc) {
           e.preventDefault();
           e.stopPropagation();
         }
@@ -144,7 +147,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const handleOnBlur = (e: FocusEvent<HTMLInputElement>) => {
     args.onBlur?.(e);
-    args.onSearch?.(e.target.value);
+    onSearch?.(e.target.value);
   };
 
   const wrappingType =
@@ -171,9 +174,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
       <input
         {...inputProps}
         className={inputClassName}
-        onKeyDown={
-          onPressEnter || args.onSearch || args.onKeyDown ? handleKeyUp : undefined
-        }
+        onKeyDown={onPressEnter || onSearch || args.onKeyDown ? handleKeyUp : undefined}
         ref={(current) => {
           if (ref) {
             if (typeof ref === 'function') {
@@ -217,7 +218,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
                 onClick={() => {
                   util.TriggerInputOnChange(inputRef.current, '');
                   setTextLength(0);
-                  args.onSearch?.('');
+                  onSearch?.('');
                 }}
               >
                 <div className={classNames('search', { clear: textLength })} />
@@ -232,7 +233,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
               onClick={(e) => {
                 util.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
-                args.onClear?.();
+                onClear?.();
               }}
               onMouseDown={(e) => {
                 e.preventDefault();
