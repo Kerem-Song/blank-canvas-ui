@@ -9,10 +9,10 @@ export interface UsePaginationProps {
    */
   boundaryCount?: number;
   /**
-   * 총 페이지 수입니다.
+   * 총 아이템의 수입니다.
    * @default 1
    */
-  count?: number;
+  total?: number;
   /**
    * 컴포넌트가 제어되지 않을 때 기본적으로 선택되는 페이지 값입니다.
    * @default 1
@@ -23,6 +23,11 @@ export interface UsePaginationProps {
    * @default false
    */
   disabled?: boolean;
+  /**
+   * `true`인 경우 줄임표를 숨깁니다.
+   * @default false
+   */
+  hideEllipsis?: boolean;
   /**
    * `true`인 경우 다음 페이지 버튼을 숨깁니다.
    * @default false
@@ -45,6 +50,11 @@ export interface UsePaginationProps {
    */
   page?: number;
   /**
+   * 페이지당 행 수. `total` 와 `perPage`을 사용하여 페이지 수를 카운트합니다.
+   * @default 10
+   */
+  perPage?: number;
+  /**
    * `true`인 경우 첫 페이지 버튼을 표시합니다.
    * @default false
    */
@@ -55,10 +65,10 @@ export interface UsePaginationProps {
    */
   showLastButton?: boolean;
   /**
-   * 현재 페이지 전후에 항상 표시되는 페이지 수입니다.
-   * @default 1
+   * 표시되는 최대 페이지 수입니다. 0 인경우 전체 페이지가 표시됩니다.
+   * @default 10
    */
-  siblingCount?: number;
+  maxPageCount?: number;
 }
 
 export interface UsePaginationItem {

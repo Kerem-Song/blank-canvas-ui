@@ -21,15 +21,17 @@ export function usePagination(props?: UsePaginationProps): UsePaginationResult {
   const {
     boundaryCount = 1,
     defaultPage = 1,
-    count = 1,
+    total = 0,
     disabled = false,
+    hideEllipsis = false,
     hideNextButton = false,
     hidePrevButton = false,
     onChange: handleChange,
     page: pageProp,
+    perPage = 10,
     showFirstButton = false,
     showLastButton = false,
-    siblingCount = 1,
+    maxPageCount = 10,
     ...other
   } = props ?? {};
 
@@ -38,30 +40,30 @@ export function usePagination(props?: UsePaginationProps): UsePaginationResult {
     defaultValue: defaultPage,
   });
 
+  const count = Math.floor(total / perPage) + (total % perPage ? 1 : 0);
   const startPages = range(1, Math.min(boundaryCount, count));
   const endPages = range(Math.max(count - boundaryCount + 1, boundaryCount + 1), count);
+  let siblingsStart;
+  let siblingsEnd;
 
-  const siblingsStart = Math.max(
-    Math.min(
-      // 시작
-      page - siblingCount,
-      // 페이지가 높을 때 하한선
-      count - boundaryCount - siblingCount * 2 - 1,
-    ),
-    // 시작 페이지보다 큼
-    boundaryCount + 2,
-  );
+  if (maxPageCount) {
+    siblingsStart = Math.min(
+      Math.max(page - Math.floor(maxPageCount / 2), 1),
+      count - maxPageCount + 1,
+    );
 
-  const siblingsEnd = Math.min(
-    Math.max(
-      // 마지막
-      page + siblingCount,
-      // 페이지가 낮을 때 상한선
-      boundaryCount + siblingCount * 2 + 2,
-    ),
-    // 마지막 페이지보다 작음
-    endPages.length > 0 ? endPages[0] - 2 : count - 1,
-  );
+    siblingsEnd = Math.min(
+      Math.min(siblingsStart + maxPageCount - 1, count),
+      boundaryCount > 0 ? endPages[0] - 1 : count,
+    );
+
+    if (boundaryCount > 0 && siblingsStart < boundaryCount + 1) {
+      siblingsStart = boundaryCount + 1;
+    }
+  } else {
+    siblingsStart = boundaryCount + 1;
+    siblingsEnd = boundaryCount > 0 ? endPages[0] - 1 : count;
+  }
 
   /**
    * 렌더링할 기본 목록
@@ -74,21 +76,13 @@ export function usePagination(props?: UsePaginationProps): UsePaginationResult {
     ...startPages,
 
     // 시작 줄임표
-    ...(siblingsStart > boundaryCount + 2
-      ? ['start-ellipsis']
-      : boundaryCount + 1 < count - boundaryCount
-        ? [boundaryCount + 1]
-        : []),
+    ...(!hideEllipsis && siblingsStart > boundaryCount + 1 ? ['start-ellipsis'] : []),
 
     // 페이지 형제들
     ...range(siblingsStart, siblingsEnd),
 
     // 끝 줄임표
-    ...(siblingsEnd < count - boundaryCount - 1
-      ? ['end-ellipsis']
-      : count - boundaryCount > boundaryCount
-        ? [count - boundaryCount]
-        : []),
+    ...(!hideEllipsis && siblingsEnd < count - boundaryCount ? ['end-ellipsis'] : []),
 
     ...endPages,
     ...(hideNextButton ? [] : ['next']),
