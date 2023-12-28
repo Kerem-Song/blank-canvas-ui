@@ -26,8 +26,8 @@ const meta: Meta<PaginationProps> = {
   component: Pagination,
   tags: ['autodocs'],
   argTypes: {
-    // page: { control: { type: null } },
-    // defaultPage: { control: { type: null } },
+    page: { control: { type: null } },
+    defaultPage: { control: { type: null } },
   },
 };
 
