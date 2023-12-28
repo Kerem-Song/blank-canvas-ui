@@ -3,6 +3,7 @@ import './App.css';
 import {
   Button,
   Carousel,
+  DebouncedInput,
   FloatingActionButton,
   IFloatingActionMenuProps,
   Input,
@@ -21,6 +22,7 @@ import IcImg2 from '@icons/ic_search.svg?react';
 import icImgTest2 from '@icons/ic_search_delete.svg';
 import { offset } from '@popperjs/core';
 import { useState } from 'react';
+import { Autocomplete } from 'src';
 
 function App() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -28,6 +30,13 @@ function App() {
     { label: '1', value: '1' },
     { label: '2', value: 2 },
     { label: '3', value: '3', disabled: true },
+  ];
+  const items = [
+    { label: 'label1', value: 'value1' },
+    { label: 'label2', value: 'value2' },
+    { label: 'label3', value: 'value3' },
+    { label: 'asdf', value: 'asdf' },
+    { label: '123', value: '123' },
   ];
 
   const menu: IFloatingActionMenuProps[] = [
@@ -131,6 +140,7 @@ function App() {
         trigger="click"
         // description={'hiasdf'}
       />
+      <Autocomplete items={items} displayName={'label'} placeholder="write" />
       <button onClick={() => setModalOpen(!modalOpen)}>모달테스트</button>
       <Modal
         isOpen={modalOpen}
