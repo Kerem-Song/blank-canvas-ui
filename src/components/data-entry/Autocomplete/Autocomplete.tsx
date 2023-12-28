@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-base-to-string */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Input } from '@components';
 import classNames from 'classnames';
 import {
@@ -51,9 +49,11 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   useEffect(() => {
     if (args.defaultValue) {
       if (displayName) {
-        setSearch(`${args.defaultValue[displayName]}`);
+        const stringfiedDisplayName = String(args.defaultValue[displayName]);
+        setSearch(stringfiedDisplayName);
       } else {
-        setSearch(`${args.defaultValue}`);
+        const stringfiedVal = String(args.defaultValue);
+        setSearch(stringfiedVal);
       }
     } else {
       setSearch('');
@@ -87,7 +87,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
     setFocusedItem(undefined);
     setSearch(value);
     args.onChangeValue?.(
-      items?.find((x) => (displayName ? x[displayName] : `${x}`) === value) ||
+      items?.find((x) => (displayName ? x[displayName] : String(x)) === value) ||
         args.create?.(value),
     );
   };
@@ -97,7 +97,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
     if (!search) {
       return true;
     }
-    const value = displayName ? `${x[displayName]}` : `${x}`;
+    const value = displayName ? String(x[displayName]) : String(x);
     return value.startsWith(search);
   });
 
@@ -144,8 +144,8 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
             if (showPopper) {
               if (focusedItem) {
                 const value = displayName
-                  ? `${focusedItem[displayName]}`
-                  : `${focusedItem}`;
+                  ? String(focusedItem[displayName])
+                  : String(focusedItem);
                 handleSearchChange(value);
                 util.TriggerInputOnChange(inputElement.current, value);
               }
@@ -176,7 +176,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
         {...attributes.popper}
       >
         {filteredList?.map((item: T, index: number) => {
-          const display = displayName ? `${item[displayName]}` : `${item}`;
+          const display = displayName ? String(item[displayName]) : String(item);
           const focused = item === focusedItem;
           const itemClassName = classNames('autocomplete-list', {
             'autocomplete-list-focused': focused,
@@ -191,7 +191,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
               onMouseDown={(e) => {
                 e.stopPropagation();
                 if (referenceElement.current) {
-                  const value = displayName ? `${item[displayName]}` : `${item}`;
+                  const value = displayName ? String(item[displayName]) : String(item);
                   handleSearchChange(value);
                   util.TriggerInputOnChange(inputElement.current, value);
                 }
