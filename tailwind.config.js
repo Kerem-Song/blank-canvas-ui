@@ -2,7 +2,7 @@
 
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
-const BASE_PIXEL = 16;
+export const BASE_PIXEL = 16;
 const pxToRem = (px, base = BASE_PIXEL) => `${px / base}rem`;
 const rem = [...Array(2000).keys()].reduce((acc, px) => {
   acc[`${px}pxr`] = pxToRem(px);
@@ -69,7 +69,12 @@ export default {
         pretendard: ['Pretendard', ...fontFamily.sans],
       },
       minWidth: {
+        ...rem,
         200: '200px',
+      },
+      zIndex: {
+        100: '100',
+        999: '999',
       },
     },
   },

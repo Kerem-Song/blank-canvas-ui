@@ -43,6 +43,7 @@ export const Row = ({
   align,
   children,
   style,
+  className,
   ...props
 }: IRowProps) => {
   const rowValue = Array.isArray(gutter) ? gutter[1] : gutter ? gutter : 0;
@@ -51,7 +52,7 @@ export const Row = ({
   const addStyleChildren = React.Children.map<ReactNode, ReactNode>(children, (child) => {
     const element = child as React.ReactElement<any>;
     return React.cloneElement(element, {
-      paddingValue: colValue,
+      padding: colValue,
       className: classNames('box-border'),
     });
   });
@@ -59,7 +60,7 @@ export const Row = ({
   return (
     <div
       {...props}
-      className={classNames('box-border', 'flex')}
+      className={classNames('box-border', 'flex', className)}
       style={{
         ...style,
         flexWrap: wrap,

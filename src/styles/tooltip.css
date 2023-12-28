@@ -5,7 +5,7 @@
 }
 
 #tooltip {
-  @apply text-start flex items-center bg-white font-bold text-red-950 py-[5px] px-[10px] rounded-[4px] max-w-[250px];
+  @apply text-start flex items-center bg-white font-bold text-red-950 py-[5px] px-[10px] rounded-[4px];
 }
 
 #tooltip-data {
@@ -51,5 +51,5 @@
 }
 
 .tooltip-base {
-  @apply min-w-[250px] h-auto break-all shadow-[0_6px_16px_0_rgba(0,0,0,0.08),0_3px_6px_-4px_rgba(0,0,0,0.12),0_9px_28px_8px_rgba(0,0,0,0.05)];
+  @apply h-auto break-all shadow-[0_6px_16px_0_rgba(0,0,0,0.08),0_3px_6px_-4px_rgba(0,0,0,0.12),0_9px_28px_8px_rgba(0,0,0,0.05)];
 }

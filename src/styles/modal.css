@@ -1,0 +1,51 @@
+.modal {
+  @apply h-fit m-auto mt-300pxr p-0 bg-white border rounded-md;
+
+  &-sm {
+    @apply w-400pxr;
+  }
+
+  &-md {
+    @apply w-510pxr;
+  }
+
+  &-lg {
+    @apply w-600pxr;
+  }
+
+  &-xl {
+    @apply w-1112pxr;
+  }
+
+  .title {
+    @apply flex justify-between items-center px-20pxr py-14pxr font-bold;
+
+    .esc-btn {
+      @apply w-10pxr h-10pxr bg-center bg-no-repeat bg-[url('@icons/ic_search_delete.svg')];
+
+      &:hover {
+        @apply bg-transparent bg-[url('@icons/ic_search_delete_active.svg')];
+      }
+    }
+  }
+
+  .content {
+    @apply p-20pxr text-13pxr font-medium
+  }
+
+  .children {
+    @apply p-20pxr;
+  }
+
+  .cancel-btn {
+    @apply border border-gray-200;
+  }
+
+  .custom-btn {
+    @apply border border-gray-200;
+  }
+}
+
+.modal-overlay {
+  @apply flex fixed inset-0 bg-black bg-opacity-50 z-999;
+}

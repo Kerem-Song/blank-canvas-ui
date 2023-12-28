@@ -7,6 +7,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '제목과 입력 글자 수 표시가 가능한 텍스트 입력',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 

@@ -7,6 +7,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '텍스트 입력',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 
@@ -25,7 +30,6 @@ export const Default: Story = {
   args: {
     maxRows: 5,
     minRows: 2,
-    showCount: true,
     maxLength: 100,
     disabled: false,
   },

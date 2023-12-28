@@ -17,3 +17,8 @@
 @import './styles/upload.css';
 @import './styles/pagination.css';
 @import './styles/paginationItem.css';
+@import './styles/select.css';
+@import './styles/floatingActionButton.css';
+@import './styles/modal.css';
+@import './styles/carousel.css';
+@import './styles/autocomplete.css';
