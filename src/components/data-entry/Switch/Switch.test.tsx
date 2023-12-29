@@ -1,5 +1,5 @@
 import { generatePrefixClasses } from '@modules/utils';
-import { getByTestId, render } from '@testing-library/react';
+import { fireEvent, getByTestId, render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import { Switch, switchClasses } from '.';
@@ -45,5 +45,17 @@ describe('<Switch />', () => {
 
     rerender(<Switch color="green" />);
     expect(container.firstChild).toHaveProperty('color', 'green');
+  });
+});
+
+describe('스위치 클릭 이벤트', () => {
+  it('스위치 클릭 시 이벤트 함수 실행', () => {
+    const onClick = vi.fn();
+
+    const { getByText } = render(<Switch onClick={onClick} />);
+    const switchTest = getByText('switch');
+
+    fireEvent.click(switchTest);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });
