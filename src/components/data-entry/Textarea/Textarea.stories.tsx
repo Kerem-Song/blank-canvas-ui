@@ -30,7 +30,6 @@ export const Default: Story = {
   args: {
     maxRows: 5,
     minRows: 2,
-    showCount: true,
     maxLength: 100,
     disabled: false,
   },

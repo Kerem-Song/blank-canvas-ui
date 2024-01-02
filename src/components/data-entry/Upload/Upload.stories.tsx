@@ -6,7 +6,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { uploadFileFormat } from './uploadClasses';
 
 const meta: Meta = {
-  title: 'components/data-entry/Upload/Upload',
+  title: 'components/data-entry/Upload',
   component: Upload,
   tags: ['autodocs'],
   parameters: {

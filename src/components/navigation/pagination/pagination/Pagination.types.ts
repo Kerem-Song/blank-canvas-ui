@@ -14,7 +14,7 @@ export interface PaginationRenderItemParams extends UsePaginationItem {
 }
 
 export interface PaginationProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, 'children' | 'onChange'>,
+  extends Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'style'>,
     UsePaginationProps {
   /**
    * 구성요소의 활성 색상입니다.
@@ -37,7 +37,7 @@ export interface PaginationProps
   prefix?: string;
   /**
    * 구성요소의 사용할 변형입니다.
-   * @default 'outlined'
+   * @default 'contained'
    */
   variant?: 'contained' | 'outlined' | 'text';
   /**

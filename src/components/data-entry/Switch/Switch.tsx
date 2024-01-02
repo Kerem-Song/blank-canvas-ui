@@ -1,14 +1,15 @@
-import { switchClasses } from '@components';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { forwardRef, InputHTMLAttributes } from 'react';
+
+import { switchClasses } from './SwitchClasses';
 
 export interface ISwitchProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 스위치 타입
    * @default outside
    */
-  type?: 'outside' | 'inside';
+  switchType?: 'outside' | 'inside';
 
   /**
    * 스위치의 사이즈
@@ -27,7 +28,7 @@ export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => 
   const {
     prefix,
     className,
-    type = 'outside',
+    switchType = 'outside',
     switchSize = 'sm',
     color = 'green',
     ...switchProps
@@ -41,8 +42,8 @@ export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => 
     classes.root,
     {
       // type {
-      [classes.inside]: type === 'inside',
-      [classes.outside]: type === 'outside',
+      [classes.inside]: switchType === 'inside',
+      [classes.outside]: switchType === 'outside',
     },
     className,
   );
@@ -70,9 +71,12 @@ export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => 
         className="switch-input peer"
         ref={ref}
         checked={args.checked}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
         onChange={args.onChange}
         disabled={args.disabled}
+        {...switchProps}
       />
       <label htmlFor={args.id} className="hidden" />
       <div className={switchBarClassName} />

@@ -1,5 +1,5 @@
-import ChevronBarLeftIcon from '@assets/icons/ic_chevron_bar_left.svg?react';
-import ChevronBarRightIcon from '@assets/icons/ic_chevron_bar_right.svg?react';
+import ChevronDoubleLeftIcon from '@assets/icons/ic_chevron_double_left.svg?react';
+import ChevronDoubleRightIcon from '@assets/icons/ic_chevron_double_right.svg?react';
 import ChevronLeftIcon from '@assets/icons/ic_chevron_left.svg?react';
 import ChevronRightIcon from '@assets/icons/ic_chevron_right.svg?react';
 import { Button } from '@components/general/button/Button';
@@ -26,7 +26,7 @@ export const PaginationItem = React.forwardRef(function PaginationItem<
     selected = false,
     color = 'default',
     shape = 'round',
-    variant = 'text',
+    variant = 'contained',
     size = 'sm',
     slots: slotsProp = {},
     slotProps: slotPropsProp = {},
@@ -38,8 +38,8 @@ export const PaginationItem = React.forwardRef(function PaginationItem<
   const iconSlots: Partial<Record<PaginationItemType, React.ElementType>> = {
     previous: slotsProp.previous || ChevronLeftIcon,
     next: slotsProp.next || ChevronRightIcon,
-    first: slotsProp.first || ChevronBarLeftIcon,
-    last: slotsProp.last || ChevronBarRightIcon,
+    first: slotsProp.first || ChevronDoubleLeftIcon,
+    last: slotsProp.last || ChevronDoubleRightIcon,
   };
   const ellipsisSlots: Partial<Record<PaginationItemType, React.ElementType>> = {
     'start-ellipsis': slotsProp['start-ellipsis'],

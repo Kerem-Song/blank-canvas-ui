@@ -19,6 +19,7 @@ export {
   Tooltip,
 } from '@components';
 export * from '@components/data-display/Carousel';
+export * from '@components/data-entry/Autocomplete';
 export * from '@components/data-entry/Switch';
 export * from '@components/data-entry/Upload';
 export * from '@components/general/button';

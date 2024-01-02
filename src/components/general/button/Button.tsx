@@ -139,7 +139,13 @@ export const Button = React.forwardRef(function Button<
     <RootComponent
       type={type}
       className={rootClassName}
-      onClick={disabled ? undefined : onClick}
+      onClick={
+        disabled
+          ? (e: React.MouseEvent) => {
+              e.preventDefault();
+            }
+          : onClick
+      }
       ref={handleRef}
       {...buttonProps}
       {...other}

@@ -69,6 +69,7 @@ export default {
         pretendard: ['Pretendard', ...fontFamily.sans],
       },
       minWidth: {
+        ...rem,
         200: '200px',
       },
       zIndex: {
