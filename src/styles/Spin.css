@@ -1,0 +1,5 @@
+.spin {
+  span > * {
+    @apply animate-[spin_5s_linear_infinite] origin-[50%_50%] w-[20px] h-[20px];
+  }
+}

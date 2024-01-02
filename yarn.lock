@@ -2136,6 +2136,7 @@ __metadata:
     prettier: "npm:^3.1.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-loading: "npm:^2.0.3"
     react-modal: "npm:^3.16.1"
     react-popper: "npm:^2.3.0"
     react-router-dom: "npm:^6.19.0"
@@ -10324,6 +10325,16 @@ __metadata:
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
   checksum: 1d0df3c85af79df720524780f00c064d53a9dd1899d785eddb7264b378026979acbddb58a4b7e06e7d0d12aa1494fd5754562ee55d32907b15601068dae82c27
+  languageName: node
+  linkType: hard
+
+"react-loading@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-loading@npm:2.0.3"
+  peerDependencies:
+    prop-types: ^15.6.0
+    react: ">=0.14.0"
+  checksum: f2bd5c5189db49194fb66a5120b4040af01811b80d111abf0f33b658bf4da48aefc45f72381e062606b899c3f93366954cad09c06ba0491bcab6c0538897cfe4
   languageName: node
   linkType: hard
 
