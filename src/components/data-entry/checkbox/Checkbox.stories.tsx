@@ -178,11 +178,11 @@ export const Icon: Story = {
 export const Controlled: Story = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [value, setValue] = useState<boolean>(false);
+    const [value, setValue] = useState<boolean>(true);
 
-    const onChange: CheckboxProps['onChange'] = (event) => {
-      console.log('parent - onChange: ', event);
-      setValue(event.currentTarget.checked);
+    const onChange: CheckboxProps['onChange'] = (event, checked) => {
+      console.log('parent - onChange: ', event, checked);
+      setValue(checked);
     };
 
     return (
@@ -213,7 +213,7 @@ export const Indeterminate: Story = {
             checked={checkedIndeterminate[0] && checkedIndeterminate[1]}
             indeterminate={checkedIndeterminate[0] !== checkedIndeterminate[1]}
             onChange={(e) =>
-              setCheckedIndeterminate([e.currentTarget.checked, e.currentTarget.checked])
+              setCheckedIndeterminate([e.target.checked, e.target.checked])
             }
           />
           <Flex className="ml-4" vertical>
@@ -221,20 +221,14 @@ export const Indeterminate: Story = {
               label="Child 1"
               checked={checkedIndeterminate[0]}
               onChange={(e) =>
-                setCheckedIndeterminate([
-                  e.currentTarget.checked,
-                  checkedIndeterminate[1],
-                ])
+                setCheckedIndeterminate([e.target.checked, checkedIndeterminate[1]])
               }
             />
             <Checkbox
               label="Child 2"
               checked={checkedIndeterminate[1]}
               onChange={(e) =>
-                setCheckedIndeterminate([
-                  checkedIndeterminate[0],
-                  e.currentTarget.checked,
-                ])
+                setCheckedIndeterminate([checkedIndeterminate[0], e.target.checked])
               }
             />
           </Flex>
