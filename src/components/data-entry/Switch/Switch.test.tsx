@@ -1,61 +1,88 @@
 import { generatePrefixClasses } from '@modules/utils';
 import { fireEvent, getByTestId, render } from '@testing-library/react';
+import { spyOn } from '@vitest/spy';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Switch, switchClasses } from '.';
+import { Switch, switchClasses } from './index';
 
-const classes = generatePrefixClasses(switchClasses, 'Switch');
+const classes = generatePrefixClasses(switchClasses, 'switch');
+const onClickTest = () => {
+  console.log('@on click test');
+};
 
 describe('<Switch />', () => {
   it('렌더링 체크', () => {
-    const { getByTestId } = render(
-      <Switch type={'inside'} switchSize={'sm'} color={'blue'} data-testid={'switch'} />,
-    );
-    const switchTest = getByTestId('switch');
+    const { container } = render(<Switch />);
 
-    expect(switchTest.classList.contains(classes.root)).toBeTruthy();
-    expect(switchTest.textContent).toEqual('Switch');
+    const switchTest = container.querySelector('.switch');
+    expect(switchTest?.classList.contains('switch-wrapper')).toBeTruthy();
   });
 
   it('type에 따른 형태 변경 체크', () => {
-    const { container, rerender } = render(<Switch type="inside" />);
-    expect(container.firstChild).toHaveProperty('type', 'inside');
+    const { rerender, container } = render(<Switch switchType={'inside'} />);
 
-    rerender(<Switch type="outside" />);
-    expect(container.firstChild).toHaveProperty('type', 'outside');
+    const childInside = container.querySelector('.switch-inside');
+    expect(childInside?.classList.contains('switch-inside')).toBeTruthy();
+
+    rerender(<Switch switchType="outside" />);
+    const childOutside = container.querySelector('.switch-outside');
+    expect(childOutside?.classList.contains('switch-outside')).toBeTruthy();
   });
 
   it('size에 따른 형태 변경 체크', () => {
-    const { container, rerender } = render(<Switch switchSize="sm" />);
-    expect(container.firstChild).toHaveProperty('switchSize', 'sm');
+    const { rerender, container } = render(<Switch switchSize="sm" />);
+
+    const childSm = container.querySelector('.switch-sm');
+    expect(childSm?.classList.contains(classes.sizeSmall)).toBeTruthy();
 
     rerender(<Switch switchSize="md" />);
-    expect(container.firstChild).toHaveProperty('switchSize', 'md');
+    const childMd = container.querySelector('.switch-md');
+    expect(childMd?.classList.contains(classes.sizeMedium)).toBeTruthy();
 
     rerender(<Switch switchSize="lg" />);
-    expect(container.firstChild).toHaveProperty('switchSize', 'lg');
+    const childLg = container.querySelector('.switch-lg');
+    expect(childLg?.classList.contains(classes.sizeLarge)).toBeTruthy();
 
     rerender(<Switch switchSize="xl" />);
-    expect(container.firstChild).toHaveProperty('switchSize', 'xl');
+    const childXl = container.querySelector('.switch-xl');
+    expect(childXl?.classList.contains(classes.sizeXLarge)).toBeTruthy();
   });
 
   it('color에 따른 형태 변경 체크', () => {
-    const { container, rerender } = render(<Switch color="blue" />);
-    expect(container.firstChild).toHaveProperty('color', 'blue');
+    const { rerender, container } = render(<Switch color="blue" />);
+    const childBlue = container.querySelector('.switch-blue');
+    expect(childBlue?.classList.contains(classes.blue)).toBeTruthy();
 
     rerender(<Switch color="green" />);
-    expect(container.firstChild).toHaveProperty('color', 'green');
+    const childGreen = container.querySelector('.switch-green');
+    expect(childGreen?.classList.contains(classes.green)).toBeTruthy();
   });
 });
 
 describe('스위치 클릭 이벤트', () => {
   it('스위치 클릭 시 이벤트 함수 실행', () => {
-    const onClick = vi.fn();
+    // const spy = vi.spyOn(messages, 'onClickTest');
+    const onClickMock = vi.fn();
 
-    const { getByText } = render(<Switch onClick={onClick} />);
-    const switchTest = getByText('switch');
+    const { getByTestId } = render(
+      <Switch data-testid={'switch'} onClick={onClickMock} />,
+    );
+
+    const switchTest = getByTestId('switch');
 
     fireEvent.click(switchTest);
-    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClickMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('스위치 클릭 아닐 시 이벤트 함수', () => {
+    const onClickMock = vi.fn();
+
+    const { getByTestId } = render(
+      <Switch data-testid={'switch'} onClick={onClickMock} />,
+    );
+
+    const switchTest = getByTestId('switch');
+
+    expect(onClickMock).not.toHaveBeenCalled();
   });
 });
