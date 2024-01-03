@@ -7,7 +7,6 @@ export interface IFloatingActionButtonClasses {
   triggerClick: string;
   triggerHover: string;
   badgeCounter: string;
-  isGroup: string;
 }
 
 export type FloatingActionButtonClassesKey = keyof IFloatingActionButtonClasses;
@@ -21,5 +20,4 @@ export const floatingActionButtonClasses: IFloatingActionButtonClasses = {
   triggerClick: 'trigger-click',
   triggerHover: 'trigger-hover',
   badgeCounter: 'badge-counter',
-  isGroup: 'group',
 };

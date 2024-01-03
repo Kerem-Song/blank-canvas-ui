@@ -22,7 +22,7 @@ describe('<RadioGroup />', () => {
     const onClick = vi.fn();
     const onChange = vi.fn();
 
-    const { getAllByRole, getByRole } = render(
+    const { getAllByRole } = render(
       <RadioGroup options={options} onClick={onClick} onChange={onChange} />,
     );
 

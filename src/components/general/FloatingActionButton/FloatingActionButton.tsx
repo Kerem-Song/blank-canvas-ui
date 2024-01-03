@@ -2,7 +2,7 @@ import { Badge, IBadgeProps, Tooltip } from '@components';
 import { useOutsideClick } from '@hooks';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import { AnchorHTMLAttributes, forwardRef, useRef, useState } from 'react';
+import { forwardRef, HTMLAttributes, useRef, useState } from 'react';
 import { util } from 'src/utils/utils';
 
 import { floatingActionButtonClasses } from './FloatingActionButtonClasses';
@@ -44,8 +44,7 @@ export type IFloatingActionMenuProps = Omit<
   'menu' | 'trigger' | 'closeIcon' | 'right' | 'bottom' | 'shape'
 >;
 
-export interface IFloatingActionButtonProps
-  extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface IFloatingActionButtonProps extends HTMLAttributes<HTMLElement> {
   /**
    * 플로팅 버튼의 모양
    * @default 'circle'
@@ -67,13 +66,13 @@ export interface IFloatingActionButtonProps
    * 플로팅 버튼의 right위치 조정(px)
    * @default 30
    */
-  right: number;
+  right?: number;
 
   /**
    * 플로팅 버튼의 bottom위치 조정(px)
    * @default 50
    */
-  bottom: number;
+  bottom?: number;
 
   /**
    * 플로팅버튼에 호버시 노출되는 툴팁
@@ -192,7 +191,7 @@ export const FloatingActionButton = forwardRef<
 
   return (
     <div
-      className={classNames('floating-action-button-wrapper', {
+      className={classNames('floating-action-button-wrapper wrapper', {
         open: isOpen,
         'badge-counter': useBadge,
       })}
@@ -202,6 +201,7 @@ export const FloatingActionButton = forwardRef<
         trigger === 'hover' && menu && setIsOpen(false);
       }}
       ref={floatingAtionButtonRef}
+      {...buttonProps}
     >
       {menu?.map((item, i) => (
         <Badge
