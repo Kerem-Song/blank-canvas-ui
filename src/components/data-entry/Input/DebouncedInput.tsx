@@ -1,5 +1,5 @@
 import { IInputProps, Input } from '@components';
-import { forwardRef, useDeferredValue, useMemo, useRef, useState } from 'react';
+import { forwardRef, useDeferredValue, useMemo, useState } from 'react';
 
 export interface IDebounceProps extends IInputProps {
   handleDebounce: () => void;
@@ -18,14 +18,12 @@ export const DebouncedInput = forwardRef<HTMLInputElement, IDebounceProps>(
   (args, ref) => {
     const [query, setQuery] = useState('');
 
-    const { debounceTimeout, handleDebounce, ...inputProps } = args;
+    const { debounceTimeout, handleDebounce, children, ...inputProps } = args;
     const deferredQuery = useDeferredValue(query);
 
     const fetchDataList = useMemo(
       () => (val: string) => {
         try {
-          console.log('@val', val);
-          console.log('@debounce time', debounceTimeout);
           setQuery(val);
 
           debounce(debounceTimeout, handleDebounce);
@@ -35,7 +33,16 @@ export const DebouncedInput = forwardRef<HTMLInputElement, IDebounceProps>(
       },
       [deferredQuery],
     );
-    console.log('@deferred query', deferredQuery);
-    return <Input ref={ref} onChange={(e) => fetchDataList(e.currentTarget.value)} />;
+
+    return (
+      <div>
+        <Input
+          ref={ref}
+          onChange={(e) => fetchDataList(e.currentTarget.value)}
+          {...inputProps}
+        />
+        {deferredQuery ? children : null}
+      </div>
+    );
   },
 );

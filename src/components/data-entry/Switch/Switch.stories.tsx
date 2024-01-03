@@ -1,9 +1,8 @@
-import { Switch } from '@components';
+import { ISwitchProps, Switch } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
-import { InputHTMLAttributes } from 'react';
 
 const meta: Meta = {
-  title: 'components/data-entry/Switch/Switch',
+  title: 'components/data-entry/Switch',
   component: Switch,
   tags: ['autodocs'],
   parameters: {
@@ -13,7 +12,7 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<InputHTMLAttributes<HTMLInputElement>>;
+type Story = StoryObj<ISwitchProps>;
 
 export const Default: Story = {
   render: (args) => {
@@ -23,6 +22,9 @@ export const Default: Story = {
           alert('on click');
         }}
         checked={args.checked}
+        color={args.color}
+        switchSize={args.switchSize}
+        switchType={args.switchType}
       />
     );
   },

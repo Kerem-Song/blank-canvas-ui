@@ -10,9 +10,9 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * tooltip에 표시할 내용
    * @default
-   * @type string
+   * @type React.ReactNode
    */
-  text: string;
+  text: React.ReactNode;
   /**
    * tooltip 표시 위치 지정
    * @default 'right'
@@ -74,6 +74,24 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   open?: boolean;
   /**
+   * 툴팁의 크기 지정 px 기준
+   * @default 250px
+   * @type number | string;
+   */
+  tooltipWidth?: number | string;
+  /**
+   * 툴팁 className 지정
+   * @default
+   * @type string;
+   */
+  tooltipClassName?: string;
+  /**
+   * 화살표 className 지정
+   * @default
+   * @type string;
+   */
+  arrowClassName?: string;
+  /**
    * component를 전달
    */
   children?: React.ReactNode | React.ReactNode[];
@@ -90,9 +108,17 @@ export const Tooltip = ({
   strategy = 'fixed',
   mouseEnterDelay,
   mouseLeaveDelay,
+  tooltipWidth,
   open,
+  tooltipClassName,
+  arrowClassName,
   children,
 }: ITooltipProps) => {
+  const width = tooltipWidth
+    ? typeof tooltipWidth === 'string'
+      ? `${tooltipWidth.replace(/[^0-9]/g, '')}px`
+      : `${tooltipWidth}px`
+    : '250px';
   const referenceElement = useRef<HTMLDivElement>(null);
   const popperElement = useRef<HTMLDivElement>(null);
   const arrowElement = useRef<HTMLDivElement>(null);
@@ -154,14 +180,16 @@ export const Tooltip = ({
       >
         {children}
       </div>
+
       {ReactDOM.createPortal(
         <div
           id="tooltip"
           role="tooltip"
           {...attributes.popper}
-          className={classNames('tooltip-base')}
+          className={classNames('tooltip-base', tooltipClassName)}
           style={{
             ...styles.popper,
+            maxWidth: width,
             visibility:
               open === undefined
                 ? defaultShow || isShow
@@ -182,6 +210,7 @@ export const Tooltip = ({
             <div
               id="arrow"
               ref={arrowElement}
+              className={classNames(arrowClassName)}
               data-popper-arrow
               style={{
                 ...styles.arrow,

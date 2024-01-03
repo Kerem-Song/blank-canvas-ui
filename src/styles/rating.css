@@ -1,0 +1,119 @@
+$ns: .rating;
+
+/* prettier-ignore */
+$(ns) {
+  /* default */
+  & {
+    @apply
+      inline-flex
+      relative
+      text-left
+      cursor-pointer;
+  }
+
+  /* default icon */
+  &-icon {
+    @apply
+      flex
+      pointer-events-none
+      cursor-[inherit]
+      transition-transform
+      ease-in-out
+      delay-[0ms];
+    svg {
+      @apply
+        shrink-0
+        inline-block
+        w-[1em]
+        h-[1em]
+        fill-current
+        transition-[fill]
+        duration-200
+        ease-in-out
+        delay-[0ms]
+        select-none;
+    }
+  }
+  /* icon empty */
+  &-iconEmpty {
+    svg {
+      @apply
+        text-[rgba(0,0,0,0.26)];
+    }
+  }
+
+  /* icon active */
+  &-iconActive {
+    @apply
+      scale-[1.2];
+    $(ns)-focusVisible & {
+      outline: 1px solid #999;
+    }
+  }
+
+  /* Rating label */
+  &-label {
+    @apply
+      cursor-[inherit];
+    &$(ns)-labelEmptyValueActive {
+      @apply
+        absolute
+        w-full
+        inset-y-0;
+      outline: 1px solid #999;
+    }
+  }
+
+  /* Rating decimal */
+  &-decimal {
+    @apply
+      relative
+      cursor-[inherit]
+      transition-transform
+      ease-in-out
+      delay-[0ms];
+  }
+
+  /* visually hidden input */
+  &-visuallyHiddenInput {
+    @apply
+      overflow-hidden
+      absolute
+      p-0
+      w-px
+      h-px
+      -m-px
+      border-0
+      whitespace-nowrap;
+    clip: rect(0 0 0 0);
+  }
+
+  /* size */
+  &-sm {
+    @apply
+      text-lg;
+  }
+
+  &-md {
+    @apply
+      text-2xl;
+  }
+
+  &-lg {
+    @apply
+      text-3xl;
+  }
+
+  /* readonly */
+  &-readOnly {
+    @apply
+      pointer-events-none;
+  }
+
+  /* disabled */
+  &-disabled {
+    @apply
+      opacity-[0.38]
+      cursor-not-allowed;
+  }
+}

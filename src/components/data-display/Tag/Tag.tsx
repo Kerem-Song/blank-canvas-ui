@@ -46,13 +46,13 @@ export const Tag = ({
   onClose,
   children,
   style,
+  className,
   ...props
 }: ITagProps) => {
-  console.log(closeIcon);
   return (
     <span
       {...props}
-      className={classNames('tag', { 'tag-bordered': bordered })}
+      className={classNames('tag-area', { 'tag-bordered': bordered }, className)}
       style={{
         ...style,
         backgroundColor: color,

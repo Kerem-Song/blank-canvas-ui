@@ -1,0 +1,14 @@
+$ns: .Pagination;
+
+/* prettier-ignore */
+$(ns) {
+  & > ul {
+    @apply
+      flex
+      flex-wrap
+      items-center
+      p-0
+      m-0
+      [list-style:none];
+  }
+}

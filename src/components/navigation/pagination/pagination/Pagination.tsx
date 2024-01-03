@@ -1,0 +1,104 @@
+import { generatePrefixClasses } from '@modules/utils';
+import classNames from 'classnames';
+import * as React from 'react';
+
+import { PaginationItem } from '../paginationItem/PaginationItem';
+import { PaginationItemType } from '../paginationItem/PaginationItem.types';
+import { usePagination } from '../usePagination/usePagination';
+import { PaginationProps } from './Pagination.types';
+import { paginationClasses } from './paginationClasses';
+
+function defaultGetAriaLabel(
+  type: PaginationItemType,
+  page: number | null,
+  selected: boolean,
+) {
+  return type === 'page'
+    ? `${selected ? '' : 'Go to '}page ${page}`
+    : `Go to ${type} page`;
+}
+
+export const Pagination = React.forwardRef(function Pagination(
+  props: PaginationProps,
+  ref: React.ForwardedRef<HTMLElement>,
+) {
+  const {
+    boundaryCount,
+    total,
+    defaultPage,
+    disabled,
+    hideEllipsis,
+    hideNextButton,
+    hidePrevButton,
+    page,
+    perPage,
+    showFirstButton,
+    showLastButton,
+    maxPageCount,
+    prefix,
+    className,
+    color = 'primary',
+    shape = 'round',
+    size = 'sm',
+    variant = 'contained',
+    onChange,
+    renderItem = (item) => <PaginationItem {...item} />,
+    ...other
+  } = props;
+
+  const { items } = usePagination({
+    boundaryCount,
+    total,
+    defaultPage,
+    disabled,
+    hideEllipsis,
+    hideNextButton,
+    hidePrevButton,
+    page,
+    perPage,
+    showFirstButton,
+    showLastButton,
+    maxPageCount,
+    onChange,
+  });
+
+  const classes = generatePrefixClasses(
+    paginationClasses,
+    `${prefix ? `${prefix}-` : ''}Pagination`,
+  );
+
+  const rootClassName = classNames(
+    classes.root,
+    {
+      // variant
+      [classes.text]: variant === 'text',
+      [classes.contained]: variant === 'contained',
+      [classes.outlined]: variant === 'outlined',
+    },
+    className,
+  );
+
+  return (
+    <nav
+      aria-label="pagination navigation"
+      className={rootClassName}
+      ref={ref}
+      {...other}
+    >
+      <ul className={classes.ul}>
+        {items.map((item, index) => (
+          <li key={index}>
+            {renderItem({
+              ...item,
+              color,
+              shape,
+              size,
+              variant,
+              'aria-label': defaultGetAriaLabel(item.type, item.page, item.selected),
+            })}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+});

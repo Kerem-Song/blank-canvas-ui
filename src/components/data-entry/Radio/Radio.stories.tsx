@@ -8,6 +8,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '라디오 버튼',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 

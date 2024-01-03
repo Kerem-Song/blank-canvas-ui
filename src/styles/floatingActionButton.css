@@ -1,0 +1,100 @@
+.floating-action-button-wrapper {
+  @apply block fixed z-100;
+
+  /* 메뉴 floating action button 일 경우 처음 노출되는 버튼 외에는 숨김 처리*/
+  .base-badge-area {
+    @apply invisible;
+
+    /* 처음 보이는 버튼(숨김처리 되지 않은 floating button)*/
+    &:last-child {
+      @apply visible;
+
+      /* 뱃지 사용 활성화 하지 않은 경우 */
+      .base-badge {
+        @apply invisible;
+      }
+    }
+  }
+
+  /* 메뉴 floating action button 사용시 open 상태*/
+  &.open {
+    .base-badge-area {
+      @apply visible cursor-pointer;
+
+      /* 뱃지 사용 활성화 하지 않은 경우 */
+      .base-badge {
+        @apply invisible;
+      }
+    }
+  }
+
+  /* 뱃지 카운터가 있을경우 */
+  &.badge-counter {
+    .base-badge-area {
+      .base-badge {
+        @apply opacity-0;
+      }
+
+      /* 처음 보이는 버튼(숨김처리 되지 않은 floating button)*/
+      &:last-child {
+        .base-badge {
+          @apply visible opacity-100;
+        }
+      }
+    }
+
+    /* 뱃지 카운터가 있고 메뉴가 열린 상태 */
+    &.open {
+      .base-badge {
+        @apply visible transition-opacity ease-in duration-500 opacity-100;
+      }
+
+      /* 메뉴 오픈 상태일 때 처음 노출되는 버튼의 뱃지는 사라지도록 설정*/
+      .base-badge-area:last-child {
+        .base-badge {
+          @apply invisible;
+        }
+      }
+    }
+  }
+}
+
+.floating-action-button {
+  @apply flex justify-center items-center;
+
+  &.hidden-menu {
+    @apply invisible opacity-0 pointer-events-none;
+
+    &:hover {
+      @apply opacity-0;
+    }
+
+    &.open {
+      @apply visible transition-opacity ease-in duration-300 opacity-100;
+    }
+  }
+
+  &:hover {
+    @apply opacity-70;
+  }
+
+  &-circle {
+    @apply border rounded-full w-40pxr h-40pxr;
+  }
+
+  &-square {
+    @apply border rounded-lg w-40pxr h-40pxr;
+  }
+
+  .icon {
+    @apply w-20pxr h-20pxr bg-center bg-no-repeat;
+  }
+
+  .description {
+    @apply text-10pxr font-light;
+  }
+
+  button {
+    @apply flex flex-col justify-center items-center;
+  }
+}

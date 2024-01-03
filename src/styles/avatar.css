@@ -1,0 +1,101 @@
+$ns: .avatar;
+
+/* prettier-ignore */
+$(ns) {
+  /* root */
+  & {
+    @apply
+      overflow-hidden
+      flex
+      items-center
+      justify-center
+      shrink-0
+      box-content
+      relative
+      w-10
+      h-10
+      border-2 border-solid
+      border-white
+      font-pretendard
+      text-xl
+      leading-none
+      select-none;
+  }
+
+  /* variant */
+  &-circular {
+    @apply
+      rounded-[50%];
+  }
+  
+  &-square {
+    @apply
+      rounded-none;
+  }
+
+  &-rounded {
+    @apply
+      rounded-md;
+  }
+
+  /* size */
+  &-sm {
+    @apply
+      w-6
+      h-6
+      text-xs;
+  }
+
+  &-md {
+    @apply
+      w-8
+      h-8
+      text-base;
+  }
+
+  &-lg {
+    @apply
+      w-10
+      h-10
+      text-xl;
+  }
+
+  /* colorDefault */
+  &-colorDefault {
+    @apply
+      text-white
+      bg-[rgb(189,189,189)];
+  }
+
+  /* svg */
+  svg {
+    @apply
+      shrink-0
+      inline-block
+      w-[1em]
+      h-[1em]
+      fill-current
+      transition-[fill]
+      duration-200
+      ease-in-out
+      delay-[0ms]
+      select-none;
+  }
+  /* img */
+  img {
+    @apply 
+      w-full
+      h-full
+      text-center
+      object-cover
+      text-transparent
+      [text-indent:10000px];
+  }
+
+  /* fallback */
+  svg&-fallback {
+    @apply 
+      w-3/4
+      h-3/4;
+  }
+}

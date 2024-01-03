@@ -10,7 +10,12 @@ const meta: Meta = {
   component: DebouncedInput,
   tags: ['autodocs'],
   parameters: {
-    // componentSubtitle: '디바운스 기능이 있는 입력창',
+    componentSubtitle: '디바운스 기능이 있는 입력창',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
     mockData: [
       {
         url: `https://api.themoviedb.org/3/search/movie?query=happy&api_key=${API_KEY}`,
@@ -45,14 +50,6 @@ interface IMovieRes {
   popularity: number;
   title: string;
 }
-
-interface IGetList {
-  page: number;
-  results: IMovieRes[];
-  total_pages: number;
-  total_results: number;
-}
-
 interface IMockData {
   url: string;
   method: 'GET' | 'POST';
@@ -75,17 +72,22 @@ export const Default: Story = {
 
     return (
       <div>
-        <DebouncedInput {...args} handleDebounce={handleDebounce} />
-        {state?.map((item, i) => (
-          <div key={i}>
-            <span>{item.title}</span>
-            <span>{item.popularity}</span>
-          </div>
-        ))}
+        <DebouncedInput {...args} handleDebounce={handleDebounce} isClearable={true}>
+          {state?.map((item, i) => (
+            <div key={i}>
+              <span>{item.title}</span>
+              <span>{item.popularity}</span>
+            </div>
+          ))}
+        </DebouncedInput>
       </div>
     );
   },
   args: {
     debounceTimeout: 1000,
+    isClearable: true,
+    maxLength: 1000,
+    showCount: true,
+    isSearch: true,
   },
 };
