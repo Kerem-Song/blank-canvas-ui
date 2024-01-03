@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { util } from 'src/utils/utils';
 
 export interface IBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
@@ -40,7 +41,20 @@ export interface IBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * component를 전달
    */
-  children: React.ReactNode | React.ReactNode[];
+  children?: React.ReactNode | React.ReactNode[];
+  /**
+   * badge의 방향 설정
+   * @default right
+   * @type 'right' | 'left'
+   */
+  direction?: 'right' | 'left';
+  /**
+   * 크기 지정 가능 px을 rem 계산하여 적용
+   * 최소값 10 그보다 작으면 적용안됨
+   * @default 10
+   * @type number | string;
+   */
+  size?: number | string;
 }
 
 export const Badge = ({
@@ -50,14 +64,25 @@ export const Badge = ({
   offset,
   overflowCount = 99,
   showZero,
+  direction = 'right',
+  size = 10,
   children,
   style,
+  className,
   ...props
 }: IBadgeProps) => {
   const division = Number.isNaN(count)
     ? Number(count?.toString().length)
     : Number(count?.toString().length);
   const digit = division < 2 ? 2 / 0.25 : division / 0.25;
+  const tmpSize = typeof size !== 'number' ? Number(size.replace(/[^0-9]/g, '')) : size;
+  const baseSize = 10;
+  const fontSize =
+    tmpSize > baseSize ? `${util.pxToRem(tmpSize)}rem` : `${util.pxToRem(baseSize)}rem`;
+  const circle =
+    tmpSize > baseSize
+      ? `${util.pxToRem(tmpSize) / 2}rem`
+      : `${util.pxToRem(baseSize) / 2}rem`;
 
   return (showZero && Number(count) === 0) ||
     Number(count) > 0 ||
@@ -66,20 +91,39 @@ export const Badge = ({
       {children}
       {dot ? (
         <span
-          className={classNames('base-dot-badge')}
+          className={classNames('base-dot-badge', className)}
           style={{
             ...style,
-            right: offset !== undefined ? -offset[0] : -1,
+            width: circle,
+            height: circle,
+            right:
+              direction !== 'left' ? (offset !== undefined ? -offset[0] : -2) : undefined,
+            left:
+              direction === 'left' ? (offset !== undefined ? -offset[0] : -2) : undefined,
             marginTop: offset !== undefined ? offset[1] : 0,
             background: color,
           }}
         ></span>
       ) : (
         <span
-          className={classNames('base-badge', `-right-[${division}]`)}
+          className={classNames('base-badge', className)}
           style={{
             ...style,
-            right: offset !== undefined ? -offset[0] : -digit,
+            fontSize,
+            paddingLeft: circle,
+            paddingRight: circle,
+            right:
+              direction !== 'left'
+                ? offset !== undefined
+                  ? -offset[0]
+                  : -digit
+                : undefined,
+            left:
+              direction === 'left'
+                ? offset !== undefined
+                  ? -offset[0]
+                  : -digit
+                : undefined,
             marginTop: offset !== undefined ? offset[1] : 0,
             background: color,
           }}

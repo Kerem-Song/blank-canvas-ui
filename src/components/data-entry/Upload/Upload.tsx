@@ -14,7 +14,6 @@ import {
 import {
   TFormatAll,
   TUploadFileFormat,
-  TUploadImageStyleClassKey,
   uploadClasses,
   uploadFileFormat,
 } from './uploadClasses';
@@ -47,12 +46,13 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   filePath: string;
 
   /**
-   * 파일 사이즈 제한
+   * 파일 사이즈 제한(byte단위)
    */
   fileSize: number;
 
   /**
-   * 파일 형식 제한
+   * 파일 형식 제한(uploadFileFormat을 패키지로부터 import 후 배열에 넣어 사용.
+   * ex: fileFormat={[uploadFileFormat.png, uploadFileFormat.pdf]} )
    * @type "image/jpg" | "image/jpeg" | "image/png" | "image/svg" | "image/*" | "video/*" | "audio/*" | ".pdf" | ".csv" | ".xls" | ".xlsx" | ".text/plain" | ".text/html" | ".FILETYPE"
    */
   fileFormat: TUploadFileFormat[];
@@ -64,6 +64,7 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
 
   /**
    * 버튼 형식일때 첨부할 아이콘
+   * 아이콘은 <img src={}/>으로 할당하거나 svg?react 컴포넌트 형식으로 할당.
    */
   prefixIcon?: ReactNode;
 
@@ -73,7 +74,8 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   suffixText?: ReactNode;
 
   /**
-   * 버튼 형식이 아닐 때 들어가는 suffix 텍스트
+   * 버튼 형식이 아닐 때 들어가는 suffix 아이콘
+   * 아이콘은 <img src={}/>으로 할당하거나 svg?react 컴포넌트 형식으로 할당.
    */
   suffixIcon?: ReactNode;
 
@@ -83,7 +85,7 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   width?: number;
 
   /**
-   * 업로더의 높이(rem)
+   * 업로더의 높이(rem) area, drag 스타일일때 필수.
    */
   height?: number;
 
@@ -114,8 +116,8 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => {
-  const [isOver, setIsOver] = useState(false);
   const [files, setFiles] = useState<File[]>();
+  const [imageUrl, setImageUrl] = useState<string[]>([]);
 
   const {
     prefix,
@@ -130,7 +132,8 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     suffixIcon,
     suffixText,
     width,
-    height,
+    height = 2,
+    multiple = false,
     callback,
     errCallback,
     setValue,
@@ -203,17 +206,14 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
 
   const handleDragOver = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
-    setIsOver(true);
   };
 
   const handleDragLeave = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
-    setIsOver(false);
   };
 
   const handleDrop = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
-    setIsOver(false);
 
     if (e.dataTransfer.files) {
       if (
@@ -245,6 +245,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       reader.onloadend = () => {
         callback();
         setValue(filePath, e.dataTransfer.files, { shouldDirty: true });
+        setImageUrl([URL.createObjectURL(file)]);
       };
 
       reader.onerror = () => errCallback();
@@ -260,9 +261,10 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       setFiles(
         files.filter((item) => item.name !== name && item.lastModified !== lastModified),
       );
+      setImageUrl([]);
     }
   };
-
+  console.log('@file', imageUrl);
   return (
     <>
       <label
@@ -282,6 +284,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
           onChange={handleChangeFile}
           style={{ display: 'none' }}
           autoComplete="off"
+          multiple={multiple}
         />
         <div className="suffix-wrapper">
           <p className="suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
@@ -306,6 +309,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
             </div>
           ))
         : null}
+      {imageUrl?.map((image, i) => <img src={image} alt="uploadImage" key={i} />)}
     </>
   );
 });

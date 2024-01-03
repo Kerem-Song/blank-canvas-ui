@@ -7,6 +7,11 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: {
     componentSubtitle: '라디오 버튼이 여러개 있는 컴포넌트',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 

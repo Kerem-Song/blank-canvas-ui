@@ -15,3 +15,11 @@
 @import './styles/link.css';
 @import './styles/rating.css';
 @import './styles/upload.css';
+@import './styles/pagination.css';
+@import './styles/paginationItem.css';
+@import './styles/select.css';
+@import './styles/floatingActionButton.css';
+@import './styles/modal.css';
+@import './styles/carousel.css';
+@import './styles/Spin.css';
+@import './styles/autocomplete.css';

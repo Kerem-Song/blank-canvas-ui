@@ -16,11 +16,6 @@ export interface TitleCounterProps extends ITextareaProps {
   isLight?: boolean;
 
   /**
-   * Input에 입력된 글자 수 카운팅('showCount' true일때만 확인 가능)
-   */
-  textLength?: number;
-
-  /**
    * Input에서 노출되는 title과 counter의 위치(label은 값이 없을 경우 노출되지 않음)
    * @type "top" | "bottom" | "inside"
    */
@@ -41,7 +36,6 @@ export const TextAreaWithTitleCounter = forwardRef<
     style,
     label,
     isLight,
-    textLength,
     showCount,
     required,
     readOnly,
@@ -99,7 +93,7 @@ export const TextAreaWithTitleCounter = forwardRef<
           disabled={args.disabled}
         />
         {showCount && direction === 'inside' ? (
-          <p className={`textarea-counter`}>
+          <p className={`textarea-counter ${direction}`}>
             {count || 0}
             {`/${args.maxLength}`}
           </p>

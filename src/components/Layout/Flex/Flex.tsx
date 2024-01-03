@@ -55,6 +55,7 @@ export const Flex = ({
   children,
   reverse,
   style,
+  className,
   ...props
 }: IFlexProps) => {
   return (
@@ -68,7 +69,8 @@ export const Flex = ({
             : 'flex-col'
           : reverse
             ? 'flex-row-reverse'
-            : 'felx-row',
+            : 'flex-row',
+        className,
       )}
       style={{
         ...style,

@@ -1,19 +1,28 @@
+export * from './index.css';
 export {
+  Badge,
+  Card,
+  Col,
   Collapse,
   DebouncedInput,
+  Divider,
+  Flex,
   Input,
   Radio,
   RadioGroup,
-  Switch,
+  Row,
+  Select,
+  Spin,
+  Tag,
   Textarea,
   TextAreaWithTitleCounter,
-  Upload,
+  Tooltip,
 } from '@components';
-export { Flex } from '@components';
-export { Divider } from '@components';
-export { Tag } from '@components';
-export { Card } from '@components';
-export { Badge } from '@components';
-export { Row } from '@components';
-export { Col } from '@components';
+export * from '@components/data-display/Carousel';
+export * from '@components/data-entry/Autocomplete';
+export * from '@components/data-entry/Switch';
+export * from '@components/data-entry/Upload';
 export * from '@components/general/button';
+export * from '@components/general/FloatingActionButton';
+export * from '@components/navigation/link';
+export * from '@components/navigation/pagination';

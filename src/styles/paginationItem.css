@@ -1,0 +1,212 @@
+$ns: .PaginationItem;
+
+/* prettier-ignore */
+$(ns) {
+  & {
+    @apply
+      flex
+      justify-center
+      items-center
+      box-border
+      py-0
+      my-0
+      h-auto
+      border
+      border-solid
+      border-transparent
+      font-pretendard
+      tracking-[0.01em]
+      text-center;
+  }
+
+  /* icon */
+  &-icon {
+    @apply
+      -mx-[8px]
+      my-[0];
+  }
+
+  /* size */
+  &-sm {
+    @apply
+      mx-px
+      px-[4px]
+      min-w-[26px]
+      h-[26px]
+      text-[12px];
+    $(ns)-icon {
+      @apply
+        text-[10px];
+    }
+  }
+  &-md {
+    @apply
+      mx-[2px]
+      px-[6px]
+      min-w-[32px]
+      h-[32px]
+      text-[14px];
+    $(ns)-icon {
+      @apply
+        text-[14px];
+    }
+  }
+  &-lg {
+    @apply
+      mx-[3px]
+      px-[10px]
+      min-w-[40px]
+      h-[40px]
+      text-[16px];
+    $(ns)-icon {
+      @apply
+        text-[18px];
+    }
+  }
+
+  /* shape */
+  &-round {
+    @apply
+      rounded-md;
+  }
+
+  &-circle {
+    @apply
+      rounded-full;
+  }
+
+  /* variant */
+  &-contained:not($(ns)-ellipsis) {
+    &:hover:not($(ns)-disabled) {
+      @apply 
+        bg-[rgba(0,_0,_0,_0.04)];
+    }
+    &$(ns)-selected {
+      @apply
+        bg-[rgba(0,_0,_0,_0.08)];
+      &:hover:not($(ns)-disabled) {
+        @apply 
+          bg-[rgba(0,_0,_0,_0.12)];
+      }
+      &$(ns)-containedPrimary {
+        @apply
+          bg-primary-main
+          text-white;
+        &:hover:not($(ns)-disabled) {
+          @apply
+            bg-primary-dark;
+        }
+      }
+      &$(ns)-containedSecondary {
+        @apply
+          bg-secondary-main
+          text-white;
+        &:hover:not($(ns)-disabled) {
+          @apply
+            bg-secondary-dark;
+        }
+      }
+      $(ns)-disabled {
+        @apply
+          text-[rgba(0,_0,_0,_0.26)];
+      }
+    }
+  }
+
+  &-text:not($(ns)-ellipsis) {
+    &:hover:not($(ns)-disabled) {
+      @apply 
+        bg-[rgba(0,_0,_0,_0.04)];
+    }
+    &$(ns)-selected {
+      @apply
+        font-bold;
+      &$(ns)-textPrimary {
+        @apply
+          text-primary-main;
+      }
+      &$(ns)-textSecondary {
+        @apply
+          text-secondary-main;
+      }
+      $(ns)-disabled {
+        @apply
+          text-[rgba(0,_0,_0,_0.26)];
+      }
+    }
+  }
+
+  &-outlined:not($(ns)-ellipsis) {
+    @apply 
+      border-gray-200;
+    &:hover:not($(ns)-disabled) {
+      @apply 
+        bg-[rgba(0,_0,_0,_0.04)];
+    }
+    &$(ns)-selected {
+      @apply
+        bg-[rgba(0,_0,_0,_0.08)];
+      &:hover:not($(ns)-disabled) {
+        @apply 
+          bg-[rgba(0,_0,_0,_0.12)];
+      }
+      &$(ns)-outlinedPrimary {
+        @apply
+          border-primary-main/80
+          bg-primary-main/25;
+        &:hover:not($(ns)-disabled) {
+          @apply
+            bg-primary-main/20;
+        }
+      }
+      &$(ns)-outlinedSecondary {
+        @apply
+          border-secondary-main/80
+          bg-secondary-main/25;
+        &:hover:not($(ns)-disabled) {
+          @apply
+            bg-secondary-main/20;
+        }
+      }
+      $(ns)-disabled {
+        @apply
+          text-[rgba(0,_0,_0,_0.26)];
+      }
+    }
+  }
+
+  /* disabled */
+  &-disabled {
+    @apply
+      opacity-[0.38];
+    &:where(:not($(ns)-ellipsis)) {
+      @apply
+        cursor-not-allowed;
+    }
+  }
+
+  /* svg */
+  svg {
+    @apply
+      shrink-0
+      inline-block
+      w-[1em]
+      h-[1em]
+      fill-current
+      transition-[fill]
+      duration-200
+      ease-in-out
+      delay-[0ms]
+      select-none;
+  }
+  /* img */
+  img {
+    @apply 
+      w-full
+      h-full
+      text-center
+      object-cover
+      text-transparent
+      [text-indent:10000px];
+  }
+}

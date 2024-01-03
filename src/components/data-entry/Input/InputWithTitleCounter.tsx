@@ -48,6 +48,7 @@ export const InputWithTitleCounter = forwardRef<
     isShowAlwaysClear,
     customPrefix,
     suffix,
+    onPressEnter,
     ...inputProps
   } = args;
 
@@ -60,9 +61,9 @@ export const InputWithTitleCounter = forwardRef<
 
     switch (e.key) {
       case 'Enter':
-        args.onPressEnter?.(inputRef.current?.value);
+        onPressEnter?.(inputRef.current?.value);
         args.onSearch?.(inputRef.current?.value);
-        if (args.onPressEnter || args.onSearch) {
+        if (onPressEnter || args.onSearch) {
           e.preventDefault();
           e.stopPropagation();
         }
@@ -110,7 +111,7 @@ export const InputWithTitleCounter = forwardRef<
         {...inputProps}
         className={inputClassName}
         onKeyDown={
-          args.onPressEnter || args.onSearch || args.onKeyDown ? handleKeyUp : undefined
+          onPressEnter || args.onSearch || args.onKeyDown ? handleKeyUp : undefined
         }
         ref={(current) => {
           if (ref) {
