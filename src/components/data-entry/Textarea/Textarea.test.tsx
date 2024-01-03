@@ -1,6 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react';
 
-import { Textarea } from '..';
+import { Textarea } from './Textarea';
 
 describe('<Textarea />', () => {
   it('렌더링 체크', () => {
@@ -17,7 +17,7 @@ describe('<Textarea />', () => {
   });
 
   it('max length 체크', () => {
-    const { getByRole, rerender } = render(<Textarea />);
+    const { getByRole } = render(<Textarea />);
     const maxLengthTest = getByRole('textbox') as HTMLInputElement;
     fireEvent.change(maxLengthTest, { target: { value: '1234567890' } });
     expect(maxLengthTest.value.length >= 10).toBeTruthy();
@@ -27,9 +27,7 @@ describe('<Textarea />', () => {
     const onClick = vi.fn();
     const onChange = vi.fn();
 
-    const { getByRole, rerender } = render(
-      <Textarea onClick={onClick} onChange={onChange} />,
-    );
+    const { getByRole } = render(<Textarea onClick={onClick} onChange={onChange} />);
 
     const disabledTest = getByRole('textbox') as HTMLInputElement;
     fireEvent.change(disabledTest, { target: { disabled: true } });
