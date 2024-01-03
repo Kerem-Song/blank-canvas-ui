@@ -12,6 +12,7 @@ export {
   RadioGroup,
   Row,
   Select,
+  Spin,
   Tag,
   Textarea,
   TextAreaWithTitleCounter,
