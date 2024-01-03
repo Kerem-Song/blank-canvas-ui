@@ -131,9 +131,7 @@ export const Tooltip = ({
   }, []);
 
   useEffect(() => {
-    return () => {
-      setInit(true);
-    };
+    setInit(true);
   }, []);
 
   const { styles, attributes } = usePopper(

@@ -293,9 +293,7 @@ function SelectFunc<T extends AnyObject>(
   );
 
   useEffect(() => {
-    return () => {
-      setInit(true);
-    };
+    setInit(true);
   }, []);
 
   return (
