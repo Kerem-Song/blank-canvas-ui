@@ -1,14 +1,10 @@
 import { generatePrefixClasses } from '@modules/utils';
-import { fireEvent, getByTestId, render } from '@testing-library/react';
-import { spyOn } from '@vitest/spy';
+import { fireEvent, render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import { Switch, switchClasses } from './index';
 
 const classes = generatePrefixClasses(switchClasses, 'switch');
-const onClickTest = () => {
-  console.log('@on click test');
-};
 
 describe('<Switch />', () => {
   it('렌더링 체크', () => {
@@ -61,7 +57,6 @@ describe('<Switch />', () => {
 
 describe('스위치 클릭 이벤트', () => {
   it('스위치 클릭 시 이벤트 함수 실행', () => {
-    // const spy = vi.spyOn(messages, 'onClickTest');
     const onClickMock = vi.fn();
 
     const { getByTestId } = render(

@@ -1,6 +1,7 @@
 import React from 'react';
 
-export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps
+  extends Omit<React.HTMLAttributes<HTMLInputElement>, 'onChange'> {
   /**
    * `true`인 경우 구성 요소가 체크됩니다.
    * @default false
@@ -93,4 +94,10 @@ export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
    * 브라우저는 "on"을 기본값으로 사용합니다.
    */
   value?: React.AllHTMLAttributes<HTMLInputElement>['value'];
+  /**
+   * 값이 변경되면 호출할 콜백함수.
+   * @param {React.ChangeEvent<HTMLInputElement>} event 콜백 이벤트
+   * @param {boolean} checked 새로운값
+   */
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
 }
