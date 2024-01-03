@@ -1,5 +1,18 @@
-.spin {
-  span > * {
-    @apply animate-[spin_5s_linear_infinite] origin-[50%_50%] w-[20px] h-[20px];
+.spin-area {
+  @apply inline-block relative;
+  .spin {
+    @apply text-center;
+    .spin-indicator > * {
+      @apply animate-[spin_5s_linear_infinite] origin-[50%_50%];
+    }
   }
+  .spin-children {
+    @apply text-center absolute top-2/4 left-1/2 -translate-x-2/4 -translate-y-2/4;
+  }
+}
+.spin-bgColor {
+  @apply bg-slate-200 opacity-75;
+}
+.spin-fullscreen {
+  @apply opacity-75 fixed w-screen h-screen	z-[999] bg-slate-200 top-0;
 }
