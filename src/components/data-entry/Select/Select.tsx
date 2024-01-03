@@ -10,7 +10,7 @@ import React, {
 } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
-import { findNumber } from 'src/utils/utils';
+import { util } from 'src/utils/utils';
 
 export interface ISelectProp<T extends object>
   extends InputHTMLAttributes<HTMLInputElement> {
@@ -137,7 +137,7 @@ function SelectFunc<T extends AnyObject>(
     ...inputProps
   } = props;
   const tempWidth =
-    typeof selectWidth !== 'number' ? findNumber(selectWidth) : selectWidth;
+    typeof selectWidth !== 'number' ? util.findNumber(selectWidth) : selectWidth;
   const width = tempWidth > 150 ? `${tempWidth}px` : '150px';
 
   const [list, setList] =

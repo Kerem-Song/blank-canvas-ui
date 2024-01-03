@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { pxToRem } from 'src/utils/utils';
+import { util } from 'src/utils/utils';
 
 export interface IBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
@@ -78,9 +78,11 @@ export const Badge = ({
   const tmpSize = typeof size !== 'number' ? Number(size.replace(/[^0-9]/g, '')) : size;
   const baseSize = 10;
   const fontSize =
-    tmpSize > baseSize ? `${pxToRem(tmpSize)}rem` : `${pxToRem(baseSize)}rem`;
+    tmpSize > baseSize ? `${util.pxToRem(tmpSize)}rem` : `${util.pxToRem(baseSize)}rem`;
   const circle =
-    tmpSize > baseSize ? `${pxToRem(tmpSize) / 2}rem` : `${pxToRem(baseSize) / 2}rem`;
+    tmpSize > baseSize
+      ? `${util.pxToRem(tmpSize) / 2}rem`
+      : `${util.pxToRem(baseSize) / 2}rem`;
 
   return (showZero && Number(count) === 0) ||
     Number(count) > 0 ||

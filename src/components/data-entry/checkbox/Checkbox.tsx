@@ -99,7 +99,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
     }
 
     setCheckedState(event.target.checked);
-    onChangeProp?.(event);
+    onChangeProp?.(event, event.target.checked);
   };
 
   const onChange = createChainedFunction(
@@ -128,7 +128,8 @@ export const Checkbox = React.forwardRef(function Checkbox(
           ref={inputRef}
           id={id}
           name={name}
-          checked={checked}
+          checked={checkedProp}
+          defaultChecked={defaultChecked}
           className={classNames(classes.input, inputSlot.className)}
           disabled={disabled}
           readOnly={readOnly}
