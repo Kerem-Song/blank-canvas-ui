@@ -1,6 +1,6 @@
 import icImgTest from '@icons/ic_img.svg';
 import { generatePrefixClasses } from '@modules/utils';
-import { fireEvent, getByText, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import {
   FloatingActionButton,
@@ -84,18 +84,18 @@ describe('<FloatingActionButton />', () => {
 
   it('메뉴 형식일 때 플로팅버튼 클릭 시 메뉴 기능 체크', () => {
     const onClick = vi.fn();
-    const menuClick = vi.fn();
+    const callbackTest = {
+      textCallback: () => '@test callback!!',
+    };
     const testMenu = [
       {
         icon: icImgTest,
-        callback: () => menuClick,
+        callback: callbackTest.textCallback,
         badge: { count: 6 },
       },
       {
         icon: icImgTest,
-        callback: () => {
-          return 4;
-        },
+        callback: callbackTest.textCallback,
         badge: { count: 2 },
       },
     ];
@@ -133,5 +133,9 @@ describe('<FloatingActionButton />', () => {
     const buttons = container.querySelectorAll('.floating-action-button');
 
     fireEvent.click(buttons[1]);
+    const callbackSpy = vi.spyOn(callbackTest, 'textCallback');
+    callbackTest.textCallback();
+    expect(callbackSpy.mock.calls.length === 1).toBeTruthy();
+    expect(callbackSpy).toHaveBeenCalled();
   });
 });
