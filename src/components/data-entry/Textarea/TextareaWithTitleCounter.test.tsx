@@ -1,24 +1,24 @@
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { TextAreaWithTitleCounter } from '..';
 
 describe('<TextareaWithTitleCounter />', () => {
   it('렌더링 체크', () => {
-    const { getByRole } = render(<TextAreaWithTitleCounter />);
-    const textarea = getByRole('textbox');
+    render(<TextAreaWithTitleCounter />);
+    const textarea = screen.getByRole('textbox');
     expect(textarea?.classList.contains('textarea')).toBeTruthy();
   });
 
   it('input value 일치 여부', () => {
-    const { getByRole } = render(<TextAreaWithTitleCounter />);
-    const textarea = getByRole('textbox') as HTMLInputElement;
+    render(<TextAreaWithTitleCounter />);
+    const textarea: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(textarea, { target: { value: 'test1' } });
     expect(textarea.value).toBe('test1');
   });
 
   it('max length 체크', () => {
-    const { getByRole } = render(<TextAreaWithTitleCounter />);
-    const maxLengthTest = getByRole('textbox') as HTMLInputElement;
+    render(<TextAreaWithTitleCounter />);
+    const maxLengthTest: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(maxLengthTest, { target: { value: '1234567890' } });
     expect(maxLengthTest.value.length >= 10).toBeTruthy();
   });
@@ -27,11 +27,9 @@ describe('<TextareaWithTitleCounter />', () => {
     const onClick = vi.fn();
     const onChange = vi.fn();
 
-    const { getByRole } = render(
-      <TextAreaWithTitleCounter onClick={onClick} onChange={onChange} />,
-    );
+    render(<TextAreaWithTitleCounter onClick={onClick} onChange={onChange} />);
 
-    const disabledTest = getByRole('textbox') as HTMLInputElement;
+    const disabledTest = screen.getByRole('textbox');
     fireEvent.change(disabledTest, { target: { disabled: true } });
     expect(disabledTest).toHaveProperty('disabled', true);
 
@@ -47,12 +45,12 @@ describe('<TextareaWithTitleCounter />', () => {
   });
 
   it('label 위치에 따른 타이틀 및 카운터 적용 여부', () => {
-    const { container, rerender, getByRole } = render(
+    const { container, rerender } = render(
       <TextAreaWithTitleCounter direction="top" showCount={true} />,
     );
 
     // 카운터 숫자 체크
-    const textarea = getByRole('textbox') as HTMLInputElement;
+    const textarea: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(textarea, { target: { value: 'test1' } });
     const counter = container.querySelector('.textarea-counter')?.firstChild?.textContent;
     expect(counter === textarea.value.length.toString()).toBeTruthy();

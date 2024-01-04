@@ -88,9 +88,7 @@ describe('<FloatingActionButton />', () => {
     const testMenu = [
       {
         icon: icImgTest,
-        callback: () => {
-          return 3;
-        },
+        callback: () => menuClick,
         badge: { count: 6 },
       },
       {
@@ -102,7 +100,7 @@ describe('<FloatingActionButton />', () => {
       },
     ];
 
-    const { container, getByText } = render(
+    const { container } = render(
       <FloatingActionButton
         shape="circle"
         callback={onClick}
@@ -131,6 +129,7 @@ describe('<FloatingActionButton />', () => {
     const badge = container.querySelector('.base-badge');
     expect(badge?.firstChild?.textContent).toBe('6');
 
+    // 메뉴 중 하나 눌렀을 시 콜백 호출 여부
     const buttons = container.querySelectorAll('.floating-action-button');
 
     fireEvent.click(buttons[1]);
