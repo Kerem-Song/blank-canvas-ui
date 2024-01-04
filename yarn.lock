@@ -2138,6 +2138,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-loading: "npm:^2.0.3"
+    react-loading-skeleton: "npm:^3.3.1"
     react-modal: "npm:^3.16.1"
     react-popper: "npm:^2.3.0"
     react-router-dom: "npm:^6.19.0"
@@ -10407,6 +10408,15 @@ __metadata:
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
   checksum: 1d0df3c85af79df720524780f00c064d53a9dd1899d785eddb7264b378026979acbddb58a4b7e06e7d0d12aa1494fd5754562ee55d32907b15601068dae82c27
+  languageName: node
+  linkType: hard
+
+"react-loading-skeleton@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "react-loading-skeleton@npm:3.3.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 46ae989a74c59dd3f9ecfd480883f1b7a7b083e1329b618c948b889c218192db26148dfc0632e7b55fe0f8b22ddaf97001b539a5210f37045c3fc5b0adf68edc
   languageName: node
   linkType: hard
 

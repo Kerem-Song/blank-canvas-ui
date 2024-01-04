@@ -140,6 +140,7 @@ function SelectFunc<T extends AnyObject>(
     typeof selectWidth !== 'number' ? util.findNumber(selectWidth) : selectWidth;
   const width = tempWidth > 150 ? `${tempWidth}px` : '150px';
 
+  const [init, setInit] = useState(false);
   const [list, setList] =
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
   const [currentValue, setCurrentValue] = useState<string>(
@@ -290,6 +291,11 @@ function SelectFunc<T extends AnyObject>(
       strategy: 'fixed',
     },
   );
+
+  useEffect(() => {
+    setInit(true);
+  }, []);
+
   return (
     <div
       id="container"
@@ -370,10 +376,10 @@ function SelectFunc<T extends AnyObject>(
             width,
             visibility:
               open === undefined
-                ? showOptions
+                ? showOptions && init
                   ? 'visible'
                   : 'hidden'
-                : open
+                : open && init
                   ? 'visible'
                   : 'hidden',
           }}

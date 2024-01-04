@@ -16,3 +16,6 @@
 .spin-fullscreen {
   @apply opacity-75 fixed w-screen h-screen	z-[999] bg-slate-200 top-0;
 }
+.spin-hidden {
+  @apply hidden;
+}

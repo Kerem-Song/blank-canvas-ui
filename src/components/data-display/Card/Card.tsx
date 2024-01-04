@@ -1,4 +1,7 @@
+import 'react-loading-skeleton/dist/skeleton.css';
+
 import classNames from 'classnames';
+import Skeleton from 'react-loading-skeleton';
 
 export interface ICardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
@@ -43,6 +46,12 @@ export interface ICardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
    * @type React.ReactNode | React.ReactNode[]
    */
   children: React.ReactNode | React.ReactNode[];
+  /**
+   * 카드에 로딩(skeleton) 표시할지 선택
+   * @default
+   * @type boolean
+   */
+  loading?: boolean;
 }
 
 export const Card = ({
@@ -56,11 +65,13 @@ export const Card = ({
   children,
   style,
   className,
+  loading,
   ...props
 }: ICardProps) => {
   return (
     <div
       {...props}
+      style={{ ...style }}
       className={classNames(
         'card',
         { 'card-rounded': rounded },
@@ -76,16 +87,22 @@ export const Card = ({
         )}
         style={{ backgroundColor: titleBgColor }}
       >
-        <div
-          className={classNames({ 'card-title': title })}
-          style={{ color: titleColor }}
-        >
-          {title}
-        </div>
-        <div className={classNames({ 'card-extra': extra })}>{extra}</div>
+        {loading ? (
+          <Skeleton width={'100%'} />
+        ) : (
+          <>
+            <div
+              className={classNames({ 'card-title': title })}
+              style={{ color: titleColor }}
+            >
+              {title}
+            </div>
+            <div className={classNames({ 'card-extra': extra })}>{extra}</div>
+          </>
+        )}
       </div>
       <div className={classNames('card-body', { 'card-small': size === 'small' })}>
-        {children}
+        {loading ? <Skeleton count={2} /> : children}
       </div>
     </div>
   );

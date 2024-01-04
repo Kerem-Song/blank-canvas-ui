@@ -15,7 +15,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   text: React.ReactNode;
   /**
    * tooltip 표시 위치 지정
-   * @default 'right'
+   * @default 'bottom'
    * @type 'top' | 'bottom' | 'right' | 'left'
    */
   placement?: Placement;
@@ -103,7 +103,7 @@ export const Tooltip = ({
   offset = [0, 8],
   color,
   text,
-  placement = 'right',
+  placement = 'bottom',
   arrow = true,
   strategy = 'fixed',
   mouseEnterDelay,
@@ -124,9 +124,14 @@ export const Tooltip = ({
   const arrowElement = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(false);
   const [defaultShow, setDefaultShow] = useState(false);
+  const [init, setInit] = useState(false);
 
   useEffect(() => {
     setDefaultShow(defaultOpen);
+  }, []);
+
+  useEffect(() => {
+    setInit(true);
   }, []);
 
   const { styles, attributes } = usePopper(
@@ -195,7 +200,7 @@ export const Tooltip = ({
                 ? defaultShow || isShow
                   ? 'visible'
                   : 'hidden'
-                : open
+                : open && init
                   ? 'visible'
                   : 'hidden',
             background: color,
