@@ -1,6 +1,6 @@
 .collapse-wrapper {
   .header {
-    @apply flex;
+    @apply flex items-center p-12pxr;
 
     .expand-icon {
       @apply flex-none;
@@ -13,5 +13,9 @@
     .label {
       @apply grow w-full;
     }
+  }
+
+  .children {
+    @apply p-12pxr;
   }
 }

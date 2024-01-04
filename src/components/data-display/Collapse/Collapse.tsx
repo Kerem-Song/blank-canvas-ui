@@ -38,9 +38,9 @@ export interface ICollapseProps extends DOMAttributes<HTMLDivElement> {
 export const Collapse = ({
   label,
   key,
-  showIcon,
+  showIcon = false,
   expandIcon,
-  expandIconPosition,
+  expandIconPosition = 'end',
   children,
 }: ICollapseProps) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);

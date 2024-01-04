@@ -1,3 +1,4 @@
+import { Flex } from '@components';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { forwardRef, InputHTMLAttributes } from 'react';
@@ -64,22 +65,24 @@ export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => 
   );
 
   return (
-    <label className={classNames('switch-wrapper', rootClassName)}>
-      <input
-        id={args.id}
-        type="checkbox"
-        className="switch-input peer"
-        ref={ref}
-        checked={args.checked}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        onChange={args.onChange}
-        disabled={args.disabled}
-        {...switchProps}
-      />
-      <label htmlFor={args.id} className="hidden" />
-      <div className={switchBarClassName} />
-    </label>
+    <Flex vertical>
+      <label className={classNames('switch-wrapper', rootClassName)}>
+        <input
+          id={args.id}
+          type="checkbox"
+          className="switch-input peer"
+          ref={ref}
+          checked={args.checked}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          onChange={args.onChange}
+          disabled={args.disabled}
+          {...switchProps}
+        />
+        <label htmlFor={args.id} className="hidden" />
+        <div className={switchBarClassName} />
+      </label>
+    </Flex>
   );
 });
