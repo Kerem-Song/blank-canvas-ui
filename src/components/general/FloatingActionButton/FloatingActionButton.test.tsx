@@ -84,18 +84,21 @@ describe('<FloatingActionButton />', () => {
 
   it('메뉴 형식일 때 플로팅버튼 클릭 시 메뉴 기능 체크', () => {
     const onClick = vi.fn();
-    const callbackTest = {
-      textCallback: () => '@test callback!!',
+    const callbackTest1 = {
+      textCallback: () => '1',
+    };
+    const callbackTest2 = {
+      textCallback: () => '2',
     };
     const testMenu = [
       {
         icon: icImgTest,
-        callback: callbackTest.textCallback,
+        callback: callbackTest1.textCallback,
         badge: { count: 6 },
       },
       {
         icon: icImgTest,
-        callback: callbackTest.textCallback,
+        callback: callbackTest2.textCallback,
         badge: { count: 2 },
       },
     ];
@@ -133,9 +136,10 @@ describe('<FloatingActionButton />', () => {
     const buttons = container.querySelectorAll('.floating-action-button');
 
     fireEvent.click(buttons[1]);
-    const callbackSpy = vi.spyOn(callbackTest, 'textCallback');
-    callbackTest.textCallback();
+    const callbackSpy = vi.spyOn(callbackTest2, 'textCallback');
+    callbackTest2.textCallback();
     expect(callbackSpy.mock.calls.length === 1).toBeTruthy();
     expect(callbackSpy).toHaveBeenCalled();
+    expect(callbackSpy.mock.results[0].value === '2').toBeTruthy();
   });
 });
