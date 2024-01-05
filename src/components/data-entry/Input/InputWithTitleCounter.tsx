@@ -49,6 +49,9 @@ export const InputWithTitleCounter = forwardRef<
     customPrefix,
     suffix,
     onPressEnter,
+    onSearch,
+    onPressEsc,
+    onClear,
     ...inputProps
   } = args;
 
@@ -62,15 +65,15 @@ export const InputWithTitleCounter = forwardRef<
     switch (e.key) {
       case 'Enter':
         onPressEnter?.(inputRef.current?.value);
-        args.onSearch?.(inputRef.current?.value);
-        if (onPressEnter || args.onSearch) {
+        onSearch?.(inputRef.current?.value);
+        if (onPressEnter || onSearch) {
           e.preventDefault();
           e.stopPropagation();
         }
         break;
       case 'Escape':
-        args.onPressEsc?.();
-        if (args.onPressEsc) {
+        onPressEsc?.();
+        if (onPressEsc) {
           e.preventDefault();
           e.stopPropagation();
         }
@@ -85,7 +88,7 @@ export const InputWithTitleCounter = forwardRef<
 
   const handleOnBlur = (e: FocusEvent<HTMLInputElement>) => {
     args.onBlur?.(e);
-    args.onSearch?.(e.target.value);
+    onSearch?.(e.target.value);
   };
 
   const wrappingType =
@@ -111,7 +114,9 @@ export const InputWithTitleCounter = forwardRef<
         {...inputProps}
         className={inputClassName}
         onKeyDown={
-          onPressEnter || args.onSearch || args.onKeyDown ? handleKeyUp : undefined
+          onPressEnter || onSearch || onPressEsc || args.onKeyDown
+            ? handleKeyUp
+            : undefined
         }
         ref={(current) => {
           if (ref) {
@@ -156,7 +161,7 @@ export const InputWithTitleCounter = forwardRef<
               onClick={() => {
                 util.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
-                args.onSearch?.('');
+                onSearch?.('');
               }}
             >
               <div className={classNames('search', { clear: textLength })} />
@@ -170,7 +175,7 @@ export const InputWithTitleCounter = forwardRef<
               onClick={(e) => {
                 util.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
-                args.onClear?.();
+                onClear?.();
               }}
               onMouseDown={(e) => {
                 e.preventDefault();
