@@ -1,4 +1,5 @@
-import { Card, Flex } from '@components';
+import { Card } from '@components';
+import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ICardProps } from './Card.types';

@@ -2,7 +2,7 @@
   @apply block fixed z-100;
 
   /* 메뉴 floating action button 일 경우 처음 노출되는 버튼 외에는 숨김 처리*/
-  .base-badge-area {
+  .badge-area {
     @apply invisible;
 
     /* 처음 보이는 버튼(숨김처리 되지 않은 floating button)*/
@@ -10,7 +10,7 @@
       @apply visible;
 
       /* 뱃지 사용 활성화 하지 않은 경우 */
-      .base-badge {
+      .badge {
         @apply invisible;
       }
     }
@@ -18,11 +18,11 @@
 
   /* 메뉴 floating action button 사용시 open 상태*/
   &.open {
-    .base-badge-area {
+    .badge-area {
       @apply visible cursor-pointer;
 
       /* 뱃지 사용 활성화 하지 않은 경우 */
-      .base-badge {
+      .badge {
         @apply invisible;
       }
     }
@@ -30,14 +30,14 @@
 
   /* 뱃지 카운터가 있을경우 */
   &.badge-counter {
-    .base-badge-area {
-      .base-badge {
+    .badge-area {
+      .badge {
         @apply opacity-0;
       }
 
       /* 처음 보이는 버튼(숨김처리 되지 않은 floating button)*/
       &:last-child {
-        .base-badge {
+        .badge {
           @apply visible opacity-100;
         }
       }
@@ -45,13 +45,13 @@
 
     /* 뱃지 카운터가 있고 메뉴가 열린 상태 */
     &.open {
-      .base-badge {
+      .badge {
         @apply visible transition-opacity ease-in duration-500 opacity-100;
       }
 
       /* 메뉴 오픈 상태일 때 처음 노출되는 버튼의 뱃지는 사라지도록 설정*/
-      .base-badge-area:last-child {
-        .base-badge {
+      .badge-area:last-child {
+        .badge {
           @apply invisible;
         }
       }

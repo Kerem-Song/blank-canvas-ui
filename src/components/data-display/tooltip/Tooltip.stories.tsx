@@ -1,4 +1,5 @@
-import { Flex, Tooltip } from '@components';
+import { Tooltip } from '@components';
+import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ITooltipProps } from './Tooltip.types';

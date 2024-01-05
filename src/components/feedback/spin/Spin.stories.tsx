@@ -1,6 +1,6 @@
-import { Spin } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { Spin } from './Spin';
 import { ISpinProps } from './Spin.types';
 
 const meta: Meta = {
