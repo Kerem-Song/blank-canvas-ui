@@ -3,8 +3,6 @@ export {
   Badge,
   Card,
   Col,
-  Collapse,
-  DebouncedInput,
   Divider,
   Flex,
   Input,
@@ -14,11 +12,10 @@ export {
   Select,
   Spin,
   Tag,
-  Textarea,
-  TextAreaWithTitleCounter,
   Tooltip,
 } from '@components';
 export * from '@components/data-display/carousel';
+export * from '@components/data-display/collapse';
 export * from '@components/data-entry/autocomplete';
 export * from '@components/data-entry/switch';
 export * from '@components/data-entry/upload';

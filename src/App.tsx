@@ -8,12 +8,12 @@ import {
   Input,
   Modal,
   Radio,
+  RadioGroup,
   Switch,
   Textarea,
   TextAreaWithTitleCounter,
   Tooltip,
 } from '@components';
-import { RadioGroup } from '@components/data-entry/radio/RadioGroup';
 import { IRadioOption } from '@components/data-entry/radio/RadioGroup.types';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg2 from '@icons/ic_search.svg?react';
