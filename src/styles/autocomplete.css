@@ -19,7 +19,7 @@
     }
 
     &-focused {
-      @apply bg-blue-100 text-2;
+      @apply bg-blue-100;
     }
   }
 }
