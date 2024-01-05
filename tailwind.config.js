@@ -4,14 +4,10 @@ import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export const BASE_PIXEL = 16;
 const pxToRem = (px, base = BASE_PIXEL) => `${px / base}rem`;
-// const rem = [...Array(2000).keys()].reduce((acc, px) => {
-//   acc[`${px}pxr`] = pxToRem(px);
-//   return acc;
-// }, {});
 
-const rem = (arrLength) =>
+const rem = (arrLength, multiple = 1) =>
   [...Array(arrLength).keys()].reduce((acc, px) => {
-    acc[`${px}pxr`] = pxToRem(px);
+    acc[`${px * multiple}pxr`] = pxToRem(px);
     return acc;
   }, {});
 
@@ -65,8 +61,14 @@ export default {
           dark: '#f57c00',
         },
       },
-      spacing: {
+      height: {
+        ...rem(41),
+      },
+      width: {
         ...rem(1113),
+      },
+      spacing: {
+        ...rem(301),
       },
       fontSize: {
         ...rem(40),
