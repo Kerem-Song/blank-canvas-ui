@@ -1,4 +1,4 @@
-import { Flex } from '@components/Layout/Flex/Flex';
+import { Flex } from '@components/layout/flex';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { forwardRef } from 'react';

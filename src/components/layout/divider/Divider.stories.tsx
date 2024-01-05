@@ -1,5 +1,8 @@
-import { Divider, Flex, IDividerProps } from '@components';
+import { Flex } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { Divider } from './Divider';
+import { IDividerProps } from './Divider.types';
 
 const meta: Meta = {
   title: 'components/layout/Divider',

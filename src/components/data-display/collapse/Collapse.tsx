@@ -1,5 +1,5 @@
 import { Button } from '@components/general/button/Button';
-import { Divider } from '@components/Layout/Divider/Divider';
+import { Divider } from '@components/layout/divider/Divider';
 import classNames from 'classnames';
 import { useState } from 'react';
 

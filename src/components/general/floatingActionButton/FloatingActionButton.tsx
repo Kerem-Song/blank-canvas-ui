@@ -1,5 +1,5 @@
-import { Badge } from '@components/data-display/Badge/Badge';
-import { Tooltip } from '@components/data-display/Tooltip/Tooltip';
+import { Badge } from '@components/data-display/badge/Badge';
+import { Tooltip } from '@components/data-display/tooltip/Tooltip';
 import { useOutsideClick } from '@hooks';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';

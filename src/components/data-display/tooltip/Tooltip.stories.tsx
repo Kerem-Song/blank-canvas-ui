@@ -1,5 +1,7 @@
-import { Flex, ITooltipProps, Tag, Tooltip } from '@components';
+import { Flex, Tooltip } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { ITooltipProps } from './Tooltip.types';
 
 const meta: Meta<ITooltipProps> = {
   title: 'components/data-display/Tooltip',

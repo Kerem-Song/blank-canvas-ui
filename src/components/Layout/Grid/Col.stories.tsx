@@ -1,5 +1,8 @@
-import { Col, Divider, IColProps, Row } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { Divider } from '../divider';
+import { Col, Row } from '.';
+import { IColProps } from './Col.types';
 
 const meta: Meta<IColProps> = {
   title: 'components/layout/Grid/Col',

@@ -1,5 +1,5 @@
 import { carouselClasses } from '@components/data-display/carousel/CarouselClasses';
-import { Col, Row } from '@components/Layout';
+import { Col, Row } from '@components/layout';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';

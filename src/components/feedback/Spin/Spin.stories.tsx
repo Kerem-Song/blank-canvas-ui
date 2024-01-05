@@ -1,5 +1,7 @@
-import { Flex, ISpinProps, Select, Spin } from '@components';
+import { Spin } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { ISpinProps } from './Spin.types';
 
 const meta: Meta = {
   title: 'components/feedback/Spin',

@@ -1,4 +1,4 @@
-import { Flex } from '@components/Layout/Flex/Flex';
+import { Flex } from '@components/layout/flex';
 import { forwardRef } from 'react';
 
 import { Radio } from './Radio';
