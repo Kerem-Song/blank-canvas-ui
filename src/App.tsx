@@ -3,7 +3,6 @@ import './App.css';
 import {
   Button,
   Carousel,
-  DebouncedInput,
   FloatingActionButton,
   IFloatingActionMenuProps,
   Input,
@@ -14,13 +13,11 @@ import {
   TextAreaWithTitleCounter,
   Tooltip,
 } from '@components';
-import { IRadioOption, RadioGroup } from '@components/data-entry/radio/RadioGroup';
-import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
+import { RadioGroup } from '@components/data-entry/radio/RadioGroup';
+import { IRadioOption } from '@components/data-entry/radio/RadioGroup.types';
 import icImgTest from '@icons/ic_img.svg';
-import IcImg from '@icons/ic_img.svg?react';
 import IcImg2 from '@icons/ic_search.svg?react';
 import icImgTest2 from '@icons/ic_search_delete.svg';
-import { offset } from '@popperjs/core';
 import { useState } from 'react';
 import { Autocomplete } from 'src';
 
