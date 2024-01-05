@@ -1,5 +1,17 @@
 .select-container {
   @apply flex h-[30px] cursor-pointer;
+  .select-focus {
+    @apply ring-2 ring-blue-500/75;
+  }
+  .select-focus-none {
+    @apply ring-2 ring-blue-500/0;
+  }
+  .select-error {
+    @apply ring-2 ring-red-500;
+  }
+  .select-warning {
+    @apply ring-2 ring-yellow-400 ring-opacity-90;
+  }
 }
 .select-item-hover {
   @apply bg-neutral-100 rounded-[5px];

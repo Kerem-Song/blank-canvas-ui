@@ -13,3 +13,7 @@
 .tag-pd {
   @apply px-1;
 }
+
+.tag-inline {
+  @apply inline-block;
+}

@@ -10,6 +10,9 @@
 
     .card-extra {
       @apply text-sm;
+      a {
+        @apply text-sky-500 underline;
+      }
     }
   }
 
@@ -37,4 +40,8 @@
 
 .card-none-border {
   @apply shadow-[rgba(50,_50,_105,_0.1)_0px_1px_2px_0px,_rgba(0,_0,_0,_0.05)_0px_0.5px_0.5px_0px];
+}
+
+.card-full {
+  @apply w-full;
 }
