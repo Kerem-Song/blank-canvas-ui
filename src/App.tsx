@@ -14,7 +14,7 @@ import {
   TextAreaWithTitleCounter,
   Tooltip,
 } from '@components';
-import { IRadioOption, RadioGroup } from '@components/data-entry/Radio/RadioGroup';
+import { IRadioOption, RadioGroup } from '@components/data-entry/radio/RadioGroup';
 import IcImg3 from '@icons/ic_collapse_arrow_up.svg?react';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg from '@icons/ic_img.svg?react';

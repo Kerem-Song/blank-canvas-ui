@@ -1,39 +1,9 @@
-import { Button, Divider } from '@components';
-import IcCollapseArrow from '@icons/ic_collapse_arrow_up.svg?react';
+import { Button } from '@components/general/button/Button';
+import { Divider } from '@components/Layout/Divider/Divider';
 import classNames from 'classnames';
-import { DOMAttributes, ReactNode, useState } from 'react';
-export interface ICollapseProps extends DOMAttributes<HTMLDivElement> {
-  /**
-   * Collapse의 제목
-   */
-  label?: string | ReactNode;
+import { useState } from 'react';
 
-  /**
-   * Collpase의 key값
-   */
-  key?: string | number;
-
-  /**
-   * 클릭할 아이콘 노출 여부
-   */
-  showIcon?: boolean;
-
-  /**
-   * 노출 아이콘
-   */
-  expandIcon?: string;
-
-  /**
-   * 노출 아이콘의 위치
-   * @default end
-   */
-  expandIconPosition?: 'start' | 'end';
-
-  /**
-   * 클릭 이후에 나오는 자식요소
-   */
-  children: ReactNode | ReactNode[];
-}
+import { ICollapseProps } from './Collapse.types';
 
 export const Collapse = ({
   label,

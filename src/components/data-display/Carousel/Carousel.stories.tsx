@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Carousel, ICarouselProps } from '.';
+import { Carousel } from './Carousel';
+import { ICarouselProps } from './Carousel.types';
 
 const meta: Meta = {
   title: 'components/data-display/Carousel',

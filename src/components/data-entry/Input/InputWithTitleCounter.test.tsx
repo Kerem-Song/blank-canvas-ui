@@ -1,5 +1,6 @@
-import { InputWithTitleCounter } from '@components';
 import { act, fireEvent, render, screen } from '@testing-library/react';
+
+import { InputWithTitleCounter } from './InputWithTitleCounter';
 
 describe('<InputWithTitleCounter />', () => {
   it('렌더링 체크', () => {

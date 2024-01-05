@@ -1,6 +1,7 @@
 import { act, fireEvent, render } from '@testing-library/react';
 
-import { IRadioOption, RadioGroup } from './RadioGroup';
+import { RadioGroup } from './RadioGroup';
+import { IRadioOption } from './RadioGroup.types';
 
 describe('<RadioGroup />', () => {
   const options: IRadioOption[] = [

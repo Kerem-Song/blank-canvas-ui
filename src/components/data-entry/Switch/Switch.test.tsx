@@ -2,7 +2,8 @@ import { generatePrefixClasses } from '@modules/utils';
 import { fireEvent, render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Switch, switchClasses } from './index';
+import { Switch } from './Switch';
+import { switchClasses } from './SwitchClasses';
 
 const classes = generatePrefixClasses(switchClasses, 'switch');
 

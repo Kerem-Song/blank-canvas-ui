@@ -1,5 +1,7 @@
-import { TextAreaWithTitleCounter, TitleCounterProps } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { TextAreaWithTitleCounter } from './TextAreaWithTitleCounter';
+import { TitleCounterProps } from './TextareaWithTitleCounter.types';
 
 const meta: Meta = {
   title: 'components/data-entry/Textarea/TextAreaWithTitleCounter',

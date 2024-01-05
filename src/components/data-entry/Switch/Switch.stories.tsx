@@ -1,5 +1,7 @@
-import { ISwitchProps, Switch } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { Switch } from './Switch';
+import { ISwitchProps } from './Switch.types';
 
 const meta: Meta = {
   title: 'components/data-entry/Switch',

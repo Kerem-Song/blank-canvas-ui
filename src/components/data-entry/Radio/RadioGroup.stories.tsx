@@ -1,5 +1,7 @@
-import { IRadioOptions, RadioGroup } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { RadioGroup } from './RadioGroup';
+import { IRadioOptions } from './RadioGroup.types';
 
 const meta: Meta = {
   title: 'components/data-entry/Radio/RadioGroup',

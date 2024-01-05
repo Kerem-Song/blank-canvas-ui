@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 
-import { TextAreaWithTitleCounter } from '..';
+import { TextAreaWithTitleCounter } from './TextAreaWithTitleCounter';
 
 describe('<TextareaWithTitleCounter />', () => {
   it('렌더링 체크', () => {

@@ -1,6 +1,8 @@
-import { Collapse, ICollapseProps } from '@components';
+import { Collapse } from '@components/data-display/collapse/Collapse';
 import icon from '@icons/ic_collapse_arrow_up.svg';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { ICollapseProps } from './Collapse.types';
 
 const meta: Meta = {
   title: 'components/data-display/Collapse',

@@ -2,11 +2,9 @@ import icImgTest from '@icons/ic_img.svg';
 import { generatePrefixClasses } from '@modules/utils';
 import { fireEvent, render } from '@testing-library/react';
 
-import {
-  FloatingActionButton,
-  floatingActionButtonClasses,
-  IFloatingActionMenuProps,
-} from './index';
+import { FloatingActionButton } from './FloatingActionButton';
+import { IFloatingActionMenuProps } from './FloatingActionButton.types';
+import { floatingActionButtonClasses } from './FloatingActionButtonClasses';
 
 const menu: IFloatingActionMenuProps[] = [
   {

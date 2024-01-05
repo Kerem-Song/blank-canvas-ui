@@ -1,8 +1,9 @@
-import { Button } from '@components';
+import { Button } from '@components/general/button/Button';
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { IModalProps, Modal } from './Modal';
+import { Modal } from './Modal';
+import { IModalProps } from './Modal.types';
 
 const meta: Meta<IModalProps> = {
   title: 'components/feedback/Modal',

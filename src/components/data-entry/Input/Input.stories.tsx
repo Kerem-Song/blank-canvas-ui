@@ -1,5 +1,7 @@
-import { IInputProps, Input } from '@components';
+import { Input } from '@components/data-entry/input/Input';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { IInputProps } from './Input.types';
 
 const meta: Meta = {
   title: 'components/data-entry/Input/Input',

@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { DebouncedInput, IDebounceProps } from './DebouncedInput';
+import { DebouncedInput } from './DebouncedInput';
+import { IDebounceProps } from './DebouncedInput.types';
 
 const API_KEY = '74f10d5523eea415cf2a4eb63747800f';
 

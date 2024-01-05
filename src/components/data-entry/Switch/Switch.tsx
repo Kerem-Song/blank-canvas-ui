@@ -1,29 +1,10 @@
-import { Flex } from '@components';
+import { Flex } from '@components/Layout/Flex/Flex';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
+import { ISwitchProps } from './Switch.types';
 import { switchClasses } from './SwitchClasses';
-
-export interface ISwitchProps extends InputHTMLAttributes<HTMLInputElement> {
-  /**
-   * 스위치 타입
-   * @default outside
-   */
-  switchType?: 'outside' | 'inside';
-
-  /**
-   * 스위치의 사이즈
-   * @default sm
-   */
-  switchSize?: 'sm' | 'md' | 'lg' | 'xl';
-
-  /**
-   * 스위치 클릭 후 색상
-   * @default green
-   */
-  color?: 'blue' | 'green';
-}
 
 export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => {
   const {

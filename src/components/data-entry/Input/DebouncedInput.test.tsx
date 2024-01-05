@@ -1,4 +1,4 @@
-import { DebouncedInput } from '@components';
+import { DebouncedInput } from '@components/data-entry/input/DebouncedInput';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 
 describe('<DebouncedInput />', () => {

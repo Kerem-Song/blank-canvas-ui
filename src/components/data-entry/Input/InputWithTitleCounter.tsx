@@ -1,4 +1,4 @@
-import { Button, IInputProps } from '@components';
+import { Button } from '@components/general/button/Button';
 import classNames from 'classnames';
 import {
   ChangeEvent,
@@ -9,24 +9,8 @@ import {
   useState,
 } from 'react';
 import { util } from 'src/utils/utils';
-export interface IInputWithTitleCounterProps extends IInputProps {
-  /**
-   * Input의 title
-   */
-  label?: string;
 
-  /**
-   * Input에서 노출되는 title과 counter의 위치(label은 값이 없을 경우 노출되지 않음)
-   * @type "top" | "bottom" | "inside"
-   */
-  direction?: 'top' | 'bottom' | 'inside';
-
-  /**
-   * Input title의 폰트 굵기(굵게/얇게)
-   * @default false
-   */
-  isLight?: boolean;
-}
+import { IInputWithTitleCounterProps } from './InputWithTitleCounter.types';
 
 export const InputWithTitleCounter = forwardRef<
   HTMLInputElement,

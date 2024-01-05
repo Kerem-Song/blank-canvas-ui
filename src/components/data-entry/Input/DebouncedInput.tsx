@@ -1,10 +1,7 @@
-import { IInputProps, Input } from '@components';
+import { Input } from '@components/data-entry/input/Input';
 import { forwardRef, useDeferredValue, useMemo, useState } from 'react';
 
-export interface IDebounceProps extends IInputProps {
-  handleDebounce: () => void;
-  debounceTimeout: number;
-}
+import { IDebounceProps } from './DebouncedInput.types';
 
 const debounce = (debounceTimeout: number, callback: () => void) => {
   const delayDebounceFn = setTimeout(() => {

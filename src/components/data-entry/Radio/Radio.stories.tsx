@@ -1,4 +1,4 @@
-import { Radio } from '@components';
+import { Radio } from '@components/data-entry/radio/Radio';
 import { Meta, StoryObj } from '@storybook/react';
 import { InputHTMLAttributes } from 'react';
 

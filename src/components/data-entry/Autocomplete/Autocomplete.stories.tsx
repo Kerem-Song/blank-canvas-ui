@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Autocomplete, AutocompleteProps } from './Autocomplete';
+import { Autocomplete } from './Autocomplete';
+import { AutocompleteProps } from './Autocomplete.types';
 
 const meta: Meta = {
   title: 'components/data-entry/Autocomplete',

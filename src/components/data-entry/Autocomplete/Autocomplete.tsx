@@ -1,33 +1,10 @@
-import { Input } from '@components';
+import { Input } from '@components/data-entry/input/Input';
 import classNames from 'classnames';
-import {
-  ChangeEvent,
-  KeyboardEvent,
-  ReactNode,
-  useDeferredValue,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { KeyboardEvent, useDeferredValue, useEffect, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { util } from 'src/utils/utils';
 
-export interface AutocompleteProps<T extends object> {
-  items?: T[];
-  defaultValue?: T;
-  displayName?: keyof T;
-  valuePath?: keyof T;
-  isDisabled?: boolean;
-  readOnly?: boolean;
-  placeholder?: string;
-  prefix?: ReactNode;
-  suffix?: ReactNode;
-  maxLength?: number;
-  create?: (value: string | undefined) => T | undefined;
-  onChangeValue?: (value: T | undefined) => void;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  error?: any;
-}
+import { AutocompleteProps } from './Autocomplete.types';
 
 export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   const [showPopper, setShowPopper] = useState<boolean>(false);

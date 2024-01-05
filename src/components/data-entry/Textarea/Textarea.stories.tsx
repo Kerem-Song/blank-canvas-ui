@@ -1,5 +1,7 @@
-import { ITextareaProps, Textarea } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { Textarea } from './Textarea';
+import { ITextareaProps } from './Textarea.types';
 
 const meta: Meta = {
   title: 'components/data-entry/Textarea/Textarea',

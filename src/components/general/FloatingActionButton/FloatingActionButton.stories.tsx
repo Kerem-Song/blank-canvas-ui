@@ -3,7 +3,8 @@ import IcImg from '@icons/ic_img.svg';
 import IcImg2 from '@icons/ic_search.svg';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { FloatingActionButton, IFloatingActionButtonProps } from './FloatingActionButton';
+import { FloatingActionButton } from './FloatingActionButton';
+import { IFloatingActionButtonProps } from './FloatingActionButton.types';
 
 const meta: Meta = {
   title: 'components/general/FloatingActionButton',

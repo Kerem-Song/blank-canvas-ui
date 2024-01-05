@@ -1,7 +1,7 @@
-import { IInputWithTitleCounterProps } from '@components';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { InputWithTitleCounter } from './InputWithTitleCounter';
+import { IInputWithTitleCounterProps } from './InputWithTitleCounter.types';
 
 const meta: Meta = {
   title: 'components/data-entry/Input/InputWithTitleCounter',

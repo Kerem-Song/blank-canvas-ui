@@ -1,2 +1,2 @@
+export * from './';
 export * from './Upload';
-export * from './uploadClasses';
