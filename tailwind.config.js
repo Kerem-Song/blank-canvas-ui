@@ -4,10 +4,16 @@ import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export const BASE_PIXEL = 16;
 const pxToRem = (px, base = BASE_PIXEL) => `${px / base}rem`;
-const rem = [...Array(2000).keys()].reduce((acc, px) => {
-  acc[`${px}pxr`] = pxToRem(px);
-  return acc;
-}, {});
+// const rem = [...Array(2000).keys()].reduce((acc, px) => {
+//   acc[`${px}pxr`] = pxToRem(px);
+//   return acc;
+// }, {});
+
+const rem = (arrLength) =>
+  [...Array(arrLength).keys()].reduce((acc, px) => {
+    acc[`${px}pxr`] = pxToRem(px);
+    return acc;
+  }, {});
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -60,16 +66,16 @@ export default {
         },
       },
       spacing: {
-        ...rem,
+        ...rem(1113),
       },
       fontSize: {
-        ...rem,
+        ...rem(40),
       },
       fontFamily: {
         pretendard: ['Pretendard', ...fontFamily.sans],
       },
       minWidth: {
-        ...rem,
+        ...rem(155),
         200: '200px',
       },
       zIndex: {
