@@ -10,7 +10,7 @@ export const Tooltip = ({
   disable,
   offset = [0, 8],
   color,
-  text,
+  description,
   placement = 'bottom',
   arrow = true,
   strategy = 'fixed',
@@ -118,7 +118,7 @@ export const Tooltip = ({
             open === undefined ? defaultShow || isShow : open ? true : false
           }
         >
-          <div>{text}</div>
+          <div>{description}</div>
           {arrow && (
             <div
               id="arrow"
