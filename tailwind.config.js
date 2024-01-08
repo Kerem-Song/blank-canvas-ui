@@ -80,6 +80,9 @@ export default {
         ...rem(155),
         200: '200px',
       },
+      maxWidth: {
+        ...rem(30),
+      },
       zIndex: {
         100: '100',
         999: '999',
