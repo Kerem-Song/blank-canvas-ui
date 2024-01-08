@@ -12,7 +12,6 @@ import {
   Switch,
   Textarea,
   TextAreaWithTitleCounter,
-  Tooltip,
 } from '@components';
 import { IRadioOption } from '@components/data-entry/radio';
 import icImgTest from '@icons/ic_img.svg';
@@ -135,7 +134,7 @@ function App() {
         closeIcon={icImgTest2}
         useBadge={true}
         trigger="click"
-        // description={'hiasdf'}
+        description={'한글적용가능한지여부테스트'}
       />
       <Autocomplete items={items} displayName={'label'} placeholder="write" />
       <button onClick={() => setModalOpen(!modalOpen)}>모달테스트</button>
