@@ -58,7 +58,7 @@ export const Default: Story = {
     underline: 'always',
     children: 'Link',
     color: 'primary',
-    size: 'sm',
+    size: 'md',
   },
 };
 
