@@ -134,7 +134,7 @@ function App() {
         closeIcon={icImgTest2}
         useBadge={true}
         trigger="click"
-        description={'hiasdfasdfasdfasdfasdfasdf'}
+        description={'한글적용가능한지여부테스트'}
       />
       <Autocomplete items={items} displayName={'label'} placeholder="write" />
       <button onClick={() => setModalOpen(!modalOpen)}>모달테스트</button>

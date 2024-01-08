@@ -91,7 +91,7 @@
   }
 
   .description {
-    @apply overflow-hidden max-w-28pxr text-10pxr font-light;
+    @apply overflow-hidden max-w-28pxr max-h-4 text-10pxr font-light;
   }
 
   button {
