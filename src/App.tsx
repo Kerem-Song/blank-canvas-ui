@@ -124,7 +124,7 @@ function App() {
       <RadioGroup options={option} name="haha" vertical={false} gap={20} />
       <Input isSearch={true} disabled={true} />
       <Switch />
-      <Tooltip text="sdklfjldaskf">test</Tooltip>
+
       <FloatingActionButton
         callback={() => {}}
         shape="circle"
