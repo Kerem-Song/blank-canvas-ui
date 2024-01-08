@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { PaginationItem } from './PaginationItem';
 import { paginationItemClasses, PaginationItemClassKey } from './paginationItemClasses';
 
-const classes = generatePrefixClasses(paginationItemClasses, 'PaginationItem');
+const classes = generatePrefixClasses(paginationItemClasses, 'pagination-item');
 
 describe('<PaginationItem />', () => {
   it('렌더링 됩니다.', () => {

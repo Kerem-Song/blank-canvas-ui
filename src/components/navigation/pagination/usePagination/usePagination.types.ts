@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { PaginationItemType } from '../paginationItem/PaginationItem.types';
-
 export interface UsePaginationProps {
   /**
    * 시작과 끝에서 항상 표시되는 페이지 수입니다.
@@ -70,6 +68,15 @@ export interface UsePaginationProps {
    */
   maxPageCount?: number;
 }
+
+export type PaginationItemType =
+  | 'page'
+  | 'first'
+  | 'last'
+  | 'next'
+  | 'previous'
+  | 'start-ellipsis'
+  | 'end-ellipsis';
 
 export interface UsePaginationItem {
   onClick: React.ReactEventHandler;

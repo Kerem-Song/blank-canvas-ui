@@ -64,15 +64,15 @@ $(ns) {
   }
   &-sm {
     @apply
-      text-xs;
+      text-sm;
   }
   &-md {
     @apply
-      text-sm;
+      text-base;
   }
   &-lg {
     @apply
-      text-base;
+      text-lg;
   }
 
 /* color */
