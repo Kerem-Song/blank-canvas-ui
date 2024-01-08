@@ -176,4 +176,13 @@ describe('<DebouncedInput />', () => {
     const suffix = container.querySelector('.suffixWrapper');
     expect(suffix?.textContent).toBe('a');
   });
+
+  it('debounce tiemout 체크', () => {
+    const { container } = render(
+      <DebouncedInput handleDebounce={handleDebounce} debounceTimeout={1000} />,
+    );
+    const debouncedTest = screen.getByRole('textbox');
+    fireEvent.change(debouncedTest, { target: { value: '1111' } });
+    console.log('@debouncedTest', debouncedTest);
+  });
 });
