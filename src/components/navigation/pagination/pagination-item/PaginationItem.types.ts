@@ -1,14 +1,7 @@
 import { OverrideProps } from '@models/types';
 import * as React from 'react';
 
-export type PaginationItemType =
-  | 'page'
-  | 'first'
-  | 'last'
-  | 'next'
-  | 'previous'
-  | 'start-ellipsis'
-  | 'end-ellipsis';
+import { PaginationItemType } from '../usePagination/usePagination.types';
 
 export interface PaginationItemTypeMap<
   DefaultComponent extends React.ElementType = 'div',
