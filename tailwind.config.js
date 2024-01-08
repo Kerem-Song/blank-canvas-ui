@@ -16,6 +16,12 @@ export default {
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
     extend: {
+      screens: {
+        mobile: '360px',
+        tablet: '768px',
+        laptop: '1024px',
+        desktop: '1440px',
+      },
       colors: {
         gray: {
           50: '#fefeff',
@@ -71,6 +77,11 @@ export default {
         ...rem(301),
       },
       fontSize: {
+        xs: ['13px', '16px'],
+        sm: ['14px', '20px'],
+        md: ['16px', '24px'],
+        lg: ['18px', '28px'],
+        xl: ['20px', '28px'],
         ...rem(40),
       },
       fontFamily: {
@@ -86,6 +97,12 @@ export default {
       zIndex: {
         100: '100',
         999: '999',
+      },
+      borderRadius: {
+        4: '4px',
+        6: '6px',
+        8: '8px',
+        12: '12px',
       },
     },
   },

@@ -28,7 +28,7 @@ export interface PaginationProps
   shape?: 'default' | 'circle' | 'round';
   /**
    * 구성요소의 크기입니다.
-   * @default 'sm'
+   * @default 'md'
    */
   size?: 'sm' | 'md' | 'lg';
   /**

@@ -1,14 +1,7 @@
 import { OverrideProps } from '@models/types';
 import * as React from 'react';
 
-export type PaginationItemType =
-  | 'page'
-  | 'first'
-  | 'last'
-  | 'next'
-  | 'previous'
-  | 'start-ellipsis'
-  | 'end-ellipsis';
+import { PaginationItemType } from '../usePagination/usePagination.types';
 
 export interface PaginationItemTypeMap<
   DefaultComponent extends React.ElementType = 'div',
@@ -35,7 +28,7 @@ export interface PaginationItemTypeMap<
     shape?: 'default' | 'circle' | 'round';
     /**
      * 구성요소의 크기입니다.
-     * @default 'sm'
+     * @default 'md'
      */
     size?: 'sm' | 'md' | 'lg';
     /**

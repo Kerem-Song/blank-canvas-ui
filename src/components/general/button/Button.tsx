@@ -18,7 +18,7 @@ export const Button = React.forwardRef(function Button<
     block = false,
     endIcon: endIconProp,
     shape = 'round',
-    size = 'sm',
+    size = 'md',
     startIcon: startIconProp,
     slotProps,
     tabIndex,

@@ -10,7 +10,7 @@ import {
 
 import { Pagination } from '../pagination/Pagination';
 import { PaginationProps } from '../pagination/Pagination.types';
-import { PaginationItem } from '../paginationItem/PaginationItem';
+import { PaginationItem } from '../pagination-item/PaginationItem';
 
 const FlexBox = ({
   className,
@@ -45,7 +45,7 @@ export const Default: Story = {
   args: {
     color: 'primary',
     shape: 'round',
-    size: 'sm',
+    size: 'md',
     prefix: '',
     variant: 'contained',
     boundaryCount: 1,
