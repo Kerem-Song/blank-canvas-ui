@@ -10,11 +10,10 @@ $(ns) {
       items-center
       justify-center
       shrink-0
-      box-content
+      box-border
       relative
-      w-10
-      h-10
-      border-2 border-solid
+      border-2
+      border-solid
       border-white
       font-pretendard
       text-xl
@@ -43,21 +42,21 @@ $(ns) {
     @apply
       w-6
       h-6
-      text-xs;
+      text-[12px];
   }
 
   &-md {
     @apply
-      w-8
-      h-8
-      text-base;
+      w-10
+      h-10
+      text-[20px];
   }
 
   &-lg {
     @apply
-      w-10
-      h-10
-      text-xl;
+      w-14
+      h-14
+      text-[28px];
   }
 
   /* colorDefault */
