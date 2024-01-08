@@ -1,6 +1,6 @@
 import '../../../index.css';
 
-import { Flex } from '@components/layout';
+import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import React, { useState } from 'react';

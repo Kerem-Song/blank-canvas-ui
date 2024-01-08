@@ -1,5 +1,6 @@
-import { Divider, Flex } from '@components';
 import { Button } from '@components/general/button/Button';
+import { Divider } from '@components/layout/divider';
+import { Flex } from '@components/layout/flex';
 import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { useEffect } from 'react';

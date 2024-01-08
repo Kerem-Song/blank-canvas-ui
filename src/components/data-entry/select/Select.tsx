@@ -1,4 +1,4 @@
-import { AnyObject } from '@models';
+import { AnyObject } from '@models/types/AnyObject';
 import classNames from 'classnames';
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -27,6 +27,7 @@ function SelectFunc<T extends AnyObject>(
     valuePath,
     items,
     selectWidth = 150,
+    isError,
     className,
     style,
     ...inputProps
@@ -208,7 +209,7 @@ function SelectFunc<T extends AnyObject>(
         }}
         className={classNames(
           inputFocus && !status ? 'select-focus' : 'select-focus-none',
-          { 'select-error': status === 'error' },
+          { 'select-error': status === 'error' || isError },
           { 'select-warning': status === 'warning' },
           bordered === false ? 'select-bordered-none' : 'select-bordered',
           'select-referenceElement',

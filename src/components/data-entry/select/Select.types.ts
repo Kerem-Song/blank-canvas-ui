@@ -98,4 +98,10 @@ export interface ISelectProp<T extends object>
    * @type Array<{ label: string; value: string; disabled?: boolean }>
    */
   options?: Array<{ label: string; value: string; disabled?: boolean }>;
+  /**
+   * select error 여부 서렂ㅇ
+   * @default
+   * @type boolean
+   */
+  isError?: boolean;
 }

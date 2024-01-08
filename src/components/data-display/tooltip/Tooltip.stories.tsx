@@ -1,4 +1,5 @@
-import { Flex, Tooltip } from '@components';
+import { Tooltip } from '@components/data-display/tooltip';
+import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ITooltipProps } from './Tooltip.types';
@@ -42,7 +43,7 @@ export const Default: Story = {
             mouseEnterDelay={args.mouseEnterDelay}
             mouseLeaveDelay={args.mouseLeaveDelay}
             open={args.open}
-            text={args.text}
+            description={args.description}
             tooltipWidth={args.tooltipWidth}
             arrowClassName={args.arrowClassName}
             tooltipClassName={args.tooltipClassName}
@@ -59,7 +60,8 @@ export const Default: Story = {
     );
   },
   args: {
-    text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sapiente ipsam omnis harum dignissimos eos, unde atque enim necessitatibus aliquid perspiciatis nemo natus consequatur incidunt tempore, qui, sint ut nisi!',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sapiente ipsam omnis harum dignissimos eos, unde atque enim necessitatibus aliquid perspiciatis nemo natus consequatur incidunt tempore, qui, sint ut nisi!',
     color: 'pink',
     placement: 'right',
     defaultOpen: true,

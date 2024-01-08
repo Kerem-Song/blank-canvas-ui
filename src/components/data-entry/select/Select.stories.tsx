@@ -1,4 +1,5 @@
-import { Flex, Select } from '@components';
+import { Select } from '@components/data-entry/select';
+import { Flex } from '@components/layout/flex';
 import { AnyObject } from '@models/types/AnyObject';
 import { Meta, StoryObj } from '@storybook/react';
 

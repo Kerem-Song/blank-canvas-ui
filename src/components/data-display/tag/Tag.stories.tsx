@@ -1,4 +1,5 @@
-import { Flex, Tag } from '@components';
+import { Tag } from '@components/data-display/tag';
+import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ITagProps } from './Tag.types';
