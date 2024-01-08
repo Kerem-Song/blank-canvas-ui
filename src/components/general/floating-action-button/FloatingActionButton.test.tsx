@@ -127,7 +127,7 @@ describe('<FloatingActionButton />', () => {
     expect(hiddenMenu).toHaveProperty('className', 'open');
 
     // 뱃지 사용 시 렌더링 및 값 일치 여부
-    const badge = container.querySelector('.base-badge');
+    const badge = container.querySelector('.badge');
     expect(badge?.firstChild?.textContent).toBe('6');
 
     // 메뉴 중 하나 눌렀을 시 콜백 호출 여부
