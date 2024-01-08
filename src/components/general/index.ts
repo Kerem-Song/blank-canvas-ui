@@ -1,2 +1,2 @@
 export * from './button';
-export * from './floatingActionButton';
+export * from './floating-action-button';
