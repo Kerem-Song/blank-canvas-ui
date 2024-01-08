@@ -14,10 +14,10 @@
   }
 }
 .select-item-hover {
-  @apply bg-neutral-100 rounded-[5px];
+  @apply bg-neutral-100 rounded-6;
 }
 .selected-item {
-  @apply bg-blue-100 font-bold rounded-[5px];
+  @apply bg-blue-100 font-bold rounded-6;
 }
 .select-bordered-none {
   @apply border-none;
@@ -30,9 +30,9 @@
 }
 
 .select-referenceElement {
-  @apply flex justify-between rounded-[5px] items-center h-full;
+  @apply flex justify-between rounded-6 items-center h-full;
   input {
-    @apply rounded-[5px] px-[8px] h-full outline-none w-full ring-opacity-0 border-0 select-overflow cursor-pointer;
+    @apply rounded-6 px-[8px] h-full outline-none w-full ring-opacity-0 border-0 select-overflow cursor-pointer;
   }
 
   .select-icon {
@@ -40,7 +40,7 @@
   }
 }
 .select-ul {
-  @apply bg-white	p-[5px] my-[8px] rounded-[8px] border-solid border-gray-200 shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
+  @apply bg-white	p-[5px] my-[8px] rounded-6 border-solid border-gray-200 shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
 
   .select-overflow {
     @apply overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];

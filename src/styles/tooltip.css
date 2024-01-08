@@ -5,7 +5,7 @@
 }
 
 #tooltip {
-  @apply text-start flex items-center bg-white font-bold text-red-950 py-[5px] px-[10px] rounded-[4px];
+  @apply text-start flex items-center bg-white font-bold text-red-950 py-[5px] px-[10px] rounded-4;
 }
 
 #tooltip-data {
