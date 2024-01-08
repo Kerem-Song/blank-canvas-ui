@@ -1,4 +1,4 @@
-import { Badge } from '@components';
+import { Badge } from '@components/data-display/badge';
 import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 

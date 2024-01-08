@@ -1,4 +1,4 @@
-import { Card } from '@components';
+import { Card } from '@components/data-display/card';
 import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 
