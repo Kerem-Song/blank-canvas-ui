@@ -24,7 +24,7 @@ export const PaginationItem = React.forwardRef(function PaginationItem<
     color = 'default',
     shape = 'round',
     variant = 'contained',
-    size = 'sm',
+    size = 'md',
     slots: slotsProp = {},
     slotProps: slotPropsProp = {},
     prefix,

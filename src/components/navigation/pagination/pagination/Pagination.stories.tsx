@@ -45,7 +45,7 @@ export const Default: Story = {
   args: {
     color: 'primary',
     shape: 'round',
-    size: 'sm',
+    size: 'md',
     prefix: '',
     variant: 'contained',
     boundaryCount: 1,
