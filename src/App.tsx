@@ -12,7 +12,6 @@ import {
   Switch,
   Textarea,
   TextAreaWithTitleCounter,
-  Tooltip,
 } from '@components';
 import { IRadioOption } from '@components/data-entry/radio';
 import icImgTest from '@icons/ic_img.svg';

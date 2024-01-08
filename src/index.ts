@@ -1,10 +1,6 @@
 export * from './index.css';
-export { Badge, Card, Input, Radio, RadioGroup, Select, Tag, Tooltip } from '@components';
-export * from '@components/data-display/carousel';
-export * from '@components/data-display/collapse';
+export * from '@components/data-display';
 export * from '@components/data-entry';
-export * from '@components/data-entry/autocomplete';
-export * from '@components/data-entry/switch';
 export * from '@components/feedback';
 export * from '@components/general';
 export * from '@components/layout';
