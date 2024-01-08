@@ -53,7 +53,7 @@ export const Default: Story = {
     label: 'checkbox',
     readOnly: false,
     required: false,
-    size: 'sm',
+    size: 'md',
     color: 'primary',
     prefix: '',
   },

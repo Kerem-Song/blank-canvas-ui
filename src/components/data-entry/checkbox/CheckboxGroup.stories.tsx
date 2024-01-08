@@ -51,7 +51,7 @@ export const Default: Story = {
     readOnly: false,
     required: false,
     color: 'primary',
-    size: 'sm',
+    size: 'md',
     prefix: '',
     defaultValue: ['Apple'],
     options: [
@@ -84,7 +84,7 @@ export const Controlled: Story = {
     readOnly: false,
     required: false,
     color: 'primary',
-    size: 'sm',
+    size: 'md',
     prefix: '',
     options: [
       { label: 'Apple', value: 'Apple' },

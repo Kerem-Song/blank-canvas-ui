@@ -30,7 +30,7 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
     slotProps = {},
     className,
     color = 'primary',
-    size = 'sm',
+    size = 'md',
     style,
     options = [],
     onChange,
