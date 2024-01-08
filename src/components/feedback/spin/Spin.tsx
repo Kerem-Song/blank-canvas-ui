@@ -16,7 +16,7 @@ export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
     className,
     style,
     size = 35,
-    spinning,
+    spinning = true,
     children,
     ...spinProps
   } = props;
@@ -29,13 +29,13 @@ export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
         'spin-area',
         { 'spin-fullscreen': fullscreen },
         { 'spin-bgColor': children },
-        { 'spin-hidden': spinning && !children },
+        { 'spin-hidden': !spinning && !children },
       )}
     >
       <div
         {...spinProps}
         className={classNames({ 'spin-children': fullscreen || children }, 'spin', {
-          'spin-hidden': spinning && children,
+          'spin-hidden': !spinning && children,
         })}
       >
         {indicator ? (
