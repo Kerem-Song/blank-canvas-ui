@@ -1,5 +1,6 @@
 import { DebouncedInput } from '@components/data-entry/input/DebouncedInput';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
+import * as React from 'react';
 
 describe('<DebouncedInput />', () => {
   const handleDebounce = vi.fn();
@@ -178,11 +179,54 @@ describe('<DebouncedInput />', () => {
   });
 
   it('debounce tiemout 체크', () => {
+    interface IMovieRes {
+      popularity: string;
+      title: string;
+    }
+
+    const testData: IMovieRes[] = [
+      {
+        title: 'hello',
+        popularity: '1/5',
+      },
+      {
+        title: 'hi',
+        popularity: '2/5',
+      },
+      {
+        title: 'happy',
+        popularity: '3/5',
+      },
+    ];
+
+    const useDebounced = () => {
+      const [data, setData] = React.useState<IMovieRes[]>([]);
+      const addData = () => setData(testData);
+
+      return { data, addData };
+    };
+
+    const { result } = renderHook(() => useDebounced());
+
     const { container } = render(
-      <DebouncedInput handleDebounce={handleDebounce} debounceTimeout={1000} />,
+      <DebouncedInput handleDebounce={useDebounced} debounceTimeout={1000}>
+        {result.current.data?.map((item, i) => (
+          <div key={i} className="test-child">
+            <span>{item.title}</span>
+            <span>{item.popularity}</span>
+          </div>
+        ))}
+      </DebouncedInput>,
     );
+
     const debouncedTest = screen.getByRole('textbox');
-    fireEvent.change(debouncedTest, { target: { value: '1111' } });
-    console.log('@debouncedTest', debouncedTest);
+
+    act(() => {
+      fireEvent.change(debouncedTest, { target: { value: 'test1' } });
+      result.current.addData();
+    });
+
+    expect(result.current.data).toBe(testData);
+    expect(container.querySelectorAll('.test-child')).toBeTruthy();
   });
 });
