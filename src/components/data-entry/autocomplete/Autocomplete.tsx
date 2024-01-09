@@ -104,7 +104,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }} className="autocomplete-wrapper">
       <div ref={referenceElement}>
         <Input
           className={classNames('luna-input', { 'luna-input-error': args.error })}
