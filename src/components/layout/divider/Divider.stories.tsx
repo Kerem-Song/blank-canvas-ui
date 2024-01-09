@@ -21,11 +21,47 @@ export const Default: Story = {
   render: (args) => {
     return (
       <Flex style={{ height: 100, border: '1px solid' }} justify="center" align="center">
+        <div style={{ width: '100%', margin: '20px' }}>
+          test
+          <Divider />
+          test1
+          <Divider />
+          test2
+        </div>
+      </Flex>
+    );
+  },
+  args: {},
+};
+
+export const Vertical: Story = {
+  render: (args) => {
+    return (
+      <Flex style={{ height: 100, border: '1px solid' }} justify="center" align="center">
+        <div>
+          test
+          <Divider type={args.type} />
+          test1
+          <Divider type={args.type} />
+          test2
+        </div>
+      </Flex>
+    );
+  },
+  args: {
+    type: 'vertical',
+  },
+};
+
+export const BorderStyle: Story = {
+  render: (args) => {
+    return (
+      <Flex style={{ height: 100, border: '1px solid' }} justify="center" align="center">
         <div>
           test
           <Divider borderStyle={args.borderStyle} type={args.type} />
           test1
-          <Divider type={args.type} />
+          <Divider borderStyle={args.borderStyle} type={args.type} />
           test2
         </div>
       </Flex>

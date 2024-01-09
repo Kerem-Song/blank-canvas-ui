@@ -31,7 +31,6 @@ export const Default: Story = {
     );
   },
   args: {
-    tip: 'loading...',
     size: 35,
     color: 'pink',
     type: 'spinningBubbles',
@@ -39,21 +38,40 @@ export const Default: Story = {
   },
 };
 
-export const useItems: Story = {
+export const Tip: Story = {
   render: (args) => {
     return (
-      <Spin
-        fullscreen={args.fullscreen}
-        tip={args.tip}
-        size={args.size}
-        indicator={args.indicator}
-      />
+      <div style={{ height: 100, border: '1px solid' }}>
+        <Spin tip={args.tip} type={args.type} />
+      </div>
     );
+  },
+  args: {
+    tip: 'loading...',
+    type: 'spinningBubbles',
+  },
+};
+
+export const Fullscreen: Story = {
+  render: (args) => {
+    return <Spin fullscreen={args.fullscreen} tip={args.tip} size={args.size} />;
   },
   args: {
     tip: 'loading...',
     size: 35,
     fullscreen: true,
+  },
+};
+
+export const Indicator: Story = {
+  render: (args) => {
+    return (
+      <div style={{ height: 100, border: '1px solid' }}>
+        <Spin indicator={args.indicator} />
+      </div>
+    );
+  },
+  args: {
     indicator: <div>스핀테스트</div>,
   },
 };
