@@ -72,7 +72,7 @@ export const Button = React.forwardRef(function Button<
 
   const classes = generatePrefixClasses(
     buttonClasses,
-    `${prefix ? `${prefix}-` : ''}${baseButton ? 'BaseButton' : 'btn'}`,
+    `${prefix ? `${prefix}-` : ''}${baseButton ? 'base-button' : 'btn'}`,
   );
 
   const rootClassName = classNames(
