@@ -57,6 +57,7 @@ function App() {
       callback: () => {
         console.log('@3');
       },
+      tooltip: 'test3',
       badge: { count: 2 },
     },
   ];
