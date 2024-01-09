@@ -5,8 +5,8 @@ import { IFlexProps } from './Flex.types';
 export const Flex = ({
   vertical,
   wrap,
-  justify,
-  align,
+  justify = 'normal',
+  align = 'normal',
   gap,
   children,
   reverse,

@@ -8,14 +8,14 @@ export interface IFlexProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * 메인축 방향으로 아이템을 정렬하는 속성
    * `flex-start` `space-between` `center` `space-between` `space-around` `space-evenly`
-   * @default flex-start
-   *
+   * @default normal
+   * @type string
    */
   justify?: React.CSSProperties['justifyContent'];
   /**
    * 수직축 방향
    * `flex-start` `flex-end` `center`
-   * @default flex-start
+   * @default normal
    * @type string
    */
   align?: React.CSSProperties['alignItems'];
