@@ -17,7 +17,7 @@ export const FloatingActionButton = forwardRef<
   const floatingAtionButtonRef = useRef<HTMLDivElement>(null);
   const {
     className,
-    prefix,
+    prefix = 'bc',
     shape = 'circle',
     trigger = 'click',
     style,
@@ -76,9 +76,9 @@ export const FloatingActionButton = forwardRef<
 
   return (
     <div
-      className={classNames('floating-action-button-wrapper wrapper', {
+      className={classNames('bc-floating-action-button-wrapper wrapper', {
         open: isOpen,
-        'badge-counter': useBadge,
+        'bc-badge-counter': useBadge,
       })}
       style={{ right: `${util.rem(right)}`, bottom: `${util.rem(bottom)}` }}
       onMouseLeave={(e) => {
@@ -104,15 +104,21 @@ export const FloatingActionButton = forwardRef<
             placement="left"
           >
             <div
-              className={classNames(rootClassName, { 'hidden-menu': menu, open: isOpen })}
+              className={classNames(rootClassName, {
+                'bc-hidden-menu': menu,
+                open: isOpen,
+              })}
             >
               <button
-                className={classNames('hidden-button')}
+                className={classNames('bc-hidden-button')}
                 onClick={item.callback}
                 key={i}
               >
-                <div className="icon" style={{ backgroundImage: `url(${item.icon})` }} />
-                <div className="description">{item.description}</div>
+                <div
+                  className="bc-icon"
+                  style={{ backgroundImage: `url(${item.icon})` }}
+                />
+                <div className="bc-description">{item.description}</div>
               </button>
             </div>
           </Tooltip>
@@ -136,10 +142,10 @@ export const FloatingActionButton = forwardRef<
           >
             <button onClick={handleClick}>
               <div
-                className="icon"
+                className="bc-icon"
                 style={{ backgroundImage: isOpen ? `url(${closeIcon})` : `url(${icon})` }}
               />
-              <div className="description">{description}</div>
+              <div className="bc-description">{description}</div>
             </button>
           </div>
         </Tooltip>

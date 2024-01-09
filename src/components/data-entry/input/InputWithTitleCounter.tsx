@@ -21,6 +21,7 @@ export const InputWithTitleCounter = forwardRef<
     args.value?.toString().length || 0,
   );
   const {
+    prefix = 'bc',
     label,
     isLight,
     showCount,
@@ -79,14 +80,14 @@ export const InputWithTitleCounter = forwardRef<
     false || showCount || isSearch || isClearable || customPrefix || suffix;
 
   const inputClassName = classNames(
-    wrappingType ? '' : `${args.className} luna-input-normal `,
+    wrappingType ? '' : `${args.className} bc-input-normal `,
     {
       invalid: isError,
     },
   );
 
   const inputWrapClassName = classNames(
-    wrappingType ? `${args.className} luna-input-wrap` : '',
+    wrappingType ? `${args.className} bc-input-wrap` : '',
     {
       invalid: isError,
     },
@@ -125,11 +126,11 @@ export const InputWithTitleCounter = forwardRef<
   const wrappedInput = (
     <div className="group">
       <div className={inputWrapClassName}>
-        <div className="prefixWrapper">{customPrefix}</div>
+        <div className="bc-prefixWrapper">{customPrefix}</div>
         <div className="grow">{input}</div>
-        <div className="suffixWrapper">
+        <div className="bc-suffixWrapper">
           {showCount && direction === 'inside' ? (
-            <span className="count">
+            <span className="bc-count">
               <>
                 {textLength}
                 {args.maxLength ? `/${args.maxLength}` : undefined}
@@ -138,7 +139,7 @@ export const InputWithTitleCounter = forwardRef<
           ) : undefined}
           {isSearch ? (
             <Button
-              className="input-button"
+              className="bc-input-button"
               variant="text"
               size="sm"
               // startIcon={<IcSearch />}
@@ -148,14 +149,14 @@ export const InputWithTitleCounter = forwardRef<
                 onSearch?.('');
               }}
             >
-              <div className={classNames('search', { clear: textLength })} />
+              <div className={classNames('bc-search', { clear: textLength })} />
             </Button>
           ) : undefined}
           {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
             <Button
               variant="text"
               size="sm"
-              className="input-button"
+              className="bc-input-button"
               onClick={(e) => {
                 util.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
@@ -166,7 +167,7 @@ export const InputWithTitleCounter = forwardRef<
                 e.stopPropagation();
               }}
             >
-              <div className="clear" />
+              <div className="bc-clear" />
             </Button>
           ) : undefined}
           {suffix}
@@ -180,13 +181,13 @@ export const InputWithTitleCounter = forwardRef<
   return (
     <div>
       {direction !== 'bottom' ? (
-        <div className="input-title-counter-wrapper ">
-          <span className={classNames('input-label', { light: isLight })}>
+        <div className="bc-input-title-counter-wrapper ">
+          <span className={classNames('bc-input-label', { light: isLight })}>
             {label}
-            {args.required && <span className="required"> *</span>}
+            {args.required && <span className="bc-required"> *</span>}
           </span>
           {showCount && direction === 'top' ? (
-            <span className={classNames(`input-counter ${direction}`)}>
+            <span className={classNames(`bc-input-counter ${direction}`)}>
               {textLength || 0}
               {`/${args.maxLength}`}
             </span>
@@ -195,13 +196,13 @@ export const InputWithTitleCounter = forwardRef<
       ) : null}
       {inputChildren}
       {direction === 'bottom' ? (
-        <div className="input-title-counter-wrapper">
-          <span className={classNames('input-label', { light: isLight })}>
+        <div className="bc-input-title-counter-wrapper">
+          <span className={classNames('bc-input-label', { light: isLight })}>
             {label}
             {args.required && <span className="required"> *</span>}
           </span>
           {showCount && direction === 'bottom' ? (
-            <span className={classNames(`input-counter ${direction}`)}>
+            <span className={classNames(`bc-input-counter ${direction}`)}>
               {textLength || 0}
               {`/${args.maxLength}`}
             </span>

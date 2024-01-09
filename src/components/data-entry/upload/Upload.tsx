@@ -24,7 +24,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
   const [imageUrl, setImageUrl] = useState<string[]>([]);
 
   const {
-    prefix,
+    prefix = 'bc',
     children,
     className,
     htmlForId,
@@ -180,7 +180,9 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         onDrop={args.shape === 'drag' ? handleDrop : undefined}
       >
         {args.shape === 'button' ? prefixIcon : null}
-        <span className="prefix-text">{args.shape === 'button' ? prefixText : null}</span>
+        <span className="bc-prefix-text">
+          {args.shape === 'button' ? prefixText : null}
+        </span>
         <input
           type="file"
           id={htmlForId}
@@ -190,8 +192,8 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
           autoComplete="off"
           multiple={multiple}
         />
-        <div className="suffix-wrapper">
-          <p className="suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
+        <div className="bc-suffix-wrapper">
+          <p className="bc-suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
           <p>{args.shape !== 'button' ? suffixText : null}</p>
         </div>
       </label>

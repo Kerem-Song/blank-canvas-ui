@@ -15,22 +15,22 @@ export const Collapse = ({
 }: ICollapseProps) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
-  const expandIconClass = classNames('expand-icon', { expand: isCollapsed });
-  const childrenClass = classNames('children', { invisible: isCollapsed });
+  const expandIconClass = classNames('bc-expand-icon', { expand: isCollapsed });
+  const childrenClass = classNames('bc-children', { invisible: isCollapsed });
   const handleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
 
   return (
-    <div className="collapse-wrapper" key={key}>
-      <div className="header" onClick={handleCollapse} role="presentation">
+    <div className="bc-collapse-wrapper" key={key}>
+      <div className="bc-header" onClick={handleCollapse} role="presentation">
         {showIcon && expandIcon && expandIconPosition === 'start' ? (
           <Button variant="text" className={expandIconClass}>
             <img src={expandIcon} alt="expand-icon" />
           </Button>
         ) : null}
-        <div className="label">
-          <span className="label-content">{label}</span>
+        <div className="bc-label">
+          <span className="bc-label-content">{label}</span>
         </div>
         {showIcon && expandIcon && expandIconPosition === 'end' ? (
           <Button variant="text" className={expandIconClass}>

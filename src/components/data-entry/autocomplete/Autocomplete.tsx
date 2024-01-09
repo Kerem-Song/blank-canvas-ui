@@ -104,10 +104,10 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   };
 
   return (
-    <div style={{ position: 'relative' }} className="autocomplete-wrapper">
+    <div style={{ position: 'relative' }} className="bc-autocomplete-wrapper">
       <div ref={referenceElement}>
         <Input
-          className={classNames('luna-input', { 'luna-input-error': args.error })}
+          className={classNames('bc-input', { 'bc-input-error': args.error })}
           onFocus={() => handleShowPopper()}
           onBlur={() => handleHidePopper()}
           onKeyDown={handleInputKeydown}
@@ -140,7 +140,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
         />
       </div>
       <div
-        className="autocomplete-container"
+        className="bc-autocomplete-container"
         ref={popperElement}
         style={{
           ...styles.popper,
@@ -155,8 +155,8 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
         {filteredList?.map((item: T, index: number) => {
           const display = displayName ? String(item[displayName]) : String(item);
           const focused = item === focusedItem;
-          const itemClassName = classNames('autocomplete-list', {
-            'autocomplete-list-focused': focused,
+          const itemClassName = classNames('bc-autocomplete-list', {
+            'bc-autocomplete-list-focused': focused,
           });
           return (
             <div

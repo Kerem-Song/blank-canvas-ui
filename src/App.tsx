@@ -3,6 +3,7 @@ import './App.css';
 import {
   Button,
   Carousel,
+  Flex,
   FloatingActionButton,
   IFloatingActionMenuProps,
   Input,
@@ -122,9 +123,10 @@ function App() {
       />
       <Radio>asdf</Radio>
       <RadioGroup options={option} name="haha" vertical={false} gap={20} />
-      <Input isSearch={true} disabled={true} />
-      <Switch />
-
+      <Flex>
+        <Input isSearch={true} disabled={true} />
+        <Switch />
+      </Flex>
       <FloatingActionButton
         callback={() => {}}
         shape="circle"

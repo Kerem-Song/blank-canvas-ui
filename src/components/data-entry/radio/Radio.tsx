@@ -5,10 +5,10 @@ export const Radio = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
     const { children, name, ...inputArgs } = args;
 
     return (
-      <label className="radio-container">
+      <label className="bc-radio-container">
         <input
           {...inputArgs}
-          className="radio"
+          className="bc-radio"
           type="radio"
           name={name}
           ref={ref}
@@ -20,4 +20,4 @@ export const Radio = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
   },
 );
 
-Radio.displayName = 'luna_Radio';
+Radio.displayName = 'bc_radio';

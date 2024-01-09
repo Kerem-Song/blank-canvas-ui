@@ -9,6 +9,7 @@ export const TextAreaWithTitleCounter = forwardRef<
   TitleCounterProps
 >((args, ref) => {
   const {
+    prefix = 'bc',
     style,
     label,
     isLight,
@@ -21,7 +22,7 @@ export const TextAreaWithTitleCounter = forwardRef<
   } = args;
   const [count, setCount] = useState<number>();
 
-  const resultClassName = classNames('textarea', args.className, {
+  const resultClassName = classNames('bc-textarea', args.className, {
     invalid: isError,
   });
 
@@ -34,15 +35,15 @@ export const TextAreaWithTitleCounter = forwardRef<
   );
 
   return (
-    <div className="wrapper group">
+    <div className="bc-wrapper group">
       {direction !== 'bottom' ? (
-        <div className="textarea-title-counter-wrapper ">
-          <span className={classNames('textarea-label', { light: isLight })}>
+        <div className="bc-textarea-title-counter-wrapper ">
+          <span className={classNames('bc-textarea-label', { light: isLight })}>
             {label}
             {required && <span className="required"> *</span>}
           </span>
           {showCount && direction === 'top' ? (
-            <span className={classNames(`textarea-counter ${direction}`)}>
+            <span className={classNames(`bc-textarea-counter ${direction}`)}>
               {count || 0}
               {`/${args.maxLength}`}
             </span>
@@ -52,7 +53,7 @@ export const TextAreaWithTitleCounter = forwardRef<
 
       <div
         className={classNames(
-          `textarea-title-counter-wrapper ${direction}`,
+          `bc-textarea-title-counter-wrapper ${direction}`,
           { invalid: isError },
           { 'group-focus-within:border-blue-400': direction === 'inside' },
         )}
@@ -69,20 +70,20 @@ export const TextAreaWithTitleCounter = forwardRef<
           disabled={args.disabled}
         />
         {showCount && direction === 'inside' ? (
-          <p className={`textarea-counter ${direction}`}>
+          <p className={`bc-textarea-counter ${direction}`}>
             {count || 0}
             {`/${args.maxLength}`}
           </p>
         ) : null}
       </div>
       {direction === 'bottom' ? (
-        <div className="textarea-title-counter-wrapper">
-          <span className={classNames('textarea-label', { light: isLight })}>
+        <div className="bc-textarea-title-counter-wrapper">
+          <span className={classNames('bc-textarea-label', { light: isLight })}>
             {label}
             {required && <span className="required"> *</span>}
           </span>
           {showCount && direction === 'bottom' ? (
-            <span className={classNames(`textarea-counter ${direction}`)}>
+            <span className={classNames(`bc-textarea-counter ${direction}`)}>
               {count || 0}
               {`/${args.maxLength}`}
             </span>

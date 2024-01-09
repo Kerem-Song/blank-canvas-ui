@@ -14,7 +14,7 @@ describe('<Autocomplete />', () => {
   it('렌더링 체크', () => {
     render(<Autocomplete items={items} displayName={'label'} placeholder="write" />);
     const autocomplete = screen.getByRole('textbox');
-    expect(autocomplete.classList.contains('luna-input')).toBeTruthy();
+    expect(autocomplete.classList.contains('bc-input')).toBeTruthy();
   });
 
   it('placeholder 체크', () => {

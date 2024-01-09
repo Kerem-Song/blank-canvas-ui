@@ -2094,9 +2094,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lunasoft-org/luna-design@workspace:.":
+"@lunasoft-org/blank-canvas-ui@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@lunasoft-org/luna-design@workspace:."
+  resolution: "@lunasoft-org/blank-canvas-ui@workspace:."
   dependencies:
     "@popperjs/core": "npm:^2.11.8"
     "@storybook/addon-essentials": "npm:^7.5.3"

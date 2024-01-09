@@ -1,43 +1,47 @@
-.textarea {
-  @apply rounded-md border border-solid w-full resize-none;
+$ns: .bc;
 
-  &.invalid {
-    @apply border-red-500;
-  }
-}
-
-.textarea-title-counter-wrapper {
-  @apply rounded-md flex justify-between items-center w-full resize-none;
-
-  .textarea-label {
-    @apply font-semibold;
-
-    &.light {
-      @apply font-normal;
-    }
-  }
-
-  textarea:focus {
-    @apply focus:outline-none border-blue-500;
-  }
-
-  &.inside {
-    @apply block border-solid border border-slate-300 text-right;
-
-    &:has(textarea:disabled) {
-      @apply bg-gray-100;
-    }
+$(ns) {
+  &-textarea {
+    @apply rounded-md border border-solid w-full resize-none;
 
     &.invalid {
-      @apply border border-solid border-red-500;
+      @apply border-red-500;
+    }
+  }
+
+  &-textarea-title-counter-wrapper {
+    @apply rounded-md flex justify-between items-center w-full resize-none;
+
+    .textarea-label {
+      @apply font-semibold;
+
+      &.light {
+        @apply font-normal;
+      }
     }
 
-    .textarea-counter {
-      @apply pr-10pxr py-2pxr;
+    textarea:focus {
+      @apply focus:outline-none border-blue-500;
     }
 
-    textarea {
-      @apply border-transparent focus-visible:border-transparent focus:outline-none;
+    &.inside {
+      @apply block border-solid border border-slate-300 text-right;
+
+      &:has(textarea:disabled) {
+        @apply bg-gray-100;
+      }
+
+      &.invalid {
+        @apply border border-solid border-red-500;
+      }
+
+      .textarea-counter {
+        @apply pr-10pxr py-2pxr;
+      }
+
+      textarea {
+        @apply border-transparent focus-visible:border-transparent focus:outline-none;
+      }
     }
   }
 }

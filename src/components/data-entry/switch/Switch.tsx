@@ -8,7 +8,7 @@ import { switchClasses } from './SwitchClasses';
 
 export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => {
   const {
-    prefix,
+    prefix = 'bc',
     className,
     switchType = 'outside',
     switchSize = 'sm',
@@ -30,7 +30,7 @@ export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => 
     className,
   );
   const switchBarClassName = classNames(
-    'switch-bar',
+    'bc-switch-bar',
     {
       // size
       [classes.sizeSmall]: switchSize === 'sm',
@@ -46,12 +46,12 @@ export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => 
   );
 
   return (
-    <Flex vertical>
-      <label className={classNames('switch-wrapper', rootClassName)}>
+    <Flex align="center">
+      <label className={classNames('bc-switch-wrapper', rootClassName)}>
         <input
           id={args.id}
           type="checkbox"
-          className="switch-input peer"
+          className="bc-switch-input peer"
           ref={ref}
           checked={args.checked}
           onClick={(e) => {

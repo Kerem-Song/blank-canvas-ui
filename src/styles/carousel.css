@@ -1,125 +1,129 @@
-.carousel {
+$ns: .bc;
 
-  /* 캐로셀 안에 들어가는 슬라이더*/
-  &-component {
-    @apply flex justify-center items-center;
+$(ns) {
+  &-carousel {
 
-    /* 캐로셀 내용(children)*/
-    .carousel-content-wrapper {
-      @apply flex overflow-hidden;
-    }
-  }
+    /* 캐로셀 안에 들어가는 슬라이더*/
+    &-component {
+      @apply flex justify-center items-center;
 
-  /* editable 타입에서의 상단 버튼 */
-  &-btn {
-    @apply flex justify-self-center items-center p-10pxr cursor-pointer bg-center bg-no-repeat bg-white border border-gray-200 rounded-md w-32pxr h-32pxr;
-
-    &-wrapper {
-      @apply pb-12pxr border-b-2;
-    }
-
-    &[data-button='add'] {
-      @apply bg-[url('@icons/ic_add_case.svg')] bg-blue-500;
-
-      &:hover {
-        @apply bg-blue-700;
-      }
-
-      &:disabled {
-        @apply bg-blue-200;
+      /* 캐로셀 내용(children)*/
+      .bc-carousel-content-wrapper {
+        @apply flex overflow-hidden;
       }
     }
 
-    &[data-button='delete'] {
-      @apply bg-[url('@icons/ic_delete_default.svg')];
+    /* editable 타입에서의 상단 버튼 */
+    &-btn {
+      @apply flex justify-self-center items-center p-10pxr cursor-pointer bg-center bg-no-repeat bg-white border border-gray-200 rounded-md w-32pxr h-32pxr;
 
-      &:hover {
-        @apply bg-[url('@icons/ic_delete.svg')];
+      &-wrapper {
+        @apply pb-12pxr border-b-2;
       }
 
-      &:disabled {
-        @apply bg-[url('@icons/ic_delete_case_disable.svg')];
-      }
-    }
+      &[data-button='add'] {
+        @apply bg-[url('@icons/ic_add_case.svg')] bg-blue-500;
 
-    &[data-button='prev'] {
-      @apply bg-[url('@icons/ic_carousel_prev_active.svg')];
+        &:hover {
+          @apply bg-blue-700;
+        }
 
-      &:hover {
-        @apply bg-[url('@icons/ic_carousel_prev_hover.svg')];
-      }
-
-      &:disabled {
-        @apply bg-[url('@icons/ic_carousel_prev_disable.svg')];
-      }
-    }
-
-    &[data-button='next'] {
-      @apply bg-[url('@icons/ic_carousel_next_active.svg')];
-
-
-      &:hover {
-        @apply bg-[url('@icons/ic_carousel_next_hover.svg')];
+        &:disabled {
+          @apply bg-blue-200;
+        }
       }
 
-      &:disabled {
-        @apply bg-[url('@icons/ic_carousel_next_disable.svg')];
-      }
-    }
+      &[data-button='delete'] {
+        @apply bg-[url('@icons/ic_delete_default.svg')];
 
-    /* 캐로셀 슬라이더 버튼 모양 */
-    &-circle {
-      @apply rounded-full;
-    }
-  }
+        &:hover {
+          @apply bg-[url('@icons/ic_delete.svg')];
+        }
 
-  /* 캐로셀 슬라이더 버튼 */
-  .arrow-btn-wrapper {
-    @apply flex justify-between items-center px-1pxr z-20;
-  }
-
-  /* 캐로셀 index indicator */
-  .dots {
-    @apply flex justify-center items-center gap-1 start-0 end-0 z-20;
-
-    &-button {
-      @apply relative w-5pxr h-5pxr rounded-full bg-gray-200;
-
-      &[data-carousel-index='true'] {
-        @apply bg-blue-500;
-      }
-    }
-  }
-
-  /* 캐로셀 슬라이더 버튼과 indicator의 opacity 조절 */
-  &-opacity {
-    &-30 {
-      .arrow-btn-wrapper {
-        @apply opacity-30;
+        &:disabled {
+          @apply bg-[url('@icons/ic_delete_case_disable.svg')];
+        }
       }
 
-      .dots {
-        @apply opacity-30;
+      &[data-button='prev'] {
+        @apply bg-[url('@icons/ic_carousel_prev_active.svg')];
+
+        &:hover {
+          @apply bg-[url('@icons/ic_carousel_prev_hover.svg')];
+        }
+
+        &:disabled {
+          @apply bg-[url('@icons/ic_carousel_prev_disable.svg')];
+        }
+      }
+
+      &[data-button='next'] {
+        @apply bg-[url('@icons/ic_carousel_next_active.svg')];
+
+
+        &:hover {
+          @apply bg-[url('@icons/ic_carousel_next_hover.svg')];
+        }
+
+        &:disabled {
+          @apply bg-[url('@icons/ic_carousel_next_disable.svg')];
+        }
+      }
+
+      /* 캐로셀 슬라이더 버튼 모양 */
+      &-circle {
+        @apply rounded-full;
       }
     }
 
-    &-50 {
-      .arrow-btn-wrapper {
-        @apply opacity-50;
-      }
+    /* 캐로셀 슬라이더 버튼 */
+    .bc-arrow-btn-wrapper {
+      @apply flex justify-between items-center px-1pxr z-20;
+    }
 
-      .dots {
-        @apply opacity-50;
+    /* 캐로셀 index indicator */
+    .bc-dots {
+      @apply flex justify-center items-center gap-1 start-0 end-0 z-20;
+
+      &-button {
+        @apply relative w-5pxr h-5pxr rounded-full bg-gray-200;
+
+        &[data-carousel-index='true'] {
+          @apply bg-blue-500;
+        }
       }
     }
 
-    &-70 {
-      .arrow-btn-wrapper {
-        @apply opacity-70;
+    /* 캐로셀 슬라이더 버튼과 indicator의 opacity 조절 */
+    &-opacity {
+      &-30 {
+        .bc-arrow-btn-wrapper {
+          @apply opacity-30;
+        }
+
+        .bc-dots {
+          @apply opacity-30;
+        }
       }
 
-      .dots {
-        @apply opacity-70;
+      &-50 {
+        .arrow-btn-wrapper {
+          @apply opacity-50;
+        }
+
+        .bc-dots {
+          @apply opacity-50;
+        }
+      }
+
+      &-70 {
+        .arrow-btn-wrapper {
+          @apply opacity-70;
+        }
+
+        .bc-dots {
+          @apply opacity-70;
+        }
       }
     }
   }

@@ -5,7 +5,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { ITextareaProps } from './Textarea.types';
 
 export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, ref) => {
-  const { style, readOnly, ...inputProps } = args;
+  const { style, readOnly, prefix = 'bc', ...inputProps } = args;
 
   const handleTextArea = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -14,7 +14,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, r
     [args],
   );
 
-  const resultClassName = classNames('textarea textarea-border', args.className);
+  const resultClassName = classNames('bc-textarea bc-textarea-border', args.className);
 
   return (
     <TextareaAutosize
@@ -31,4 +31,4 @@ export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, r
   );
 });
 
-Textarea.displayName = 'textarea';
+Textarea.displayName = 'bc_textarea';

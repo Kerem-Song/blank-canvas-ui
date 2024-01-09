@@ -8,7 +8,7 @@ describe('<DebouncedInput />', () => {
   it('렌더링 체크', () => {
     render(<DebouncedInput handleDebounce={handleDebounce} debounceTimeout={1} />);
     const input = screen.getByRole('textbox');
-    expect(input.classList.contains('luna-input-normal')).toBeTruthy();
+    expect(input.classList.contains('bc-input-normal')).toBeTruthy();
   });
 
   it('placeholder 체크', () => {

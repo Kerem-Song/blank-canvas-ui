@@ -8,7 +8,7 @@ export const RadioGroup = forwardRef<HTMLInputElement, IRadioOptions>((args, ref
   const { style, options, name, disabled, vertical, gap, ...inputProps } = args;
 
   return (
-    <Flex vertical={vertical} gap={gap} className="radio-group-wrapper">
+    <Flex vertical={vertical} gap={gap} className="bc-radio-group-wrapper">
       {options.map((option, i) => (
         <Radio name={name} key={i} disabled={option.disabled} {...inputProps}>
           <span>{option.label}</span>
@@ -18,4 +18,4 @@ export const RadioGroup = forwardRef<HTMLInputElement, IRadioOptions>((args, ref
   );
 });
 
-RadioGroup.displayName = 'luna_radio_group';
+RadioGroup.displayName = 'bc_radio_group';

@@ -9,7 +9,7 @@ import { ICarouselProps } from './Carousel.types';
 
 export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) => {
   const {
-    prefix,
+    prefix = 'bc',
     className,
     viewId,
     width,
@@ -62,7 +62,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
   );
 
   const arrowBtnClassName = classNames(
-    'carousel-btn',
+    'bc-carousel-btn',
     {
       // 캐로셀 버튼의 shape
       [classes.btnSquare]: arrowBtnShape === 'square',
@@ -132,15 +132,15 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
 
   return (
     <div
-      className={classNames('carousel-wrapper', rootClassName)}
+      className={classNames('bc-carousel-wrapper', rootClassName)}
       ref={carouselWrapperRef}
     >
       {type === 'editable' && addCarousel && deleteCarousel && (
-        <Row justify="space-between" align="center" className="carousel-btn-wrapper">
+        <Row justify="space-between" align="center" className="bc-carousel-btn-wrapper">
           <Row justify="center" align="center" gutter={4}>
             <Col>
               <button
-                className="carousel-btn"
+                className="bc-carousel-btn"
                 onClick={(e) => {
                   addCarousel(e);
                   setCurrent(length);
@@ -151,7 +151,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
             </Col>
             <Col>
               <button
-                className="carousel-btn"
+                className="bc-carousel-btn"
                 onClick={(e) => {
                   deleteCarousel(current);
                   setCurrent(current === 0 ? 0 : current - 1);
@@ -163,7 +163,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
           </Row>
 
           <Col>
-            <p className="page">
+            <p className="bc-page">
               {current >= children.length
                 ? undefined
                 : `${current + 1}/${children.length}`}
@@ -172,7 +172,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
           <Row justify="center" align="center" gutter={4}>
             <Col>
               <button
-                className="carousel-btn"
+                className="bc-carousel-btn"
                 onClick={handlePrevClick}
                 disabled={current === 0}
                 data-button={'prev'}
@@ -180,7 +180,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
             </Col>
             <Col>
               <button
-                className="carousel-btn"
+                className="bc-carousel-btn"
                 onClick={handleNextClick}
                 disabled={NextDisabled()}
                 data-button={'next'}
@@ -194,11 +194,11 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
         style={{
           width: `${util.rem(CAROUSEL_WIDTH ?? 0)}`,
         }}
-        className="carousel-component"
+        className="bc-carousel-component"
       >
         <div
           style={{ display: 'flex', ...style }}
-          className={classNames('carousel-content-wrapper', { auto: auto })}
+          className={classNames('bc-carousel-content-wrapper', { auto: auto })}
         >
           {children.map((child, i) => {
             return (
@@ -218,10 +218,10 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
       </div>
 
       {useIndicator ? (
-        <div className="dots">
+        <div className="bc-dots">
           {children.map((child, i) => (
             <button
-              className="dots-button"
+              className="bc-dots-button"
               data-carousel-index={current === i}
               key={i}
               onClick={() => setCurrent(i)}
@@ -233,7 +233,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
 
       {type === 'default' && useArrowBtn ? (
         <Row
-          className="arrow-btn-wrapper"
+          className="bc-arrow-btn-wrapper"
           style={{
             marginTop: `-${util.rem(arrowBtnMarginTop)}`,
           }}

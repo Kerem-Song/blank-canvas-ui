@@ -12,7 +12,14 @@ import { modalClasses } from './ModalClasses';
 // ReactModal.setAppElement('#root');
 
 export const Modal = (modalInfo: IModalProps) => {
-  const { className, prefix, style, children, size = 'sm', ...modalProps } = modalInfo;
+  const {
+    className,
+    prefix = 'bc',
+    style,
+    children,
+    size = 'sm',
+    ...modalProps
+  } = modalInfo;
   const classes = generatePrefixClasses(
     modalClasses,
     `${prefix ? `${prefix}-` : ''}modal`,
@@ -63,23 +70,23 @@ export const Modal = (modalInfo: IModalProps) => {
         modalInfo.onAfterOpen?.();
       }}
     >
-      <div className="title">
+      <div className="bc-title">
         <h4>{modalInfo.message}</h4>
         {modalInfo.useEscButton ? (
           <Button
             variant="text"
-            className="esc-btn"
+            className="bc-esc-btn"
             onClick={handleCancel}
             baseButton={true}
           />
         ) : null}
       </div>
       <Divider style={{ margin: 0 }} />
-      <div className="content">{modalInfo.description}</div>
-      {children ? <div className="children">{modalInfo.children}</div> : null}
+      <div className="bc-content">{modalInfo.description}</div>
+      {children ? <div className="bc-children">{modalInfo.children}</div> : null}
       <Flex justify="end" gap={8} style={{ padding: '0 20px 20px 20px' }}>
         {modalInfo.cancelButton ? (
-          <Button className="cancel-btn" onClick={handleCancel}>
+          <Button className="bc-cancel-btn" onClick={handleCancel}>
             {modalInfo.cancelButton}
           </Button>
         ) : (
@@ -87,7 +94,7 @@ export const Modal = (modalInfo: IModalProps) => {
         )}
 
         <Button
-          className="confirm-btn"
+          className="bc-confirm-btn"
           type="submit"
           variant="contained"
           color="primary"
@@ -97,7 +104,7 @@ export const Modal = (modalInfo: IModalProps) => {
         </Button>
 
         {modalInfo.customButton ? (
-          <Button className="custom-btn" onClick={handleCustom}>
+          <Button className="bc-custom-btn" onClick={handleCustom}>
             {modalInfo.customButton}
           </Button>
         ) : null}
