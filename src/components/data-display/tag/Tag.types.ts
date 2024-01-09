@@ -34,4 +34,5 @@ export interface ITagProps extends React.HTMLAttributes<HTMLSpanElement> {
    * @type React.ReactNode | React.ReactNode[]
    */
   children: React.ReactNode | React.ReactNode[];
+  visible?: boolean;
 }

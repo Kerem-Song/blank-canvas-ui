@@ -8,7 +8,7 @@ export const Col = ({
   order,
   children,
   style,
-  paddingValue,
+  paddingvalue,
   className,
   ...props
 }: IColProps) => {
@@ -32,7 +32,7 @@ export const Col = ({
         display: span === 0 ? 'none' : 'block',
         maxWidth: maxWidth,
         flex: flexValue,
-        padding: paddingValue ? `0 ${paddingValue}px` : '0',
+        padding: paddingvalue ? `0 ${paddingvalue}px` : '0',
         order,
       }}
     >

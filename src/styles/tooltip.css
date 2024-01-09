@@ -1,55 +1,55 @@
-#container::before,
-#container::after {
+.bc-container::before,
+.bc-container::after {
   content: '';
   @apply block w-[1px];
 }
 
-#tooltip {
+.bc-tooltip {
   @apply text-start flex items-center bg-white font-bold text-red-950 py-[5px] px-[10px] rounded-4;
 }
 
-#tooltip-data {
+.bc-tooltip-data {
   @apply inline-block;
 }
 
-#arrow,
-#arrow::before {
+.bc-arrow,
+.bc-arrow::before {
   @apply absolute w-[8px] h-[8px] bg-inherit;
 }
 
-#arrow {
+.bc-arrow {
   @apply invisible;
 }
 
-#arrow::before {
+.bc-arrow::before {
   content: '';
   @apply visible rotate-45;
 }
 
-#tooltip[data-popper-placement^='top'] > #arrow {
+.bc-tooltip[data-popper-placement^='top'] > .bc-arrow {
   @apply -bottom-[4px];
 }
 
-#tooltip[data-popper-placement^='bottom'] > #arrow {
+.bc-tooltip[data-popper-placement^='bottom'] > .bc-arrow {
   @apply -top-[4px];
 }
 
-#tooltip[data-popper-placement^='left'] > #arrow {
+.bc-tooltip[data-popper-placement^='left'] > .bc-arrow {
   @apply -right-[4px];
 }
 
-#tooltip[data-popper-placement^='right'] > #arrow {
+.bc-tooltip[data-popper-placement^='right'] > .bc-arrow {
   @apply -left-[4px];
 }
 
-#tooltip[data-arrow-visible^='false'] > #arrow::before {
+.bc-tooltip[data-arrow-visible^='false'] > .bc-arrow::before {
   @apply invisible;
 }
 
-#tooltip[data-arrow-visible^='true'] > #arrow::before {
+.bc-tooltip[data-arrow-visible^='true'] > .bc-arrow::before {
   @apply visible;
 }
 
-.tooltip-base {
+.bc-tooltip-base {
   @apply h-auto break-all shadow-[0_6px_16px_0_rgba(0,0,0,0.08),0_3px_6px_-4px_rgba(0,0,0,0.12),0_9px_28px_8px_rgba(0,0,0,0.05)];
 }

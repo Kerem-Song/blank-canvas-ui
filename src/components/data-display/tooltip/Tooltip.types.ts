@@ -10,7 +10,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   description: React.ReactNode;
   /**
    * tooltip 표시 위치 지정
-   * @default 'bottom'
+   * @default 'right'
    * @type 'top' | 'bottom' | 'right' | 'left'
    */
   placement?: Placement;

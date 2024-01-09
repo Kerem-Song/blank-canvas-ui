@@ -15,19 +15,18 @@ export const Row = ({
 }: IRowProps) => {
   const rowValue = Array.isArray(gutter) ? gutter[1] : gutter ? gutter : 0;
   const colValue = Array.isArray(gutter) ? gutter[0] / 2 : gutter ? gutter / 2 : 0;
-
   const addStyleChildren = React.Children.map<ReactNode, ReactNode>(children, (child) => {
     const element = child as React.ReactElement<any>;
     return React.cloneElement(element, {
-      padding: colValue,
-      className: classNames('row-box-border'),
+      paddingvalue: colValue,
+      className: classNames('bc-row-box-border'),
     });
   });
 
   return (
     <div
       {...props}
-      className={classNames('row-box-border', 'flex', className)}
+      className={classNames('bc-row-box-border', 'flex', className)}
       style={{
         ...style,
         flexWrap: wrap,

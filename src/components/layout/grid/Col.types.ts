@@ -1,4 +1,4 @@
-export interface IColProps extends React.HTMLAttributes<HTMLElement> {
+export interface IColProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number;
   /**
    * flex-grow, flex-shrink, flex-basis를 한 번에 쓸 수 있는 축약형 속성
@@ -24,5 +24,5 @@ export interface IColProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * padding 계산 값
    */
-  paddingValue?: number;
+  paddingvalue?: number;
 }

@@ -21,9 +21,9 @@ export const Default: Story = {
   render: (args) => {
     return (
       <div style={{ height: 100, border: '1px solid' }}>
-        <Row wrap={'wrap'} gutter={2} style={{ backgroundColor: '#dcdcdc' }}>
-          <Col style={{ backgroundColor: 'skyblue' }} flex={args.flex} span={args.span}>
-            flex
+        <Row wrap={'wrap'} style={{ backgroundColor: '#dcdcdc' }}>
+          <Col style={{ backgroundColor: 'skyblue' }} span={args.span}>
+            span 2
           </Col>
           <Col style={{ backgroundColor: 'yellowgreen' }} flex="auto">
             auto
@@ -33,13 +33,11 @@ export const Default: Story = {
     );
   },
   args: {
-    flex: '200px',
-    span: 1,
-    gutter: 2,
+    span: 2,
   },
 };
 
-export const OrderCol: Story = {
+export const Order: Story = {
   render: () => {
     return (
       <div style={{ height: 100, border: '1px solid' }}>
@@ -62,7 +60,7 @@ export const OrderCol: Story = {
   },
 };
 
-export const FlexCol: Story = {
+export const Flex: Story = {
   render: () => {
     return (
       <div style={{ height: 100, border: '1px solid' }}>

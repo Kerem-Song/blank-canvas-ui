@@ -29,11 +29,11 @@ export const Badge = ({
   return (showZero && Number(count) === 0) ||
     Number(count) > 0 ||
     Number.isNaN(division) ? (
-    <span {...props} className={classNames('badge-area')}>
+    <span {...props} className={classNames('bc-badge-area')}>
       {children}
       {dot ? (
         <span
-          className={classNames('badge-dot', className)}
+          className={classNames('bc-badge-dot', className)}
           style={{
             ...style,
             width: circle,
@@ -48,7 +48,7 @@ export const Badge = ({
         ></span>
       ) : (
         <span
-          className={classNames('badge', className)}
+          className={classNames('bc-badge', className)}
           style={{
             ...style,
             fontSize,
@@ -70,7 +70,7 @@ export const Badge = ({
             background: color,
           }}
         >
-          <span className={classNames('badge-align')}>
+          <span className={classNames('bc-badge-align')}>
             {typeof count === 'number' && overflowCount && overflowCount < count
               ? `${overflowCount}+`
               : count}
@@ -79,7 +79,7 @@ export const Badge = ({
       )}
     </span>
   ) : (
-    <span {...props} className={classNames('badge-area')}>
+    <span {...props} className={classNames('bc-badge-area')}>
       {children}
     </span>
   );

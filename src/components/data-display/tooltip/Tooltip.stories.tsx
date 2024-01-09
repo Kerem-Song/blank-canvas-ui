@@ -64,16 +64,173 @@ export const Default: Story = {
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sapiente ipsam omnis harum dignissimos eos, unde atque enim necessitatibus aliquid perspiciatis nemo natus consequatur incidunt tempore, qui, sint ut nisi!',
     color: 'pink',
     placement: 'right',
-    defaultOpen: true,
+    defaultOpen: false,
     arrow: true,
     offset: [0, 10],
     disable: false,
     strategy: 'fixed',
-    mouseEnterDelay: 2,
+    mouseEnterDelay: 0,
     tooltipWidth: 150,
-    open: true,
-    mouseLeaveDelay: 2,
+    mouseLeaveDelay: 0,
     tooltipClassName: 'tooltipClass',
     arrowClassName: 'arrowClass',
+  },
+};
+
+export const notArrow: Story = {
+  render: () => {
+    return (
+      <Flex
+        style={{ height: '600px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <div
+          style={{
+            background: 'green',
+            width: '200px',
+            overflow: 'hidden',
+          }}
+        >
+          <Tooltip
+            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit"
+            arrow={false}
+          >
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda
+              ullam, velit mollitia alias nemo odit distinctio? Explicabo illum
+              reprehenderit id quia eius recusandae inventore tempore debitis laborum,
+              amet dolorum.
+            </div>
+          </Tooltip>
+        </div>
+      </Flex>
+    );
+  },
+};
+
+export const DefaultOpen: Story = {
+  render: () => {
+    return (
+      <Flex
+        style={{ height: '600px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <div
+          style={{
+            background: 'green',
+            width: '200px',
+            overflow: 'hidden',
+          }}
+        >
+          <Tooltip
+            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit"
+            defaultOpen={true}
+          >
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda
+              ullam, velit mollitia alias nemo odit distinctio? Explicabo illum
+              reprehenderit id quia eius recusandae inventore tempore debitis laborum,
+              amet dolorum.
+            </div>
+          </Tooltip>
+        </div>
+      </Flex>
+    );
+  },
+};
+
+export const mouseEnterDelay500_mouseLeaveDelay1000: Story = {
+  render: () => {
+    return (
+      <Flex
+        style={{ height: '600px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <div
+          style={{
+            background: 'green',
+            width: '200px',
+            overflow: 'hidden',
+          }}
+        >
+          <Tooltip
+            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit"
+            mouseLeaveDelay={1000}
+            mouseEnterDelay={500}
+          >
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda
+              ullam, velit mollitia alias nemo odit distinctio? Explicabo illum
+              reprehenderit id quia eius recusandae inventore tempore debitis laborum,
+              amet dolorum.
+            </div>
+          </Tooltip>
+        </div>
+      </Flex>
+    );
+  },
+};
+
+export const Disable: Story = {
+  render: () => {
+    return (
+      <Flex
+        style={{ height: '600px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <div
+          style={{
+            background: 'green',
+            width: '200px',
+            overflow: 'hidden',
+          }}
+        >
+          <Tooltip
+            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit"
+            disable={true}
+          >
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda
+              ullam, velit mollitia alias nemo odit distinctio? Explicabo illum
+              reprehenderit id quia eius recusandae inventore tempore debitis laborum,
+              amet dolorum.
+            </div>
+          </Tooltip>
+        </div>
+      </Flex>
+    );
+  },
+};
+
+export const Offset: Story = {
+  render: () => {
+    return (
+      <Flex
+        style={{ height: '600px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <div
+          style={{
+            background: 'green',
+            width: '200px',
+            overflow: 'hidden',
+          }}
+        >
+          <Tooltip description="offset 100, 100" offset={[100, 100]}>
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda
+              ullam, velit mollitia alias nemo odit distinctio? Explicabo illum
+              reprehenderit id quia eius recusandae inventore tempore debitis laborum,
+              amet dolorum.
+            </div>
+          </Tooltip>
+        </div>
+      </Flex>
+    );
   },
 };

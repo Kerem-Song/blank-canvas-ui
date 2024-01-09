@@ -1,14 +1,14 @@
-.card {
+.bc-card {
   @apply p-0 text-start min-w-200;
 
-  .card-head {
+  .bc-card-head {
     @apply flex border-b overflow-hidden p-3 justify-between;
 
-    .card-title {
+    .bc-card-title {
       @apply font-semibold text-base;
     }
 
-    .card-extra {
+    .bc-card-extra {
       @apply text-sm;
       a {
         @apply text-sky-500 underline;
@@ -16,32 +16,32 @@
     }
   }
 
-  .card-body {
+  .bc-card-body {
     @apply p-3;
   }
-  .card-small {
+  .bc-card-small {
     @apply py-1.5;
   }
 }
 
 /* 카드 전체 둥글게 */
-.card-rounded {
+.bc-card-rounded {
   @apply rounded-md;
 }
 
 /* 색상 넣을 때 넘침 방지 */
-.card-head-rounded {
+.bc-card-head-rounded {
   @apply rounded-t-md;
 }
 
-.card-border {
+.bc-card-border {
   @apply border;
 }
 
-.card-none-border {
+.bc-card-none-border {
   @apply shadow-[rgba(50,_50,_105,_0.1)_0px_1px_2px_0px,_rgba(0,_0,_0,_0.05)_0px_0.5px_0.5px_0px];
 }
 
-.card-full {
+.bc-card-full {
   @apply w-full;
 }

@@ -150,7 +150,7 @@ function SelectFunc<T extends AnyObject>(
 
   const inputBlur = (e: Event) => {
     const temp = e.target as HTMLElement;
-    if (temp.classList.contains('select-list-disabled')) {
+    if (temp.classList.contains('bc-select-list-disabled')) {
       setShowOptions(true);
       return;
     }
@@ -195,7 +195,7 @@ function SelectFunc<T extends AnyObject>(
   return (
     <div
       id="container"
-      className={classNames({ 'select-disabled': disabled }, 'select-container')}
+      className={classNames({ 'bc-select-disabled': disabled }, 'bc-select-container')}
       ref={selectRef}
       onClick={() => {
         !disabled ? setShowOptions((pre) => !pre) : undefined;
@@ -208,11 +208,11 @@ function SelectFunc<T extends AnyObject>(
           width,
         }}
         className={classNames(
-          inputFocus && !status ? 'select-focus' : 'select-focus-none',
-          { 'select-error': status === 'error' || isError },
-          { 'select-warning': status === 'warning' },
-          bordered === false ? 'select-bordered-none' : 'select-bordered',
-          'select-referenceElement',
+          inputFocus && !status ? 'bc-select-focus' : 'bc-select-focus-none',
+          { 'bc-select-error': status === 'error' || isError },
+          { 'bc-select-warning': status === 'warning' },
+          bordered === false ? 'bc-select-bordered-none' : 'bc-select-bordered',
+          'bc-select-referenceElement',
           className,
         )}
       >
@@ -234,12 +234,12 @@ function SelectFunc<T extends AnyObject>(
           type="text"
           onKeyDown={handleKeyArrow}
           readOnly
-          className={classNames({ 'select-disabled': disabled })}
+          className={classNames({ 'bc-select-disabled': disabled })}
           value={currentValue}
         />
 
         {suffixIcon ? (
-          <div onClick={iconClick} className={classNames('select-icon')}>
+          <div onClick={iconClick} className={classNames('bc-select-icon')}>
             {suffixIcon}
           </div>
         ) : (
@@ -280,7 +280,7 @@ function SelectFunc<T extends AnyObject>(
                   : 'hidden',
           }}
           ref={popperElement}
-          className={classNames('select-ul')}
+          className={classNames('bc-select-ul')}
         >
           {list ? (
             list.map((x, idx) => {
@@ -298,9 +298,9 @@ function SelectFunc<T extends AnyObject>(
                     setIndexNum(idx);
                   }}
                   className={classNames(
-                    { 'select-item-hover': x.value === hoverText },
-                    { 'selected-item': x.value === currentValue },
-                    'select-overflow',
+                    { 'bc-select-item-hover': x.value === hoverText },
+                    { 'bc-selected-item': x.value === currentValue },
+                    'bc-select-overflow',
                   )}
                 >
                   {x.value}
@@ -310,7 +310,7 @@ function SelectFunc<T extends AnyObject>(
                   role="option"
                   onClick={() => {}}
                   className={classNames(
-                    'select-overflow select-disabled select-list-disabled',
+                    'bc-select-overflow bc-select-disabled bc-select-list-disabled',
                   )}
                 >
                   {x.value}

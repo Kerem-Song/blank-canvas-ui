@@ -11,7 +11,7 @@ export const Tooltip = ({
   offset = [0, 8],
   color,
   description,
-  placement = 'bottom',
+  placement = 'right',
   arrow = true,
   strategy = 'fixed',
   mouseEnterDelay,
@@ -65,10 +65,10 @@ export const Tooltip = ({
   }
 
   return (
-    <div id="container">
+    <div className="bc-container">
       <div
         aria-describedby="tooltip"
-        id="tooltip-data"
+        className="bc-tooltip-data"
         ref={referenceElement}
         onMouseEnter={() => {
           setDefaultShow(false);
@@ -76,7 +76,7 @@ export const Tooltip = ({
             ? mouseEnterDelay
               ? setTimeout(() => {
                   setIsShow(true);
-                }, mouseEnterDelay * 1000)
+                }, mouseEnterDelay * 1)
               : setIsShow(true)
             : setIsShow(false);
         }}
@@ -86,7 +86,7 @@ export const Tooltip = ({
             ? mouseLeaveDelay
               ? setTimeout(() => {
                   setIsShow(false);
-                }, mouseLeaveDelay * 1000)
+                }, mouseLeaveDelay * 1)
               : setIsShow(false)
             : setIsShow(false);
         }}
@@ -96,10 +96,9 @@ export const Tooltip = ({
 
       {ReactDOM.createPortal(
         <div
-          id="tooltip"
           role="tooltip"
           {...attributes.popper}
-          className={classNames('tooltip-base', tooltipClassName)}
+          className={classNames('bc-tooltip', 'bc-tooltip-base', tooltipClassName)}
           style={{
             ...styles.popper,
             maxWidth: width,
@@ -121,9 +120,8 @@ export const Tooltip = ({
           <div>{description}</div>
           {arrow && (
             <div
-              id="arrow"
               ref={arrowElement}
-              className={classNames(arrowClassName)}
+              className={classNames(arrowClassName, 'bc-arrow')}
               data-popper-arrow
               style={{
                 ...styles.arrow,

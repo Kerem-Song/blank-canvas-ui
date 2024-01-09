@@ -24,35 +24,35 @@ export const Card = ({
       {...props}
       style={{ ...style }}
       className={classNames(
-        'card',
-        { 'card-rounded': rounded },
-        bordered ? 'card-border' : 'card-none-border',
+        'bc-card',
+        { 'bc-card-rounded': rounded },
+        bordered ? 'bc-card-border' : 'bc-card-none-border',
         className,
       )}
     >
       <div
         className={classNames(
-          { 'card-head': title || extra },
-          { 'card-small': size === 'small' },
-          { 'card-head-rounded': rounded },
+          { 'bc-card-head': title || extra },
+          { 'bc-card-small': size === 'small' },
+          { 'bc-card-head-rounded': rounded },
         )}
         style={{ backgroundColor: titleBgColor }}
       >
         {loading ? (
-          <Skeleton className={classNames('card-full')} />
+          <Skeleton className={classNames('bc-card-full')} />
         ) : (
           <>
             <div
-              className={classNames({ 'card-title': title })}
+              className={classNames({ 'bc-card-title': title })}
               style={{ color: titleColor }}
             >
               {title}
             </div>
-            <div className={classNames({ 'card-extra': extra })}>{extra}</div>
+            <div className={classNames({ 'bc-card-extra': extra })}>{extra}</div>
           </>
         )}
       </div>
-      <div className={classNames('card-body', { 'card-small': size === 'small' })}>
+      <div className={classNames('bc-card-body', { 'bc-card-small': size === 'small' })}>
         {loading ? <Skeleton count={2} /> : children}
       </div>
     </div>

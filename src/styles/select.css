@@ -1,56 +1,56 @@
-.select-container {
+.bc-select-container {
   @apply flex h-[30px] cursor-pointer;
-  .select-focus {
+  .bc-select-focus {
     @apply ring-2 ring-blue-500/75;
   }
-  .select-focus-none {
+  .bc-select-focus-none {
     @apply ring-2 ring-blue-500/0;
   }
-  .select-error {
+  .bc-select-error {
     @apply ring-2 ring-red-500;
   }
-  .select-warning {
+  .bc-select-warning {
     @apply ring-2 ring-yellow-400 ring-opacity-90;
   }
 }
-.select-item-hover {
+.bc-select-item-hover {
   @apply bg-neutral-100 rounded-6;
 }
-.selected-item {
+.bc-selected-item {
   @apply bg-blue-100 font-bold rounded-6;
 }
-.select-bordered-none {
+.bc-select-bordered-none {
   @apply border-none;
 }
-.select-bordered {
+.bc-select-bordered {
   @apply border-solid border-[1px];
 }
-.select-disabled {
+.bc-select-disabled {
   @apply cursor-not-allowed bg-[#dbdbdb] text-[#b3b1b1];
 }
 
-.select-referenceElement {
+.bc-select-referenceElement {
   @apply flex justify-between rounded-6 items-center h-full;
   input {
-    @apply rounded-6 px-[8px] h-full outline-none w-full ring-opacity-0 border-0 select-overflow cursor-pointer;
+    @apply rounded-6 px-[8px] h-full outline-none w-full ring-opacity-0 border-0;
   }
 
-  .select-icon {
+  .bc-select-icon {
     @apply w-[16px] h-full flex items-center mx-[5px] cursor-pointer;
   }
 }
-.select-ul {
+.bc-select-ul {
   @apply bg-white	p-[5px] my-[8px] rounded-6 border-solid border-gray-200 shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
 
-  .select-overflow {
+  .bc-select-overflow {
     @apply overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];
   }
 
-  li:not(.select-list-disabled) {
+  li:not(.bc-select-list-disabled) {
     @apply cursor-pointer;
   }
 
-  .select-list-disabled {
+  .bc-select-list-disabled {
     @apply bg-[#fff];
   }
 }

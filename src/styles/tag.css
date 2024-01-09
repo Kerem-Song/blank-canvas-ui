@@ -1,19 +1,19 @@
-.tag-area {
+.bc-tag-area {
   @apply h-fit text-center rounded py-px ps-1 pe-1 bg-gray-100 text-xs text-slate-500;
 }
 
-.tag-bordered {
+.bc-tag-bordered {
   @apply border border-zinc-300;
 }
 
-.tag-close {
-  @apply text-9pxr cursor-pointer;
+.bc-tag-close {
+  @apply text-10pxr pl-1 cursor-pointer align-text-bottom;
 }
 
-.tag-pd {
+.bc-tag-pd {
   @apply px-1;
 }
 
-.tag-inline {
+.bc-tag-inline {
   @apply inline-block;
 }

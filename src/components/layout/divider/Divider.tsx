@@ -13,7 +13,7 @@ export const Divider = ({
     <div
       {...props}
       className={classNames(
-        type === 'vertical' ? 'divider-vertical' : 'divider',
+        type === 'vertical' ? 'bc-divider-vertical' : 'bc-divider',
         className,
       )}
       style={{ ...style, borderStyle: borderStyle }}

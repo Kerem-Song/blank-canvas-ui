@@ -1,15 +1,15 @@
-.badge-area {
+.bc-badge-area {
   @apply block relative m-10pxr;
 }
 
-.badge {
+.bc-badge {
   @apply bg-rose-500 absolute text-white rounded-full -top-3 shadow-[0_0_0_1px_rgb(255,252,252)] min-w-[15px] min-h-[15px];
 }
 
-.badge-dot {
+.bc-badge-dot {
   @apply bg-rose-500 shadow-[0_0_0_0.5px_rgb(255,255,255)] rounded-full -top-[3px] absolute;
 }
 
-.badge-align {
+.bc-badge-align {
   @apply align-middle;
 }
