@@ -92,6 +92,7 @@ export const InputWithTitleCounter = forwardRef<
     'group-focus-within:ring-blue-500',
     {
       invalid: isError,
+      hasCustomPrefix: customPrefix,
     },
   );
 

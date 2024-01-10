@@ -74,7 +74,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputClassName = classNames(
     wrappingType ? '' : `${args.className} bc-input-normal`,
-    'group-focus-within:border-blue-500',
+    'group-focus-within:ring-blue-500',
     {
       invalid: isError,
     },
@@ -82,7 +82,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className} bc-input-wrap` : '',
-    'group-focus-within:border-blue-500',
+    'group-focus-within:ring-blue-500',
     {
       invalid: isError,
     },

@@ -207,7 +207,10 @@ function App() {
           direction="top"
           showCount
           maxLength={10}
+          // customPrefix={'{{'}
         />
+        <Input />
+        <Textarea />
       </div>
     </>
   );

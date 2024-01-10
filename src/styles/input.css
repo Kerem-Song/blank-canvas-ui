@@ -8,8 +8,14 @@ $(ns) {
       @apply flex items-center text-end;
     }
 
+    &.hasCustomPrefix {
+      input {
+        @apply pl-2;
+      }
+    }
+
     input {
-      @apply grow w-full pl-2 focus:outline-none placeholder:not-italic placeholder:text-slate-400;
+      @apply grow w-full focus:outline-none placeholder:not-italic placeholder:text-slate-400;
 
       &:disabled {
         @apply bg-gray-100;

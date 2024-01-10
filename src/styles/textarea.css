@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-textarea {
-    @apply rounded-md border border-solid w-full resize-none;
+    @apply rounded-md border w-full resize-none;
 
     &.invalid {
       @apply border-red-500;

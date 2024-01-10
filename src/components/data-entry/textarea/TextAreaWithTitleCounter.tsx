@@ -55,7 +55,7 @@ export const TextAreaWithTitleCounter = forwardRef<
         className={classNames(
           `bc-textarea-title-counter-wrapper ${direction}`,
           { invalid: isError },
-          { 'group-focus-within:border-blue-400': direction === 'inside' },
+          { 'group-focus-within:border-blue-500': direction === 'inside' },
         )}
       >
         <TextareaAutosize
