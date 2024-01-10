@@ -88,7 +88,7 @@ describe('<Autocomplete />', () => {
       />,
     );
 
-    const prefix = container.querySelector('.prefixWrapper');
+    const prefix = container.querySelector('.bc-prefixWrapper');
     expect(prefix?.textContent).toBe('a');
   });
 
@@ -102,7 +102,7 @@ describe('<Autocomplete />', () => {
       />,
     );
 
-    const suffix = container.querySelector('.suffixWrapper');
+    const suffix = container.querySelector('.bc-suffixWrapper');
     expect(suffix?.textContent).toBe('a');
   });
 
@@ -111,9 +111,12 @@ describe('<Autocomplete />', () => {
       <Autocomplete items={items} displayName={'label'} placeholder="write" />,
     );
 
-    const input = container.querySelector('.autocomplete-wrapper') as HTMLDivElement;
+    const input = container.querySelector('.bc-autocomplete-wrapper') as HTMLDivElement;
     fireEvent.click(input);
-    expect(input.lastChild?.firstChild).toHaveProperty('className', 'autocomplete-list');
+    expect(input.lastChild?.firstChild).toHaveProperty(
+      'className',
+      'bc-autocomplete-list',
+    );
   });
 
   it('auto complete 작동 여부 체크', async () => {
@@ -127,7 +130,8 @@ describe('<Autocomplete />', () => {
       expect(input.value).toBe('asdf');
     });
 
-    const list = container.querySelector('.autocomplete-wrapper')?.lastChild?.firstChild;
+    const list = container.querySelector('.bc-autocomplete-wrapper')?.lastChild
+      ?.firstChild;
     expect(list?.textContent).toBe('asdf');
   });
 });
