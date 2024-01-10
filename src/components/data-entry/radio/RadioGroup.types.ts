@@ -36,4 +36,9 @@ export interface IRadioOptions extends InputHTMLAttributes<HTMLInputElement> {
    * @default 0
    */
   gap?: React.CSSProperties['gap'];
+
+  /**
+   * Radio 입력 에러
+   */
+  isError?: boolean;
 }
