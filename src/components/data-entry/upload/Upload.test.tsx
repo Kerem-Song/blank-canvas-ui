@@ -27,7 +27,7 @@ describe('<Upload />', () => {
   });
 
   it('file upload 체크', async () => {
-    const file = new File(['hello'], 'hello.png', { type: 'image/png' });
+    const file = new File(['hello'], 'hello.jpeg', { type: 'image/jpeg' });
     const onChange = () => {
       callback();
       setValue();
@@ -38,7 +38,7 @@ describe('<Upload />', () => {
         shape="button"
         filePath={''}
         fileSize={1000}
-        fileFormat={['image/png']}
+        fileFormat={['image/jpeg']}
         callback={callback}
         errCallback={errCallback}
         setValue={setValue}
@@ -62,10 +62,13 @@ describe('<Upload />', () => {
     expect(upload.files).toHaveLength(1);
 
     // 올린 파일과 이름 일치
-    expect(upload.files?.[0]?.name).toBe('hello.png');
+    expect(upload.files?.[0]?.name).toBe('hello.jpeg');
 
     // 올린 파일의 사이즈 제한 체크
     expect(upload.files?.[0]?.size).toBeLessThan(1000);
+
+    // 올린 파일의 형식 제한 체크
+    expect(upload.files?.[0].type).toBe('image/jpeg');
 
     // 업로드 후 실행되는 콜백
     expect(callback).toHaveBeenCalledTimes(1);
