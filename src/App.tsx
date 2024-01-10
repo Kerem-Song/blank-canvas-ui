@@ -7,6 +7,7 @@ import {
   FloatingActionButton,
   IFloatingActionMenuProps,
   Input,
+  InputWithTitleCounter,
   Modal,
   Radio,
   RadioGroup,
@@ -201,6 +202,12 @@ function App() {
             <h3 style={contentStyle}>9</h3>
           </div>
         </Carousel>
+        <InputWithTitleCounter
+          label="titletest"
+          direction="top"
+          showCount
+          maxLength={10}
+        />
       </div>
     </>
   );

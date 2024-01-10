@@ -81,6 +81,7 @@ export const InputWithTitleCounter = forwardRef<
 
   const inputClassName = classNames(
     wrappingType ? '' : `${args.className} bc-input-normal `,
+    'group-focus-within:ring-blue-500',
     {
       invalid: isError,
     },
@@ -88,13 +89,14 @@ export const InputWithTitleCounter = forwardRef<
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className} bc-input-wrap` : '',
+    'group-focus-within:ring-blue-500',
     {
       invalid: isError,
     },
   );
 
   const input = (
-    <div>
+    <div className="group">
       <input
         {...inputProps}
         className={inputClassName}

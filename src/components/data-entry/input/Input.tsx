@@ -74,7 +74,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputClassName = classNames(
     wrappingType ? '' : `${args.className} bc-input-normal`,
-    'group/input-focus-within:ring-blue-500',
+    'group-focus-within:border-blue-500',
     {
       invalid: isError,
     },
@@ -82,14 +82,14 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className} bc-input-wrap` : '',
-    'group/input-focus-within:ring-blue-500',
+    'group-focus-within:border-blue-500',
     {
       invalid: isError,
     },
   );
 
   const input = (
-    <div>
+    <div className="group">
       <input
         {...inputProps}
         className={inputClassName}
@@ -119,7 +119,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   );
 
   const wrappedInput = (
-    <div className="group/input">
+    <div className="group">
       <div className={inputWrapClassName}>
         <div className="bc-prefixWrapper">{customPrefix}</div>
         <div className="grow">{input}</div>
