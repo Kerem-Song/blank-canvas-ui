@@ -1,0 +1,11 @@
+$ns: .bc;
+
+$(ns) {
+  &-radio-container {
+    @apply items-center cursor-pointer;
+
+    .bc-radio {
+      @apply appearance-none w-16pxr h-16pxr bg-[url('@icons/ic_radio_default.svg')] bg-center bg-no-repeat mr-[rem(4)] checked:bg-[url('@icons/ic_radio_enabled.svg')];
+    }
+  }
+}
