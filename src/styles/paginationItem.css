@@ -67,7 +67,7 @@ $(ns) {
   /* shape */
   &-round {
     @apply
-      rounded-md;
+      rounded-6;
   }
 
   &-circle {
