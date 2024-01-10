@@ -24,10 +24,13 @@ import { Autocomplete } from 'src';
 
 function App() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [check, setCheck] = useState<boolean>(false);
   const option: IRadioOption[] = [
     { label: '1', value: '1' },
     { label: '2', value: 2 },
-    { label: '3', value: '3', disabled: true },
+    { label: '3', value: '3' },
+    { label: '4', value: '4' },
+    { label: '5', value: '5' },
   ];
   const items = [
     { label: 'label1', value: 'value1' },
@@ -209,7 +212,7 @@ function App() {
           maxLength={10}
           // customPrefix={'{{'}
         />
-        <Input />
+        <Input showCount maxLength={10} />
         <Textarea />
       </div>
     </>

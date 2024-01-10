@@ -17,10 +17,4 @@ export interface TitleCounterProps extends ITextareaProps {
    * @type "top" | "bottom" | "inside"
    */
   direction?: 'top' | 'bottom' | 'inside';
-
-  /**
-   * Input의 에러 유무
-   * @default false;
-   */
-  isError?: boolean;
 }

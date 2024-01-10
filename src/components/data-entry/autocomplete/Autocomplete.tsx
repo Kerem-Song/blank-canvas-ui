@@ -15,7 +15,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   const focusedElement = useRef<HTMLDivElement>(null);
   const [focusedItem, setFocusedItem] = useState<T>();
 
-  const { items, displayName } = args;
+  const { items, displayName, isError } = args;
 
   useEffect(() => {
     if (focusedElement.current) {
@@ -107,7 +107,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
     <div style={{ position: 'relative' }} className="bc-autocomplete-wrapper">
       <div ref={referenceElement}>
         <Input
-          className={classNames('bc-input', { 'bc-input-error': args.error })}
+          className={classNames('bc-input', { invalid: isError })}
           onFocus={() => handleShowPopper()}
           onBlur={() => handleHidePopper()}
           onKeyDown={handleInputKeydown}
