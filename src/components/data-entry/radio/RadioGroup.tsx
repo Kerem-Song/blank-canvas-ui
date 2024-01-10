@@ -10,7 +10,13 @@ export const RadioGroup = forwardRef<HTMLInputElement, IRadioOptions>((args, ref
   return (
     <Flex vertical={vertical} gap={gap} className="bc-radio-group-wrapper">
       {options.map((option, i) => (
-        <Radio name={name} key={i} disabled={option.disabled} {...inputProps}>
+        <Radio
+          name={name}
+          key={i}
+          disabled={option.disabled}
+          checked={option.checked}
+          {...inputProps}
+        >
           <span>{option.label}</span>
         </Radio>
       ))}

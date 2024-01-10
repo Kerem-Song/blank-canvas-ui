@@ -13,6 +13,7 @@ export const Radio = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
           name={name}
           ref={ref}
           disabled={args.disabled}
+          checked={args.checked}
         />
         {children}
       </label>

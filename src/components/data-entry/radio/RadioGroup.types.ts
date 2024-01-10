@@ -16,6 +16,11 @@ export interface IRadioOption {
    * @default false
    */
   disabled?: boolean;
+
+  /**
+   * 라디오 버튼의 checked 되어야 할 조건
+   */
+  checked?: boolean;
 }
 
 export interface IRadioOptions extends InputHTMLAttributes<HTMLInputElement> {
