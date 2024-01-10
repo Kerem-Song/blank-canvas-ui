@@ -15,6 +15,7 @@ export const RadioGroup = forwardRef<HTMLInputElement, IRadioOptions>((args, ref
           key={i}
           disabled={option.disabled}
           checked={option.checked}
+          defaultChecked={option.defaultChecked}
           {...inputProps}
         >
           <span>{option.label}</span>

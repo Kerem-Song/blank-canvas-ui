@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 
-export interface IRadioOption {
+export interface IRadioOption extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 라디오 title
    */
@@ -21,6 +21,11 @@ export interface IRadioOption {
    * 라디오 버튼의 checked 되어야 할 조건
    */
   checked?: boolean;
+
+  /**
+   * 라디오 버튼의 defaultChecked 되어야 할 조건
+   */
+  defaultChecked?: boolean;
 }
 
 export interface IRadioOptions extends InputHTMLAttributes<HTMLInputElement> {

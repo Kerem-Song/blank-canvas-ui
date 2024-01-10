@@ -29,4 +29,7 @@ export const Default: Story = {
       </div>
     );
   },
+  args: {
+    name: 'test1',
+  },
 };
