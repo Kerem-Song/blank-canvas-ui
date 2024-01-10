@@ -1,4 +1,4 @@
-$ns: .pagination-item;
+$ns: .bc-pagination-item;
 
 /* prettier-ignore */
 $(ns) {
@@ -67,7 +67,7 @@ $(ns) {
   /* shape */
   &-round {
     @apply
-      rounded-md;
+      rounded-6;
   }
 
   &-circle {

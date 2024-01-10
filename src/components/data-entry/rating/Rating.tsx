@@ -38,7 +38,7 @@ export const Rating = React.forwardRef(function Rating(
     size = 'md',
     defaultValue = null,
     value: valueProp,
-    prefix,
+    prefix = 'bc',
     emptyIcon = starBorderIcon,
     filledIcon = starIcon,
     IconContainerComponent,

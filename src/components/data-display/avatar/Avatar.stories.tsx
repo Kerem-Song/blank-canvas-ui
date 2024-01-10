@@ -48,7 +48,7 @@ export const Default: Story = {
     className: '',
     style: {},
     imgProps: {},
-    prefix: '',
+    prefix: 'bc',
   },
 };
 

@@ -50,6 +50,7 @@ export interface RatingProps
   value?: number | null;
   /**
    * prefix className.
+   * @default 'bc'
    */
   prefix?: string;
   /**

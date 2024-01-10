@@ -33,6 +33,7 @@ export interface PaginationProps
   size?: 'sm' | 'md' | 'lg';
   /**
    * 클래스 이름 접두사
+   * @default 'bc'
    */
   prefix?: string;
   /**

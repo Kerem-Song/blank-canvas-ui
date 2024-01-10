@@ -5,7 +5,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Avatar, avatarClasses, AvatarClassKey } from './index';
 import * as useLoadedHook from './useLoaded';
 
-const classes = generatePrefixClasses(avatarClasses, 'avatar');
+const classes = generatePrefixClasses(avatarClasses, 'bc-avatar');
 
 describe('<Avatar />', () => {
   it('렌더링 됩니다.', () => {
