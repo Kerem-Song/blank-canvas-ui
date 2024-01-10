@@ -25,4 +25,10 @@ export interface ITextareaProps extends InputHTMLAttributes<HTMLTextAreaElement>
    * @type number
    */
   minRows?: number;
+
+  /**
+   * Input의 에러 유무
+   * @default false;
+   */
+  isError?: boolean;
 }

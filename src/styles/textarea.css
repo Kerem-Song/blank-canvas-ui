@@ -5,7 +5,7 @@ $(ns) {
     @apply rounded-md border w-full resize-none;
 
     &.invalid {
-      @apply border-red-500;
+      @apply border-error-main;
     }
   }
 

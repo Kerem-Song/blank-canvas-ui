@@ -33,6 +33,7 @@ export const Default: Story = {
     return <Autocomplete {...args} />;
   },
   args: {
+    isError: false,
     items: [
       { label: 'label1', value: 'value1' },
       { label: 'label2', value: 'value2' },

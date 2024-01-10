@@ -209,7 +209,7 @@ function App() {
           maxLength={10}
           // customPrefix={'{{'}
         />
-        <Input />
+        <Input showCount maxLength={10} />
         <Textarea />
       </div>
     </>

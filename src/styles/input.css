@@ -27,12 +27,16 @@ $(ns) {
     }
 
     &.invalid {
-      @apply ring-red-500;
+      @apply ring-error-main;
     }
   }
 
   &-input-normal {
     @apply w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
+
+    &.invalid {
+      @apply ring-error-main;
+    }
   }
 
   &-input-title-counter-wrapper {
