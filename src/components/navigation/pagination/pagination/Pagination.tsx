@@ -35,7 +35,7 @@ export const Pagination = React.forwardRef(function Pagination(
     showFirstButton,
     showLastButton,
     maxPageCount,
-    prefix,
+    prefix = 'bc',
     className,
     color = 'primary',
     shape = 'round',

@@ -70,6 +70,7 @@ export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'but
     tabIndex?: number;
     /**
      * 클래스 이름 접두사
+     * @default 'bc'
      */
     prefix?: string;
     /**

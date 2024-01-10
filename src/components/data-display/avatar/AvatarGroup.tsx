@@ -50,7 +50,7 @@ export const AvatarGroup = React.forwardRef(function AvatarGroup(
     children,
     className,
     component: RootComponent = 'div',
-    prefix,
+    prefix = 'bc',
     size = 'md',
     variant = 'circular',
     ...other

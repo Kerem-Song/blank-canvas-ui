@@ -52,7 +52,7 @@ export const Default: Story = {
     required: false,
     color: 'primary',
     size: 'md',
-    prefix: '',
+    prefix: 'bc',
     defaultValue: ['Apple'],
     options: [
       { label: 'Apple', value: 'Apple' },

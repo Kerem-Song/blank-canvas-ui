@@ -47,6 +47,7 @@ export interface LinkTypeMap<DefaultComponent extends React.ElementType = 'a'> {
     size?: 'xs' | 'sm' | 'md' | 'lg';
     /**
      * 클래스 이름 접두사
+     * @default 'bc'
      */
     prefix?: string;
   };
