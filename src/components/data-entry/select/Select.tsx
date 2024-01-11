@@ -278,6 +278,7 @@ function SelectFunc<T extends AnyObject>(
                 : open && init
                   ? 'visible'
                   : 'hidden',
+            margin: placement === 'left' || placement === 'right' ? '0 8px' : '8px 0',
           }}
           ref={popperElement}
           className={classNames('bc-select-ul')}
