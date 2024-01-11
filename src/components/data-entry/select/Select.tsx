@@ -1,9 +1,9 @@
 import { AnyObject } from '@models/types/AnyObject';
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
-import { util } from 'src/utils/utils';
 
 import { ISelectProp } from './Select.types';
 
@@ -33,7 +33,7 @@ function SelectFunc<T extends AnyObject>(
     ...inputProps
   } = props;
   const tempWidth =
-    typeof selectWidth !== 'number' ? util.findNumber(selectWidth) : selectWidth;
+    typeof selectWidth !== 'number' ? remUtil.findNumber(selectWidth) : selectWidth;
   const width = tempWidth > 150 ? `${tempWidth}px` : '150px';
 
   const [init, setInit] = useState(false);

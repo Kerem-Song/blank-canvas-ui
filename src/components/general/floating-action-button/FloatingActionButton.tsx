@@ -2,9 +2,9 @@ import { Badge } from '@components/data-display/badge/Badge';
 import { Tooltip } from '@components/data-display/tooltip/Tooltip';
 import { useOutsideClick } from '@hooks';
 import { generatePrefixClasses } from '@modules/utils';
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
 import { forwardRef, useRef, useState } from 'react';
-import { util } from 'src/utils/utils';
 
 import { IFloatingActionButtonProps } from './FloatingActionButton.types';
 import { floatingActionButtonClasses } from './FloatingActionButtonClasses';
@@ -80,7 +80,7 @@ export const FloatingActionButton = forwardRef<
         open: isOpen,
         'bc-badge-counter': useBadge,
       })}
-      style={{ right: `${util.rem(right)}`, bottom: `${util.rem(bottom)}` }}
+      style={{ right: `${remUtil.rem(right)}`, bottom: `${remUtil.rem(bottom)}` }}
       onMouseLeave={(e) => {
         e.stopPropagation();
         trigger === 'hover' && menu && setIsOpen(false);

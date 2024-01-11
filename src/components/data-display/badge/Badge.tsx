@@ -1,5 +1,5 @@
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
-import { util } from 'src/utils/utils';
 
 import { IBadgeProps } from './Badge.types';
 
@@ -23,7 +23,8 @@ export const Badge = ({
   const digit = division < 2 ? 2 / 0.25 : division / 0.25;
   const tmpSize = typeof size !== 'number' ? Number(size.replace(/[^0-9]/g, '')) : size;
   const baseSize = 10;
-  const fontSize = tmpSize > baseSize ? `${util.rem(tmpSize)}` : `${util.rem(baseSize)}`;
+  const fontSize =
+    tmpSize > baseSize ? `${remUtil.rem(tmpSize)}` : `${remUtil.rem(baseSize)}`;
   const circle = tmpSize > baseSize ? `${tmpSize / 32}rem` : `${baseSize / 32}rem`;
 
   return (showZero && Number(count) === 0) ||

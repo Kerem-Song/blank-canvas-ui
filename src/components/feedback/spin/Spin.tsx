@@ -1,7 +1,7 @@
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
 import { forwardRef } from 'react';
 import ReactLoading from 'react-loading';
-import { util } from 'src/utils/utils';
 
 import { ISpinProps } from './Spin.types';
 
@@ -20,7 +20,7 @@ export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
     children,
     ...spinProps
   } = props;
-  const tempWidth = typeof size !== 'number' ? util.findNumber(size) : size;
+  const tempWidth = typeof size !== 'number' ? remUtil.findNumber(size) : size;
   const width = tempWidth > 34 ? tempWidth : 35;
 
   return (
