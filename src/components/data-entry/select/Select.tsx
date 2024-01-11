@@ -243,7 +243,7 @@ function SelectFunc<T extends AnyObject>(
             {suffixIcon}
           </div>
         ) : (
-          <div onClick={iconClick} className={classNames('select-icon')}>
+          <div onClick={iconClick} className={classNames('bc-select-icon')}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
