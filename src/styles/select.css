@@ -30,7 +30,7 @@
 }
 
 .bc-select-referenceElement {
-  @apply flex justify-between rounded-6 items-center h-full;
+  @apply flex justify-between rounded-6 items-center h-full bg-white;
   input {
     @apply rounded-6 px-[8px] h-full outline-none w-full ring-opacity-0 border-0;
   }

@@ -215,6 +215,7 @@ function SelectFunc<T extends AnyObject>(
           'bc-select-referenceElement',
           className,
         )}
+        onClick={iconClick}
       >
         <input
           {...inputProps}
