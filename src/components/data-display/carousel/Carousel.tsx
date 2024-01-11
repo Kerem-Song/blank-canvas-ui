@@ -244,6 +244,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
               onClick={handlePrevClick}
               disabled={current === 0}
               data-button={'prev'}
+              title={'prev'}
             />
           </Col>
           <Col>
@@ -252,6 +253,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
               onClick={handleNextClick}
               disabled={NextDisabled()}
               data-button={'next'}
+              title={'next'}
             />
           </Col>
         </Row>
