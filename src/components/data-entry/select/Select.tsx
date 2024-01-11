@@ -243,7 +243,7 @@ function SelectFunc<T extends AnyObject>(
             {suffixIcon}
           </div>
         ) : (
-          <div onClick={iconClick} className={classNames('select-icon')}>
+          <div onClick={iconClick} className={classNames('bc-select-icon')}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -278,6 +278,7 @@ function SelectFunc<T extends AnyObject>(
                 : open && init
                   ? 'visible'
                   : 'hidden',
+            margin: placement === 'left' || placement === 'right' ? '0 8px' : '8px 0',
           }}
           ref={popperElement}
           className={classNames('bc-select-ul')}

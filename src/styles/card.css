@@ -2,8 +2,10 @@
   @apply p-0 text-start min-w-200;
 
   .bc-card-head {
-    @apply flex border-b overflow-hidden p-3 justify-between;
-
+    @apply flex border-b overflow-hidden p-3 justify-between w-full;
+    > span {
+      @apply w-1/2;
+    }
     .bc-card-title {
       @apply font-semibold text-base;
     }

@@ -26,27 +26,27 @@ export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
   return (
     <div
       className={classNames(
-        'spin-area',
-        { 'spin-fullscreen': fullscreen },
-        { 'spin-bgColor': children },
-        { 'spin-hidden': !spinning && !children },
+        'bc-spin-area',
+        { 'bc-spin-fullscreen': fullscreen },
+        { 'bc-spin-bgColor': children },
+        { 'bc-spin-hidden': !spinning && !children },
       )}
     >
       <div
         {...spinProps}
-        className={classNames({ 'spin-children': fullscreen || children }, 'spin', {
-          'spin-hidden': !spinning && children,
+        className={classNames({ 'bc-spin-children': fullscreen || children }, 'bc-spin', {
+          'bc-spin-hidden': !spinning && children,
         })}
       >
         {indicator ? (
-          <span className={classNames('spin-indicator')} style={{ ...style }}>
+          <span className={classNames('bc-spin-indicator')} style={{ ...style }}>
             {indicator}
           </span>
         ) : (
           <span
             style={{ ...style }}
             className={classNames({
-              'spin-inline': tip,
+              'bc-spin-inline': tip,
             })}
           >
             <ReactLoading
