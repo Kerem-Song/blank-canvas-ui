@@ -1,3 +1,4 @@
+import imgTest from '@icons/ic_img.svg';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import { Upload } from './Upload';
@@ -24,6 +25,113 @@ describe('<Upload />', () => {
 
     const upload = screen.getByTestId('test');
     expect(upload.classList.contains('bc-upload'));
+  });
+
+  it('shpae에 따른 업로드 모양 체크', () => {
+    const { rerender } = render(
+      <Upload
+        htmlForId="test"
+        shape="button"
+        filePath={''}
+        fileSize={3000}
+        fileFormat={['image/png', 'image/jpeg']}
+        callback={callback}
+        errCallback={errCallback}
+        setValue={setValue}
+        data-testid={'test'}
+      />,
+    );
+
+    const buttonShape = screen.getByTestId('test').parentElement;
+
+    // shape이 button일 경우
+    expect(buttonShape?.classList.contains('bc-upload-button')).toBeTruthy();
+
+    // shape이 area일 경우
+    rerender(
+      <Upload
+        htmlForId="test"
+        shape="area"
+        filePath={''}
+        fileSize={3000}
+        fileFormat={['image/png', 'image/jpeg']}
+        callback={callback}
+        errCallback={errCallback}
+        setValue={setValue}
+        data-testid={'test'}
+      />,
+    );
+    const areaShape = screen.getByTestId('test').parentElement;
+    expect(areaShape?.classList.contains('bc-upload-area')).toBeTruthy();
+
+    // shape이 drag and drop일 경우
+    rerender(
+      <Upload
+        htmlForId="test"
+        shape="drag"
+        filePath={''}
+        fileSize={3000}
+        fileFormat={['image/png', 'image/jpeg']}
+        callback={callback}
+        errCallback={errCallback}
+        setValue={setValue}
+        data-testid={'test'}
+      />,
+    );
+    const dragShape = screen.getByTestId('test').parentElement;
+    expect(dragShape?.classList.contains('bc-upload-drag')).toBeTruthy();
+  });
+
+  it('prefix 체크', () => {
+    const { container } = render(
+      <Upload
+        htmlForId="test"
+        shape="button"
+        filePath={''}
+        fileSize={3000}
+        fileFormat={['image/png', 'image/jpeg']}
+        callback={callback}
+        errCallback={errCallback}
+        setValue={setValue}
+        data-testid={'test'}
+        prefixText="a"
+        prefixIcon={imgTest}
+      />,
+    );
+
+    // 버튼에 쓰인 prefix text 체크
+    const prefixText = container.querySelector('.bc-prefix-text');
+    expect(prefixText?.textContent).toBe('a');
+
+    // prefix icon 체크
+    const prefixIcon = container.querySelector('.bc-prefix-icon');
+    expect(prefixIcon?.children).not.toBeNull();
+  });
+
+  it('suffix 체크', () => {
+    const { container } = render(
+      <Upload
+        htmlForId="test"
+        shape="area"
+        filePath={''}
+        fileSize={3000}
+        fileFormat={['image/png', 'image/jpeg']}
+        callback={callback}
+        errCallback={errCallback}
+        setValue={setValue}
+        data-testid={'test'}
+        suffixIcon={imgTest}
+        suffixText={'a'}
+      />,
+    );
+
+    // 버튼에 쓰인 suffix text 체크
+    const suffixText = container.querySelector('.bc-suffix-text');
+    expect(suffixText?.textContent).toBe('a');
+
+    // suffix icon 체크
+    const suffixIcon = container.querySelector('.bc-suffix-icon');
+    expect(suffixIcon?.children).not.toBeNull();
   });
 
   it('file upload 체크', async () => {
@@ -54,8 +162,6 @@ describe('<Upload />', () => {
       fireEvent.change(upload, {
         target: { files: [file] },
       });
-
-      console.log('@upload.files?.[0].name', upload.files?.[0]?.size);
     });
 
     // 파일 업로드 여부

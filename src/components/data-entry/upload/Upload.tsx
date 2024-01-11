@@ -183,7 +183,9 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         onDragLeave={args.shape === 'drag' ? handleDragLeave : undefined}
         onDrop={args.shape === 'drag' ? handleDrop : undefined}
       >
-        {args.shape === 'button' ? prefixIcon : null}
+        <span className="bc-prefix-icon">
+          {args.shape === 'button' ? prefixIcon : null}
+        </span>
         <span className="bc-prefix-text">
           {args.shape === 'button' ? prefixText : null}
         </span>
@@ -199,7 +201,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         />
         <div className="bc-suffix-wrapper">
           <p className="bc-suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
-          <p>{args.shape !== 'button' ? suffixText : null}</p>
+          <p className="bc-suffix-text">{args.shape !== 'button' ? suffixText : null}</p>
         </div>
       </label>
       {files
