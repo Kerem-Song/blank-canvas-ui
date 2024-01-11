@@ -78,6 +78,7 @@ export const Modal = (modalInfo: IModalProps) => {
             className="bc-esc-btn"
             onClick={handleCancel}
             baseButton={true}
+            title={'esc'}
           />
         ) : null}
       </div>
