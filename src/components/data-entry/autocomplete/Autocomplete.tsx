@@ -5,6 +5,7 @@ import { KeyboardEvent, useDeferredValue, useEffect, useRef, useState } from 're
 import { usePopper } from 'react-popper';
 
 import { AutocompleteProps } from './Autocomplete.types';
+import { autoCompleteClasses } from './AutocompleteClasses';
 
 export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   const [showPopper, setShowPopper] = useState<boolean>(false);
@@ -15,7 +16,9 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   const focusedElement = useRef<HTMLDivElement>(null);
   const [focusedItem, setFocusedItem] = useState<T>();
 
-  const { items, displayName, isError } = args;
+  const { items, displayName, isError, className } = args;
+
+  const rootClassName = classNames(autoCompleteClasses.root, {}, className);
 
   useEffect(() => {
     if (focusedElement.current) {
@@ -104,10 +107,10 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   };
 
   return (
-    <div style={{ position: 'relative' }} className="bc-autocomplete-wrapper">
+    <div style={{ position: 'relative' }} className={rootClassName}>
       <div ref={referenceElement}>
         <Input
-          className={classNames('bc-input', { invalid: isError })}
+          className={classNames(autoCompleteClasses.input, { invalid: isError })}
           onFocus={() => handleShowPopper()}
           onBlur={() => handleHidePopper()}
           onKeyDown={handleInputKeydown}
@@ -140,7 +143,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
         />
       </div>
       <div
-        className="bc-autocomplete-container"
+        className={autoCompleteClasses.container}
         ref={popperElement}
         style={{
           ...styles.popper,
@@ -155,9 +158,10 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
         {filteredList?.map((item: T, index: number) => {
           const display = displayName ? String(item[displayName]) : String(item);
           const focused = item === focusedItem;
-          const itemClassName = classNames('bc-autocomplete-list', {
-            'bc-autocomplete-list-focused': focused,
+          const itemClassName = classNames(autoCompleteClasses.list.root, {
+            [autoCompleteClasses.list.focused]: focused,
           });
+
           return (
             <div
               role="presentation"
@@ -174,7 +178,9 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
                 }
               }}
             >
-              <span>{inputUtil.replaceKeywordMark(display, search, true)}</span>
+              <span className={autoCompleteClasses.list.itemName}>
+                {inputUtil.replaceKeywordMark(display, search, true)}
+              </span>
             </div>
           );
         })}

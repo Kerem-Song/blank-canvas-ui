@@ -13,7 +13,7 @@ $(ns) {
         @apply bg-blue-100;
       }
 
-      .bc-items-name {
+      &-items-name {
         @apply overflow-hidden text-ellipsis whitespace-nowrap;
       }
 
