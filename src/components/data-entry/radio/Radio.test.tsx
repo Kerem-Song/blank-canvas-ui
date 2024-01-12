@@ -1,13 +1,14 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { Radio } from './Radio';
+import { radioClasses } from './RadioClasses';
 
 describe('<Radio />', () => {
   it('렌더링 체크', () => {
     render(<Radio />);
     const radio = screen.getByRole('radio');
 
-    expect(radio?.classList.contains('bc-radio')).toBeTruthy();
+    expect(radio?.classList.contains(radioClasses.root)).toBeTruthy();
   });
 
   it('id를 사용하여 `role="radio"`를 렌더링', () => {

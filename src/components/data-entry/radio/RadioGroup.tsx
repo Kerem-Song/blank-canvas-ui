@@ -2,13 +2,14 @@ import { Flex } from '@components/layout/flex';
 import { forwardRef } from 'react';
 
 import { Radio } from './Radio';
+import { radioClasses } from './RadioClasses';
 import { IRadioOptions } from './RadioGroup.types';
 
 export const RadioGroup = forwardRef<HTMLInputElement, IRadioOptions>((args, ref) => {
   const { style, options, name, disabled, vertical, gap, ...inputProps } = args;
 
   return (
-    <Flex vertical={vertical} gap={gap} className="bc-radio-group-wrapper">
+    <Flex vertical={vertical} gap={gap} className={radioClasses.groupWrapper}>
       {options.map((option, i) => (
         <Radio
           name={name}
