@@ -8,6 +8,6 @@ export const classes = {
   opacity100: 'opacity-100',
   btnSquare: 'btn-square',
   btnCircle: 'btn-circle',
-};
+} as const;
 
-export const carouselClasses = attachPrefixClasses(classes, `carousel`);
+export const carouselClasses = attachPrefixClasses(classes, 'carousel');

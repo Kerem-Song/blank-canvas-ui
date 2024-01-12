@@ -11,7 +11,7 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * 업로드 입력의 모양
    */
-  shape: 'button' | 'area' | 'drag' | 'none';
+  shape: 'button' | 'area' | 'drag';
 
   /**
    * 업로드 input에 할당할 id

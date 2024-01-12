@@ -26,7 +26,7 @@ export const Avatar = React.forwardRef(function Avatar<
     imgProps,
     size: sizeProp = 'md',
     variant: variantProp = 'circular',
-    prefix: prefixProp,
+    prefix: prefixProp = 'bc',
     ...other
   } = props;
   const RootComponent =

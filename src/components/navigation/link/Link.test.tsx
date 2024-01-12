@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { Link, linkClasses, LinkClassKey } from './index';
 
-const classes = generatePrefixClasses(linkClasses, 'link');
+const classes = generatePrefixClasses(linkClasses, 'bc-link');
 
 function capitalize(word: string) {
   return word.charAt(0).toUpperCase() + word.slice(1);

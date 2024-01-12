@@ -15,7 +15,7 @@ describe('<RadioGroup />', () => {
     const radioGroup = getAllByRole('radio');
 
     radioGroup.forEach((radio) => {
-      expect(radio?.classList.contains('radio')).toBeTruthy();
+      expect(radio?.classList.contains('bc-radio')).toBeTruthy();
     });
   });
 

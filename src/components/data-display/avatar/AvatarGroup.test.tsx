@@ -4,8 +4,8 @@ import { describe, expect, it } from 'vitest';
 
 import { Avatar, avatarClasses, avatarGroupClasses } from './index';
 
-const groupClasses = generatePrefixClasses(avatarGroupClasses, 'avatar-group');
-const itemClasses = generatePrefixClasses(avatarClasses, 'avatar');
+const groupClasses = generatePrefixClasses(avatarGroupClasses, 'bc-avatar-group');
+const itemClasses = generatePrefixClasses(avatarClasses, 'bc-avatar');
 
 describe('<Avatar.Group />', () => {
   it('렌더링 됩니다.', () => {

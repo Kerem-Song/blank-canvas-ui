@@ -31,7 +31,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
     name: nameProp,
     slotProps = {},
     size = 'md',
-    prefix,
+    prefix = 'bc',
     readOnly = false,
     required = false,
     label,

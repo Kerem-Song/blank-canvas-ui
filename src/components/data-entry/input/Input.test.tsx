@@ -54,7 +54,7 @@ describe('<Input />', () => {
     const { container } = render(<Input showCount={true} maxLength={10} />);
     const input: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test1' } });
-    const counter = container.querySelector('.count')?.firstChild?.textContent;
+    const counter = container.querySelector('.bc-count')?.firstChild?.textContent;
     expect(counter === input.value.length.toString()).toBeTruthy();
   });
 
@@ -77,7 +77,7 @@ describe('<Input />', () => {
 
     // 버튼 렌더링 확인
     const searchBtn = screen.getByRole('button').firstChild as HTMLDivElement;
-    expect(searchBtn.classList.contains('search')).toBeTruthy();
+    expect(searchBtn.classList.contains('bc-search')).toBeTruthy();
 
     // 버튼 클릭
     fireEvent.click(searchBtn);
@@ -111,14 +111,14 @@ describe('<Input />', () => {
   it('custom prefix 체크', () => {
     const { container } = render(<Input customPrefix={'a'} />);
 
-    const prefix = container.querySelector('.prefixWrapper');
+    const prefix = container.querySelector('.bc-prefixWrapper');
     expect(prefix?.textContent).toBe('a');
   });
 
   it('suffix 체크', () => {
     const { container } = render(<Input suffix={'a'} />);
 
-    const suffix = container.querySelector('.suffixWrapper');
+    const suffix = container.querySelector('.bc-suffixWrapper');
     expect(suffix?.textContent).toBe('a');
   });
 });

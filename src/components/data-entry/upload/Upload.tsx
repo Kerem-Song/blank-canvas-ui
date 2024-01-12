@@ -41,6 +41,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     callback,
     errCallback,
     setValue,
+    onChange,
     ...uploadProps
   } = args;
   const uploadRef = useRef<HTMLInputElement | null>(null);
@@ -168,6 +169,9 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       setImageUrl([]);
     }
   };
+
+  const acceptFormat = fileFormat.toString();
+
   console.log('@file', imageUrl);
   return (
     <>
@@ -179,22 +183,25 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         onDragLeave={args.shape === 'drag' ? handleDragLeave : undefined}
         onDrop={args.shape === 'drag' ? handleDrop : undefined}
       >
-        {args.shape === 'button' ? prefixIcon : null}
+        <span className="bc-prefix-icon">
+          {args.shape === 'button' ? prefixIcon : null}
+        </span>
         <span className="bc-prefix-text">
           {args.shape === 'button' ? prefixText : null}
         </span>
         <input
           type="file"
           id={htmlForId}
-          accept={'.pdf'}
-          onChange={handleChangeFile}
+          accept={acceptFormat}
+          onChange={onChange ?? handleChangeFile}
           style={{ display: 'none' }}
           autoComplete="off"
           multiple={multiple}
+          {...uploadProps}
         />
         <div className="bc-suffix-wrapper">
           <p className="bc-suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
-          <p>{args.shape !== 'button' ? suffixText : null}</p>
+          <p className="bc-suffix-text">{args.shape !== 'button' ? suffixText : null}</p>
         </div>
       </label>
       {files

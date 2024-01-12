@@ -41,3 +41,39 @@ export const Default: Story = {
     showZero: false,
   },
 };
+
+export const Dot: Story = {
+  render: () => {
+    return (
+      <Flex style={{ height: 100, border: '1px solid' }} justify="center" align="center">
+        <Badge dot>
+          <div style={{ border: '1px solid' }}>test</div>
+        </Badge>
+      </Flex>
+    );
+  },
+};
+
+export const ShowZero: Story = {
+  render: () => {
+    return (
+      <Flex style={{ height: 100, border: '1px solid' }} justify="center" align="center">
+        <Badge showZero count={0}>
+          <div style={{ border: '1px solid' }}>test</div>
+        </Badge>
+      </Flex>
+    );
+  },
+};
+
+export const overflowCount: Story = {
+  render: () => {
+    return (
+      <Flex style={{ height: 100, border: '1px solid' }} justify="center" align="center">
+        <Badge count={1900} overflowCount={1000}>
+          <div style={{ border: '1px solid' }}>test</div>
+        </Badge>
+      </Flex>
+    );
+  },
+};

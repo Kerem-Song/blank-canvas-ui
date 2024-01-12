@@ -6,7 +6,7 @@ describe('<TextareaWithTitleCounter />', () => {
   it('렌더링 체크', () => {
     render(<TextAreaWithTitleCounter />);
     const textarea = screen.getByRole('textbox');
-    expect(textarea?.classList.contains('textarea')).toBeTruthy();
+    expect(textarea?.classList.contains('bc-textarea')).toBeTruthy();
   });
 
   it('input value 일치 여부', () => {
@@ -52,27 +52,28 @@ describe('<TextareaWithTitleCounter />', () => {
     // 카운터 숫자 체크
     const textarea: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(textarea, { target: { value: 'test1' } });
-    const counter = container.querySelector('.textarea-counter')?.firstChild?.textContent;
+    const counter =
+      container.querySelector('.bc-textarea-counter')?.firstChild?.textContent;
     expect(counter === textarea.value.length.toString()).toBeTruthy();
 
     // title이 상단인 경우
-    const titleTop = container.querySelector('.textarea-label');
-    const counterTop = container.querySelector('.textarea-counter');
-    expect(titleTop?.classList.contains('textarea-label')).toBeTruthy();
+    const titleTop = container.querySelector('.bc-textarea-label');
+    const counterTop = container.querySelector('.bc-textarea-counter');
+    expect(titleTop?.classList.contains('bc-textarea-label')).toBeTruthy();
     expect(counterTop?.classList.contains('top')).toBeTruthy();
 
     // title이 하단인 경우
     rerender(<TextAreaWithTitleCounter direction="bottom" showCount={true} />);
-    const titleBottom = container.querySelector('.textarea-label');
-    const counterBottom = container.querySelector('.textarea-counter');
-    expect(titleBottom?.classList.contains('textarea-label')).toBeTruthy();
+    const titleBottom = container.querySelector('.bc-textarea-label');
+    const counterBottom = container.querySelector('.bc-textarea-counter');
+    expect(titleBottom?.classList.contains('bc-textarea-label')).toBeTruthy();
     expect(counterBottom?.classList.contains('bottom')).toBeTruthy();
 
     // title이 textarea 안에 있는 경우
     rerender(<TextAreaWithTitleCounter direction="inside" showCount={true} />);
-    const titleInside = container.querySelector('.textarea-label');
-    const counterInside = container.querySelector('.textarea-counter');
-    expect(titleInside?.classList.contains('textarea-label')).toBeTruthy();
+    const titleInside = container.querySelector('.bc-textarea-label');
+    const counterInside = container.querySelector('.bc-textarea-counter');
+    expect(titleInside?.classList.contains('bc-textarea-label')).toBeTruthy();
     expect(counterInside?.classList.contains('inside')).toBeTruthy();
   });
 });

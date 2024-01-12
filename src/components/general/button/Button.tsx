@@ -1,3 +1,5 @@
+import '../../../styles/button.css';
+
 import { composeRef, generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
@@ -23,7 +25,7 @@ export const Button = React.forwardRef(function Button<
     slotProps,
     tabIndex,
     type,
-    prefix,
+    prefix = 'bc',
     variant = 'outlined',
     onClick,
     ...other

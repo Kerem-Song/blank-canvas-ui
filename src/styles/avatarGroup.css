@@ -1,5 +1,5 @@
-$ns: .avatar-group;
-$ns-children: .avatar;
+$ns: .bc-avatar-group;
+$ns-children: .bc-avatar;
 $AvatarGroup-gap: -8px;
 
 /* prettier-ignore */

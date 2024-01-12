@@ -6,7 +6,7 @@ describe('<Textarea />', () => {
   it('렌더링 체크', () => {
     render(<Textarea />);
     const textarea = screen.getByRole('textbox');
-    expect(textarea?.classList.contains('textarea')).toBeTruthy();
+    expect(textarea?.classList.contains('bc-textarea')).toBeTruthy();
   });
 
   it('input value 일치 여부', () => {

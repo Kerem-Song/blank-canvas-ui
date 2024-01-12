@@ -27,10 +27,39 @@ export const Default: Story = {
       >
         <Card
           title={args.title}
-          extra={args.extra}
+          // extra={args.extra}
           rounded={args.rounded}
           bordered={args.bordered}
           size={args.size}
+          // titleBgColor={args.titleBgColor}
+          // titleColor={args.titleColor}
+        >
+          <p> 카드 내용 </p>
+        </Card>
+      </Flex>
+    );
+  },
+  args: {
+    title: '제목',
+    // extra: <a href="#">More</a>,
+    rounded: false,
+    bordered: true,
+    size: 'default',
+    // titleBgColor: 'yellow',
+    // titleColor: 'green',
+  },
+};
+
+export const Color: Story = {
+  render: (args) => {
+    return (
+      <Flex
+        style={{ height: '150px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <Card
+          title={args.title}
           titleBgColor={args.titleBgColor}
           titleColor={args.titleColor}
         >
@@ -41,11 +70,104 @@ export const Default: Story = {
   },
   args: {
     title: '제목',
-    extra: <a href="#">More</a>,
-    rounded: false,
-    bordered: true,
-    size: 'default',
     titleBgColor: 'yellow',
     titleColor: 'green',
+  },
+};
+
+export const Extra: Story = {
+  render: (args) => {
+    return (
+      <Flex
+        style={{ height: '150px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <Card title={args.title} extra={args.extra}>
+          <p> 카드 내용 </p>
+        </Card>
+      </Flex>
+    );
+  },
+  args: {
+    title: '제목',
+    extra: <a href="#">More</a>,
+  },
+};
+
+export const Bordered: Story = {
+  render: (args) => {
+    return (
+      <Flex
+        style={{ height: '150px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <Card title={args.title} bordered={false}>
+          <p> 카드 내용 </p>
+        </Card>
+      </Flex>
+    );
+  },
+  args: {
+    title: '제목',
+  },
+};
+
+export const Size: Story = {
+  render: (args) => {
+    return (
+      <Flex
+        style={{ height: '150px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <Card title={args.title} size={'small'}>
+          <p> 카드 내용 </p>
+        </Card>
+      </Flex>
+    );
+  },
+  args: {
+    title: '제목',
+  },
+};
+
+export const Rounded: Story = {
+  render: (args) => {
+    return (
+      <Flex
+        style={{ height: '150px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <Card title={args.title} rounded>
+          <p> 카드 내용 </p>
+        </Card>
+      </Flex>
+    );
+  },
+  args: {
+    title: '제목',
+  },
+};
+
+export const Loading: Story = {
+  render: (args) => {
+    return (
+      <Flex
+        style={{ height: '150px', border: '1px solid' }}
+        justify="space-evenly"
+        align="center"
+      >
+        <Card title={args.title} loading>
+          <p> 카드 내용 </p>
+        </Card>
+      </Flex>
+    );
+  },
+  args: {
+    title: '제목',
+    extra: <a href="#">More</a>,
   },
 };

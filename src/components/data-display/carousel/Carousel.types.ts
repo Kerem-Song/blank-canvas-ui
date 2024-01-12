@@ -15,7 +15,7 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
    * 캐로셀 타입(edit 버전 선택시 캐로셀 슬라이드를 추가 및 삭제할 수 있는 기능)
    * @default 'default'
    */
-  type: 'default' | 'editable';
+  type?: 'default' | 'editable';
 
   /**
    * 캐로셀에 들어갈 슬라이드 내용들

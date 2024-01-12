@@ -7,7 +7,7 @@ describe('<Radio />', () => {
     render(<Radio />);
     const radio = screen.getByRole('radio');
 
-    expect(radio?.classList.contains('radio')).toBeTruthy();
+    expect(radio?.classList.contains('bc-radio')).toBeTruthy();
   });
 
   it('id를 사용하여 `role="radio"`를 렌더링', () => {
