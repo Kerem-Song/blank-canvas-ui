@@ -68,7 +68,7 @@ describe('<Carousel />', () => {
 
     const nextBtn = screen.getByTitle('next');
     const prevBtn = screen.getByTitle('prev');
-    console.log('@next', nextBtn);
+
     act(() => {
       fireEvent.click(nextBtn);
       handleNextClick();

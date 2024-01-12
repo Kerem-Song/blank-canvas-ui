@@ -1,10 +1,10 @@
-import { carouselClasses } from '@components/data-display/carousel/CarouselClasses';
 import { Col, Row } from '@components/layout';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 
 import { ICarouselProps } from './Carousel.types';
+import { carouselClasses } from './CarouselClasses';
 
 export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) => {
   const {
@@ -85,7 +85,6 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
       const delaySlider = setTimeout(() => {
         setCurrent((prev) => (prev === children.length - 1 ? 0 : prev + 1));
 
-        console.log('@cur', current, children.length, children);
         setStyle({
           ...style,
           marginLeft: `${remUtil.rem(-1 * -(CAROUSEL_WIDTH ?? 0))}`,
