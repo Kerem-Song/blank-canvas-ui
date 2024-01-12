@@ -8,50 +8,46 @@ import { switchClasses } from './SwitchClasses';
 
 export const Switch = forwardRef<HTMLInputElement, ISwitchProps>((args, ref) => {
   const {
-    prefix = 'bc',
     className,
     switchType = 'outside',
     switchSize = 'sm',
     color = 'green',
     ...switchProps
   } = args;
-  const classes = generatePrefixClasses(
-    switchClasses,
-    `${prefix ? `${prefix}-` : ''}switch`,
-  );
 
   const rootClassName = classNames(
-    classes.root,
+    switchClasses.root,
+    switchClasses.wrapper,
     {
-      // type {
-      [classes.inside]: switchType === 'inside',
-      [classes.outside]: switchType === 'outside',
+      // shape
+      [switchClasses.shape.inside]: switchType === 'inside',
+      [switchClasses.shape.outside]: switchType === 'outside',
     },
     className,
   );
   const switchBarClassName = classNames(
-    'bc-switch-bar',
+    switchClasses.bar,
     {
       // size
-      [classes.sizeSmall]: switchSize === 'sm',
-      [classes.sizeMedium]: switchSize === 'md',
-      [classes.sizeLarge]: switchSize === 'lg',
-      [classes.sizeXLarge]: switchSize === 'xl',
+      [switchClasses.size.small]: switchSize === 'sm',
+      [switchClasses.size.medium]: switchSize === 'md',
+      [switchClasses.size.large]: switchSize === 'lg',
+      [switchClasses.size.xLarge]: switchSize === 'xl',
 
       // color
-      [classes.blue]: color === 'blue',
-      [classes.green]: color === 'green',
+      [switchClasses.color.blue]: color === 'blue',
+      [switchClasses.color.green]: color === 'green',
     },
     className,
   );
 
   return (
     <Flex align="center">
-      <label className={classNames('bc-switch-wrapper', rootClassName)}>
+      <label className={classNames(rootClassName)}>
         <input
           id={args.id}
           type="checkbox"
-          className="bc-switch-input peer"
+          className={`${switchClasses.input} peer`}
           ref={ref}
           checked={args.checked}
           onClick={(e) => {
