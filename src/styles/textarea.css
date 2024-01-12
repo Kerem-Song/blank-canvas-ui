@@ -12,7 +12,7 @@ $(ns) {
   &-textarea-title-counter-wrapper {
     @apply rounded-md flex justify-between items-center w-full resize-none;
 
-    .textarea-label {
+    .bc-textarea-label {
       @apply font-semibold;
 
       &.light {
@@ -35,7 +35,7 @@ $(ns) {
         @apply border border-solid border-red-500;
       }
 
-      .textarea-counter {
+      .bc-textarea-counter {
         @apply pr-10pxr py-2pxr;
       }
 

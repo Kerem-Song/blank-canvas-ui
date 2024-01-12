@@ -3,6 +3,7 @@ import React, { forwardRef, useCallback } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import { ITextareaProps } from './Textarea.types';
+import { textareaClasses } from './TextareaClasses';
 
 export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, ref) => {
   const { style, readOnly, prefix = 'bc', isError, ...inputProps } = args;
@@ -14,9 +15,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, r
     [args],
   );
 
-  const resultClassName = classNames('bc-textarea bc-textarea-border', args.className, {
-    invalid: isError,
-  });
+  const resultClassName = classNames(
+    textareaClasses.root,
+    textareaClasses.border,
+    args.className,
+    {
+      invalid: isError,
+    },
+  );
 
   return (
     <TextareaAutosize
