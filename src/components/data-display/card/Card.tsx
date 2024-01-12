@@ -1,26 +1,29 @@
 import 'react-loading-skeleton/dist/skeleton.css';
 
 import classNames from 'classnames';
+import { forwardRef } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 import { ICardProps } from './Card.types';
 
-export const Card = ({
-  title,
-  extra,
-  size,
-  titleBgColor,
-  titleColor,
-  rounded,
-  bordered = true,
-  children,
-  style,
-  className,
-  loading,
-  ...props
-}: ICardProps) => {
+export const Card = forwardRef<HTMLDivElement, ICardProps>((args, ref) => {
+  const {
+    title,
+    extra,
+    size,
+    titleBgColor,
+    titleColor,
+    rounded,
+    bordered = true,
+    children,
+    style,
+    className,
+    loading,
+    ...props
+  } = args;
   return (
     <div
+      ref={ref}
       {...props}
       style={{ ...style }}
       className={classNames(
@@ -57,4 +60,4 @@ export const Card = ({
       </div>
     </div>
   );
-};
+});

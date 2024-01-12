@@ -1,20 +1,21 @@
 import classNames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 
 import { ITagProps } from './Tag.types';
 
-export const Tag = ({
-  icon,
-  color,
-  closeIcon,
-  bordered = true,
-  onClose,
-  children,
-  style,
-  className,
-  visible,
-  ...props
-}: ITagProps) => {
+export const Tag = forwardRef<HTMLSpanElement, ITagProps>((args, ref) => {
+  const {
+    icon,
+    color,
+    closeIcon,
+    bordered = true,
+    onClose,
+    children,
+    style,
+    className,
+    visible,
+    ...props
+  } = args;
   const [showOptions, setShowOptions] = useState<boolean>(true);
 
   const closeRef = useRef<HTMLSpanElement>(null);
@@ -39,6 +40,7 @@ export const Tag = ({
     <>
       {showOptions ? (
         <span
+          ref={ref}
           {...props}
           className={classNames(
             'bc-tag-area',
@@ -78,4 +80,4 @@ export const Tag = ({
       )}
     </>
   );
-};
+});

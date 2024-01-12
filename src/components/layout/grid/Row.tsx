@@ -1,18 +1,20 @@
 import classNames from 'classnames';
-import React, { ReactNode } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 
 import { IRowProps } from './Row.types';
 
-export const Row = ({
-  wrap = 'wrap',
-  justify,
-  gutter,
-  align,
-  children,
-  style,
-  className,
-  ...props
-}: IRowProps) => {
+export const Row = forwardRef<HTMLDivElement, IRowProps>((args, ref) => {
+  const {
+    wrap = 'wrap',
+    justify,
+    gutter,
+    align,
+    children,
+    style,
+    className,
+    ...props
+  } = args;
+
   const rowValue = Array.isArray(gutter) ? gutter[1] : gutter ? gutter : 0;
   const colValue = Array.isArray(gutter) ? gutter[0] / 2 : gutter ? gutter / 2 : 0;
   const addStyleChildren = React.Children.map<ReactNode, ReactNode>(children, (child) => {
@@ -25,6 +27,7 @@ export const Row = ({
 
   return (
     <div
+      ref={ref}
       {...props}
       className={classNames('bc-row-box-border', 'flex', className)}
       style={{
@@ -40,4 +43,4 @@ export const Row = ({
       {addStyleChildren}
     </div>
   );
-};
+});
