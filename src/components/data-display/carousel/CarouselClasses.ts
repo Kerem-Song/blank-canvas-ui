@@ -1,16 +1,6 @@
-export interface CarouselClasses {
-  root: string;
-  opacity30: string;
-  opacity50: string;
-  opacity70: string;
-  opacity100: string;
-  btnSquare: string;
-  btnCircle: string;
-}
+import { attachPrefixClasses } from '@modules/utils';
 
-export type CarouselClasskey = keyof CarouselClasses;
-
-export const carouselClasses: CarouselClasses = {
+export const classes = {
   root: '',
   opacity30: 'opacity-30',
   opacity50: 'opacity-50',
@@ -19,3 +9,5 @@ export const carouselClasses: CarouselClasses = {
   btnSquare: 'btn-square',
   btnCircle: 'btn-circle',
 };
+
+export const carouselClasses = attachPrefixClasses(classes, `carousel`);

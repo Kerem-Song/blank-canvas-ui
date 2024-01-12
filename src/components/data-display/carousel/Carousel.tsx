@@ -45,18 +45,13 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
 
   const length = children.length;
 
-  const classes = generatePrefixClasses(
-    carouselClasses,
-    `${prefix ? `${prefix}-` : ''}carousel`,
-  );
-
   const rootClassName = classNames(
-    classes.root,
+    carouselClasses.root,
     {
       // 캐로셀 버튼과 indicator의 opacity
-      [classes.opacity30]: opacity === 30,
-      [classes.opacity50]: opacity === 50,
-      [classes.opacity70]: opacity === 70,
+      [carouselClasses.opacity30]: opacity === 30,
+      [carouselClasses.opacity50]: opacity === 50,
+      [carouselClasses.opacity70]: opacity === 70,
     },
     className,
   );
@@ -65,8 +60,8 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
     'bc-carousel-btn',
     {
       // 캐로셀 버튼의 shape
-      [classes.btnSquare]: arrowBtnShape === 'square',
-      [classes.btnCircle]: arrowBtnShape === 'circle',
+      [carouselClasses.btnSquare]: arrowBtnShape === 'square',
+      [carouselClasses.btnCircle]: arrowBtnShape === 'circle',
     },
     className,
   );
