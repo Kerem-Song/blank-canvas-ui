@@ -90,7 +90,7 @@ describe('<Autocomplete />', () => {
       />,
     );
 
-    const prefix = container.querySelector(inputClasses.prefixWrapper);
+    const prefix = container.querySelector(`.${inputClasses.prefixWrapper}`);
     expect(prefix?.textContent).toBe('a');
   });
 
@@ -104,7 +104,7 @@ describe('<Autocomplete />', () => {
       />,
     );
 
-    const suffix = container.querySelector(inputClasses.suffixWrapper);
+    const suffix = container.querySelector(`.${inputClasses.suffixWrapper}`);
     expect(suffix?.textContent).toBe('a');
   });
 
@@ -132,7 +132,8 @@ describe('<Autocomplete />', () => {
       expect(input.value).toBe('asdf');
     });
 
-    const list = container.querySelector(autoCompleteClasses.root)?.lastChild?.firstChild;
+    const list = container.querySelector(`.${autoCompleteClasses.root}`)?.lastChild
+      ?.firstChild;
     expect(list?.textContent).toBe('asdf');
   });
 });

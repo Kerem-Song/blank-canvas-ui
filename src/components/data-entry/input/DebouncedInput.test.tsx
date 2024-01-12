@@ -78,7 +78,8 @@ describe('<DebouncedInput />', () => {
     );
     const input: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test1' } });
-    const counter = container.querySelector(inputClasses.count)?.firstChild?.textContent;
+    const counter = container.querySelector(`.${inputClasses.count}`)?.firstChild
+      ?.textContent;
     expect(counter === input.value.length.toString()).toBeTruthy();
   });
 
@@ -167,7 +168,7 @@ describe('<DebouncedInput />', () => {
       />,
     );
 
-    const prefix = container.querySelector(inputClasses.prefixWrapper);
+    const prefix = container.querySelector(`.${inputClasses.prefixWrapper}`);
     expect(prefix?.textContent).toBe('a');
   });
 
@@ -176,7 +177,7 @@ describe('<DebouncedInput />', () => {
       <DebouncedInput suffix={'a'} handleDebounce={handleDebounce} debounceTimeout={1} />,
     );
 
-    const suffix = container.querySelector(inputClasses.suffixWrapper);
+    const suffix = container.querySelector(`.${inputClasses.suffixWrapper}`);
     expect(suffix?.textContent).toBe('a');
   });
 

@@ -86,7 +86,7 @@ describe('<Collapse />', () => {
     );
 
     const button = screen.getByRole('button');
-    const child = container.querySelector(collapseClasses.children);
+    const child = container.querySelector(`.${collapseClasses.children}`);
 
     // collapse 클릭하여 children 노출
     fireEvent.click(button);

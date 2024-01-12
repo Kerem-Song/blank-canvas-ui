@@ -58,7 +58,7 @@ describe('<InputWithTitleCounter />', () => {
     const input: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test1' } });
 
-    const counter = container.querySelector(inputClasses.counter);
+    const counter = container.querySelector(`.${inputClasses.counter}`);
     expect(
       counter?.firstChild?.textContent === input.value.length.toString(),
     ).toBeTruthy();
@@ -70,7 +70,7 @@ describe('<InputWithTitleCounter />', () => {
     rerender(
       <InputWithTitleCounter showCount={true} maxLength={10} direction="inside" />,
     );
-    const insideCounter = container.querySelector(inputClasses.suffixWrapper)
+    const insideCounter = container.querySelector(`.${inputClasses.suffixWrapper}`)
       ?.firstChild as HTMLSpanElement;
     expect(insideCounter?.classList.contains(inputClasses.count)).toBeTruthy();
 
@@ -78,7 +78,7 @@ describe('<InputWithTitleCounter />', () => {
     rerender(
       <InputWithTitleCounter showCount={true} maxLength={10} direction="bottom" />,
     );
-    const bottomCounter = container.querySelector(inputClasses.counter);
+    const bottomCounter = container.querySelector(`.${inputClasses.counter}`);
     expect(bottomCounter?.classList.contains('bottom')).toBeTruthy();
   });
 
@@ -135,14 +135,15 @@ describe('<InputWithTitleCounter />', () => {
   it('custom prefix 체크', () => {
     const { container } = render(<InputWithTitleCounter customPrefix={'a'} />);
 
-    const prefix = container.querySelector(inputClasses.prefixWrapper);
+    const prefix = container.querySelector(`.${inputClasses.prefixWrapper}`);
+    console.log('@prefix', prefix);
     expect(prefix?.textContent).toBe('a');
   });
 
   it('suffix 체크', () => {
     const { container } = render(<InputWithTitleCounter suffix={'a'} />);
 
-    const suffix = container.querySelector(inputClasses.suffixWrapper);
+    const suffix = container.querySelector(`.${inputClasses.suffixWrapper}`);
     expect(suffix?.textContent).toBe('a');
   });
 });

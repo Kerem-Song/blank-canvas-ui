@@ -55,7 +55,8 @@ describe('<Input />', () => {
     const { container } = render(<Input showCount={true} maxLength={10} />);
     const input: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test1' } });
-    const counter = container.querySelector(inputClasses.count)?.firstChild?.textContent;
+    const counter = container.querySelector(`.${inputClasses.count}`)?.firstChild
+      ?.textContent;
     expect(counter === input.value.length.toString()).toBeTruthy();
   });
 
@@ -112,14 +113,14 @@ describe('<Input />', () => {
   it('custom prefix 체크', () => {
     const { container } = render(<Input customPrefix={'a'} />);
 
-    const prefix = container.querySelector(inputClasses.prefixWrapper);
+    const prefix = container.querySelector(`.${inputClasses.prefixWrapper}`);
     expect(prefix?.textContent).toBe('a');
   });
 
   it('suffix 체크', () => {
     const { container } = render(<Input suffix={'a'} />);
 
-    const suffix = container.querySelector(inputClasses.suffixWrapper);
+    const suffix = container.querySelector(`.${inputClasses.suffixWrapper}`);
     expect(suffix?.textContent).toBe('a');
   });
 });
