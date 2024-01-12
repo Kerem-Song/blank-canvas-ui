@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { Carousel } from '.';
 
@@ -14,6 +14,8 @@ describe('<Carousel />', () => {
   const setCarouselIndex = vi.fn();
   const handleAddButton = vi.fn();
   const handleDeleteButton = vi.fn();
+  const handleNextClick = vi.fn();
+  const handlePrevClick = vi.fn();
 
   it('렌더링 체크', () => {
     render(
@@ -40,8 +42,8 @@ describe('<Carousel />', () => {
     expect(carousel?.classList.contains('bc-carousel')).toBeTruthy();
   });
 
-  it('useArrowBtn 작동 체크', () => {
-    render(
+  it('useArrowBtn shape 및 작동 체크', () => {
+    const { rerender } = render(
       <Carousel
         viewId="test"
         type="default"
@@ -52,17 +54,61 @@ describe('<Carousel />', () => {
         deleteCarousel={handleDeleteButton}
         title={'carousel'}
         useArrowBtn={true}
+        auto={false}
+        arrowBtnShape="circle"
       >
-        <div>
+        <div className="slide1">
           <h3 style={contentStyle}>1</h3>
         </div>
-        <div>
+        <div className="slide2">
           <h3 style={contentStyle}>2</h3>
         </div>
       </Carousel>,
     );
 
-    const carousel = screen.getByRole('presentation').parentElement;
-    // const nextBtn = screen.getByRole('button', { name: 'next' });
+    const nextBtn = screen.getByTitle('next');
+    const prevBtn = screen.getByTitle('prev');
+    console.log('@next', nextBtn);
+    act(() => {
+      fireEvent.click(nextBtn);
+      handleNextClick();
+
+      fireEvent.click(prevBtn);
+      handlePrevClick();
+    });
+
+    // arrow button들 클릭 후 함수 작동 여부
+    expect(handleNextClick).toBeCalledTimes(1);
+    expect(handlePrevClick).toBeCalledTimes(1);
+
+    // circle 타입 체크
+    expect(nextBtn.classList.contains('bc-carousel-btn-circle')).toBeTruthy();
+
+    // square 타입으로 변경
+    rerender(
+      <Carousel
+        viewId="test"
+        type="default"
+        index={0}
+        limit={2}
+        setCarouselIndex={setCarouselIndex}
+        addCarousel={handleAddButton}
+        deleteCarousel={handleDeleteButton}
+        title={'carousel'}
+        useArrowBtn={true}
+        auto={false}
+        arrowBtnShape="square"
+      >
+        <div className="slide1">
+          <h3 style={contentStyle}>1</h3>
+        </div>
+        <div className="slide2">
+          <h3 style={contentStyle}>2</h3>
+        </div>
+      </Carousel>,
+    );
+
+    const squareBtn = screen.getByTitle('prev');
+    expect(squareBtn.classList.contains('bc-carousel-btn-square')).toBeTruthy();
   });
 });
