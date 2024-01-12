@@ -2,6 +2,7 @@ import icon from '@icons/ic_collapse_arrow_up.svg';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Collapse } from './Collapse';
+import { collapseClasses } from './CollapseClasses';
 
 describe('<Collapse />', () => {
   const children = (
@@ -24,7 +25,7 @@ describe('<Collapse />', () => {
   it('렌더링 체크', () => {
     render(<Collapse children={children} />);
     const collapse = screen.getByRole('presentation');
-    expect(collapse?.className === 'bc-header').toBeTruthy();
+    expect(collapse?.className === collapseClasses.header.root).toBeTruthy();
   });
 
   it('제목 노출 여부 체크', () => {
@@ -38,7 +39,7 @@ describe('<Collapse />', () => {
       />,
     );
     const title = screen.getByRole('presentation').firstChild as HTMLDivElement;
-    expect(title.classList.contains('bc-label')).toBeTruthy();
+    expect(title.classList.contains(collapseClasses.header.label.root)).toBeTruthy();
 
     rerender(
       <Collapse
@@ -65,13 +66,13 @@ describe('<Collapse />', () => {
 
     // 버튼 노출
     const showIcon = screen.getByRole('button');
-    expect(showIcon?.classList.contains('bc-expand-icon')).toBeTruthy();
+    expect(showIcon?.classList.contains(collapseClasses.header.expandIcon)).toBeTruthy();
     expect(showIcon?.classList.contains('expand')).toBeTruthy();
 
     // 버튼 미노출
     rerender(<Collapse children={children} showIcon={false} />);
     const header = screen.getByRole('presentation');
-    expect(header.classList.contains('expand-icon')).toBeFalsy();
+    expect(header.classList.contains(collapseClasses.header.expandIcon)).toBeFalsy();
   });
 
   it('collapse 클릭 시 children 노출 체크', () => {
@@ -85,7 +86,7 @@ describe('<Collapse />', () => {
     );
 
     const button = screen.getByRole('button');
-    const child = container.querySelector('.bc-children');
+    const child = container.querySelector(collapseClasses.children);
 
     // collapse 클릭하여 children 노출
     fireEvent.click(button);

@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 
-import { Carousel } from '.';
+import { Carousel, carouselClasses } from '.';
 
 describe('<Carousel />', () => {
   const contentStyle: React.CSSProperties = {
@@ -39,7 +39,7 @@ describe('<Carousel />', () => {
     );
 
     const carousel = screen.getByRole('presentation').parentElement;
-    expect(carousel?.classList.contains('bc-carousel')).toBeTruthy();
+    expect(carousel?.classList.contains(carouselClasses.root)).toBeTruthy();
   });
 
   it('useArrowBtn shape 및 작동 체크', () => {
@@ -82,7 +82,7 @@ describe('<Carousel />', () => {
     expect(handlePrevClick).toBeCalledTimes(1);
 
     // circle 타입 체크
-    expect(nextBtn.classList.contains('bc-carousel-btn-circle')).toBeTruthy();
+    expect(nextBtn.classList.contains(carouselClasses.btn.shape.circle)).toBeTruthy();
 
     // square 타입으로 변경
     rerender(
@@ -109,6 +109,6 @@ describe('<Carousel />', () => {
     );
 
     const squareBtn = screen.getByTitle('prev');
-    expect(squareBtn.classList.contains('bc-carousel-btn-square')).toBeTruthy();
+    expect(squareBtn.classList.contains(carouselClasses.btn.shape.square)).toBeTruthy();
   });
 });

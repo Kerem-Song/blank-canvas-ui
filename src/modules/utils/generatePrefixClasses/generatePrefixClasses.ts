@@ -18,6 +18,7 @@ type ClassType = { [key: string]: ClassType | string };
 export const attachPrefixClasses = <T extends ClassType = ClassType>(
   classes: T,
   prefix?: string,
+  isPrefixNested?: boolean,
 ): T => {
   const result: ClassType = {};
 
@@ -26,7 +27,7 @@ export const attachPrefixClasses = <T extends ClassType = ClassType>(
     if (typeof value === 'string') {
       result[item] = [GLOBAL_PREFIX, prefix, value].filter((v) => !!v).join('-');
     } else {
-      result[item] = attachPrefixClasses(value, prefix);
+      result[item] = attachPrefixClasses(value, [prefix, item].join('-'), isPrefixNested);
     }
   }
 

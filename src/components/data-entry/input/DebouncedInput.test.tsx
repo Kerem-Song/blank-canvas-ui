@@ -2,13 +2,15 @@ import { DebouncedInput } from '@components/data-entry/input/DebouncedInput';
 import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
 import * as React from 'react';
 
+import { inputClasses } from './InputClasses';
+
 describe('<DebouncedInput />', () => {
   const handleDebounce = vi.fn();
 
   it('렌더링 체크', () => {
     render(<DebouncedInput handleDebounce={handleDebounce} debounceTimeout={1} />);
     const input = screen.getByRole('textbox');
-    expect(input.classList.contains('bc-input-normal')).toBeTruthy();
+    expect(input.classList.contains(inputClasses.normal)).toBeTruthy();
   });
 
   it('placeholder 체크', () => {
@@ -76,7 +78,7 @@ describe('<DebouncedInput />', () => {
     );
     const input: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test1' } });
-    const counter = container.querySelector('.bc-count')?.firstChild?.textContent;
+    const counter = container.querySelector(inputClasses.count)?.firstChild?.textContent;
     expect(counter === input.value.length.toString()).toBeTruthy();
   });
 
@@ -113,7 +115,7 @@ describe('<DebouncedInput />', () => {
 
     // 버튼 렌더링 확인
     const searchBtn = screen.getByRole('button').firstChild as HTMLDivElement;
-    expect(searchBtn.classList.contains('bc-search')).toBeTruthy();
+    expect(searchBtn.classList.contains(inputClasses.button.search)).toBeTruthy();
 
     // 버튼 클릭
     fireEvent.click(searchBtn);
@@ -165,7 +167,7 @@ describe('<DebouncedInput />', () => {
       />,
     );
 
-    const prefix = container.querySelector('.bc-prefixWrapper');
+    const prefix = container.querySelector(inputClasses.prefixWrapper);
     expect(prefix?.textContent).toBe('a');
   });
 
@@ -174,7 +176,7 @@ describe('<DebouncedInput />', () => {
       <DebouncedInput suffix={'a'} handleDebounce={handleDebounce} debounceTimeout={1} />,
     );
 
-    const suffix = container.querySelector('.bc-suffixWrapper');
+    const suffix = container.querySelector(inputClasses.suffixWrapper);
     expect(suffix?.textContent).toBe('a');
   });
 

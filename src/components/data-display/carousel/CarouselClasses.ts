@@ -3,16 +3,16 @@ import { attachPrefixClasses } from '@modules/utils';
 export const classes = {
   root: '',
   opacity: {
-    op30: 'opacity-30',
-    op50: 'opacity-50',
-    op70: 'opacity-70',
-    op100: 'opacity-100',
+    op30: '30',
+    op50: '50',
+    op70: '70',
+    op100: '100',
   },
   btn: {
-    root: 'btn',
+    root: '',
     shape: {
-      square: 'btn-square',
-      circle: 'btn-circle',
+      square: 'square',
+      circle: 'circle',
     },
   },
   page: 'page',
@@ -23,4 +23,6 @@ export const classes = {
   arrowBtnWrapper: 'arrow-btn-wrapper',
 } as const;
 
-export const carouselClasses = attachPrefixClasses(classes, 'carousel');
+export const carouselClasses = attachPrefixClasses(classes, 'carousel', true);
+
+console.log('carouselClasses', carouselClasses);

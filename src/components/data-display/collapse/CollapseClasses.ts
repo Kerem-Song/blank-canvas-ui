@@ -4,11 +4,11 @@ export const classes = {
   root: '',
   wrapper: 'wrapper',
   header: {
-    root: 'header',
-    label: { root: 'header-label', content: 'header-label-content' },
-    expandIcon: 'header-expand-icon',
+    root: '',
+    label: { root: '', content: 'content' },
+    expandIcon: 'expand-icon',
   },
   children: 'children',
 } as const;
 
-export const collapseClasses = attachPrefixClasses(classes, 'collapse');
+export const collapseClasses = attachPrefixClasses(classes, 'collapse', true);

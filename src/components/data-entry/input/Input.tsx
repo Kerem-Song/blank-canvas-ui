@@ -11,6 +11,7 @@ import {
 } from 'react';
 
 import { IInputProps } from './Input.types';
+import { inputClasses } from './InputClasses';
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -18,7 +19,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     args.value?.toString().length || 0,
   );
   const {
-    prefix = 'bc',
     showCount,
     isError,
     isSearch,
@@ -73,7 +73,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     false || showCount || isSearch || isClearable || customPrefix || suffix;
 
   const inputClassName = classNames(
-    wrappingType ? '' : `${args.className} bc-input-normal`,
+    wrappingType ? '' : `${args.className} ${inputClasses.normal}`,
     'group-focus-within:ring-blue-500',
     {
       invalid: isError,
@@ -81,7 +81,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   );
 
   const inputWrapClassName = classNames(
-    wrappingType ? `${args.className} bc-input-wrap` : '',
+    wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
     'group-focus-within:ring-blue-500',
     {
       invalid: isError,
@@ -121,11 +121,11 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const wrappedInput = (
     <div className="group">
       <div className={inputWrapClassName}>
-        <div className="bc-prefixWrapper">{customPrefix}</div>
+        <div className={inputClasses.prefixWrapper}>{customPrefix}</div>
         <div className="grow">{input}</div>
-        <div className="bc-suffixWrapper">
+        <div className={inputClasses.suffixWrapper}>
           {showCount ? (
-            <span className="bc-count">
+            <span className={inputClasses.count}>
               <>
                 {textLength}
                 {args.maxLength ? `/${args.maxLength}` : undefined}
@@ -137,20 +137,24 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
               <Button
                 variant="text"
                 size="sm"
-                className="bc-input-button"
+                className={inputClasses.button.root}
                 onClick={() => {
                   inputUtil.TriggerInputOnChange(inputRef.current, '');
                   setTextLength(0);
                   onSearch?.('');
                 }}
               >
-                <div className={classNames('bc-search', { clear: textLength })} />
+                <div
+                  className={classNames(inputClasses.button.search, {
+                    clear: textLength,
+                  })}
+                />
               </Button>
             </>
           ) : null}
           {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
             <Button
-              className="bc-input-button"
+              className={inputClasses.button.root}
               variant="text"
               size="sm"
               onClick={(e) => {
@@ -163,7 +167,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
                 e.stopPropagation();
               }}
             >
-              <div className="bc-clear" />
+              <div className={inputClasses.button.clear} />
             </Button>
           ) : null}
           {suffix}

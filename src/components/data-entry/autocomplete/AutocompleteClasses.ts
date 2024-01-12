@@ -4,7 +4,7 @@ export const classes = {
   root: '',
   input: 'input',
   container: 'container',
-  list: { root: 'list', focused: 'list-focused', itemName: 'list-items-name' },
+  list: { root: '', focused: 'focused', itemName: 'items-name' },
 } as const;
 
-export const autoCompleteClasses = attachPrefixClasses(classes, 'autocomplete');
+export const autoCompleteClasses = attachPrefixClasses(classes, 'autocomplete', true);
