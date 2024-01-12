@@ -2,12 +2,25 @@ import { attachPrefixClasses } from '@modules/utils';
 
 export const classes = {
   root: '',
-  opacity30: 'opacity-30',
-  opacity50: 'opacity-50',
-  opacity70: 'opacity-70',
-  opacity100: 'opacity-100',
-  btnSquare: 'btn-square',
-  btnCircle: 'btn-circle',
+  opacity: {
+    op30: 'opacity-30',
+    op50: 'opacity-50',
+    op70: 'opacity-70',
+    op100: 'opacity-100',
+  },
+  btn: {
+    root: 'btn',
+    shape: {
+      square: 'btn-square',
+      circle: 'btn-circle',
+    },
+  },
+  page: 'page',
+  component: 'component',
+  contentWrapper: 'content-wrapper',
+  dots: 'dots',
+  dotsBtn: 'dots-button',
+  arrowBtnWrapper: 'arrow-btn-wrapper',
 } as const;
 
 export const carouselClasses = attachPrefixClasses(classes, 'carousel');

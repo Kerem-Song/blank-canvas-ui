@@ -71,7 +71,7 @@ export const Default: Story = {
     setCarouselIndex: () => {},
     addCarousel: () => {},
     deleteCarousel: () => {},
-    dotsBottom: 10,
+    dotsBottom: 9,
     arrowBtnMarginTop: 100,
     opacity: 30,
   },

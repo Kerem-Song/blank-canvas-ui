@@ -186,7 +186,7 @@ function App() {
           <div>
             <h3 style={contentStyle}>3</h3>
           </div>
-          <div>
+          {/* <div>
             <h3 style={contentStyle}>4</h3>
           </div>
           <div>
@@ -203,7 +203,7 @@ function App() {
           </div>
           <div>
             <h3 style={contentStyle}>9</h3>
-          </div>
+          </div> */}
         </Carousel>
         <InputWithTitleCounter
           label="titletest"
