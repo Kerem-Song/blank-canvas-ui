@@ -16,7 +16,7 @@ $(ns) {
       }
     }
 
-    &-button {
+    &-shape-button {
       @apply flex justify-center items-center p-4pxr rounded-md border border-gray-300;
 
       &.prefix-text {
@@ -24,18 +24,18 @@ $(ns) {
       }
     }
 
-    &-area,
-    &-drag {
+    &-shape-area,
+    &-shape-drag {
       @apply flex justify-center items-center w-full border rounded-md border-gray-300 bg-no-repeat bg-center;
 
-      .bc-suffix-icon {
+      .bc-upload-suffix-icon {
         @apply flex justify-center items-center;
       }
 
       &:hover {
         @apply bg-blue-100 bg-[url('@icons/ic_img_add_hover.svg')];
 
-        .bc-suffix-wrapper {
+        .bc-upload-suffix-wrapper {
           @apply hidden;
         }
       }

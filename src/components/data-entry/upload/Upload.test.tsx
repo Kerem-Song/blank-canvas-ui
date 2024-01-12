@@ -1,6 +1,7 @@
 import imgTest from '@icons/ic_img.svg';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
+import { uploadClasses } from '.';
 import { Upload } from './Upload';
 
 describe('<Upload />', () => {
@@ -24,7 +25,7 @@ describe('<Upload />', () => {
     );
 
     const upload = screen.getByTestId('test');
-    expect(upload.classList.contains('bc-upload'));
+    expect(upload.classList.contains(uploadClasses.root));
   });
 
   it('shpae에 따른 업로드 모양 체크', () => {
@@ -45,7 +46,7 @@ describe('<Upload />', () => {
     const buttonShape = screen.getByTestId('test').parentElement;
 
     // shape이 button일 경우
-    expect(buttonShape?.classList.contains('bc-upload-button')).toBeTruthy();
+    expect(buttonShape?.classList.contains(uploadClasses.shape.button)).toBeTruthy();
 
     // shape이 area일 경우
     rerender(
@@ -62,7 +63,7 @@ describe('<Upload />', () => {
       />,
     );
     const areaShape = screen.getByTestId('test').parentElement;
-    expect(areaShape?.classList.contains('bc-upload-area')).toBeTruthy();
+    expect(areaShape?.classList.contains(uploadClasses.shape.area)).toBeTruthy();
 
     // shape이 drag and drop일 경우
     rerender(
@@ -79,7 +80,7 @@ describe('<Upload />', () => {
       />,
     );
     const dragShape = screen.getByTestId('test').parentElement;
-    expect(dragShape?.classList.contains('bc-upload-drag')).toBeTruthy();
+    expect(dragShape?.classList.contains(uploadClasses.shape.drag)).toBeTruthy();
   });
 
   it('prefix 체크', () => {
@@ -100,11 +101,11 @@ describe('<Upload />', () => {
     );
 
     // 버튼에 쓰인 prefix text 체크
-    const prefixText = container.querySelector('.bc-prefix-text');
+    const prefixText = container.querySelector(`.${uploadClasses.prefix.text}`);
     expect(prefixText?.textContent).toBe('a');
 
     // prefix icon 체크
-    const prefixIcon = container.querySelector('.bc-prefix-icon');
+    const prefixIcon = container.querySelector(`.${uploadClasses.prefix.icon}`);
     expect(prefixIcon?.children).not.toBeNull();
   });
 
@@ -126,11 +127,11 @@ describe('<Upload />', () => {
     );
 
     // 버튼에 쓰인 suffix text 체크
-    const suffixText = container.querySelector('.bc-suffix-text');
+    const suffixText = container.querySelector(`.${uploadClasses.suffix.text}`);
     expect(suffixText?.textContent).toBe('a');
 
     // suffix icon 체크
-    const suffixIcon = container.querySelector('.bc-suffix-icon');
+    const suffixIcon = container.querySelector(`.${uploadClasses.suffix.icon}`);
     expect(suffixIcon?.children).not.toBeNull();
   });
 
