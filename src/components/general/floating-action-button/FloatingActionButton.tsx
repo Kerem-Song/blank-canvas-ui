@@ -17,7 +17,6 @@ export const FloatingActionButton = forwardRef<
   const floatingAtionButtonRef = useRef<HTMLDivElement>(null);
   const {
     className,
-    prefix = 'bc',
     shape = 'circle',
     trigger = 'click',
     style,
@@ -36,25 +35,29 @@ export const FloatingActionButton = forwardRef<
     ...buttonProps
   } = args;
 
-  const classes = generatePrefixClasses(
-    floatingActionButtonClasses,
-    `${prefix ? `${prefix}-` : ''}floating-action-button`,
-  );
-
   const rootClassName = classNames(
-    classes.root,
+    floatingActionButtonClasses.root,
+    floatingActionButtonClasses.wrapper,
+    'wrapper',
+    {
+      open: isOpen,
+      [floatingActionButtonClasses.badgeCounter]: useBadge,
+    },
+  );
+  const btnClassName = classNames(
+    floatingActionButtonClasses.btn.root,
     {
       // disabled
-      [classes.disabled]: args['aria-disabled'],
+      [floatingActionButtonClasses.disabled]: args['aria-disabled'],
 
       // shape
-      [classes.circle]: args.shape === 'circle',
-      [classes.square]: args.shape === 'square',
+      [floatingActionButtonClasses.circle]: args.shape === 'circle',
+      [floatingActionButtonClasses.square]: args.shape === 'square',
 
       // group menu trigger(hover or click)
-      [classes.triggerClick]: args.trigger === 'click',
-      [classes.triggerHover]: args.trigger === 'hover',
-      [classes.badgeCounter]: args.useBadge === true,
+      [floatingActionButtonClasses.triggerClick]: args.trigger === 'click',
+      [floatingActionButtonClasses.triggerHover]: args.trigger === 'hover',
+      [floatingActionButtonClasses.badgeCounter]: args.useBadge === true,
     },
     className,
   );
@@ -76,10 +79,7 @@ export const FloatingActionButton = forwardRef<
 
   return (
     <div
-      className={classNames('bc-floating-action-button-wrapper wrapper', {
-        open: isOpen,
-        'bc-badge-counter': useBadge,
-      })}
+      className={rootClassName}
       style={{ right: `${remUtil.rem(right)}`, bottom: `${remUtil.rem(bottom)}` }}
       onMouseLeave={(e) => {
         e.stopPropagation();
@@ -104,21 +104,23 @@ export const FloatingActionButton = forwardRef<
             placement="left"
           >
             <div
-              className={classNames(rootClassName, {
-                'bc-hidden-menu': menu,
+              className={classNames(btnClassName, {
+                [floatingActionButtonClasses.hiddenMenu]: menu,
                 open: isOpen,
               })}
             >
               <button
-                className={classNames('bc-hidden-button')}
+                className={floatingActionButtonClasses.hiddenBtn}
                 onClick={item.callback}
                 key={i}
               >
                 <div
-                  className="bc-icon"
+                  className={floatingActionButtonClasses.icon}
                   style={{ backgroundImage: `url(${item.icon})` }}
                 />
-                <div className="bc-description">{item.description}</div>
+                <div className={floatingActionButtonClasses.description}>
+                  {item.description}
+                </div>
               </button>
             </div>
           </Tooltip>
@@ -134,7 +136,7 @@ export const FloatingActionButton = forwardRef<
       >
         <Tooltip description={tooltip ?? ''} disable={!tooltip} placement="left">
           <div
-            className={rootClassName}
+            className={btnClassName}
             onMouseEnter={(e) => {
               e.stopPropagation();
               trigger === 'hover' && menu && setIsOpen(true);
@@ -142,10 +144,10 @@ export const FloatingActionButton = forwardRef<
           >
             <button onClick={handleClick}>
               <div
-                className="bc-icon"
+                className={floatingActionButtonClasses.icon}
                 style={{ backgroundImage: isOpen ? `url(${closeIcon})` : `url(${icon})` }}
               />
-              <div className="bc-description">{description}</div>
+              <div className={floatingActionButtonClasses.description}>{description}</div>
             </button>
           </div>
         </Tooltip>

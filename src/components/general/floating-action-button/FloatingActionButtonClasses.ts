@@ -1,18 +1,8 @@
-export interface IFloatingActionButtonClasses {
-  root: string;
-  disabled: string;
-  icon: string;
-  circle: string;
-  square: string;
-  triggerClick: string;
-  triggerHover: string;
-  badgeCounter: string;
-}
+import { attachPrefixClasses } from '@modules/utils';
 
-export type FloatingActionButtonClassesKey = keyof IFloatingActionButtonClasses;
-
-export const floatingActionButtonClasses: IFloatingActionButtonClasses = {
+export const classes = {
   root: '',
+  wrapper: 'wrapper',
   disabled: 'disabled',
   icon: 'icon',
   circle: 'circle',
@@ -20,4 +10,14 @@ export const floatingActionButtonClasses: IFloatingActionButtonClasses = {
   triggerClick: 'trigger-click',
   triggerHover: 'trigger-hover',
   badgeCounter: 'badge-counter',
-};
+  description: 'description',
+  hiddenBtn: 'hidden-button',
+  hiddenMenu: 'hidden-menu',
+  btn: { root: '' },
+} as const;
+
+export const floatingActionButtonClasses = attachPrefixClasses(
+  classes,
+  'floating-action-button',
+  true,
+);

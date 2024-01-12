@@ -32,11 +32,6 @@ const menu: IFloatingActionMenuProps[] = [
   },
 ];
 
-const classes = generatePrefixClasses(
-  floatingActionButtonClasses,
-  'bc-floating-action-button',
-);
-
 describe('<FloatingActionButton />', () => {
   it('렌더링 체크', () => {
     const { container } = render(
@@ -45,7 +40,7 @@ describe('<FloatingActionButton />', () => {
     const floatingBtn = container.querySelector('.wrapper');
 
     expect(
-      floatingBtn?.classList.contains('bc-floating-action-button-wrapper'),
+      floatingBtn?.classList.contains(floatingActionButtonClasses.wrapper),
     ).toBeTruthy();
   });
 
@@ -60,7 +55,7 @@ describe('<FloatingActionButton />', () => {
       />,
     );
     const floatingBtn = container.querySelector(
-      '.bc-floating-action-button-wrapper',
+      `.${floatingActionButtonClasses.wrapper}`,
     ) as Element;
 
     fireEvent.click(floatingBtn);
@@ -72,12 +67,16 @@ describe('<FloatingActionButton />', () => {
     const { container, rerender } = render(
       <FloatingActionButton shape="circle" icon="" callback={onClick} />,
     );
-    const circleBtn = container.querySelector('.bc-floating-action-button');
-    expect(circleBtn?.classList.contains(classes.circle)).toBeTruthy();
+    const circleBtn = container.querySelector(`.${floatingActionButtonClasses.btn.root}`);
+    expect(
+      circleBtn?.classList.contains(floatingActionButtonClasses.circle),
+    ).toBeTruthy();
 
     rerender(<FloatingActionButton shape="square" icon="" callback={onClick} />);
-    const squareBtn = container.querySelector('.bc-floating-action-button');
-    expect(squareBtn?.classList.contains(classes.square)).toBeTruthy();
+    const squareBtn = container.querySelector(`.${floatingActionButtonClasses.btn.root}`);
+    expect(
+      squareBtn?.classList.contains(floatingActionButtonClasses.square),
+    ).toBeTruthy();
   });
 
   it('메뉴 형식일 때 플로팅버튼 클릭 시 메뉴 기능 체크', () => {
@@ -117,9 +116,11 @@ describe('<FloatingActionButton />', () => {
     );
 
     const floatingBtn = container.querySelector(
-      '.bc-floating-action-button-wrapper',
+      `.${floatingActionButtonClasses.wrapper}`,
     ) as Element;
-    const hiddenMenu = container.querySelector('.bc-hidden-menu') as HTMLDivElement;
+    const hiddenMenu = container.querySelector(
+      `.${floatingActionButtonClasses.hiddenMenu}`,
+    ) as HTMLDivElement;
 
     fireEvent.click(floatingBtn);
     fireEvent.change(hiddenMenu, { target: { className: 'open' } });
@@ -131,7 +132,9 @@ describe('<FloatingActionButton />', () => {
     expect(badge?.firstChild?.textContent).toBe('6');
 
     // 메뉴 중 하나 눌렀을 시 콜백 호출 여부
-    const buttons = container.querySelectorAll('.bc-floating-action-button');
+    const buttons = container.querySelectorAll(
+      `.${floatingActionButtonClasses.btn.root}`,
+    );
 
     fireEvent.click(buttons[1]);
     const callbackSpy = vi.spyOn(callbackTest2, 'textCallback');

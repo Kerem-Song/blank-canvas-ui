@@ -23,5 +23,3 @@ export const classes = {
 } as const;
 
 export const modalClasses = attachPrefixClasses(classes, 'modal', true);
-
-console.log('modal class', modalClasses);
