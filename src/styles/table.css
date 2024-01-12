@@ -1,0 +1,41 @@
+$ns: .bc;
+
+$(ns)-table-wrap {
+  /* wrap */
+  & {
+    @apply relative overflow-x-auto bg-white;
+  }
+
+  /* table */
+  $(ns)-table {
+    & {
+      @apply w-full;
+    }
+
+    thead {
+      & {
+        @apply sticky top-0 bg-gray-150 align-middle text-gray-500;
+      }
+
+      th {
+        @apply px-3 relative;
+      }
+    }
+
+    tbody {
+      & {
+      }
+      tr {
+        & {
+          @apply hover:bg-gray-100;
+        }
+
+        td {
+          & {
+            @apply border-b border-gray-150 px-3;
+          }
+        }
+      }
+    }
+  }
+}

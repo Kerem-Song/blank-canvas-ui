@@ -15,6 +15,11 @@ import {
   Textarea,
   TextAreaWithTitleCounter,
 } from '@components';
+import {
+  Table,
+  TableColumn,
+  TableColumnGroup,
+} from '@components/data-display/table/Table';
 import { IRadioOption } from '@components/data-entry/radio';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg2 from '@icons/ic_search.svg?react';
@@ -98,8 +103,27 @@ function App() {
   };
   const setCarouselIndex = ({ id, index }: { id: string; index: number }) => {};
 
+  const tableSource = [
+    { a: '111', b: '111', c: '111' },
+    { a: '222', b: '222', c: '222' },
+    { a: '333', b: '333', c: '333' },
+    { a: '111', b: '111', c: '111' },
+    { a: '111', b: '111', c: '111' },
+    { a: '111', b: '111', c: '111' },
+    { a: '111', b: '111', c: '111' },
+    { a: '111', b: '111', c: '111' },
+  ];
+
   return (
     <>
+      <div className="p-5">
+        <Table wrapClassName="max-h-[200px]" bordered rounded dataSource={tableSource}>
+          <TableColumn title="AAA" path="a" />
+          <TableColumn title="BBB" path="b" />
+          <TableColumn title="CCC" path="c" />
+          abc
+        </Table>
+      </div>
       <Textarea className="" maxLength={12} autoComplete={'true'} />
       <TextAreaWithTitleCounter
         label="label"
