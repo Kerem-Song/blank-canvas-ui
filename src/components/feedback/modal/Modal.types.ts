@@ -11,7 +11,7 @@ export interface IModalProps extends HTMLAttributes<HTMLDivElement> {
    * @type 'sm' | 'md' | 'lg' | 'xl'
    * @default 'sm'
    */
-  size: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 
   /**
    * 모달의 제목 또는 header 메시지

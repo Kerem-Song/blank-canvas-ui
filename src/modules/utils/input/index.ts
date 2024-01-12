@@ -1,8 +1,6 @@
 import parse from 'html-react-parser';
 
-const BASE_PIXEL = 16;
-
-export const util = {
+export const inputUtil = {
   TriggerInputOnChange: (input: HTMLInputElement | null, value: string) => {
     if (!input) {
       return;
@@ -16,10 +14,6 @@ export const util = {
     nativeInputValueSetter?.call(input, value);
     const ev2 = new Event('input', { bubbles: true });
     input.dispatchEvent(ev2);
-  },
-
-  rem: (size: number, baseSize: number = BASE_PIXEL) => {
-    return `${size / baseSize}rem`;
   },
 
   replaceKeywordMark: (text: string, keyword?: string, isStart = false) => {
@@ -41,14 +35,5 @@ export const util = {
         },
       ),
     );
-  },
-
-  pxToRem: (size: number) => {
-    return size / BASE_PIXEL;
-  },
-  findNumber: (size: string | number) => {
-    if (typeof size === 'string') return Number(size.replace(/[^0-9]/g, ''));
-    else if (typeof size === 'number') return size;
-    else return 0;
   },
 };

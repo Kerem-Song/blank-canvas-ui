@@ -1,8 +1,8 @@
 import { Input } from '@components/data-entry/input/Input';
+import { inputUtil } from '@modules/utils/input';
 import classNames from 'classnames';
 import { KeyboardEvent, useDeferredValue, useEffect, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
-import { util } from 'src/utils/utils';
 
 import { AutocompleteProps } from './Autocomplete.types';
 
@@ -124,7 +124,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
                   ? String(focusedItem[displayName])
                   : String(focusedItem);
                 handleSearchChange(value);
-                util.TriggerInputOnChange(inputElement.current, value);
+                inputUtil.TriggerInputOnChange(inputElement.current, value);
               }
               handleHidePopper();
             } else {
@@ -170,11 +170,11 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
                 if (referenceElement.current) {
                   const value = displayName ? String(item[displayName]) : String(item);
                   handleSearchChange(value);
-                  util.TriggerInputOnChange(inputElement.current, value);
+                  inputUtil.TriggerInputOnChange(inputElement.current, value);
                 }
               }}
             >
-              <span>{util.replaceKeywordMark(display, search, true)}</span>
+              <span>{inputUtil.replaceKeywordMark(display, search, true)}</span>
             </div>
           );
         })}

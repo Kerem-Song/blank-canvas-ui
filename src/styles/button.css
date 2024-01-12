@@ -1,4 +1,4 @@
-$ns: .btn;
+$ns: .bc-btn;
 
 /* prettier-ignore */
 $(ns) {
@@ -26,30 +26,30 @@ $(ns) {
   /* sizes */
   &-xs {
     @apply
-      py-1
-      px-3
-      min-h-[1.25rem]
+      py-0
+      px-[7px]
+      min-h-[18px]
       text-xs;
   }
   &-sm {
     @apply
-      py-2
-      px-4
-      min-h-[1.5rem]
+      py-0
+      px-[7px]
+      min-h-[24px]
       text-sm;
   }
   &-md {
     @apply
-      py-3
-      px-6
-      min-h-[1.75rem]
+      py-[3px]
+      px-[15px]
+      min-h-[32px]
       text-base;
   }
   &-lg {
     @apply
-      py-3.5
-      px-7
-      min-h-[2rem]
+      py-[5px]
+      px-[15px]
+      min-h-[40px]
       text-lg;
   }
 
@@ -60,7 +60,7 @@ $(ns) {
 
   /* shape */
   &-round {
-    @apply rounded-md;
+    @apply rounded-6;
   }
 
   &-circle {
@@ -102,7 +102,7 @@ $(ns) {
       @apply 
       bg-gray-300/20;
     }
-    &.btn-primary {
+    &$(ns)-primary {
       @apply
       text-primary-main;
       &:hover:not($(ns)-disabled) {
@@ -110,7 +110,7 @@ $(ns) {
         bg-primary-light/20;
       }
     }
-    &.btn-secondary {
+    &$(ns)-secondary {
       @apply
       text-secondary-main;
       &:hover:not($(ns)-disabled) {
@@ -118,7 +118,7 @@ $(ns) {
         bg-secondary-light/20;
       }
     }
-    &.btn-success {
+    &$(ns)-success {
       @apply
       text-success-main;
       &:hover:not($(ns)-disabled) {
@@ -126,7 +126,7 @@ $(ns) {
         bg-success-light/20;
       }
     }
-    &.btn-error {
+    &$(ns)-error {
       @apply
       text-error-main;
       &:hover:not($(ns)-disabled) {
@@ -134,7 +134,7 @@ $(ns) {
         bg-error-light/20;
       }
     }
-    &.btn-info {
+    &$(ns)-info {
       @apply
       text-info-main;
       &:hover:not($(ns)-disabled) {
@@ -142,7 +142,7 @@ $(ns) {
         bg-info-light/20;
       }
     }
-    &.btn-warning {
+    &$(ns)-warning {
       @apply
       text-warning-main;
       &:hover:not($(ns)-disabled) {
@@ -150,7 +150,7 @@ $(ns) {
         bg-warning-light/20;
       }
     }
-    &.btn-dark {
+    &$(ns)-dark {
       @apply
       text-neutral-800;
       &:hover:not($(ns)-disabled) {
@@ -168,7 +168,7 @@ $(ns) {
       @apply
       bg-gray-500;
     }
-    &.btn-primary {
+    &$(ns)-primary {
       @apply
     bg-primary-main
     text-white;
@@ -177,7 +177,7 @@ $(ns) {
         bg-primary-dark;
       }
     }
-    &.btn-secondary {
+    &$(ns)-secondary {
       @apply 
       bg-secondary-main
       text-white;
@@ -186,7 +186,7 @@ $(ns) {
         bg-secondary-dark;
       }
     }
-    &.btn-success {
+    &$(ns)-success {
       @apply 
       bg-success-main
       text-white;
@@ -195,7 +195,7 @@ $(ns) {
         bg-success-dark;
       }
     }
-    &.btn-error {
+    &$(ns)-error {
       @apply 
       bg-error-main
       text-white;
@@ -204,7 +204,7 @@ $(ns) {
         bg-error-dark;
       }
     }
-    &.btn-info {
+    &$(ns)-info {
       @apply
       bg-info-main
       text-white;
@@ -213,7 +213,7 @@ $(ns) {
         bg-info-dark;
       }
     }
-    &.btn-warning {
+    &$(ns)-warning {
       @apply 
       bg-warning-main
       text-white;
@@ -222,7 +222,7 @@ $(ns) {
         bg-warning-dark;
       }
     }
-    &.btn-dark {
+    &$(ns)-dark {
       @apply
       bg-neutral-800
       text-white;
@@ -242,7 +242,7 @@ $(ns) {
       @apply 
       bg-gray-300/20;
     }
-    &.btn-primary {
+    &$(ns)-primary {
       @apply
       border-primary-main
       text-primary-main;
@@ -251,7 +251,7 @@ $(ns) {
         bg-primary-light/20;
       }
     }
-    &.btn-secondary {
+    &$(ns)-secondary {
       @apply
       border-secondary-main
       text-secondary-main;
@@ -260,7 +260,7 @@ $(ns) {
         bg-secondary-light/20;
       }
     }
-    &.btn-success {
+    &$(ns)-success {
       @apply
       border-success-main
       text-success-main;
@@ -269,7 +269,7 @@ $(ns) {
         bg-success-light/20;
       }
     }
-    &.btn-error {
+    &$(ns)-error {
       @apply
       border-error-main
       text-error-main;
@@ -278,7 +278,7 @@ $(ns) {
         bg-error-light/20;
       }
     }
-    &.btn-info {
+    &$(ns)-info {
       @apply
       border-info-main
       text-info-main;
@@ -287,7 +287,7 @@ $(ns) {
         bg-info-light/20;
       }
     }
-    &.btn-warning {
+    &$(ns)-warning {
       @apply
       border-warning-main 
       text-warning-main;
@@ -296,7 +296,7 @@ $(ns) {
         bg-warning-light/20;
       }
     }
-    &.btn-dark {
+    &$(ns)-dark {
       @apply
       border-neutral-800
       text-neutral-800;

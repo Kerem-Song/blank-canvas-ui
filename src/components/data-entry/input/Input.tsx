@@ -1,4 +1,5 @@
 import { Button } from '@components/general/button/Button';
+import { inputUtil } from '@modules/utils/input';
 import classNames from 'classnames';
 import {
   ChangeEvent,
@@ -8,7 +9,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import { util } from 'src/utils/utils';
 
 import { IInputProps } from './Input.types';
 
@@ -139,7 +139,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
                 size="sm"
                 className="bc-input-button"
                 onClick={() => {
-                  util.TriggerInputOnChange(inputRef.current, '');
+                  inputUtil.TriggerInputOnChange(inputRef.current, '');
                   setTextLength(0);
                   onSearch?.('');
                 }}
@@ -154,7 +154,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
               variant="text"
               size="sm"
               onClick={(e) => {
-                util.TriggerInputOnChange(inputRef.current, '');
+                inputUtil.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
                 onClear?.();
               }}

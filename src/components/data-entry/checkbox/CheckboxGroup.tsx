@@ -26,7 +26,7 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
     disabled = false,
     readOnly = false,
     required = false,
-    prefix,
+    prefix = 'bc',
     slotProps = {},
     className,
     color = 'primary',

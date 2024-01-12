@@ -55,7 +55,7 @@ export const Default: Story = {
     required: false,
     size: 'md',
     color: 'primary',
-    prefix: '',
+    prefix: 'bc',
   },
 };
 

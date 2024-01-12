@@ -1,9 +1,9 @@
 import { AnyObject } from '@models/types/AnyObject';
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
-import { util } from 'src/utils/utils';
 
 import { ISelectProp } from './Select.types';
 
@@ -33,7 +33,7 @@ function SelectFunc<T extends AnyObject>(
     ...inputProps
   } = props;
   const tempWidth =
-    typeof selectWidth !== 'number' ? util.findNumber(selectWidth) : selectWidth;
+    typeof selectWidth !== 'number' ? remUtil.findNumber(selectWidth) : selectWidth;
   const width = tempWidth > 150 ? `${tempWidth}px` : '150px';
 
   const [init, setInit] = useState(false);
@@ -215,6 +215,7 @@ function SelectFunc<T extends AnyObject>(
           'bc-select-referenceElement',
           className,
         )}
+        onClick={iconClick}
       >
         <input
           {...inputProps}
@@ -243,7 +244,7 @@ function SelectFunc<T extends AnyObject>(
             {suffixIcon}
           </div>
         ) : (
-          <div onClick={iconClick} className={classNames('select-icon')}>
+          <div onClick={iconClick} className={classNames('bc-select-icon')}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -278,6 +279,7 @@ function SelectFunc<T extends AnyObject>(
                 : open && init
                   ? 'visible'
                   : 'hidden',
+            margin: placement === 'left' || placement === 'right' ? '0 8px' : '8px 0',
           }}
           ref={popperElement}
           className={classNames('bc-select-ul')}

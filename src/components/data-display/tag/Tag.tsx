@@ -54,7 +54,7 @@ export const Tag = ({
         >
           <span
             {...props}
-            className={classNames('bc-tag-pd')}
+            className={classNames('bc-tag-pd', 'bc-tag-icon')}
             style={{ display: icon ? 'bc-tag-inline' : 'none' }}
           >
             {icon}
@@ -62,7 +62,7 @@ export const Tag = ({
           {children}
           <span
             {...props}
-            className={classNames('bc-tag-close', 'tag-pd')}
+            className={classNames('bc-tag-close', 'bc-tag-pd')}
             onClick={onClose}
             ref={closeRef}
             style={{

@@ -16,7 +16,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<ISpinProps>;
 
-export const Default: Story = {
+export const Default2: Story = {
   render: (args) => {
     return (
       <div style={{ height: 100, border: '1px solid' }}>
@@ -26,6 +26,7 @@ export const Default: Story = {
           color={args.color}
           type={args.type}
           delay={args.delay}
+          spinning={args.spinning}
         />
       </div>
     );
@@ -35,6 +36,7 @@ export const Default: Story = {
     color: 'pink',
     type: 'spinningBubbles',
     delay: 0,
+    spinning: true,
   },
 };
 

@@ -59,6 +59,7 @@ export const Default: Story = {
     children: 'Link',
     color: 'primary',
     size: 'md',
+    prefix: 'bc',
   },
 };
 

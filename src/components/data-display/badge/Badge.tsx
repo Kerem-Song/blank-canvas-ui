@@ -1,5 +1,5 @@
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
-import { util } from 'src/utils/utils';
 
 import { IBadgeProps } from './Badge.types';
 
@@ -17,18 +17,26 @@ export const Badge = ({
   className,
   ...props
 }: IBadgeProps) => {
-  const division = Number.isNaN(count)
-    ? Number(count?.toString().length)
-    : Number(count?.toString().length);
-  const digit = division < 2 ? 2 / 0.25 : division / 0.25;
+  const division = Number.isNaN(count) ? 0 : Number(count?.toString().length);
+  const cipher = 0.25;
+  let overflowDivision = 2;
+  if (overflowCount !== 99) {
+    overflowDivision = overflowCount.toString().length;
+  }
+  let tmp = overflowDivision;
+  if (Number(count) >= 0 && Number(count) > overflowCount) {
+    tmp += 1;
+  } else {
+    tmp = division;
+  }
+  const digit = tmp < 2 ? 2 / cipher : tmp == 2 ? (tmp + 1) / cipher : tmp / cipher;
   const tmpSize = typeof size !== 'number' ? Number(size.replace(/[^0-9]/g, '')) : size;
   const baseSize = 10;
-  const fontSize = tmpSize > baseSize ? `${util.rem(tmpSize)}` : `${util.rem(baseSize)}`;
+  const fontSize =
+    tmpSize > baseSize ? `${remUtil.rem(tmpSize)}` : `${remUtil.rem(baseSize)}`;
   const circle = tmpSize > baseSize ? `${tmpSize / 32}rem` : `${baseSize / 32}rem`;
 
-  return (showZero && Number(count) === 0) ||
-    Number(count) > 0 ||
-    Number.isNaN(division) ? (
+  return (showZero && Number(count) === 0) || Number(count) > 0 || dot ? (
     <span {...props} className={classNames('bc-badge-area')}>
       {children}
       {dot ? (

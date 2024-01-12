@@ -1,9 +1,9 @@
 import { carouselClasses } from '@components/data-display/carousel/CarouselClasses';
 import { Col, Row } from '@components/layout';
 import { generatePrefixClasses } from '@modules/utils';
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import { util } from 'src/utils/utils';
 
 import { ICarouselProps } from './Carousel.types';
 
@@ -39,7 +39,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
 
   const [current, setCurrent] = useState(0);
   const [style, setStyle] = useState({
-    marginLeft: `${util.rem(current * -(CAROUSEL_WIDTH ?? 0))}`,
+    marginLeft: `${remUtil.rem(current * -(CAROUSEL_WIDTH ?? 0))}`,
     transition: 'none',
   });
 
@@ -76,7 +76,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
 
   useEffect(() => {
     setStyle({
-      marginLeft: `${util.rem(current * -(CAROUSEL_WIDTH ?? 0))}`,
+      marginLeft: `${remUtil.rem(current * -(CAROUSEL_WIDTH ?? 0))}`,
       transition: 'all 0.3s ease-out',
     });
 
@@ -87,7 +87,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
         setCurrent((prev) => (prev === children.length - 1 ? 0 : prev + 1));
         setStyle({
           ...style,
-          marginLeft: `${util.rem(-1 * -(CAROUSEL_WIDTH ?? 0))}`,
+          marginLeft: `${remUtil.rem(-1 * -(CAROUSEL_WIDTH ?? 0))}`,
         });
       }, delay);
 
@@ -187,7 +187,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
       <div
         role="presentation"
         style={{
-          width: `${util.rem(CAROUSEL_WIDTH ?? 0)}`,
+          width: `${remUtil.rem(CAROUSEL_WIDTH ?? 0)}`,
         }}
         className="bc-carousel-component"
       >
@@ -198,13 +198,13 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
           {children.map((child, i) => {
             return (
               <div
-                style={{ width: `${util.rem(CAROUSEL_WIDTH ?? 0)}`, flex: 'none' }}
+                style={{ width: `${remUtil.rem(CAROUSEL_WIDTH ?? 0)}`, flex: 'none' }}
                 key={`card-wrap-${i}`}
               >
                 {i === current
                   ? child
                   : !readOnly && (
-                      <div style={{ width: `${util.rem(CAROUSEL_WIDTH ?? 0)}` }}></div>
+                      <div style={{ width: `${remUtil.rem(CAROUSEL_WIDTH ?? 0)}` }}></div>
                     )}
               </div>
             );
@@ -220,7 +220,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
               data-carousel-index={current === i}
               key={i}
               onClick={() => setCurrent(i)}
-              style={{ bottom: `${util.rem(dotsBottom)}` }}
+              style={{ bottom: `${remUtil.rem(dotsBottom)}` }}
             ></button>
           ))}
         </div>
@@ -230,7 +230,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
         <Row
           className="bc-arrow-btn-wrapper"
           style={{
-            marginTop: `-${util.rem(arrowBtnMarginTop)}`,
+            marginTop: `-${remUtil.rem(arrowBtnMarginTop)}`,
           }}
         >
           <Col>
@@ -239,6 +239,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
               onClick={handlePrevClick}
               disabled={current === 0}
               data-button={'prev'}
+              title={'prev'}
             />
           </Col>
           <Col>
@@ -247,6 +248,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
               onClick={handleNextClick}
               disabled={NextDisabled()}
               data-button={'next'}
+              title={'next'}
             />
           </Col>
         </Row>

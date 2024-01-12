@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { Checkbox, checkboxClasses } from './index';
 
-const classes = generatePrefixClasses(checkboxClasses, 'checkbox');
+const classes = generatePrefixClasses(checkboxClasses, 'bc-checkbox');
 
 describe('<Checkbox />', () => {
   it('렌더링 됩니다.', () => {

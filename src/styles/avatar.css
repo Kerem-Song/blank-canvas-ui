@@ -1,4 +1,4 @@
-$ns: .avatar;
+$ns: .bc-avatar;
 
 /* prettier-ignore */
 $(ns) {
@@ -34,29 +34,29 @@ $(ns) {
 
   &-rounded {
     @apply
-      rounded-md;
+      rounded-6;
   }
 
   /* size */
   &-sm {
     @apply
-      w-6
-      h-6
-      text-[12px];
+      w-[24px]
+      h-[24px]
+      text-sm;
   }
 
   &-md {
     @apply
-      w-10
-      h-10
-      text-[20px];
+      w-[32px]
+      h-[32px]
+      text-base;
   }
 
   &-lg {
     @apply
-      w-14
-      h-14
-      text-[28px];
+      w-[40px]
+      h-[40px]
+      text-lg;
   }
 
   /* colorDefault */

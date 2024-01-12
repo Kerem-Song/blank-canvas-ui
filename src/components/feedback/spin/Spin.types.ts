@@ -44,5 +44,10 @@ export interface ISpinProps extends React.HTMLAttributes<HTMLElement> {
    * @type boolean
    */
   fullscreen?: boolean;
+  /**
+   * spin할지 여부 적용
+   * @default
+   * @type true
+   */
   spinning?: boolean;
 }

@@ -1,16 +1,16 @@
 .bc-select-container {
   @apply flex h-[30px] cursor-pointer;
   .bc-select-focus {
-    @apply ring-2 ring-blue-500/75;
+    @apply ring-2 ring-blue-500;
   }
   .bc-select-focus-none {
     @apply ring-2 ring-blue-500/0;
   }
   .bc-select-error {
-    @apply ring-2 ring-red-500;
+    @apply ring-2 ring-error-main;
   }
   .bc-select-warning {
-    @apply ring-2 ring-yellow-400 ring-opacity-90;
+    @apply ring-2 ring-yellow-500 ring-opacity-90;
   }
 }
 .bc-select-item-hover {
@@ -26,11 +26,11 @@
   @apply border-solid border-[1px];
 }
 .bc-select-disabled {
-  @apply cursor-not-allowed bg-[#dbdbdb] text-[#b3b1b1];
+  @apply rounded-6 cursor-not-allowed bg-[#dbdbdb] text-[#b3b1b1];
 }
 
 .bc-select-referenceElement {
-  @apply flex justify-between rounded-6 items-center h-full;
+  @apply flex justify-between rounded-6 items-center h-full bg-white;
   input {
     @apply rounded-6 px-[8px] h-full outline-none w-full ring-opacity-0 border-0;
   }
