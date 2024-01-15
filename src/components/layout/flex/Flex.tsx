@@ -1,21 +1,25 @@
 import classNames from 'classnames';
+import { forwardRef } from 'react';
 
 import { IFlexProps } from './Flex.types';
 
-export const Flex = ({
-  vertical,
-  wrap,
-  justify = 'normal',
-  align = 'normal',
-  gap,
-  children,
-  reverse,
-  style,
-  className,
-  ...props
-}: IFlexProps) => {
+export const Flex = forwardRef<HTMLDivElement, IFlexProps>((args, ref) => {
+  const {
+    vertical,
+    wrap,
+    justify = 'normal',
+    align = 'normal',
+    gap,
+    children,
+    reverse,
+    style,
+    className,
+    ...props
+  } = args;
+
   return (
     <div
+      ref={ref}
       {...props}
       className={classNames(
         'flex',
@@ -39,4 +43,4 @@ export const Flex = ({
       {children}
     </div>
   );
-};
+});

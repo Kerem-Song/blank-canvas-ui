@@ -1,22 +1,26 @@
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
+import { forwardRef } from 'react';
 
 import { IBadgeProps } from './Badge.types';
+import { badgeClasses } from './BadgeClasses';
 
-export const Badge = ({
-  color,
-  count,
-  dot,
-  offset,
-  overflowCount = 99,
-  showZero,
-  direction = 'right',
-  size = 10,
-  children,
-  style,
-  className,
-  ...props
-}: IBadgeProps) => {
+export const Badge = forwardRef<HTMLSpanElement, IBadgeProps>((args, ref) => {
+  const {
+    color,
+    count,
+    dot,
+    offset,
+    overflowCount = 99,
+    showZero,
+    direction = 'right',
+    size = 10,
+    children,
+    style,
+    className,
+    ...props
+  } = args;
+
   const division = Number.isNaN(count) ? 0 : Number(count?.toString().length);
   const cipher = 0.25;
   let overflowDivision = 2;
@@ -37,11 +41,11 @@ export const Badge = ({
   const circle = tmpSize > baseSize ? `${tmpSize / 32}rem` : `${baseSize / 32}rem`;
 
   return (showZero && Number(count) === 0) || Number(count) > 0 || dot ? (
-    <span {...props} className={classNames('bc-badge-area')}>
+    <span ref={ref} {...props} className={classNames(badgeClasses.root)}>
       {children}
       {dot ? (
         <span
-          className={classNames('bc-badge-dot', className)}
+          className={classNames(badgeClasses.dot, className)}
           style={{
             ...style,
             width: circle,
@@ -56,7 +60,7 @@ export const Badge = ({
         ></span>
       ) : (
         <span
-          className={classNames('bc-badge', className)}
+          className={classNames(badgeClasses.area.root, className)}
           style={{
             ...style,
             fontSize,
@@ -78,7 +82,7 @@ export const Badge = ({
             background: color,
           }}
         >
-          <span className={classNames('bc-badge-align')}>
+          <span className={classNames(badgeClasses.area.align)}>
             {typeof count === 'number' && overflowCount && overflowCount < count
               ? `${overflowCount}+`
               : count}
@@ -87,8 +91,8 @@ export const Badge = ({
       )}
     </span>
   ) : (
-    <span {...props} className={classNames('bc-badge-area')}>
+    <span ref={ref} {...props} className={classNames('bc-badge-area')}>
       {children}
     </span>
   );
-};
+});

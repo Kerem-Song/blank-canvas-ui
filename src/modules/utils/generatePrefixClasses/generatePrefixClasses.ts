@@ -18,7 +18,7 @@ type ClassType = { [key: string]: ClassType | string };
 export const attachPrefixClasses = <T extends ClassType = ClassType>(
   classes: T,
   prefix?: string,
-  isPrefixNested?: boolean,
+  isPrefixNested: boolean = true,
 ): T => {
   const result: ClassType = {};
 

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
 
 import { ITooltipProps } from './Tooltip.types';
+import { tooltipClasses } from './TooltipClasses';
 
 export const Tooltip = ({
   defaultOpen = false,
@@ -64,11 +65,19 @@ export const Tooltip = ({
     return <>{children}</>;
   }
 
+  const tooltipClassNames = classNames(
+    tooltipClasses.root,
+    tooltipClasses.base,
+    tooltipClassName,
+  );
+
+  const arrowClassNames = classNames(tooltipClasses.arrow, arrowClassName);
+
   return (
-    <div className="bc-container">
+    <div className={classNames(tooltipClasses.container)}>
       <div
         aria-describedby="tooltip"
-        className="bc-tooltip-data"
+        className={classNames(tooltipClasses.data)}
         ref={referenceElement}
         onMouseEnter={() => {
           setDefaultShow(false);
@@ -98,7 +107,7 @@ export const Tooltip = ({
         <div
           role="tooltip"
           {...attributes.popper}
-          className={classNames('bc-tooltip', 'bc-tooltip-base', tooltipClassName)}
+          className={classNames(tooltipClassNames)}
           style={{
             ...styles.popper,
             maxWidth: width,
@@ -121,7 +130,7 @@ export const Tooltip = ({
           {arrow && (
             <div
               ref={arrowElement}
-              className={classNames(arrowClassName, 'bc-arrow')}
+              className={classNames(arrowClassNames)}
               data-popper-arrow
               style={{
                 ...styles.arrow,
