@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { forwardRef } from 'react';
 
 import { IBadgeProps } from './Badge.types';
+import { badgeClasses } from './BadgeClasses';
 
 export const Badge = forwardRef<HTMLSpanElement, IBadgeProps>((args, ref) => {
   const {
@@ -40,11 +41,11 @@ export const Badge = forwardRef<HTMLSpanElement, IBadgeProps>((args, ref) => {
   const circle = tmpSize > baseSize ? `${tmpSize / 32}rem` : `${baseSize / 32}rem`;
 
   return (showZero && Number(count) === 0) || Number(count) > 0 || dot ? (
-    <span ref={ref} {...props} className={classNames('bc-badge-area')}>
+    <span ref={ref} {...props} className={classNames(badgeClasses.root)}>
       {children}
       {dot ? (
         <span
-          className={classNames('bc-badge-dot', className)}
+          className={classNames(badgeClasses.dot, className)}
           style={{
             ...style,
             width: circle,
@@ -59,7 +60,7 @@ export const Badge = forwardRef<HTMLSpanElement, IBadgeProps>((args, ref) => {
         ></span>
       ) : (
         <span
-          className={classNames('bc-badge', className)}
+          className={classNames(badgeClasses.area.root, className)}
           style={{
             ...style,
             fontSize,
@@ -81,7 +82,7 @@ export const Badge = forwardRef<HTMLSpanElement, IBadgeProps>((args, ref) => {
             background: color,
           }}
         >
-          <span className={classNames('bc-badge-align')}>
+          <span className={classNames(badgeClasses.area.align)}>
             {typeof count === 'number' && overflowCount && overflowCount < count
               ? `${overflowCount}+`
               : count}
