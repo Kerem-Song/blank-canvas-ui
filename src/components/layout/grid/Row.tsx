@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { forwardRef, ReactNode } from 'react';
 
 import { IRowProps } from './Row.types';
+import { rowClasses } from './RowClasses';
 
 export const Row = forwardRef<HTMLDivElement, IRowProps>((args, ref) => {
   const {
@@ -14,6 +15,7 @@ export const Row = forwardRef<HTMLDivElement, IRowProps>((args, ref) => {
     className,
     ...props
   } = args;
+  const rootClassName = classNames(rowClasses.root, rowClasses.boxBorder);
 
   const rowValue = Array.isArray(gutter) ? gutter[1] : gutter ? gutter : 0;
   const colValue = Array.isArray(gutter) ? gutter[0] / 2 : gutter ? gutter / 2 : 0;
@@ -21,7 +23,7 @@ export const Row = forwardRef<HTMLDivElement, IRowProps>((args, ref) => {
     const element = child as React.ReactElement<any>;
     return React.cloneElement(element, {
       paddingvalue: colValue,
-      className: classNames('bc-row-box-border'),
+      className: classNames(rootClassName),
     });
   });
 
@@ -29,7 +31,7 @@ export const Row = forwardRef<HTMLDivElement, IRowProps>((args, ref) => {
     <div
       ref={ref}
       {...props}
-      className={classNames('bc-row-box-border', 'flex', className)}
+      className={classNames('flex', rootClassName, className)}
       style={{
         ...style,
         flexWrap: wrap,
