@@ -68,11 +68,15 @@ export const TableComp = <RecordType extends AnyObject = AnyObject>(
       })}
     >
       <table {...tableProps} ref={ref}>
-        <TableColGroup allColumns={allColumns} />
+        <TableColGroup
+          allColumns={allColumns}
+          showSelectedCell={!!rowSelection?.selectedCell}
+        />
         <HeaderRow
           columns={baseColumns}
           sortInfo={sortInfo}
           setSortColumn={setSortColumn}
+          showSelectedCell={!!rowSelection?.selectedCell}
         />
         <BodyRow
           columns={allColumns}

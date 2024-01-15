@@ -1,15 +1,14 @@
+import '@styles/modal.css';
+
 import { Button } from '@components/general/button/Button';
 import { Divider } from '@components/layout/divider';
 import { Flex } from '@components/layout/flex';
-import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 import ReactModal from 'react-modal';
 
 import { IModalProps } from './Modal.types';
 import { modalClasses } from './ModalClasses';
-
-// ReactModal.setAppElement('#root');
 
 export const Modal = (modalInfo: IModalProps) => {
   const { className, style, children, size = 'sm', ...modalProps } = modalInfo;

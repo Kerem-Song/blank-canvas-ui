@@ -1,8 +1,8 @@
 import imgTest from '@icons/ic_img.svg';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import { uploadClasses } from '.';
 import { Upload } from './Upload';
+import { uploadClasses } from './UploadClasses';
 
 describe('<Upload />', () => {
   const callback = vi.fn();

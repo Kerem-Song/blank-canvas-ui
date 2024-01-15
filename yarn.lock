@@ -2153,6 +2153,7 @@ __metadata:
     tailwindcss: "npm:^3.3.5"
     typescript: "npm:^5.0.2"
     vite: "npm:5.0.3"
+    vite-plugin-css-injected-by-js: "npm:^3.3.1"
     vite-plugin-dts: "npm:^3.6.3"
     vite-plugin-svgr: "npm:^4.2.0"
     vite-tsconfig-paths: "npm:^4.2.1"
@@ -12428,6 +12429,15 @@ __metadata:
   bin:
     vite-node: vite-node.mjs
   checksum: 0e804eab1ae5f0d98014f0a933ec08bfc287228283c3c4792f5f8b8fec6657896e513498e8436449e3116839a5592f9b497cf0b982b8da1152d7d419ccc306f1
+  languageName: node
+  linkType: hard
+
+"vite-plugin-css-injected-by-js@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "vite-plugin-css-injected-by-js@npm:3.3.1"
+  peerDependencies:
+    vite: ">2.0.0-0"
+  checksum: a010e44b9589a632baa26264990780b8ffd0e0291bd02b19106289c91f27ff0de83c2a0ebb41f2486dcac7a6e70b2baa9ccab92efc82c3e72f5b82293c73e07d
   languageName: node
   linkType: hard
 

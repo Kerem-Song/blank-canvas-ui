@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -11,6 +12,7 @@ export default defineConfig({
     alias: {
       '@icons': path.resolve(__dirname, './src/assets/icons'),
       '@images': path.resolve(__dirname, './src/assets/images'),
+      '@styles': path.resolve(__dirname, './src/styles'),
     },
   },
   build: {
@@ -31,7 +33,7 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
   },
-  plugins: [react(), dts(), tsconfigPaths(), svgr()],
+  plugins: [react(), dts(), tsconfigPaths(), svgr(), cssInjectedByJsPlugin()],
   test: {
     globals: true,
     environment: 'jsdom',
