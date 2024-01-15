@@ -116,7 +116,6 @@ function SelectFunc<T extends AnyObject>(
         setIndexNum(0);
         break;
       case 'Enter':
-      case 'Space':
         e.preventDefault();
         setCurrentValue(list ? list[indexNum].value : '');
         setShowOptions((pre) => !pre);
@@ -151,7 +150,7 @@ function SelectFunc<T extends AnyObject>(
 
   const inputBlur = (e: Event) => {
     const temp = e.target as HTMLElement;
-    if (temp.classList.contains('bc-select-list-disabled')) {
+    if (temp.classList.contains(selectClasses.list.disabled)) {
       setShowOptions(true);
       return;
     }
@@ -207,7 +206,6 @@ function SelectFunc<T extends AnyObject>(
     bordered === false
       ? selectClasses.bordered.borderedNone
       : selectClasses.bordered.root,
-    className,
   );
 
   const disabledLiClassName = classNames(
@@ -231,7 +229,7 @@ function SelectFunc<T extends AnyObject>(
           ...style,
           width,
         }}
-        className={classNames(selectClassName)}
+        className={classNames(selectClassName, className)}
         onClick={iconClick}
       >
         <input
