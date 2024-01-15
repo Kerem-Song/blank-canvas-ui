@@ -16,7 +16,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<ISpinProps>;
 
-export const Default2: Story = {
+export const Default: Story = {
   render: (args) => {
     return (
       <div style={{ height: 100, border: '1px solid' }}>

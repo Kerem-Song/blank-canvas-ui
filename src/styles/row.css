@@ -1,3 +1,7 @@
-.row-box-border {
-  @apply box-border;
+$ns: .bc;
+
+$(ns) {
+  &-row-box-border {
+    @apply box-border;
+  }
 }

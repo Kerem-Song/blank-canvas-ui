@@ -1,17 +1,10 @@
 import classNames from 'classnames';
+import { forwardRef } from 'react';
 
 import { IColProps } from './Col.types';
 
-export const Col = ({
-  flex,
-  span,
-  order,
-  children,
-  style,
-  paddingvalue,
-  className,
-  ...props
-}: IColProps) => {
+export const Col = forwardRef<HTMLDivElement, IColProps>((args, ref) => {
+  const { flex, span, order, children, style, paddingvalue, className, ...props } = args;
   const basis = span && span > 0 ? (span * 100) / 24 : 0;
   const basisValue = basis > 0 ? `0 0 ${basis}%` : 'none';
   const flexValue = flex
@@ -26,6 +19,7 @@ export const Col = ({
   const maxWidth = basis > 0 ? `${basis}%` : 'auto';
   return (
     <div
+      ref={ref}
       {...props}
       className={classNames(className)}
       style={{
@@ -39,4 +33,4 @@ export const Col = ({
       <div style={{ ...style }}>{children}</div>
     </div>
   );
-};
+});
