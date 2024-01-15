@@ -1,6 +1,6 @@
 import { PaginationProps } from '@components/navigation/pagination';
 import { Path } from 'object-path';
-import { HtmlHTMLAttributes, ReactNode } from 'react';
+import { FunctionComponent, HtmlHTMLAttributes, ReactNode } from 'react';
 
 export type SizeType = 'normal' | 'small';
 export type SortDirectionType = 'ascending' | 'descending';
@@ -46,8 +46,8 @@ export type ColumnsType<T> = ColumnType<T>[];
 export interface ITableRowSelection<RecordType> {
   selectedItem?: RecordType;
   selectedItems?: RecordType[];
-  hideSelectColumn?: boolean;
   selectedClass?: string;
+  selectedCell?: (props: { selected: boolean }) => React.ReactNode;
   onChange?: (args: { selectedItem?: RecordType; selectedItems: RecordType[] }) => void;
 }
 

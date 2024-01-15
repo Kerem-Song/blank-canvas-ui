@@ -440,6 +440,9 @@ export const RowSelection: Story = {
         <Table
           {...args}
           rowSelection={{
+            selectedCell: ({ selected }) => {
+              return <span>{selected && '√'}</span>;
+            },
             selectedItem,
             onChange: ({ selectedItem }) => setSelectedItem(selectedItem),
           }}

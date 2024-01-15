@@ -8,6 +8,7 @@ export const HeaderRow = <RecordType extends AnyObject = AnyObject>({
   columns,
   sortInfo,
   setSortColumn,
+  showSelectedCell,
 }: IHeaderRowProps<RecordType>) => {
   const headerInfo = useHeaderInfo(columns);
   return (
@@ -16,6 +17,7 @@ export const HeaderRow = <RecordType extends AnyObject = AnyObject>({
         {headerInfo &&
           headerInfo.map((row, rowIndex) => (
             <tr key={rowIndex}>
+              {showSelectedCell && <th></th>}
               {row.map((col, colIndex) => (
                 <HeaderCell
                   {...col}

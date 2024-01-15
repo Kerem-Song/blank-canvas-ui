@@ -55,6 +55,10 @@ export const BodyRow = <RecordType extends AnyObject = AnyObject>({
                     [rowSelection?.selectedClass ?? '']: rowSelected,
                   })}
                 >
+                  <td className="text-center">
+                    {rowSelection?.selectedCell &&
+                      rowSelection.selectedCell({ selected: rowSelected })}
+                  </td>
                   {columns.map((col, colIndex) => (
                     <BodyCell column={col} row={row} key={colIndex} />
                   ))}
