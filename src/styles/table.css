@@ -3,7 +3,7 @@ $ns: .bc-table;
 $(ns)-wrap {
   /* wrap */
   & {
-    @apply relative overflow-x-auto bg-white;
+    @apply relative overflow-x-auto bg-white border;
   }
 
   &-rounded {
@@ -69,7 +69,6 @@ $(ns)-wrap {
 
 $(ns)-wrap-border {
   & {
-    @apply border;
   }
   table {
     thead {
