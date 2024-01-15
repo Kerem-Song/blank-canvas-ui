@@ -3,7 +3,8 @@ import { act, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Button, buttonClasses as classes } from './index';
+import { Button } from './Button';
+import { buttonClasses as classes } from './buttonClasses';
 
 describe('<Button />', () => {
   it('렌더링 됩니다.', () => {
