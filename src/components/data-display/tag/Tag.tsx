@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 
 import { ITagProps } from './Tag.types';
-import { tagClasses } from './tagClasses';
+import { tagClasses } from './TagClasses';
 
 export const Tag = forwardRef<HTMLSpanElement, ITagProps>((args, ref) => {
   const {
