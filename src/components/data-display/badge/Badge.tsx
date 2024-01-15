@@ -91,7 +91,7 @@ export const Badge = forwardRef<HTMLSpanElement, IBadgeProps>((args, ref) => {
       )}
     </span>
   ) : (
-    <span ref={ref} {...props} className={classNames('bc-badge-area')}>
+    <span ref={ref} {...props} className={classNames(badgeClasses.area)}>
       {children}
     </span>
   );
