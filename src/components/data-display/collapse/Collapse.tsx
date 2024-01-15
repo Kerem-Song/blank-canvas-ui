@@ -1,3 +1,5 @@
+import '@styles/collapse.css';
+
 import { Button } from '@components/general/button/Button';
 import { Divider } from '@components/layout/divider/Divider';
 import classNames from 'classnames';

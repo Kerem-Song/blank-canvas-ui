@@ -1,3 +1,5 @@
+import '@styles/radio.css';
+
 import { Flex } from '@components/layout/flex';
 import { forwardRef } from 'react';
 

@@ -1,3 +1,5 @@
+import '@styles/textarea.css';
+
 import classNames from 'classnames';
 import { forwardRef, useCallback, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
