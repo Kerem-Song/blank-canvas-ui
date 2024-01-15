@@ -27,7 +27,11 @@ export const attachPrefixClasses = <T extends ClassType = ClassType>(
     if (typeof value === 'string') {
       result[item] = [GLOBAL_PREFIX, prefix, value].filter((v) => !!v).join('-');
     } else {
-      result[item] = attachPrefixClasses(value, [prefix, item].join('-'), isPrefixNested);
+      result[item] = attachPrefixClasses(
+        value,
+        isPrefixNested ? [prefix, item].join('-') : prefix,
+        isPrefixNested,
+      );
     }
   }
 
