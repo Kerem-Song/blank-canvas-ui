@@ -1,52 +1,23 @@
 import { ValueOf } from '@models';
+import { attachPrefixClasses } from '@modules/utils';
 
-export interface IUploadClasses {
-  root: string;
-  disabled: string;
-  isError: string;
-  // 업로드 스타일
-  button: string;
-  area: string;
-  drag: string;
-  none: string;
-}
-
-export type TUploadClassKey = keyof IUploadClasses;
-
-export const uploadClasses: IUploadClasses = {
+export const classes = {
   root: '',
   disabled: 'disabled',
   isError: 'error',
   // 업로드 스타일
+  shape: {
+    root: '',
+    button: 'button',
+    area: 'area',
+    drag: 'drag',
+  },
   button: 'button',
   area: 'area',
   drag: 'drag',
-  none: 'none',
-};
-
-export interface IUploadFileeStyle {
-  jpg: string;
-  jpeg: string;
-  png: string;
-  svg: string;
-  image: string;
-  video: string;
-  audio: string;
-  pdf: string;
-  csv: string;
-  // 97-2003 excel(.xls)
-  xls: string;
-  // 2003이후 excel파일
-  xlsx: string;
-  text: string;
-  html: string;
-  // 특정 타입의 모든 파일(for example, a WAV or PDF)
-  filetype: string;
-  // application타입
-  application: string;
-}
-
-export type TUploadImageStyleClassKey = keyof IUploadFileeStyle;
+  prefix: { root: '', icon: 'icon', text: 'text' },
+  suffix: { root: '', wrapper: 'wrapper', icon: 'icon', text: 'text' },
+} as const;
 
 export const uploadFileFormat = {
   jpg: 'image/jpg',
@@ -75,3 +46,5 @@ export const uploadFileFormat = {
 
 export type TUploadFileFormat = ValueOf<typeof uploadFileFormat>;
 export type TFormatAll = Partial<TUploadFileFormat>;
+
+export const uploadClasses = attachPrefixClasses(classes, 'upload', true);

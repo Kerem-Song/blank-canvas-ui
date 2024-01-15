@@ -77,12 +77,12 @@ $(ns) {
     }
 
     /* 캐로셀 슬라이더 버튼 */
-    .bc-arrow-btn-wrapper {
+    &-arrow-btn-wrapper {
       @apply flex justify-between items-center px-1pxr z-20;
     }
 
     /* 캐로셀 index indicator */
-    .bc-dots {
+    &-dots {
       @apply flex justify-center items-center gap-1 start-0 end-0 z-20;
 
       &-button {
@@ -97,31 +97,31 @@ $(ns) {
     /* 캐로셀 슬라이더 버튼과 indicator의 opacity 조절 */
     &-opacity {
       &-30 {
-        .bc-arrow-btn-wrapper {
+        .bc-carousel-arrow-btn-wrapper {
           @apply opacity-30;
         }
 
-        .bc-dots {
+        .bc-carousel-dots {
           @apply opacity-30;
         }
       }
 
       &-50 {
-        .arrow-btn-wrapper {
+        .bc-carousel-arrow-btn-wrapper {
           @apply opacity-50;
         }
 
-        .bc-dots {
+        .bc-carousel-dots {
           @apply opacity-50;
         }
       }
 
       &-70 {
-        .arrow-btn-wrapper {
+        .bc-carousel-arrow-btn-wrapper {
           @apply opacity-70;
         }
 
-        .bc-dots {
+        .bc-carousel-dots {
           @apply opacity-70;
         }
       }

@@ -2,6 +2,7 @@ import { Button } from '@components/general/button';
 import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
 import React from 'react';
 
+import { modalClasses } from '.';
 import { Modal } from './Modal';
 
 describe('<Modal />', () => {
@@ -27,7 +28,7 @@ describe('<Modal />', () => {
         isOpen={true}
         confirmFunc={confirmFunc}
         cancelFunc={cancelFunc}
-        overalyClassName="bc-modal-overlay"
+        overalyClassName={modalClasses.overlay}
         message={'모달테스트'}
         description={'상세 설명입니다 진행하시겠습니까?'}
         confirmButton="확인"
@@ -40,7 +41,7 @@ describe('<Modal />', () => {
 
     const modal = screen.getByText('모달테스트').parentElement
       ?.parentElement as HTMLDivElement;
-    expect(modal.classList.contains('bc-modal')).toBeTruthy();
+    expect(modal.classList.contains(modalClasses.root)).toBeTruthy();
   });
 
   it('버튼 클릭시 모달 오픈 체크', () => {
@@ -61,7 +62,7 @@ describe('<Modal />', () => {
           isOpen={result.current.open}
           confirmFunc={confirmFunc}
           cancelFunc={cancelFunc}
-          overalyClassName="bc-modal-overlay"
+          overalyClassName={modalClasses.overlay}
           message={'모달테스트'}
           description={'상세 설명입니다 진행하시겠습니까?'}
           confirmButton="확인"
@@ -93,7 +94,7 @@ describe('<Modal />', () => {
         confirmFunc={confirmFunc}
         cancelFunc={cancelFunc}
         customFunc={customFunc}
-        overalyClassName="bc-modal-overlay"
+        overalyClassName={modalClasses.overlay}
         message={'모달테스트'}
         description={'상세 설명입니다 진행하시겠습니까?'}
         confirmButton="확인"
@@ -137,7 +138,7 @@ describe('<Modal />', () => {
         confirmFunc={confirmFunc}
         cancelFunc={cancelFunc}
         customFunc={customFunc}
-        overalyClassName="bc-modal-overlay"
+        overalyClassName={modalClasses.overlay}
         message={'모달테스트'}
         description={'상세 설명입니다 진행하시겠습니까?'}
         confirmButton="확인"
@@ -178,7 +179,7 @@ describe('<Modal />', () => {
         confirmFunc={confirmFunc}
         cancelFunc={cancelFunc}
         customFunc={customFunc}
-        overalyClassName="bc-modal-overlay"
+        overalyClassName={modalClasses.overlay}
         message={'모달테스트'}
         description={'상세 설명입니다 진행하시겠습니까?'}
         confirmButton="확인"
@@ -215,7 +216,7 @@ describe('<Modal />', () => {
         confirmFunc={confirmFunc}
         cancelFunc={cancelFunc}
         customFunc={customFunc}
-        overalyClassName="bc-modal-overlay"
+        overalyClassName={modalClasses.overlay}
         message={'모달테스트'}
         description={'상세 설명입니다 진행하시겠습니까?'}
         confirmButton="확인"

@@ -1,12 +1,13 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { Textarea } from './Textarea';
+import { textareaClasses } from './TextareaClasses';
 
 describe('<Textarea />', () => {
   it('렌더링 체크', () => {
     render(<Textarea />);
     const textarea = screen.getByRole('textbox');
-    expect(textarea?.classList.contains('bc-textarea')).toBeTruthy();
+    expect(textarea?.classList.contains(textareaClasses.root)).toBeTruthy();
   });
 
   it('input value 일치 여부', () => {

@@ -1,12 +1,13 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 
+import { inputClasses } from './InputClasses';
 import { InputWithTitleCounter } from './InputWithTitleCounter';
 
 describe('<InputWithTitleCounter />', () => {
   it('렌더링 체크', () => {
     render(<InputWithTitleCounter name="test" />);
     const input = screen.getByRole('textbox');
-    expect(input.classList.contains('bc-input-normal')).toBeTruthy();
+    expect(input.classList.contains(inputClasses.normal)).toBeTruthy();
   });
 
   it('placeholder 체크', () => {
@@ -57,7 +58,7 @@ describe('<InputWithTitleCounter />', () => {
     const input: HTMLInputElement = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test1' } });
 
-    const counter = container.querySelector('.bc-input-counter');
+    const counter = container.querySelector(`.${inputClasses.counter}`);
     expect(
       counter?.firstChild?.textContent === input.value.length.toString(),
     ).toBeTruthy();
@@ -69,15 +70,15 @@ describe('<InputWithTitleCounter />', () => {
     rerender(
       <InputWithTitleCounter showCount={true} maxLength={10} direction="inside" />,
     );
-    const insideCounter = container.querySelector('.bc-suffixWrapper')
+    const insideCounter = container.querySelector(`.${inputClasses.suffixWrapper}`)
       ?.firstChild as HTMLSpanElement;
-    expect(insideCounter?.classList.contains('bc-count')).toBeTruthy();
+    expect(insideCounter?.classList.contains(inputClasses.count)).toBeTruthy();
 
     // direction이 bottom 일 때
     rerender(
       <InputWithTitleCounter showCount={true} maxLength={10} direction="bottom" />,
     );
-    const bottomCounter = container.querySelector('.bc-input-counter');
+    const bottomCounter = container.querySelector(`.${inputClasses.counter}`);
     expect(bottomCounter?.classList.contains('bottom')).toBeTruthy();
   });
 
@@ -100,7 +101,7 @@ describe('<InputWithTitleCounter />', () => {
 
     // 버튼 렌더링 확인
     const searchBtn = screen.getByRole('button').firstChild as HTMLDivElement;
-    expect(searchBtn.classList.contains('bc-search')).toBeTruthy();
+    expect(searchBtn.classList.contains(inputClasses.button.search)).toBeTruthy();
 
     // 버튼 클릭
     fireEvent.click(searchBtn);
@@ -134,14 +135,15 @@ describe('<InputWithTitleCounter />', () => {
   it('custom prefix 체크', () => {
     const { container } = render(<InputWithTitleCounter customPrefix={'a'} />);
 
-    const prefix = container.querySelector('.bc-prefixWrapper');
+    const prefix = container.querySelector(`.${inputClasses.prefixWrapper}`);
+    console.log('@prefix', prefix);
     expect(prefix?.textContent).toBe('a');
   });
 
   it('suffix 체크', () => {
     const { container } = render(<InputWithTitleCounter suffix={'a'} />);
 
-    const suffix = container.querySelector('.bc-suffixWrapper');
+    const suffix = container.querySelector(`.${inputClasses.suffixWrapper}`);
     expect(suffix?.textContent).toBe('a');
   });
 });

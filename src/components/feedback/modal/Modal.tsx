@@ -12,27 +12,16 @@ import { modalClasses } from './ModalClasses';
 // ReactModal.setAppElement('#root');
 
 export const Modal = (modalInfo: IModalProps) => {
-  const {
-    className,
-    prefix = 'bc',
-    style,
-    children,
-    size = 'sm',
-    ...modalProps
-  } = modalInfo;
-  const classes = generatePrefixClasses(
-    modalClasses,
-    `${prefix ? `${prefix}-` : ''}modal`,
-  );
+  const { className, style, children, size = 'sm', ...modalProps } = modalInfo;
 
   const rootClassName = classNames(
-    classes.root,
+    modalClasses.root,
     {
       // size
-      [classes.sizeSmall]: size === 'sm',
-      [classes.sizeMedium]: size === 'md',
-      [classes.sizeLarge]: size === 'lg',
-      [classes.sizeXLarge]: size === 'xl',
+      [modalClasses.size.small]: size === 'sm',
+      [modalClasses.size.medium]: size === 'md',
+      [modalClasses.size.large]: size === 'lg',
+      [modalClasses.size.xLarge]: size === 'xl',
     },
     className,
   );
@@ -70,12 +59,12 @@ export const Modal = (modalInfo: IModalProps) => {
         modalInfo.onAfterOpen?.();
       }}
     >
-      <div className="bc-title">
+      <div className={modalClasses.title}>
         <h4>{modalInfo.message}</h4>
         {modalInfo.useEscButton ? (
           <Button
             variant="text"
-            className="bc-esc-btn"
+            className={modalClasses.btn.esc}
             onClick={handleCancel}
             baseButton={true}
             title={'esc'}
@@ -83,11 +72,13 @@ export const Modal = (modalInfo: IModalProps) => {
         ) : null}
       </div>
       <Divider style={{ margin: 0 }} />
-      <div className="bc-content">{modalInfo.description}</div>
-      {children ? <div className="bc-children">{modalInfo.children}</div> : null}
+      <div className={modalClasses.content}>{modalInfo.description}</div>
+      {children ? (
+        <div className={modalClasses.children}>{modalInfo.children}</div>
+      ) : null}
       <Flex justify="end" gap={8} style={{ padding: '0 20px 20px 20px' }}>
         {modalInfo.cancelButton ? (
-          <Button className="bc-cancel-btn" onClick={handleCancel}>
+          <Button className={modalClasses.btn.cancel} onClick={handleCancel}>
             {modalInfo.cancelButton}
           </Button>
         ) : (
@@ -95,7 +86,7 @@ export const Modal = (modalInfo: IModalProps) => {
         )}
 
         <Button
-          className="bc-confirm-btn"
+          className={modalClasses.btn.confirm}
           type="submit"
           variant="contained"
           color="primary"
@@ -105,7 +96,7 @@ export const Modal = (modalInfo: IModalProps) => {
         </Button>
 
         {modalInfo.customButton ? (
-          <Button className="bc-custom-btn" onClick={handleCustom}>
+          <Button className={modalClasses.btn.custom} onClick={handleCustom}>
             {modalInfo.customButton}
           </Button>
         ) : null}

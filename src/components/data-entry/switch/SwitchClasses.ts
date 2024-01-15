@@ -1,25 +1,29 @@
-export interface SwitchClasses {
-  root: string;
-  inside: string;
-  outside: string;
-  green: string;
-  blue: string;
-  sizeSmall: string;
-  sizeMedium: string;
-  sizeLarge: string;
-  sizeXLarge: string;
-}
+import { attachPrefixClasses } from '@modules/utils';
 
-export type SwitchClasskey = keyof SwitchClasses;
-
-export const switchClasses: SwitchClasses = {
+export const classes = {
   root: '',
-  inside: 'inside',
-  outside: 'outside',
-  green: 'green',
-  blue: 'blue',
-  sizeSmall: 'sm',
-  sizeMedium: 'md',
-  sizeLarge: 'lg',
-  sizeXLarge: 'xl',
-};
+  shape: {
+    root: '',
+    inside: 'inside',
+    outside: 'outside',
+  },
+  size: {
+    root: '',
+    small: 'sm',
+    medium: 'md',
+    large: 'lg',
+    xLarge: 'xl',
+  },
+  color: {
+    root: '',
+    green: 'green',
+    blue: 'blue',
+  },
+  wrapper: 'wrapper',
+  input: 'input',
+  bar: 'bar',
+} as const;
+
+export const switchClasses = attachPrefixClasses(classes, 'switch', true);
+
+console.log('swt', switchClasses);

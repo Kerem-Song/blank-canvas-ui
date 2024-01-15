@@ -31,7 +31,7 @@ export interface ICarouselProps extends HTMLAttributes<HTMLDivElement> {
   /**
    *  보여줄 슬라이드의 갯수
    */
-  limit: number;
+  limit?: number;
 
   /**
    * readonly 속성

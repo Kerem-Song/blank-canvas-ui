@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import { ICollapseProps } from './Collapse.types';
+import { collapseClasses } from './CollapseClasses';
 
 export const Collapse = ({
   label,
@@ -12,25 +13,34 @@ export const Collapse = ({
   expandIcon,
   expandIconPosition = 'end',
   children,
+  className,
 }: ICollapseProps) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
-  const expandIconClass = classNames('bc-expand-icon', { expand: isCollapsed });
-  const childrenClass = classNames('bc-children', { invisible: isCollapsed });
+  const expandIconClass = classNames(collapseClasses.header.expandIcon, {
+    expand: isCollapsed,
+  });
+  const childrenClass = classNames(collapseClasses.children, { invisible: isCollapsed });
   const handleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
 
+  const rootClassName = classNames(collapseClasses.root, {}, className);
+
   return (
-    <div className="bc-collapse-wrapper" key={key}>
-      <div className="bc-header" onClick={handleCollapse} role="presentation">
+    <div className={rootClassName} key={key}>
+      <div
+        className={collapseClasses.header.root}
+        onClick={handleCollapse}
+        role="presentation"
+      >
         {showIcon && expandIcon && expandIconPosition === 'start' ? (
           <Button variant="text" className={expandIconClass}>
             <img src={expandIcon} alt="expand-icon" />
           </Button>
         ) : null}
-        <div className="bc-label">
-          <span className="bc-label-content">{label}</span>
+        <div className={collapseClasses.header.label.root}>
+          <span className={collapseClasses.header.label.content}>{label}</span>
         </div>
         {showIcon && expandIcon && expandIconPosition === 'end' ? (
           <Button variant="text" className={expandIconClass}>

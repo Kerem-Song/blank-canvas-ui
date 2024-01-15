@@ -1,11 +1,11 @@
 $ns: .bc;
 
 $(ns) {
-  &-collapse-wrapper {
-    .header {
+  &-collapse {
+    &-header {
       @apply flex items-center p-12pxr;
 
-      .expand-icon {
+      &-expand-icon {
         @apply flex-none;
 
         &.expand {
@@ -13,12 +13,12 @@ $(ns) {
         }
       }
 
-      .label {
+      &-label {
         @apply grow w-full;
       }
     }
 
-    .children {
+    &-children {
       @apply p-12pxr;
     }
   }

@@ -1,7 +1,7 @@
 $ns: .bc;
 
 $(ns) {
-  &-floating-action-button-wrapper {
+  &-floating-action-button {
     @apply block fixed z-100;
 
     /* 메뉴 floating action button 일 경우 처음 노출되는 버튼 외에는 숨김 처리*/
@@ -32,7 +32,7 @@ $(ns) {
     }
 
     /* 뱃지 카운터가 있을경우 */
-    &.bc-badge-counter {
+    &-badge-counter {
       .bc-badge-area {
         .bc-badge {
           @apply opacity-0;
@@ -49,23 +49,31 @@ $(ns) {
       /* 뱃지 카운터가 있고 메뉴가 열린 상태 */
       &.open {
         .bc-badge {
-          @apply visible transition-opacity ease-in duration-500 opacity-100;
+          @apply !visible transition-opacity ease-in duration-500 opacity-100;
         }
 
         /* 메뉴 오픈 상태일 때 처음 노출되는 버튼의 뱃지는 사라지도록 설정*/
         .bc-badge-area:last-child {
           .bc-badge {
-            @apply invisible;
+            @apply !invisible;
           }
         }
       }
     }
-  }
 
-  &-floating-action-button {
-    @apply flex justify-center items-center;
+    &-btn {
+      @apply flex justify-center items-center;
 
-    &.hidden-menu {
+      &:hover {
+        @apply opacity-70;
+      }
+
+      button {
+        @apply flex flex-col justify-center items-center;
+      }
+    }
+
+    &-hidden-menu {
       @apply invisible opacity-0 pointer-events-none;
 
       &:hover {
@@ -77,8 +85,12 @@ $(ns) {
       }
     }
 
-    &:hover {
-      @apply opacity-70;
+    &-icon {
+      @apply w-20pxr h-20pxr bg-center bg-no-repeat;
+    }
+
+    &-description {
+      @apply overflow-hidden max-w-28pxr max-h-4 text-10pxr font-light;
     }
 
     &-circle {
@@ -89,16 +101,5 @@ $(ns) {
       @apply border rounded-lg w-40pxr h-40pxr;
     }
 
-    .bc-icon {
-      @apply w-20pxr h-20pxr bg-center bg-no-repeat;
-    }
-
-    .bc-description {
-      @apply overflow-hidden max-w-28pxr max-h-4 text-10pxr font-light;
-    }
-
-    button {
-      @apply flex flex-col justify-center items-center;
-    }
   }
 }

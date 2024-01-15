@@ -1,14 +1,14 @@
 $ns: .bc;
 
 $(ns) {
-  &-input-wrap {
+  &-input-wrapped {
     @apply flex w-full items-center rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
 
-    .bc-suffixWrapper {
+    .bc-input-suffix-wrapper {
       @apply flex items-center text-end;
     }
 
-    &.hasCustomPrefix {
+    &.bc-input-has-custom-prefix {
       input {
         @apply pl-2;
       }
@@ -70,11 +70,11 @@ $(ns) {
       @apply !bg-transparent;
     }
 
-    .bc-search {
+    &-search {
       @apply pr-10pxr w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search.svg')] hover:bg-[url('@icons/ic_search_active.svg')];
     }
 
-    .bc-clear {
+    &-clear {
       @apply pr-10pxr w-16pxr h-16pxr bg-no-repeat bg-[url('@icons/ic_search_delete.svg')] hover:bg-[url('@icons/ic_search_delete_active.svg')];
     }
   }

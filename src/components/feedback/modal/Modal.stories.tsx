@@ -52,6 +52,6 @@ export const Default: Story = {
     cancelButton: '취소',
     customButton: '커스텀',
     shouldCloseOnEsc: true,
-    size: 'lg',
+    size: 'xl',
   },
 };

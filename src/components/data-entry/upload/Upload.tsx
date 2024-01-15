@@ -24,7 +24,6 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
   const [imageUrl, setImageUrl] = useState<string[]>([]);
 
   const {
-    prefix = 'bc',
     children,
     className,
     htmlForId,
@@ -48,24 +47,19 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
   const FILE_SIZE = fileSize;
   const SUPPORTED_FORMATS = fileFormat;
 
-  const classes = generatePrefixClasses(
-    uploadClasses,
-    `${prefix ? `${prefix}-` : ''}upload`,
-  );
-
   const rootClassName = classNames(
-    classes.root,
+    uploadClasses.root,
     {
       // disabled
-      [classes.disabled]: args.disabled,
+      [uploadClasses.disabled]: args.disabled,
 
       // error
-      [classes.isError]: args.isError,
+      [uploadClasses.isError]: args.isError,
 
       // shape
-      [classes.button]: args.shape === 'button',
-      [classes.area]: args.shape === 'area',
-      [classes.drag]: args.shape === 'drag',
+      [uploadClasses.shape.button]: args.shape === 'button',
+      [uploadClasses.shape.area]: args.shape === 'area',
+      [uploadClasses.shape.drag]: args.shape === 'drag',
     },
     className,
   );
@@ -183,10 +177,10 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
         onDragLeave={args.shape === 'drag' ? handleDragLeave : undefined}
         onDrop={args.shape === 'drag' ? handleDrop : undefined}
       >
-        <span className="bc-prefix-icon">
+        <span className={uploadClasses.prefix.icon}>
           {args.shape === 'button' ? prefixIcon : null}
         </span>
-        <span className="bc-prefix-text">
+        <span className={uploadClasses.prefix.text}>
           {args.shape === 'button' ? prefixText : null}
         </span>
         <input
@@ -199,9 +193,13 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
           multiple={multiple}
           {...uploadProps}
         />
-        <div className="bc-suffix-wrapper">
-          <p className="bc-suffix-icon">{args.shape !== 'button' ? suffixIcon : null}</p>
-          <p className="bc-suffix-text">{args.shape !== 'button' ? suffixText : null}</p>
+        <div className={uploadClasses.suffix.wrapper}>
+          <p className={uploadClasses.suffix.icon}>
+            {args.shape !== 'button' ? suffixIcon : null}
+          </p>
+          <p className={uploadClasses.suffix.text}>
+            {args.shape !== 'button' ? suffixText : null}
+          </p>
         </div>
       </label>
       {files

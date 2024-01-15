@@ -1,6 +1,6 @@
-import { DOMAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
-export interface ICollapseProps extends DOMAttributes<HTMLDivElement> {
+export interface ICollapseProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Collapse의 제목
    */

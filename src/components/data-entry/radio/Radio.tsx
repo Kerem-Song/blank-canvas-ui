@@ -1,14 +1,16 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
 
+import { radioClasses } from './RadioClasses';
+
 export const Radio = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
   (args, ref) => {
     const { children, name, ...inputArgs } = args;
 
     return (
-      <label className="bc-radio-container">
+      <label className={radioClasses.container}>
         <input
           {...inputArgs}
-          className="bc-radio"
+          className={radioClasses.root}
           type="radio"
           name={name}
           ref={ref}

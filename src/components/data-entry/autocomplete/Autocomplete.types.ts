@@ -16,4 +16,5 @@ export interface AutocompleteProps<T extends object> {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   error?: any;
   isError?: boolean;
+  className?: string;
 }

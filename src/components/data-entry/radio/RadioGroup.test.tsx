@@ -1,5 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react';
 
+import { radioClasses } from './RadioClasses';
 import { RadioGroup } from './RadioGroup';
 import { IRadioOption } from './RadioGroup.types';
 
@@ -15,7 +16,7 @@ describe('<RadioGroup />', () => {
     const radioGroup = getAllByRole('radio');
 
     radioGroup.forEach((radio) => {
-      expect(radio?.classList.contains('bc-radio')).toBeTruthy();
+      expect(radio?.classList.contains(radioClasses.root)).toBeTruthy();
     });
   });
 
