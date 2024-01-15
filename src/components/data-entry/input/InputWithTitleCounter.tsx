@@ -22,7 +22,6 @@ export const InputWithTitleCounter = forwardRef<
     args.value?.toString().length || 0,
   );
   const {
-    prefix = 'bc',
     label,
     isLight,
     showCount,
