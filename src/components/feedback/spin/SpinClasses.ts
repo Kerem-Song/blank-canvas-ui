@@ -13,11 +13,3 @@ const classes = {
   inline: 'inline',
 };
 export const spinClasses = attachPrefixClasses(classes, 'spin');
-
-// const classes = {
-//     root: '',
-//     direction: {
-//       vertical: 'vertical',
-//       horizontal: 'horizontal',
-//     },
-//   };

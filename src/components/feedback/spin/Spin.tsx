@@ -33,9 +33,6 @@ export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
   const defaultClassName = classNames({
     [spinClasses.inline]: tip,
   });
-
-  const indicatorClassName = classNames(spinClasses.indicator);
-
   const childrenClassName = classNames(spinClasses.root, {
     [spinClasses.children]: fullscreen || children,
     [spinClasses.option.hidden]: !spinning && children,
@@ -45,7 +42,7 @@ export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
     <div className={classNames(rootClassName, className)}>
       <div {...spinProps} className={classNames(childrenClassName)}>
         {indicator ? (
-          <span className={classNames(indicatorClassName)} style={{ ...style }}>
+          <span className={classNames(spinClasses.indicator)} style={{ ...style }}>
             {indicator}
           </span>
         ) : (
