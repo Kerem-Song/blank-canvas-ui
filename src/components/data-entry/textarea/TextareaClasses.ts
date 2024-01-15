@@ -1,6 +1,6 @@
 import { attachPrefixClasses } from '@modules/utils';
 
-export const classes = {
+const classes = {
   root: '',
   border: 'border',
   wrapper: 'wrapper',
