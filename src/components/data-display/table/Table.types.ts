@@ -1,21 +1,21 @@
+import { PaginationProps } from '@components/navigation/pagination';
 import { Path } from 'object-path';
 import { HtmlHTMLAttributes, ReactNode } from 'react';
 
 export type SizeType = 'normal' | 'small';
 export type SortDirectionType = 'ascending' | 'descending';
 
-export const textAlignClass = {
-  left: 'text-left',
-  right: 'text-right',
-  center: 'text-center',
-} as const;
-
-export type TextAlignType = keyof typeof textAlignClass;
+export type TextAlignType = 'left' | 'center' | 'right';
 
 export interface IExcelExtra {
   title?: string;
   wch: number;
   numFmt?: string;
+}
+
+export interface ISortInfo {
+  path: Path;
+  direction: SortDirectionType;
 }
 
 export interface IColumn<RecordType> {
@@ -31,16 +31,17 @@ export interface IColumn<RecordType> {
   sortable?: boolean;
   excelExtra?: IExcelExtra;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  render?: (v: any, record: RecordType, index: number) => React.ReactNode;
+  render?: (v: any, record: RecordType) => React.ReactNode;
 }
 
 export interface IColumnGroup<RecordType> {
   title: string;
   titleAlign?: TextAlignType;
-  children: IColumn<RecordType>[];
+  children: ColumnsType<RecordType>;
 }
 
-export type ColumnsType<T> = (IColumn<T> | IColumnGroup<T>)[];
+export type ColumnType<T> = IColumn<T> | IColumnGroup<T>;
+export type ColumnsType<T> = ColumnType<T>[];
 
 export interface ITableRowSelection<RecordType> {
   selectedItem?: RecordType;
@@ -50,11 +51,17 @@ export interface ITableRowSelection<RecordType> {
   onChange?: (args: { selectedItem?: RecordType; selectedItems: RecordType[] }) => void;
 }
 
-export interface ITablePagination {
-  perPage?: number;
-  total?: number;
-  page?: number;
-  onChange?: (args: { page: number; perPage: number }) => void;
+export interface ITablePagination extends PaginationProps {}
+
+export interface ITableColumnProps<RecordType> extends IColumn<RecordType> {
+  children?: null;
+}
+
+export interface ITableColumnGroupProps<RecordType>
+  extends Omit<IColumnGroup<RecordType>, 'children'> {
+  children:
+    | React.ReactElement<ITableColumnProps<RecordType>>
+    | React.ReactElement<ITableColumnProps<RecordType>>[];
 }
 
 export interface ITableProps<RecordType> extends HtmlHTMLAttributes<HTMLTableElement> {
@@ -96,4 +103,15 @@ export interface ITableProps<RecordType> extends HtmlHTMLAttributes<HTMLTableEle
    * 로딩
    */
   loading?: boolean;
+
+  defaultSort?: ISortInfo[];
+
+  /**
+   * row 클릭 이벤트
+   */
+  rowClick?: (row: RecordType) => void;
+
+  rowSelection?: ITableRowSelection<RecordType>;
+
+  pagenation?: ITablePagination;
 }

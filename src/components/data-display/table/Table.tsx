@@ -1,8 +1,13 @@
+import { Flex, Pagination } from '@components';
 import { AnyObject } from '@models';
 import classNames from 'classnames';
 import React, { ReactElement, Ref } from 'react';
 
-import { IColumn, IColumnGroup, ITableProps } from './Table.types';
+import { BodyRow } from './body';
+import { TableColGroup } from './col-group/ColGroup';
+import { HeaderRow } from './header';
+import { convertChildrenToColumns, usePagenation, useSortDataSource } from './hooks';
+import { ColumnsType, IColumn, ITableProps } from './Table.types';
 import { tableClasses } from './TableClasses';
 
 export const TableComp = <RecordType extends AnyObject = AnyObject>(
@@ -12,101 +17,77 @@ export const TableComp = <RecordType extends AnyObject = AnyObject>(
     rounded,
     bordered,
     empty = '데이터가 존재하지 않습니다.',
-    size,
+    size = 'normal',
     loading,
     wrapClassName,
-    className,
     children,
+    rowClick,
+    rowSelection,
+    defaultSort,
+    pagenation,
     ...tableProps
   }: ITableProps<RecordType>,
   ref: Ref<HTMLTableElement>,
 ) => {
+  const baseColumns = React.useMemo(
+    () => columns || convertChildrenToColumns<RecordType>(children),
+    [columns, children],
+  );
+
+  const getColumns = (cols?: ColumnsType<RecordType>): IColumn<RecordType>[] => {
+    if (!cols) {
+      return [];
+    }
+
+    const result = cols.map((c) => {
+      if ('children' in c) {
+        return getColumns(c.children);
+      } else {
+        return [c];
+      }
+    });
+
+    return result.flat();
+  };
+
+  const allColumns = getColumns(baseColumns);
+
+  const { sortInfo, setSortColumn, sortItems } = useSortDataSource({
+    columns: allColumns,
+    dataSource,
+    defaultSort,
+  });
+
+  const { resultItems } = usePagenation(pagenation, sortItems);
+
   return (
     <div
-      className={classNames(tableClasses.wrap, wrapClassName, {
-        'rounded-md': rounded,
-        border: bordered,
+      className={classNames(tableClasses.wrap, wrapClassName, tableClasses.size[size], {
+        [tableClasses.rounded]: rounded,
+        [tableClasses.border]: bordered,
       })}
     >
-      <table
-        className={classNames(tableClasses.table, className)}
-        {...tableProps}
-        ref={ref}
-      >
-        <thead>
-          <tr>
-            <th>AAA</th>
-            <th>BBB</th>
-            <th>CCC</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>111</td>
-            <td>111</td>
-            <td>111</td>
-          </tr>
-          <tr>
-            <td>222</td>
-            <td>222</td>
-            <td>222</td>
-          </tr>
-          <tr>
-            <td>333</td>
-            <td>333</td>
-            <td>333</td>
-          </tr>
-          <tr>
-            <td>333</td>
-            <td>333</td>
-            <td>333</td>
-          </tr>
-          <tr>
-            <td>333</td>
-            <td>333</td>
-            <td>333</td>
-          </tr>
-          <tr>
-            <td>333</td>
-            <td>333</td>
-            <td>333</td>
-          </tr>
-          <tr>
-            <td>333</td>
-            <td>333</td>
-            <td>333</td>
-          </tr>
-          <tr>
-            <td>333</td>
-            <td>333</td>
-            <td>333</td>
-          </tr>
-          <tr>
-            <td>333</td>
-            <td>333</td>
-            <td>333</td>
-          </tr>
-          <tr>
-            <td>333</td>
-            <td>333</td>
-            <td>333</td>
-          </tr>
-        </tbody>
+      <table {...tableProps} ref={ref}>
+        <TableColGroup allColumns={allColumns} />
+        <HeaderRow
+          columns={baseColumns}
+          sortInfo={sortInfo}
+          setSortColumn={setSortColumn}
+        />
+        <BodyRow
+          columns={allColumns}
+          dataSource={resultItems}
+          rowClick={rowClick}
+          rowSelection={rowSelection}
+        />
       </table>
+      {!!pagenation && (
+        <Flex justify="center" className="p-1">
+          <Pagination {...pagenation} />
+        </Flex>
+      )}
     </div>
   );
-};
-
-export const TableColumnGroup = <RecordType extends AnyObject = AnyObject>(
-  args: IColumnGroup<RecordType>,
-) => {
-  return null;
-};
-
-export const TableColumn = <RecordType extends AnyObject = AnyObject>(
-  args: IColumn<RecordType>,
-) => {
-  return null;
 };
 
 export const Table = React.forwardRef(TableComp) as <T extends AnyObject = AnyObject>(

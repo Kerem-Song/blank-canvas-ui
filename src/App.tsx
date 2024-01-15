@@ -15,17 +15,30 @@ import {
   Textarea,
   TextAreaWithTitleCounter,
 } from '@components';
-import {
-  Table,
-  TableColumn,
-  TableColumnGroup,
-} from '@components/data-display/table/Table';
+import { Table, TableColumn, TableColumnGroup } from '@components/data-display/table';
 import { IRadioOption } from '@components/data-entry/radio';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg2 from '@icons/ic_search.svg?react';
 import icImgTest2 from '@icons/ic_search_delete.svg';
 import { useState } from 'react';
 import { Autocomplete } from 'src';
+
+interface IRow {
+  a: string;
+  b: string;
+  c: string;
+}
+
+const tableSource: IRow[] = [
+  { a: '111', b: '111', c: '111' },
+  { a: '222', b: '222', c: '222' },
+  { a: '333', b: '333', c: '333' },
+  { a: '411', b: '111', c: '111' },
+  { a: '511', b: '111', c: '111' },
+  { a: '611', b: '111', c: '111' },
+  { a: '711', b: '111', c: '111' },
+  { a: '811', b: '111', c: '111' },
+];
 
 function App() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -103,25 +116,44 @@ function App() {
   };
   const setCarouselIndex = ({ id, index }: { id: string; index: number }) => {};
 
-  const tableSource = [
-    { a: '111', b: '111', c: '111' },
-    { a: '222', b: '222', c: '222' },
-    { a: '333', b: '333', c: '333' },
-    { a: '111', b: '111', c: '111' },
-    { a: '111', b: '111', c: '111' },
-    { a: '111', b: '111', c: '111' },
-    { a: '111', b: '111', c: '111' },
-    { a: '111', b: '111', c: '111' },
-  ];
-
+  const [page, setPage] = useState(1);
+  const [selected, setSelected] = useState<IRow>();
   return (
     <>
       <div className="p-5">
-        <Table wrapClassName="max-h-[200px]" bordered rounded dataSource={tableSource}>
-          <TableColumn title="AAA" path="a" />
-          <TableColumn title="BBB" path="b" />
-          <TableColumn title="CCC" path="c" />
-          abc
+        <Table
+          wrapClassName="max-h-[600px]"
+          bordered
+          rounded
+          dataSource={tableSource}
+          size="small"
+          defaultSort={[{ path: 'a', direction: 'descending' }]}
+          rowSelection={{
+            selectedItem: selected,
+            onChange: ({ selectedItem }) => {
+              setSelected(selectedItem);
+            },
+          }}
+          pagenation={{
+            page,
+            perPage: 5,
+            total: tableSource.length,
+            onChange: (e, page) => {
+              setPage(page);
+            },
+          }}
+        >
+          <TableColumn title="AAA" path="a" sortable width={100} />
+          <TableColumnGroup title="GROUP" titleAlign="left">
+            <TableColumn title="AAA" path="a" />
+            <TableColumnGroup title="GROUP" titleAlign="center">
+              <TableColumn title="AAA" path="a" align="center" />
+              <TableColumnGroup title="GROUP" titleAlign="right">
+                <TableColumn title="BBB" path="b" render={(v) => `render-${v}`} />
+                <TableColumn title="CCC" path="c" align="right" titleAlign="center" />
+              </TableColumnGroup>
+            </TableColumnGroup>
+          </TableColumnGroup>
         </Table>
       </div>
       <Textarea className="" maxLength={12} autoComplete={'true'} />
