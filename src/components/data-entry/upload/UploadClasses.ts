@@ -1,7 +1,7 @@
 import { ValueOf } from '@models';
 import { attachPrefixClasses } from '@modules/utils';
 
-export const classes = {
+const classes = {
   root: '',
   disabled: 'disabled',
   isError: 'error',

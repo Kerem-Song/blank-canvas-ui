@@ -42,6 +42,7 @@ describe('<FloatingActionButton />', () => {
     expect(
       floatingBtn?.classList.contains(floatingActionButtonClasses.wrapper),
     ).toBeTruthy();
+    expect(floatingBtn).toBeDefined();
   });
 
   it('버튼 클릭 함수 호출 여부 체크', () => {
