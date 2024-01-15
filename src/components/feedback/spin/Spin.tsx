@@ -4,6 +4,7 @@ import { forwardRef } from 'react';
 import ReactLoading from 'react-loading';
 
 import { ISpinProps } from './Spin.types';
+import { spinClasses } from './SpinClasses';
 
 export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
   const {
@@ -23,32 +24,32 @@ export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
   const tempWidth = typeof size !== 'number' ? remUtil.findNumber(size) : size;
   const width = tempWidth > 34 ? tempWidth : 35;
 
+  const rootClassName = classNames(spinClasses.area, {
+    [spinClasses.option.fullScreen]: fullscreen,
+    [spinClasses.option.bgColor]: children,
+    [spinClasses.option.hidden]: !spinning && !children,
+  });
+
+  const defaultClassName = classNames({
+    [spinClasses.inline]: tip,
+  });
+
+  const indicatorClassName = classNames(spinClasses.indicator);
+
+  const childrenClassName = classNames(spinClasses.root, {
+    [spinClasses.children]: fullscreen || children,
+    [spinClasses.option.hidden]: !spinning && children,
+  });
+
   return (
-    <div
-      className={classNames(
-        'bc-spin-area',
-        { 'bc-spin-fullscreen': fullscreen },
-        { 'bc-spin-bgColor': children },
-        { 'bc-spin-hidden': !spinning && !children },
-      )}
-    >
-      <div
-        {...spinProps}
-        className={classNames({ 'bc-spin-children': fullscreen || children }, 'bc-spin', {
-          'bc-spin-hidden': !spinning && children,
-        })}
-      >
+    <div className={classNames(rootClassName, className)}>
+      <div {...spinProps} className={classNames(childrenClassName)}>
         {indicator ? (
-          <span className={classNames('bc-spin-indicator')} style={{ ...style }}>
+          <span className={classNames(indicatorClassName)} style={{ ...style }}>
             {indicator}
           </span>
         ) : (
-          <span
-            style={{ ...style }}
-            className={classNames({
-              'bc-spin-inline': tip,
-            })}
-          >
+          <span style={{ ...style }} className={classNames(defaultClassName)}>
             <ReactLoading
               type={type}
               color={color}
