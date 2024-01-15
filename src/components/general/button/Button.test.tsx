@@ -3,9 +3,7 @@ import { act, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Button, buttonClasses } from './index';
-
-const classes = generatePrefixClasses(buttonClasses, 'bc-btn');
+import { Button, buttonClasses as classes } from './index';
 
 describe('<Button />', () => {
   it('렌더링 됩니다.', () => {
@@ -366,17 +364,6 @@ describe('Props: variant', () => {
 
     expect(button.classList.contains(classes.root)).toBeTruthy();
     expect(button.classList.contains(classes.text)).toBeTruthy();
-  });
-});
-
-describe('Props: prefix', () => {
-  it('className 적용됩니다.', () => {
-    const { getByRole } = render(<Button prefix="custom" />);
-    const button = getByRole('button');
-
-    const prefixClasses = generatePrefixClasses(buttonClasses, 'custom-btn');
-
-    expect(button.classList.contains(prefixClasses.root)).toBeTruthy();
   });
 });
 
