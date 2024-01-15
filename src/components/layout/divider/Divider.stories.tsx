@@ -68,7 +68,7 @@ export const BorderStyle: Story = {
     );
   },
   args: {
-    type: 'vertical',
+    // type: '',
     borderStyle: 'dashed',
   },
 };

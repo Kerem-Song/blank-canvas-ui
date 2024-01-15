@@ -1,49 +1,46 @@
-.bc-card {
-  @apply p-0 text-start min-w-200;
+$ns: .bc;
+$(ns) {
+  &-card {
+    @apply p-0 text-start min-w-200;
 
-  .bc-card-head {
-    @apply flex border-b overflow-hidden p-3 justify-between w-full;
-    > span {
-      @apply w-1/2;
-    }
-    .bc-card-title {
-      @apply font-semibold text-base;
-    }
+    &-head {
+      @apply flex border-b overflow-hidden p-3 justify-between w-full;
+      > span {
+        @apply w-1/2;
+      }
+      &-title {
+        @apply font-semibold text-base;
+      }
 
-    .bc-card-extra {
-      @apply text-sm;
-      a {
-        @apply text-sky-500 underline;
+      &-extra {
+        @apply text-sm;
+        a {
+          @apply text-sky-500 underline;
+        }
+      }
+      &-rounded {
+        @apply rounded-t-md;
       }
     }
+
+    &-small {
+      @apply py-1.5;
+    }
+
+    &-body {
+      @apply p-3;
+    }
+    &-rounded {
+      @apply rounded-md;
+    }
+    &-border {
+      @apply border;
+    }
+    &-none-border {
+      @apply shadow-[rgba(50,_50,_105,_0.1)_0px_1px_2px_0px,_rgba(0,_0,_0,_0.05)_0px_0.5px_0.5px_0px];
+    }
+    &-full {
+      @apply w-full;
+    }
   }
-
-  .bc-card-body {
-    @apply p-3;
-  }
-  .bc-card-small {
-    @apply py-1.5;
-  }
-}
-
-/* 카드 전체 둥글게 */
-.bc-card-rounded {
-  @apply rounded-md;
-}
-
-/* 색상 넣을 때 넘침 방지 */
-.bc-card-head-rounded {
-  @apply rounded-t-md;
-}
-
-.bc-card-border {
-  @apply border;
-}
-
-.bc-card-none-border {
-  @apply shadow-[rgba(50,_50,_105,_0.1)_0px_1px_2px_0px,_rgba(0,_0,_0,_0.05)_0px_0.5px_0.5px_0px];
-}
-
-.bc-card-full {
-  @apply w-full;
 }

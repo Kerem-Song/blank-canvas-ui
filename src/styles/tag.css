@@ -1,26 +1,32 @@
-.bc-tag-area {
-  @apply h-fit text-center rounded py-px ps-1 pe-1 bg-gray-100 text-xs text-slate-500;
-  .bc-tag-icon {
-    @apply inline-block pr-1 pl-0 align-text-bottom;
+$ns: .bc;
+$(ns) {
+  &-tag {
+    @apply h-fit text-center rounded py-px ps-1 pe-1 bg-gray-100 text-xs text-slate-500;
+    &-option {
+      &-pd {
+        @apply px-1;
+      }
+      &-inline {
+        @apply inline-block;
+      }
+      &-icon {
+        @apply inline-block pr-1 pl-0 align-text-bottom;
 
-    img {
-      @apply w-4 align-middle;
+        img {
+          @apply w-4 align-middle;
+        }
+      }
+    }
+
+    &-option-close {
+      @apply text-10pxr pl-1 cursor-pointer align-bottom;
+    }
+    &-option-hidden {
+      @apply hidden;
     }
   }
-}
 
-.bc-tag-bordered {
-  @apply border border-zinc-300;
-}
-
-.bc-tag-close {
-  @apply text-10pxr pl-1 cursor-pointer align-bottom;
-}
-
-.bc-tag-pd {
-  @apply px-1;
-}
-
-.bc-tag-inline {
-  @apply inline-block;
+  &-tag-option-bordered {
+    @apply border border-zinc-300;
+  }
 }

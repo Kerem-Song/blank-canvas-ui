@@ -1,7 +1,10 @@
-.bc-divider {
-  @apply border-t border-zinc-300;
-}
+$ns: .bc;
+$(ns) {
+  &-divider {
+    @apply border-t border-zinc-300;
+  }
 
-.bc-divider-vertical {
-  @apply border-l border-zinc-300 h-3 inline-block ms-2.5 me-2.5;
+  &-divider-direction-vertical {
+    @apply border-l border-zinc-300 h-3 inline-block ms-2.5 me-2.5;
+  }
 }
