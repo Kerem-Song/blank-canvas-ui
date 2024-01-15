@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
 
 import { ISelectProp } from './Select.types';
+import { selectClasses } from './SelectClasses';
 
 function SelectFunc<T extends AnyObject>(
   props: ISelectProp<T>,
@@ -192,10 +193,33 @@ function SelectFunc<T extends AnyObject>(
     setInit(true);
   }, []);
 
+  const rootClassName = classNames(selectClasses.root, {
+    [selectClasses.disabled]: disabled,
+  });
+
+  const selectClassName = classNames(
+    selectClasses.referenceElement,
+    {
+      [selectClasses.status.error]: status === 'error' || isError,
+      [selectClasses.status.warning]: status === 'warning',
+    },
+    inputFocus && !status ? selectClasses.focus.root : selectClasses.focus.focusNone,
+    bordered === false
+      ? selectClasses.bordered.borderedNone
+      : selectClasses.bordered.root,
+    className,
+  );
+
+  const disabledLiClassName = classNames(
+    selectClasses.list.overflow,
+    selectClasses.disabled,
+    selectClasses.list.disabled,
+  );
+
   return (
     <div
       id="container"
-      className={classNames({ 'bc-select-disabled': disabled }, 'bc-select-container')}
+      className={rootClassName}
       ref={selectRef}
       onClick={() => {
         !disabled ? setShowOptions((pre) => !pre) : undefined;
@@ -207,14 +231,7 @@ function SelectFunc<T extends AnyObject>(
           ...style,
           width,
         }}
-        className={classNames(
-          inputFocus && !status ? 'bc-select-focus' : 'bc-select-focus-none',
-          { 'bc-select-error': status === 'error' || isError },
-          { 'bc-select-warning': status === 'warning' },
-          bordered === false ? 'bc-select-bordered-none' : 'bc-select-bordered',
-          'bc-select-referenceElement',
-          className,
-        )}
+        className={classNames(selectClassName)}
         onClick={iconClick}
       >
         <input
@@ -235,16 +252,16 @@ function SelectFunc<T extends AnyObject>(
           type="text"
           onKeyDown={handleKeyArrow}
           readOnly
-          className={classNames({ 'bc-select-disabled': disabled })}
+          className={classNames({ [selectClasses.disabled]: disabled })}
           value={currentValue}
         />
 
         {suffixIcon ? (
-          <div onClick={iconClick} className={classNames('bc-select-icon')}>
+          <div onClick={iconClick} className={classNames(selectClasses.icon)}>
             {suffixIcon}
           </div>
         ) : (
-          <div onClick={iconClick} className={classNames('bc-select-icon')}>
+          <div onClick={iconClick} className={classNames(selectClasses.icon)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -282,7 +299,7 @@ function SelectFunc<T extends AnyObject>(
             margin: placement === 'left' || placement === 'right' ? '0 8px' : '8px 0',
           }}
           ref={popperElement}
-          className={classNames('bc-select-ul')}
+          className={classNames(selectClasses.list.root)}
         >
           {list ? (
             list.map((x, idx) => {
@@ -300,9 +317,9 @@ function SelectFunc<T extends AnyObject>(
                     setIndexNum(idx);
                   }}
                   className={classNames(
-                    { 'bc-select-item-hover': x.value === hoverText },
-                    { 'bc-selected-item': x.value === currentValue },
-                    'bc-select-overflow',
+                    { [selectClasses.list.item]: x.value === currentValue },
+                    { [selectClasses.list.hover]: x.value === hoverText },
+                    selectClasses.list.overflow,
                   )}
                 >
                   {x.value}
@@ -311,9 +328,7 @@ function SelectFunc<T extends AnyObject>(
                 <li
                   role="option"
                   onClick={() => {}}
-                  className={classNames(
-                    'bc-select-overflow bc-select-disabled bc-select-list-disabled',
-                  )}
+                  className={classNames(disabledLiClassName)}
                 >
                   {x.value}
                 </li>
