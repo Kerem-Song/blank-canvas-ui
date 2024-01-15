@@ -6,7 +6,7 @@ import { ITextareaProps } from './Textarea.types';
 import { textareaClasses } from './TextareaClasses';
 
 export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, ref) => {
-  const { style, readOnly, prefix = 'bc', isError, ...inputProps } = args;
+  const { style, readOnly, isError, ...inputProps } = args;
 
   const handleTextArea = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {

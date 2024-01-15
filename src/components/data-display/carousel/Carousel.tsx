@@ -8,7 +8,6 @@ import { carouselClasses } from './CarouselClasses';
 
 export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) => {
   const {
-    prefix = 'bc',
     className,
     viewId,
     width,

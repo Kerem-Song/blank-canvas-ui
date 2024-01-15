@@ -2,8 +2,8 @@ import { Button } from '@components/general/button';
 import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
 import React from 'react';
 
-import { modalClasses } from '.';
 import { Modal } from './Modal';
+import { modalClasses } from './ModalClasses';
 
 describe('<Modal />', () => {
   const confirmFunc = vi.fn();

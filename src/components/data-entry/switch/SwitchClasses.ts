@@ -1,6 +1,6 @@
 import { attachPrefixClasses } from '@modules/utils';
 
-export const classes = {
+const classes = {
   root: '',
   shape: {
     root: '',
@@ -25,5 +25,3 @@ export const classes = {
 } as const;
 
 export const switchClasses = attachPrefixClasses(classes, 'switch', true);
-
-console.log('swt', switchClasses);
