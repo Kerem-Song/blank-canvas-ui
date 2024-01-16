@@ -65,13 +65,9 @@ export const Tooltip = ({
     return <>{children}</>;
   }
 
-  const tooltipClassNames = classNames(
-    tooltipClasses.root,
-    tooltipClasses.base,
-    tooltipClassName,
-  );
+  const tooltipClassNames = classNames(tooltipClasses.root, tooltipClasses.base);
 
-  const arrowClassNames = classNames(tooltipClasses.arrow, arrowClassName);
+  const arrowClassNames = classNames(tooltipClasses.arrow);
 
   return (
     <div className={classNames(tooltipClasses.container)}>
@@ -107,7 +103,7 @@ export const Tooltip = ({
         <div
           role="tooltip"
           {...attributes.popper}
-          className={classNames(tooltipClassNames)}
+          className={classNames(tooltipClassNames, tooltipClassName)}
           style={{
             ...styles.popper,
             maxWidth: width,
@@ -130,7 +126,7 @@ export const Tooltip = ({
           {arrow && (
             <div
               ref={arrowElement}
-              className={classNames(arrowClassNames)}
+              className={classNames(arrowClassNames, arrowClassName)}
               data-popper-arrow
               style={{
                 ...styles.arrow,

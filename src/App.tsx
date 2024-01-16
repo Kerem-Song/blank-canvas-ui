@@ -195,7 +195,7 @@ function App() {
         bottom={50}
         menu={menu}
         closeIcon={icImgTest2}
-        useBadge={false}
+        useBadge={true}
         trigger="click"
         description={'한글적용가능한지여부테스트'}
       />
