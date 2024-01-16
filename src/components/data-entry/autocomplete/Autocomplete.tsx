@@ -1,5 +1,3 @@
-import '@styles/autocomplete.css';
-
 import { Input } from '@components/data-entry/input/Input';
 import { inputUtil } from '@modules/utils/input';
 import classNames from 'classnames';

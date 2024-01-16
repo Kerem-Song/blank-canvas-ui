@@ -1,5 +1,3 @@
-import '@styles/floatingActionButton.css';
-
 import { Badge } from '@components/data-display/badge/Badge';
 import { Tooltip } from '@components/data-display/tooltip/Tooltip';
 import { useOutsideClick } from '@hooks';

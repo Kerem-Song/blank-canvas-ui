@@ -1,4 +1,4 @@
-import { Flex, Pagination } from '@components';
+import { Flex, Pagination, Spin } from '@components';
 import { AnyObject } from '@models';
 import classNames from 'classnames';
 import React, { ReactElement, Ref } from 'react';
@@ -85,6 +85,14 @@ export const TableComp = <RecordType extends AnyObject = AnyObject>(
           rowSelection={rowSelection}
         />
       </table>
+      {!resultItems.length && !loading && (
+        <div className={tableClasses.empty}>{empty}</div>
+      )}
+      {loading && (
+        <div className={tableClasses.loading}>
+          <Spin type={loading === true ? 'spinningBubbles' : loading} spinning={true} />
+        </div>
+      )}
       {!!pagenation && (
         <Flex justify="center" className="p-1">
           <Pagination {...pagenation} />

@@ -1,5 +1,3 @@
-import '@styles/input.css';
-
 import { Button } from '@components/general/button/Button';
 import { inputUtil } from '@modules/utils/input';
 import classNames from 'classnames';
