@@ -1,7 +1,7 @@
 import '../../../index.css';
 
 import { Card } from '@components/data-display';
-import { Flex } from '@components/Layout';
+import { Flex } from '@components/layout';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import { Link as ReactRouterLink, Outlet, useLocation } from 'react-router-dom';
@@ -58,7 +58,8 @@ export const Default: Story = {
     underline: 'always',
     children: 'Link',
     color: 'primary',
-    size: 'sm',
+    size: 'md',
+    prefix: 'bc',
   },
 };
 

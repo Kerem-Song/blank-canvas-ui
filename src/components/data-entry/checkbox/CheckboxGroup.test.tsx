@@ -4,8 +4,8 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { Checkbox, checkboxClasses, checkboxGroupClasses } from './index';
 
-const groupClasses = generatePrefixClasses(checkboxGroupClasses, 'checkbox-group');
-const itemClasses = generatePrefixClasses(checkboxClasses, 'checkbox');
+const groupClasses = generatePrefixClasses(checkboxGroupClasses, 'bc-checkbox-group');
+const itemClasses = generatePrefixClasses(checkboxClasses, 'bc-checkbox');
 
 describe('<Checkbox.Group />', () => {
   it('렌더링 됩니다.', () => {
@@ -31,12 +31,16 @@ describe('<Checkbox.Group />', () => {
     );
 
     fireEvent.click(container.getElementsByClassName(itemClasses.input)[0]);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChange.mock.calls[0][2]).toEqual(['Apple']);
     fireEvent.click(container.getElementsByClassName(itemClasses.input)[1]);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChange.mock.calls[1][2]).toEqual(['Apple', 'Pear']);
     fireEvent.click(container.getElementsByClassName(itemClasses.input)[2]);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChange.mock.calls[2][2]).toEqual(['Apple', 'Pear', 'Orange']);
     fireEvent.click(container.getElementsByClassName(itemClasses.input)[1]);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChange.mock.calls[3][2]).toEqual(['Apple', 'Orange']);
   });
 });
@@ -71,8 +75,10 @@ describe('props: disabled', () => {
       <Checkbox.Group options={options} onChange={onChangeGroup} />,
     );
     fireEvent.click(container.getElementsByClassName(itemClasses.input)[0]);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChangeGroup.mock.calls[0][2]).toEqual(['Apple']);
     fireEvent.click(container.getElementsByClassName(itemClasses.input)[1]);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChangeGroup.mock.calls[0][2]).toEqual(['Apple']);
   });
 });

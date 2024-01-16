@@ -42,11 +42,12 @@ export interface LinkTypeMap<DefaultComponent extends React.ElementType = 'a'> {
     underline?: 'none' | 'hover' | 'always';
     /**
      * 구성 요소의 크기입니다.
-     * @default 'sm'
+     * @default 'md'
      */
     size?: 'xs' | 'sm' | 'md' | 'lg';
     /**
      * 클래스 이름 접두사
+     * @default 'bc'
      */
     prefix?: string;
   };

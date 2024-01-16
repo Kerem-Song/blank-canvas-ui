@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import * as React from 'react';
-import { Link as ReactRouterLink, useLocation } from 'react-router-dom';
+import { Link as ReactRouterLink, useLocation, useSearchParams } from 'react-router-dom';
 import {
   reactRouterOutlets,
   reactRouterParameters,
@@ -10,7 +10,7 @@ import {
 
 import { Pagination } from '../pagination/Pagination';
 import { PaginationProps } from '../pagination/Pagination.types';
-import { PaginationItem } from '../paginationItem/PaginationItem';
+import { PaginationItem } from '../pagination-item/PaginationItem';
 
 const FlexBox = ({
   className,
@@ -45,8 +45,8 @@ export const Default: Story = {
   args: {
     color: 'primary',
     shape: 'round',
-    size: 'sm',
-    prefix: '',
+    size: 'md',
+    prefix: 'bc',
     variant: 'contained',
     boundaryCount: 1,
     total: 500,
@@ -273,8 +273,33 @@ export const ThirdPartyReactRouting: Story = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const location = useLocation();
-    const query = new URLSearchParams(location.search);
-    const page = parseInt(query.get('page') || '1');
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [search, setSearch] = useSearchParams();
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const createSearchParams = React.useCallback(
+      (page: null | number) => {
+        const previousQuery = Object.fromEntries(
+          new URLSearchParams(search || '').entries(),
+        );
+        return new URLSearchParams({
+          ...previousQuery,
+          page: (page || 1).toString(),
+        }).toString();
+      },
+      [search],
+    );
+
+    const page = parseInt(search.get('page') || '1');
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      setSearch({
+        category: '3',
+        keyword: 'design',
+        page: '1',
+      });
+    }, []);
 
     return (
       <>
@@ -292,7 +317,7 @@ export const ThirdPartyReactRouting: Story = {
               <PaginationItem
                 component={ReactRouterLink}
                 to={{
-                  search: `${item.page === 1 ? '' : `?page=${item.page}`}`,
+                  search: createSearchParams(item.page),
                 }}
                 {...item}
               />

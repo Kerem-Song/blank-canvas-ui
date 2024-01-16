@@ -1,0 +1,27 @@
+$ns: .bc;
+$(ns) {
+  &-spin-area {
+    @apply inline-block relative;
+    $(ns)-spin {
+      @apply text-center;
+      &-indicator > * {
+        @apply animate-[spin_5s_linear_infinite] origin-[50%_50%];
+      }
+      &-inline {
+        @apply inline-block;
+      }
+    }
+    $(ns)-spin-children {
+      @apply text-center absolute top-2/4 left-1/2 -translate-x-2/4 -translate-y-2/4;
+    }
+  }
+  &-spin-option-bgcolor {
+    @apply bg-slate-200 opacity-75;
+  }
+  &-spin-option-fullscreen {
+    @apply opacity-75 fixed w-screen h-screen	z-999 bg-slate-200 top-0 left-0;
+  }
+  &-spin-option-hidden {
+    @apply hidden;
+  }
+}

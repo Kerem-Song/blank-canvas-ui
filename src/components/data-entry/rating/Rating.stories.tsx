@@ -64,6 +64,7 @@ export const Default: Story = {
     precision: 0.5,
     max: 5,
     size: 'md',
+    prefix: 'bc',
   },
 };
 

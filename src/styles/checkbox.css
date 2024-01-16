@@ -1,4 +1,4 @@
-$ns: .checkbox;
+$ns: .bc-checkbox;
 
 /* prettier-ignore */
 $(ns) {
@@ -37,7 +37,7 @@ $(ns) {
         h-[1em]
         m-0
         p-0
-        rounded-sm
+        rounded-6
         cursor-[inherit]
         appearance-none
         outline-offset-0;
@@ -58,47 +58,48 @@ $(ns) {
       $(ns)-checkbox {
         input {
           @apply
-            text-[14px];
+            text-lg;
         }
         svg {
           @apply  
-            text-[20px];
+            text-2xl;
         }
       }
       $(ns)-label {
-        @apply text-[12px];
+        @apply
+          text-sm;
       }
     }
     &$(ns)-md {
       $(ns)-checkbox {
         input {
           @apply
-            text-[18px];
+            text-xl;
         }
         svg {
           @apply
-            text-[24px];
+            text-3xl;
         }
       }
       $(ns)-label {
         @apply
-          text-[14px];
+          text-base;
       }
     }
     &$(ns)-lg {
       $(ns)-checkbox {
         input {
           @apply
-            text-[20px];
+            text-2xl;
         }
         svg {
           @apply
-            text-[28px];
+            text-4xl;
         }
       }
       $(ns)-label {
         @apply
-          text-[16px];
+          text-lg;
       }
     }
   }

@@ -1,100 +1,104 @@
-.floating-action-button-wrapper {
-  @apply block fixed z-100;
+$ns: .bc;
 
-  /* 메뉴 floating action button 일 경우 처음 노출되는 버튼 외에는 숨김 처리*/
-  .base-badge-area {
-    @apply invisible;
+$(ns) {
+  &-floating-action-button {
+    @apply block fixed z-100;
 
-    /* 처음 보이는 버튼(숨김처리 되지 않은 floating button)*/
-    &:last-child {
-      @apply visible;
-
-      /* 뱃지 사용 활성화 하지 않은 경우 */
-      .base-badge {
-        @apply invisible;
-      }
-    }
-  }
-
-  /* 메뉴 floating action button 사용시 open 상태*/
-  &.open {
-    .base-badge-area {
-      @apply visible cursor-pointer;
-
-      /* 뱃지 사용 활성화 하지 않은 경우 */
-      .base-badge {
-        @apply invisible;
-      }
-    }
-  }
-
-  /* 뱃지 카운터가 있을경우 */
-  &.badge-counter {
-    .base-badge-area {
-      .base-badge {
-        @apply opacity-0;
-      }
+    /* 메뉴 floating action button 일 경우 처음 노출되는 버튼 외에는 숨김 처리*/
+    .bc-badge {
+      @apply invisible;
 
       /* 처음 보이는 버튼(숨김처리 되지 않은 floating button)*/
       &:last-child {
-        .base-badge {
-          @apply visible opacity-100;
-        }
-      }
-    }
+        @apply visible;
 
-    /* 뱃지 카운터가 있고 메뉴가 열린 상태 */
-    &.open {
-      .base-badge {
-        @apply visible transition-opacity ease-in duration-500 opacity-100;
-      }
-
-      /* 메뉴 오픈 상태일 때 처음 노출되는 버튼의 뱃지는 사라지도록 설정*/
-      .base-badge-area:last-child {
-        .base-badge {
+        /* 뱃지 사용 활성화 하지 않은 경우 */
+        .bc-badge-area {
           @apply invisible;
         }
       }
     }
-  }
-}
 
-.floating-action-button {
-  @apply flex justify-center items-center;
-
-  &.hidden-menu {
-    @apply invisible opacity-0 pointer-events-none;
-
-    &:hover {
-      @apply opacity-0;
-    }
-
+    /* 메뉴 floating action button 사용시 open 상태*/
     &.open {
-      @apply visible transition-opacity ease-in duration-300 opacity-100;
+      .bc-badge {
+        @apply visible cursor-pointer;
+
+        /* 뱃지 사용 활성화 하지 않은 경우 */
+        .bc-badge-area {
+          @apply invisible;
+        }
+      }
     }
-  }
 
-  &:hover {
-    @apply opacity-70;
-  }
+    /* 뱃지 카운터가 있을경우 */
+    &-badge-counter {
+      .bc-badge {
+        .bc-badge-area {
+          @apply opacity-0;
+        }
 
-  &-circle {
-    @apply border rounded-full w-40pxr h-40pxr;
-  }
+        /* 처음 보이는 버튼(숨김처리 되지 않은 floating button)*/
+        &:last-child {
+          .bc-badge-area {
+            @apply visible opacity-100;
+          }
+        }
+      }
 
-  &-square {
-    @apply border rounded-lg w-40pxr h-40pxr;
-  }
+      /* 뱃지 카운터가 있고 메뉴가 열린 상태 */
+      &.open {
+        .bc-badge-area {
+          @apply !visible transition-opacity ease-in duration-500 opacity-100;
+        }
 
-  .icon {
-    @apply w-20pxr h-20pxr bg-center bg-no-repeat;
-  }
+        /* 메뉴 오픈 상태일 때 처음 노출되는 버튼의 뱃지는 사라지도록 설정*/
+        .bc-badge:last-child {
+          .bc-badge-area {
+            @apply !invisible;
+          }
+        }
+      }
+    }
 
-  .description {
-    @apply text-10pxr font-light;
-  }
+    &-btn {
+      @apply flex justify-center items-center;
 
-  button {
-    @apply flex flex-col justify-center items-center;
+      &:hover {
+        @apply opacity-70;
+      }
+
+      button {
+        @apply flex flex-col justify-center items-center;
+      }
+    }
+
+    &-hidden-menu {
+      @apply invisible opacity-0 pointer-events-none;
+
+      &:hover {
+        @apply opacity-0;
+      }
+
+      &.open {
+        @apply visible transition-opacity ease-in duration-300 opacity-100;
+      }
+    }
+
+    &-icon {
+      @apply w-20pxr h-20pxr bg-center bg-no-repeat;
+    }
+
+    &-description {
+      @apply overflow-hidden max-w-28pxr max-h-4 text-10pxr font-light;
+    }
+
+    &-circle {
+      @apply border rounded-full w-40pxr h-40pxr;
+    }
+
+    &-square {
+      @apply border rounded-lg w-40pxr h-40pxr;
+    }
   }
 }

@@ -1,15 +1,32 @@
-.tag-area {
-  @apply h-fit text-center rounded py-px ps-1 pe-1 bg-gray-100 text-xs text-slate-500;
-}
+$ns: .bc;
+$(ns) {
+  &-tag {
+    @apply h-fit text-center rounded py-px ps-1 pe-1 bg-gray-100 text-xs text-slate-500;
+    &-option {
+      &-pd {
+        @apply px-1;
+      }
+      &-inline {
+        @apply inline-block;
+      }
+      &-icon {
+        @apply inline-block pr-1 pl-0 align-text-bottom;
 
-.tag-bordered {
-  @apply border border-zinc-300;
-}
+        img {
+          @apply w-4 align-middle;
+        }
+      }
+    }
 
-.tag-close {
-  @apply text-9pxr cursor-pointer;
-}
+    &-option-close {
+      @apply text-10pxr pl-1 cursor-pointer align-bottom;
+    }
+    &-option-hidden {
+      @apply hidden;
+    }
+  }
 
-.tag-pd {
-  @apply px-1;
+  &-tag-option-bordered {
+    @apply border border-zinc-300;
+  }
 }

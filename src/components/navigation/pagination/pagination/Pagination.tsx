@@ -2,9 +2,9 @@ import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import { PaginationItem } from '../paginationItem/PaginationItem';
-import { PaginationItemType } from '../paginationItem/PaginationItem.types';
+import { PaginationItem } from '../pagination-item/PaginationItem';
 import { usePagination } from '../usePagination/usePagination';
+import { PaginationItemType } from '../usePagination/usePagination.types';
 import { PaginationProps } from './Pagination.types';
 import { paginationClasses } from './paginationClasses';
 
@@ -35,11 +35,11 @@ export const Pagination = React.forwardRef(function Pagination(
     showFirstButton,
     showLastButton,
     maxPageCount,
-    prefix,
+    prefix = 'bc',
     className,
     color = 'primary',
     shape = 'round',
-    size = 'sm',
+    size = 'md',
     variant = 'contained',
     onChange,
     renderItem = (item) => <PaginationItem {...item} />,
@@ -64,7 +64,7 @@ export const Pagination = React.forwardRef(function Pagination(
 
   const classes = generatePrefixClasses(
     paginationClasses,
-    `${prefix ? `${prefix}-` : ''}Pagination`,
+    `${prefix ? `${prefix}-` : ''}pagination`,
   );
 
   const rootClassName = classNames(

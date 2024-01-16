@@ -1,2 +1,2 @@
-export * from './Modal';
-export * from './Spin';
+export * from './modal';
+export * from './spin';

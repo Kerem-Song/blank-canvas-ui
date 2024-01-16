@@ -1,44 +1,63 @@
-.select-container {
-  @apply flex h-[30px] cursor-pointer;
-}
-.select-item-hover {
-  @apply bg-neutral-100 rounded-[5px];
-}
-.selected-item {
-  @apply bg-blue-100 font-bold rounded-[5px];
-}
-.select-bordered-none {
-  @apply border-none;
-}
-.select-bordered {
-  @apply border-solid border-[1px];
-}
-.select-disabled {
-  @apply cursor-not-allowed bg-[#dbdbdb] text-[#b3b1b1];
-}
+$ns: .bc;
+$(ns) {
+  &-select {
+    @apply flex h-[30px] cursor-pointer;
+    &-disabled {
+      @apply rounded-6 cursor-not-allowed bg-[#dbdbdb] text-[#b3b1b1];
+    }
+    /* &-container {
+      
+    } */
 
-.select-referenceElement {
-  @apply flex justify-between rounded-[5px] items-center h-full;
-  input {
-    @apply rounded-[5px] px-[8px] h-full outline-none w-full ring-opacity-0 border-0 select-overflow cursor-pointer;
-  }
+    &-focus {
+      @apply ring-2 ring-blue-500;
+    }
+    &-focus-none {
+      @apply ring-2 ring-blue-500/0;
+    }
+    &-status {
+      &-error {
+        @apply ring-2 ring-error-main;
+      }
+      &-warning {
+        @apply ring-2 ring-yellow-500 ring-opacity-90;
+      }
+    }
+    &-bordered {
+      @apply border-solid border-[1px];
+    }
+    &-bordered-none {
+      @apply border-none;
+    }
+    &-referenceElement {
+      @apply flex justify-between rounded-6 items-center h-full bg-white;
+      input {
+        @apply rounded-6 px-[8px] h-full outline-none w-full ring-opacity-0 border-0;
+      }
 
-  .select-icon {
-    @apply w-[16px] h-full flex items-center mx-[5px] cursor-pointer;
-  }
-}
-.select-ul {
-  @apply bg-white	p-[5px] my-[8px] rounded-[8px] border-solid border-gray-200 shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
+      $(ns)-select-icon {
+        @apply w-[16px] h-full flex items-center mx-[5px] cursor-pointer;
+      }
+    }
 
-  .select-overflow {
-    @apply overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];
-  }
+    &-list {
+      @apply bg-white	p-[5px] my-[8px] rounded-6 border-solid border-gray-200 shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
 
-  li:not(.select-list-disabled) {
-    @apply cursor-pointer;
-  }
-
-  .select-list-disabled {
-    @apply bg-[#fff];
+      li:not(.bc-select-list-disabled) {
+        @apply cursor-pointer;
+      }
+      &-overflow {
+        @apply overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];
+      }
+      &-hover {
+        @apply bg-neutral-100 rounded-6;
+      }
+      &-item {
+        @apply bg-blue-100 font-bold rounded-6;
+      }
+      &-disabled {
+        @apply bg-[#fff];
+      }
+    }
   }
 }

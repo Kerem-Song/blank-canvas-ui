@@ -1,0 +1,46 @@
+$ns: .bc;
+$(ns) {
+  &-card {
+    @apply p-0 text-start min-w-200;
+
+    &-head {
+      @apply flex border-b overflow-hidden p-3 justify-between w-full;
+      > span {
+        @apply w-1/2;
+      }
+      &-title {
+        @apply font-semibold text-base;
+      }
+
+      &-extra {
+        @apply text-sm;
+        a {
+          @apply text-sky-500 underline;
+        }
+      }
+      &-rounded {
+        @apply rounded-t-md;
+      }
+    }
+
+    &-small {
+      @apply py-1.5;
+    }
+
+    &-body {
+      @apply p-3;
+    }
+    &-rounded {
+      @apply rounded-md;
+    }
+    &-border {
+      @apply border;
+    }
+    &-none-border {
+      @apply shadow-[rgba(50,_50,_105,_0.1)_0px_1px_2px_0px,_rgba(0,_0,_0,_0.05)_0px_0.5px_0.5px_0px];
+    }
+    &-full {
+      @apply w-full;
+    }
+  }
+}

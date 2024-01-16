@@ -1,6 +1,6 @@
 import '../../../index.css';
 
-import { Flex } from '@components/Layout';
+import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import { useState } from 'react';
@@ -51,8 +51,8 @@ export const Default: Story = {
     readOnly: false,
     required: false,
     color: 'primary',
-    size: 'sm',
-    prefix: '',
+    size: 'md',
+    prefix: 'bc',
     defaultValue: ['Apple'],
     options: [
       { label: 'Apple', value: 'Apple' },
@@ -84,7 +84,7 @@ export const Controlled: Story = {
     readOnly: false,
     required: false,
     color: 'primary',
-    size: 'sm',
+    size: 'md',
     prefix: '',
     options: [
       { label: 'Apple', value: 'Apple' },

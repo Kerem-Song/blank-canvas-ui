@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { Button, buttonClasses } from './index';
 
-const classes = generatePrefixClasses(buttonClasses, 'btn');
+const classes = generatePrefixClasses(buttonClasses, 'bc-btn');
 
 describe('<Button />', () => {
   it('렌더링 됩니다.', () => {

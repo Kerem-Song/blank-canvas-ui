@@ -51,7 +51,7 @@ export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'but
     shape?: 'default' | 'circle' | 'round';
     /**
      * 구성 요소의 크기입니다.
-     * @default 'sm'
+     * @default 'md'
      */
     size?: 'xs' | 'sm' | 'md' | 'lg';
     /**
@@ -70,6 +70,7 @@ export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'but
     tabIndex?: number;
     /**
      * 클래스 이름 접두사
+     * @default 'bc'
      */
     prefix?: string;
     /**

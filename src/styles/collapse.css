@@ -1,17 +1,25 @@
-.collapse-wrapper {
-  .header {
-    @apply flex;
+$ns: .bc;
 
-    .expand-icon {
-      @apply flex-none;
+$(ns) {
+  &-collapse {
+    &-header {
+      @apply flex items-center p-12pxr;
 
-      &.expand {
-        @apply rotate-180;
+      &-expand-icon {
+        @apply flex-none;
+
+        &.expand {
+          @apply rotate-180;
+        }
+      }
+
+      &-label {
+        @apply grow w-full;
       }
     }
 
-    .label {
-      @apply grow w-full;
+    &-children {
+      @apply p-12pxr;
     }
   }
 }

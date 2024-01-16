@@ -38,6 +38,7 @@ export interface AvatarTypeMap<DefaultComponent extends React.ElementType = 'div
     srcSet?: string;
     /**
      * 클래스 이름 접두사
+     * @default 'bc'
      */
     prefix?: string;
     /**

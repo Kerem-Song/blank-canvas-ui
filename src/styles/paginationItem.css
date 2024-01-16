@@ -1,4 +1,4 @@
-$ns: .PaginationItem;
+$ns: .bc-pagination-item;
 
 /* prettier-ignore */
 $(ns) {
@@ -33,7 +33,7 @@ $(ns) {
       px-[4px]
       min-w-[26px]
       h-[26px]
-      text-[12px];
+      text-sm;
     $(ns)-icon {
       @apply
         text-[10px];
@@ -45,7 +45,7 @@ $(ns) {
       px-[6px]
       min-w-[32px]
       h-[32px]
-      text-[14px];
+      text-base;
     $(ns)-icon {
       @apply
         text-[14px];
@@ -57,7 +57,7 @@ $(ns) {
       px-[10px]
       min-w-[40px]
       h-[40px]
-      text-[16px];
+      text-lg;
     $(ns)-icon {
       @apply
         text-[18px];
@@ -67,7 +67,7 @@ $(ns) {
   /* shape */
   &-round {
     @apply
-      rounded-md;
+      rounded-6;
   }
 
   &-circle {

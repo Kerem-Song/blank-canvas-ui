@@ -11,6 +11,7 @@ export interface AvatarGroupTypeMap<DefaultComponent extends React.ElementType =
     children?: React.ReactNode;
     /**
      * 클래스 이름 접두사
+     * @default 'bc'
      */
     prefix?: string;
   };

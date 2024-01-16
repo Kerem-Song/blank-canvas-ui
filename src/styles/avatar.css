@@ -1,4 +1,4 @@
-$ns: .avatar;
+$ns: .bc-avatar;
 
 /* prettier-ignore */
 $(ns) {
@@ -10,11 +10,10 @@ $(ns) {
       items-center
       justify-center
       shrink-0
-      box-content
+      box-border
       relative
-      w-10
-      h-10
-      border-2 border-solid
+      border-2
+      border-solid
       border-white
       font-pretendard
       text-xl
@@ -35,29 +34,29 @@ $(ns) {
 
   &-rounded {
     @apply
-      rounded-md;
+      rounded-6;
   }
 
   /* size */
   &-sm {
     @apply
-      w-6
-      h-6
-      text-xs;
+      w-[24px]
+      h-[24px]
+      text-sm;
   }
 
   &-md {
     @apply
-      w-8
-      h-8
+      w-[32px]
+      h-[32px]
       text-base;
   }
 
   &-lg {
     @apply
-      w-10
-      h-10
-      text-xl;
+      w-[40px]
+      h-[40px]
+      text-lg;
   }
 
   /* colorDefault */

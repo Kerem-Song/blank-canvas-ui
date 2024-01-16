@@ -1,25 +1,29 @@
-.autocomplete {
-  &-container {
-    @apply min-w-154pxr border p-5pxr border-gray-200 rounded-md bg-white z-999;
-  }
+$ns: .bc;
 
-  &-list {
-    @apply flex items-center w-138pxr h-32pxr px-8pxr py-12pxr border border-white rounded-md gap-8pxr;
-
-    &:hover {
-      @apply bg-blue-100;
+$(ns) {
+  &-autocomplete {
+    &-container {
+      @apply min-w-154pxr border p-5pxr border-gray-200 rounded-md bg-white z-999;
     }
 
-    .items-name {
-      @apply overflow-hidden text-ellipsis whitespace-nowrap;
-    }
+    &-list {
+      @apply flex items-center w-138pxr h-32pxr px-8pxr py-12pxr border border-white rounded-md gap-8pxr;
 
-    &.disable {
-      @apply text-gray-200;
-    }
+      &:hover {
+        @apply bg-blue-100;
+      }
 
-    &-focused {
-      @apply bg-blue-100;
+      &-items-name {
+        @apply overflow-hidden text-ellipsis whitespace-nowrap;
+      }
+
+      &.disable {
+        @apply text-gray-200;
+      }
+
+      &-focused {
+        @apply bg-blue-100;
+      }
     }
   }
 }

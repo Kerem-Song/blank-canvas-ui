@@ -1,0 +1,155 @@
+$ns: .bc-table;
+
+$(ns)-wrap {
+  /* wrap */
+  & {
+    @apply relative overflow-x-auto bg-white border;
+  }
+
+  &-rounded {
+    @apply rounded-md;
+  }
+
+  $(ns)-text-align-left {
+    @apply text-left;
+  }
+
+  $(ns)-text-align-right {
+    @apply text-right;
+  }
+
+  $(ns)-text-align-center {
+    @apply text-center;
+  }
+
+  /* table */
+  table {
+    & {
+      @apply w-full;
+    }
+
+    thead {
+      & {
+        @apply sticky top-0 align-middle;
+      }
+      tr {
+        th {
+          & {
+            @apply px-3 relative text-gray-500 bg-gray-150;
+          }
+        }
+
+        $(ns)-sortable {
+          @apply cursor-pointer hover:bg-gray-200;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        & {
+          @apply hover:bg-gray-100;
+        }
+
+        &[aria-selected='true'] {
+          @apply bg-gray-150;
+        }
+
+        td {
+          & {
+            @apply border-b border-gray-150 px-3;
+          }
+        }
+      }
+    }
+  }
+}
+
+$(ns)-wrap-border {
+  table {
+    thead {
+      tr {
+        th {
+          @apply border-r border-b;
+          &:last-child {
+            @apply border-r-0;
+          }
+        }
+
+        &:last-child {
+          td {
+            & {
+              @apply border-b-0;
+            }
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          @apply border-r;
+
+          &:last-child {
+            @apply border-r-0;
+          }
+        }
+      }
+    }
+  }
+}
+
+$(ns)-size-normal {
+  table {
+    thead {
+      & {
+        @apply text-sm;
+      }
+      tr {
+        th {
+          @apply py-3;
+        }
+      }
+    }
+
+    tbody {
+      & {
+        @apply text-sm;
+      }
+
+      tr {
+        td {
+          @apply py-3;
+        }
+      }
+    }
+  }
+}
+
+$(ns)-size-small {
+  table {
+    thead {
+      & {
+        @apply text-xs;
+      }
+      tr {
+        th {
+          @apply py-2;
+        }
+      }
+    }
+
+    tbody {
+      & {
+        @apply text-xs;
+      }
+
+      tr {
+        td {
+          @apply py-2;
+        }
+      }
+    }
+  }
+}

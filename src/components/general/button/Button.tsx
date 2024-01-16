@@ -1,3 +1,5 @@
+import '../../../styles/button.css';
+
 import { composeRef, generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
@@ -18,12 +20,12 @@ export const Button = React.forwardRef(function Button<
     block = false,
     endIcon: endIconProp,
     shape = 'round',
-    size = 'sm',
+    size = 'md',
     startIcon: startIconProp,
     slotProps,
     tabIndex,
     type,
-    prefix,
+    prefix = 'bc',
     variant = 'outlined',
     onClick,
     ...other
@@ -72,7 +74,7 @@ export const Button = React.forwardRef(function Button<
 
   const classes = generatePrefixClasses(
     buttonClasses,
-    `${prefix ? `${prefix}-` : ''}${baseButton ? 'BaseButton' : 'btn'}`,
+    `${prefix ? `${prefix}-` : ''}${baseButton ? 'base-button' : 'btn'}`,
   );
 
   const rootClassName = classNames(

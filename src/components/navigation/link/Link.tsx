@@ -16,8 +16,8 @@ export const Link = React.forwardRef(function Link<
     overlay = false,
     disabled = false,
     underline = 'always',
-    size = 'sm',
-    prefix,
+    size = 'md',
+    prefix = 'bc',
     href,
     component: RootComponent = 'a',
     ...other

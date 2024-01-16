@@ -1,6 +1,6 @@
 import '../../../index.css';
 
-import { Flex } from '@components/Layout';
+import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import React, { useState } from 'react';
@@ -53,9 +53,9 @@ export const Default: Story = {
     label: 'checkbox',
     readOnly: false,
     required: false,
-    size: 'sm',
+    size: 'md',
     color: 'primary',
-    prefix: '',
+    prefix: 'bc',
   },
 };
 

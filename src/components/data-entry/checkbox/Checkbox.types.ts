@@ -82,11 +82,12 @@ export interface CheckboxProps
   };
   /**
    * 구성 요소의 크기입니다.
-   * @default 'sm'
+   * @default 'md'
    */
   size?: 'sm' | 'md' | 'lg';
   /**
    * 클래스 이름 접두사
+   * @default 'bc'
    */
   prefix?: string;
   /**

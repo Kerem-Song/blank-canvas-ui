@@ -1,3 +1,3 @@
 export * from './pagination/index';
-export * from './paginationItem/index';
+export * from './pagination-item/index';
 export * from './usePagination/index';
