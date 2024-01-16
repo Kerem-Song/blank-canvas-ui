@@ -1,3 +1,4 @@
+import { useOutsideEventClick } from '@hooks/useOutsideClick';
 import classNames from 'classnames';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 
@@ -20,7 +21,8 @@ export const Tag = forwardRef<HTMLSpanElement, ITagProps>((args, ref) => {
   const [showOptions, setShowOptions] = useState<boolean>(true);
 
   const closeRef = useRef<HTMLSpanElement>(null);
-  const close = (e: Event) => {
+
+  useOutsideEventClick(closeRef, (e: Event) => {
     if (e.defaultPrevented) {
       return;
     }
@@ -28,14 +30,7 @@ export const Tag = forwardRef<HTMLSpanElement, ITagProps>((args, ref) => {
     if (closeRef.current && closeRef.current.contains(temp)) {
       setShowOptions(false);
     }
-  };
-
-  useEffect(() => {
-    window.addEventListener('click', close);
-    return () => {
-      window.removeEventListener('click', close);
-    };
-  }, []);
+  });
 
   const rootClassName = classNames(tagClasses.root, {
     [tagClasses.option.bordered]: bordered,
