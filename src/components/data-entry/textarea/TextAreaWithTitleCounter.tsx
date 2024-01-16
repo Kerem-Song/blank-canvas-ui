@@ -57,7 +57,6 @@ export const TextAreaWithTitleCounter = forwardRef<
           `${textareaClasses.titleCounterWrapper} ${direction}`,
           { invalid: isError },
           'group-focus-within:input-focus',
-          'peer-focus-within:input-focus',
         )}
       >
         <TextareaAutosize
