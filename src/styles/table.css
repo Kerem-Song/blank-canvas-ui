@@ -22,6 +22,14 @@ $(ns)-wrap {
     @apply text-center;
   }
 
+  $(ns)-empty {
+    @apply flex justify-center h-40 items-center;
+  }
+
+  $(ns)-loading {
+    @apply absolute top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-50;
+  }
+
   /* table */
   table {
     & {
@@ -101,6 +109,9 @@ $(ns)-wrap-border {
 }
 
 $(ns)-size-normal {
+  $(ns)-empty {
+    @apply text-sm;
+  }
   table {
     thead {
       & {
@@ -128,6 +139,9 @@ $(ns)-size-normal {
 }
 
 $(ns)-size-small {
+  $(ns)-empty {
+    @apply text-xs;
+  }
   table {
     thead {
       & {

@@ -15,7 +15,7 @@ $(ns) {
       @apply text-center absolute top-2/4 left-1/2 -translate-x-2/4 -translate-y-2/4;
     }
   }
-  &-spin-option-bgcolor {
+  &-spin-option-bgColor {
     @apply bg-slate-200 opacity-75;
   }
   &-spin-option-fullscreen {
