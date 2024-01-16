@@ -14,6 +14,8 @@ const classes = {
     small: 'small',
   },
   sortable: 'sortable',
+  empty: 'empty',
+  loading: 'loading',
 };
 
 export const tableClasses = attachPrefixClasses(classes, 'table', true);
