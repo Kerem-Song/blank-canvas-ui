@@ -99,9 +99,14 @@ export interface ISelectProp<T extends object>
    */
   options?: Array<{ label: string; value: string; disabled?: boolean }>;
   /**
-   * select error 여부 서렂ㅇ
+   * select error 여부 지정
    * @default
    * @type boolean
    */
   isError?: boolean;
+}
+
+export interface ITestProp<T extends object>
+  extends Omit<ISelectProp<T>, 'defaultValue'> {
+  defaultValue?: string | Array<string | T>;
 }
