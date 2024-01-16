@@ -1,5 +1,3 @@
-import '@styles/carousel.css';
-
 import { Col, Row } from '@components/layout';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';

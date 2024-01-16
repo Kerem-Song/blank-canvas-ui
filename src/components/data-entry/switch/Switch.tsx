@@ -1,5 +1,3 @@
-import '@styles/switch.css';
-
 import { Flex } from '@components/layout/flex';
 import classNames from 'classnames';
 import { forwardRef } from 'react';

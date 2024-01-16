@@ -1,5 +1,3 @@
-import '@styles/modal.css';
-
 import { Button } from '@components/general/button/Button';
 import { Divider } from '@components/layout/divider';
 import { Flex } from '@components/layout/flex';

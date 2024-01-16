@@ -1,5 +1,3 @@
-import '@styles/radio.css';
-
 import { forwardRef, InputHTMLAttributes } from 'react';
 
 import { radioClasses } from './RadioClasses';
