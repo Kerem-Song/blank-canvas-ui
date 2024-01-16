@@ -1,4 +1,5 @@
-$ns: .bc-pagination-item;
+$prefix: bc;
+$ns: .$(prefix)-pagination-item;
 
 /* prettier-ignore */
 $(ns) {

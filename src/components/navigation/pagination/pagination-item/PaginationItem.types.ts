@@ -61,11 +61,6 @@ export interface PaginationItemTypeMap<
       'end-ellipsis'?: Partial<React.ComponentPropsWithRef<React.ElementType>>;
     };
     /**
-     * 클래스 이름 접두사
-     * @default 'bc'
-     */
-    prefix?: string;
-    /**
      * 구성요소의 유형입니다.
      * @default 'page'
      */

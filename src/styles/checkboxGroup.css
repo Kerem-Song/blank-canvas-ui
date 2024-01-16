@@ -1,4 +1,5 @@
-$ns: .checkbox-group;
+$prefix: bc;
+$ns: .$(prefix)-checkbox-group;
 
 /* prettier-ignore */
 $(ns) {

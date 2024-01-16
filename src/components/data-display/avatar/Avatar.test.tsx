@@ -1,11 +1,9 @@
-import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
 import { fireEvent, render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { Avatar, avatarClasses, AvatarClassKey } from './index';
+import { Avatar } from './Avatar';
+import { AvatarClasses, avatarClasses as classes } from './avatarClasses';
 import * as useLoadedHook from './useLoaded';
-
-const classes = generatePrefixClasses(avatarClasses, 'bc-avatar');
 
 describe('<Avatar />', () => {
   it('렌더링 됩니다.', () => {
@@ -181,7 +179,7 @@ describe('prop: variant', () => {
 
       expect(
         (container.firstChild as HTMLElement).classList.contains(
-          classes[variant as AvatarClassKey],
+          classes[variant as keyof AvatarClasses],
         ),
       ).toBeTruthy();
     });

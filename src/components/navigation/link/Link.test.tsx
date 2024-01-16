@@ -1,10 +1,8 @@
-import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
 import { fireEvent, render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Link, linkClasses, LinkClassKey } from './index';
-
-const classes = generatePrefixClasses(linkClasses, 'bc-link');
+import { Link } from './Link';
+import { LinkClasses, linkClasses as classes } from './linkClasses';
 
 function capitalize(word: string) {
   return word.charAt(0).toUpperCase() + word.slice(1);
@@ -93,7 +91,7 @@ describe('prop: color', () => {
 
       expect(
         getByTestId('anchor').classList.contains(
-          classes[`color${capitalize(color)}` as LinkClassKey],
+          classes[`color${capitalize(color)}` as keyof LinkClasses],
         ),
       ).toBeTruthy();
     });
@@ -111,7 +109,7 @@ describe('prop: underline', () => {
 
       expect(
         getByTestId('anchor').classList.contains(
-          classes[`underline${capitalize(underline)}` as LinkClassKey],
+          classes[`underline${capitalize(underline)}` as keyof LinkClasses],
         ),
       ).toBeTruthy();
     });

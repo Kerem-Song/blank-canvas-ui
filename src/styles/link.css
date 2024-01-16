@@ -1,4 +1,5 @@
-$ns: .bc-link;
+$prefix: bc;
+$ns: .$(prefix)-link;
 
 /* prettier-ignore */
 $(ns) {

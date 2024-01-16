@@ -1,25 +1,23 @@
-import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
 import { fireEvent, render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Checkbox, checkboxClasses, checkboxGroupClasses } from './index';
-
-const groupClasses = generatePrefixClasses(checkboxGroupClasses, 'bc-checkbox-group');
-const itemClasses = generatePrefixClasses(checkboxClasses, 'bc-checkbox');
+import { checkboxClasses } from './checkboxClasses';
+import { CheckboxGroup } from './CheckboxGroup';
+import { checkboxGroupClasses } from './checkboxGroupClasses';
 
 describe('<Checkbox.Group />', () => {
   it('렌더링 됩니다.', () => {
-    const { container } = render(<Checkbox.Group />);
+    const { container } = render(<CheckboxGroup />);
 
     expect(
-      (container.firstChild as HTMLElement).classList.contains(groupClasses.root),
+      (container.firstChild as HTMLElement).classList.contains(checkboxGroupClasses.root),
     ).toBeTruthy();
   });
 
   it(`구성 요소는 오류 없이 업데이트되고 마운트 해제될 수 있습니다.`, () => {
-    const { unmount, rerender } = render(<Checkbox.Group />);
+    const { unmount, rerender } = render(<CheckboxGroup />);
     expect(() => {
-      rerender(<Checkbox.Group />);
+      rerender(<CheckboxGroup />);
       unmount();
     }).not.toThrow();
   });
@@ -27,19 +25,19 @@ describe('<Checkbox.Group />', () => {
   it('하위 Checkbox을 선택했을때, 선택값이 체크됩니다.', () => {
     const onChange = vi.fn();
     const { container } = render(
-      <Checkbox.Group options={['Apple', 'Pear', 'Orange']} onChange={onChange} />,
+      <CheckboxGroup options={['Apple', 'Pear', 'Orange']} onChange={onChange} />,
     );
 
-    fireEvent.click(container.getElementsByClassName(itemClasses.input)[0]);
+    fireEvent.click(container.getElementsByClassName(checkboxClasses.input)[0]);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChange.mock.calls[0][2]).toEqual(['Apple']);
-    fireEvent.click(container.getElementsByClassName(itemClasses.input)[1]);
+    fireEvent.click(container.getElementsByClassName(checkboxClasses.input)[1]);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChange.mock.calls[1][2]).toEqual(['Apple', 'Pear']);
-    fireEvent.click(container.getElementsByClassName(itemClasses.input)[2]);
+    fireEvent.click(container.getElementsByClassName(checkboxClasses.input)[2]);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChange.mock.calls[2][2]).toEqual(['Apple', 'Pear', 'Orange']);
-    fireEvent.click(container.getElementsByClassName(itemClasses.input)[1]);
+    fireEvent.click(container.getElementsByClassName(checkboxClasses.input)[1]);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChange.mock.calls[3][2]).toEqual(['Apple', 'Orange']);
   });
@@ -55,12 +53,12 @@ describe('props: disabled', () => {
     ];
 
     const { container } = render(
-      <Checkbox.Group options={options} onChange={onChangeGroup} disabled />,
+      <CheckboxGroup options={options} onChange={onChangeGroup} disabled />,
     );
 
-    fireEvent.click(container.getElementsByClassName(itemClasses.input)[0]);
+    fireEvent.click(container.getElementsByClassName(checkboxClasses.input)[0]);
     expect(onChangeGroup).toHaveBeenCalledTimes(0);
-    fireEvent.click(container.getElementsByClassName(itemClasses.input)[1]);
+    fireEvent.click(container.getElementsByClassName(checkboxClasses.input)[1]);
     expect(onChangeItem).toHaveBeenCalledTimes(0);
   });
 
@@ -72,12 +70,12 @@ describe('props: disabled', () => {
     ];
 
     const { container } = render(
-      <Checkbox.Group options={options} onChange={onChangeGroup} />,
+      <CheckboxGroup options={options} onChange={onChangeGroup} />,
     );
-    fireEvent.click(container.getElementsByClassName(itemClasses.input)[0]);
+    fireEvent.click(container.getElementsByClassName(checkboxClasses.input)[0]);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChangeGroup.mock.calls[0][2]).toEqual(['Apple']);
-    fireEvent.click(container.getElementsByClassName(itemClasses.input)[1]);
+    fireEvent.click(container.getElementsByClassName(checkboxClasses.input)[1]);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onChangeGroup.mock.calls[0][2]).toEqual(['Apple']);
   });
@@ -86,10 +84,10 @@ describe('props: disabled', () => {
 describe('props: name', () => {
   it('모든 자식에는 이름 속성이 있어야 합니다.', () => {
     const { container } = render(
-      <Checkbox.Group name="checkboxgroup" options={['Yes', 'No']} />,
+      <CheckboxGroup name="checkboxgroup" options={['Yes', 'No']} />,
     );
 
-    Array.from(container.getElementsByClassName(itemClasses.input)).forEach((el) => {
+    Array.from(container.getElementsByClassName(checkboxClasses.input)).forEach((el) => {
       expect(el.getAttribute('name')).toEqual('checkboxgroup');
     });
   });
@@ -98,7 +96,7 @@ describe('props: name', () => {
 describe('props: value', () => {
   it('value로 값을 설정할 수  있습니다.', () => {
     const { container } = render(
-      <Checkbox.Group
+      <CheckboxGroup
         value={['Apple']}
         options={[
           { label: 'Apple', value: 'Apple' },
@@ -107,6 +105,6 @@ describe('props: value', () => {
       />,
     );
 
-    expect(container.getElementsByClassName(itemClasses.checked).length).toBe(1);
+    expect(container.getElementsByClassName(checkboxClasses.checked).length).toBe(1);
   });
 });

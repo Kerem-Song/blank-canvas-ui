@@ -1,4 +1,5 @@
-import { generatePrefixClasses } from '@modules/utils';
+import '@styles/pagination.css';
+
 import classNames from 'classnames';
 import * as React from 'react';
 
@@ -6,7 +7,7 @@ import { PaginationItem } from '../pagination-item/PaginationItem';
 import { usePagination } from '../usePagination/usePagination';
 import { PaginationItemType } from '../usePagination/usePagination.types';
 import { PaginationProps } from './Pagination.types';
-import { paginationClasses } from './paginationClasses';
+import { paginationClasses as classes } from './paginationClasses';
 
 function defaultGetAriaLabel(
   type: PaginationItemType,
@@ -35,7 +36,6 @@ export const Pagination = React.forwardRef(function Pagination(
     showFirstButton,
     showLastButton,
     maxPageCount,
-    prefix = 'bc',
     className,
     color = 'primary',
     shape = 'round',
@@ -61,11 +61,6 @@ export const Pagination = React.forwardRef(function Pagination(
     maxPageCount,
     onChange,
   });
-
-  const classes = generatePrefixClasses(
-    paginationClasses,
-    `${prefix ? `${prefix}-` : ''}pagination`,
-  );
 
   const rootClassName = classNames(
     classes.root,

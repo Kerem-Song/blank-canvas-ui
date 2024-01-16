@@ -49,11 +49,6 @@ export interface RatingProps
    */
   value?: number | null;
   /**
-   * prefix className.
-   * @default 'bc'
-   */
-  prefix?: string;
-  /**
    * 비어있을 때 표시되는 아이콘.
    * @default <StarBorderIcon size="24" />
    */

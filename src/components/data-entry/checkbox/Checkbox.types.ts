@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 export interface CheckboxProps
   extends Omit<React.HTMLAttributes<HTMLInputElement>, 'onChange'> {
@@ -85,11 +85,6 @@ export interface CheckboxProps
    * @default 'md'
    */
   size?: 'sm' | 'md' | 'lg';
-  /**
-   * 클래스 이름 접두사
-   * @default 'bc'
-   */
-  prefix?: string;
   /**
    * 구성 요소의 값입니다. DOM API는 이를 문자열로 변환합니다.
    * 브라우저는 "on"을 기본값으로 사용합니다.

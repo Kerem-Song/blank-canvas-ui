@@ -1,9 +1,7 @@
-import '../../../index.css';
-
 import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
-import { useState } from 'react';
+import * as React from 'react';
 
 import { CheckboxGroup } from './CheckboxGroup';
 import { CheckboxGroupProps } from './CheckboxGroup.types';
@@ -52,7 +50,6 @@ export const Default: Story = {
     required: false,
     color: 'primary',
     size: 'md',
-    prefix: 'bc',
     defaultValue: ['Apple'],
     options: [
       { label: 'Apple', value: 'Apple' },
@@ -65,7 +62,7 @@ export const Default: Story = {
 export const Controlled: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [value, setValue] = useState<string[]>(['Apple']);
+    const [value, setValue] = React.useState<string[]>(['Apple']);
 
     const onChange: CheckboxGroupProps['onChange'] = (event, value, checkedValues) => {
       setValue(checkedValues);
@@ -85,7 +82,6 @@ export const Controlled: Story = {
     required: false,
     color: 'primary',
     size: 'md',
-    prefix: '',
     options: [
       { label: 'Apple', value: 'Apple' },
       { label: 'Pear', value: 'Pear' },

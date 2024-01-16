@@ -2,10 +2,8 @@ import { Avatar as _Avatar } from './Avatar';
 import { AvatarProps } from './Avatar.types';
 import { AvatarGroup } from './AvatarGroup';
 
-export * from './Avatar.types';
-export * from './avatarClasses';
-export * from './AvatarGroup.types';
-export * from './avatarGroupClasses';
+export type { AvatarProps } from './Avatar.types';
+export type { AvatarGroupProps } from './AvatarGroup.types';
 
 type CompoundedComponent = React.ForwardRefExoticComponent<
   AvatarProps & React.RefAttributes<HTMLElement>

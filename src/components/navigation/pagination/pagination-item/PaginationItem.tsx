@@ -1,16 +1,17 @@
+import '@styles/paginationItem.css';
+
 import ChevronDoubleLeftIcon from '@assets/icons/ic_chevron_double_left.svg?react';
 import ChevronDoubleRightIcon from '@assets/icons/ic_chevron_double_right.svg?react';
 import ChevronLeftIcon from '@assets/icons/ic_chevron_left.svg?react';
 import ChevronRightIcon from '@assets/icons/ic_chevron_right.svg?react';
 import { Button } from '@components/general/button/Button';
 import { OverridableComponent } from '@models/types';
-import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import * as React from 'react';
 
 import { PaginationItemType } from '../usePagination/usePagination.types';
 import { PaginationItemProps, PaginationItemTypeMap } from './PaginationItem.types';
-import { paginationItemClasses } from './paginationItemClasses';
+import { paginationItemClasses as classes } from './paginationItemClasses';
 
 export const PaginationItem = React.forwardRef(function PaginationItem<
   RootComponentType extends React.ElementType,
@@ -27,7 +28,6 @@ export const PaginationItem = React.forwardRef(function PaginationItem<
     size = 'md',
     slots: slotsProp = {},
     slotProps: slotPropsProp = {},
-    prefix = 'bc',
     type = 'page',
     ...other
   } = props;
@@ -49,11 +49,6 @@ export const PaginationItem = React.forwardRef(function PaginationItem<
   const Icon = iconSlots[type];
   const PaginationItemEllipsis = ellipsisSlots[type] || 'div';
   const PaginationItemPage = Button;
-
-  const classes = generatePrefixClasses(
-    paginationItemClasses,
-    `${prefix ? `${prefix}-` : ''}pagination-item`,
-  );
 
   const rootClassName = classNames(
     classes.root,

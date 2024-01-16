@@ -1,22 +1,18 @@
-export interface PaginationClasses {
+import { attachPrefixClasses } from '@modules/utils/generatePrefixClasses';
+
+const classes = {
   /** 루트 엘리먼트에 적용되는 스타일. */
-  root: string;
-  /** ul 요소에 적용된 스타일. */
-  ul: string;
-  /** `variant="contained"`일 때 루트 엘리먼트에 적용되는 스타일. */
-  contained: string;
-  /** `variant="text"`일 때 루트 엘리먼트에 적용되는 스타일. */
-  text: string;
-  /** `variant="outlined"`일 때 루트 엘리먼트에 적용되는 스타일. */
-  outlined: string;
-}
-
-export type PaginationClassKey = keyof PaginationClasses;
-
-export const paginationClasses: PaginationClasses = {
   root: '',
+  /** ul 요소에 적용된 스타일. */
   ul: 'ui',
+  /** `variant="contained"`일 때 루트 엘리먼트에 적용되는 스타일. */
   contained: 'contained',
+  /** `variant="text"`일 때 루트 엘리먼트에 적용되는 스타일. */
   text: 'text',
+  /** `variant="outlined"`일 때 루트 엘리먼트에 적용되는 스타일. */
   outlined: 'outlined',
 };
+
+export const paginationClasses = attachPrefixClasses(classes, 'pagination', false);
+
+export type PaginationClasses = typeof paginationClasses;
