@@ -48,7 +48,8 @@ $(ns) {
     @apply
       scale-[1.2];
     $(ns)-focusVisible & {
-      outline: 1px solid #999;
+      @apply
+        input-focus;
     }
   }
 
@@ -60,8 +61,8 @@ $(ns) {
       @apply
         absolute
         w-full
-        inset-y-0;
-      outline: 1px solid #999;
+        inset-y-0
+        input-focus;
     }
   }
 
