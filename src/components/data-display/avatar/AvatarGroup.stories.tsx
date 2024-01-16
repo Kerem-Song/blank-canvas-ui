@@ -52,7 +52,6 @@ export const Default: Story = {
     component: 'div',
     variant: 'circular',
     size: 'md',
-    prefix: 'bc',
     className: '',
     style: {},
   },

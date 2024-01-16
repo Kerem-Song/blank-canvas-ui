@@ -474,3 +474,67 @@ export const RowSelection: Story = {
     size: 'small',
   },
 };
+
+export const Empty: Story = {
+  render: (args) => {
+    return (
+      <>
+        <Table {...args}></Table>
+      </>
+    );
+  },
+  argTypes: {},
+  args: {
+    columns: [
+      { title: '성별', path: 'gender' },
+      {
+        title: '이름',
+        path: 'name',
+      },
+      {
+        title: '전화번호',
+        path: 'phone',
+      },
+      {
+        title: '이메일',
+        path: 'email',
+      },
+    ],
+    rounded: false,
+    bordered: false,
+    size: 'normal',
+  },
+};
+
+export const Loading: Story = {
+  render: (args) => {
+    return (
+      <>
+        <Table {...args}></Table>
+      </>
+    );
+  },
+  argTypes: {},
+  args: {
+    columns: [
+      { title: '성별', path: 'gender' },
+      {
+        title: '이름',
+        path: 'name',
+      },
+      {
+        title: '전화번호',
+        path: 'phone',
+      },
+      {
+        title: '이메일',
+        path: 'email',
+      },
+    ],
+    dataSource: tableSource,
+    rounded: false,
+    bordered: false,
+    size: 'normal',
+    loading: true,
+  },
+};

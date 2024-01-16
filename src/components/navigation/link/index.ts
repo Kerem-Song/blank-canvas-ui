@@ -1,3 +1,2 @@
 export * from './Link';
-export * from './Link.types';
-export * from './linkClasses';
+export type { LinkProps } from './Link.types';

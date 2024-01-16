@@ -1,4 +1,3 @@
-import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
 import { render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -6,15 +5,12 @@ import { paginationItemClasses } from '../pagination-item/paginationItemClasses'
 import { Pagination } from './Pagination';
 import { paginationClasses } from './paginationClasses';
 
-const classes = generatePrefixClasses(paginationClasses, 'bc-pagination');
-const itemClasses = generatePrefixClasses(paginationItemClasses, 'bc-pagination-item');
-
 describe('<PaginationItem />', () => {
   it('렌더링 됩니다.', () => {
     const { container } = render(<Pagination />);
     const pagination = container.firstChild as HTMLElement;
 
-    expect(pagination.classList.contains(classes.root)).toBeTruthy();
+    expect(pagination.classList.contains(paginationClasses.root)).toBeTruthy();
   });
 
   it('aria-current가 정상적으로 적용됩니다.', () => {
@@ -45,7 +41,7 @@ describe('<PaginationItem />', () => {
     );
 
     const ellipsisDiv = container.querySelector(
-      `.${itemClasses.ellipsis}`,
+      `.${paginationItemClasses.ellipsis}`,
     ) as HTMLElement;
 
     ellipsisDiv.click();

@@ -1,5 +1,5 @@
 import { OverrideProps } from '@models/types';
-import React from 'react';
+import * as React from 'react';
 
 export interface AvatarTypeMap<DefaultComponent extends React.ElementType = 'div'> {
   props: {
@@ -36,11 +36,6 @@ export interface AvatarTypeMap<DefaultComponent extends React.ElementType = 'div
      * 반응형 이미지 표시를 위해 이 속성을 사용하세요.
      */
     srcSet?: string;
-    /**
-     * 클래스 이름 접두사
-     * @default 'bc'
-     */
-    prefix?: string;
     /**
      * 구성 요소의 사용할 변형입니다.
      * @default 'circular'

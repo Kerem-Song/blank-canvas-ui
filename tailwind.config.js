@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 
 export const BASE_PIXEL = 16;
 const pxToRem = (px, base = BASE_PIXEL) => `${px / base}rem`;
@@ -106,5 +107,14 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        // input custom focus
+        '.input-focus': {
+          '@apply outline-none ring-2 ring-blue-700': '',
+        },
+      });
+    }),
+  ],
 };

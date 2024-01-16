@@ -1,5 +1,5 @@
 import { OverrideProps } from '@models/types';
-import React from 'react';
+import * as React from 'react';
 
 export interface LinkTypeMap<DefaultComponent extends React.ElementType = 'a'> {
   props: {
@@ -45,11 +45,6 @@ export interface LinkTypeMap<DefaultComponent extends React.ElementType = 'a'> {
      * @default 'md'
      */
     size?: 'xs' | 'sm' | 'md' | 'lg';
-    /**
-     * 클래스 이름 접두사
-     * @default 'bc'
-     */
-    prefix?: string;
   };
   defaultComponent: DefaultComponent;
 }

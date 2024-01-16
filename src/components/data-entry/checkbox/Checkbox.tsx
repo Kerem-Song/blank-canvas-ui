@@ -1,13 +1,15 @@
+import '@styles/checkbox.css';
+
 import IndeterminateRoundedIcon from '@assets/icons/ic_checkbox_indeterminate_rounded.svg?react';
 import OutlineBlankRoundedIcon from '@assets/icons/ic_checkbox_outline_blank_rounded.svg?react';
 import CheckboxRoundedIcon from '@assets/icons/ic_checkbox_rounded.svg?react';
 import { useControlled } from '@hooks/useControlled';
-import { composeRef, createChainedFunction, generatePrefixClasses } from '@modules/utils';
+import { composeRef, createChainedFunction } from '@modules/utils';
 import classNames from 'classnames';
-import React, { useContext, useId } from 'react';
+import * as React from 'react';
 
 import { CheckboxProps } from './Checkbox.types';
-import { checkboxClasses } from './checkboxClasses';
+import { checkboxClasses as classes } from './checkboxClasses';
 import CheckboxGroupContext from './CheckboxGroupContext';
 
 const defaultCheckedIcon = <CheckboxRoundedIcon />;
@@ -31,7 +33,6 @@ export const Checkbox = React.forwardRef(function Checkbox(
     name: nameProp,
     slotProps = {},
     size = 'md',
-    prefix = 'bc',
     readOnly = false,
     required = false,
     label,
@@ -39,10 +40,10 @@ export const Checkbox = React.forwardRef(function Checkbox(
     ...inputProps
   } = props;
 
-  const defaultId = useId();
+  const defaultId = React.useId();
   const id = idOverride ?? defaultId;
 
-  const checkboxGroup = useContext(CheckboxGroupContext);
+  const checkboxGroup = React.useContext(CheckboxGroupContext);
 
   let name = nameProp;
 
@@ -54,11 +55,6 @@ export const Checkbox = React.forwardRef(function Checkbox(
     controlled: checkedProp,
     defaultValue: defaultChecked,
   });
-
-  const classes = generatePrefixClasses(
-    checkboxClasses,
-    `${prefix ? `${prefix}-` : ''}checkbox`,
-  );
 
   const rootSlot = slotProps.root ?? {};
   const checkboxSlot = slotProps.checkbox ?? {};

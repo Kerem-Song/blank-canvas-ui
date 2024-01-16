@@ -1,12 +1,14 @@
+import '@styles/rating.css';
+
 import StarIcon from '@assets/icons/ic_star.svg?react';
 import StarBorderIcon from '@assets/icons/ic_star_border.svg?react';
 import { useControlled } from '@hooks/useControlled';
-import { composeRef, generatePrefixClasses } from '@modules/utils';
+import { composeRef } from '@modules/utils';
 import classNames from 'classnames';
-import React, { useId, useRef, useState } from 'react';
+import * as React from 'react';
 
 import { RatingProps } from './Rating.types';
-import { ratingClasses } from './ratingClasses';
+import { ratingClasses as classes } from './ratingClasses';
 import { RatingItem } from './RatingItem';
 
 /**
@@ -38,7 +40,6 @@ export const Rating = React.forwardRef(function Rating(
     size = 'md',
     defaultValue = null,
     value: valueProp,
-    prefix = 'bc',
     emptyIcon = starBorderIcon,
     filledIcon = starIcon,
     IconContainerComponent,
@@ -48,17 +49,17 @@ export const Rating = React.forwardRef(function Rating(
     ...other
   } = props ?? {};
 
-  const defaultId = useId();
+  const defaultId = React.useId();
   const name = nameProp ?? defaultId;
 
   const [valueState, setValueState] = useControlled({
     controlled: valueProp,
     defaultValue: defaultValue,
   });
-  const [{ hover, focus }, setState] = useState({ hover: -1, focus: -1 });
-  const [isFocused, setIsFocused] = useState(false);
-  const [emptyValueFocused, setEmptyValueFocused] = useState(false);
-  const rootRef = useRef<HTMLSpanElement>(null);
+  const [{ hover, focus }, setState] = React.useState({ hover: -1, focus: -1 });
+  const [isFocused, setIsFocused] = React.useState(false);
+  const [emptyValueFocused, setEmptyValueFocused] = React.useState(false);
+  const rootRef = React.useRef<HTMLSpanElement>(null);
   const handleRef = composeRef(rootRef, ref);
 
   const selectedValue = roundValueToPrecision(valueState, precision);
@@ -137,11 +138,6 @@ export const Rating = React.forwardRef(function Rating(
     setIsFocused(false);
     setState((prev) => ({ hover: prev.hover, focus: newFocus }));
   };
-
-  const classes = generatePrefixClasses(
-    ratingClasses,
-    `${prefix ? `${prefix}-` : ''}rating`,
-  );
 
   const rootClassName = classNames(classes.root, {
     // disabled

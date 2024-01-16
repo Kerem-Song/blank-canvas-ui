@@ -1,10 +1,11 @@
-import { generatePrefixClasses } from '@modules/utils';
+import '@styles/avatarGroup.css';
+
 import classNames from 'classnames';
 import * as React from 'react';
 
 import { AvatarTypeMap } from './Avatar.types';
 import { AvatarGroupProps } from './AvatarGroup.types';
-import { avatarGroupClasses } from './avatarGroupClasses';
+import { avatarGroupClasses as classes } from './avatarGroupClasses';
 import AvatarGroupContext from './AvatarGroupContext';
 
 /** 조건에 맞는 아바타 뽑기 */
@@ -50,27 +51,20 @@ export const AvatarGroup = React.forwardRef(function AvatarGroup(
     children,
     className,
     component: RootComponent = 'div',
-    prefix = 'bc',
     size = 'md',
     variant = 'circular',
     ...other
   } = props;
-
-  const classes = generatePrefixClasses(
-    avatarGroupClasses,
-    `${prefix ? `${prefix}-` : ''}avatar-group`,
-  );
 
   const rootClassName = classNames(classes.root, className);
 
   const contextValue = React.useMemo(
     () => ({
       component: RootComponent,
-      prefix,
       size,
       variant,
     }),
-    [RootComponent, prefix, size, variant],
+    [RootComponent, size, variant],
   );
 
   return (

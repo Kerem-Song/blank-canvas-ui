@@ -1,4 +1,5 @@
-$ns: .bc-avatar;
+$prefix: bc;
+$ns: .$(prefix)-avatar;
 
 /* prettier-ignore */
 $(ns) {

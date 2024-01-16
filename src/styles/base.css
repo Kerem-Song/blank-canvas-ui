@@ -5,12 +5,4 @@ html {
 input,
 textarea {
   @apply outline-none;
-
-  &:focus {
-    @apply ring-blue-500;
-  }
-}
-
-textarea:focus {
-  @apply border-blue-500;
 }

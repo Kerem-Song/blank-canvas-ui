@@ -1,4 +1,5 @@
-$ns: .bc-checkbox;
+$prefix: bc;
+$ns: .$(prefix)-checkbox;
 
 /* prettier-ignore */
 $(ns) {
@@ -40,7 +41,8 @@ $(ns) {
         rounded-6
         cursor-[inherit]
         appearance-none
-        outline-offset-0;
+        outline-offset-0
+        focus-visible:input-focus;
     }
     svg {
       @apply
