@@ -81,7 +81,7 @@ function SelectFunc<T extends AnyObject>(
         }
         list?.map((x, idx) => {
           if (idx === indexNum + 1) {
-            setHoverText(x.value);
+            setHoverText(x.label);
           }
         });
         if (flag) {
@@ -104,7 +104,7 @@ function SelectFunc<T extends AnyObject>(
 
         list?.map((x, idx) => {
           if (idx === indexNum - 1) {
-            setHoverText(x.value);
+            setHoverText(x.label);
           }
         });
         if (flag) {
@@ -290,7 +290,7 @@ function SelectFunc<T extends AnyObject>(
               return !x.disabled ? (
                 <li
                   role="option"
-                  key={x.value}
+                  key={x.label}
                   onClick={onChangeCurrentValue}
                   onMouseEnter={(e) => {
                     setHoverText(e.currentTarget.innerText);
@@ -301,8 +301,8 @@ function SelectFunc<T extends AnyObject>(
                     setIndexNum(idx);
                   }}
                   className={classNames(
-                    { [selectClasses.list.item]: x.value === currentValue },
-                    { [selectClasses.list.hover]: x.value === hoverText },
+                    { [selectClasses.list.item]: x.label === currentValue },
+                    { [selectClasses.list.hover]: x.label === hoverText },
                     selectClasses.list.overflow,
                   )}
                 >
