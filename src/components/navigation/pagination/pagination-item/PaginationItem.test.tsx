@@ -1,11 +1,11 @@
-import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import { PaginationItem } from './PaginationItem';
-import { paginationItemClasses, PaginationItemClassKey } from './paginationItemClasses';
-
-const classes = generatePrefixClasses(paginationItemClasses, 'bc-pagination-item');
+import {
+  PaginationItemClasses,
+  paginationItemClasses as classes,
+} from './paginationItemClasses';
 
 describe('<PaginationItem />', () => {
   it('렌더링 됩니다.', () => {
@@ -109,7 +109,7 @@ describe('prop: size', () => {
 
       expect(
         (container.firstChild as HTMLElement).classList.contains(
-          classes[size.key as PaginationItemClassKey],
+          classes[size.key as keyof PaginationItemClasses],
         ),
       ).toBeTruthy();
     });
@@ -134,7 +134,7 @@ describe('prop: shape', () => {
 
       expect(
         (container.firstChild as HTMLElement).classList.contains(
-          classes[shape.key as PaginationItemClassKey],
+          classes[shape.key as keyof PaginationItemClasses],
         ),
       ).toBeTruthy();
     });
@@ -163,7 +163,7 @@ describe('prop: variant', () => {
 
       expect(
         (container.firstChild as HTMLElement).classList.contains(
-          classes[variant.key as PaginationItemClassKey],
+          classes[variant.key as keyof PaginationItemClasses],
         ),
       ).toBeTruthy();
     });
@@ -188,7 +188,7 @@ describe('prop: variant', () => {
 
       expect(
         (container.firstChild as HTMLElement).classList.contains(
-          classes[color.value as PaginationItemClassKey],
+          classes[color.value as keyof PaginationItemClasses],
         ),
       ).toBeTruthy();
     });
@@ -213,7 +213,7 @@ describe('prop: variant', () => {
 
       expect(
         (container.firstChild as HTMLElement).classList.contains(
-          classes[color.value as PaginationItemClassKey],
+          classes[color.value as keyof PaginationItemClasses],
         ),
       ).toBeTruthy();
     });
@@ -236,7 +236,7 @@ describe('prop: variant', () => {
 
       expect(
         (container.firstChild as HTMLElement).classList.contains(
-          classes[color.value as PaginationItemClassKey],
+          classes[color.value as keyof PaginationItemClasses],
         ),
       ).toBeTruthy();
     });

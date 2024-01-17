@@ -1,10 +1,11 @@
+import '@styles/link.css';
+
 import { OverridableComponent } from '@models/types';
-import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import React from 'react';
+import * as React from 'react';
 
 import { LinkProps, LinkTypeMap } from './Link.types';
-import { linkClasses } from './linkClasses';
+import { linkClasses as classes } from './linkClasses';
 
 export const Link = React.forwardRef(function Link<
   RootComponentType extends React.ElementType,
@@ -17,13 +18,10 @@ export const Link = React.forwardRef(function Link<
     disabled = false,
     underline = 'always',
     size = 'md',
-    prefix = 'bc',
     href,
     component: RootComponent = 'a',
     ...other
   } = props;
-
-  const classes = generatePrefixClasses(linkClasses, `${prefix ? `${prefix}-` : ''}link`);
 
   const rootClassName = classNames(
     classes.root,

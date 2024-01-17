@@ -1,5 +1,3 @@
-import '../../../index.css';
-
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import { useState } from 'react';
@@ -64,7 +62,6 @@ export const Default: Story = {
     precision: 0.5,
     max: 5,
     size: 'md',
-    prefix: 'bc',
   },
 };
 

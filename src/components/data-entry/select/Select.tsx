@@ -1,3 +1,4 @@
+import { useOutsideEventClick } from '@hooks/useOutsideClick';
 import { AnyObject } from '@models/types/AnyObject';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
@@ -143,12 +144,13 @@ function SelectFunc<T extends AnyObject>(
         value: x[valueKey],
         disabled: x['disabled'],
       }));
+      console.log(temp);
       setList(temp);
-      setHoverText(temp ? temp[0].value : '');
+      setHoverText(temp?.length ? temp[0].value : '');
     }
   }, []);
 
-  const inputBlur = (e: Event) => {
+  useOutsideEventClick(selectRef, (e: Event) => {
     const temp = e.target as HTMLElement;
     if (temp.classList.contains(selectClasses.list.disabled)) {
       setShowOptions(true);
@@ -159,14 +161,7 @@ function SelectFunc<T extends AnyObject>(
       setShowOptions(false);
       inputRef.current?.blur();
     }
-  };
-
-  useEffect(() => {
-    window.addEventListener('click', inputBlur);
-    return () => {
-      window.removeEventListener('click', inputBlur);
-    };
-  }, []);
+  });
 
   const referenceElement = useRef<HTMLDivElement>(null);
   const { styles, attributes } = usePopper(
@@ -299,7 +294,7 @@ function SelectFunc<T extends AnyObject>(
           ref={popperElement}
           className={classNames(selectClasses.list.root)}
         >
-          {list ? (
+          {list?.length ? (
             list.map((x, idx) => {
               return !x.disabled ? (
                 <li
@@ -320,7 +315,7 @@ function SelectFunc<T extends AnyObject>(
                     selectClasses.list.overflow,
                   )}
                 >
-                  {x.value}
+                  {x.label}
                 </li>
               ) : (
                 <li

@@ -1,9 +1,7 @@
-import '../../../index.css';
-
 import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import * as React from 'react';
 
 import { Checkbox } from './Checkbox';
 import { CheckboxProps } from './Checkbox.types';
@@ -55,7 +53,6 @@ export const Default: Story = {
     required: false,
     size: 'md',
     color: 'primary',
-    prefix: 'bc',
   },
 };
 
@@ -178,7 +175,7 @@ export const Icon: Story = {
 export const Controlled: Story = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [value, setValue] = useState<boolean>(true);
+    const [value, setValue] = React.useState<boolean>(true);
 
     const onChange: CheckboxProps['onChange'] = (event, checked) => {
       console.log('parent - onChange: ', event, checked);
@@ -203,7 +200,7 @@ export const Controlled: Story = {
 export const Indeterminate: Story = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [checkedIndeterminate, setCheckedIndeterminate] = useState([true, false]);
+    const [checkedIndeterminate, setCheckedIndeterminate] = React.useState([true, false]);
 
     return (
       <>

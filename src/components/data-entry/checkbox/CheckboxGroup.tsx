@@ -1,13 +1,14 @@
+import '@styles/checkboxGroup.css';
+
 import OutlineBlankRoundedIcon from '@assets/icons/ic_checkbox_outline_blank_rounded.svg?react';
 import CheckboxRoundedIcon from '@assets/icons/ic_checkbox_rounded.svg?react';
 import { useControlled } from '@hooks/useControlled';
-import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import React, { useId, useMemo } from 'react';
+import * as React from 'react';
 
 import { Checkbox } from './Checkbox';
 import { CheckboxGroupProps, CheckboxOption } from './CheckboxGroup.types';
-import { checkboxGroupClasses } from './checkboxGroupClasses';
+import { checkboxGroupClasses as classes } from './checkboxGroupClasses';
 import CheckboxGroupContext from './CheckboxGroupContext';
 
 const defaultCheckedIcon = <CheckboxRoundedIcon />;
@@ -26,7 +27,6 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
     disabled = false,
     readOnly = false,
     required = false,
-    prefix = 'bc',
     slotProps = {},
     className,
     color = 'primary',
@@ -43,10 +43,10 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
   });
 
   const value = valueState ?? [];
-  const defaultName = useId();
+  const defaultName = React.useId();
   const name = nameProp ?? defaultName;
 
-  const memoOptions = useMemo(
+  const memoOptions = React.useMemo(
     () =>
       options.map<CheckboxOption>((option) => {
         if (typeof option === 'string') {
@@ -70,7 +70,6 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
       required={'required' in option ? option.required : required}
       color={color}
       size={size}
-      prefix={prefix}
       slotProps={{
         root: option.slotProps?.root || slotProps.root,
         checkbox: option.slotProps?.checkbox || slotProps.checkbox,
@@ -82,11 +81,6 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
     />
   ));
 
-  const classes = generatePrefixClasses(
-    checkboxGroupClasses,
-    `${prefix ? `${prefix}-` : ''}checkbox-group`,
-  );
-
   const rootClassName = classNames(
     classes.root,
     {
@@ -96,7 +90,7 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
     className,
   );
 
-  const contextValue = useMemo(
+  const contextValue = React.useMemo(
     () => ({
       name,
       value,

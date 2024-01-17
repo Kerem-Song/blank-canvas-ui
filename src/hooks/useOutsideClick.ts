@@ -14,3 +14,18 @@ export function useOutsideClick(ref: any, action: () => void, condition?: boolea
     };
   }, [action, ref, condition]);
 }
+
+export function useOutsideEventClick(
+  ref: any,
+  action: (e: Event) => void,
+  condition?: boolean,
+) {
+  useEffect(() => {
+    document.addEventListener('click', (e: Event) => {
+      action(e);
+    });
+    return () => {
+      document.removeEventListener('click', action);
+    };
+  }, [action, ref, condition]);
+}

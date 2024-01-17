@@ -1,5 +1,6 @@
-$ns: .bc-avatar-group;
-$ns-children: .bc-avatar;
+$prefix: bc;
+$ns-children: .$(prefix)-avatar;
+$ns: .$(prefix)-avatar-group;
 $AvatarGroup-gap: -8px;
 
 /* prettier-ignore */
@@ -8,7 +9,7 @@ $(ns) {
   & {
     @apply
       flex;
-    margin-inline-start: calc(-1 * $AvatarGroup-gap);
+      margin-inline-start: calc(-1 * $AvatarGroup-gap);
   }
 
   > $ns-children {
@@ -17,6 +18,6 @@ $(ns) {
       border-2
       border-solid
     border-[white];
-    margin-inline-start: $AvatarGroup-gap;
+      margin-inline-start: $AvatarGroup-gap;
   }
 }

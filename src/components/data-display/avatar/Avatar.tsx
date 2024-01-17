@@ -1,11 +1,12 @@
+import '@styles/avatar.css';
+
 import AvatarFallbackIcon from '@assets/icons/ic_avatar.svg?react';
 import { OverridableComponent } from '@models/types';
-import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import * as React from 'react';
 
 import { AvatarProps, AvatarTypeMap } from './Avatar.types';
-import { avatarClasses } from './avatarClasses';
+import { avatarClasses as classes } from './avatarClasses';
 import AvatarGroupContext from './AvatarGroupContext';
 import { useLoaded } from './useLoaded';
 
@@ -26,24 +27,17 @@ export const Avatar = React.forwardRef(function Avatar<
     imgProps,
     size: sizeProp = 'md',
     variant: variantProp = 'circular',
-    prefix: prefixProp = 'bc',
     ...other
   } = props;
   const RootComponent =
     (props.component as any) || avatarGroup?.component || componentProp;
   const size = props.size || avatarGroup?.size || sizeProp;
   const variant = props.variant || avatarGroup?.variant || variantProp;
-  const prefix = props.prefix || avatarGroup?.prefix || prefixProp;
 
   let children = null;
   const loaded = useLoaded({ ...imgProps, src, srcSet });
   const hasImg = Boolean(src || srcSet);
   const hasImgNotFailing = hasImg && loaded !== 'error';
-
-  const classes = generatePrefixClasses(
-    avatarClasses,
-    `${prefix ? `${prefix}-` : ''}avatar`,
-  );
 
   if (hasImgNotFailing) {
     children = (
