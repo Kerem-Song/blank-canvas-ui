@@ -55,15 +55,19 @@ export const Card = forwardRef<HTMLDivElement, ICardProps>((args, ref) => {
         {loading ? (
           <Skeleton className={classNames(cardClasses.full)} />
         ) : (
-          <>
-            <div
-              className={classNames({ [cardClasses.head.title]: title })}
-              style={{ color: titleColor }}
-            >
-              {title}
-            </div>
-            <div className={classNames({ [cardClasses.head.extra]: extra })}>{extra}</div>
-          </>
+          title && (
+            <>
+              <div
+                className={classNames({ [cardClasses.head.title]: title })}
+                style={{ color: titleColor }}
+              >
+                {title}
+              </div>
+              <div className={classNames({ [cardClasses.head.extra]: extra })}>
+                {extra}
+              </div>
+            </>
+          )
         )}
       </div>
       <div className={bodyClassName}>{loading ? <Skeleton count={2} /> : children}</div>
