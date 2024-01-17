@@ -1,4 +1,5 @@
-import { useOutsideEventClick } from '@hooks/useOutsideClick';
+import IcArrow from '@assets/icons/ic_select_arrow.svg?react';
+import { useOutsideClick } from '@hooks/useOutsideClick';
 import { AnyObject } from '@models/types/AnyObject';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
@@ -150,18 +151,22 @@ function SelectFunc<T extends AnyObject>(
     }
   }, []);
 
-  useOutsideEventClick(selectRef, (e: Event) => {
-    const temp = e.target as HTMLElement;
-    if (temp.classList.contains(selectClasses.list.disabled)) {
-      setShowOptions(true);
-      return;
-    }
-    if (selectRef.current && !selectRef.current.contains(temp)) {
-      setInputFocus(false);
-      setShowOptions(false);
-      inputRef.current?.blur();
-    }
-  });
+  useOutsideClick(
+    selectRef,
+    (e) => {
+      const temp = e!.target as HTMLElement;
+      if (temp.classList.contains(selectClasses.list.disabled)) {
+        setShowOptions(true);
+        return;
+      }
+      if (selectRef.current && !selectRef.current.contains(temp)) {
+        setInputFocus(false);
+        setShowOptions(false);
+        inputRef.current?.blur();
+      }
+    },
+    true,
+  );
 
   const referenceElement = useRef<HTMLDivElement>(null);
   const { styles, attributes } = usePopper(
@@ -255,21 +260,7 @@ function SelectFunc<T extends AnyObject>(
           </div>
         ) : (
           <div onClick={iconClick} className={classNames(selectClasses.icon)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
-              <path
-                d="M4 6L8 9L12 6"
-                stroke="#B5B4B4"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <IcArrow />
           </div>
         )}
       </div>
@@ -323,12 +314,13 @@ function SelectFunc<T extends AnyObject>(
                   onClick={() => {}}
                   className={classNames(disabledLiClassName)}
                 >
-                  {x.value}
+                  {x.label}
                 </li>
               );
             })
           ) : (
-            <li>No data</li>
+            // TODO:: 고민하기
+            <li className={classNames(disabledLiClassName)}>No data</li>
           )}
         </ul>,
         document.querySelector('body')!,
