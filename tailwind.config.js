@@ -108,7 +108,7 @@ export default {
     },
   },
   plugins: [
-    plugin(function ({ addUtilities }) {
+    plugin(({ addUtilities }) => {
       addUtilities({
         // input custom focus
         '.input-focus': {
