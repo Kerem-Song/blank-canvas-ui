@@ -41,8 +41,8 @@ $(ns) {
         rounded-6
         cursor-[inherit]
         appearance-none
-        outline-offset-0
-        focus-visible:input-focus;
+        outline-offset-0;
+        /* focus-visible:input-focus; */
     }
     svg {
       @apply

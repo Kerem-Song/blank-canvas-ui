@@ -16,8 +16,8 @@ $(ns) {
       bg-transparent
       cursor-pointer
       appearance-none
-      underline-offset-[0.25em]
-      focus-visible:input-focus;
+      underline-offset-[0.25em];
+      /* focus-visible:input-focus; */
   }
   /* component button */
   button& {

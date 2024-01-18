@@ -17,8 +17,8 @@ $(ns) {
       border-transparent
       font-pretendard
       tracking-[0.01em]
-      text-center
-      focus-visible:input-focus;
+      text-center;
+      /* focus-visible:input-focus; */
   }
 
   /* icon */
