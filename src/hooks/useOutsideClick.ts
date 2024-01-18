@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { useEffect } from 'react';
 
 export function useOutsideClick(ref: any, action: () => void, condition?: boolean) {
   useEffect(() => {
     document.addEventListener('click', (e) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+      // 조건이 있을때는 클릭 무효화
+      if (condition) {
+        return;
+      }
       if (ref.current && !ref.current.contains(e.target)) {
         action();
       }
