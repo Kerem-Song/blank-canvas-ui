@@ -74,7 +74,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputClassName = classNames(
     wrappingType ? '' : `${args.className} ${inputClasses.normal}`,
-    'group-focus-within:ring-blue-500',
     {
       invalid: isError,
     },
@@ -82,14 +81,14 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
-    'group-focus-within:ring-blue-500',
+    'group-focus-within/input:input-focus',
     {
       invalid: isError,
     },
   );
 
   const input = (
-    <div className="group">
+    <div className="">
       <input
         {...inputProps}
         className={inputClassName}
@@ -119,7 +118,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   );
 
   const wrappedInput = (
-    <div className="group">
+    <div className="group/input">
       <div className={inputWrapClassName}>
         <div className={inputClasses.prefixWrapper}>{customPrefix}</div>
         <div className="grow">{input}</div>

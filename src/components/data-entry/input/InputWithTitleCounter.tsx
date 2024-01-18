@@ -81,7 +81,6 @@ export const InputWithTitleCounter = forwardRef<
 
   const inputClassName = classNames(
     wrappingType ? '' : `${args.className} ${inputClasses.normal}`,
-    'group-focus-within:ring-blue-500',
     {
       invalid: isError,
     },
@@ -89,7 +88,7 @@ export const InputWithTitleCounter = forwardRef<
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
-    'group-focus-within:ring-blue-500',
+    'group-focus-within/inputWithTitleCounter:input-focus',
     {
       invalid: isError,
       [inputClasses.hasCustomPrefix]: customPrefix,
@@ -97,7 +96,7 @@ export const InputWithTitleCounter = forwardRef<
   );
 
   const input = (
-    <div className="group">
+    <div className="">
       <input
         {...inputProps}
         className={inputClassName}
@@ -127,7 +126,7 @@ export const InputWithTitleCounter = forwardRef<
   );
 
   const wrappedInput = (
-    <div className="group">
+    <div className="group/inputWithTitleCounter">
       <div className={inputWrapClassName}>
         <div className={inputClasses.prefixWrapper}>{customPrefix}</div>
         <div className="grow">{input}</div>
