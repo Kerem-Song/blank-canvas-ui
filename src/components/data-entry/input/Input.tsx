@@ -81,7 +81,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
-    'group-focus-within/input:input-focus',
+    'group-focus-within/input:ring-2 ring-blue-700',
     {
       invalid: isError,
     },

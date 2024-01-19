@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-input-wrapped {
-    @apply flex w-full items-center rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
+    @apply flex w-full items-center rounded-md border py-1.5 px-2;
 
     .bc-input-suffix-wrapper {
       @apply flex items-center text-end;
@@ -32,7 +32,7 @@ $(ns) {
   }
 
   &-input-normal {
-    @apply w-full rounded-md border py-1.5 px-2 ring-1 ring-inset ring-gray-300;
+    @apply w-full rounded-md border py-1.5 px-2;
 
     &.invalid {
       @apply ring-error-main;
