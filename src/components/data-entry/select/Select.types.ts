@@ -104,9 +104,15 @@ export interface ISelectProp<T extends object>
    * @type boolean
    */
   isError?: boolean;
+  /**
+   * select에 입력을 해서 선택할지 여부 결정
+   * @default false
+   * @type boolean
+   */
+  filterOption?: boolean;
 }
 
-export interface ITestProp<T extends object>
-  extends Omit<ISelectProp<T>, 'defaultValue'> {
+export interface IMultipleSelectProp<T extends object>
+  extends Omit<ISelectProp<T>, 'defaultValue' | 'filterOption'> {
   defaultValue?: string | Array<string | T>;
 }

@@ -8,11 +8,11 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
 
-import { ISelectProp } from './Select.types';
+import { IMultipleSelectProp } from './Select.types';
 import { selectClasses } from './SelectClasses';
 
-function SelectFunc<T extends AnyObject>(
-  props: ISelectProp<T>,
+function MultiSelectFunc<T extends AnyObject>(
+  props: IMultipleSelectProp<T>,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const {
@@ -34,83 +34,81 @@ function SelectFunc<T extends AnyObject>(
     isError,
     className,
     style,
-    filterOption = false,
     ...inputProps
   } = props;
   const tempWidth =
     typeof selectWidth !== 'number' ? remUtil.findNumber(selectWidth) : selectWidth;
   const width = tempWidth > 150 ? `${tempWidth}px` : '150px';
-  const [placeholderText, setPlaceholderText] = useState(placeholder ?? '');
+
   const [init, setInit] = useState(false);
   const [list, setList] =
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
   const [tmpList, setTmpList] =
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
-  const [currentValue, setCurrentValue] = useState<string>(defaultValue ?? '');
-  const [selectedValue, setSelectedValue] = useState<string>(defaultValue ?? '');
+  const [currentValue, setCurrentValue] = useState<any>(
+    defaultValue ? (Array.isArray(defaultValue) ? defaultValue : [defaultValue]) : [],
+  );
   const [showOptions, setShowOptions] = useState<boolean>(defaultOpen ?? false);
-  const [hoverText, setHoverText] = useState('');
+  const [hoverText, setHoverText] = useState<string>(''); //색칠...
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [indexNum, setIndexNum] = useState<number>(0);
   const [inputFocus, setInputFocus] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const popperElement = useRef<HTMLUListElement>(null);
+  const popperUl = useRef<HTMLUListElement>(null);
+  const referenceDiv = useRef<HTMLDivElement>(null);
+  const { styles, attributes } = usePopper(referenceDiv.current, popperUl.current, {
+    placement: placement,
+
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: offset,
+        },
+      },
+    ],
+
+    strategy: 'fixed',
+  });
+
   const onChangeCurrentValue = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
-    const text = e.target as HTMLElement;
-    setCurrentValue(text.innerText);
-    setList(tmpList);
-    setShowOptions((pre) => !pre);
-    setSelectedValue(text.innerText);
+    const text = (e.target as HTMLElement).innerText;
+    onChange(text);
+    inputRef.current?.focus();
+    console.log('잉?');
   };
 
-  const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (showOptions) {
-      setCurrentValue(e.target.value);
-    } else {
-      setCurrentValue(e.target.value.replace(currentValue, ''));
-      setShowOptions((pre) => !pre);
+  const onChange = (text: string) => {
+    if (text === '') {
+      return;
     }
+    Array.isArray(currentValue) && currentValue.length > 0 && currentValue.includes(text)
+      ? setCurrentValue(currentValue.filter((value: string) => value !== text))
+      : setCurrentValue([...currentValue, text]);
   };
-
-  useEffect(() => {
-    if (inputRef) {
-      const text = inputRef.current?.value ?? '';
-      const searchList = tmpList?.filter((item) => item.label.includes(text));
-      setList(searchList);
-
-      if (selectedValue !== '' && selectedValue.includes(text)) {
-        setHoverText(selectedValue);
-      } else {
-        setHoverText(searchList && searchList?.length > 0 ? searchList[0].label : '');
-      }
-      inputRef.current?.focus();
-    }
-  }, [currentValue]);
 
   const handleKeyArrow = (e: React.KeyboardEvent) => {
     let flag = false;
+
     switch (e.code) {
       case 'ArrowDown':
         e.preventDefault();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
-          setPlaceholderText(currentValue);
-          setCurrentValue('');
-          setList(tmpList);
           break;
         }
+        console.log(e);
         setIndexNum((idx) => idx + 1);
 
-        if (
-          popperElement.current &&
-          popperElement.current.childElementCount <= indexNum + 1
-        ) {
+        if (popperUl.current && popperUl.current.childElementCount <= indexNum + 1) {
           setIndexNum(0);
           flag = true;
         }
         list?.map((x, idx) => {
           if (idx === indexNum + 1) {
+            console.log(idx, indexNum, x.label, x.disabled);
             setHoverText(x.label);
           }
         });
@@ -123,9 +121,6 @@ function SelectFunc<T extends AnyObject>(
         e.preventDefault();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
-          setPlaceholderText(currentValue);
-          setCurrentValue('');
-          setList(tmpList);
           break;
         }
         setIndexNum((idx) => idx - 1);
@@ -149,70 +144,94 @@ function SelectFunc<T extends AnyObject>(
         e.preventDefault();
         setHoverText('');
         setIndexNum(0);
-
-        if (currentValue === '' || !showOptions) {
-          setShowOptions(false);
-          setCurrentValue(selectedValue);
-        } else {
-          setCurrentValue('');
-          setShowOptions(true);
-        }
-
+        setSearchKeyword('');
+        setShowOptions(false);
         break;
       case 'Enter':
-        e.preventDefault();
-        setShowOptions((pre) => !pre);
-
-        if (!showOptions) {
-          setList(tmpList);
-          setCurrentValue(selectedValue);
-        }
-
         if (list && list.length > 0) {
-          setCurrentValue(hoverText);
-          setSelectedValue(hoverText);
-        } else {
-          setShowOptions(true);
-        }
-
-        if (inputRef.current?.selectionStart === 0 && selectedValue === hoverText) {
-          setPlaceholderText(selectedValue);
-          setCurrentValue(selectedValue);
+          onChange(hoverText);
+          setSearchKeyword('');
+          setList(tmpList);
         }
         break;
       case 'Backspace':
-        setShowOptions(true);
+        if (!searchKeyword) {
+          e.preventDefault();
+          if (Array.isArray(currentValue) && currentValue.length > 0) {
+            const text: string = currentValue[currentValue.length - 1];
+            onChange(text);
+          }
+        }
         break;
     }
   };
-
   const iconClick = () => {
     if (!disabled) {
-      setInputFocus(true);
       if (!showOptions) {
         setShowOptions(true);
-        setList(tmpList);
-        setPlaceholderText(selectedValue);
-
-        setCurrentValue('');
       } else {
-        if (list && list?.length === tmpList?.length) {
-          setShowOptions(false);
-          setCurrentValue(selectedValue);
-        }
+        setSearchKeyword('');
+        setList(tmpList);
+        setShowOptions(false);
       }
+      setInputFocus(true);
       inputRef.current?.focus();
     } else {
       inputRef.current?.blur();
     }
   };
 
+  const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setShowOptions(true);
+    if (e.target.value.trim() === '') {
+      setList(tmpList);
+      setSearchKeyword('');
+      return;
+    }
+    setSearchKeyword(e.target.value.trim());
+    const searchList = tmpList
+      ? tmpList.filter((element) => element.label.includes(e.target.value.trim()))
+      : [];
+    setList(searchList);
+    const findNum = searchList.findIndex((x) => !x.disabled);
+    setHoverText(findNum !== -1 ? searchList[findNum].label : '');
+  };
+
+  const selectedClass = (x: string, y?: boolean) => {
+    const value =
+      Array.isArray(currentValue) && currentValue.length > 0 && currentValue.includes(x)
+        ? selectClasses.list.item
+        : '';
+    return value;
+  };
+
+  const closeIconClick = (e: React.MouseEvent<HTMLElement>, text: string) => {
+    e.stopPropagation();
+    if (Array.isArray(currentValue) && currentValue.length > 0) {
+      onChange(text);
+    }
+    inputRef.current?.focus();
+  };
+
+  useOutsideClick(selectRef, () => {
+    setInputFocus(false);
+    setShowOptions(false);
+    setSearchKeyword('');
+    setList(tmpList);
+  });
+
   useEffect(() => {
     if (options) {
       setList(options);
       setTmpList(options);
+      const index = options.findIndex((x) => !x.disabled);
       if (hoverText === '') {
-        setHoverText(options.length > 0 ? options[0].label : '');
+        if (index > -1) {
+          setHoverText(options[index].label);
+          setIndexNum(index);
+        } else {
+          setHoverText('');
+        }
       }
     } else {
       const key = displayLabel ?? 'label';
@@ -222,46 +241,18 @@ function SelectFunc<T extends AnyObject>(
         value: x[valueKey],
         disabled: x['disabled'],
       }));
+
       setList(temp);
       setTmpList(temp);
-      setHoverText(temp?.length ? temp[0].label : '');
+      setHoverText(temp && temp.length > 0 ? temp[0].label : '');
     }
   }, []);
-
-  useOutsideClick(selectRef, () => {
-    setInputFocus(false);
-    setShowOptions(false);
-    setCurrentValue(selectedValue);
-    inputRef.current?.blur();
-  });
-
-  const referenceElement = useRef<HTMLDivElement>(null);
-  const { styles, attributes } = usePopper(
-    referenceElement.current,
-    popperElement.current,
-    {
-      placement: placement,
-
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: offset,
-          },
-        },
-      ],
-
-      strategy: 'fixed',
-    },
-  );
 
   useEffect(() => {
     setInit(true);
   }, []);
 
-  const rootClassName = classNames(selectClasses.root, {
-    [selectClasses.placeholder]: placeholder && currentValue === '',
-  });
+  const rootClassName = classNames(selectClasses.root, selectClasses.multiSelect.root);
 
   const selectClassName = classNames(
     selectClasses.referenceElement,
@@ -283,43 +274,69 @@ function SelectFunc<T extends AnyObject>(
   );
 
   return (
-    <div className={classNames(rootClassName)} ref={selectRef} onClick={iconClick}>
+    <div className={rootClassName} ref={selectRef} onClick={iconClick}>
       <div
-        ref={referenceElement}
+        ref={referenceDiv}
         style={{
           ...style,
-          width,
+          minWidth: width,
         }}
         className={classNames(selectClassName, className)}
-        onClick={iconClick}
       >
-        <input
-          {...inputProps}
-          ref={(current) => {
-            if (ref) {
-              if (typeof ref === 'function') {
-                ref(current);
-              } else {
-                ref.current = current;
-              }
-            }
-            inputRef.current = current;
-          }}
-          onClick={iconClick}
-          placeholder={placeholderText}
-          type="text"
-          onChange={(e) => {
-            inputOnChange(e);
-          }}
-          onKeyDown={handleKeyArrow}
-          readOnly={!filterOption}
-          className={classNames({ [selectClasses.disabled]: disabled })}
-          value={currentValue}
-        />
+        <div className={classNames(selectClasses.multiSelect.tag.area)}>
+          {Array.isArray(currentValue) && currentValue.length > 0 ? (
+            currentValue.map((x: string) => (
+              <span key={x} className={classNames(selectClasses.multiSelect.tag.root)}>
+                <span key={x}>{x}</span>
+                <span
+                  key={x}
+                  onClick={(e) => closeIconClick(e, x)}
+                  className={classNames(selectClasses.multiSelect.tag.closeIcon)}
+                >
+                  &#88;
+                </span>
+              </span>
+            ))
+          ) : (
+            <></>
+          )}
+          <div className={classNames(selectClasses.multiSelect.inputArea)}>
+            <span>{searchKeyword}</span>
+            <Input
+              className={classNames({
+                [selectClasses.disabled]: disabled,
+              })}
+              value={searchKeyword}
+              type="text"
+              {...inputProps}
+              ref={(current) => {
+                if (ref) {
+                  if (typeof ref === 'function') {
+                    ref(current);
+                  } else {
+                    ref.current = current;
+                  }
+                }
+                inputRef.current = current;
+              }}
+              onChange={inputOnChange}
+              onKeyDown={handleKeyArrow}
+            />
+          </div>
+          {!searchKeyword && Array.isArray(currentValue) && currentValue.length === 0 && (
+            <span
+              className={classNames({
+                [selectClasses.placeholder]:
+                  placeholder && Array.isArray(currentValue) && currentValue.length === 0,
+              })}
+            >
+              {placeholder}
+            </span>
+          )}
+        </div>
 
         {suffixIcon ? (
           <div
-            onClick={iconClick}
             className={classNames(
               disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
             )}
@@ -328,7 +345,6 @@ function SelectFunc<T extends AnyObject>(
           </div>
         ) : (
           <div
-            onClick={iconClick}
             className={classNames(
               disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
             )}
@@ -355,16 +371,18 @@ function SelectFunc<T extends AnyObject>(
                   : 'hidden',
             margin: placement === 'left' || placement === 'right' ? '0 8px' : '8px 0',
           }}
-          ref={popperElement}
+          ref={popperUl}
           className={classNames(selectClasses.list.root)}
         >
-          {list?.length ? (
+          {list && list.length > 0 ? (
             list.map((x, idx) => {
               return !x.disabled ? (
                 <li
                   role="option"
                   key={x.label}
-                  onClick={onChangeCurrentValue}
+                  onClick={(e) => {
+                    onChangeCurrentValue(e);
+                  }}
                   onMouseEnter={(e) => {
                     setHoverText(e.currentTarget.innerText);
                     setIndexNum(idx);
@@ -374,10 +392,11 @@ function SelectFunc<T extends AnyObject>(
                     setIndexNum(idx);
                   }}
                   className={classNames(
-                    { [selectClasses.list.item]: x.label === selectedValue },
-                    currentValue === '' && placeholderText
-                      ? { [selectClasses.list.item]: x.label === placeholderText }
-                      : undefined,
+                    Array.isArray(currentValue) &&
+                      currentValue.length > 0 &&
+                      currentValue.includes(x.label)
+                      ? selectedClass(x.label)
+                      : { [selectClasses.list.item]: x.label === currentValue },
                     { [selectClasses.list.hover]: x.label === hoverText },
                     selectClasses.list.overflow,
                   )}
@@ -390,12 +409,10 @@ function SelectFunc<T extends AnyObject>(
                   role="option"
                   onClick={(e) => {
                     console.log(e);
+                    // setShowOptions(true);
                     e.stopPropagation();
                     e.preventDefault();
-                    setShowOptions(true);
-                    setInputFocus(true);
                   }}
-                  style={{ cursor: 'not-allowed' }}
                   className={classNames(disabledLiClassName)}
                 >
                   {x.label}-
@@ -408,7 +425,6 @@ function SelectFunc<T extends AnyObject>(
               onClick={(e) => {
                 e.stopPropagation();
               }}
-              style={{ cursor: 'not-allowed' }}
             >
               No data
             </li>
@@ -419,6 +435,6 @@ function SelectFunc<T extends AnyObject>(
     </div>
   );
 }
-export const Select = React.forwardRef(SelectFunc) as <T extends object>(
-  props: ISelectProp<T> & { ref?: React.ForwardedRef<HTMLInputElement> },
+export const MultiSelect = React.forwardRef(MultiSelectFunc) as <T extends object>(
+  props: IMultipleSelectProp<T> & { ref?: React.ForwardedRef<HTMLInputElement> },
 ) => ReactElement;
