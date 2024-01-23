@@ -21,8 +21,8 @@ export const Spin = forwardRef<HTMLElement, ISpinProps>((props, ref) => {
     children,
     ...spinProps
   } = props;
-  const tempWidth = typeof size !== 'number' ? remUtil.findNumber(size) : size;
-  const width = tempWidth > 34 ? tempWidth : 35;
+  const width = typeof size !== 'number' ? remUtil.findNumber(size) : size;
+  // const width = tempWidth > 34 ? tempWidth : 35;
 
   const rootClassName = classNames(spinClasses.area, {
     [spinClasses.option.fullScreen]: fullscreen,
