@@ -27,7 +27,7 @@ $(ns)-wrap {
   }
 
   $(ns)-loading {
-    @apply absolute top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-50;
+    @apply absolute top-0 left-0 w-full h-full min-h-[200px] flex items-center justify-center bg-white bg-opacity-50;
   }
 
   /* table */

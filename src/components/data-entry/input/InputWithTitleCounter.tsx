@@ -88,7 +88,7 @@ export const InputWithTitleCounter = forwardRef<
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
-    'group-focus-within/inputWithTitleCounter:input-focus',
+    'group-focus-within/inputWithTitleCounter:ring-2 ring-blue-700',
     {
       invalid: isError,
       [inputClasses.hasCustomPrefix]: customPrefix,
