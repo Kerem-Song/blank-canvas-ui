@@ -3,6 +3,7 @@ import './App.css';
 import {
   Button,
   Carousel,
+  DatePicker,
   Flex,
   FloatingActionButton,
   IFloatingActionMenuProps,
@@ -120,6 +121,9 @@ function App() {
   const [selected, setSelected] = useState<IRow>();
   return (
     <>
+      <Flex>
+        <DatePicker />
+      </Flex>
       <div className="p-5">
         <Table
           wrapClassName="max-h-[600px]"
