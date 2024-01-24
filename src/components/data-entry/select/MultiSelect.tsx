@@ -77,7 +77,6 @@ function MultiSelectFunc<T extends AnyObject>(
     const text = (e.target as HTMLElement).innerText;
     onChange(text);
     inputRef.current?.focus();
-    console.log('잉?');
   };
 
   const onChange = (text: string) => {
@@ -281,7 +280,7 @@ function MultiSelectFunc<T extends AnyObject>(
           ...style,
           minWidth: width,
         }}
-        className={classNames(selectClassName, className)}
+        className={classNames(selectClassName, className, 'group')}
       >
         <div className={classNames(selectClasses.multiSelect.tag.area)}>
           {Array.isArray(currentValue) && currentValue.length > 0 ? (
@@ -360,7 +359,7 @@ function MultiSelectFunc<T extends AnyObject>(
           style={{
             ...styles.popper,
             ...style,
-            width,
+            minWidth: width,
             visibility:
               open === undefined
                 ? showOptions && init
