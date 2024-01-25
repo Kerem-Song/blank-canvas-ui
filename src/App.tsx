@@ -167,10 +167,10 @@ function App() {
         showCount={true}
         maxLength={20}
       />
-      <Button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
+      <Button className=" border-red-500 bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
         button..
       </Button>
-      <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
+      <button className="border-red-500 bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
         ..
       </button>
       <TextAreaWithTitleCounter

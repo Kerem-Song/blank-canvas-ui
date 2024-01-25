@@ -3,11 +3,7 @@ $ns: .bc-table;
 $(ns)-wrap {
   /* wrap */
   & {
-    @apply relative overflow-x-auto bg-white border;
-  }
-
-  &-rounded {
-    @apply rounded-md;
+    @apply relative overflow-x-auto border bg-white;
   }
 
   $(ns)-text-align-left {
@@ -23,11 +19,11 @@ $(ns)-wrap {
   }
 
   $(ns)-empty {
-    @apply flex justify-center h-40 items-center;
+    @apply flex h-40 items-center justify-center;
   }
 
   $(ns)-loading {
-    @apply absolute top-0 left-0 w-full h-full min-h-[200px] flex items-center justify-center bg-white bg-opacity-50;
+    @apply absolute left-0 top-0 flex h-full min-h-[200px] w-full items-center justify-center bg-white bg-opacity-50;
   }
 
   /* table */
@@ -43,7 +39,7 @@ $(ns)-wrap {
       tr {
         th {
           & {
-            @apply px-3 relative text-gray-500 bg-gray-150;
+            @apply relative bg-gray-150 px-3 text-gray-500;
           }
         }
 
@@ -78,7 +74,7 @@ $(ns)-wrap-border {
     thead {
       tr {
         th {
-          @apply border-r border-b;
+          @apply border-b border-r;
           &:last-child {
             @apply border-r-0;
           }

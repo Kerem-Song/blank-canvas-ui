@@ -32,6 +32,7 @@ function MultiSelectFunc<T extends AnyObject>(
     items,
     selectWidth = 150,
     isError,
+    limitNumber,
     className,
     style,
     ...inputProps
@@ -77,16 +78,21 @@ function MultiSelectFunc<T extends AnyObject>(
     const text = (e.target as HTMLElement).innerText;
     onChange(text);
     inputRef.current?.focus();
-    console.log('잉?');
   };
 
   const onChange = (text: string) => {
     if (text === '') {
       return;
     }
-    Array.isArray(currentValue) && currentValue.length > 0 && currentValue.includes(text)
-      ? setCurrentValue(currentValue.filter((value: string) => value !== text))
-      : setCurrentValue([...currentValue, text]);
+    if (Array.isArray(currentValue) && currentValue.length >= 0) {
+      if (currentValue.includes(text)) {
+        setCurrentValue(currentValue.filter((value: string) => value !== text));
+      } else {
+        if ((limitNumber && limitNumber > currentValue.length) || !limitNumber) {
+          setCurrentValue([...currentValue, text]);
+        }
+      }
+    }
   };
 
   const handleKeyArrow = (e: React.KeyboardEvent) => {
@@ -99,7 +105,7 @@ function MultiSelectFunc<T extends AnyObject>(
           setShowOptions((pre) => !pre);
           break;
         }
-        console.log(e);
+
         setIndexNum((idx) => idx + 1);
 
         if (popperUl.current && popperUl.current.childElementCount <= indexNum + 1) {
@@ -108,7 +114,6 @@ function MultiSelectFunc<T extends AnyObject>(
         }
         list?.map((x, idx) => {
           if (idx === indexNum + 1) {
-            console.log(idx, indexNum, x.label, x.disabled);
             setHoverText(x.label);
           }
         });
@@ -281,7 +286,7 @@ function MultiSelectFunc<T extends AnyObject>(
           ...style,
           minWidth: width,
         }}
-        className={classNames(selectClassName, className)}
+        className={classNames(selectClassName, className, 'group')}
       >
         <div className={classNames(selectClasses.multiSelect.tag.area)}>
           {Array.isArray(currentValue) && currentValue.length > 0 ? (
@@ -289,7 +294,6 @@ function MultiSelectFunc<T extends AnyObject>(
               <span key={x} className={classNames(selectClasses.multiSelect.tag.root)}>
                 <span key={x}>{x}</span>
                 <span
-                  key={x}
                   onClick={(e) => closeIconClick(e, x)}
                   className={classNames(selectClasses.multiSelect.tag.closeIcon)}
                 >
@@ -360,7 +364,7 @@ function MultiSelectFunc<T extends AnyObject>(
           style={{
             ...styles.popper,
             ...style,
-            width,
+            minWidth: width,
             visibility:
               open === undefined
                 ? showOptions && init
@@ -408,8 +412,6 @@ function MultiSelectFunc<T extends AnyObject>(
                   key={x.label}
                   role="option"
                   onClick={(e) => {
-                    console.log(e);
-                    // setShowOptions(true);
                     e.stopPropagation();
                     e.preventDefault();
                   }}

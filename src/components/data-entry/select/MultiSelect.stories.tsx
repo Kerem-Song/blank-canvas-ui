@@ -1,13 +1,13 @@
-import { Select } from '@components/data-entry/select';
 import { Flex } from '@components/layout/flex';
 import { AnyObject } from '@models/types/AnyObject';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { ISelectProp } from './Select.types';
+import { MultiSelect } from './MultiSelect';
+import { IMultipleSelectProp } from './Select.types';
 
 const meta: Meta = {
-  title: 'components/data-entry/Select/Select',
-  component: Select,
+  title: 'components/data-entry/Select/MultiSelect',
+  component: MultiSelect,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
@@ -16,7 +16,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj<ISelectProp<AnyObject>>;
+type Story = StoryObj<IMultipleSelectProp<AnyObject>>;
 
 export const Default: Story = {
   render: (args) => {
@@ -27,7 +27,7 @@ export const Default: Story = {
           justify="center"
           align="center"
         >
-          <Select options={args.options}></Select>
+          <MultiSelect options={args.options}></MultiSelect>
         </Flex>
       </div>
     );
@@ -41,7 +41,7 @@ export const Default: Story = {
   },
 };
 
-export const FilterOption: Story = {
+export const LimitNumber: Story = {
   render: (args) => {
     return (
       <div style={{ height: 100, border: '1px solid' }}>
@@ -50,7 +50,10 @@ export const FilterOption: Story = {
           justify="center"
           align="center"
         >
-          <Select options={args.options} filterOption></Select>
+          <MultiSelect
+            options={args.options}
+            limitNumber={args.limitNumber}
+          ></MultiSelect>
         </Flex>
       </div>
     );
@@ -61,6 +64,7 @@ export const FilterOption: Story = {
       { label: 'label2', value: 'value2' },
       { label: 'label3', value: 'value3' },
     ],
+    limitNumber: 2,
   },
 };
 
@@ -73,7 +77,7 @@ export const Bordered: Story = {
           justify="center"
           align="center"
         >
-          <Select options={args.options} bordered={false}></Select>
+          <MultiSelect options={args.options} bordered={false}></MultiSelect>
         </Flex>
       </div>
     );
@@ -96,7 +100,7 @@ export const Placement: Story = {
           justify="center"
           align="center"
         >
-          <Select options={args.options} placement="right"></Select>
+          <MultiSelect options={args.options} placement="right"></MultiSelect>
         </Flex>
       </div>
     );
@@ -119,7 +123,7 @@ export const Open: Story = {
           justify="center"
           align="center"
         >
-          <Select options={args.options} open></Select>
+          <MultiSelect options={args.options} open></MultiSelect>
         </Flex>
       </div>
     );
@@ -142,16 +146,16 @@ export const Status: Story = {
           justify="space-around"
           align="center"
         >
-          <Select
+          <MultiSelect
             options={args.options}
             status="error"
             placeholder="status error"
-          ></Select>
-          <Select
+          ></MultiSelect>
+          <MultiSelect
             options={args.options}
             status="warning"
             placeholder="status warning"
-          ></Select>
+          ></MultiSelect>
         </Flex>
       </div>
     );
@@ -174,7 +178,7 @@ export const Placeholder: Story = {
           justify="center"
           align="center"
         >
-          <Select options={args.options} placeholder="선택해주세요"></Select>
+          <MultiSelect options={args.options} placeholder="선택해주세요"></MultiSelect>
         </Flex>
       </div>
     );
@@ -197,7 +201,7 @@ export const Disable: Story = {
           justify="center"
           align="center"
         >
-          <Select options={args.options} disabled></Select>
+          <MultiSelect options={args.options} disabled></MultiSelect>
         </Flex>
       </div>
     );
@@ -220,7 +224,7 @@ export const SuffixIcon: Story = {
           justify="center"
           align="center"
         >
-          <Select options={args.options} suffixIcon={args.suffixIcon} />
+          <MultiSelect options={args.options} suffixIcon={args.suffixIcon} />
         </Flex>
       </div>
     );
@@ -246,11 +250,11 @@ export const useItems: Story = {
           justify="center"
           align="center"
         >
-          <Select
+          <MultiSelect
             items={args.items}
             displayLabel={args.displayLabel}
             valuePath={args.valuePath}
-          ></Select>
+          ></MultiSelect>
         </Flex>
       </div>
     );
@@ -275,11 +279,11 @@ export const ListDisabled: Story = {
           justify="center"
           align="center"
         >
-          <Select
+          <MultiSelect
             items={args.items}
             displayLabel={args.displayLabel}
             valuePath={args.valuePath}
-          ></Select>
+          ></MultiSelect>
         </Flex>
       </div>
     );
