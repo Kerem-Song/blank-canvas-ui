@@ -62,7 +62,7 @@ $(ns) {
     }
 
     &-btn {
-      @apply flex justify-center items-center;
+      @apply flex justify-center items-center bg-white;
 
       &:hover {
         @apply opacity-70;
