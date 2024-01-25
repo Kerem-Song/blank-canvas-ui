@@ -2159,7 +2159,7 @@ __metadata:
     postcss-import: "npm:^15.1.0"
     postcss-nesting: "npm:^12.0.1"
     postcss-simple-vars: "npm:^7.0.1"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.2.4"
     prettier-plugin-tailwindcss: "npm:^0.5.11"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
