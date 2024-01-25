@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 export function generatePrefixClasses<T extends string>(
   classes: Record<T, string>,
   prefix?: string,
