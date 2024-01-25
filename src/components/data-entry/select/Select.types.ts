@@ -114,5 +114,11 @@ export interface ISelectProp<T extends object>
 
 export interface IMultipleSelectProp<T extends object>
   extends Omit<ISelectProp<T>, 'defaultValue' | 'filterOption'> {
+  /**
+   * select default 값 지정
+   * @default
+   * @type string
+   */
   defaultValue?: string | Array<string | T>;
+  limitNumber?: number;
 }
