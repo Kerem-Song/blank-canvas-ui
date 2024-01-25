@@ -1,7 +1,7 @@
 import { attachPrefixClasses } from '@modules/utils';
 
 export const classes = {
-  root: '',
+  root: { base: '', rounded: true },
   opacity: {
     op30: '30',
     op50: '50',

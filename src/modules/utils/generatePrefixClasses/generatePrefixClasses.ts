@@ -1,3 +1,6 @@
+import { customClasses, ICustomClass } from '@styles/customClasses';
+import classNames from 'classnames';
+
 export function generatePrefixClasses<T extends string>(
   classes: Record<T, string>,
   prefix?: string,
@@ -13,7 +16,7 @@ export function generatePrefixClasses<T extends string>(
 
 const GLOBAL_PREFIX = 'bc';
 
-type ClassType = { [key: string]: ClassType | string };
+type ClassType = { [key: string]: ClassType | string | ICustomClass };
 
 export const attachPrefixClasses = <T extends ClassType = ClassType>(
   classes: T,
@@ -27,11 +30,16 @@ export const attachPrefixClasses = <T extends ClassType = ClassType>(
     if (typeof value === 'string') {
       result[item] = [GLOBAL_PREFIX, prefix, value].filter((v) => !!v).join('-');
     } else {
-      result[item] = attachPrefixClasses(
-        value,
-        isPrefixNested ? [prefix, item].join('-') : prefix,
-        isPrefixNested,
-      );
+      if ('base' in (value as object)) {
+        const base = [GLOBAL_PREFIX, prefix, value.base].filter((v) => !!v).join('-');
+        result[item] = classNames(base, { [customClasses.rounded]: value.rounded });
+      } else {
+        result[item] = attachPrefixClasses(
+          value as ClassType,
+          isPrefixNested ? [prefix, item].join('-') : prefix,
+          isPrefixNested,
+        );
+      }
     }
   }
 
