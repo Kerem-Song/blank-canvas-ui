@@ -41,6 +41,33 @@ export const Default: Story = {
   },
 };
 
+export const LimitNumber: Story = {
+  render: (args) => {
+    return (
+      <div style={{ height: 100, border: '1px solid' }}>
+        <Flex
+          style={{ height: 100, border: '1px solid' }}
+          justify="center"
+          align="center"
+        >
+          <MultiSelect
+            options={args.options}
+            limitNumber={args.limitNumber}
+          ></MultiSelect>
+        </Flex>
+      </div>
+    );
+  },
+  args: {
+    options: [
+      { label: 'label1', value: 'value1' },
+      { label: 'label2', value: 'value2' },
+      { label: 'label3', value: 'value3' },
+    ],
+    limitNumber: 2,
+  },
+};
+
 export const Bordered: Story = {
   render: (args) => {
     return (
