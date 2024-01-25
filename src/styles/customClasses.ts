@@ -1,3 +1,4 @@
+import { attachPrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 
 export interface ICustomClass {
@@ -5,17 +6,20 @@ export interface ICustomClass {
   rounded?: boolean;
 }
 
-export type CustomClassType = string & {
-  rounded: () => string;
-};
-
-Object.defineProperty(String.prototype, 'rounded', {
-  value() {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    return classNames(this, customClasses.rounded);
+export const classes = {
+  rounded: 'rounded',
+  text: {
+    primary: { main: 'main', light: 'light', dark: 'dark' },
+    secondary: { main: 'main', light: 'light', dark: 'dark' },
   },
-});
-
-export const customClasses = {
-  rounded: 'custom-rounded',
+  bg: {
+    primary: { main: 'main', light: 'light', dark: 'dark' },
+    secondary: { main: 'main', light: 'light', dark: 'dark' },
+  },
+  border: {
+    primary: { main: 'main', light: 'light', dark: 'dark' },
+    secondary: { main: 'main', light: 'light', dark: 'dark' },
+  },
 };
+
+export const customClasses = attachPrefixClasses(classes, 'custom');
