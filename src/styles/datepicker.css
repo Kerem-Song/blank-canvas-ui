@@ -1,0 +1,13 @@
+$ns: .bc-datepicker;
+
+$(ns)-wrap {
+  & {
+    @apply relative;
+  }
+
+  $(ns)-calendar {
+    & {
+      @apply absolute top-[110%] z-50 hidden;
+    }
+  }
+}
