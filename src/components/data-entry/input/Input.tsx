@@ -73,14 +73,14 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     false || showCount || isSearch || isClearable || customPrefix || suffix;
 
   const inputClassName = classNames(
-    wrappingType ? '' : `${args.className} ${inputClasses.normal}`,
+    wrappingType ? '' : `${args.className ?? ''} ${inputClasses.normal}`,
     {
       invalid: isError,
     },
   );
 
   const inputWrapClassName = classNames(
-    wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
+    wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
     'group-focus-within/input:ring-2 ring-blue-700',
     {
       invalid: isError,
