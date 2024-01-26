@@ -8,6 +8,9 @@ export interface ICustomClass {
 
 export const classes = {
   rounded: 'rounded',
+  h: {
+    control: 'control',
+  },
   text: {
     primary: { main: 'main', light: 'light', dark: 'dark' },
     secondary: { main: 'main', light: 'light', dark: 'dark' },

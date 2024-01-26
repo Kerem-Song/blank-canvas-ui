@@ -12,6 +12,7 @@ import {
 
 import { IInputProps } from './Input.types';
 import { inputClasses } from './InputClasses';
+import { customClasses } from '@styles/customClasses';
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -75,6 +76,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputClassName = classNames(
     wrappingType ? '' : `${args.className ?? ''} ${inputClasses.normal}`,
     {
+      [customClasses.h.control]: !wrappingType,
       invalid: isError,
     },
   );
@@ -83,6 +85,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
     'group-focus-within/input:ring-2 ring-blue-700',
     {
+      [customClasses.h.control]: !!wrappingType,
       invalid: isError,
     },
   );
