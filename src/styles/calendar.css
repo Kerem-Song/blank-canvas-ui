@@ -43,7 +43,7 @@ $(ns)-wrap {
         @apply flex justify-between px-2 text-xs font-bold;
       }
       &-day {
-        @apply relative flex h-[$(date-size)] w-[$(date-size)] cursor-pointer items-center justify-center rounded-full hover:bg-gray-150;
+        @apply relative flex h-[$(date-size)] w-[$(date-size)] cursor-pointer items-center justify-center rounded-full transition-colors ease-in-out hover:bg-gray-150;
 
         &-outofmonth {
           @apply text-gray-400;
@@ -51,6 +51,14 @@ $(ns)-wrap {
 
         &-selected {
           @apply bg-blue-600 text-white hover:bg-blue-200;
+        }
+
+        &-hasitem {
+          @apply h-1 w-2 rounded-full bg-gray-300 transition-all ease-in-out;
+
+          &-selected {
+            @apply w-6 bg-blue-400;
+          }
         }
       }
     }

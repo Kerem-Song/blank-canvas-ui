@@ -17,6 +17,10 @@ const classes = {
       base: '',
       outOfMonth: 'outofmonth',
       selected: 'selected',
+      hasitem: {
+        root: '',
+        selected: 'selected',
+      },
     },
   },
 };

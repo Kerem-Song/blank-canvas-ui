@@ -112,12 +112,9 @@ export const Calendar = ({
                     <div className="flex h-2 items-end justify-center gap-0.5">
                       {hasItem && (
                         <div
-                          className={classNames(
-                            'delay-15 h-1 w-2 rounded-full bg-gray-300 transition-all ease-in-out',
-                            {
-                              'w-6 bg-blue-400': isSelected,
-                            },
-                          )}
+                          className={classNames(calendarClasses.week.day.hasitem.root, {
+                            [calendarClasses.week.day.hasitem.selected]: isSelected,
+                          })}
                         ></div>
                       )}
                     </div>
