@@ -1,20 +1,39 @@
-import { IcArrowLeft, IcArrowRight, IcCalendar } from '@assets/icons';
+import {
+  IcArrowLeft,
+  IcArrowLeftDouble,
+  IcArrowRight,
+  IcArrowRightDouble,
+  IcCalendar,
+} from '@assets/icons';
 import { Button } from '@components';
 import classNames from 'classnames';
 import * as dayjs from 'dayjs';
-import { InputHTMLAttributes, useEffect, useState } from 'react';
+import { InputHTMLAttributes, ReactNode, useState } from 'react';
 
 import { Input } from '..';
+import { datePickerClasses } from './DatePickerClasses';
 
-export interface IDatePickerProps extends InputHTMLAttributes<HTMLInputElement> {
-  value?: string;
+export interface IDatePickerProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> {
+  value: Date | null;
+  onChange?: (date: Date | null) => void;
+  format?: string;
+  calendarIcon?: ReactNode;
 }
 
-export const DatePicker = ({ value, ...inputProps }: IDatePickerProps) => {
-  const [currentStartDay, setCurrentStartDay] = useState<dayjs.Dayjs>(
-    dayjs(value).startOf('M'),
+export const DatePicker = ({
+  value,
+  onChange,
+  format = 'YYYY-MM-DD',
+  calendarIcon = <IcCalendar className="opacity-25" width={20} height={20} />,
+  ...inputProps
+}: IDatePickerProps) => {
+  const [inputValue, setInputValue] = useState<string | undefined>(
+    value ? dayjs(value).format(format) : undefined,
   );
-  const formattedValue = value ? dayjs(value).format('YYYY-MM-DD') : '';
+  const [currentStartDay, setCurrentStartDay] = useState<dayjs.Dayjs>(
+    dayjs(value ?? undefined).startOf('M'),
+  );
 
   const today = currentStartDay.startOf('day');
   const start = currentStartDay.startOf('month').day(0);
@@ -29,69 +48,100 @@ export const DatePicker = ({ value, ...inputProps }: IDatePickerProps) => {
     setCurrentStartDay((v) => v.add(1, 'M'));
   };
 
+  const prevYear = () => {
+    setCurrentStartDay((v) => v.add(-1, 'y'));
+  };
+
+  const nextYear = () => {
+    setCurrentStartDay((v) => v.add(1, 'y'));
+  };
+
+  const handleChangeDate = () => {
+    const date = dayjs(inputValue);
+    if (date.isValid()) {
+      setInputValue(date.format(format));
+      onChange?.(date.toDate());
+      setCurrentStartDay(date.startOf('M'));
+    } else {
+      setInputValue(value ? dayjs(value).format(format) : '');
+    }
+  };
+
   return (
-    <div className="group relative">
+    <div className={classNames(datePickerClasses.wrap, 'group')}>
       <Input
-        value={formattedValue}
+        value={inputValue}
         {...inputProps}
+        onChange={(e) => {
+          setInputValue(e.target.value);
+        }}
+        onBlur={handleChangeDate}
         autoComplete="off"
-        suffix={<IcCalendar className="opacity-25" width={20} height={20} />}
+        suffix={calendarIcon}
+        onPressEnter={() => handleChangeDate()}
       />
-      <div className="absolute top-[110%] z-50 hidden rounded border bg-white p-2 group-focus-within:block group-active:block">
-        <div className="flex items-center p-1">
-          <div className="flex-none">
-            <Button size="sm" variant="text" className="!py-2" onClick={prevMonth}>
+      <div
+        className={classNames(
+          datePickerClasses.calendar.root,
+          'group-focus-within:block group-active:block',
+        )}
+      >
+        <div className={datePickerClasses.calendar.header.wrap}>
+          <div className={datePickerClasses.calendar.header.buttonWrap}>
+            <Button size="sm" variant="text" onClick={prevYear}>
+              <IcArrowLeftDouble />
+            </Button>
+          </div>
+          <div className={datePickerClasses.calendar.header.buttonWrap}>
+            <Button size="sm" variant="text" onClick={prevMonth}>
               <IcArrowLeft />
             </Button>
           </div>
-          <div className="grow py-2 text-xs font-black">
+          <div className={datePickerClasses.calendar.header.title}>
             <span>
               {currentStartDay.format('MMMM')} {currentStartDay.year()}
             </span>
           </div>
-          <div className="flex-none">
-            <Button size="sm" variant="text" className="!py-2" onClick={nextMonth}>
+          <div className={datePickerClasses.calendar.header.buttonWrap}>
+            <Button size="sm" variant="text" onClick={nextMonth}>
               <IcArrowRight />
             </Button>
           </div>
+          <div className={datePickerClasses.calendar.header.buttonWrap}>
+            <Button size="sm" variant="text" onClick={nextYear}>
+              <IcArrowRightDouble />
+            </Button>
+          </div>
         </div>
-        <div className="flex px-2 text-xs font-bold">
-          <div className="flex h-[32px] w-[32px] items-center justify-center capitalize text-gray-400">
-            sun
-          </div>
-          <div className="flex h-[32px] w-[32px] items-center justify-center capitalize text-gray-400">
-            mon
-          </div>
-          <div className="flex h-[32px] w-[32px] items-center justify-center capitalize text-gray-400">
-            tue
-          </div>
-          <div className="flex h-[32px] w-[32px] items-center justify-center capitalize text-gray-400">
-            wed
-          </div>
-          <div className="flex h-[32px] w-[32px] items-center justify-center capitalize text-gray-400">
-            thu
-          </div>
-          <div className="flex h-[32px] w-[32px] items-center justify-center capitalize text-gray-400">
-            fri
-          </div>
-          <div className="flex h-[32px] w-[32px] items-center justify-center capitalize text-gray-400">
-            sat
-          </div>
+        <div className={datePickerClasses.calendar.weeknames.wrap}>
+          <div className={datePickerClasses.calendar.weeknames.item}>sun</div>
+          <div className={datePickerClasses.calendar.weeknames.item}>mon</div>
+          <div className={datePickerClasses.calendar.weeknames.item}>tue</div>
+          <div className={datePickerClasses.calendar.weeknames.item}>wed</div>
+          <div className={datePickerClasses.calendar.weeknames.item}>thu</div>
+          <div className={datePickerClasses.calendar.weeknames.item}>fri</div>
+          <div className={datePickerClasses.calendar.weeknames.item}>sat</div>
         </div>
         {Array.from({ length: weeks }).map((r, rIndex) => (
-          <div className="flex px-2 text-xs font-bold" key={rIndex}>
+          <div className={datePickerClasses.calendar.week.root} key={rIndex}>
             {Array.from({ length: 7 }).map((c, cIndex) => {
               const date = start.add(rIndex * 7 + cIndex, 'days');
               const outOfMonth = date.startOf('M').diff(today.startOf('M')) !== 0;
+              const isSelected = dayjs(value).diff(date, 'D') === 0;
               return (
                 <div
                   key={cIndex}
-                  className={classNames(
-                    'flex h-[32px] w-[32px] cursor-pointer items-center justify-center rounded-full hover:bg-gray-150',
-                    {
-                      'text-gray-400': outOfMonth,
-                    },
-                  )}
+                  onClick={() => {
+                    setInputValue(date.format(format));
+                    onChange?.(date.toDate());
+                    if (outOfMonth) {
+                      setCurrentStartDay(date.startOf('M'));
+                    }
+                  }}
+                  className={classNames(datePickerClasses.calendar.week.day.base, {
+                    [datePickerClasses.calendar.week.day.outOfMonth]: outOfMonth,
+                    [datePickerClasses.calendar.week.day.selected]: isSelected,
+                  })}
                 >
                   {date.format('D')}
                 </div>

@@ -21,7 +21,7 @@ import { IRadioOption } from '@components/data-entry/radio';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg2 from '@icons/ic_search.svg?react';
 import icImgTest2 from '@icons/ic_search_delete.svg';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Autocomplete } from 'src';
 
 interface IRow {
@@ -119,10 +119,16 @@ function App() {
 
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<IRow>();
+  const [date, setDate] = useState<Date | null>(null);
   return (
     <>
       <Flex>
-        <DatePicker />
+        <DatePicker
+          value={date}
+          onChange={(v: Date | null) => {
+            setDate(v);
+          }}
+        />
       </Flex>
       <div className="p-5">
         <Table
