@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import * as dayjs from 'dayjs';
 import { InputHTMLAttributes, ReactNode, useEffect, useState } from 'react';
 
-import { Calendar } from '@components/data-display/calendar/Calendar';
 import { Input } from '..';
 import { datePickerClasses } from './DatePickerClasses';
 import { ICalendarProps } from '@components/data-display/calendar/Calendar.types';
+import { Calendar } from '@components';
 
 export interface IDatePickerProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>,
