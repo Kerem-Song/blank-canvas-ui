@@ -128,9 +128,17 @@ export const InputWithTitleCounter = forwardRef<
   const wrappedInput = (
     <div className="group/inputWithTitleCounter">
       <div className={inputWrapClassName}>
-        <div className={inputClasses.prefixWrapper}>{customPrefix}</div>
+        <div
+          className={classNames(inputClasses.prefixWrapper)}
+          onClick={() => inputRef.current?.focus()}
+        >
+          {customPrefix}
+        </div>
         <div className="grow">{input}</div>
-        <div className={inputClasses.suffixWrapper}>
+        <div
+          className={classNames(inputClasses.suffixWrapper)}
+          onClick={() => inputRef.current?.focus()}
+        >
           {showCount && direction === 'inside' ? (
             <span className={inputClasses.count}>
               <>

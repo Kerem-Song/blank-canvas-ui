@@ -120,9 +120,17 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const wrappedInput = (
     <div className="group/input">
       <div className={inputWrapClassName}>
-        <div className={inputClasses.prefixWrapper}>{customPrefix}</div>
+        <div
+          className={inputClasses.prefixWrapper}
+          onClick={() => inputRef.current?.focus()}
+        >
+          {customPrefix}
+        </div>
         <div className="grow">{input}</div>
-        <div className={inputClasses.suffixWrapper}>
+        <div
+          className={inputClasses.suffixWrapper}
+          onClick={() => inputRef.current?.focus()}
+        >
           {showCount ? (
             <span className={inputClasses.count}>
               <>
