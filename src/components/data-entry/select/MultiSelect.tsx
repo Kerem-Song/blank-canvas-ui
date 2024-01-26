@@ -2,7 +2,7 @@ import IcArrow from '@assets/icons/ic_select_arrow.svg?react';
 import { Input } from '@components';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { AnyObject } from '@models/types/AnyObject';
-import { remUtil } from '@modules/utils/rem';
+
 import classNames from 'classnames';
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -10,6 +10,7 @@ import { usePopper } from 'react-popper';
 
 import { IMultipleSelectProp } from './Select.types';
 import { selectClasses } from './SelectClasses';
+import { remUtil } from '@modules/utils/rem';
 
 function MultiSelectFunc<T extends AnyObject>(
   props: IMultipleSelectProp<T>,
@@ -86,7 +87,11 @@ function MultiSelectFunc<T extends AnyObject>(
     }
     if (Array.isArray(currentValue) && currentValue.length >= 0) {
       if (currentValue.includes(text)) {
-        setCurrentValue(currentValue.filter((value: string) => value !== text));
+        setCurrentValue(
+          currentValue.filter(
+            (value: string) => value.toLowerCase() !== text.toLowerCase(),
+          ),
+        );
       } else {
         if ((limitNumber && limitNumber > currentValue.length) || !limitNumber) {
           setCurrentValue([...currentValue, text]);
@@ -195,7 +200,9 @@ function MultiSelectFunc<T extends AnyObject>(
     }
     setSearchKeyword(e.target.value.trim());
     const searchList = tmpList
-      ? tmpList.filter((element) => element.label.includes(e.target.value.trim()))
+      ? tmpList.filter((element) =>
+          element.label.toLowerCase().includes(e.target.value.toLowerCase().trim()),
+        )
       : [];
     setList(searchList);
     const findNum = searchList.findIndex((x) => !x.disabled);

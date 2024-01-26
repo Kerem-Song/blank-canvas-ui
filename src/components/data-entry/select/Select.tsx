@@ -75,11 +75,13 @@ function SelectFunc<T extends AnyObject>(
 
   useEffect(() => {
     if (inputRef) {
-      const text = inputRef.current?.value ?? '';
-      const searchList = tmpList?.filter((item) => item.label.includes(text));
+      const text = inputRef.current?.value.toLowerCase() ?? '';
+      const searchList = tmpList?.filter((item) =>
+        item.label.toLowerCase().includes(text),
+      );
       setList(searchList);
 
-      if (selectedValue !== '' && selectedValue.includes(text)) {
+      if (selectedValue !== '' && selectedValue.toLowerCase().includes(text)) {
         setHoverText(selectedValue);
       } else {
         setHoverText(searchList && searchList?.length > 0 ? searchList[0].label : '');
