@@ -4,6 +4,12 @@ $(ns)-rounded {
   @apply rounded;
 }
 
+$(ns)-h {
+  &-control {
+    @apply h-8;
+  }
+}
+
 $(ns)-text {
   &-primary {
     &-main {

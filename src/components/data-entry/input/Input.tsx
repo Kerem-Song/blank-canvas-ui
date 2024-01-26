@@ -12,6 +12,7 @@ import {
 
 import { IInputProps } from './Input.types';
 import { inputClasses } from './InputClasses';
+import { customClasses } from '@styles/customClasses';
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -73,16 +74,18 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     false || showCount || isSearch || isClearable || customPrefix || suffix;
 
   const inputClassName = classNames(
-    wrappingType ? '' : `${args.className} ${inputClasses.normal}`,
+    wrappingType ? '' : `${args.className ?? ''} ${inputClasses.normal}`,
     {
+      [customClasses.h.control]: !wrappingType,
       invalid: isError,
     },
   );
 
   const inputWrapClassName = classNames(
-    wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
+    wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
     'group-focus-within/input:ring-2 ring-blue-700',
     {
+      [customClasses.h.control]: !!wrappingType,
       invalid: isError,
     },
   );
@@ -120,9 +123,17 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const wrappedInput = (
     <div className="group/input">
       <div className={inputWrapClassName}>
-        <div className={inputClasses.prefixWrapper}>{customPrefix}</div>
+        <div
+          className={inputClasses.prefixWrapper}
+          onClick={() => inputRef.current?.focus()}
+        >
+          {customPrefix}
+        </div>
         <div className="grow">{input}</div>
-        <div className={inputClasses.suffixWrapper}>
+        <div
+          className={inputClasses.suffixWrapper}
+          onClick={() => inputRef.current?.focus()}
+        >
           {showCount ? (
             <span className={inputClasses.count}>
               <>

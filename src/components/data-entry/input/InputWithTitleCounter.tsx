@@ -80,14 +80,14 @@ export const InputWithTitleCounter = forwardRef<
     false || showCount || isSearch || isClearable || customPrefix || suffix;
 
   const inputClassName = classNames(
-    wrappingType ? '' : `${args.className} ${inputClasses.normal}`,
+    wrappingType ? '' : `${args.className ?? ''} ${inputClasses.normal}`,
     {
       invalid: isError,
     },
   );
 
   const inputWrapClassName = classNames(
-    wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
+    wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
     'group-focus-within/inputWithTitleCounter:ring-2 ring-blue-700',
     {
       invalid: isError,
@@ -128,9 +128,17 @@ export const InputWithTitleCounter = forwardRef<
   const wrappedInput = (
     <div className="group/inputWithTitleCounter">
       <div className={inputWrapClassName}>
-        <div className={inputClasses.prefixWrapper}>{customPrefix}</div>
+        <div
+          className={classNames(inputClasses.prefixWrapper)}
+          onClick={() => inputRef.current?.focus()}
+        >
+          {customPrefix}
+        </div>
         <div className="grow">{input}</div>
-        <div className={inputClasses.suffixWrapper}>
+        <div
+          className={classNames(inputClasses.suffixWrapper)}
+          onClick={() => inputRef.current?.focus()}
+        >
           {showCount && direction === 'inside' ? (
             <span className={inputClasses.count}>
               <>
