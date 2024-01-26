@@ -16,6 +16,7 @@ import {
   Textarea,
   TextAreaWithTitleCounter,
 } from '@components';
+import { Calendar } from '@components/data-display/calendar/Calendar';
 import { Table, TableColumn, TableColumnGroup } from '@components/data-display/table';
 import { IRadioOption } from '@components/data-entry/radio';
 import icImgTest from '@icons/ic_img.svg';
@@ -122,9 +123,27 @@ function App() {
   const [date, setDate] = useState<Date | null>(null);
   return (
     <>
+      <Calendar
+        hasItemDates={[
+          new Date(),
+          new Date(),
+          new Date('2024-01-25'),
+          new Date('2024-01-24'),
+        ]}
+        selectedDate={date}
+        onChange={(v: Date | null) => {
+          setDate(v);
+        }}
+      />
       <Flex>
         <DatePicker
-          value={date}
+          hasItemDates={[
+            new Date(),
+            new Date(),
+            new Date('2024-01-25'),
+            new Date('2024-01-24'),
+          ]}
+          selectedDate={date}
           onChange={(v: Date | null) => {
             setDate(v);
           }}

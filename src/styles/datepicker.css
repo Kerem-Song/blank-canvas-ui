@@ -1,7 +1,5 @@
 $ns: .bc-datepicker;
 
-$date-size: 36px;
-
 $(ns)-wrap {
   & {
     @apply relative;
@@ -9,54 +7,7 @@ $(ns)-wrap {
 
   $(ns)-calendar {
     & {
-      @apply absolute top-[110%] z-50 hidden rounded border bg-white p-2;
-    }
-
-    &-header {
-      & {
-        @apply flex items-center p-1;
-      }
-
-      &-title {
-        @apply grow py-2 text-xs font-black;
-      }
-
-      &-button-wrap {
-        & {
-          @apply flex-none;
-        }
-
-        button {
-          @apply py-2;
-        }
-      }
-    }
-
-    &-weeknames {
-      &-wrap {
-        @apply flex px-2 text-xs font-bold;
-      }
-
-      &-item {
-        @apply flex h-[$(date-size)] w-[$(date-size)] items-center justify-center capitalize text-gray-400;
-      }
-    }
-
-    &-week {
-      & {
-        @apply flex px-2 text-xs font-bold;
-      }
-      &-day {
-        @apply flex h-[$(date-size)] w-[$(date-size)] cursor-pointer items-center justify-center rounded-full hover:bg-gray-150;
-
-        &-outofmonth {
-          @apply text-gray-400;
-        }
-
-        &-selected {
-          @apply bg-blue-600 text-white hover:bg-blue-200;
-        }
-      }
+      @apply absolute top-[110%] z-50 hidden;
     }
   }
 }

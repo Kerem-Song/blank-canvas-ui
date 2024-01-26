@@ -1,0 +1,58 @@
+$ns: .bc-calendar;
+
+$date-size: 36px;
+
+$(ns)-wrap {
+  & {
+    @apply rounded border bg-white p-2;
+  }
+
+  $(ns) {
+    &-header {
+      & {
+        @apply flex items-center p-1;
+      }
+
+      &-title {
+        @apply grow py-2 text-xs font-black;
+      }
+
+      &-button-wrap {
+        & {
+          @apply flex-none;
+        }
+
+        button {
+          @apply py-2;
+        }
+      }
+    }
+
+    &-weeknames {
+      &-wrap {
+        @apply flex justify-between px-2 text-xs font-bold;
+      }
+
+      &-item {
+        @apply flex h-[$(date-size)] w-[$(date-size)] items-center justify-center capitalize text-gray-400;
+      }
+    }
+
+    &-week {
+      & {
+        @apply flex justify-between px-2 text-xs font-bold;
+      }
+      &-day {
+        @apply relative flex h-[$(date-size)] w-[$(date-size)] cursor-pointer items-center justify-center rounded-full hover:bg-gray-150;
+
+        &-outofmonth {
+          @apply text-gray-400;
+        }
+
+        &-selected {
+          @apply bg-blue-600 text-white hover:bg-blue-200;
+        }
+      }
+    }
+  }
+}
