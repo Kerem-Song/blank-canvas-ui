@@ -1,19 +1,12 @@
 import { IcCalendar } from '@assets/icons';
+import { Calendar } from '@components';
 import classNames from 'classnames';
-import * as dayjs from 'dayjs';
-import { InputHTMLAttributes, ReactNode, useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
 
 import { Input } from '..';
+import { IDatePickerProps } from './DatePicker.types';
 import { datePickerClasses } from './DatePickerClasses';
-import { ICalendarProps } from '@components/data-display/calendar/Calendar.types';
-import { Calendar } from '@components';
-
-export interface IDatePickerProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>,
-    ICalendarProps {
-  format?: string;
-  calendarIcon?: ReactNode;
-}
 
 export const DatePicker = ({
   selectedDate,
@@ -24,11 +17,15 @@ export const DatePicker = ({
   ...inputProps
 }: IDatePickerProps) => {
   useEffect(() => {
-    setInputValue(selectedDate ? dayjs(selectedDate).format(format) : undefined);
+    setInputValue(selectedDate ? dayjs(selectedDate).format(format) : '');
   }, [selectedDate]);
-  const [inputValue, setInputValue] = useState<string | undefined>();
+  const [inputValue, setInputValue] = useState<string>('');
 
   const handleChangeDate = () => {
+    if (inputValue === '') {
+      onChange?.(null);
+      return;
+    }
     const date = dayjs(inputValue);
     if (date.isValid()) {
       setInputValue(date.format(format));

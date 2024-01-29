@@ -10,7 +10,7 @@ $(ns)-wrap {
   $(ns) {
     &-header {
       & {
-        @apply flex items-center p-1;
+        @apply flex items-center p-1 text-center;
       }
 
       &-title {

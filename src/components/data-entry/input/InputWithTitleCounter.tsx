@@ -161,7 +161,7 @@ export const InputWithTitleCounter = forwardRef<
             >
               <div
                 className={classNames(inputClasses.button.search, {
-                  clear: textLength,
+                  [inputClasses.button.clear]: textLength,
                 })}
               />
             </Button>

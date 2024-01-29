@@ -74,7 +74,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     false || showCount || isSearch || isClearable || customPrefix || suffix;
 
   const inputClassName = classNames(
-    wrappingType ? '' : `${args.className ?? ''} ${inputClasses.normal}`,
+    wrappingType
+      ? ''
+      : `${args.className ?? ''} ${inputClasses.normal} focus:ring-2 ring-blue-700`,
     {
       [customClasses.h.control]: !wrappingType,
       invalid: isError,
@@ -83,7 +85,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
-    'group-focus-within/input:ring-2 ring-blue-700',
+    'focus-within:ring-2 ring-blue-700',
     {
       [customClasses.h.control]: !!wrappingType,
       invalid: isError,
@@ -91,97 +93,91 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   );
 
   const input = (
-    <div className="">
-      <input
-        {...inputProps}
-        className={inputClassName}
-        onKeyDown={
-          onPressEnter || onPressEsc || onSearch || args.onKeyDown
-            ? handleKeyUp
-            : undefined
-        }
-        ref={(current) => {
-          if (ref) {
-            if (typeof ref === 'function') {
-              ref(current);
-            } else {
-              ref.current = current;
-            }
+    <input
+      {...inputProps}
+      className={inputClassName}
+      onKeyDown={
+        onPressEnter || onPressEsc || onSearch || args.onKeyDown ? handleKeyUp : undefined
+      }
+      ref={(current) => {
+        if (ref) {
+          if (typeof ref === 'function') {
+            ref(current);
+          } else {
+            ref.current = current;
           }
-          inputRef.current = current;
-        }}
-        onMouseDown={(e) => e.stopPropagation()}
-        onChange={handleOnChange}
-        onBlur={handleOnBlur}
-        readOnly={args.readOnly}
-        title={inputRef.current?.value}
-        autoComplete="off"
-      />
-    </div>
+        }
+        inputRef.current = current;
+      }}
+      onMouseDown={(e) => e.stopPropagation()}
+      onChange={handleOnChange}
+      onBlur={handleOnBlur}
+      readOnly={args.readOnly}
+      title={inputRef.current?.value}
+      autoComplete="off"
+    />
   );
 
   const wrappedInput = (
-    <div className="group/input">
-      <div className={inputWrapClassName}>
-        <div
-          className={inputClasses.prefixWrapper}
-          onClick={() => inputRef.current?.focus()}
-        >
-          {customPrefix}
-        </div>
-        <div className="grow">{input}</div>
-        <div
-          className={inputClasses.suffixWrapper}
-          onClick={() => inputRef.current?.focus()}
-        >
-          {showCount ? (
-            <span className={inputClasses.count}>
-              <>
-                {textLength}
-                {args.maxLength ? `/${args.maxLength}` : undefined}
-              </>
-            </span>
-          ) : null}
-          {isSearch ? (
+    <div className={inputWrapClassName}>
+      <div
+        className={inputClasses.prefixWrapper}
+        onClick={() => inputRef.current?.focus()}
+      >
+        {customPrefix}
+      </div>
+      <div className="grow">{input}</div>
+      <div
+        className={inputClasses.suffixWrapper}
+        onClick={() => inputRef.current?.focus()}
+      >
+        {showCount ? (
+          <span className={inputClasses.count}>
             <>
-              <Button
-                variant="text"
-                size="sm"
-                className={inputClasses.button.root}
-                onClick={() => {
-                  inputUtil.TriggerInputOnChange(inputRef.current, '');
-                  setTextLength(0);
-                  onSearch?.('');
-                }}
-              >
-                <div
-                  className={classNames(inputClasses.button.search, {
-                    clear: textLength,
-                  })}
-                />
-              </Button>
+              {textLength}
+              {args.maxLength ? `/${args.maxLength}` : undefined}
             </>
-          ) : null}
-          {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
+          </span>
+        ) : null}
+        {isSearch ? (
+          <>
             <Button
-              className={inputClasses.button.root}
               variant="text"
               size="sm"
-              onClick={(e) => {
+              className={inputClasses.button.root}
+              onClick={() => {
                 inputUtil.TriggerInputOnChange(inputRef.current, '');
                 setTextLength(0);
-                onClear?.();
-              }}
-              onMouseDown={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
+                onSearch?.('');
               }}
             >
-              <div className={inputClasses.button.clear} />
+              <div
+                className={classNames(inputClasses.button.search, {
+                  [inputClasses.button.clear]: textLength,
+                })}
+              />
             </Button>
-          ) : null}
-          {suffix}
-        </div>
+          </>
+        ) : null}
+        {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
+          <Button
+            className={inputClasses.button.root}
+            variant="text"
+            size="sm"
+            onClick={(e) => {
+              inputUtil.TriggerInputOnChange(inputRef.current, '');
+              setTextLength(0);
+              onClear?.();
+            }}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <div className={inputClasses.button.clear} />
+          </Button>
+        ) : null}
+        {suffix}
       </div>
     </div>
   );
