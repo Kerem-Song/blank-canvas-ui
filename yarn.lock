@@ -2120,6 +2120,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lunasoft-org/blank-canvas-ui@workspace:."
   dependencies:
+    "@lunasoft-org/eslint-config-web": "npm:^0.0.20"
     "@popperjs/core": "npm:^2.11.8"
     "@storybook/addon-essentials": "npm:^7.5.3"
     "@storybook/addon-interactions": "npm:^7.5.3"
@@ -2183,6 +2184,27 @@ __metadata:
     vitest: "npm:^0.34.6"
   languageName: unknown
   linkType: soft
+
+"@lunasoft-org/eslint-config-web@npm:^0.0.20":
+  version: 0.0.20
+  resolution: "@lunasoft-org/eslint-config-web@npm:0.0.20::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40lunasoft-org%2Feslint-config-web%2F0.0.20%2F5c33cc0b84ae5d9f47ad5832e5c686cc0ce598be"
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": ^6.19.1
+    "@typescript-eslint/parser": ^6.19.1
+    eslint: ^8.56.0
+    eslint-plugin-import: ^2.29.1
+    eslint-plugin-jsx-a11y: ^6.8.0
+    eslint-plugin-react: ^7.33.2
+    eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-simple-import-sort: ^10.0.0
+    prettier: ^3.2.4
+    react: ^18.2.0
+    storybook: ^7.5.3
+    tailwindcss: ^3.3.5
+    typescript: ^5.0.2
+  checksum: d0402d2cead1663a9ca9b674adb8d53ddae2797ac4c58c80cfc172ba3fffb322646cbe647fed11109b897b10bdd69975be1842cb2104643a1cc0a01f414b5d2a
+  languageName: node
+  linkType: hard
 
 "@mdx-js/react@npm:^2.1.5":
   version: 2.3.0

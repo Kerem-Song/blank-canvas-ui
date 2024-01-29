@@ -1,46 +1,6 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "allowJs": false,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "declaration": true,
-    // "typeRoots": ["./dist/index.d.ts", "node_modules/@types", "./node_modules"],
-    "types": ["vitest/globals"],
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "baseUrl": "./",
-    "paths": {
-      "@components": ["src/components"],
-      "@components/*": ["src/components/*"],
-      "@models": ["src/models"],
-      "@models/*": ["src/models/*"],
-      "@modules": ["src/modules"],
-      "@modules/*": ["src/modules/*"],
-      "@assets": ["src/assets"],
-      "@assets/*": ["src/assets/*"],
-      "@hooks": ["src/hooks"],
-      "@hooks/*": ["src/hooks/*"],
-      "@store": ["src/store"],
-      "@store/*": ["src/store/*"],
-      "@styles/*": ["src/styles/*"]
-    }
-  },
+  "extends": "@lunasoft-org/eslint-config-web/tsconfig.json",
+  "compilerOptions": { "outDir": "dist" },
   "include": ["src", "./index.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["node_modules", "dist"],
 }
