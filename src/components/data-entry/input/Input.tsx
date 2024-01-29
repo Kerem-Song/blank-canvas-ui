@@ -27,6 +27,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     isShowAlwaysClear,
     customPrefix,
     suffix,
+    direction = 'inside',
     onPressEnter,
     onPressEsc,
     onSearch,
@@ -131,7 +132,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
         className={inputClasses.suffixWrapper}
         onClick={() => inputRef.current?.focus()}
       >
-        {showCount ? (
+        {showCount && direction === 'inside' ? (
           <span className={inputClasses.count}>
             <>
               {textLength}
