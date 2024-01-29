@@ -17,11 +17,15 @@ export const DatePicker = ({
   ...inputProps
 }: IDatePickerProps) => {
   useEffect(() => {
-    setInputValue(selectedDate ? dayjs(selectedDate).format(format) : undefined);
+    setInputValue(selectedDate ? dayjs(selectedDate).format(format) : '');
   }, [selectedDate]);
-  const [inputValue, setInputValue] = useState<string | undefined>();
+  const [inputValue, setInputValue] = useState<string>('');
 
   const handleChangeDate = () => {
+    if (inputValue === '') {
+      onChange?.(null);
+      return;
+    }
     const date = dayjs(inputValue);
     if (date.isValid()) {
       setInputValue(date.format(format));
