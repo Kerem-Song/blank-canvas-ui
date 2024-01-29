@@ -1,19 +1,12 @@
 import { IcCalendar } from '@assets/icons';
+import { Calendar } from '@components';
 import classNames from 'classnames';
-import * as dayjs from 'dayjs';
-import { InputHTMLAttributes, ReactNode, useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
 
 import { Input } from '..';
+import { IDatePickerProps } from './DatePicker.types';
 import { datePickerClasses } from './DatePickerClasses';
-import { ICalendarProps } from '@components/data-display/calendar/Calendar.types';
-import { Calendar } from '@components';
-
-export interface IDatePickerProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>,
-    ICalendarProps {
-  format?: string;
-  calendarIcon?: ReactNode;
-}
 
 export const DatePicker = ({
   selectedDate,
