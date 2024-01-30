@@ -2187,7 +2187,7 @@ __metadata:
 
 "@lunasoft-org/eslint-config-web@npm:^0.0.21":
   version: 0.0.21
-  resolution: "@lunasoft-org/eslint-config-web@npm:0.0.21::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40lunasoft-org%2Feslint-config-web%2F0.0.21%2F9de87eaa7c0f7e710ddd8e3de21ee0676df21a6e"
+  resolution: "@lunasoft-org/eslint-config-web@npm:0.0.21::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40lunasoft-org%2Feslint-config-web%2F0.0.21%2F827b5b0afc0876ee38ac7b79d432107345e771f4"
   peerDependencies:
     "@typescript-eslint/eslint-plugin": ^6.19.1
     "@typescript-eslint/parser": ^6.19.1
@@ -2202,7 +2202,7 @@ __metadata:
     storybook: ^7.5.3
     tailwindcss: ^3.3.5
     typescript: ^5.0.2
-  checksum: 5b9598097811ffc96cb0363408e8063a2691fe0f16a8865dbb554c63a65004ddf79bbc4255fbc2ae7689f85ae40b0873498bbf74a1a9f232a33e69a51235dbb1
+  checksum: 81d33217d60ce8711d50bcb88c2dee08897cc2f8c2453951b0e05296c2084248f1875c41a9980caff8def5f485dcb0c3be06308b88713c3abf78212e3a131c67
   languageName: node
   linkType: hard
 
