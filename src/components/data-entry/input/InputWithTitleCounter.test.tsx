@@ -56,7 +56,7 @@ describe('<InputWithTitleCounter />', () => {
       <InputWithTitleCounter showCount={true} maxLength={10} direction="top" />,
     );
     const input: HTMLInputElement = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'test1' } });
+    fireEvent.change(input, { target: { value: 'test2' } });
 
     const counter = container.querySelector(`.${inputClasses.counter}`);
     expect(

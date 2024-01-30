@@ -56,6 +56,12 @@ export const InputWithTitleCounter = forwardRef<
           customPrefix={customPrefix}
           suffix={suffix}
           direction={direction}
+          textLength={textLength}
+          onChange={(e) => setTextLength(e.currentTarget.value.length)}
+          onClear={onClear}
+          onSearch={onSearch}
+          onPressEnter={onPressEnter}
+          onPressEsc={onPressEsc}
           {...inputProps}
         />
       }
