@@ -1,13 +1,11 @@
 $ns: .bc;
 $(ns) {
   &-select {
-    @apply flex h-[30px] cursor-pointer;
-    &-disabled {
-      @apply rounded-6 cursor-not-allowed bg-[#dbdbdb] text-[#b3b1b1];
+    @apply inline-flex h-[30px] cursor-pointer;
+
+    &-placeholder {
+      @apply text-[#b3b1b1];
     }
-    /* &-container {
-      
-    } */
 
     &-focus {
       @apply ring-2 ring-blue-500;
@@ -32,11 +30,14 @@ $(ns) {
     &-referenceElement {
       @apply flex justify-between rounded-6 items-center h-full bg-white;
       input {
-        @apply rounded-6 px-[8px] h-full outline-none w-full ring-opacity-0 border-0;
+        @apply rounded-6 px-[8px] py-0 inline-block h-full outline-none w-full ring-opacity-0 border-0;
       }
 
       $(ns)-select-icon {
         @apply w-[16px] h-full flex items-center mx-[5px] cursor-pointer;
+      }
+      $(ns)-select-icon-disabled {
+        @apply mr-[4px] cursor-not-allowed;
       }
     }
 
@@ -57,6 +58,27 @@ $(ns) {
       }
       &-disabled {
         @apply bg-[#fff];
+      }
+    }
+    &-disabled {
+      @apply rounded-6 cursor-not-allowed bg-[#dbdbdb] text-[#b3b1b1];
+    }
+
+    &-multiSelect {
+      &-tag {
+        @apply inline-flex items-center cursor-default border-[1px] border-solid border-transparent text-sm ps-[6px] pe-[6px] rounded-4 bg-gray-150 ml-[2px];
+        &-area {
+          @apply flex ps-[4px] p-[2px];
+        }
+        &-closeIcon {
+          @apply ms-[4px] cursor-pointer text-xs text-gray-300;
+        }
+      }
+      &-inputArea {
+        @apply flex ml-[2px];
+        input {
+          @apply inline-block w-[1px] p-0;
+        }
       }
     }
   }

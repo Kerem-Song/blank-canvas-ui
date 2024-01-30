@@ -1,11 +1,8 @@
-import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
 import { fireEvent, render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import { Rating } from './Rating';
-import { ratingClasses } from './ratingClasses';
-
-const classes = generatePrefixClasses(ratingClasses, 'bc-rating');
+import { ratingClasses as classes } from './ratingClasses';
 
 describe('<Rating />', () => {
   it('렌더링 되나요?', () => {

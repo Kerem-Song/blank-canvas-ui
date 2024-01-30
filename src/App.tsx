@@ -3,6 +3,7 @@ import './App.css';
 import {
   Button,
   Carousel,
+  DatePicker,
   Flex,
   FloatingActionButton,
   IFloatingActionMenuProps,
@@ -15,12 +16,13 @@ import {
   Textarea,
   TextAreaWithTitleCounter,
 } from '@components';
+import { Calendar } from '@components/data-display/calendar/Calendar';
 import { Table, TableColumn, TableColumnGroup } from '@components/data-display/table';
 import { IRadioOption } from '@components/data-entry/radio';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg2 from '@icons/ic_search.svg?react';
 import icImgTest2 from '@icons/ic_search_delete.svg';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Autocomplete } from 'src';
 
 interface IRow {
@@ -118,8 +120,35 @@ function App() {
 
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<IRow>();
+  const [date, setDate] = useState<Date | null>(null);
   return (
     <>
+      <Calendar
+        hasItemDates={[
+          new Date(),
+          new Date(),
+          new Date('2024-01-25'),
+          new Date('2024-01-24'),
+        ]}
+        selectedDate={date}
+        onChange={(v: Date | null) => {
+          setDate(v);
+        }}
+      />
+      <Flex>
+        <DatePicker
+          hasItemDates={[
+            new Date(),
+            new Date(),
+            new Date('2024-01-25'),
+            new Date('2024-01-24'),
+          ]}
+          selectedDate={date}
+          onChange={(v: Date | null) => {
+            setDate(v);
+          }}
+        />
+      </Flex>
       <div className="p-5">
         <Table
           wrapClassName="max-h-[600px]"
@@ -163,10 +192,10 @@ function App() {
         showCount={true}
         maxLength={20}
       />
-      <Button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
+      <Button className=" border-red-500 bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
         button..
       </Button>
-      <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
+      <button className="border-red-500 bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">
         ..
       </button>
       <TextAreaWithTitleCounter

@@ -2,7 +2,6 @@ import { attachPrefixClasses } from '@modules/utils';
 
 const classes = {
   wrap: 'wrap',
-  rounded: 'wrap-rounded',
   border: 'wrap-border',
   ['text-align']: {
     left: 'left',
@@ -14,6 +13,8 @@ const classes = {
     small: 'small',
   },
   sortable: 'sortable',
+  empty: 'empty',
+  loading: 'loading',
 };
 
 export const tableClasses = attachPrefixClasses(classes, 'table', true);

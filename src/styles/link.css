@@ -1,4 +1,5 @@
-$ns: .bc-link;
+$prefix: bc;
+$ns: .$(prefix)-link;
 
 /* prettier-ignore */
 $(ns) {
@@ -16,6 +17,7 @@ $(ns) {
       cursor-pointer
       appearance-none
       underline-offset-[0.25em];
+      /* focus-visible:input-focus; */
   }
   /* component button */
   button& {

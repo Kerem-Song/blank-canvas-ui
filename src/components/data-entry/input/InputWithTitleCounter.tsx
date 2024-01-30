@@ -1,15 +1,7 @@
-import { Button } from '@components/general/button/Button';
-import { inputUtil } from '@modules/utils/input';
 import classNames from 'classnames';
-import {
-  ChangeEvent,
-  FocusEvent,
-  forwardRef,
-  KeyboardEvent,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, useRef, useState } from 'react';
 
+import { Input } from './Input';
 import { inputClasses } from './InputClasses';
 import { IInputWithTitleCounterProps } from './InputWithTitleCounter.types';
 
@@ -40,151 +32,6 @@ export const InputWithTitleCounter = forwardRef<
     ...inputProps
   } = args;
 
-  const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.nativeEvent.isComposing) {
-      return;
-    }
-
-    args.onKeyDown?.(e);
-
-    switch (e.key) {
-      case 'Enter':
-        onPressEnter?.(inputRef.current?.value);
-        onSearch?.(inputRef.current?.value);
-        if (onPressEnter || onSearch) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        break;
-      case 'Escape':
-        onPressEsc?.();
-        if (onPressEsc) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        break;
-    }
-  };
-
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    args.onChange?.(e);
-    setTextLength(e.target.value?.length || 0);
-  };
-
-  const handleOnBlur = (e: FocusEvent<HTMLInputElement>) => {
-    args.onBlur?.(e);
-    onSearch?.(e.target.value);
-  };
-
-  const wrappingType =
-    false || showCount || isSearch || isClearable || customPrefix || suffix;
-
-  const inputClassName = classNames(
-    wrappingType ? '' : `${args.className} ${inputClasses.normal}`,
-    'group-focus-within:ring-blue-500',
-    {
-      invalid: isError,
-    },
-  );
-
-  const inputWrapClassName = classNames(
-    wrappingType ? `${args.className} ${inputClasses.wrapped}` : '',
-    'group-focus-within:ring-blue-500',
-    {
-      invalid: isError,
-      [inputClasses.hasCustomPrefix]: customPrefix,
-    },
-  );
-
-  const input = (
-    <div className="group">
-      <input
-        {...inputProps}
-        className={inputClassName}
-        onKeyDown={
-          onPressEnter || onSearch || onPressEsc || args.onKeyDown
-            ? handleKeyUp
-            : undefined
-        }
-        ref={(current) => {
-          if (ref) {
-            if (typeof ref === 'function') {
-              ref(current);
-            } else {
-              ref.current = current;
-            }
-          }
-          inputRef.current = current;
-        }}
-        onMouseDown={(e) => e.stopPropagation()}
-        onChange={handleOnChange}
-        onBlur={handleOnBlur}
-        readOnly={args.readOnly}
-        title={inputRef.current?.value}
-        autoComplete="off"
-      />
-    </div>
-  );
-
-  const wrappedInput = (
-    <div className="group">
-      <div className={inputWrapClassName}>
-        <div className={inputClasses.prefixWrapper}>{customPrefix}</div>
-        <div className="grow">{input}</div>
-        <div className={inputClasses.suffixWrapper}>
-          {showCount && direction === 'inside' ? (
-            <span className={inputClasses.count}>
-              <>
-                {textLength}
-                {args.maxLength ? `/${args.maxLength}` : undefined}
-              </>
-            </span>
-          ) : undefined}
-          {isSearch ? (
-            <Button
-              className={inputClasses.button.root}
-              variant="text"
-              size="sm"
-              // startIcon={<IcSearch />}
-              onClick={() => {
-                inputUtil.TriggerInputOnChange(inputRef.current, '');
-                setTextLength(0);
-                onSearch?.('');
-              }}
-            >
-              <div
-                className={classNames(inputClasses.button.search, {
-                  clear: textLength,
-                })}
-              />
-            </Button>
-          ) : undefined}
-          {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
-            <Button
-              variant="text"
-              size="sm"
-              className={inputClasses.button.root}
-              onClick={(e) => {
-                inputUtil.TriggerInputOnChange(inputRef.current, '');
-                setTextLength(0);
-                onClear?.();
-              }}
-              onMouseDown={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
-            >
-              <div className={inputClasses.clear} />
-            </Button>
-          ) : undefined}
-          {suffix}
-        </div>
-      </div>
-    </div>
-  );
-
-  const inputChildren = wrappingType ? wrappedInput : input;
-
   return (
     <div>
       {direction !== 'bottom' ? (
@@ -201,7 +48,23 @@ export const InputWithTitleCounter = forwardRef<
           ) : null}
         </div>
       ) : null}
-      {inputChildren}
+      {
+        <Input
+          showCount={showCount}
+          isSearch={isSearch}
+          isClearable={isClearable}
+          customPrefix={customPrefix}
+          suffix={suffix}
+          direction={direction}
+          textLength={textLength}
+          onChange={(e) => setTextLength(e.currentTarget.value.length)}
+          onClear={onClear}
+          onSearch={onSearch}
+          onPressEnter={onPressEnter}
+          onPressEsc={onPressEsc}
+          {...inputProps}
+        />
+      }
       {direction === 'bottom' ? (
         <div className={inputClasses.titleCounterWrapper}>
           <span className={classNames(inputClasses.label, { light: isLight })}>

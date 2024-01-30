@@ -33,7 +33,7 @@ export interface ISpinProps extends React.HTMLAttributes<HTMLElement> {
    */
   tip?: ReactNode;
   /**
-   * spin 크기 조절 (최소값 35)
+   * spin 크기 조절
    * @default 35
    * @type number | string
    */

@@ -3,6 +3,7 @@ import { attachPrefixClasses } from '@modules/utils';
 const classes = {
   root: '',
   disabled: 'disabled',
+  placeholder: 'placeholder',
   container: 'container',
   focus: {
     root: '',
@@ -17,13 +18,25 @@ const classes = {
     borderedNone: 'bordered-none',
   },
   referenceElement: 'referenceElement',
-  icon: 'icon',
+  icon: {
+    root: '',
+    disabled: 'disabled',
+  },
   list: {
     root: '',
     overflow: 'overflow',
     item: 'item',
     hover: 'hover',
     disabled: 'disabled',
+  },
+  multiSelect: {
+    root: '',
+    tag: {
+      root: '',
+      area: 'area',
+      closeIcon: 'closeIcon',
+    },
+    inputArea: 'inputArea',
   },
 };
 export const selectClasses = attachPrefixClasses(classes, 'select');

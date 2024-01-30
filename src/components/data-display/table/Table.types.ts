@@ -1,6 +1,7 @@
 import { PaginationProps } from '@components/navigation/pagination';
 import { Path } from 'object-path';
-import { FunctionComponent, HtmlHTMLAttributes, ReactNode } from 'react';
+import { HtmlHTMLAttributes, ReactNode } from 'react';
+import { LoadingType } from 'react-loading';
 
 export type SizeType = 'normal' | 'small';
 export type SortDirectionType = 'ascending' | 'descending';
@@ -102,7 +103,7 @@ export interface ITableProps<RecordType> extends HtmlHTMLAttributes<HTMLTableEle
   /**
    * 로딩
    */
-  loading?: boolean;
+  loading?: boolean | LoadingType;
 
   defaultSort?: ISortInfo[];
 

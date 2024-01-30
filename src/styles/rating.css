@@ -1,4 +1,5 @@
-$ns: .bc-rating;
+$prefix: bc;
+$ns: .$(prefix)-rating;
 
 /* prettier-ignore */
 $(ns) {
@@ -47,7 +48,8 @@ $(ns) {
     @apply
       scale-[1.2];
     $(ns)-focusVisible & {
-      outline: 1px solid #999;
+      /* @apply
+        input-focus; */
     }
   }
 
@@ -60,7 +62,7 @@ $(ns) {
         absolute
         w-full
         inset-y-0;
-      outline: 1px solid #999;
+        /* input-focus; */
     }
   }
 

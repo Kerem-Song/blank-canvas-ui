@@ -1,10 +1,8 @@
-import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
 import { act, render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Checkbox, checkboxClasses } from './index';
-
-const classes = generatePrefixClasses(checkboxClasses, 'bc-checkbox');
+import { Checkbox } from './Checkbox';
+import { checkboxClasses as classes } from './checkboxClasses';
 
 describe('<Checkbox />', () => {
   it('렌더링 됩니다.', () => {

@@ -56,6 +56,12 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   suffix?: ReactNode;
 
   /**
+   * Input에서 노출되는 title과 counter의 위치(label은 값이 없을 경우 노출되지 않음)
+   * @type "top" | "bottom" | "inside"
+   */
+  direction?: 'top' | 'bottom' | 'inside';
+
+  /**
    * Input에서 Enter 입력 시 실행되는 함수
    * @param value
    * @returns

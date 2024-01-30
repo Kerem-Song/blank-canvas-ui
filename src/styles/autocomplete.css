@@ -6,6 +6,10 @@ $(ns) {
       @apply min-w-154pxr border p-5pxr border-gray-200 rounded-md bg-white z-999;
     }
 
+    &-input:focus {
+      @apply ring-2 ring-blue-700;
+    }
+
     &-list {
       @apply flex items-center w-138pxr h-32pxr px-8pxr py-12pxr border border-white rounded-md gap-8pxr;
 

@@ -136,7 +136,7 @@ export const Carousel = forwardRef<HTMLDivElement, ICarouselProps>((args, ref) =
                   addCarousel(e);
                   setCurrent(length);
                 }}
-                disabled={current === CAROUSEL_LIMIT - 1 || readOnly}
+                disabled={length === CAROUSEL_LIMIT || readOnly}
                 data-button={'add'}
               />
             </Col>

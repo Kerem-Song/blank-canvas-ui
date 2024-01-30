@@ -3,9 +3,7 @@ import { CheckboxProps } from './Checkbox.types';
 import { CheckboxGroup } from './CheckboxGroup';
 
 export * from './Checkbox.types';
-export * from './checkboxClasses';
 export * from './CheckboxGroup.types';
-export * from './checkboxGroupClasses';
 
 type CompoundedComponent = React.ForwardRefExoticComponent<
   CheckboxProps & React.RefAttributes<HTMLInputElement>

@@ -1,11 +1,11 @@
 import '../../../styles/button.css';
 
-import { composeRef, generatePrefixClasses } from '@modules/utils';
+import { composeRef } from '@modules/utils';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 
 import { ButtonProps, ButtonTypeMap, ExtendButton } from './Button.types';
-import { buttonClasses } from './buttonClasses';
+import { buttonClasses as classes } from './buttonClasses';
 
 export const Button = React.forwardRef(function Button<
   RootComponentType extends React.ElementType,
@@ -19,14 +19,13 @@ export const Button = React.forwardRef(function Button<
     disabled = false,
     block = false,
     endIcon: endIconProp,
+    startIcon: startIconProp,
     shape = 'round',
     size = 'md',
-    startIcon: startIconProp,
+    variant = 'outlined',
     slotProps,
     tabIndex,
     type,
-    prefix = 'bc',
-    variant = 'outlined',
     onClick,
     ...other
   } = props;
@@ -72,13 +71,8 @@ export const Button = React.forwardRef(function Button<
     }
   }
 
-  const classes = generatePrefixClasses(
-    buttonClasses,
-    `${prefix ? `${prefix}-` : ''}${baseButton ? 'base-button' : 'btn'}`,
-  );
-
   const rootClassName = classNames(
-    classes.root,
+    baseButton ? classes.baseButton : classes.root,
     baseButton
       ? {}
       : {

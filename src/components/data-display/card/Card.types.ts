@@ -32,7 +32,7 @@ export interface ICardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   titleColor?: string;
   /**
    * 카드 테두리선 선택 여부
-   * @default false
+   * @default true
    * @type boolean
    */
   bordered?: boolean;

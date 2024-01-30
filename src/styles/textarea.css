@@ -7,6 +7,10 @@ $(ns) {
     &.invalid {
       @apply border-error-main;
     }
+
+    &-border:focus {
+      @apply ring-2 ring-blue-700;
+    }
   }
 
   &-textarea-title-counter-wrapper {
@@ -18,10 +22,6 @@ $(ns) {
       &.light {
         @apply font-normal;
       }
-    }
-
-    textarea:focus {
-      @apply focus:outline-none border-blue-500;
     }
 
     &.inside {

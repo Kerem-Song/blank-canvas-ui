@@ -77,3 +77,15 @@ export const Indicator: Story = {
     indicator: <div>스핀테스트</div>,
   },
 };
+
+export const Children: Story = {
+  render: () => {
+    return (
+      <div style={{ height: 100, border: '1px solid' }}>
+        <Spin>
+          <div style={{ height: 50, width: 100, border: '1px solid' }}>Children</div>
+        </Spin>
+      </div>
+    );
+  },
+};

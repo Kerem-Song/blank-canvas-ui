@@ -61,7 +61,6 @@ export const Default: Story = {
   args: {
     component: 'button',
     children: 'Default',
-    prefix: 'bc',
   },
 };
 

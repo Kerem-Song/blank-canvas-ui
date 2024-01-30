@@ -99,9 +99,26 @@ export interface ISelectProp<T extends object>
    */
   options?: Array<{ label: string; value: string; disabled?: boolean }>;
   /**
-   * select error 여부 서렂ㅇ
+   * select error 여부 지정
    * @default
    * @type boolean
    */
   isError?: boolean;
+  /**
+   * select에 입력을 해서 선택할지 여부 결정
+   * @default false
+   * @type boolean
+   */
+  filterOption?: boolean;
+}
+
+export interface IMultipleSelectProp<T extends object>
+  extends Omit<ISelectProp<T>, 'defaultValue' | 'filterOption'> {
+  /**
+   * select default 값 지정
+   * @default
+   * @type string
+   */
+  defaultValue?: string | Array<string | T>;
+  limitNumber?: number;
 }
