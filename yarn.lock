@@ -2120,7 +2120,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lunasoft-org/blank-canvas-ui@workspace:."
   dependencies:
-    "@lunasoft-org/eslint-config-web": "npm:^0.0.20"
+    "@lunasoft-org/eslint-config-web": "npm:^0.0.21"
     "@popperjs/core": "npm:^2.11.8"
     "@storybook/addon-essentials": "npm:^7.5.3"
     "@storybook/addon-interactions": "npm:^7.5.3"
@@ -2185,9 +2185,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@lunasoft-org/eslint-config-web@npm:^0.0.20":
-  version: 0.0.20
-  resolution: "@lunasoft-org/eslint-config-web@npm:0.0.20::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40lunasoft-org%2Feslint-config-web%2F0.0.20%2F5c33cc0b84ae5d9f47ad5832e5c686cc0ce598be"
+"@lunasoft-org/eslint-config-web@npm:^0.0.21":
+  version: 0.0.21
+  resolution: "@lunasoft-org/eslint-config-web@npm:0.0.21::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40lunasoft-org%2Feslint-config-web%2F0.0.21%2F9de87eaa7c0f7e710ddd8e3de21ee0676df21a6e"
   peerDependencies:
     "@typescript-eslint/eslint-plugin": ^6.19.1
     "@typescript-eslint/parser": ^6.19.1
@@ -2202,7 +2202,7 @@ __metadata:
     storybook: ^7.5.3
     tailwindcss: ^3.3.5
     typescript: ^5.0.2
-  checksum: d0402d2cead1663a9ca9b674adb8d53ddae2797ac4c58c80cfc172ba3fffb322646cbe647fed11109b897b10bdd69975be1842cb2104643a1cc0a01f414b5d2a
+  checksum: 5b9598097811ffc96cb0363408e8063a2691fe0f16a8865dbb554c63a65004ddf79bbc4255fbc2ae7689f85ae40b0873498bbf74a1a9f232a33e69a51235dbb1
   languageName: node
   linkType: hard
 
