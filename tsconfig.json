@@ -46,7 +46,7 @@
 // }
 {
   "extends": "@lunasoft-org/eslint-config-web/tsconfig.json",
-  "compilerOptions": { "outDir": "dist" },
+  "compilerOptions": { "outDir": "dist", "types": ["vitest/globals"] },
   "include": ["src", "./index.ts"],
   "exclude": ["node_modules", "dist"],
 }
