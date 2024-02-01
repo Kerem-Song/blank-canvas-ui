@@ -233,8 +233,6 @@ function SelectFunc<T extends AnyObject>(
   useOutsideClick(selectRef, () => {
     setInputFocus(false);
     setShowOptions(false);
-    setCurrentValue(selectedValue);
-    inputRef.current?.blur();
   });
 
   const referenceElement = useRef<HTMLDivElement>(null);
