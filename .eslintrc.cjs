@@ -51,6 +51,6 @@ module.exports = {
   extends: ['@lunasoft-org/eslint-config-web'],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   rules: {
-    // '@lunasoft-org/eslint-config-web/no-unused-vars': off,
+    '@lunasoft-org/eslint-config-web/no-unused-vars': off,
   },
 };
