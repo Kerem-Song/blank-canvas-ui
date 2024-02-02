@@ -60,7 +60,7 @@ $(ns) {
       }
     }
     &-disabled {
-      @apply cursor-[var(--bc-disable-cursor)] rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-disable-border-color)] bg-[var(--bc-disable-background)] text-[var(--bc-disable-text-color)] opacity-[var(--bc-disable-opacity)];
+      @apply cursor-[var(--bc-disable-cursor)] rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-disable-border-color)] bg-[var(--bc-disable-background)] text-[var(--bc-disable-text-color)];
     }
 
     &-multiSelect {
