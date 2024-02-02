@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-textarea {
-    @apply rounded-md border w-full resize-none;
+    @apply rounded-[var(--bc-rounded)] border w-full resize-none;
 
     &.invalid {
       @apply border-[var(--bc-error-color-main)];
@@ -14,7 +14,7 @@ $(ns) {
   }
 
   &-textarea-title-counter-wrapper {
-    @apply rounded-md flex justify-between items-center w-full resize-none;
+    @apply rounded-[var(--bc-rounded)] flex justify-between items-center w-full resize-none;
 
     .bc-textarea-label {
       @apply font-semibold;

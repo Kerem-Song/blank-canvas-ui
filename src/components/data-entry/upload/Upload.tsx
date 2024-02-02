@@ -205,7 +205,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
       {files
         ? files?.map((file) => (
             <div
-              className="flex items-center justify-between rounded-md hover:bg-gray-100"
+              className="flex items-center justify-between rounded-[var(--bc-rounded)] hover:bg-gray-100"
               key={file.name + '-' + file.lastModified}
             >
               <div>

@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-input-wrapped {
-    @apply flex items-center rounded-md border px-2;
+    @apply flex items-center rounded-[var(--bc-rounded)] border px-2;
 
     .bc-input-suffix-wrapper {
       @apply flex items-center text-end;
@@ -32,7 +32,7 @@ $(ns) {
   }
 
   &-input-normal {
-    @apply rounded-md border px-2;
+    @apply rounded-[var(--bc-rounded)] border px-2;
 
     &.invalid {
       @apply border-[var(--bc-error-color-main)];
@@ -40,7 +40,7 @@ $(ns) {
   }
 
   &-input-title-counter-wrapper {
-    @apply flex w-full resize-none items-center justify-between rounded-md;
+    @apply flex w-full resize-none items-center justify-between rounded-[var(--bc-rounded)];
 
     .bc-input-label {
       @apply font-semibold;

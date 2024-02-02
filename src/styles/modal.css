@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-modal {
-    @apply h-fit m-auto mt-300pxr p-0 bg-white border rounded-md;
+    @apply h-fit m-auto mt-300pxr p-0 bg-white border rounded-[var(--bc-rounded)];
 
     &-size {
       &-sm {
