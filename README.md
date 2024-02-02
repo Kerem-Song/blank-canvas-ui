@@ -59,6 +59,6 @@ TailwindCss
   --bc-focus-outline-color: #3b82f6;
 
   --bc-placeholder-text-color: #dcdcdc;
-  --bc-placeholder-font-weight: 500;
+  --bc-placeholder-font-weight: 400;
 }
 ```
