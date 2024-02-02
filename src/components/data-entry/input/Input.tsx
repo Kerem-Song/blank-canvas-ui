@@ -28,6 +28,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     customPrefix,
     suffix,
     direction = 'inside',
+    useFocus = true,
     onPressEnter,
     onPressEsc,
     onSearch,
@@ -77,7 +78,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputClassName = classNames(
     wrappingType
       ? ''
-      : `${args.className ?? ''} ${inputClasses.normal} focus:ring-2 ring-[var(--bc-primary-color-main)]`,
+      : `${args.className ?? ''} ${inputClasses.normal} ${useFocus ? 'focus:ring-2 ring-[var(--bc-primary-color-main)]' : ''} `,
     {
       [customClasses.h.control]: !wrappingType,
       invalid: isError,
@@ -86,7 +87,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
-    'focus-within:ring-2 ring-[var(--bc-primary-color-main)]',
+    useFocus ? 'focus-within:ring-2 ring-[var(--bc-primary-color-main)]' : '',
     {
       [customClasses.h.control]: !!wrappingType,
       invalid: isError,

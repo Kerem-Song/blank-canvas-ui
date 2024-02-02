@@ -332,6 +332,7 @@ function MultiSelectFunc<T extends AnyObject>(
               }}
               onChange={inputOnChange}
               onKeyDown={handleKeyArrow}
+              useFocus={false}
             />
           </div>
           {!searchKeyword && Array.isArray(currentValue) && currentValue.length === 0 && (
