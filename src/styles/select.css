@@ -6,35 +6,34 @@ $(ns) {
     &-placeholder {
       @apply text-[#b3b1b1];
     }
-
     &-focus {
-      @apply ring-2 ring-blue-500;
+      @apply border-[var(--bc-focus-outline-color)] outline-offset-[var(--bc-focus-outline-offset)] outline-[var(--bc-focus-outline-color)];
     }
     &-focus-none {
-      @apply ring-2 ring-blue-500/0;
+      @apply border-[var(--bc-focus-outline-color/0)];
     }
     &-status {
       &-error {
-        @apply ring-2 ring-error-main;
+        @apply border-[var(--bc-error-color-main)];
       }
       &-warning {
-        @apply ring-2 ring-yellow-500 ring-opacity-90;
+        @apply border-[var(--bc-warning-color-main)];
       }
     }
     &-bordered {
-      @apply border-solid border-[1px];
+      @apply border-[1px] border-solid;
     }
     &-bordered-none {
       @apply border-none;
     }
     &-referenceElement {
-      @apply flex justify-between rounded-6 items-center h-full bg-white;
+      @apply flex h-full items-center justify-between rounded-[var(--bc-rounded)] bg-white;
       input {
-        @apply rounded-6 px-[8px] py-0 inline-block h-full outline-none w-full ring-opacity-0 border-0;
+        @apply inline-block h-full w-full rounded-[var(--bc-rounded)] border-0 px-[8px] py-0 outline-none ring-opacity-0;
       }
 
       $(ns)-select-icon {
-        @apply w-[16px] h-full flex items-center mx-[5px] cursor-pointer;
+        @apply mx-[5px] flex h-full w-[16px] cursor-pointer items-center;
       }
       $(ns)-select-icon-disabled {
         @apply mr-[4px] cursor-not-allowed;
@@ -42,7 +41,7 @@ $(ns) {
     }
 
     &-list {
-      @apply bg-white	p-[5px] my-[8px] rounded-6 border-solid border-gray-200 shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
+      @apply my-[8px]	rounded-[var(--bc-rounded)] border-solid border-gray-200 bg-white p-[5px] shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
 
       li:not(.bc-select-list-disabled) {
         @apply cursor-pointer;
@@ -51,31 +50,31 @@ $(ns) {
         @apply overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];
       }
       &-hover {
-        @apply bg-neutral-100 rounded-6;
+        @apply rounded-[var(--bc-rounded)] bg-neutral-100;
       }
       &-item {
-        @apply bg-blue-100 font-bold rounded-6;
+        @apply rounded-[var(--bc-rounded)] bg-blue-100 font-bold;
       }
       &-disabled {
-        @apply bg-[#fff];
+        @apply bg-[var(--bc-disable-background)];
       }
     }
     &-disabled {
-      @apply rounded-6 cursor-not-allowed bg-[#dbdbdb] text-[#b3b1b1];
+      @apply cursor-not-allowed rounded-[var(--bc-rounded)] bg-[var(--bc-disable-background)] text-[var(--bc-disable-text-color)];
     }
 
     &-multiSelect {
       &-tag {
-        @apply inline-flex items-center cursor-default border-[1px] border-solid border-transparent text-sm ps-[6px] pe-[6px] rounded-4 bg-gray-150 ml-[2px];
+        @apply ml-[2px] inline-flex cursor-default items-center rounded-4 border-[1px] border-solid border-transparent bg-gray-150 pe-[6px] ps-[6px] text-sm;
         &-area {
-          @apply flex ps-[4px] p-[2px];
+          @apply flex p-[2px] ps-[4px];
         }
         &-closeIcon {
           @apply ms-[4px] cursor-pointer text-xs text-gray-300;
         }
       }
       &-inputArea {
-        @apply flex ml-[2px];
+        @apply ml-[2px] flex;
         input {
           @apply inline-block w-[1px] p-0;
         }

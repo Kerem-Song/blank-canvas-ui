@@ -293,7 +293,8 @@ function SelectFunc<T extends AnyObject>(
         className={classNames(selectClassName, className)}
         onClick={iconClick}
       >
-        <input
+        <Input
+          useFocus={false}
           {...inputProps}
           ref={(current) => {
             if (ref) {
