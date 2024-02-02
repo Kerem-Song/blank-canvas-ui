@@ -1,15 +1,15 @@
 $ns: .bc;
 $(ns) {
   &-card {
-    @apply p-0 text-start min-w-200;
+    @apply min-w-200 p-0 text-start;
 
     &-head {
-      @apply flex border-b overflow-hidden p-3 justify-between w-full;
+      @apply flex w-full justify-between overflow-hidden border-b p-3;
       > span {
         @apply w-1/2;
       }
       &-title {
-        @apply font-semibold text-base;
+        @apply text-base font-semibold;
       }
 
       &-extra {
@@ -19,7 +19,7 @@ $(ns) {
         }
       }
       &-rounded {
-        @apply rounded-t-md;
+        @apply rounded-t-[var(--bc-rounded)];
       }
     }
 
@@ -31,7 +31,7 @@ $(ns) {
       @apply p-3;
     }
     &-rounded {
-      @apply rounded-md;
+      @apply rounded-[var(--bc-rounded)];
     }
     &-border {
       @apply border;

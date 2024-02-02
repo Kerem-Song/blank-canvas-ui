@@ -38,6 +38,7 @@ export const Badge = forwardRef<HTMLSpanElement, IBadgeProps>((args, ref) => {
   const baseSize = 10;
   const fontSize =
     tmpSize > baseSize ? `${remUtil.rem(tmpSize)}` : `${remUtil.rem(baseSize)}`;
+  //fontsize랑 높이 조절 필요...
   const circle = tmpSize > baseSize ? `${tmpSize / 32}rem` : `${baseSize / 32}rem`;
 
   return (showZero && Number(count) === 0) || Number(count) > 0 || dot ? (
