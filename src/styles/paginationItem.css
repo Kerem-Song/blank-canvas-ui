@@ -1,214 +1,162 @@
 $prefix: bc;
-$ns: .$(prefix)-pagination-item;
+$ns: .$(
+  prefix)-pagination-item;
 
 /* prettier-ignore */
 $(ns) {
   & {
-    @apply
-      flex
-      justify-center
-      items-center
-      box-border
-      py-0
-      my-0
-      h-auto
-      border
-      border-solid
-      border-transparent
-      font-pretendard
-      tracking-[0.01em]
-      text-center;
-      /* focus-visible:input-focus; */
+    @apply flex justify-center items-center box-border py-0 my-0 h-auto border border-solid border-transparent font-pretendard tracking-[0.01em] text-center;
+    /* focus-visible:input-focus; */
   }
 
   /* icon */
   &-icon {
-    @apply
-      -mx-[8px]
-      my-[0];
+    @apply -mx-[8px] my-[0];
   }
 
   /* size */
   &-sm {
-    @apply
-      mx-px
-      px-[4px]
-      min-w-[26px]
-      h-[26px]
-      text-sm;
+    @apply mx-px px-[4px] min-w-[26px] h-[26px] text-sm;
+
     $(ns)-icon {
-      @apply
-        text-[10px];
+      @apply text-[10px];
     }
   }
+
   &-md {
-    @apply
-      mx-[2px]
-      px-[6px]
-      min-w-[32px]
-      h-[32px]
-      text-base;
+    @apply mx-[2px] px-[6px] min-w-[32px] h-[32px] text-base;
+
     $(ns)-icon {
-      @apply
-        text-[14px];
+      @apply text-[14px];
     }
   }
+
   &-lg {
-    @apply
-      mx-[3px]
-      px-[10px]
-      min-w-[40px]
-      h-[40px]
-      text-lg;
+    @apply mx-[3px] px-[10px] min-w-[40px] h-[40px] text-lg;
+
     $(ns)-icon {
-      @apply
-        text-[18px];
+      @apply text-[18px];
     }
   }
 
   /* shape */
   &-round {
-    @apply
-      rounded-6;
+    @apply rounded-6;
   }
 
   &-circle {
-    @apply
-      rounded-full;
+    @apply rounded-full;
   }
 
   /* variant */
   &-contained:not($(ns)-ellipsis) {
     &:hover:not($(ns)-disabled) {
-      @apply 
-        bg-[rgba(0,_0,_0,_0.04)];
+      @apply bg-[#0000000a];
     }
+
     &$(ns)-selected {
-      @apply
-        bg-[rgba(0,_0,_0,_0.08)];
+      @apply bg-[#00000014];
+
       &:hover:not($(ns)-disabled) {
-        @apply 
-          bg-[rgba(0,_0,_0,_0.12)];
+        @apply bg-[#0000001f];
       }
+
       &$(ns)-containedPrimary {
-        @apply
-          bg-primary-main
-          text-white;
+        @apply bg-primary-main text-white;
+
         &:hover:not($(ns)-disabled) {
-          @apply
-            bg-primary-dark;
+          @apply bg-primary-dark;
         }
       }
+
       &$(ns)-containedSecondary {
-        @apply
-          bg-secondary-main
-          text-white;
+        @apply bg-secondary-main text-white;
+
         &:hover:not($(ns)-disabled) {
-          @apply
-            bg-secondary-dark;
+          @apply bg-secondary-dark;
         }
       }
+
       $(ns)-disabled {
-        @apply
-          text-[rgba(0,_0,_0,_0.26)];
+        @apply text-[#00000042];
       }
     }
   }
 
   &-text:not($(ns)-ellipsis) {
     &:hover:not($(ns)-disabled) {
-      @apply 
-        bg-[rgba(0,_0,_0,_0.04)];
+      @apply bg-[#0000000a];
     }
+
     &$(ns)-selected {
-      @apply
-        font-bold;
+      @apply font-bold;
+
       &$(ns)-textPrimary {
-        @apply
-          text-primary-main;
+        @apply text-[var(--bc-primary-color-main)];
       }
+
       &$(ns)-textSecondary {
-        @apply
-          text-secondary-main;
+        @apply text-[var(--bc-secondary-color-main)];
       }
+
       $(ns)-disabled {
-        @apply
-          text-[rgba(0,_0,_0,_0.26)];
+        @apply text-[#00000042];
       }
     }
   }
 
   &-outlined:not($(ns)-ellipsis) {
-    @apply 
-      border-gray-200;
+    @apply border-gray-200;
+
     &:hover:not($(ns)-disabled) {
-      @apply 
-        bg-[rgba(0,_0,_0,_0.04)];
+      @apply bg-[#0000000a];
     }
+
     &$(ns)-selected {
-      @apply
-        bg-[rgba(0,_0,_0,_0.08)];
+      @apply bg-[#00000014];
+
       &:hover:not($(ns)-disabled) {
-        @apply 
-          bg-[rgba(0,_0,_0,_0.12)];
+        @apply bg-[#0000001f];
       }
+
       &$(ns)-outlinedPrimary {
-        @apply
-          border-primary-main/80
-          bg-primary-main/25;
+        @apply border-primary-main/80 bg-primary-main/25;
+
         &:hover:not($(ns)-disabled) {
-          @apply
-            bg-primary-main/20;
+          @apply bg-primary-main/20;
         }
       }
+
       &$(ns)-outlinedSecondary {
-        @apply
-          border-secondary-main/80
-          bg-secondary-main/25;
+        @apply border-secondary-main/80 bg-secondary-main/25;
+
         &:hover:not($(ns)-disabled) {
-          @apply
-            bg-secondary-main/20;
+          @apply bg-secondary-main/20;
         }
       }
+
       $(ns)-disabled {
-        @apply
-          text-[rgba(0,_0,_0,_0.26)];
+        @apply text-[#00000042];
       }
     }
   }
 
   /* disabled */
   &-disabled {
-    @apply
-      opacity-[0.38];
+    @apply opacity-[0.38];
+
     &:where(:not($(ns)-ellipsis)) {
-      @apply
-        cursor-not-allowed;
+      @apply cursor-not-allowed;
     }
   }
 
   /* svg */
   svg {
-    @apply
-      shrink-0
-      inline-block
-      w-[1em]
-      h-[1em]
-      fill-current
-      transition-[fill]
-      duration-200
-      ease-in-out
-      delay-[0ms]
-      select-none;
+    @apply shrink-0 inline-block w-[1em] h-[1em] fill-current transition-[fill] duration-200 ease-in-out delay-[0ms] select-none;
   }
+
   /* img */
   img {
-    @apply 
-      w-full
-      h-full
-      text-center
-      object-cover
-      text-transparent
-      [text-indent:10000px];
+    @apply w-full h-full text-center object-cover text-transparent [text-indent:10000px];
   }
 }

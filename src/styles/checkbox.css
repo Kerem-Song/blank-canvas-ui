@@ -1,174 +1,140 @@
 $prefix: bc;
-$ns: .$(prefix)-checkbox;
+$ns: .$(
+  prefix)-checkbox;
 
 /* prettier-ignore */
 $(ns) {
+
   /* wrapper */
   &-wrapper {
-    @apply
-      inline-flex
-      items-center
-      relative
-      cursor-pointer;
+    @apply inline-flex items-center relative cursor-pointer;
   }
 
   /* checkbox */
   &-checkbox {
-    @apply
-      inline-flex
-      items-center
-      justify-center
-      relative
-      p-1
-      m-0
-      border-0
-      box-border
-      bg-transparent
-      text-gray-500
-      select-none
-      align-middle
-      appearance-none
-      no-underline
-      cursor-pointer;
+    @apply inline-flex items-center justify-center relative p-1 m-0 border-0 box-border bg-transparent text-gray-500 select-none align-middle appearance-none no-underline cursor-pointer;
+
     /* input */
     $(ns)-input[type=checkbox] {
-      @apply
-        absolute
-        w-[1em]
-        h-[1em]
-        m-0
-        p-0
-        rounded-6
-        cursor-[inherit]
-        appearance-none
-        outline-offset-0;
-        /* focus-visible:input-focus; */
+      @apply absolute w-[1em] h-[1em] m-0 p-0 rounded-6 cursor-[inherit] appearance-none outline-offset-0;
+      /* focus-visible:input-focus; */
     }
+
     svg {
-      @apply
-        fill-current
-        inline-block
-        w-[1em]
-        h-[1em]
-        select-none;
+      @apply fill-current inline-block w-[1em] h-[1em] select-none;
     }
   }
-  
+
   /* size */
   &-wrapper {
     &$(ns)-sm {
       $(ns)-checkbox {
         input {
-          @apply
-            text-lg;
+          @apply text-lg;
         }
+
         svg {
-          @apply  
-            text-2xl;
+          @apply text-2xl;
         }
       }
+
       $(ns)-label {
-        @apply
-          text-sm;
+        @apply text-sm;
       }
     }
+
     &$(ns)-md {
       $(ns)-checkbox {
         input {
-          @apply
-            text-xl;
+          @apply text-xl;
         }
+
         svg {
-          @apply
-            text-3xl;
+          @apply text-3xl;
         }
       }
+
       $(ns)-label {
-        @apply
-          text-base;
+        @apply text-base;
       }
     }
+
     &$(ns)-lg {
       $(ns)-checkbox {
         input {
-          @apply
-            text-2xl;
+          @apply text-2xl;
         }
+
         svg {
-          @apply
-            text-4xl;
+          @apply text-4xl;
         }
       }
+
       $(ns)-label {
-        @apply
-          text-lg;
+        @apply text-lg;
       }
     }
   }
 
   /* color */
   &-wrapper:where($(ns)-checked, $(ns)-indeterminate):not($(ns)-disabled) {
+
     /* default */
     $(ns)-checkbox {
-      @apply
-      text-gray-500;
+      @apply text-gray-500;
     }
+
     /* primary */
     &$(ns)-primary $(ns)-checkbox {
-      @apply
-      text-primary-main;
+      @apply text-[var(--bc-primary-color-main)];
     }
+
     /* secondary */
     &$(ns)-secondary $(ns)-checkbox {
-      @apply
-      text-secondary-main;
+      @apply text-[var(--bc-secondary-color-main)];
     }
+
     /* success */
     &$(ns)-success $(ns)-checkbox {
-      @apply
-      text-success-main;
+      @apply text-[var(--bc-success-color-main)];
     }
+
     /* error */
     &$(ns)-error $(ns)-checkbox {
-      @apply
-      text-error-main;
+      @apply text-[var(--bc-error-color-main)];
     }
+
     /* info */
     &$(ns)-info $(ns)-checkbox {
-      @apply
-      text-info-main;
+      @apply text-[var(--bc-info-color-main)];
     }
+
     /* warning */
     &$(ns)-warning $(ns)-checkbox {
-      @apply
-      text-warning-main;
+      @apply text-[var(--bc-warning-color-main)];
     }
+
     /* dark */
     &$(ns)-dark $(ns)-checkbox {
-      @apply
-      text-neutral-800;
+      @apply text-neutral-800;
     }
   }
-  
+
   /* label */
   &-label {
-    @apply
-    m-0
-    font-pretendard
-    tracking-[0.00938em];
+    @apply m-0 font-pretendard tracking-[0.00938em];
   }
 
   /* disabled */
   &-disabled {
-    @apply 
-      cursor-not-allowed;
+    @apply cursor-not-allowed;
+
     $(ns)-checkbox {
-      @apply
-      text-[rgba(0,0,0,0.26)] cursor-not-allowed;
+      @apply text-[var(--bc-disable-border-color)] cursor-not-allowed;
     }
+
     $(ns)-label {
-      @apply
-      text-gray-250;
+      @apply text-[var(--bc-disable-border-color)];
     }
   }
 }

@@ -67,17 +67,17 @@ $(ns) {
 
     /* primary */
     &$(ns)-primary {
-      @apply text-primary-main;
+      @apply text-[var(--bc-primary-color-main)];
     }
 
     /* secondary */
     &$(ns)-secondary {
-      @apply text-secondary-main;
+      @apply text-[var(--bc-secondary-color-main)];
     }
 
     /* success */
     &$(ns)-success {
-      @apply text-success-main;
+      @apply text-[var(--bc-success-color-main)];
     }
 
     /* error */
@@ -87,12 +87,12 @@ $(ns) {
 
     /* info */
     &$(ns)-info {
-      @apply text-info-main;
+      @apply text-[var(--bc-info-color-main)];
     }
 
     /* warning */
     &$(ns)-warning {
-      @apply text-warning-main;
+      @apply text-[var(--bc-warning-color-main)];
     }
 
     /* dark */

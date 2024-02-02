@@ -66,15 +66,16 @@ $(ns) {
     }
 
     &$(ns)-primary {
-      @apply text-primary-main;
+      @apply text-[var(--bc-primary-color-main)];
 
       &:hover:not($(ns)-disabled) {
+        /* @apply bg-[var(--bc-primary-color-light)]; */
         @apply bg-primary-light/20;
       }
     }
 
     &$(ns)-secondary {
-      @apply text-secondary-main;
+      @apply text-[var(--bc-secondary-color-main)];
 
       &:hover:not($(ns)-disabled) {
         @apply bg-secondary-light/20;
@@ -82,7 +83,7 @@ $(ns) {
     }
 
     &$(ns)-success {
-      @apply text-success-main;
+      @apply text-[var(--bc-success-color-main)];
 
       &:hover:not($(ns)-disabled) {
         @apply bg-success-light/20;
@@ -98,7 +99,7 @@ $(ns) {
     }
 
     &$(ns)-info {
-      @apply text-info-main;
+      @apply text-[var(--bc-info-color-main)];
 
       &:hover:not($(ns)-disabled) {
         @apply bg-info-light/20;
@@ -106,7 +107,7 @@ $(ns) {
     }
 
     &$(ns)-warning {
-      @apply text-warning-main;
+      @apply text-[var(--bc-warning-color-main)];
 
       &:hover:not($(ns)-disabled) {
         @apply bg-warning-light/20;
@@ -130,7 +131,7 @@ $(ns) {
     }
 
     &$(ns)-primary {
-      @apply bg-primary-main text-white;
+      @apply bg-[var(--bc-primary-color-main)] text-white;
 
       &:hover:not($(ns)-disabled) {
         @apply bg-primary-dark;
@@ -195,15 +196,15 @@ $(ns) {
     }
 
     &$(ns)-primary {
-      @apply border-primary-main text-primary-main;
+      @apply border-[var(--bc-primary-color-main)] text-[var(--bc-primary-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-primary-light/20;
+        @apply bg-[var(--bc-primary-color-light)/20];
       }
     }
 
     &$(ns)-secondary {
-      @apply border-secondary-main text-secondary-main;
+      @apply border-secondary-main text-[var(--bc-secondary-color-main)];
 
       &:hover:not($(ns)-disabled) {
         @apply bg-secondary-light/20;
@@ -211,7 +212,7 @@ $(ns) {
     }
 
     &$(ns)-success {
-      @apply border-success-main text-success-main;
+      @apply border-success-main text-[var(--bc-success-color-main)];
 
       &:hover:not($(ns)-disabled) {
         @apply bg-success-light/20;
@@ -227,7 +228,7 @@ $(ns) {
     }
 
     &$(ns)-info {
-      @apply border-info-main text-info-main;
+      @apply border-info-main text-[var(--bc-info-color-main)];
 
       &:hover:not($(ns)-disabled) {
         @apply bg-info-light/20;
@@ -235,7 +236,7 @@ $(ns) {
     }
 
     &$(ns)-warning {
-      @apply border-warning-main text-warning-main;
+      @apply border-warning-main text-[var(--bc-warning-color-main)];
 
       &:hover:not($(ns)-disabled) {
         @apply bg-warning-light/20;

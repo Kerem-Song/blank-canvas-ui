@@ -13,29 +13,29 @@ $(ns)-h {
 $(ns)-text {
   &-primary {
     &-main {
-      @apply text-primary-main;
+      @apply text-[var(--bc-primary-color-main)];
     }
 
     &-light {
-      @apply text-primary-light;
+      @apply text-[var(--bc-primary-color-light)];
     }
 
     &-dark {
-      @apply text-primary-dark;
+      @apply text-[var(--bc-primary-color-dark)];
     }
   }
 
   &-secondary {
     &-main {
-      @apply text-secondary-main;
+      @apply text-[var(--bc-secondary-color-main)];
     }
 
     &-light {
-      @apply text-secondary-light;
+      @apply text-[var(--bc-secondary-color-light)];
     }
 
     &-dark {
-      @apply text-secondary-dark;
+      @apply text-[var(--bc-secondary-color-dark)];
     }
   }
 }
@@ -43,11 +43,11 @@ $(ns)-text {
 $(ns)-bg {
   &-primary {
     &-main {
-      @apply bg-primary-main;
+      @apply bg-[var(--bc-primary-color-main)];
     }
 
     &-light {
-      @apply bg-primary-light;
+      @apply bg-[var(--bc-primary-color-light)];
     }
 
     &-dark {
@@ -73,11 +73,11 @@ $(ns)-bg {
 $(ns)-border {
   &-primary {
     &-main {
-      @apply border-primary-main;
+      @apply border-[var(--bc-primary-color-main)];
     }
 
     &-light {
-      @apply border-primary-light;
+      @apply border-[var(--bc-primary-color-light)];
     }
 
     &-dark {
