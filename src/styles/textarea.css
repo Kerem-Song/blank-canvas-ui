@@ -5,11 +5,11 @@ $(ns) {
     @apply rounded-md border w-full resize-none;
 
     &.invalid {
-      @apply border-error-main;
+      @apply border-[var(--bc-error-color-main)];
     }
 
     &-border:focus {
-      @apply ring-2 ring-blue-700;
+      @apply ring-2 ring-[var(--bc-primary-color-main)];
     }
   }
 

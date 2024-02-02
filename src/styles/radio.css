@@ -8,7 +8,7 @@ $(ns) {
       @apply appearance-none w-16pxr h-16pxr bg-[url('@icons/ic_radio_default.svg')] bg-center bg-no-repeat mr-[rem(4)] checked:bg-[url('@icons/ic_radio_enabled.svg')];
 
       &.invalid {
-        @apply bg-error-main;
+        @apply bg-[var(--bc-error-color-main)];
       }
     }
   }

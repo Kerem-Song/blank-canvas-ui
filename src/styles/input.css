@@ -27,7 +27,7 @@ $(ns) {
     }
 
     &.invalid {
-      @apply ring-error-main;
+      @apply border-[var(--bc-error-color-main)];
     }
   }
 
@@ -35,7 +35,7 @@ $(ns) {
     @apply rounded-md border px-2;
 
     &.invalid {
-      @apply ring-error-main;
+      @apply border-[var(--bc-error-color-main)];
     }
   }
 

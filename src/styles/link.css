@@ -1,129 +1,109 @@
 $prefix: bc;
-$ns: .$(prefix)-link;
+$ns: .$(
+  prefix)-link;
 
 /* prettier-ignore */
 $(ns) {
+
   /* default */
   & {
-    @apply
-      inline-flex
-      items-center
-      relative
-      m-0
-      p-0
-      rounded-none
-      border-0
-      bg-transparent
-      cursor-pointer
-      appearance-none
-      underline-offset-[0.25em];
-      /* focus-visible:input-focus; */
+    @apply inline-flex items-center relative m-0 p-0 rounded-none border-0 bg-transparent cursor-pointer appearance-none underline-offset-[0.25em];
+    /* focus-visible:input-focus; */
   }
+
   /* component button */
   button& {
-    @apply
-      select-none;
+    @apply select-none;
   }
 
   /* underline */
   &-underline-none {
-    @apply
-      no-underline;
+    @apply no-underline;
   }
+
   &-underline-hover {
-    @apply
-      no-underline
-      hover:underline;
+    @apply no-underline hover:underline;
   }
+
   &-underline-always {
-    @apply
-      underline;
+    @apply underline;
   }
 
   /* overlay */
   &-overlay {
     position: initial;
+
     :after {
-      @apply 
-        content-['']
-        block
-        absolute
-        inset-0;
+      @apply content-[''] block absolute inset-0;
     }
   }
 
   /*  svg */
   svg {
-    @apply
-      text-[1.25em]
-      text-current;
+    @apply text-[1.25em] text-current;
   }
 
   /* size */
   &-xs {
-    @apply
-      text-xs;
-  }
-  &-sm {
-    @apply
-      text-sm;
-  }
-  &-md {
-    @apply
-      text-base;
-  }
-  &-lg {
-    @apply
-      text-lg;
+    @apply text-xs;
   }
 
-/* color */
+  &-sm {
+    @apply text-sm;
+  }
+
+  &-md {
+    @apply text-base;
+  }
+
+  &-lg {
+    @apply text-lg;
+  }
+
+  /* color */
   &:not($(ns)-disabled) {
     /* default */
-    @apply
-    text-gray-500;
+    @apply text-gray-500;
+
     /* primary */
     &$(ns)-primary {
-      @apply
-      text-primary-main;
+      @apply text-primary-main;
     }
+
     /* secondary */
     &$(ns)-secondary {
-      @apply
-      text-secondary-main;
+      @apply text-secondary-main;
     }
+
     /* success */
     &$(ns)-success {
-      @apply
-      text-success-main;
+      @apply text-success-main;
     }
+
     /* error */
     &$(ns)-error {
-      @apply
-      text-error-main;
+      @apply text-[var(--bc-error-color-main)];
     }
+
     /* info */
     &$(ns)-info {
-      @apply
-      text-info-main;
+      @apply text-info-main;
     }
+
     /* warning */
     &$(ns)-warning {
-      @apply
-      text-warning-main;
+      @apply text-warning-main;
     }
+
     /* dark */
     &$(ns)-dark {
-      @apply
-      text-neutral-800;
+      @apply text-neutral-800;
     }
   }
 
   /* disabled */
   &-disabled,
   &:disabled {
-    @apply 
-    text-gray-250
-      cursor-not-allowed;
+    @apply text-gray-250 cursor-not-allowed;
   }
 }

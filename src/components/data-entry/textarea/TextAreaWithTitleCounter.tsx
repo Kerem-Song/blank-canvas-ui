@@ -56,7 +56,7 @@ export const TextAreaWithTitleCounter = forwardRef<
         className={classNames(
           `${textareaClasses.titleCounterWrapper} ${direction}`,
           { invalid: isError },
-          'group-focus-within:ring-2 ring-blue-700',
+          'ring-[var(--bc-primary-color-main)] group-focus-within:ring-2',
         )}
       >
         <TextareaAutosize

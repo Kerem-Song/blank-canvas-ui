@@ -62,6 +62,7 @@ export const InputWithTitleCounter = forwardRef<
           onSearch={onSearch}
           onPressEnter={onPressEnter}
           onPressEsc={onPressEsc}
+          isError={isError}
           {...inputProps}
         />
       }
