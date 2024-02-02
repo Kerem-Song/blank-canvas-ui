@@ -94,11 +94,11 @@ $(ns) {
     }
 
     &-circle {
-      @apply border rounded-full w-40pxr h-40pxr;
+      @apply border-[length:var(--bc-border-width)] rounded-full w-40pxr h-40pxr;
     }
 
     &-square {
-      @apply border rounded-lg w-40pxr h-40pxr;
+      @apply border-[length:var(--bc-border-width)] rounded-lg w-40pxr h-40pxr;
     }
   }
 }

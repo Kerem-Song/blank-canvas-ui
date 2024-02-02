@@ -3,7 +3,7 @@ $ns: .bc;
 $(ns) {
   &-autocomplete {
     &-container {
-      @apply min-w-154pxr border p-5pxr border-gray-200 rounded-[var(--bc-rounded)] bg-white z-999;
+      @apply min-w-154pxr border-[length:var(--bc-border-width)] p-5pxr border-gray-200 rounded-[var(--bc-rounded)] bg-white z-999;
     }
 
     &-input:focus {
@@ -11,7 +11,7 @@ $(ns) {
     }
 
     &-list {
-      @apply flex items-center w-138pxr h-32pxr px-8pxr py-12pxr border border-white rounded-[var(--bc-rounded)] gap-8pxr;
+      @apply flex items-center w-138pxr h-32pxr px-8pxr py-12pxr border-[length:var(--bc-border-width)] border-white rounded-[var(--bc-rounded)] gap-8pxr;
 
       &:hover {
         @apply bg-blue-100;

@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-input-wrapped {
-    @apply flex items-center rounded-[var(--bc-rounded)] border px-2;
+    @apply flex items-center rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] px-2;
 
     .bc-input-suffix-wrapper {
       @apply flex items-center text-end;
@@ -15,15 +15,15 @@ $(ns) {
     }
 
     input {
-      @apply w-full grow placeholder:not-italic placeholder:text-slate-400 focus:outline-none;
+      @apply w-full grow placeholder:not-italic placeholder:text-[var(bc-placeholder-text-color)] focus:outline-none;
 
       &:disabled {
-        @apply bg-gray-100;
+        @apply bg-[var(--bc-disable-background)] text-[var(--bc-disable-text-color)];
       }
     }
 
     &:has(input:disabled) {
-      @apply bg-gray-100;
+      @apply bg-[var(--bc-disable-background)];
     }
 
     &.invalid {
@@ -32,7 +32,7 @@ $(ns) {
   }
 
   &-input-normal {
-    @apply rounded-[var(--bc-rounded)] border px-2;
+    @apply rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] px-2;
 
     &.invalid {
       @apply border-[var(--bc-error-color-main)];
@@ -51,10 +51,10 @@ $(ns) {
     }
 
     &.inside {
-      @apply block border border-solid border-slate-300 text-right;
+      @apply block border-[length:var(--bc-border-width)] border-solid border-slate-300 text-right;
 
       &.invalid {
-        @apply border border-solid ring-red-500;
+        @apply border-[length:var(--bc-border-width)] border-solid ring-red-500;
       }
 
       .bc-input-counter {

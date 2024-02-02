@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-modal {
-    @apply h-fit m-auto mt-300pxr p-0 bg-white border rounded-[var(--bc-rounded)];
+    @apply h-fit m-auto mt-300pxr p-0 bg-white border-[length:var(--bc-border-width)] rounded-[var(--bc-rounded)];
 
     &-size {
       &-sm {
@@ -43,11 +43,11 @@ $(ns) {
     }
 
     &-btn-cancel {
-      @apply border border-gray-200;
+      @apply border-[length:var(--bc-border-width)] border-gray-200;
     }
 
     &-btn-custom {
-      @apply border border-gray-200;
+      @apply border-[length:var(--bc-border-width)] border-gray-200;
     }
 
     &-overlay {

@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-textarea {
-    @apply rounded-[var(--bc-rounded)] border w-full resize-none;
+    @apply rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] w-full resize-none;
 
     &.invalid {
       @apply border-[var(--bc-error-color-main)];
@@ -25,14 +25,14 @@ $(ns) {
     }
 
     &.inside {
-      @apply block border-solid border border-slate-300 text-right;
+      @apply block border-solid border-[length:var(--bc-border-width)] border-slate-300 text-right;
 
       &:has(textarea:disabled) {
-        @apply bg-gray-100;
+        @apply bg-[var(--bc-disable-background)];
       }
 
       &.invalid {
-        @apply border border-solid border-red-500;
+        @apply border-[length:var(--bc-border-width)] border-solid border-red-500;
       }
 
       .bc-textarea-counter {
