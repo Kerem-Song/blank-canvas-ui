@@ -22,10 +22,10 @@ $(ns) {
       }
 
       &[data-button='add'] {
-        @apply bg-[url('@icons/ic_add_case.svg')] bg-blue-500;
+        @apply bg-[url('@icons/ic_add_case.svg')] bg-[var(--bc-primary-color-main)];
 
         &:hover {
-          @apply bg-blue-700;
+          @apply bg-[var(--bc-primary-color-dark)];
         }
 
         &:disabled {
@@ -86,10 +86,10 @@ $(ns) {
       @apply flex justify-center items-center gap-1 start-0 end-0 z-20;
 
       &-button {
-        @apply relative w-5pxr h-5pxr rounded-full bg-gray-200;
+        @apply relative w-5pxr h-5pxr rounded-full bg-[var(--bc-gray-color-light)];
 
         &[data-carousel-index='true'] {
-          @apply bg-blue-500;
+          @apply bg-[var(--bc-primary-color-main)];
         }
       }
     }

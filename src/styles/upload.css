@@ -5,19 +5,19 @@ $(ns) {
     @apply cursor-pointer;
 
     &:hover {
-      @apply border-[length:var(--bc-border-width)] border-dashed border-blue-500 text-blue-500;
+      @apply border-[length:var(--bc-border-width)] border-dashed border-[var(--bc-primary-color-main)] text-[var(--bc-primary-color-main)];
     }
 
     &-error {
-      @apply border-[length:var(--bc-border-width)] !border-red-500;
+      @apply border-[length:var(--bc-border-width)] !border-[var(--bc-error-color-main)];
 
       &:hover {
-        @apply border-[length:var(--bc-border-width)] border-dashed !border-blue-500 text-blue-500;
+        @apply border-[length:var(--bc-border-width)] border-dashed !border-[var(--bc-primary-color-main)] text-[var(--bc-primary-color-main)];
       }
     }
 
     &-shape-button {
-      @apply flex justify-center items-center p-4pxr rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-gray-300;
+      @apply flex justify-center items-center p-4pxr rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-gray-color-light)];
 
       &.prefix-text {
         @apply text-14pxr;
@@ -26,7 +26,7 @@ $(ns) {
 
     &-shape-area,
     &-shape-drag {
-      @apply flex justify-center items-center w-full border-[length:var(--bc-border-width)] rounded-[var(--bc-rounded)] border-gray-300 bg-no-repeat bg-center;
+      @apply flex justify-center items-center w-full border-[length:var(--bc-border-width)] rounded-[var(--bc-rounded)] border-[var(--bc-gray-color-light)] bg-no-repeat bg-center;
 
       .bc-upload-suffix-icon {
         @apply flex justify-center items-center;

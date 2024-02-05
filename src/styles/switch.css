@@ -92,7 +92,7 @@ $(ns) {
 
       .bc-switch-bar {
         &::after {
-          @apply absolute top-1pxr left-0 h-8pxr w-8pxr rounded-full border-[length:var(--bc-border-width)] border-gray-300 bg-white transition-all content-[''];
+          @apply absolute top-1pxr left-0 h-8pxr w-8pxr rounded-full border-[length:var(--bc-border-width)] border-[var(--bc-gray-color-light)] bg-white transition-all content-[''];
 
           &.bc-switch-size {
             &-sm {
