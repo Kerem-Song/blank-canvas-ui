@@ -114,10 +114,10 @@ $(ns) {
     }
 
     &$(ns)-dark {
-      @apply text-neutral-800;
+      @apply text-[var(--bc-dark-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-neutral-500/20;
+        @apply bg-[var(--bc-dark-color-light)];
       }
     }
   }
