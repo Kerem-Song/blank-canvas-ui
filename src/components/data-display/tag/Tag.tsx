@@ -1,6 +1,6 @@
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import classNames from 'classnames';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useRef, useState } from 'react';
 
 import { ITagProps } from './Tag.types';
 import { tagClasses } from './TagClasses';

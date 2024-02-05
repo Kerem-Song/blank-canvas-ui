@@ -1,7 +1,7 @@
 import '@styles/avatar.css';
 
 import AvatarFallbackIcon from '@assets/icons/ic_avatar.svg?react';
-import { OverridableComponent } from '@models/types';
+import { OverridableComponent } from '@models/types/OverridableComponent';
 import classNames from 'classnames';
 import * as React from 'react';
 
