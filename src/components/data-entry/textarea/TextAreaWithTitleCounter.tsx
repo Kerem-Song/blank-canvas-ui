@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 import { forwardRef, useCallback, useState } from 'react';
-import TextareaAutosize from 'react-textarea-autosize';
 
+import { Textarea } from '.';
 import { textareaClasses } from './TextareaClasses';
 import { TitleCounterProps } from './TextareaWithTitleCounter.types';
-import { Textarea } from '.';
 
 export const TextAreaWithTitleCounter = forwardRef<
   HTMLTextAreaElement,
