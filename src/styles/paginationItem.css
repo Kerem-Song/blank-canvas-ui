@@ -62,18 +62,18 @@ $(ns) {
       }
 
       &$(ns)-containedPrimary {
-        @apply bg-primary-main text-white;
+        @apply bg-[var(--bc-primary-color-main)] text-white;
 
         &:hover:not($(ns)-disabled) {
-          @apply bg-primary-dark;
+          @apply bg-[var(--bc-primary-color-dark)];
         }
       }
 
       &$(ns)-containedSecondary {
-        @apply bg-secondary-main text-white;
+        @apply bg-[var(--bc-secondary-color-main)] text-white;
 
         &:hover:not($(ns)-disabled) {
-          @apply bg-secondary-dark;
+          @apply bg-[var(--bc-secondary-color-light)];
         }
       }
 
@@ -120,18 +120,18 @@ $(ns) {
       }
 
       &$(ns)-outlinedPrimary {
-        @apply border-primary-main/80 bg-primary-main/25;
+        @apply border-primary-main bg-[var(--bc-primary-color-light)];
 
         &:hover:not($(ns)-disabled) {
-          @apply bg-primary-main/20;
+          @apply bg-[var(--bc-primary-color-light)];
         }
       }
 
       &$(ns)-outlinedSecondary {
-        @apply border-secondary-main/80 bg-secondary-main/25;
+        @apply border-secondary-main bg-[var(--bc-secondary-color-light)];
 
         &:hover:not($(ns)-disabled) {
-          @apply bg-secondary-main/20;
+          @apply bg-[var(--bc-secondary-color-light)];
         }
       }
 
