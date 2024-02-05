@@ -80,7 +80,7 @@ $(ns) {
 
     /* default */
     $(ns)-checkbox {
-      @apply text-[(var(--bc-text-color))];
+      @apply text-[var(--bc-disable-text-color)];
     }
 
     /* primary */
