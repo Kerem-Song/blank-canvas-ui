@@ -59,18 +59,17 @@ $(ns) {
 
   /* variant */
   &-text {
-    @apply text-gray-500;
+    @apply text-[var(--bc-gray-color-main)];
 
     &:hover:not($(ns)-disabled) {
-      @apply bg-gray-300/20;
+      @apply bg-[var(--bc-gray-color-light)];
     }
 
     &$(ns)-primary {
       @apply text-[var(--bc-primary-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        /* @apply bg-[var(--bc-primary-color-light)]; */
-        @apply bg-primary-light/20;
+        @apply bg-[var(--bc-primary-color-light)];
       }
     }
 
@@ -78,7 +77,7 @@ $(ns) {
       @apply text-[var(--bc-secondary-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-secondary-light/20;
+        @apply bg-[var(--bc-secondary-color-light)];
       }
     }
 
@@ -86,7 +85,7 @@ $(ns) {
       @apply text-[var(--bc-success-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-success-light/20;
+        @apply bg-[var(--bc-success-color-light)];
       }
     }
 
@@ -94,7 +93,7 @@ $(ns) {
       @apply text-[var(--bc-error-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-error-light/20;
+        @apply bg-[var(--bc-error-color-light)];
       }
     }
 
@@ -102,7 +101,7 @@ $(ns) {
       @apply text-[var(--bc-info-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-info-light/20;
+        @apply bg-[var(--bc-info-color-light)];
       }
     }
 
@@ -110,7 +109,7 @@ $(ns) {
       @apply text-[var(--bc-warning-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-warning-light/20;
+        @apply bg-[var(--bc-warning-color-light)];
       }
     }
 
@@ -124,33 +123,33 @@ $(ns) {
   }
 
   &-contained {
-    @apply bg-gray-250 text-white;
+    @apply bg-[var(--bc-gray-color-main)] text-white;
 
     &:hover:not($(ns)-disabled) {
-      @apply bg-gray-500;
+      @apply bg-[var(--bc-gray-color-light)];
     }
 
     &$(ns)-primary {
       @apply bg-[var(--bc-primary-color-main)] text-white;
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-primary-dark;
+        @apply bg-[var(--bc-primary-color-light)];
       }
     }
 
     &$(ns)-secondary {
-      @apply bg-secondary-main text-white;
+      @apply bg-[var(--bc-secondary-color-main)] text-white;
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-secondary-dark;
+        @apply bg-[var(--bc-secondary-color-light)];
       }
     }
 
     &$(ns)-success {
-      @apply bg-success-main text-white;
+      @apply bg-[var(--bc-success-color-main)] text-white;
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-success-dark;
+        @apply bg-[var(--bc-success-color-light)];
       }
     }
 
@@ -158,64 +157,64 @@ $(ns) {
       @apply bg-[var(--bc-error-color-main)] text-white;
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-error-dark;
+        @apply bg-[var(--bc-error-color-light)];
       }
     }
 
     &$(ns)-info {
-      @apply bg-info-main text-white;
+      @apply bg-[var(--bc-info-color-main)] text-white;
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-info-dark;
+        @apply bg-[var(--bc-info-color-light)];
       }
     }
 
     &$(ns)-warning {
-      @apply bg-warning-main text-white;
+      @apply bg-[var(--bc-warning-color-main)] text-white;
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-warning-dark;
+        @apply bg-[var(--bc-warning-color-light)];
       }
     }
 
     &$(ns)-dark {
-      @apply bg-neutral-800 text-white;
+      @apply bg-[var(--bc-dark-color-main)] text-white;
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-neutral-950;
+        @apply bg-[var(--bc-dark-color-light)]
       }
     }
   }
 
   &-outlined,
   &-dashed {
-    @apply border-gray-200 bg-transparent text-gray-500;
+    @apply border-[var(--bc-gray-color-main)] bg-transparent text-gray-500;
 
     &:hover:not($(ns)-disabled) {
-      @apply bg-gray-300/20;
+      @apply bg-[var(--bc-gray-color-light)];
     }
 
     &$(ns)-primary {
       @apply border-[var(--bc-primary-color-main)] text-[var(--bc-primary-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-[var(--bc-primary-color-light)/20];
+        @apply bg-[var(--bc-primary-color-light)];
       }
     }
 
     &$(ns)-secondary {
-      @apply border-secondary-main text-[var(--bc-secondary-color-main)];
+      @apply border-[var(--bc-secondary-color-main)] text-[var(--bc-secondary-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-secondary-light/20;
+        @apply bg-[var(--bc-secondary-color-light)];
       }
     }
 
     &$(ns)-success {
-      @apply border-success-main text-[var(--bc-success-color-main)];
+      @apply border-[var(--bc-success-color-main)] text-[var(--bc-success-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-success-light/20;
+        @apply bg-[var(--bc-success-color-light)];
       }
     }
 
@@ -223,31 +222,31 @@ $(ns) {
       @apply border-[var(--bc-error-color-main)] text-[var(--bc-error-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-error-light/20;
+        @apply bg-[var(--bc-error-color-light)];
       }
     }
 
     &$(ns)-info {
-      @apply border-info-main text-[var(--bc-info-color-main)];
+      @apply border-[var(--bc-info-color-main)] text-[var(--bc-info-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-info-light/20;
+        @apply bg-[var(--bc-info-color-light)];
       }
     }
 
     &$(ns)-warning {
-      @apply border-warning-main text-[var(--bc-warning-color-main)];
+      @apply border-[var(--bc-warning-color-main)] text-[var(--bc-warning-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-warning-light/20;
+        @apply bg-[var(--bc-warning-color-light)];
       }
     }
 
     &$(ns)-dark {
-      @apply border-neutral-800 text-neutral-800;
+      @apply border-[var(--bc-dark-color-main)] text-[var(--bc-dark-color-main)];
 
       &:hover:not($(ns)-disabled) {
-        @apply bg-neutral-500/20;
+        @apply bg-[var(--bc-dark-color-light)];
       }
     }
   }
@@ -307,14 +306,14 @@ $(ns) {
   /* disabled */
   &-disabled,
   &:disabled {
-    @apply text-gray-250 cursor-not-allowed;
+    @apply text-[var(--bc-disable-text-color)] cursor-not-allowed;
 
     &:where($(ns)-contained) {
-      @apply border-gray-200 bg-gray-100;
+      @apply border-[var(--bc-disable-border-color)] bg-[var(--bc-disable-background)];
     }
 
     &:where($(ns)-outlined, $(ns)-dashed) {
-      @apply border-gray-200
+      @apply border-[var(--bc-disable-border-color)];
     }
   }
 }

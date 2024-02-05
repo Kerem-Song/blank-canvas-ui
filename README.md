@@ -48,7 +48,15 @@ TailwindCss
   --bc-success-color-light: #1dfc76;
   --bc-success-color-dark: #198602;
 
-  --bc-disable-background: #dcdcdc;
+  --bc-gray-color-main: #636364;
+  --bc-gray-color-light: #dcdcdc;
+  --bc-gray-color-dark: #323232;
+
+  --bc-dark-color-main: #212529;
+  --bc-dark-color-light: #424649;
+  --bc-dark-color-dark: #222222;
+
+  --bc-disable-background: #F7F7FA;
   --bc-disable-text-color: #dcdcdc;
   --bc-disable-border-color: #dcdcdc;
   --bc-disable-cursor: not-allowed;
