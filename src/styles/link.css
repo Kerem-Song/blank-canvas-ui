@@ -62,7 +62,7 @@ $(ns) {
   /* color */
   &:not($(ns)-disabled) {
     /* default */
-    @apply text-[var(--bc-disable-text-color)];
+    @apply text-[(var(--bc-text-color))]
 
     /* primary */
     &$(ns)-primary {
