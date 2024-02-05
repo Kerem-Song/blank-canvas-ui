@@ -15,7 +15,7 @@ $(ns) {
 
     /* editable 타입에서의 상단 버튼 */
     &-btn {
-      @apply flex justify-self-center items-center p-10pxr cursor-pointer bg-center bg-no-repeat bg-white border-[length:var(--bc-border-width)] border-gray-200 rounded-[var(--bc-rounded)] w-32pxr h-32pxr;
+      @apply flex justify-self-center items-center p-10pxr cursor-pointer bg-center bg-no-repeat bg-white border-[length:var(--bc-border-width)] border-[var(--bc-gray-color-light)] rounded-[var(--bc-rounded)] w-32pxr h-32pxr;
 
       &-wrapper {
         @apply pb-12pxr;
