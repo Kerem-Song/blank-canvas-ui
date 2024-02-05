@@ -3,6 +3,7 @@ $ns: .bc;
 $(ns) {
   &-input-wrapped {
     @apply flex items-center rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] px-2;
+    height: var(--bc-control-height);
 
     .bc-input-suffix-wrapper {
       @apply flex items-center text-end;
@@ -33,6 +34,7 @@ $(ns) {
 
   &-input-normal {
     @apply rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] px-2;
+    height: var(--bc-control-height);
 
     &.invalid {
       @apply border-[var(--bc-error-color-main)];
