@@ -1,4 +1,4 @@
-import { attachPrefixClasses } from '@modules/utils/generatePrefixClasses';
+import { attachPrefixClasses } from '@modules/utils/generatePrefixClasses/generatePrefixClasses';
 
 const classes = {
   /** 루트 요소에 적용되는 스타일입니다. */

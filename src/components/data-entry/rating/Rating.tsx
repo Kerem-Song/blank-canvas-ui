@@ -3,7 +3,7 @@ import '@styles/rating.css';
 import StarIcon from '@assets/icons/ic_star.svg?react';
 import StarBorderIcon from '@assets/icons/ic_star_border.svg?react';
 import { useControlled } from '@hooks/useControlled';
-import { composeRef } from '@modules/utils';
+import { composeRef } from '@modules/utils/composeRef/composeRef';
 import classNames from 'classnames';
 import * as React from 'react';
 

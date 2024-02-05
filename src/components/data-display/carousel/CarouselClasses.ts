@@ -1,4 +1,4 @@
-import { attachPrefixClasses } from '@modules/utils';
+import { attachPrefixClasses } from '@modules/utils/generatePrefixClasses/generatePrefixClasses';
 
 export const classes = {
   root: '',
