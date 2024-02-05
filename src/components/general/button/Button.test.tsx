@@ -1,4 +1,3 @@
-import { generatePrefixClasses } from '@modules/utils/generatePrefixClasses';
 import { act, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';

@@ -5,7 +5,7 @@ $ns: .$(
 /* prettier-ignore */
 $(ns) {
   & {
-    @apply flex justify-center items-center box-border py-0 my-0 h-auto border border-solid border-transparent font-pretendard tracking-[0.01em] text-center;
+    @apply flex justify-center items-center box-border py-0 my-0 h-auto border-[var(--bc-border-width)] border-solid font-pretendard tracking-[0.01em] text-center;
     /* focus-visible:input-focus; */
   }
 
@@ -41,7 +41,7 @@ $(ns) {
 
   /* shape */
   &-round {
-    @apply rounded-6;
+    @apply rounded-[var(--bc-rounded)];
   }
 
   &-circle {
@@ -106,7 +106,7 @@ $(ns) {
   }
 
   &-outlined:not($(ns)-ellipsis) {
-    @apply border-gray-200;
+    @apply border-[var(--bc-gray-color-light)];
 
     &:hover:not($(ns)-disabled) {
       @apply bg-[#0000000a];
@@ -120,7 +120,7 @@ $(ns) {
       }
 
       &$(ns)-outlinedPrimary {
-        @apply border-primary-main bg-[var(--bc-primary-color-light)];
+        @apply border-[var(--bc-primary-color-main)] bg-[var(--bc-primary-color-light)];
 
         &:hover:not($(ns)-disabled) {
           @apply bg-[var(--bc-primary-color-light)];
@@ -128,7 +128,7 @@ $(ns) {
       }
 
       &$(ns)-outlinedSecondary {
-        @apply border-secondary-main bg-[var(--bc-secondary-color-light)];
+        @apply border-[var(--bc-secondary-color-main)] bg-[var(--bc-secondary-color-light)];
 
         &:hover:not($(ns)-disabled) {
           @apply bg-[var(--bc-secondary-color-light)];

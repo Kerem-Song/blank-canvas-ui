@@ -4,6 +4,7 @@ $(ns)-wrap {
   /* wrap */
   & {
     @apply relative overflow-x-auto border bg-white;
+    border-radius: var(--bc-rounded);
   }
 
   $(ns)-text-align-left {

@@ -9,7 +9,6 @@ import { HeaderRow } from './header';
 import { convertChildrenToColumns, usePagenation, useSortDataSource } from './hooks';
 import { ColumnsType, IColumn, ITableProps } from './Table.types';
 import { tableClasses } from './TableClasses';
-import { customClasses } from '@styles/customClasses';
 
 export const TableComp = <RecordType extends AnyObject = AnyObject>(
   {
@@ -64,7 +63,6 @@ export const TableComp = <RecordType extends AnyObject = AnyObject>(
   return (
     <div
       className={classNames(tableClasses.wrap, wrapClassName, tableClasses.size[size], {
-        [customClasses.rounded]: rounded,
         [tableClasses.border]: bordered,
       })}
     >

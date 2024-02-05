@@ -1,6 +1,5 @@
 import { Button } from '@components/general/button/Button';
 import icDelete from '@icons/ic_search_delete.svg';
-import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
 import { DragEvent, forwardRef, useRef, useState } from 'react';
 

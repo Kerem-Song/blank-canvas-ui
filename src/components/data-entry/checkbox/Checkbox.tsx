@@ -4,7 +4,8 @@ import IndeterminateRoundedIcon from '@assets/icons/ic_checkbox_indeterminate_ro
 import OutlineBlankRoundedIcon from '@assets/icons/ic_checkbox_outline_blank_rounded.svg?react';
 import CheckboxRoundedIcon from '@assets/icons/ic_checkbox_rounded.svg?react';
 import { useControlled } from '@hooks/useControlled';
-import { composeRef, createChainedFunction } from '@modules/utils';
+import { composeRef } from '@modules/utils/composeRef';
+import { createChainedFunction } from '@modules/utils/createChainedFunction';
 import classNames from 'classnames';
 import * as React from 'react';
 

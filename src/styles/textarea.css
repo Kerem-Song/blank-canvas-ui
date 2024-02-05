@@ -25,14 +25,14 @@ $(ns) {
     }
 
     &.inside {
-      @apply block border-solid border-[length:var(--bc-border-width)] border-slate-300 text-right;
+      @apply block border-solid border-[length:var(--bc-border-width)] border-[var(--bc-border-color)] text-right;
 
       &:has(textarea:disabled) {
         @apply bg-[var(--bc-disable-background)];
       }
 
       &.invalid {
-        @apply border-[length:var(--bc-border-width)] border-solid border-red-500;
+        @apply border-[length:var(--bc-border-width)] border-solid border-[var(--bc-error-color-main)];
       }
 
       .bc-textarea-counter {

@@ -4,11 +4,11 @@ $ns: .$(
 
 /* prettier-ignore */
 $(ns) {
-  @apply inline-flex flex-wrap items-center justify-center border border-solid border-transparent bg-transparent font-pretendard text-center select-none cursor-pointer no-underline;
+  @apply inline-flex flex-wrap items-center justify-center border-[var(--bc-border-width)] border-solid bg-transparent font-pretendard text-center select-none cursor-pointer no-underline;
 
   /* default */
   & {
-    @apply text-gray-500;
+    @apply text-[var(--bc-gray-color-main)];
     /* focus-visible:input-focus; */
   }
 
@@ -36,7 +36,7 @@ $(ns) {
 
   /* shape */
   &-round {
-    @apply rounded-6;
+    @apply rounded-[var(--bc-rounded)];
   }
 
   &-circle {
@@ -188,7 +188,7 @@ $(ns) {
 
   &-outlined,
   &-dashed {
-    @apply border-[var(--bc-gray-color-main)] bg-transparent text-gray-500;
+    @apply border-[var(--bc-gray-color-main)] bg-transparent text-[var(--bc-gray-color-main)];
 
     &:hover:not($(ns)-disabled) {
       @apply bg-[var(--bc-gray-color-light)];

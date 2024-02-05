@@ -4,6 +4,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 import { textareaClasses } from './TextareaClasses';
 import { TitleCounterProps } from './TextareaWithTitleCounter.types';
+import { Textarea } from '.';
 
 export const TextAreaWithTitleCounter = forwardRef<
   HTMLTextAreaElement,
@@ -37,7 +38,7 @@ export const TextAreaWithTitleCounter = forwardRef<
 
   return (
     <div className={rootClassName}>
-      {direction !== 'bottom' ? (
+      {direction && direction !== 'bottom' ? (
         <div className={textareaClasses.titleCounterWrapper}>
           <span className={classNames(textareaClasses.label, { light: isLight })}>
             {label}
@@ -59,7 +60,7 @@ export const TextAreaWithTitleCounter = forwardRef<
           'ring-[var(--bc-primary-color-main)] group-focus-within:ring-2',
         )}
       >
-        <TextareaAutosize
+        <Textarea           
           {...inputProps}
           className={classNames(textareaClassName)}
           onChange={handleTextArea}
@@ -69,6 +70,9 @@ export const TextAreaWithTitleCounter = forwardRef<
           readOnly={readOnly}
           autoComplete={args.autoComplete ? 'true' : 'false'}
           disabled={args.disabled}
+          isError={isError}  
+          style={style}
+          direction={direction}
         />
         {showCount && direction === 'inside' ? (
           <p className={`${textareaClasses.counter} ${direction}`}>
