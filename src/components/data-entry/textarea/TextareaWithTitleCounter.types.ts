@@ -11,10 +11,4 @@ export interface TitleCounterProps extends ITextareaProps {
    * @default false
    */
   isLight?: boolean;
-
-  /**
-   * Input에서 노출되는 title과 counter의 위치(label은 값이 없을 경우 노출되지 않음)
-   * @type "top" | "bottom" | "inside"
-   */
-  direction?: 'top' | 'bottom' | 'inside';
 }

@@ -6,7 +6,7 @@ import { ITextareaProps } from './Textarea.types';
 import { textareaClasses } from './TextareaClasses';
 
 export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, ref) => {
-  const { style, readOnly, isError, ...inputProps } = args;
+  const { style, readOnly, isError, direction, ...inputProps } = args;
 
   const handleTextArea = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -17,7 +17,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, r
 
   const resultClassName = classNames(
     textareaClasses.root,
-    textareaClasses.border,
+    direction ?? textareaClasses.border,
     args.className,
     {
       invalid: isError,
@@ -33,7 +33,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, r
       maxLength={args.maxLength}
       ref={ref}
       readOnly={readOnly}
-      autoComplete={args.autoComplete}
+      autoComplete={args.autoComplete ? 'true' : 'false'}
       disabled={args.disabled}
     />
   );
