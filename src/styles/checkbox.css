@@ -1,6 +1,5 @@
 $prefix: bc;
-$ns: .$(
-  prefix)-checkbox;
+$ns: .$(prefix)-checkbox;
 
 /* prettier-ignore */
 $(ns) {
@@ -12,11 +11,11 @@ $(ns) {
 
   /* checkbox */
   &-checkbox {
-    @apply inline-flex items-center justify-center relative p-1 m-0 border-0 box-border bg-transparent text-gray-500 select-none align-middle appearance-none no-underline cursor-pointer;
+    @apply inline-flex items-center justify-center relative p-1 m-0 border-0 box-border bg-transparent text-[(var(--bc-text-color))] select-none align-middle appearance-none no-underline cursor-pointer;
 
     /* input */
     $(ns)-input[type=checkbox] {
-      @apply absolute w-[1em] h-[1em] m-0 p-0 rounded-6 cursor-[inherit] appearance-none outline-offset-0;
+      @apply absolute w-[1em] h-[1em] m-0 p-0 rounded-[var(--bc-rounded)] cursor-[inherit] appearance-none outline-offset-0;
       /* focus-visible:input-focus; */
     }
 
@@ -81,7 +80,7 @@ $(ns) {
 
     /* default */
     $(ns)-checkbox {
-      @apply text-gray-500;
+      @apply text-[(var(--bc-text-color))];
     }
 
     /* primary */
