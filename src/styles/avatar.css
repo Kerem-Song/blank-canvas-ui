@@ -35,7 +35,7 @@ $(ns) {
 
   &-rounded {
     @apply
-      rounded-6;
+    rounded-[var(--bc-rounded)];
   }
 
   /* size */

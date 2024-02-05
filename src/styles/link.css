@@ -1,6 +1,5 @@
 $prefix: bc;
-$ns: .$(
-  prefix)-link;
+$ns: .$(prefix)-link;
 
 /* prettier-ignore */
 $(ns) {
@@ -63,7 +62,7 @@ $(ns) {
   /* color */
   &:not($(ns)-disabled) {
     /* default */
-    @apply text-gray-500;
+    @apply text-[(var(--bc-text-color))];
 
     /* primary */
     &$(ns)-primary {
