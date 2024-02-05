@@ -1,6 +1,6 @@
 import '@styles/link.css';
 
-import { OverridableComponent } from '@models/types';
+import { OverridableComponent } from '@models/types/OverridableComponent';
 import classNames from 'classnames';
 import * as React from 'react';
 

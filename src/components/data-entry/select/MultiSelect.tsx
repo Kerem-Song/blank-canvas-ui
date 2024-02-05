@@ -1,5 +1,5 @@
 import IcArrow from '@assets/icons/ic_select_arrow.svg?react';
-import { Input } from '@components';
+import { Input } from '@components/data-entry/input';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { AnyObject } from '@models/types/AnyObject';
 

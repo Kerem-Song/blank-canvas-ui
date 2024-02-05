@@ -9,7 +9,7 @@ $(ns) {
     &-area {
       @apply absolute -top-[0.7rem] min-h-[15px] min-w-[15px] rounded-full bg-rose-500 text-white shadow-[0_0_0_1px_rgb(255,252,252)];
       &-align {
-        @apply align-middle;
+        @apply mx-auto my-0 inline-block;
       }
     }
   }

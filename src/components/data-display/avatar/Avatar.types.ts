@@ -1,4 +1,4 @@
-import { OverrideProps } from '@models/types';
+import { OverrideProps } from '@models/types/OverridableComponent';
 import * as React from 'react';
 
 export interface AvatarTypeMap<DefaultComponent extends React.ElementType = 'div'> {
