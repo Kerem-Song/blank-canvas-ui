@@ -1,5 +1,4 @@
-import './App.css';
-
+import React, { useState } from 'react';
 import {
   Button,
   Carousel,
@@ -22,8 +21,9 @@ import { IRadioOption } from '@components/data-entry/radio';
 import icImgTest from '@icons/ic_img.svg';
 import IcImg2 from '@icons/ic_search.svg?react';
 import icImgTest2 from '@icons/ic_search_delete.svg';
-import React, { useState } from 'react';
 import { Autocomplete } from 'src';
+
+import './App.css';
 
 interface IRow {
   a: string;
