@@ -58,7 +58,7 @@ $(ns) {
 
   /* variant */
   &-text {
-    @apply text-[var(--bc-gray-color-main)];
+    @apply text-[var(--bc-gray-color-main)] border-0;
 
     &:hover:not($(ns)-disabled) {
       @apply bg-[var(--bc-gray-color-light)];
