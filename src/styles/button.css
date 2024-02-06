@@ -1,10 +1,9 @@
 $prefix: bc;
-$ns: .$(
-  prefix)-btn;
+$ns: .$(prefix)-btn;
 
 /* prettier-ignore */
 $(ns) {
-  @apply inline-flex flex-wrap items-center justify-center border-[var(--bc-border-width)] border-solid bg-transparent font-pretendard text-center select-none cursor-pointer no-underline;
+  @apply inline-flex flex-wrap items-center justify-center border-[length:var(--bc-border-width)] border-solid bg-transparent font-pretendard text-center select-none cursor-pointer no-underline;
 
   /* default */
   & {

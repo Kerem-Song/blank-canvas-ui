@@ -2,7 +2,7 @@
   "name": "@lunasoft-org/blank-canvas-ui",
   "license": "UNLICENSED",
   "repository": "https://github.com/lunasoft-org/blank-canvas-ui",
-  "version": "0.0.12",
+  "version": "0.0.15",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -52,7 +52,7 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {
-    "@lunasoft-org/eslint-config-web": "^0.0.37",
+    "@lunasoft-org/eslint-config-web": "^0.0.38",
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addon-interactions": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",

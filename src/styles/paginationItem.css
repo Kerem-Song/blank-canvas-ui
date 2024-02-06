@@ -1,11 +1,10 @@
 $prefix: bc;
-$ns: .$(
-  prefix)-pagination-item;
+$ns: .$(prefix)-pagination-item;
 
 /* prettier-ignore */
 $(ns) {
   & {
-    @apply flex justify-center items-center box-border py-0 my-0 h-auto border-[var(--bc-border-width)] border-solid font-pretendard tracking-[0.01em] text-center;
+    @apply flex justify-center items-center box-border py-0 my-0 h-auto border-[length:var(--bc-border-width)] border-solid font-pretendard tracking-[0.01em] text-center;
     /* focus-visible:input-focus; */
   }
 
