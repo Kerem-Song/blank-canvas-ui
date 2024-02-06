@@ -2120,7 +2120,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lunasoft-org/blank-canvas-ui@workspace:."
   dependencies:
-    "@lunasoft-org/eslint-config-web": "npm:^0.0.34"
+    "@lunasoft-org/eslint-config-web": "npm:^0.0.37"
     "@popperjs/core": "npm:^2.11.8"
     "@storybook/addon-essentials": "npm:^7.5.3"
     "@storybook/addon-interactions": "npm:^7.5.3"
@@ -2185,9 +2185,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@lunasoft-org/eslint-config-web@npm:^0.0.34":
-  version: 0.0.34
-  resolution: "@lunasoft-org/eslint-config-web@npm:0.0.34::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40lunasoft-org%2Feslint-config-web%2F0.0.34%2F8bed29efd1d8b45e70557f22d3e056c764904237"
+"@lunasoft-org/eslint-config-web@npm:^0.0.37":
+  version: 0.0.37
+  resolution: "@lunasoft-org/eslint-config-web@npm:0.0.37::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40lunasoft-org%2Feslint-config-web%2F0.0.37%2F28484249a8d71087b6442bed1e84cdc01e9931d5"
   peerDependencies:
     "@typescript-eslint/eslint-plugin": ^6.19.1
     "@typescript-eslint/parser": ^6.19.1
@@ -2198,11 +2198,12 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-simple-import-sort: ^10.0.0
     prettier: ^3.2.4
+    prettier-plugin-tailwindcss: ^0.5.11
     react: ^18.2.0
     storybook: ^7.5.3
     tailwindcss: ^3.3.5
     typescript: ^5.0.2
-  checksum: 3a47feff93aab57808caa1a8572b085c943e25827374ae4496022bf7c5098365488e34b564195ffd454eda094dfe8621690b1ccfdab397087e425ac79b81a8dd
+  checksum: 22444bb208da745be05b3ca9b48f23840b294ccc4d58619086ac44a5a9976862bc0524093dd4279e5912b3d30dec0e94ed7096d8c368b67e8de7996a834e1836
   languageName: node
   linkType: hard
 

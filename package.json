@@ -20,6 +20,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "prettier": "@lunasoft-org/eslint-config-web/prettierrc.json",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -51,7 +52,7 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {
-    "@lunasoft-org/eslint-config-web": "^0.0.34",
+    "@lunasoft-org/eslint-config-web": "^0.0.37",
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addon-interactions": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",
