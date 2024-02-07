@@ -48,7 +48,7 @@
 
 module.exports = {
   root: true,
-  extends: ['@lunasoft-org/eslint-config-web'],
+  extends: ['@lunasoft-org/eslint-config-web', 'plugin:storybook/recommended'],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   rules: {},
 };
