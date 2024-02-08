@@ -147,7 +147,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
         ref={popperElement}
         style={{
           ...styles.popper,
-          width: inputElement.current?.clientWidth,
+          width: referenceElement.current?.clientWidth,
           overflowY: 'auto',
           display:
             showPopper && filteredList && filteredList.length > 0 ? 'block' : 'none',

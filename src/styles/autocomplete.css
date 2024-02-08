@@ -2,8 +2,10 @@ $ns: .bc;
 
 $(ns) {
   &-autocomplete {
+    @apply inline-block;
+
     &-container {
-      @apply min-w-154pxr border-[length:var(--bc-border-width)] p-5pxr border-[var(--bc-border-color)] rounded-[var(--bc-rounded)] bg-white z-999;
+      @apply z-999 min-w-154pxr rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-border-color)] bg-white p-5pxr;
     }
 
     &-input:focus {
@@ -11,7 +13,7 @@ $(ns) {
     }
 
     &-list {
-      @apply flex items-center w-138pxr h-32pxr px-8pxr py-12pxr border-[length:var(--bc-border-width)] border-white rounded-[var(--bc-rounded)] gap-8pxr;
+      @apply flex h-32pxr w-138pxr items-center gap-8pxr rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-white px-8pxr py-12pxr;
 
       &:hover {
         @apply bg-blue-100;
