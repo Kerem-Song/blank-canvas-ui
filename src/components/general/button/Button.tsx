@@ -1,6 +1,6 @@
 import '../../../styles/button.css';
 
-import { composeRef } from '@modules/utils';
+import { composeRef } from '@modules/utils/composeRef/composeRef';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 

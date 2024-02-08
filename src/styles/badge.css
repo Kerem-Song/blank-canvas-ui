@@ -2,14 +2,14 @@ $ns: .bc;
 
 $(ns) {
   &-badge {
-    @apply block relative m-10pxr;
+    @apply relative m-10pxr block;
     &-dot {
-      @apply bg-rose-500 shadow-[0_0_0_0.5px_rgb(255,255,255)] rounded-full -top-[3px] absolute;
+      @apply absolute -top-[3px] rounded-full bg-rose-500 shadow-[0_0_0_0.5px_rgb(255,255,255)];
     }
     &-area {
-      @apply bg-rose-500 absolute text-white rounded-full -top-3 shadow-[0_0_0_1px_rgb(255,252,252)] min-w-[15px] min-h-[15px];
+      @apply absolute -top-[0.7rem] min-h-[15px] min-w-[15px] rounded-full bg-rose-500 text-white shadow-[0_0_0_1px_rgb(255,252,252)];
       &-align {
-        @apply align-middle;
+        @apply mx-auto my-0 inline-block;
       }
     }
   }

@@ -1,5 +1,4 @@
 import icImgTest from '@icons/ic_img.svg';
-import { generatePrefixClasses } from '@modules/utils';
 import { fireEvent, render } from '@testing-library/react';
 
 import { FloatingActionButton } from './FloatingActionButton';

@@ -68,6 +68,11 @@ export interface IUploadProps extends InputHTMLAttributes<HTMLInputElement> {
   height?: number;
 
   /**
+   * 파일 이름 리스트 및 미리보기 영역 사용 여부
+   */
+  usePreview?: boolean;
+
+  /**
    * 업로드 이후 실행시킬 콜백(ex.성공 alert)
    */
   callback: () => void;

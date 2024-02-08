@@ -2,19 +2,19 @@ $ns: .bc;
 
 $(ns) {
   &-textarea {
-    @apply rounded-md border w-full resize-none;
+    @apply rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] w-full resize-none;
 
     &.invalid {
-      @apply border-error-main;
+      @apply border-[var(--bc-error-color-main)];
     }
 
     &-border:focus {
-      @apply ring-2 ring-blue-700;
+      @apply ring-2 ring-[var(--bc-primary-color-main)];
     }
   }
 
   &-textarea-title-counter-wrapper {
-    @apply rounded-md flex justify-between items-center w-full resize-none;
+    @apply rounded-[var(--bc-rounded)] flex justify-between items-center w-full resize-none;
 
     .bc-textarea-label {
       @apply font-semibold;
@@ -25,14 +25,14 @@ $(ns) {
     }
 
     &.inside {
-      @apply block border-solid border border-slate-300 text-right;
+      @apply block border-solid border-[length:var(--bc-border-width)] border-[var(--bc-border-color)] text-right;
 
       &:has(textarea:disabled) {
-        @apply bg-gray-100;
+        @apply bg-[var(--bc-disable-background)];
       }
 
       &.invalid {
-        @apply border border-solid border-red-500;
+        @apply border-[length:var(--bc-border-width)] border-solid border-[var(--bc-error-color-main)];
       }
 
       .bc-textarea-counter {

@@ -9,7 +9,7 @@ $(ns) {
     }
 
     &-bar {
-      @apply h-8pxr w-20pxr rounded-full border bg-slate-200;
+      @apply h-8pxr w-20pxr rounded-full border-[length:var(--bc-border-width)] bg-slate-200;
 
       &.bc-switch-size {
         &-sm {
@@ -30,7 +30,7 @@ $(ns) {
       }
 
       &::after {
-        @apply absolute -top-2pxr left-0 h-12pxr w-12pxr rounded-full border border-gray-300 bg-white transition-all content-[''];
+        @apply absolute -top-2pxr left-0 h-12pxr w-12pxr rounded-full border-[length:var(--bc-border-width)] border-gray-300 bg-white transition-all content-[''];
 
         &.bc-switch-size {
           &-sm {
@@ -70,7 +70,7 @@ $(ns) {
 
     /* type이 inside인 스위치 */
     &.bc-switch-shape-inside {
-      @apply rounded-full border bg-slate-200;
+      @apply rounded-full border-[length:var(--bc-border-width)] bg-slate-200;
 
       .bc-switch-size {
         &-sm {
@@ -92,7 +92,7 @@ $(ns) {
 
       .bc-switch-bar {
         &::after {
-          @apply absolute top-1pxr left-0 h-8pxr w-8pxr rounded-full border border-gray-300 bg-white transition-all content-[''];
+          @apply absolute top-1pxr left-0 h-8pxr w-8pxr rounded-full border-[length:var(--bc-border-width)] border-[var(--bc-gray-color-light)] bg-white transition-all content-[''];
 
           &.bc-switch-size {
             &-sm {

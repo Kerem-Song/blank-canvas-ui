@@ -3,56 +3,29 @@ $ns: .$(prefix)-btn;
 
 /* prettier-ignore */
 $(ns) {
-  @apply
-  inline-flex
-  flex-wrap
-  items-center
-  justify-center
-  border
-  border-solid
-  border-transparent
-  bg-transparent
-  font-pretendard
-  text-center
-  select-none
-  cursor-pointer
-  no-underline;
+  @apply inline-flex flex-wrap items-center justify-center border-[length:var(--bc-border-width)] border-solid bg-transparent font-pretendard text-center select-none cursor-pointer no-underline;
 
   /* default */
   & {
-    @apply 
-      text-gray-500;
-        /* focus-visible:input-focus; */
+    @apply text-[var(--bc-gray-color-main)];
+    /* focus-visible:input-focus; */
   }
 
   /* sizes */
   &-xs {
-    @apply
-      py-0
-      px-[7px]
-      min-h-[18px]
-      text-xs;
+    @apply py-0 px-[7px] min-h-[18px] text-xs;
   }
+
   &-sm {
-    @apply
-      py-0
-      px-[7px]
-      min-h-[24px]
-      text-sm;
+    @apply py-0 px-[7px] min-h-[24px] text-sm;
   }
+
   &-md {
-    @apply
-      py-[3px]
-      px-[15px]
-      min-h-[32px]
-      text-base;
+    @apply py-[3px] px-[15px] min-h-[32px] text-base;
   }
+
   &-lg {
-    @apply
-      py-[5px]
-      px-[15px]
-      min-h-[40px]
-      text-lg;
+    @apply py-[5px] px-[15px] min-h-[40px] text-lg;
   }
 
   /* block */
@@ -62,249 +35,217 @@ $(ns) {
 
   /* shape */
   &-round {
-    @apply rounded-6;
+    @apply rounded-[var(--bc-rounded)];
   }
 
   &-circle {
     &:where($(ns)-xs) {
-      @apply
-      p-0
-      h-6
-      w-6
-      rounded-full;
+      @apply p-0 h-6 w-6 rounded-full;
     }
+
     &:where($(ns)-sm) {
-      @apply
-      p-0
-      h-8
-      w-8
-      rounded-full;
+      @apply p-0 h-8 w-8 rounded-full;
     }
+
     &:where($(ns)-md) {
-      @apply
-      p-0
-      h-12
-      w-12
-      rounded-full;
+      @apply p-0 h-12 w-12 rounded-full;
     }
+
     &:where($(ns)-lg) {
-      @apply
-      p-0
-      h-16
-      w-16
-      rounded-full;
+      @apply p-0 h-16 w-16 rounded-full;
     }
   }
 
   /* variant */
   &-text {
-    @apply
-    text-gray-500;
+    @apply text-[var(--bc-gray-color-main)] border-0;
+
     &:hover:not($(ns)-disabled) {
-      @apply 
-      bg-gray-300/20;
+      @apply bg-[var(--bc-gray-color-light)];
     }
+
     &$(ns)-primary {
-      @apply
-      text-primary-main;
+      @apply text-[var(--bc-primary-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-primary-light/20;
+        @apply bg-[var(--bc-primary-color-light)];
       }
     }
+
     &$(ns)-secondary {
-      @apply
-      text-secondary-main;
+      @apply text-[var(--bc-secondary-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-secondary-light/20;
+        @apply bg-[var(--bc-secondary-color-light)];
       }
     }
+
     &$(ns)-success {
-      @apply
-      text-success-main;
+      @apply text-[var(--bc-success-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-success-light/20;
+        @apply bg-[var(--bc-success-color-light)];
       }
     }
+
     &$(ns)-error {
-      @apply
-      text-error-main;
+      @apply text-[var(--bc-error-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-error-light/20;
+        @apply bg-[var(--bc-error-color-light)];
       }
     }
+
     &$(ns)-info {
-      @apply
-      text-info-main;
+      @apply text-[var(--bc-info-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-info-light/20;
+        @apply bg-[var(--bc-info-color-light)];
       }
     }
+
     &$(ns)-warning {
-      @apply
-      text-warning-main;
+      @apply text-[var(--bc-warning-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-warning-light/20;
+        @apply bg-[var(--bc-warning-color-light)];
       }
     }
+
     &$(ns)-dark {
-      @apply
-      text-neutral-800;
+      @apply text-[var(--bc-dark-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-neutral-500/20;
+        @apply bg-[var(--bc-dark-color-light)];
       }
     }
   }
 
   &-contained {
-    @apply 
-    bg-gray-250
-    text-white;
+    @apply bg-[var(--bc-gray-color-main)] text-white;
+
     &:hover:not($(ns)-disabled) {
-      @apply
-      bg-gray-500;
+      @apply bg-[var(--bc-gray-color-light)];
     }
+
     &$(ns)-primary {
-      @apply
-    bg-primary-main
-    text-white;
+      @apply bg-[var(--bc-primary-color-main)] text-white;
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-primary-dark;
+        @apply bg-[var(--bc-primary-color-light)];
       }
     }
+
     &$(ns)-secondary {
-      @apply 
-      bg-secondary-main
-      text-white;
+      @apply bg-[var(--bc-secondary-color-main)] text-white;
+
       &:hover:not($(ns)-disabled) {
-        @apply 
-        bg-secondary-dark;
+        @apply bg-[var(--bc-secondary-color-light)];
       }
     }
+
     &$(ns)-success {
-      @apply 
-      bg-success-main
-      text-white;
+      @apply bg-[var(--bc-success-color-main)] text-white;
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-success-dark;
+        @apply bg-[var(--bc-success-color-light)];
       }
     }
+
     &$(ns)-error {
-      @apply 
-      bg-error-main
-      text-white;
+      @apply bg-[var(--bc-error-color-main)] text-white;
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-error-dark;
+        @apply bg-[var(--bc-error-color-light)];
       }
     }
+
     &$(ns)-info {
-      @apply
-      bg-info-main
-      text-white;
+      @apply bg-[var(--bc-info-color-main)] text-white;
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-info-dark;
+        @apply bg-[var(--bc-info-color-light)];
       }
     }
+
     &$(ns)-warning {
-      @apply 
-      bg-warning-main
-      text-white;
+      @apply bg-[var(--bc-warning-color-main)] text-white;
+
       &:hover:not($(ns)-disabled) {
-        @apply 
-        bg-warning-dark;
+        @apply bg-[var(--bc-warning-color-light)];
       }
     }
+
     &$(ns)-dark {
-      @apply
-      bg-neutral-800
-      text-white;
+      @apply bg-[var(--bc-dark-color-main)] text-white;
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-neutral-950;
+        @apply bg-[var(--bc-dark-color-light)]
       }
     }
   }
 
-  &-outlined, &-dashed {
-    @apply
-    border-gray-200
-    bg-transparent
-    text-gray-500;
+  &-outlined,
+  &-dashed {
+    @apply border-[var(--bc-gray-color-main)] bg-transparent text-[var(--bc-gray-color-main)];
+
     &:hover:not($(ns)-disabled) {
-      @apply 
-      bg-gray-300/20;
+      @apply bg-[var(--bc-gray-color-light)];
     }
+
     &$(ns)-primary {
-      @apply
-      border-primary-main
-      text-primary-main;
+      @apply border-[var(--bc-primary-color-main)] text-[var(--bc-primary-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-primary-light/20;
+        @apply bg-[var(--bc-primary-color-light)];
       }
     }
+
     &$(ns)-secondary {
-      @apply
-      border-secondary-main
-      text-secondary-main;
+      @apply border-[var(--bc-secondary-color-main)] text-[var(--bc-secondary-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-secondary-light/20;
+        @apply bg-[var(--bc-secondary-color-light)];
       }
     }
+
     &$(ns)-success {
-      @apply
-      border-success-main
-      text-success-main;
+      @apply border-[var(--bc-success-color-main)] text-[var(--bc-success-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-success-light/20;
+        @apply bg-[var(--bc-success-color-light)];
       }
     }
+
     &$(ns)-error {
-      @apply
-      border-error-main
-      text-error-main;
+      @apply border-[var(--bc-error-color-main)] text-[var(--bc-error-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-error-light/20;
+        @apply bg-[var(--bc-error-color-light)];
       }
     }
+
     &$(ns)-info {
-      @apply
-      border-info-main
-      text-info-main;
+      @apply border-[var(--bc-info-color-main)] text-[var(--bc-info-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-info-light/20;
+        @apply bg-[var(--bc-info-color-light)];
       }
     }
+
     &$(ns)-warning {
-      @apply
-      border-warning-main 
-      text-warning-main;
+      @apply border-[var(--bc-warning-color-main)] text-[var(--bc-warning-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply 
-        bg-warning-light/20;
+        @apply bg-[var(--bc-warning-color-light)];
       }
     }
+
     &$(ns)-dark {
-      @apply
-      border-neutral-800
-      text-neutral-800;
+      @apply border-[var(--bc-dark-color-main)] text-[var(--bc-dark-color-main)];
+
       &:hover:not($(ns)-disabled) {
-        @apply
-        bg-neutral-500/20;
+        @apply bg-[var(--bc-dark-color-light)];
       }
     }
   }
@@ -312,9 +253,10 @@ $(ns) {
   &-dashed {
     @apply border-dashed;
   }
-  
+
   /* icon */
-  &-start-icon, &-end-icon {
+  &-start-icon,
+  &-end-icon {
     display: inherit;
   }
 
@@ -327,32 +269,32 @@ $(ns) {
   }
 
   svg {
-    @apply
-    inline-block
-    fill-current
-    select-none;
+    @apply inline-block fill-current select-none;
     width: 1em;
     height: 1em;
     font-size: inherit;
   }
 
-  > span > .icon,
-  > .icon {
+  >span>.icon,
+  >.icon {
     &-xs {
       svg {
         @apply text-lg;
       }
     }
+
     &-sm {
       svg {
         @apply text-xl;
       }
     }
+
     &-md {
       svg {
         @apply text-2xl;
       }
     }
+
     &-lg {
       svg {
         @apply text-3xl;
@@ -363,18 +305,14 @@ $(ns) {
   /* disabled */
   &-disabled,
   &:disabled {
-    @apply 
-    text-gray-250
-    cursor-not-allowed;
+    @apply text-[var(--bc-disable-text-color)] cursor-not-allowed;
 
     &:where($(ns)-contained) {
-      @apply
-      border-gray-200
-      bg-gray-100;
+      @apply border-[var(--bc-disable-border-color)] bg-[var(--bc-disable-background)];
     }
+
     &:where($(ns)-outlined, $(ns)-dashed) {
-      @apply
-      border-gray-200
+      @apply border-[var(--bc-disable-border-color)];
     }
   }
 }

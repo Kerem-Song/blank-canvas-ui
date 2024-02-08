@@ -5,7 +5,7 @@ import ChevronDoubleRightIcon from '@assets/icons/ic_chevron_double_right.svg?re
 import ChevronLeftIcon from '@assets/icons/ic_chevron_left.svg?react';
 import ChevronRightIcon from '@assets/icons/ic_chevron_right.svg?react';
 import { Button } from '@components/general/button/Button';
-import { OverridableComponent } from '@models/types';
+import { OverridableComponent } from '@models/types/OverridableComponent';
 import classNames from 'classnames';
 import * as React from 'react';
 

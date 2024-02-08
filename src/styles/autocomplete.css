@@ -2,16 +2,18 @@ $ns: .bc;
 
 $(ns) {
   &-autocomplete {
+    @apply inline-block;
+
     &-container {
-      @apply min-w-154pxr border p-5pxr border-gray-200 rounded-md bg-white z-999;
+      @apply z-999 min-w-154pxr rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-border-color)] bg-white p-5pxr;
     }
 
     &-input:focus {
-      @apply ring-2 ring-blue-700;
+      @apply ring-2 ring-[var(--bc-primary-color-main)];
     }
 
     &-list {
-      @apply flex items-center w-138pxr h-32pxr px-8pxr py-12pxr border border-white rounded-md gap-8pxr;
+      @apply flex h-32pxr w-138pxr items-center gap-8pxr rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-white px-8pxr py-12pxr;
 
       &:hover {
         @apply bg-blue-100;
@@ -22,7 +24,7 @@ $(ns) {
       }
 
       &.disable {
-        @apply text-gray-200;
+        @apply text-[var(--bc-disable-text-color)];
       }
 
       &-focused {

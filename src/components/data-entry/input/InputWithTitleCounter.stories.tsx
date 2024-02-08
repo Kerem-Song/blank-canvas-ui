@@ -23,7 +23,7 @@ type Story = StoryObj<IInputWithTitleCounterProps>;
 
 export const Default: Story = {
   render: (args) => {
-    return <InputWithTitleCounter {...args} />;
+    return <InputWithTitleCounter {...args} placeholder="입력 테스트" />;
   },
   args: {
     direction: 'top',

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef, useCallback, useState } from 'react';
-import TextareaAutosize from 'react-textarea-autosize';
 
+import { Textarea } from '.';
 import { textareaClasses } from './TextareaClasses';
 import { TitleCounterProps } from './TextareaWithTitleCounter.types';
 
@@ -37,7 +37,7 @@ export const TextAreaWithTitleCounter = forwardRef<
 
   return (
     <div className={rootClassName}>
-      {direction !== 'bottom' ? (
+      {direction && direction !== 'bottom' ? (
         <div className={textareaClasses.titleCounterWrapper}>
           <span className={classNames(textareaClasses.label, { light: isLight })}>
             {label}
@@ -56,10 +56,10 @@ export const TextAreaWithTitleCounter = forwardRef<
         className={classNames(
           `${textareaClasses.titleCounterWrapper} ${direction}`,
           { invalid: isError },
-          'group-focus-within:ring-2 ring-blue-700',
+          'ring-[var(--bc-primary-color-main)] group-focus-within:ring-2',
         )}
       >
-        <TextareaAutosize
+        <Textarea           
           {...inputProps}
           className={classNames(textareaClassName)}
           onChange={handleTextArea}
@@ -69,6 +69,9 @@ export const TextAreaWithTitleCounter = forwardRef<
           readOnly={readOnly}
           autoComplete={args.autoComplete ? 'true' : 'false'}
           disabled={args.disabled}
+          isError={isError}  
+          style={style}
+          direction={direction}
         />
         {showCount && direction === 'inside' ? (
           <p className={`${textareaClasses.counter} ${direction}`}>

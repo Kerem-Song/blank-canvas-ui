@@ -11,6 +11,8 @@ import {
 } from '@assets/icons';
 import { ICalendarProps } from './Calendar.types';
 
+const weeks = [0, 1, 2, 3, 4, 5];
+
 export const Calendar = ({
   className,
   onChange,
@@ -23,8 +25,6 @@ export const Calendar = ({
 
   const today = currentStartDay.startOf('day');
   const start = currentStartDay.startOf('month').day(0);
-  const end = currentStartDay.endOf('month').day(6);
-  const weeks = end.diff(start, 'weeks') + 1;
 
   const prevMonth = () => {
     setCurrentStartDay((v) => v.add(-1, 'M'));
@@ -81,7 +81,7 @@ export const Calendar = ({
           <div className={calendarClasses.weeknames.item}>fri</div>
           <div className={calendarClasses.weeknames.item}>sat</div>
         </div>
-        {Array.from({ length: weeks }).map((r, rIndex) => (
+        {weeks.map((r, rIndex) => (
           <div className={calendarClasses.week.root} key={rIndex}>
             {Array.from({ length: 7 }).map((c, cIndex) => {
               const date = start.add(rIndex * 7 + cIndex, 'days');
@@ -109,7 +109,7 @@ export const Calendar = ({
                     {date.format('D')}
                   </div>
                   {!!hasItemDates && (
-                    <div className="flex h-2 items-end justify-center gap-0.5">
+                    <div className="flex h-2 items-center justify-center gap-0.5">
                       {hasItem && (
                         <div
                           className={classNames(calendarClasses.week.day.hasitem.root, {

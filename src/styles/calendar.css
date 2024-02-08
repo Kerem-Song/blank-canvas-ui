@@ -4,7 +4,8 @@ $date-size: 36px;
 
 $(ns)-wrap {
   & {
-    @apply rounded border bg-white p-2;
+    @apply border bg-white p-2;
+    border-radius: var(--bc-rounded);
   }
 
   $(ns) {
@@ -34,7 +35,8 @@ $(ns)-wrap {
       }
 
       &-item {
-        @apply flex h-[$(date-size)] w-[$(date-size)] items-center justify-center capitalize text-gray-400;
+        @apply flex h-[$(date-size)] w-[$(date-size)] items-center justify-center capitalize;
+        color: var(--bc-gray-color-main);
       }
     }
 
@@ -43,21 +45,36 @@ $(ns)-wrap {
         @apply flex justify-between px-2 text-xs font-bold;
       }
       &-day {
-        @apply relative flex h-[$(date-size)] w-[$(date-size)] cursor-pointer items-center justify-center rounded-full transition-colors ease-in-out hover:bg-gray-150;
+        & {
+          @apply relative flex h-[$(date-size)] w-[$(date-size)] cursor-pointer items-center justify-center rounded-full transition-colors ease-in-out;
+        }
+
+        &:hover {
+          background-color: var(--bc-gray-color-light);
+        }
 
         &-outofmonth {
-          @apply text-gray-400;
+          color: var(--bc-disable-text-color);
         }
 
         &-selected {
-          @apply bg-blue-600 text-white hover:bg-blue-200;
+          & {
+            @apply text-white;
+            background-color: var(--bc-primary-color-main);
+          }
+
+          &:hover {
+            background-color: var(--bc-primary-color-light);
+          }
         }
 
         &-hasitem {
-          @apply h-1 w-2 rounded-full bg-gray-300 transition-all ease-in-out;
+          @apply h-1 w-2 rounded-full  transition-all ease-in-out;
+          background: var(--bc-gray-color-main);
 
           &-selected {
-            @apply w-6 bg-blue-400;
+            @apply w-6;
+            background-color: var(--bc-primary-color-light);
           }
         }
       }

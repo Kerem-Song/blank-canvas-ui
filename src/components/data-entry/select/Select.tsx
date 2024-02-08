@@ -86,7 +86,7 @@ function SelectFunc<T extends AnyObject>(
       } else {
         setHoverText(searchList && searchList?.length > 0 ? searchList[0].label : '');
       }
-      inputRef.current?.focus();
+      // inputRef.current?.focus();
     }
   }, [currentValue]);
 
@@ -233,8 +233,6 @@ function SelectFunc<T extends AnyObject>(
   useOutsideClick(selectRef, () => {
     setInputFocus(false);
     setShowOptions(false);
-    setCurrentValue(selectedValue);
-    inputRef.current?.blur();
   });
 
   const referenceElement = useRef<HTMLDivElement>(null);
@@ -295,7 +293,8 @@ function SelectFunc<T extends AnyObject>(
         className={classNames(selectClassName, className)}
         onClick={iconClick}
       >
-        <input
+        <Input
+          useFocus={false}
           {...inputProps}
           ref={(current) => {
             if (ref) {

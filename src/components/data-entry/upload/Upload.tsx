@@ -1,8 +1,7 @@
+import { DragEvent, forwardRef, useRef, useState } from 'react';
 import { Button } from '@components/general/button/Button';
 import icDelete from '@icons/ic_search_delete.svg';
-import { generatePrefixClasses } from '@modules/utils';
 import classNames from 'classnames';
-import { DragEvent, forwardRef, useRef, useState } from 'react';
 
 import { IUploadProps } from './Upload.types';
 import {
@@ -37,6 +36,7 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
     width,
     height = 2,
     multiple = false,
+    usePreview = false,
     callback,
     errCallback,
     setValue,
@@ -166,7 +166,6 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
 
   const acceptFormat = fileFormat.toString();
 
-  console.log('@file', imageUrl);
   return (
     <>
       <label
@@ -202,10 +201,10 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
           </p>
         </div>
       </label>
-      {files
+      {usePreview && files
         ? files?.map((file) => (
             <div
-              className="flex items-center justify-between rounded-md hover:bg-gray-100"
+              className="flex items-center justify-between rounded-[var(--bc-rounded)] hover:bg-gray-100"
               key={file.name + '-' + file.lastModified}
             >
               <div>
@@ -220,7 +219,9 @@ export const Upload = forwardRef<HTMLInputElement, IUploadProps>((args, ref) => 
             </div>
           ))
         : null}
-      {imageUrl?.map((image, i) => <img src={image} alt="uploadImage" key={i} />)}
+      {usePreview
+        ? imageUrl?.map((image, i) => <img src={image} alt="uploadImage" key={i} />)
+        : null}
     </>
   );
 });

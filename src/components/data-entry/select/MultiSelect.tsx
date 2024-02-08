@@ -1,5 +1,5 @@
 import IcArrow from '@assets/icons/ic_select_arrow.svg?react';
-import { Input } from '@components';
+import { Input } from '@components/data-entry/input';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { AnyObject } from '@models/types/AnyObject';
 
@@ -332,6 +332,7 @@ function MultiSelectFunc<T extends AnyObject>(
               }}
               onChange={inputOnChange}
               onKeyDown={handleKeyArrow}
+              useFocus={false}
             />
           </div>
           {!searchKeyword && Array.isArray(currentValue) && currentValue.length === 0 && (

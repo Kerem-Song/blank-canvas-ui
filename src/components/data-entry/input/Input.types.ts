@@ -62,6 +62,11 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   direction?: 'top' | 'bottom' | 'inside';
 
   /**
+   * 클릭했을 때 input: focus css 사용 여부
+   */
+  useFocus?: boolean;
+
+  /**
    * Input에서 Enter 입력 시 실행되는 함수
    * @param value
    * @returns

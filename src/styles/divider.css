@@ -1,10 +1,10 @@
 $ns: .bc;
 $(ns) {
   &-divider {
-    @apply border-t border-zinc-300;
+    @apply border-t-[length:var(--bc-border-width)] border-[var(--bc-border-color)];
   }
 
   &-divider-direction-vertical {
-    @apply border-l border-zinc-300 h-3 inline-block ms-2.5 me-2.5;
+    @apply me-2.5 ms-2.5 inline-block h-3 border-l-[length:var(--bc-border-width)] border-[var(--bc-border-color)];
   }
 }

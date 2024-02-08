@@ -1,4 +1,4 @@
-import { Card } from '@components/data-display';
+import { Card } from '@components/data-display/card/Card';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
 import { Link as ReactRouterLink, Outlet, useLocation } from 'react-router-dom';
@@ -8,7 +8,8 @@ import {
   withRouter,
 } from 'storybook-addon-react-router-v6';
 
-import { Link, LinkProps } from './index';
+import { Link } from './index';
+import {LinkProps} from './Link.types';
 
 const FlexBox = ({
   className,
