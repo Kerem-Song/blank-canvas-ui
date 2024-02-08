@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-modal {
-    @apply h-fit m-auto mt-300pxr p-0 bg-white border-[length:var(--bc-border-width)] rounded-[var(--bc-rounded)];
+    @apply m-auto mt-300pxr h-fit rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] bg-white p-0;
 
     &-size {
       &-sm {
@@ -23,10 +23,10 @@ $(ns) {
     }
 
     &-title {
-      @apply flex justify-between items-center px-20pxr py-14pxr font-bold;
+      @apply flex items-center justify-between px-20pxr py-14pxr font-bold;
 
       .bc-modal-btn-esc {
-        @apply w-10pxr h-10pxr bg-center bg-no-repeat bg-[url('@icons/ic_search_delete.svg')];
+        @apply h-10pxr w-10pxr bg-[url('@icons/ic_search_delete.svg')] bg-center bg-no-repeat;
 
         &:hover {
           @apply bg-transparent bg-[url('@icons/ic_search_delete_active.svg')];
@@ -35,7 +35,7 @@ $(ns) {
     }
 
     &-content {
-      @apply p-20pxr text-13pxr font-medium
+      @apply p-20pxr text-13pxr font-medium;
     }
 
     &-children {
@@ -51,7 +51,7 @@ $(ns) {
     }
 
     &-overlay {
-      @apply flex fixed inset-0 bg-[var(--bc-dark-color-main)] bg-opacity-50 z-999;
+      @apply fixed inset-0 z-999 flex bg-gray-950 bg-opacity-50;
     }
   }
 }
