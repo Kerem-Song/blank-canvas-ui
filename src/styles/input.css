@@ -6,7 +6,7 @@ $(ns) {
     height: var(--bc-control-height);
 
     .bc-input-suffix-wrapper {
-      @apply flex items-center text-end;
+      @apply flex items-center pl-[var(--bc-control-gap)] text-end;
     }
 
     &.bc-input-has-custom-prefix {
@@ -42,7 +42,7 @@ $(ns) {
   }
 
   &-input-title-counter-wrapper {
-    @apply flex w-full resize-none items-center justify-between rounded-[var(--bc-rounded)];
+    @apply flex resize-none items-center justify-between rounded-[var(--bc-rounded)];
 
     .bc-input-label {
       @apply font-semibold;

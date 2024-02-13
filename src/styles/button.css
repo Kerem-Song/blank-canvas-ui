@@ -187,7 +187,7 @@ $(ns) {
 
   &-outlined,
   &-dashed {
-    @apply border-[var(--bc-gray-color-main)] bg-transparent text-[var(--bc-gray-color-main)];
+    @apply border-[var(--bc-gray-color-light)] bg-transparent text-[var(--bc-gray-color-main)];
 
     &:hover:not($(ns)-disabled) {
       @apply bg-[var(--bc-gray-color-light)];

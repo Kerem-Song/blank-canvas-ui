@@ -1,8 +1,8 @@
+import { KeyboardEvent, useDeferredValue, useEffect, useRef, useState } from 'react';
+import { usePopper } from 'react-popper';
 import { Input } from '@components/data-entry/input/Input';
 import { inputUtil } from '@modules/utils/input';
 import classNames from 'classnames';
-import { KeyboardEvent, useDeferredValue, useEffect, useRef, useState } from 'react';
-import { usePopper } from 'react-popper';
 
 import { AutocompleteProps } from './Autocomplete.types';
 import { autoCompleteClasses } from './AutocompleteClasses';
@@ -148,7 +148,6 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
         style={{
           ...styles.popper,
           width: referenceElement.current?.clientWidth,
-          maxHeight: '400px',
           overflowY: 'auto',
           display:
             showPopper && filteredList && filteredList.length > 0 ? 'block' : 'none',
