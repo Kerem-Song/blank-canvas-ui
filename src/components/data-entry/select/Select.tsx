@@ -51,7 +51,7 @@ function SelectFunc<T extends AnyObject>(
   const [showOptions, setShowOptions] = useState<boolean>(defaultOpen ?? false);
   const [hoverText, setHoverText] = useState('');
   const [indexNum, setIndexNum] = useState<number>(0);
-  const [inputFocus, setInputFocus] = useState(false);
+  // const [inputFocus, setInputFocus] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const popperElement = useRef<HTMLUListElement>(null);
@@ -86,12 +86,13 @@ function SelectFunc<T extends AnyObject>(
       } else {
         setHoverText(searchList && searchList?.length > 0 ? searchList[0].label : '');
       }
-      // inputRef.current?.focus();
+      // inputRef.current?.focus()  ;
     }
   }, [currentValue]);
 
   const handleKeyArrow = (e: React.KeyboardEvent) => {
     let flag = false;
+    console.log(e);
     switch (e.code) {
       case 'ArrowDown':
         e.preventDefault();
@@ -185,12 +186,24 @@ function SelectFunc<T extends AnyObject>(
       case 'Backspace':
         setShowOptions(true);
         break;
+      case 'Tab':
+        // console.log(inputFocus);
+        // if (inputFocus) {
+        // inputRef.current?.blur();
+        setShowOptions(false);
+        // setInputFocus(false);
+        // } else {
+        //   setShowOptions(true);
+        //   setInputFocus(true);
+        // }
+
+        break;
     }
   };
 
   const iconClick = () => {
     if (!disabled) {
-      setInputFocus(true);
+      // setInputFocus(true);
       if (!showOptions) {
         setShowOptions(true);
         setList(tmpList);
@@ -231,8 +244,10 @@ function SelectFunc<T extends AnyObject>(
   }, []);
 
   useOutsideClick(selectRef, () => {
-    setInputFocus(false);
+    // setInputFocus(false);
     setShowOptions(false);
+    setCurrentValue(selectedValue);
+    inputRef.current?.blur();
   });
 
   const referenceElement = useRef<HTMLDivElement>(null);
@@ -270,7 +285,7 @@ function SelectFunc<T extends AnyObject>(
       [selectClasses.status.error]: status === 'error' || isError,
       [selectClasses.status.warning]: status === 'warning',
     },
-    inputFocus && !status ? selectClasses.focus.root : selectClasses.focus.focusNone,
+    // inputFocus && !status ? selectClasses.focus.root : selectClasses.focus.focusNone,
     bordered === false
       ? selectClasses.bordered.borderedNone
       : selectClasses.bordered.root,
@@ -294,7 +309,6 @@ function SelectFunc<T extends AnyObject>(
         onClick={iconClick}
       >
         <Input
-          useFocus={false}
           {...inputProps}
           ref={(current) => {
             if (ref) {
@@ -316,27 +330,28 @@ function SelectFunc<T extends AnyObject>(
           readOnly={!filterOption}
           className={classNames({ [selectClasses.disabled]: disabled })}
           value={currentValue}
+          suffix={
+            suffixIcon ? (
+              <div
+                onClick={iconClick}
+                className={classNames(
+                  disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
+                )}
+              >
+                {suffixIcon}
+              </div>
+            ) : (
+              <div
+                onClick={iconClick}
+                className={classNames(
+                  disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
+                )}
+              >
+                <IcArrow />
+              </div>
+            )
+          }
         />
-
-        {suffixIcon ? (
-          <div
-            onClick={iconClick}
-            className={classNames(
-              disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
-            )}
-          >
-            {suffixIcon}
-          </div>
-        ) : (
-          <div
-            onClick={iconClick}
-            className={classNames(
-              disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
-            )}
-          >
-            <IcArrow />
-          </div>
-        )}
       </div>
 
       {ReactDOM.createPortal(
@@ -354,7 +369,7 @@ function SelectFunc<T extends AnyObject>(
                 : open && init
                   ? 'visible'
                   : 'hidden',
-            margin: placement === 'left' || placement === 'right' ? '0 8px' : '8px 0',
+            // margin: placement === 'left' || placement === 'right' ? '0 8px' : '8px 0',
           }}
           ref={popperElement}
           className={classNames(selectClasses.list.root)}
@@ -394,7 +409,7 @@ function SelectFunc<T extends AnyObject>(
                     e.stopPropagation();
                     e.preventDefault();
                     setShowOptions(true);
-                    setInputFocus(true);
+                    // setInputFocus(true);
                   }}
                   style={{ cursor: 'not-allowed' }}
                   className={classNames(disabledLiClassName)}
