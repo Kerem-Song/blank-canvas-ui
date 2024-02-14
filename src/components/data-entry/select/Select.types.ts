@@ -1,7 +1,8 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
 
 export interface ISelectProp<T extends object>
-  extends InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> {
+  onChange?: (value: string | null) => void;
   /**
    * select의 선 표시 여부
    * @default false
@@ -113,7 +114,8 @@ export interface ISelectProp<T extends object>
 }
 
 export interface IMultipleSelectProp<T extends object>
-  extends Omit<ISelectProp<T>, 'defaultValue' | 'filterOption'> {
+  extends Omit<ISelectProp<T>, 'defaultValue' | 'filterOption' | 'onChange'> {
+  onChange?: (value: string[] | null) => void;
   /**
    * select default 값 지정
    * @default

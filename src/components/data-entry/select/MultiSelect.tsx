@@ -16,6 +16,7 @@ function MultiSelectFunc<T extends AnyObject>(
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const {
+    onChange,
     bordered,
     defaultOpen,
     defaultValue,
@@ -58,45 +59,66 @@ function MultiSelectFunc<T extends AnyObject>(
   const inputRef = useRef<HTMLInputElement | null>(null);
   const popperUl = useRef<HTMLUListElement>(null);
   const referenceDiv = useRef<HTMLDivElement>(null);
-  const { styles, attributes } = usePopper(referenceDiv.current, popperUl.current, {
-    placement: placement,
+  const { styles, attributes, update } = usePopper(
+    referenceDiv.current,
+    popperUl.current,
+    {
+      placement: placement,
 
-    modifiers: [
-      {
-        name: 'offset',
-        options: {
-          offset: offset,
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: offset,
+          },
         },
-      },
-    ],
+      ],
 
-    strategy: 'fixed',
-  });
+      strategy: 'fixed',
+    },
+  );
+
+  const popperUpdate = () => {
+    void update?.();
+  };
 
   const onChangeCurrentValue = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     const text = (e.target as HTMLElement).innerText;
-    onChange(text);
+    onChangeValue(text);
     inputRef.current?.focus();
   };
 
-  const onChange = (text: string) => {
+  const findUserValue = (value: string[]) => {
+    const result: string[] = [];
+    list
+      ?.filter((x) => {
+        return value.includes(x.label);
+      })
+      .map((x) => result.push(x.value));
+    onChange?.(result ?? null);
+  };
+
+  const onChangeValue = (text: string) => {
     if (text === '') {
       return;
     }
     if (Array.isArray(currentValue) && currentValue.length >= 0) {
       if (currentValue.includes(text)) {
-        setCurrentValue(
-          currentValue.filter(
-            (value: string) => value.toLowerCase() !== text.toLowerCase(),
-          ),
+        const value: string[] = currentValue.filter(
+          (value: string) => value.toLowerCase() !== text.toLowerCase(),
         );
+        findUserValue(value);
+        setCurrentValue(value);
       } else {
         if ((limitNumber && limitNumber > currentValue.length) || !limitNumber) {
-          setCurrentValue([...currentValue, text]);
+          const value: string[] = [...currentValue, text];
+          setCurrentValue(value);
+          findUserValue(value);
         }
       }
     }
+    popperUpdate();
   };
 
   const handleKeyArrow = (e: React.KeyboardEvent) => {
@@ -107,6 +129,7 @@ function MultiSelectFunc<T extends AnyObject>(
         e.preventDefault();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
+          popperUpdate();
           break;
         }
 
@@ -130,6 +153,7 @@ function MultiSelectFunc<T extends AnyObject>(
         e.preventDefault();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
+          popperUpdate();
           break;
         }
         setIndexNum((idx) => idx - 1);
@@ -158,9 +182,10 @@ function MultiSelectFunc<T extends AnyObject>(
         break;
       case 'Enter':
         if (list && list.length > 0) {
-          onChange(hoverText);
+          onChangeValue(hoverText);
           setSearchKeyword('');
           setList(tmpList);
+          popperUpdate();
         }
         break;
       case 'Backspace':
@@ -168,7 +193,7 @@ function MultiSelectFunc<T extends AnyObject>(
           e.preventDefault();
           if (Array.isArray(currentValue) && currentValue.length > 0) {
             const text: string = currentValue[currentValue.length - 1];
-            onChange(text);
+            onChangeValue(text);
           }
         }
         break;
@@ -178,6 +203,7 @@ function MultiSelectFunc<T extends AnyObject>(
     if (!disabled) {
       if (!showOptions) {
         setShowOptions(true);
+        popperUpdate();
       } else {
         setSearchKeyword('');
         setList(tmpList);
@@ -192,6 +218,7 @@ function MultiSelectFunc<T extends AnyObject>(
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setShowOptions(true);
+    popperUpdate();
     if (e.target.value.trim() === '') {
       setList(tmpList);
       setSearchKeyword('');
@@ -219,7 +246,7 @@ function MultiSelectFunc<T extends AnyObject>(
   const closeIconClick = (e: React.MouseEvent<HTMLElement>, text: string) => {
     e.stopPropagation();
     if (Array.isArray(currentValue) && currentValue.length > 0) {
-      onChange(text);
+      onChangeValue(text);
     }
     inputRef.current?.focus();
   };

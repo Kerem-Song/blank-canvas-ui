@@ -16,6 +16,7 @@ function SelectFunc<T extends AnyObject>(
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const {
+    onChange,
     bordered,
     defaultOpen,
     defaultValue,
@@ -75,10 +76,16 @@ function SelectFunc<T extends AnyObject>(
   const onChangeCurrentValue = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     const text = e.target as HTMLElement;
+    findUserValue(text.innerText);
     setCurrentValue(text.innerText);
     setList(tmpList);
     setShowOptions((pre) => !pre);
     setSelectedValue(text.innerText);
+  };
+
+  const findUserValue = (val: string) => {
+    const value = list?.filter((x) => x.label === val)[0].value;
+    onChange?.(value ?? null);
   };
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -178,15 +185,19 @@ function SelectFunc<T extends AnyObject>(
       case 'Enter':
         e.preventDefault();
         popperUpdate();
+
         if (!disabled) setShowOptions((pre) => !pre);
 
         if (!showOptions) {
           setList(tmpList);
           setCurrentValue(selectedValue);
+          findUserValue(selectedValue);
         } else {
           setCurrentValue(hoverText);
           setSelectedValue(hoverText);
+          findUserValue(hoverText);
         }
+
         break;
       case 'Backspace':
         setShowOptions(true);
