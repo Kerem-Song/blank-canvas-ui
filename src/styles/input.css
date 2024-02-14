@@ -28,7 +28,7 @@ $(ns) {
     }
 
     &.invalid {
-      @apply border-[var(--bc-error-color-main)];
+      @apply border-[var(--bc-error-color-main)] ring-2 ring-[var(--bc-error-color-light)];
     }
   }
 
@@ -37,7 +37,7 @@ $(ns) {
     height: var(--bc-control-height);
 
     &.invalid {
-      @apply border-[var(--bc-error-color-main)];
+      @apply border-[var(--bc-error-color-main)] ring-2 ring-[var(--bc-error-color-light)];
     }
   }
 

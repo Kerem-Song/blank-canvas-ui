@@ -77,7 +77,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputClassName = classNames(
     wrappingType
       ? ''
-      : `${args.className ?? ''} ${inputClasses.normal} ${useFocus ? 'focus:ring-2 ring-[var(--bc-primary-color-main)]' : ''} `,
+      : `${args.className ?? ''} ${inputClasses.normal} ${useFocus ? 'focus:ring-2 ring-[var(--bc-primary-color-light)] focus:border-[var(--bc-primary-color-main)]' : ''} `,
     {
       invalid: isError,
     },
@@ -86,7 +86,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
     useFocus && !args.disabled
-      ? 'focus-within:ring-2 ring-[var(--bc-primary-color-main)]'
+      ? 'focus-within:ring-2 ring-[var(--bc-primary-color-light)] focus-within:border-[var(--bc-primary-color-main)]'
       : '',
     {
       invalid: isError,

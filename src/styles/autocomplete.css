@@ -9,7 +9,7 @@ $(ns) {
     }
 
     &-input:focus {
-      @apply ring-2 ring-[var(--bc-primary-color-main)];
+      @apply border-[var(--bc-primary-color-main)] ring-2 ring-[var(--bc-primary-color-light)];
     }
 
     &-list {
