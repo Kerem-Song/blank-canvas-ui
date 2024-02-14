@@ -9,7 +9,7 @@ $(ns) {
     }
 
     &-border:focus {
-      @apply border-[var(--bc-primary-color-main)] ring-2 ring-[var(--bc-primary-color-light)];
+      @apply border-[length:var(--bc-border-width)] border-[var(--bc-primary-color-main)] ring-2 ring-[var(--bc-primary-color-light)];
     }
   }
 
@@ -25,7 +25,7 @@ $(ns) {
     }
 
     &.inside {
-      @apply block border-[length:var(--bc-border-width)] border-solid border-[var(--bc-border-color)] text-right;
+      @apply block border-[length:var(--bc-border-width)] border-[var(--bc-border-color)] bg-white text-right;
 
       &:has(textarea:disabled) {
         @apply bg-[var(--bc-disable-background)];

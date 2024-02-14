@@ -25,6 +25,7 @@ export const TextAreaWithTitleCounter = forwardRef<
   const rootClassName = classNames(textareaClasses.wrapper, args.className, 'group');
   const textareaClassName = classNames(textareaClasses.root, args.className, {
     invalid: isError,
+    'group-focus-within:border-[var(--bc-primary-color-main)]': direction !== 'inside',
   });
 
   const handleTextArea = useCallback(
