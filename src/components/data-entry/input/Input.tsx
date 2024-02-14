@@ -1,6 +1,3 @@
-import { Button } from '@components/general/button/Button';
-import { inputUtil } from '@modules/utils/input';
-import classNames from 'classnames';
 import {
   ChangeEvent,
   FocusEvent,
@@ -9,6 +6,9 @@ import {
   useRef,
   useState,
 } from 'react';
+import { Button } from '@components/general/button/Button';
+import { inputUtil } from '@modules/utils/input';
+import classNames from 'classnames';
 
 import { IInputProps } from './Input.types';
 import { inputClasses } from './InputClasses';
@@ -85,7 +85,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
-    useFocus ? 'focus-within:ring-2 ring-[var(--bc-primary-color-main)]' : '',
+    useFocus && !args.disabled
+      ? 'focus-within:ring-2 ring-[var(--bc-primary-color-main)]'
+      : '',
     {
       invalid: isError,
     },

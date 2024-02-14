@@ -297,8 +297,9 @@ function App() {
           maxLength={10}
           // customPrefix={'{{'}
         />
-        <Input showCount maxLength={10} />
+        <Input showCount maxLength={10} suffix={'a'} readOnly={true} />
         <Textarea />
+        <input placeholder="asdf" readOnly={true} />
       </div>
     </>
   );
