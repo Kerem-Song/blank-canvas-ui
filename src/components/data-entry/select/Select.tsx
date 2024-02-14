@@ -1,12 +1,12 @@
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { usePopper } from 'react-popper';
 import IcArrow from '@assets/icons/ic_select_arrow.svg?react';
 import { Input } from '@components';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { AnyObject } from '@models/types/AnyObject';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { usePopper } from 'react-popper';
 
 import { ISelectProp } from './Select.types';
 import { selectClasses } from './SelectClasses';
@@ -46,15 +46,32 @@ function SelectFunc<T extends AnyObject>(
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
   const [tmpList, setTmpList] =
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
-  const [currentValue, setCurrentValue] = useState<string>(defaultValue ?? '');
-  const [selectedValue, setSelectedValue] = useState<string>(defaultValue ?? '');
+  const [currentValue, setCurrentValue] = useState<string>('');
+  const [selectedValue, setSelectedValue] = useState<string>('');
   const [showOptions, setShowOptions] = useState<boolean>(defaultOpen ?? false);
   const [hoverText, setHoverText] = useState('');
   const [indexNum, setIndexNum] = useState<number>(0);
-  // const [inputFocus, setInputFocus] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const popperElement = useRef<HTMLUListElement>(null);
+  const referenceElement = useRef<HTMLDivElement>(null);
+  const { styles, attributes, update } = usePopper(
+    referenceElement.current,
+    popperElement.current,
+    {
+      placement: placement,
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: offset,
+          },
+        },
+      ],
+      strategy: 'fixed',
+    },
+  );
+
   const onChangeCurrentValue = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     const text = e.target as HTMLElement;
@@ -65,12 +82,8 @@ function SelectFunc<T extends AnyObject>(
   };
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (showOptions) {
-      setCurrentValue(e.target.value);
-    } else {
-      setCurrentValue(e.target.value.replace(currentValue, ''));
-      setShowOptions((pre) => !pre);
-    }
+    setCurrentValue(e.target.value);
+    setShowOptions(true);
   };
 
   useEffect(() => {
@@ -86,18 +99,17 @@ function SelectFunc<T extends AnyObject>(
       } else {
         setHoverText(searchList && searchList?.length > 0 ? searchList[0].label : '');
       }
-      // inputRef.current?.focus()  ;
     }
   }, [currentValue]);
 
   const handleKeyArrow = (e: React.KeyboardEvent) => {
     let flag = false;
-    console.log(e);
     switch (e.code) {
       case 'ArrowDown':
         e.preventDefault();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
+          popperUpdate();
           setPlaceholderText(currentValue);
           setCurrentValue('');
           setList(tmpList);
@@ -126,6 +138,7 @@ function SelectFunc<T extends AnyObject>(
         e.preventDefault();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
+          popperUpdate();
           setPlaceholderText(currentValue);
           setCurrentValue('');
           setList(tmpList);
@@ -164,61 +177,47 @@ function SelectFunc<T extends AnyObject>(
         break;
       case 'Enter':
         e.preventDefault();
-        setShowOptions((pre) => !pre);
+        popperUpdate();
+        if (!disabled) setShowOptions((pre) => !pre);
 
         if (!showOptions) {
           setList(tmpList);
           setCurrentValue(selectedValue);
-        }
-
-        if (list && list.length > 0) {
+        } else {
           setCurrentValue(hoverText);
           setSelectedValue(hoverText);
-        } else {
-          setShowOptions(true);
-        }
-
-        if (inputRef.current?.selectionStart === 0 && selectedValue === hoverText) {
-          setPlaceholderText(selectedValue);
-          setCurrentValue(selectedValue);
         }
         break;
       case 'Backspace':
         setShowOptions(true);
         break;
       case 'Tab':
-        // console.log(inputFocus);
-        // if (inputFocus) {
-        // inputRef.current?.blur();
+        if (!disabled) {
+          setCurrentValue(selectedValue);
+        }
         setShowOptions(false);
-        // setInputFocus(false);
-        // } else {
-        //   setShowOptions(true);
-        //   setInputFocus(true);
-        // }
-
         break;
     }
   };
 
-  const iconClick = () => {
-    if (!disabled) {
-      // setInputFocus(true);
-      if (!showOptions) {
-        setShowOptions(true);
-        setList(tmpList);
-        setPlaceholderText(selectedValue);
+  const popperUpdate = () => {
+    void update?.();
+  };
 
-        setCurrentValue('');
-      } else {
-        if (list && list?.length === tmpList?.length) {
-          setShowOptions(false);
-          setCurrentValue(selectedValue);
-        }
-      }
-      inputRef.current?.focus();
+  const iconClick = () => {
+    if (!showOptions) {
+      popperUpdate();
+      setShowOptions(true);
+
+      setList(tmpList);
+      setPlaceholderText(selectedValue);
+
+      setCurrentValue('');
     } else {
-      inputRef.current?.blur();
+      if (list && list?.length === tmpList?.length) {
+        setShowOptions(false);
+        setCurrentValue(selectedValue);
+      }
     }
   };
 
@@ -228,6 +227,11 @@ function SelectFunc<T extends AnyObject>(
       setTmpList(options);
       if (hoverText === '') {
         setHoverText(options.length > 0 ? options[0].label : '');
+      }
+      if (defaultValue) {
+        const label = options?.filter((x) => x.value === defaultValue)[0].label;
+        setCurrentValue(label);
+        setSelectedValue(label);
       }
     } else {
       const key = displayLabel ?? 'label';
@@ -239,36 +243,21 @@ function SelectFunc<T extends AnyObject>(
       }));
       setList(temp);
       setTmpList(temp);
+      if (defaultValue) {
+        const label = temp?.filter((x) => x.value === defaultValue)[0].label;
+        setCurrentValue(label ?? '');
+        setSelectedValue(label ?? '');
+      }
+
       setHoverText(temp?.length ? temp[0].label : '');
     }
   }, []);
 
   useOutsideClick(selectRef, () => {
-    // setInputFocus(false);
     setShowOptions(false);
     setCurrentValue(selectedValue);
     inputRef.current?.blur();
   });
-
-  const referenceElement = useRef<HTMLDivElement>(null);
-  const { styles, attributes } = usePopper(
-    referenceElement.current,
-    popperElement.current,
-    {
-      placement: placement,
-
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: offset,
-          },
-        },
-      ],
-
-      strategy: 'fixed',
-    },
-  );
 
   useEffect(() => {
     setInit(true);
@@ -285,7 +274,6 @@ function SelectFunc<T extends AnyObject>(
       [selectClasses.status.error]: status === 'error' || isError,
       [selectClasses.status.warning]: status === 'warning',
     },
-    // inputFocus && !status ? selectClasses.focus.root : selectClasses.focus.focusNone,
     bordered === false
       ? selectClasses.bordered.borderedNone
       : selectClasses.bordered.root,
@@ -320,6 +308,7 @@ function SelectFunc<T extends AnyObject>(
             }
             inputRef.current = current;
           }}
+          autoComplete="off"
           onClick={iconClick}
           placeholder={placeholderText}
           type="text"
@@ -327,7 +316,8 @@ function SelectFunc<T extends AnyObject>(
             inputOnChange(e);
           }}
           onKeyDown={handleKeyArrow}
-          readOnly={!filterOption}
+          disabled={disabled}
+          readOnly={!filterOption || disabled}
           className={classNames({ [selectClasses.disabled]: disabled })}
           value={currentValue}
           suffix={
@@ -369,7 +359,6 @@ function SelectFunc<T extends AnyObject>(
                 : open && init
                   ? 'visible'
                   : 'hidden',
-            // margin: placement === 'left' || placement === 'right' ? '0 8px' : '8px 0',
           }}
           ref={popperElement}
           className={classNames(selectClasses.list.root)}
@@ -405,11 +394,9 @@ function SelectFunc<T extends AnyObject>(
                   key={x.label}
                   role="option"
                   onClick={(e) => {
-                    console.log(e);
                     e.stopPropagation();
                     e.preventDefault();
                     setShowOptions(true);
-                    // setInputFocus(true);
                   }}
                   style={{ cursor: 'not-allowed' }}
                   className={classNames(disabledLiClassName)}
