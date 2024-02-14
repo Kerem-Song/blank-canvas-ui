@@ -24,5 +24,3 @@ export const classes = {
 } as const;
 
 export const carouselClasses = attachPrefixClasses(classes, 'carousel', true);
-
-console.log('carouselClasses', carouselClasses);
