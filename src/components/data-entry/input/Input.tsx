@@ -120,7 +120,10 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   );
 
   const wrappedInput = (
-    <div className={inputWrapClassName}>
+    <div
+      className={inputWrapClassName}
+      onClick={() => !args.disabled && inputRef.current?.focus()}
+    >
       <div
         className={inputClasses.prefixWrapper}
         onClick={() => inputRef.current?.focus()}
