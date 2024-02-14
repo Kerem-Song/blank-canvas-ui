@@ -1,16 +1,15 @@
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { usePopper } from 'react-popper';
 import IcArrow from '@assets/icons/ic_select_arrow.svg?react';
 import { Input } from '@components/data-entry/input';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { AnyObject } from '@models/types/AnyObject';
-
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { usePopper } from 'react-popper';
 
 import { IMultipleSelectProp } from './Select.types';
 import { selectClasses } from './SelectClasses';
-import { remUtil } from '@modules/utils/rem';
 
 function MultiSelectFunc<T extends AnyObject>(
   props: IMultipleSelectProp<T>,
@@ -286,7 +285,12 @@ function MultiSelectFunc<T extends AnyObject>(
   );
 
   return (
-    <div className={rootClassName} ref={selectRef} onClick={iconClick}>
+    <div
+      className={rootClassName}
+      ref={selectRef}
+      onClick={iconClick}
+      // style={{ border: '1px solid' }}
+    >
       <div
         ref={referenceDiv}
         style={{

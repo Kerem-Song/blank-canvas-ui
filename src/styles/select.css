@@ -25,9 +25,6 @@ $(ns) {
     }
     &-referenceElement {
       @apply border-0 bg-white;
-      /* input {
-        @apply inline-block h-full w-full rounded-6 border-0 px-[8px] py-0 outline-none ring-opacity-0;
-      } */
 
       $(ns)-select-icon {
         @apply flex h-full w-[16px] cursor-pointer items-center;
@@ -38,7 +35,7 @@ $(ns) {
     }
 
     &-list {
-      @apply z-100 my-[8px]	rounded-6 border-solid border-gray-200 bg-white p-[5px] shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
+      @apply z-100 my-[8px]	rounded-[var(--bc-rounded)] border-solid border-gray-200 bg-white p-[5px] shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
 
       li:not(.bc-select-list-disabled) {
         @apply cursor-pointer;
@@ -47,35 +44,43 @@ $(ns) {
         @apply overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];
       }
       &-hover {
-        @apply rounded-6 bg-neutral-100;
+        @apply rounded-[var(--bc-rounded)] bg-neutral-100;
       }
       &-item {
-        @apply rounded-6 bg-blue-100 font-bold;
+        @apply rounded-[var(--bc-rounded)] bg-blue-100 font-bold;
       }
       &-disabled {
         @apply bg-[#fff];
       }
     }
     &-disabled {
-      @apply cursor-not-allowed rounded-6 bg-[#dbdbdb] text-[#b3b1b1];
+      @apply cursor-not-allowed rounded-[var(--bc-rounded)] bg-[#dbdbdb] text-[#b3b1b1];
+      input {
+        @apply cursor-not-allowed rounded-[var(--bc-rounded)] bg-[#dbdbdb] text-[#b3b1b1];
+      }
     }
 
     &-multiSelect {
+      height: var(--bc-control-height);
+      @apply rounded-[var(--bc-rounded)] border-[1px] border-solid;
+      $(ns)-select-referenceElement {
+        @apply flex h-full items-center justify-between rounded-[var(--bc-rounded)];
+      }
       &-tag {
         @apply ml-[2px] inline-flex cursor-default items-center rounded-4 border-[1px] border-solid border-transparent bg-gray-150 pe-[6px] ps-[6px] text-sm;
         &-area {
-          @apply flex p-[2px] ps-[4px];
+          @apply flex h-full p-[2px] ps-[4px];
         }
         &-closeIcon {
           @apply ms-[4px] cursor-pointer text-xs text-gray-300;
         }
       }
-      /* &-inputArea {
+      &-inputArea {
         @apply ml-[2px] flex;
-        /* input {
-          @apply inline-block w-[1px] p-0;
-        } 
-      } */
+        input {
+          @apply inline-block h-full w-[1px] border-0 p-0;
+        }
+      }
     }
   }
 }
