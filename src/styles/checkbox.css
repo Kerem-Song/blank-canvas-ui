@@ -15,12 +15,18 @@ $(ns) {
 
     /* input */
     $(ns)-input[type=checkbox] {
-      @apply absolute w-[1em] h-[1em] m-0 p-0 rounded-[var(--bc-rounded)] cursor-[inherit] appearance-none outline-offset-0;
+      @apply absolute w-[1em] h-[1em] m-0 p-0 rounded-sm cursor-[inherit] appearance-none outline-offset-0 bg-white;
       /* focus-visible:input-focus; */
     }
 
     svg {
-      @apply fill-current inline-block w-[1em] h-[1em] select-none;
+      @apply fill-current inline-block w-[1em] h-[1em] select-none; 
+    }
+
+    &:has(.use-icon) {
+      $(ns)-input[type=checkbox] {
+        @apply bg-transparent;
+      }
     }
   }
 
