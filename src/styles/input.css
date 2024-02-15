@@ -19,7 +19,7 @@ $(ns) {
       @apply w-full grow placeholder:not-italic placeholder:text-[var(bc-placeholder-text-color)] focus:outline-none;
 
       &:disabled {
-        @apply bg-[var(--bc-disable-background)] text-[var(--bc-disable-text-color)];
+        @apply text-[var(--bc-disable-text-color)];
       }
     }
 
