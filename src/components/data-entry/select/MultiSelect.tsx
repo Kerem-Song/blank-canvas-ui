@@ -444,7 +444,6 @@ function MultiSelectFunc<T extends AnyObject>(
                   role="option"
                   key={x.label}
                   onClick={(e) => {
-                    console.log(e);
                     onChangeCurrentValue(e);
                   }}
                   onMouseEnter={(e) => {
