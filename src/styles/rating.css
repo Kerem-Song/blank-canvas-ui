@@ -39,7 +39,7 @@ $(ns) {
   &-iconEmpty {
     svg {
       @apply
-        text-[rgba(0,0,0,0.26)];
+        text-[var(--bc-border-color)];
     }
   }
 
