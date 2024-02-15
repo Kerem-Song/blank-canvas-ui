@@ -127,9 +127,9 @@ function MultiSelectFunc<T extends AnyObject>(
     switch (e.code) {
       case 'ArrowDown':
         e.preventDefault();
+        popperUpdate();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
-          popperUpdate();
           break;
         }
 
@@ -151,9 +151,9 @@ function MultiSelectFunc<T extends AnyObject>(
         break;
       case 'ArrowUp':
         e.preventDefault();
+        popperUpdate();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
-          popperUpdate();
           break;
         }
         setIndexNum((idx) => idx - 1);
@@ -181,12 +181,17 @@ function MultiSelectFunc<T extends AnyObject>(
         setShowOptions(false);
         break;
       case 'Enter':
-        if (list && list.length > 0) {
-          onChangeValue(hoverText);
-          setSearchKeyword('');
-          setList(tmpList);
-          popperUpdate();
+        e.preventDefault();
+        if (!showOptions) {
+          setShowOptions(true);
+        } else {
+          if (list && list.length > 0) {
+            onChangeValue(hoverText);
+            setSearchKeyword('');
+            setList(tmpList);
+          }
         }
+        popperUpdate();
         break;
       case 'Backspace':
         if (!searchKeyword) {
@@ -299,10 +304,14 @@ function MultiSelectFunc<T extends AnyObject>(
       [selectClasses.status.error]: status === 'error' || isError,
       [selectClasses.status.warning]: status === 'warning',
     },
-    inputFocus && !status ? selectClasses.focus.root : selectClasses.focus.focusNone,
+
     bordered === false
       ? selectClasses.bordered.borderedNone
       : selectClasses.bordered.root,
+  );
+
+  const focusClassName = classNames(
+    inputFocus && !status ? selectClasses.focus.root : selectClasses.focus.focusNone,
   );
 
   const disabledLiClassName = classNames(
@@ -313,10 +322,9 @@ function MultiSelectFunc<T extends AnyObject>(
 
   return (
     <div
-      className={rootClassName}
+      className={classNames(rootClassName, focusClassName)}
       ref={selectRef}
       onClick={iconClick}
-      // style={{ border: '1px solid' }}
     >
       <div
         ref={referenceDiv}
@@ -361,6 +369,12 @@ function MultiSelectFunc<T extends AnyObject>(
                 }
                 inputRef.current = current;
               }}
+              onFocus={() => setInputFocus(true)}
+              onBlur={() => {
+                setInputFocus(false);
+                setShowOptions(false);
+              }}
+              disabled={disabled}
               onChange={inputOnChange}
               onKeyDown={handleKeyArrow}
               useFocus={false}
@@ -381,7 +395,9 @@ function MultiSelectFunc<T extends AnyObject>(
         {suffixIcon ? (
           <div
             className={classNames(
-              disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
+              disabled
+                ? selectClasses.multiSelect.icon.disabled
+                : selectClasses.multiSelect.icon.root,
             )}
           >
             {suffixIcon}
@@ -389,7 +405,9 @@ function MultiSelectFunc<T extends AnyObject>(
         ) : (
           <div
             className={classNames(
-              disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
+              disabled
+                ? selectClasses.multiSelect.icon.disabled
+                : selectClasses.multiSelect.icon.root,
             )}
           >
             <IcArrow />
@@ -424,6 +442,7 @@ function MultiSelectFunc<T extends AnyObject>(
                   role="option"
                   key={x.label}
                   onClick={(e) => {
+                    console.log(e);
                     onChangeCurrentValue(e);
                   }}
                   onMouseEnter={(e) => {

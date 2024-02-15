@@ -6,6 +6,10 @@ $(ns) {
     &-placeholder {
       @apply text-[#b3b1b1];
     }
+    &-focus {
+      @apply border-[var(--bc-primary-color-main)] ring-2 ring-[var(--bc-primary-color-light)];
+      @apply text-[#b3b1b1];
+    }
     &-focus-none {
       @apply ring-2 ring-blue-500/0;
     }
@@ -30,7 +34,7 @@ $(ns) {
         @apply flex h-full w-[16px] cursor-pointer items-center;
       }
       $(ns)-select-icon-disabled {
-        @apply mr-[4px] cursor-not-allowed;
+        @apply cursor-not-allowed;
       }
     }
 
@@ -54,26 +58,36 @@ $(ns) {
       }
     }
     &-disabled {
-      @apply cursor-not-allowed rounded-[var(--bc-rounded)] bg-[#dbdbdb] text-[#b3b1b1];
+      @apply cursor-not-allowed rounded-[var(--bc-rounded)] bg-[var(--bc-disable-background)] text-[var(--bc-disable-text-color)];
       input {
-        @apply cursor-not-allowed rounded-[var(--bc-rounded)] bg-[#dbdbdb] text-[#b3b1b1];
+        @apply cursor-not-allowed rounded-[var(--bc-rounded)];
+      }
+      svg {
+        @apply cursor-not-allowed;
       }
     }
 
     &-multiSelect {
       height: var(--bc-control-height);
       @apply rounded-[var(--bc-rounded)] border-[1px] border-solid;
+
       $(ns)-select-referenceElement {
         @apply flex h-full items-center justify-between rounded-[var(--bc-rounded)];
       }
       &-tag {
-        @apply ml-[2px] inline-flex cursor-default items-center rounded-4 border-[1px] border-solid border-transparent bg-gray-150 pe-[6px] ps-[6px] text-sm;
+        @apply ml-[2px] inline-flex cursor-default items-center rounded-4 border-[1px] border-solid border-transparent bg-gray-150 pe-[6px] ps-[6px] text-sm text-xs text-gray-300;
         &-area {
           @apply flex h-full p-[2px] ps-[4px];
         }
         &-closeIcon {
           @apply ms-[4px] cursor-pointer text-xs text-gray-300;
         }
+      }
+      &-icon {
+        @apply mr-[4px] flex h-full w-[16px] cursor-pointer items-center;
+      }
+      &-icon-disabled {
+        @apply mr-[8px] cursor-not-allowed;
       }
       &-inputArea {
         @apply ml-[2px] flex;

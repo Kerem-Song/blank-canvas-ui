@@ -37,6 +37,10 @@ const classes = {
       closeIcon: 'closeIcon',
     },
     inputArea: 'inputArea',
+    icon: {
+      root: '',
+      disabled: 'disabled',
+    },
   },
 };
 export const selectClasses = attachPrefixClasses(classes, 'select');
