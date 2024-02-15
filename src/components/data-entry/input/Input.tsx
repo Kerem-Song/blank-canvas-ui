@@ -135,14 +135,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
         {customPrefix}
       </div>
       <div className="grow">{input}</div>
-      <div
-        className={inputClasses.suffixWrapper}
-        onClick={(e) => {
-          !args.disabled && inputRef.current?.focus();
-          args.disabled && e.preventDefault();
-        }}
-        data-disabled={args.disabled}
-      >
+      <div className={inputClasses.suffixWrapper}>
         {showCount && direction === 'inside' ? (
           <span className={inputClasses.count}>
             <>
@@ -191,7 +184,16 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
             <div className={inputClasses.button.clear} />
           </Button>
         ) : null}
-        {suffix}
+        <div
+          className="suffix"
+          onClick={(e) => {
+            !args.disabled && inputRef.current?.focus();
+            args.disabled && e.preventDefault();
+          }}
+          data-disabled={args.disabled}
+        >
+          {suffix}
+        </div>
       </div>
     </div>
   );

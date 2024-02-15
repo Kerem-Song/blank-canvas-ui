@@ -7,6 +7,18 @@ $(ns) {
 
     .bc-input-suffix-wrapper {
       @apply flex items-center pl-[var(--bc-control-gap)] text-end;
+
+      .suffix {
+        &[data-disabled='true'] {
+          @apply pointer-events-none cursor-not-allowed;
+        }
+      }
+    }
+
+    .bc-input-prefix-wrapper {
+      &[data-disabled='true'] {
+        @apply pointer-events-none cursor-not-allowed;
+      }
     }
 
     &.bc-input-has-custom-prefix {

@@ -297,7 +297,7 @@ function App() {
           maxLength={10}
           // customPrefix={'{{'}
         />
-        <Input showCount maxLength={10} suffix={'a'} readOnly={true} />
+        <Input showCount maxLength={10} customPrefix={<IcImg2 />} disabled={true} />
         <Textarea />
         <input placeholder="asdf" readOnly={true} />
       </div>
