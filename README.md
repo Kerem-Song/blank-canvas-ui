@@ -19,7 +19,7 @@ TailwindCss
   /* 기본 외곽선 색 */
   --bc-border-color: #cccccc;
   --bc-border-width: 1px;
-  --bc-rounded: 6px;
+  --bc-rounded: 8px;
 
   --bc-control-height: 32px;
   --bc-control-gap: 4px;

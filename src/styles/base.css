@@ -13,7 +13,8 @@ textarea {
   /* 기본 외곽선 색 */
   --bc-border-color: #cccccc;
   --bc-border-width: 1px;
-  --bc-rounded: 6px;
+  --bc-rounded: 8px;
+  --bc-rounded-lg: 12px;
 
   --bc-control-height: 32px;
   --bc-control-gap: 4px;
@@ -50,7 +51,7 @@ textarea {
   --bc-dark-color-light: #424649;
   --bc-dark-color-dark: #222222;
 
-  --bc-disable-background: #F7F7FA;
+  --bc-disable-background: #f7f7fa;
   --bc-disable-text-color: #dcdcdc;
   --bc-disable-border-color: #dcdcdc;
   --bc-disable-cursor: not-allowed;
