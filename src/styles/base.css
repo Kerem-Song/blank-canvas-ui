@@ -51,9 +51,9 @@ textarea {
   --bc-dark-color-light: #424649;
   --bc-dark-color-dark: #222222;
 
-  --bc-disable-background: #8c8c9c1f;
-  --bc-disable-text-color: #3c3c4333;
-  --bc-disable-border-color: #8c8c9c1f;
+  --bc-disable-background: #f7f7fa;
+  --bc-disable-text-color: #dcdcdc;
+  --bc-disable-border-color: #dcdcdc;
   --bc-disable-cursor: not-allowed;
   --bc-disable-opacity: 0.25;
 
@@ -61,6 +61,6 @@ textarea {
   --bc-focus-outline-offset: 2px;
   --bc-focus-outline-color: #3b82f6;
 
-  --bc-placeholder-text-color: #3c3c4333;
+  --bc-placeholder-text-color: #dcdcdc;
   --bc-placeholder-font-weight: 500;
 }
