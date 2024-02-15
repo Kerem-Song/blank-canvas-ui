@@ -13,6 +13,7 @@ textarea {
   /* 기본 외곽선 색 */
   --bc-border-color: #cccccc;
   --bc-border-width: 1px;
+  --bc-rounded-sm: 4px;
   --bc-rounded: 8px;
   --bc-rounded-lg: 12px;
 
