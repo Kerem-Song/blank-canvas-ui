@@ -216,18 +216,20 @@ function SelectFunc<T extends AnyObject>(
   };
 
   const iconClick = () => {
-    if (!showOptions) {
-      popperUpdate();
-      setShowOptions(true);
+    if (!disabled) {
+      if (!showOptions) {
+        popperUpdate();
+        setShowOptions(true);
 
-      setList(tmpList);
-      setPlaceholderText(selectedValue);
+        setList(tmpList);
+        setPlaceholderText(selectedValue);
 
-      setCurrentValue('');
-    } else {
-      if (list && list?.length === tmpList?.length) {
-        setShowOptions(false);
-        setCurrentValue(selectedValue);
+        setCurrentValue('');
+      } else {
+        if (list && list?.length === tmpList?.length) {
+          setShowOptions(false);
+          setCurrentValue(selectedValue);
+        }
       }
     }
   };
@@ -281,7 +283,6 @@ function SelectFunc<T extends AnyObject>(
   const selectClassName = classNames(
     selectClasses.referenceElement,
     {
-      [selectClasses.disabled]: disabled,
       [selectClasses.status.error]: status === 'error' || isError,
       [selectClasses.status.warning]: status === 'warning',
     },
