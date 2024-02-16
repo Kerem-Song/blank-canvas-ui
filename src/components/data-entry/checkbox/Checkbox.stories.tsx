@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
-import * as React from 'react';
 
 import { Checkbox } from './Checkbox';
 import { CheckboxProps } from './Checkbox.types';

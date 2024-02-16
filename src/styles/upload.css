@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-upload {
-    @apply cursor-pointer;
+    @apply cursor-pointer bg-white;
 
     &:hover {
       @apply border-[length:var(--bc-border-width)] border-dashed border-[var(--bc-primary-color-main)] text-[var(--bc-primary-color-main)];
@@ -17,7 +17,7 @@ $(ns) {
     }
 
     &-shape-button {
-      @apply flex justify-center items-center p-4pxr rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-gray-color-light)];
+      @apply flex items-center justify-center rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-gray-color-light)] p-4pxr;
 
       &.prefix-text {
         @apply text-14pxr;
@@ -26,10 +26,10 @@ $(ns) {
 
     &-shape-area,
     &-shape-drag {
-      @apply flex justify-center items-center w-full border-[length:var(--bc-border-width)] rounded-[var(--bc-rounded)] border-[var(--bc-gray-color-light)] bg-no-repeat bg-center;
+      @apply flex w-full items-center justify-center rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-gray-color-light)] bg-center bg-no-repeat;
 
       .bc-upload-suffix-icon {
-        @apply flex justify-center items-center;
+        @apply flex items-center justify-center;
       }
 
       &:hover {
