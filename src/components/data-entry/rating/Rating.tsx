@@ -1,15 +1,15 @@
-import '@styles/rating.css';
-
+import * as React from 'react';
 import StarIcon from '@assets/icons/ic_star.svg?react';
 import StarBorderIcon from '@assets/icons/ic_star_border.svg?react';
 import { useControlled } from '@hooks/useControlled';
 import { composeRef } from '@modules/utils/composeRef/composeRef';
 import classNames from 'classnames';
-import * as React from 'react';
 
 import { RatingProps } from './Rating.types';
 import { ratingClasses as classes } from './ratingClasses';
 import { RatingItem } from './RatingItem';
+
+import '@styles/rating.css';
 
 /**
  * `precision` 에 따라 가장 가까운 숫자 찾기.
@@ -23,7 +23,7 @@ function roundValueToPrecision(value: number | null, precision: number) {
   return Number(nearest.toFixed(decimalPart));
 }
 
-const starBorderIcon = <StarBorderIcon color="rgba(0, 0, 0, 0.26)" />;
+const starBorderIcon = <StarBorderIcon color="rgb(204, 204, 204)" />;
 const starIcon = <StarIcon color="rgb(250, 175, 0)" />;
 
 export const Rating = React.forwardRef(function Rating(

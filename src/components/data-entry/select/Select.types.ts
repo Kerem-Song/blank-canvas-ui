@@ -33,12 +33,12 @@ export interface ISelectProp<T extends object>
    * @type boolean
    */
   open?: boolean;
-  /**
-   * select 오류 또는 경고를 테두리 색으로 표시
-   * @default
-   * @type 'error' | 'warning'
-   */
-  status?: 'error' | 'warning';
+  // /**
+  //  * select 오류 또는 경고를 테두리 색으로 표시
+  //  * @default
+  //  * @type 'error' | 'warning'
+  //  */
+  // status?: 'error' | 'warning';
   /**
    * select 오른쪽 끝 화살표 대신 아이콘 삽입
    * @default

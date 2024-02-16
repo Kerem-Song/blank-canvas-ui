@@ -202,6 +202,10 @@ function MultiSelectFunc<T extends AnyObject>(
           }
         }
         break;
+      case 'Tab':
+        setInputFocus(false);
+        setShowOptions(false);
+        break;
     }
   };
   const iconClick = () => {
@@ -236,8 +240,10 @@ function MultiSelectFunc<T extends AnyObject>(
         )
       : [];
     setList(searchList);
-    const findNum = searchList.findIndex((x) => !x.disabled);
-    setHoverText(findNum !== -1 ? searchList[findNum].label : '');
+
+    setHoverText(searchList?.length ? searchList[0].label : '');
+    // const findNum = searchList.findIndex((x) => !x.disabled);
+    // setHoverText(findNum !== -1 ? searchList[findNum].label : '');
   };
 
   const selectedClass = (x: string, y?: boolean) => {
@@ -370,10 +376,6 @@ function MultiSelectFunc<T extends AnyObject>(
                 inputRef.current = current;
               }}
               onFocus={() => setInputFocus(true)}
-              onBlur={() => {
-                setInputFocus(false);
-                setShowOptions(false);
-              }}
               disabled={disabled}
               onChange={inputOnChange}
               onKeyDown={handleKeyArrow}
@@ -442,7 +444,6 @@ function MultiSelectFunc<T extends AnyObject>(
                   role="option"
                   key={x.label}
                   onClick={(e) => {
-                    console.log(e);
                     onChangeCurrentValue(e);
                   }}
                   onMouseEnter={(e) => {

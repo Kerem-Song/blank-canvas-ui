@@ -28,7 +28,7 @@ $(ns) {
       @apply border-none;
     }
     &-referenceElement {
-      @apply border-0 bg-white;
+      @apply border-0;
 
       $(ns)-select-icon {
         @apply flex h-full w-[16px] cursor-pointer items-center;
@@ -69,7 +69,7 @@ $(ns) {
 
     &-multiSelect {
       height: var(--bc-control-height);
-      @apply rounded-[var(--bc-rounded)] border-[1px] border-solid;
+      @apply rounded-[var(--bc-rounded)] border-[1px] border-solid bg-white;
 
       $(ns)-select-referenceElement {
         @apply flex h-full items-center justify-between rounded-[var(--bc-rounded)];
