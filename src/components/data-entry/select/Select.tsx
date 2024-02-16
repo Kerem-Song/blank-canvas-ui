@@ -25,7 +25,7 @@ function SelectFunc<T extends AnyObject>(
     placement = 'bottom',
     open,
     offset = [0, 0],
-    status,
+    // status,
     suffixIcon,
     options,
     displayLabel,
@@ -280,12 +280,8 @@ function SelectFunc<T extends AnyObject>(
     [selectClasses.placeholder]: placeholder && currentValue === '',
   });
 
-  const selectClassName = classNames(
+  const borderClassName = classNames(
     selectClasses.referenceElement,
-    {
-      [selectClasses.status.error]: status === 'error' || isError,
-      [selectClasses.status.warning]: status === 'warning',
-    },
     bordered === false
       ? selectClasses.bordered.borderedNone
       : selectClasses.bordered.root,
@@ -305,7 +301,7 @@ function SelectFunc<T extends AnyObject>(
           ...style,
           width,
         }}
-        className={classNames(selectClassName, className)}
+        className={classNames(className, borderClassName)}
         onClick={iconClick}
       >
         <Input
@@ -332,6 +328,7 @@ function SelectFunc<T extends AnyObject>(
           readOnly={!filterOption || disabled}
           className={classNames({ [selectClasses.disabled]: disabled })}
           value={currentValue}
+          isError={isError}
           suffix={
             suffixIcon ? (
               <div
