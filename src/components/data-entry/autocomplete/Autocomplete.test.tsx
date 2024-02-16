@@ -1,8 +1,9 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import { inputClasses } from '../input/InputClasses';
-import { Autocomplete } from '.';
+
 import { autoCompleteClasses } from './AutocompleteClasses';
+import { Autocomplete } from '.';
 
 const items = [
   { label: 'label1', value: 'value1' },

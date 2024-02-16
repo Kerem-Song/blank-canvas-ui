@@ -1,9 +1,9 @@
-import classNames from 'classnames';
 import { forwardRef, useCallback, useState } from 'react';
+import classNames from 'classnames';
 
-import { Textarea } from '.';
 import { textareaClasses } from './TextareaClasses';
 import { TitleCounterProps } from './TextareaWithTitleCounter.types';
+import { Textarea } from '.';
 
 export const TextAreaWithTitleCounter = forwardRef<
   HTMLTextAreaElement,
@@ -25,6 +25,7 @@ export const TextAreaWithTitleCounter = forwardRef<
   const rootClassName = classNames(textareaClasses.wrapper, args.className, 'group');
   const textareaClassName = classNames(textareaClasses.root, args.className, {
     invalid: isError,
+    'group-focus-within:border-[var(--bc-primary-color-main)]': direction !== 'inside',
   });
 
   const handleTextArea = useCallback(
@@ -56,10 +57,10 @@ export const TextAreaWithTitleCounter = forwardRef<
         className={classNames(
           `${textareaClasses.titleCounterWrapper} ${direction}`,
           { invalid: isError },
-          'ring-[var(--bc-primary-color-main)] group-focus-within:ring-2',
+          'ring-[var(--bc-primary-color-light)] group-focus-within:border-[var(--bc-primary-color-main)] group-focus-within:ring-2',
         )}
       >
-        <Textarea           
+        <Textarea
           {...inputProps}
           className={classNames(textareaClassName)}
           onChange={handleTextArea}
@@ -69,7 +70,7 @@ export const TextAreaWithTitleCounter = forwardRef<
           readOnly={readOnly}
           autoComplete={args.autoComplete ? 'true' : 'false'}
           disabled={args.disabled}
-          isError={isError}  
+          isError={isError}
           style={style}
           direction={direction}
         />

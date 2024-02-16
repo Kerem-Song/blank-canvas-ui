@@ -133,37 +133,37 @@ export const Open: Story = {
   },
 };
 
-export const Status: Story = {
-  render: (args) => {
-    return (
-      <div style={{ height: 100, border: '1px solid' }}>
-        <Flex
-          style={{ height: 100, border: '1px solid' }}
-          justify="space-around"
-          align="center"
-        >
-          <Select
-            options={args.options}
-            status="error"
-            placeholder="status error"
-          ></Select>
-          <Select
-            options={args.options}
-            status="warning"
-            placeholder="status warning"
-          ></Select>
-        </Flex>
-      </div>
-    );
-  },
-  args: {
-    options: [
-      { label: 'label1', value: 'value1' },
-      { label: 'label2', value: 'value2' },
-      { label: 'label3', value: 'value3' },
-    ],
-  },
-};
+// export const Status: Story = {
+//   render: (args) => {
+//     return (
+//       <div style={{ height: 100, border: '1px solid' }}>
+//         <Flex
+//           style={{ height: 100, border: '1px solid' }}
+//           justify="space-around"
+//           align="center"
+//         >
+//           <Select
+//             options={args.options}
+//             status="error"
+//             placeholder="status error"
+//           ></Select>
+//           <Select
+//             options={args.options}
+//             status="warning"
+//             placeholder="status warning"
+//           ></Select>
+//         </Flex>
+//       </div>
+//     );
+//   },
+//   args: {
+//     options: [
+//       { label: 'label1', value: 'value1' },
+//       { label: 'label2', value: 'value2' },
+//       { label: 'label3', value: 'value3' },
+//     ],
+//   },
+// };
 
 export const Placeholder: Story = {
   render: (args) => {

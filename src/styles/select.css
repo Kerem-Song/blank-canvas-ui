@@ -1,47 +1,45 @@
 $ns: .bc;
 $(ns) {
   &-select {
-    @apply inline-flex h-[30px] cursor-pointer;
+    @apply inline-block cursor-pointer;
 
     &-placeholder {
-      @apply font-[var(--bc-placeholder-font-weight)] text-[var(--bc-placeholder-text-color)];
+      @apply text-[#b3b1b1];
     }
     &-focus {
-      @apply border-[var(--bc-focus-outline-color)] outline-offset-[var(--bc-focus-outline-offset)] outline-[var(--bc-focus-outline-color)];
+      @apply border-[var(--bc-primary-color-main)] ring-2 ring-[var(--bc-primary-color-light)];
+      @apply text-[#b3b1b1];
     }
     &-focus-none {
-      @apply border-[var(--bc-focus-outline-color/0)];
+      @apply ring-2 ring-blue-500/0;
     }
     &-status {
       &-error {
-        @apply border-[var(--bc-error-color-main)];
+        @apply ring-2 ring-error-main;
       }
       &-warning {
-        @apply border-[var(--bc-warning-color-main)];
+        @apply ring-2 ring-yellow-500 ring-opacity-90;
       }
     }
     &-bordered {
-      @apply border-[length:var(--bc-border-width)] border-solid;
+      @apply border-[1px] border-solid;
     }
     &-bordered-none {
       @apply border-none;
     }
     &-referenceElement {
-      @apply flex h-full items-center justify-between rounded-[var(--bc-rounded)] bg-white;
-      input {
-        @apply inline-block h-full w-full rounded-[var(--bc-rounded)] border-0 px-[8px] py-0 outline-none ring-opacity-0;
-      }
+      @apply border-0;
 
       $(ns)-select-icon {
-        @apply mx-[5px] flex h-full w-[16px] cursor-pointer items-center;
+        @apply flex h-full w-[16px] cursor-pointer items-center;
       }
       $(ns)-select-icon-disabled {
-        @apply mr-[4px] cursor-not-allowed;
+        @apply cursor-not-allowed;
       }
     }
 
     &-list {
-      @apply my-[8px]	rounded-[var(--bc-rounded)] border-solid border-gray-200 bg-white p-[5px] shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
+      @apply z-100 my-[8px]	rounded-[var(--bc-rounded)] border-solid border-gray-200 bg-white p-[5px] shadow-[0_0_20px_0_rgba(0,0,0,0.15)];
 
       li:not(.bc-select-list-disabled) {
         @apply cursor-pointer;
@@ -56,27 +54,45 @@ $(ns) {
         @apply rounded-[var(--bc-rounded)] bg-blue-100 font-bold;
       }
       &-disabled {
-        @apply bg-[var(--bc-disable-background)];
+        @apply bg-[#fff];
       }
     }
     &-disabled {
-      @apply cursor-[var(--bc-disable-cursor)] rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-[var(--bc-disable-border-color)] bg-[var(--bc-disable-background)] text-[var(--bc-disable-text-color)];
+      @apply cursor-not-allowed rounded-[var(--bc-rounded)] bg-[var(--bc-disable-background)] text-[var(--bc-disable-text-color)];
+      input {
+        @apply cursor-not-allowed rounded-[var(--bc-rounded)];
+      }
+      svg {
+        @apply cursor-not-allowed;
+      }
     }
 
     &-multiSelect {
+      height: var(--bc-control-height);
+      @apply rounded-[var(--bc-rounded)] border-[1px] border-solid bg-white;
+
+      $(ns)-select-referenceElement {
+        @apply flex h-full items-center justify-between rounded-[var(--bc-rounded)];
+      }
       &-tag {
-        @apply ml-[2px] inline-flex cursor-default items-center rounded-4 border-[1px] border-solid border-transparent bg-gray-150 pe-[6px] ps-[6px] text-sm;
+        @apply ml-[2px] inline-flex cursor-default items-center rounded-4 border-[1px] border-solid border-transparent bg-gray-150 pe-[6px] ps-[6px] text-sm text-xs text-gray-300;
         &-area {
-          @apply flex p-[2px] ps-[4px];
+          @apply flex h-full p-[2px] ps-[4px];
         }
         &-closeIcon {
           @apply ms-[4px] cursor-pointer text-xs text-gray-300;
         }
       }
+      &-icon {
+        @apply mr-[4px] flex h-full w-[16px] cursor-pointer items-center;
+      }
+      &-icon-disabled {
+        @apply mr-[8px] cursor-not-allowed;
+      }
       &-inputArea {
         @apply ml-[2px] flex;
         input {
-          @apply inline-block w-[1px] p-0;
+          @apply inline-block h-full w-[1px] border-0 p-0;
         }
       }
     }

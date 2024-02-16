@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { forwardRef, useRef, useState } from 'react';
+import classNames from 'classnames';
 
 import { Input } from './Input';
 import { inputClasses } from './InputClasses';
@@ -33,7 +33,7 @@ export const InputWithTitleCounter = forwardRef<
   } = args;
 
   return (
-    <div>
+    <div className="inline-block">
       {direction !== 'bottom' ? (
         <div className={inputClasses.titleCounterWrapper}>
           <span className={classNames(inputClasses.label, { light: isLight })}>

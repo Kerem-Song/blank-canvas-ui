@@ -13,14 +13,14 @@ $(ns) {
   }
 
   &-tooltip {
-    @apply text-start flex items-center bg-white font-bold text-red-950 py-[5px] px-[10px] rounded-4;
+    @apply z-100 flex items-center rounded-4 bg-white px-[10px] py-[5px] text-start font-bold text-red-950;
 
     &-arrow {
       @apply invisible;
 
       &,
       &::before {
-        @apply absolute w-[8px] h-[8px] bg-inherit;
+        @apply absolute h-[8px] w-[8px] bg-inherit;
       }
 
       &::before {

@@ -14,7 +14,7 @@ const rem = (arrLength, multiple = 1) =>
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: ['class', '[data-mode="dark"]'],
+  darkMode: ['class'],
   theme: {
     extend: {
       screens: {

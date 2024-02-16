@@ -1,7 +1,8 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
 
 export interface ISelectProp<T extends object>
-  extends InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> {
+  onChange?: (value: string | null) => void;
   /**
    * select의 선 표시 여부
    * @default false
@@ -32,12 +33,12 @@ export interface ISelectProp<T extends object>
    * @type boolean
    */
   open?: boolean;
-  /**
-   * select 오류 또는 경고를 테두리 색으로 표시
-   * @default
-   * @type 'error' | 'warning'
-   */
-  status?: 'error' | 'warning';
+  // /**
+  //  * select 오류 또는 경고를 테두리 색으로 표시
+  //  * @default
+  //  * @type 'error' | 'warning'
+  //  */
+  // status?: 'error' | 'warning';
   /**
    * select 오른쪽 끝 화살표 대신 아이콘 삽입
    * @default
@@ -113,7 +114,8 @@ export interface ISelectProp<T extends object>
 }
 
 export interface IMultipleSelectProp<T extends object>
-  extends Omit<ISelectProp<T>, 'defaultValue' | 'filterOption'> {
+  extends Omit<ISelectProp<T>, 'defaultValue' | 'filterOption' | 'onChange'> {
+  onChange?: (value: string[] | null) => void;
   /**
    * select default 값 지정
    * @default

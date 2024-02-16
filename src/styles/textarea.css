@@ -2,19 +2,19 @@ $ns: .bc;
 
 $(ns) {
   &-textarea {
-    @apply rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] w-full resize-none;
+    @apply w-full resize-none rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)];
 
     &.invalid {
-      @apply border-[var(--bc-error-color-main)];
+      @apply border-[var(--bc-error-color-main)] ring-2 ring-[var(--bc-error-color-light)];
     }
 
     &-border:focus {
-      @apply ring-2 ring-[var(--bc-primary-color-main)];
+      @apply border-[length:var(--bc-border-width)] border-[var(--bc-primary-color-main)] ring-2 ring-[var(--bc-primary-color-light)];
     }
   }
 
   &-textarea-title-counter-wrapper {
-    @apply rounded-[var(--bc-rounded)] flex justify-between items-center w-full resize-none;
+    @apply flex w-full resize-none items-center justify-between rounded-[var(--bc-rounded)];
 
     .bc-textarea-label {
       @apply font-semibold;
@@ -25,7 +25,7 @@ $(ns) {
     }
 
     &.inside {
-      @apply block border-solid border-[length:var(--bc-border-width)] border-[var(--bc-border-color)] text-right;
+      @apply block border-[length:var(--bc-border-width)] border-[var(--bc-border-color)] bg-white text-right;
 
       &:has(textarea:disabled) {
         @apply bg-[var(--bc-disable-background)];
@@ -36,11 +36,11 @@ $(ns) {
       }
 
       .bc-textarea-counter {
-        @apply pr-10pxr py-2pxr;
+        @apply py-2pxr pr-10pxr;
       }
 
       textarea {
-        @apply border-transparent focus-visible:border-transparent focus:outline-none;
+        @apply border-transparent focus:outline-none focus-visible:border-transparent;
       }
     }
   }

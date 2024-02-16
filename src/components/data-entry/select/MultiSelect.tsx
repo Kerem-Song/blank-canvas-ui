@@ -1,22 +1,22 @@
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { usePopper } from 'react-popper';
 import IcArrow from '@assets/icons/ic_select_arrow.svg?react';
 import { Input } from '@components/data-entry/input';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { AnyObject } from '@models/types/AnyObject';
-
+import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { usePopper } from 'react-popper';
 
 import { IMultipleSelectProp } from './Select.types';
 import { selectClasses } from './SelectClasses';
-import { remUtil } from '@modules/utils/rem';
 
 function MultiSelectFunc<T extends AnyObject>(
   props: IMultipleSelectProp<T>,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const {
+    onChange,
     bordered,
     defaultOpen,
     defaultValue,
@@ -59,45 +59,66 @@ function MultiSelectFunc<T extends AnyObject>(
   const inputRef = useRef<HTMLInputElement | null>(null);
   const popperUl = useRef<HTMLUListElement>(null);
   const referenceDiv = useRef<HTMLDivElement>(null);
-  const { styles, attributes } = usePopper(referenceDiv.current, popperUl.current, {
-    placement: placement,
+  const { styles, attributes, update } = usePopper(
+    referenceDiv.current,
+    popperUl.current,
+    {
+      placement: placement,
 
-    modifiers: [
-      {
-        name: 'offset',
-        options: {
-          offset: offset,
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: offset,
+          },
         },
-      },
-    ],
+      ],
 
-    strategy: 'fixed',
-  });
+      strategy: 'fixed',
+    },
+  );
+
+  const popperUpdate = () => {
+    void update?.();
+  };
 
   const onChangeCurrentValue = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     const text = (e.target as HTMLElement).innerText;
-    onChange(text);
+    onChangeValue(text);
     inputRef.current?.focus();
   };
 
-  const onChange = (text: string) => {
+  const findUserValue = (value: string[]) => {
+    const result: string[] = [];
+    list
+      ?.filter((x) => {
+        return value.includes(x.label);
+      })
+      .map((x) => result.push(x.value));
+    onChange?.(result ?? null);
+  };
+
+  const onChangeValue = (text: string) => {
     if (text === '') {
       return;
     }
     if (Array.isArray(currentValue) && currentValue.length >= 0) {
       if (currentValue.includes(text)) {
-        setCurrentValue(
-          currentValue.filter(
-            (value: string) => value.toLowerCase() !== text.toLowerCase(),
-          ),
+        const value: string[] = currentValue.filter(
+          (value: string) => value.toLowerCase() !== text.toLowerCase(),
         );
+        findUserValue(value);
+        setCurrentValue(value);
       } else {
         if ((limitNumber && limitNumber > currentValue.length) || !limitNumber) {
-          setCurrentValue([...currentValue, text]);
+          const value: string[] = [...currentValue, text];
+          setCurrentValue(value);
+          findUserValue(value);
         }
       }
     }
+    popperUpdate();
   };
 
   const handleKeyArrow = (e: React.KeyboardEvent) => {
@@ -106,6 +127,7 @@ function MultiSelectFunc<T extends AnyObject>(
     switch (e.code) {
       case 'ArrowDown':
         e.preventDefault();
+        popperUpdate();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
           break;
@@ -129,6 +151,7 @@ function MultiSelectFunc<T extends AnyObject>(
         break;
       case 'ArrowUp':
         e.preventDefault();
+        popperUpdate();
         if (!showOptions) {
           setShowOptions((pre) => !pre);
           break;
@@ -158,20 +181,30 @@ function MultiSelectFunc<T extends AnyObject>(
         setShowOptions(false);
         break;
       case 'Enter':
-        if (list && list.length > 0) {
-          onChange(hoverText);
-          setSearchKeyword('');
-          setList(tmpList);
+        e.preventDefault();
+        if (!showOptions) {
+          setShowOptions(true);
+        } else {
+          if (list && list.length > 0) {
+            onChangeValue(hoverText);
+            setSearchKeyword('');
+            setList(tmpList);
+          }
         }
+        popperUpdate();
         break;
       case 'Backspace':
         if (!searchKeyword) {
           e.preventDefault();
           if (Array.isArray(currentValue) && currentValue.length > 0) {
             const text: string = currentValue[currentValue.length - 1];
-            onChange(text);
+            onChangeValue(text);
           }
         }
+        break;
+      case 'Tab':
+        setInputFocus(false);
+        setShowOptions(false);
         break;
     }
   };
@@ -179,6 +212,7 @@ function MultiSelectFunc<T extends AnyObject>(
     if (!disabled) {
       if (!showOptions) {
         setShowOptions(true);
+        popperUpdate();
       } else {
         setSearchKeyword('');
         setList(tmpList);
@@ -193,6 +227,7 @@ function MultiSelectFunc<T extends AnyObject>(
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setShowOptions(true);
+    popperUpdate();
     if (e.target.value.trim() === '') {
       setList(tmpList);
       setSearchKeyword('');
@@ -205,8 +240,10 @@ function MultiSelectFunc<T extends AnyObject>(
         )
       : [];
     setList(searchList);
-    const findNum = searchList.findIndex((x) => !x.disabled);
-    setHoverText(findNum !== -1 ? searchList[findNum].label : '');
+
+    setHoverText(searchList?.length ? searchList[0].label : '');
+    // const findNum = searchList.findIndex((x) => !x.disabled);
+    // setHoverText(findNum !== -1 ? searchList[findNum].label : '');
   };
 
   const selectedClass = (x: string, y?: boolean) => {
@@ -220,7 +257,7 @@ function MultiSelectFunc<T extends AnyObject>(
   const closeIconClick = (e: React.MouseEvent<HTMLElement>, text: string) => {
     e.stopPropagation();
     if (Array.isArray(currentValue) && currentValue.length > 0) {
-      onChange(text);
+      onChangeValue(text);
     }
     inputRef.current?.focus();
   };
@@ -273,10 +310,14 @@ function MultiSelectFunc<T extends AnyObject>(
       [selectClasses.status.error]: status === 'error' || isError,
       [selectClasses.status.warning]: status === 'warning',
     },
-    inputFocus && !status ? selectClasses.focus.root : selectClasses.focus.focusNone,
+
     bordered === false
       ? selectClasses.bordered.borderedNone
       : selectClasses.bordered.root,
+  );
+
+  const focusClassName = classNames(
+    inputFocus && !status ? selectClasses.focus.root : selectClasses.focus.focusNone,
   );
 
   const disabledLiClassName = classNames(
@@ -286,7 +327,11 @@ function MultiSelectFunc<T extends AnyObject>(
   );
 
   return (
-    <div className={rootClassName} ref={selectRef} onClick={iconClick}>
+    <div
+      className={classNames(rootClassName, focusClassName)}
+      ref={selectRef}
+      onClick={iconClick}
+    >
       <div
         ref={referenceDiv}
         style={{
@@ -330,6 +375,8 @@ function MultiSelectFunc<T extends AnyObject>(
                 }
                 inputRef.current = current;
               }}
+              onFocus={() => setInputFocus(true)}
+              disabled={disabled}
               onChange={inputOnChange}
               onKeyDown={handleKeyArrow}
               useFocus={false}
@@ -350,7 +397,9 @@ function MultiSelectFunc<T extends AnyObject>(
         {suffixIcon ? (
           <div
             className={classNames(
-              disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
+              disabled
+                ? selectClasses.multiSelect.icon.disabled
+                : selectClasses.multiSelect.icon.root,
             )}
           >
             {suffixIcon}
@@ -358,7 +407,9 @@ function MultiSelectFunc<T extends AnyObject>(
         ) : (
           <div
             className={classNames(
-              disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
+              disabled
+                ? selectClasses.multiSelect.icon.disabled
+                : selectClasses.multiSelect.icon.root,
             )}
           >
             <IcArrow />

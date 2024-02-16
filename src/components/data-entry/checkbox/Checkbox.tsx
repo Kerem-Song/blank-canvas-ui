@@ -112,6 +112,10 @@ export const Checkbox = React.forwardRef(function Checkbox(
     icon = indeterminateIcon;
   }
 
+  const iconClass = classNames({
+    'use-icon': icon !== defaultUncheckedIcon,
+  });
+
   return (
     <label {...rootSlot} className={rootClassName} htmlFor={id}>
       <span
@@ -137,7 +141,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
           })}
           onChange={disabled ? undefined : onChange}
         />
-        {icon}
+        <span className={iconClass}>{icon}</span>
       </span>
       {label && (
         <span className={classNames(classes.label, labelSlot.className)}>{label}</span>

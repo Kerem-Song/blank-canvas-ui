@@ -2,11 +2,23 @@ $ns: .bc;
 
 $(ns) {
   &-input-wrapped {
-    @apply flex items-center rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] px-2;
+    @apply inline-flex items-center rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] bg-white px-2;
     height: var(--bc-control-height);
 
     .bc-input-suffix-wrapper {
-      @apply flex items-center text-end;
+      @apply flex items-center pl-[var(--bc-control-gap)] text-end;
+
+      .suffix {
+        &[data-disabled='true'] {
+          @apply pointer-events-none cursor-not-allowed;
+        }
+      }
+    }
+
+    .bc-input-prefix-wrapper {
+      &[data-disabled='true'] {
+        @apply pointer-events-none cursor-not-allowed;
+      }
     }
 
     &.bc-input-has-custom-prefix {
@@ -28,7 +40,7 @@ $(ns) {
     }
 
     &.invalid {
-      @apply border-[var(--bc-error-color-main)];
+      @apply border-[var(--bc-error-color-main)] ring-2 ring-[var(--bc-error-color-light)];
     }
   }
 
@@ -37,12 +49,12 @@ $(ns) {
     height: var(--bc-control-height);
 
     &.invalid {
-      @apply border-[var(--bc-error-color-main)];
+      @apply border-[var(--bc-error-color-main)] ring-2 ring-[var(--bc-error-color-light)];
     }
   }
 
   &-input-title-counter-wrapper {
-    @apply flex w-full resize-none items-center justify-between rounded-[var(--bc-rounded)];
+    @apply flex resize-none items-center justify-between rounded-[var(--bc-rounded)];
 
     .bc-input-label {
       @apply font-semibold;

@@ -1,6 +1,3 @@
-import { Button } from '@components/general/button/Button';
-import { inputUtil } from '@modules/utils/input';
-import classNames from 'classnames';
 import {
   ChangeEvent,
   FocusEvent,
@@ -9,6 +6,9 @@ import {
   useRef,
   useState,
 } from 'react';
+import { Button } from '@components/general/button/Button';
+import { inputUtil } from '@modules/utils/input';
+import classNames from 'classnames';
 
 import { IInputProps } from './Input.types';
 import { inputClasses } from './InputClasses';
@@ -77,7 +77,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputClassName = classNames(
     wrappingType
       ? ''
-      : `${args.className ?? ''} ${inputClasses.normal} ${useFocus ? 'focus:ring-2 ring-[var(--bc-primary-color-main)]' : ''} `,
+      : `${args.className ?? ''} ${inputClasses.normal} ${useFocus ? 'focus:ring-2 ring-[var(--bc-primary-color-light)] focus:border-[var(--bc-primary-color-main)]' : ''} `,
     {
       invalid: isError,
     },
@@ -85,7 +85,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
 
   const inputWrapClassName = classNames(
     wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
-    useFocus ? 'focus-within:ring-2 ring-[var(--bc-primary-color-main)]' : '',
+    useFocus && !args.disabled
+      ? 'focus-within:ring-2 ring-[var(--bc-primary-color-light)] focus-within:border-[var(--bc-primary-color-main)]'
+      : '',
     {
       invalid: isError,
     },
@@ -118,18 +120,22 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   );
 
   const wrappedInput = (
-    <div className={inputWrapClassName}>
+    <div
+      className={inputWrapClassName}
+      onClick={() => !args.disabled && inputRef.current?.focus()}
+    >
       <div
         className={inputClasses.prefixWrapper}
-        onClick={() => inputRef.current?.focus()}
+        onClick={(e) => {
+          !args.disabled && inputRef.current?.focus();
+          args.disabled && e.preventDefault();
+        }}
+        data-disabled={args.disabled}
       >
         {customPrefix}
       </div>
       <div className="grow">{input}</div>
-      <div
-        className={inputClasses.suffixWrapper}
-        onClick={() => inputRef.current?.focus()}
-      >
+      <div className={inputClasses.suffixWrapper}>
         {showCount && direction === 'inside' ? (
           <span className={inputClasses.count}>
             <>
@@ -149,6 +155,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
                 setTextLength(0);
                 onSearch?.('');
               }}
+              disabled={args.disabled}
             >
               <div
                 className={classNames(inputClasses.button.search, {
@@ -172,11 +179,21 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
               e.preventDefault();
               e.stopPropagation();
             }}
+            disabled={args.disabled}
           >
             <div className={inputClasses.button.clear} />
           </Button>
         ) : null}
-        {suffix}
+        <div
+          className="suffix"
+          onClick={(e) => {
+            !args.disabled && inputRef.current?.focus();
+            args.disabled && e.preventDefault();
+          }}
+          data-disabled={args.disabled}
+        >
+          {suffix}
+        </div>
       </div>
     </div>
   );

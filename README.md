@@ -19,7 +19,9 @@ TailwindCss
   /* 기본 외곽선 색 */
   --bc-border-color: #cccccc;
   --bc-border-width: 1px;
-  --bc-rounded: 6px;
+  --bc-rounded-sm: 4px;
+  --bc-rounded: 8px;
+  --bc-rounded-lg: 12px;
 
   --bc-control-height: 32px;
   --bc-control-gap: 4px;
@@ -32,8 +34,8 @@ TailwindCss
   --bc-secondary-color-light: #c084fc;
   --bc-secondary-color-dark: #7e22ce;
 
-  --bc-error-color-main: #ff4975;
-  --bc-error-color-light: #f398af;
+  --bc-error-color-main: #ff4713;
+  --bc-error-color-light: #ff471329;
   --bc-error-color-dark: #f81f55;
 
   --bc-warning-color-main: #ff8a00;
@@ -56,7 +58,7 @@ TailwindCss
   --bc-dark-color-light: #424649;
   --bc-dark-color-dark: #222222;
 
-  --bc-disable-background: #F7F7FA;
+  --bc-disable-background: #f7f7fa;
   --bc-disable-text-color: #dcdcdc;
   --bc-disable-border-color: #dcdcdc;
   --bc-disable-cursor: not-allowed;
@@ -67,6 +69,6 @@ TailwindCss
   --bc-focus-outline-color: #3b82f6;
 
   --bc-placeholder-text-color: #dcdcdc;
-  --bc-placeholder-font-weight: 400;
+  --bc-placeholder-font-weight: 500;
 }
 ```
