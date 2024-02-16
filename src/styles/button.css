@@ -3,7 +3,7 @@ $ns: .$(prefix)-btn;
 
 /* prettier-ignore */
 $(ns) {
-  @apply inline-flex flex-wrap items-center justify-center border-[length:var(--bc-border-width)] border-solid bg-transparent font-pretendard text-center select-none cursor-pointer no-underline;
+  @apply inline-flex flex-wrap items-center justify-center border-solid bg-transparent font-pretendard text-center select-none cursor-pointer no-underline;
 
   /* default */
   & {
@@ -187,7 +187,7 @@ $(ns) {
 
   &-outlined,
   &-dashed {
-    @apply border-[var(--bc-gray-color-light)] bg-transparent text-[var(--bc-gray-color-main)];
+    @apply border-[var(--bc-gray-color-light)] bg-white text-[var(--bc-gray-color-main)] border-[length:var(--bc-border-width)];
 
     &:hover:not($(ns)-disabled) {
       @apply bg-[var(--bc-gray-color-light)];
