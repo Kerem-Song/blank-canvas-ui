@@ -133,17 +133,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
         data-disabled={args.disabled}
       >
         {customPrefix}
-      </div>
-      <div className="grow">{input}</div>
-      <div className={inputClasses.suffixWrapper}>
-        {showCount && direction === 'inside' ? (
-          <span className={inputClasses.count}>
-            <>
-              {textLength}
-              {args.maxLength ? `/${args.maxLength}` : undefined}
-            </>
-          </span>
-        ) : null}
         {isSearch ? (
           <>
             <Button
@@ -165,6 +154,18 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
             </Button>
           </>
         ) : null}
+      </div>
+      <div className="grow">{input}</div>
+      <div className={inputClasses.suffixWrapper}>
+        {showCount && direction === 'inside' ? (
+          <span className={inputClasses.count}>
+            <>
+              {textLength}
+              {args.maxLength ? `/${args.maxLength}` : undefined}
+            </>
+          </span>
+        ) : null}
+
         {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
           <Button
             className={inputClasses.button.root}
