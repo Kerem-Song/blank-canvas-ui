@@ -3,6 +3,7 @@ import { attachPrefixClasses } from '@modules/utils/generatePrefixClasses/genera
 const classes = {
   wrap: 'wrap',
   border: 'wrap-border',
+  rounded: 'wrap-rounded',
   ['text-align']: {
     left: 'left',
     center: 'center',

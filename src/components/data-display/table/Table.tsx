@@ -63,6 +63,7 @@ export const TableComp = <RecordType extends AnyObject = AnyObject>(
   return (
     <div
       className={classNames(tableClasses.wrap, wrapClassName, tableClasses.size[size], {
+        [tableClasses.rounded]: rounded,
         [tableClasses.border]: bordered,
       })}
     >
