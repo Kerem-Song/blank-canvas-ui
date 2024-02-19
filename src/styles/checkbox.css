@@ -11,8 +11,11 @@ $(ns) {
 
   /* checkbox */
   &-checkbox {
-    @apply inline-flex items-center justify-center relative p-1 m-0 border-0 box-border bg-transparent text-[(var(--bc-text-color))] select-none align-middle appearance-none no-underline cursor-pointer;
+    @apply inline-flex items-center justify-center relative p-1 m-0 border-0 box-border bg-transparent select-none align-middle appearance-none no-underline cursor-pointer;
 
+    input{
+      @apply  border-[1px] border-solid border-[var(--bc-border-color)];
+    }
     /* input */
     $(ns)-input[type=checkbox] {
       @apply absolute w-[1em] h-[1em] m-0 p-0 rounded-sm cursor-[inherit] appearance-none outline-offset-0 bg-white;
@@ -20,7 +23,7 @@ $(ns) {
     }
 
     svg {
-      @apply fill-current inline-block w-[1em] h-[1em] select-none; 
+      @apply fill-current flex w-max h-max select-none; 
     }
 
     &:has(.use-icon) {
@@ -32,7 +35,7 @@ $(ns) {
 
   /* size */
   &-wrapper {
-    &$(ns)-sm {
+    /* &$(ns)-sm {
       $(ns)-checkbox {
         input {
           @apply text-lg;
@@ -46,16 +49,16 @@ $(ns) {
       $(ns)-label {
         @apply text-sm;
       }
-    }
+    } */
 
     &$(ns)-md {
       $(ns)-checkbox {
         input {
-          @apply text-xl;
+          @apply text-[16px];
         }
 
         svg {
-          @apply text-3xl;
+          @apply text-[16px];
         }
       }
 
@@ -64,7 +67,7 @@ $(ns) {
       }
     }
 
-    &$(ns)-lg {
+    /* &$(ns)-lg {
       $(ns)-checkbox {
         input {
           @apply text-2xl;
@@ -78,16 +81,16 @@ $(ns) {
       $(ns)-label {
         @apply text-lg;
       }
-    }
+    } */
   }
 
   /* color */
   &-wrapper:where($(ns)-checked, $(ns)-indeterminate):not($(ns)-disabled) {
 
     /* default */
-    $(ns)-checkbox {
-      @apply text-[(var(--bc-text-color))];
-    }
+    /* $(ns)-checkbox {
+     @apply text-[(var(--bc-text-color))];
+    } */
 
     /* primary */
     &$(ns)-primary $(ns)-checkbox {

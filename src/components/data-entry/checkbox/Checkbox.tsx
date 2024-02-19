@@ -33,7 +33,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
     id: idOverride,
     name: nameProp,
     slotProps = {},
-    size = 'md',
+    // size = 'md',
     readOnly = false,
     required = false,
     label,
@@ -80,9 +80,9 @@ export const Checkbox = React.forwardRef(function Checkbox(
       [classes.colorWarning]: color === 'warning',
       [classes.colorDark]: color === 'dark',
       // size
-      [classes.sizeSmall]: size === 'sm',
-      [classes.sizeMedium]: size === 'md',
-      [classes.sizeLarge]: size === 'lg',
+      // [classes.sizeSmall]: size === 'sm',
+      // [classes.sizeMedium]: size === 'md',
+      // [classes.sizeLarge]: size === 'lg',
     },
     rootSlot.className,
   );
