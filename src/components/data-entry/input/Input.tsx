@@ -28,6 +28,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     suffix,
     direction = 'inside',
     useFocus = true,
+    useBorder = true,
     onPressEnter,
     onPressEsc,
     onSearch,
@@ -88,8 +89,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     useFocus && !args.disabled
       ? 'focus-within:ring-2 ring-[var(--bc-primary-color-light)] focus-within:border-[var(--bc-primary-color-main)]'
       : '',
+    useBorder && 'border-[length:var(--bc-border-width)]',
     {
-      invalid: isError,
+      invalid: isError && useBorder,
     },
   );
 
