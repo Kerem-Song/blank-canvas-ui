@@ -1,5 +1,5 @@
-import { IBadgeProps } from '@components/data-display/badge/Badge.types';
 import { HTMLAttributes } from 'react';
+import { IBadgeProps } from '@components/data-display/badge/Badge.types';
 
 export type RenderFunction = () => React.ReactNode;
 

@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { AnyObject } from '@models';
 import * as objectPath from 'object-path';
 import { Path } from 'object-path';
-import { useState } from 'react';
 
 import { IColumn, ISortInfo } from '../Table.types';
 

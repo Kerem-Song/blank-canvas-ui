@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Autocomplete } from './Autocomplete';
 import { AutocompleteProps } from './Autocomplete.types';

@@ -1,12 +1,12 @@
-import '../../../styles/collapse.css';
-
+import { useState } from 'react';
 import { Button } from '@components/general/button/Button';
 import { Divider } from '@components/layout/divider/Divider';
 import classNames from 'classnames';
-import { useState } from 'react';
 
 import { ICollapseProps } from './Collapse.types';
 import { collapseClasses } from './CollapseClasses';
+
+import '../../../styles/collapse.css';
 
 export const Collapse = ({
   label,

@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
-import { useState } from 'react';
 
 import { Rating } from './Rating';
 import { IconContainerProps, RatingProps } from './Rating.types';

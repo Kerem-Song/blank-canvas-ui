@@ -1,6 +1,6 @@
+import { forwardRef } from 'react';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
-import { forwardRef } from 'react';
 
 import { IBadgeProps } from './Badge.types';
 import { badgeClasses } from './BadgeClasses';

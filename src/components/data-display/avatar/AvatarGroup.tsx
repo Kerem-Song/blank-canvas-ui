@@ -1,12 +1,12 @@
-import '@styles/avatarGroup.css';
-
-import classNames from 'classnames';
 import * as React from 'react';
+import classNames from 'classnames';
 
 import { AvatarTypeMap } from './Avatar.types';
 import { AvatarGroupProps } from './AvatarGroup.types';
 import { avatarGroupClasses as classes } from './avatarGroupClasses';
 import AvatarGroupContext from './AvatarGroupContext';
+
+import '@styles/avatarGroup.css';
 
 /** 조건에 맞는 아바타 뽑기 */
 export function clampAvatars(

@@ -1,7 +1,7 @@
-import { remUtil } from '@modules/utils/rem';
-import classNames from 'classnames';
 import { forwardRef } from 'react';
 import ReactLoading from 'react-loading';
+import { remUtil } from '@modules/utils/rem';
+import classNames from 'classnames';
 
 import { ISpinProps } from './Spin.types';
 import { spinClasses } from './SpinClasses';

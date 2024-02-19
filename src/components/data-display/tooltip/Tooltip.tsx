@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
+import classNames from 'classnames';
 
 import { ITooltipProps } from './Tooltip.types';
 import { tooltipClasses } from './TooltipClasses';

@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react';
 import { IcCalendar } from '@assets/icons';
 import { Calendar } from '@components';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
 
 import { Input } from '..';
+
 import { IDatePickerProps } from './DatePicker.types';
 import { datePickerClasses } from './DatePickerClasses';
 

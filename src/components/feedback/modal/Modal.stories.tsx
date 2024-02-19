@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { Button } from '@components/general/button/Button';
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 
 import { Modal } from './Modal';
 import { IModalProps } from './Modal.types';

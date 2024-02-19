@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Col, Row } from '.';
 import { IRowProps } from './Row.types';
+import { Col, Row } from '.';
 
 const meta: Meta<IRowProps> = {
   title: 'components/layout/Grid/Row',

@@ -1,6 +1,6 @@
+import { forwardRef } from 'react';
 import { Flex } from '@components/layout/flex';
 import classNames from 'classnames';
-import { forwardRef } from 'react';
 
 import { ISwitchProps } from './Switch.types';
 import { switchClasses } from './SwitchClasses';

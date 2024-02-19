@@ -1,5 +1,5 @@
-import { OverrideProps } from '@models/types/OverridableComponent';
 import * as React from 'react';
+import { OverrideProps } from '@models/types/OverridableComponent';
 
 import { AvatarTypeMap } from './Avatar.types';
 

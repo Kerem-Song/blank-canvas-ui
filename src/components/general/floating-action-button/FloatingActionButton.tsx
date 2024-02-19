@@ -1,9 +1,9 @@
+import { forwardRef, useRef, useState } from 'react';
 import { Badge } from '@components/data-display/badge/Badge';
 import { Tooltip } from '@components/data-display/tooltip/Tooltip';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
-import { forwardRef, useRef, useState } from 'react';
 
 import { IFloatingActionButtonProps } from './FloatingActionButton.types';
 import { floatingActionButtonClasses } from './FloatingActionButtonClasses';

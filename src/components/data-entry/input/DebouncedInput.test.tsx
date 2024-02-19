@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { DebouncedInput } from '@components/data-entry/input/DebouncedInput';
 import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
-import * as React from 'react';
 
 import { inputClasses } from './InputClasses';
 

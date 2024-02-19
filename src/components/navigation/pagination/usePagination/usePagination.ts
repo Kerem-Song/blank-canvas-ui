@@ -1,5 +1,5 @@
-import { useControlled } from '@hooks/useControlled/useControlled';
 import * as React from 'react';
+import { useControlled } from '@hooks/useControlled/useControlled';
 
 import {
   UsePaginationItem,

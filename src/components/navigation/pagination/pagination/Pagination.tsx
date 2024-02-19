@@ -1,13 +1,14 @@
-import '@styles/pagination.css';
-
-import classNames from 'classnames';
 import * as React from 'react';
+import classNames from 'classnames';
 
 import { PaginationItem } from '../pagination-item/PaginationItem';
 import { usePagination } from '../usePagination/usePagination';
 import { PaginationItemType } from '../usePagination/usePagination.types';
+
 import { PaginationProps } from './Pagination.types';
 import { paginationClasses as classes } from './paginationClasses';
+
+import '@styles/pagination.css';
 
 function defaultGetAriaLabel(
   type: PaginationItemType,

@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Flex } from '../flex';
+
 import { Divider } from './Divider';
 import { IDividerProps } from './Divider.types';
 

@@ -1,7 +1,8 @@
 import { Flex } from '@components/layout/flex';
 import { Meta, StoryObj } from '@storybook/react';
-import { DatePicker } from '.';
+
 import { IDatePickerProps } from './DatePicker.types';
+import { DatePicker } from '.';
 
 const meta: Meta<IDatePickerProps> = {
   title: 'components/data-entry/DatePicker',
