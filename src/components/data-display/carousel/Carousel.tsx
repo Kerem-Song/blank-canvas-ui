@@ -1,7 +1,7 @@
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { Col, Row } from '@components/layout';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
 
 import { ICarouselProps } from './Carousel.types';
 import { carouselClasses } from './CarouselClasses';

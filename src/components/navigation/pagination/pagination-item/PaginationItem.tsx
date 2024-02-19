@@ -1,5 +1,4 @@
-import '@styles/paginationItem.css';
-
+import * as React from 'react';
 import ChevronDoubleLeftIcon from '@assets/icons/ic_chevron_double_left.svg?react';
 import ChevronDoubleRightIcon from '@assets/icons/ic_chevron_double_right.svg?react';
 import ChevronLeftIcon from '@assets/icons/ic_chevron_left.svg?react';
@@ -7,11 +6,13 @@ import ChevronRightIcon from '@assets/icons/ic_chevron_right.svg?react';
 import { Button } from '@components/general/button/Button';
 import { OverridableComponent } from '@models/types/OverridableComponent';
 import classNames from 'classnames';
-import * as React from 'react';
 
 import { PaginationItemType } from '../usePagination/usePagination.types';
+
 import { PaginationItemProps, PaginationItemTypeMap } from './PaginationItem.types';
 import { paginationItemClasses as classes } from './paginationItemClasses';
+
+import '@styles/paginationItem.css';
 
 export const PaginationItem = React.forwardRef(function PaginationItem<
   RootComponentType extends React.ElementType,

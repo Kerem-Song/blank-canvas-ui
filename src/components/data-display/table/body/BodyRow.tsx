@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import * as objectPath from 'object-path';
 
 import { tableClasses } from '../TableClasses';
+
 import { IBodyRowProps } from './Body.types';
 import { BodyCell } from './BodyCell';
 

@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import React, { forwardRef, useCallback } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
+import classNames from 'classnames';
 
 import { ITextareaProps } from './Textarea.types';
 import { textareaClasses } from './TextareaClasses';

@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { forwardRef } from 'react';
+import classNames from 'classnames';
 
 import { IFlexProps } from './Flex.types';
 

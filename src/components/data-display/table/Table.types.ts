@@ -1,7 +1,7 @@
-import { PaginationProps } from '@components/navigation/pagination';
-import { Path } from 'object-path';
 import { HtmlHTMLAttributes, ReactNode } from 'react';
 import { LoadingType } from 'react-loading';
+import { PaginationProps } from '@components/navigation/pagination';
+import { Path } from 'object-path';
 
 export type SizeType = 'normal' | 'small';
 export type SortDirectionType = 'ascending' | 'descending';

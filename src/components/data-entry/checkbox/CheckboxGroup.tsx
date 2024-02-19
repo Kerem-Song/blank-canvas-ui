@@ -1,15 +1,15 @@
-import '@styles/checkboxGroup.css';
-
+import * as React from 'react';
 import OutlineBlankRoundedIcon from '@assets/icons/ic_checkbox_outline_blank_rounded.svg?react';
 import CheckboxRoundedIcon from '@assets/icons/ic_checkbox_rounded.svg?react';
 import { useControlled } from '@hooks/useControlled';
 import classNames from 'classnames';
-import * as React from 'react';
 
 import { Checkbox } from './Checkbox';
 import { CheckboxGroupProps, CheckboxOption } from './CheckboxGroup.types';
 import { checkboxGroupClasses as classes } from './checkboxGroupClasses';
 import CheckboxGroupContext from './CheckboxGroupContext';
+
+import '@styles/checkboxGroup.css';
 
 const defaultCheckedIcon = <CheckboxRoundedIcon />;
 const defaultUncheckedIcon = <OutlineBlankRoundedIcon />;

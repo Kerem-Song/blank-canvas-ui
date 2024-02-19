@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import * as objectPath from 'object-path';
 
 import { tableClasses } from '../TableClasses';
+
 import { IBodyCellProps } from './Body.types';
 
 export const BodyCell = <RecordType extends AnyObject = AnyObject>({

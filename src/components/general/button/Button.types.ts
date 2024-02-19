@@ -1,9 +1,9 @@
+import React from 'react';
 import {
   OverridableComponent,
   OverridableTypeMap,
   OverrideProps,
 } from '@models/types/OverridableComponent';
-import React from 'react';
 
 export interface ButtonTypeMap<DefaultComponent extends React.ElementType = 'button'> {
   props: {

@@ -1,5 +1,5 @@
-import { Path } from 'object-path';
 import { FunctionComponent, ReactNode } from 'react';
+import { Path } from 'object-path';
 
 import { ColumnsType, ISortInfo, TextAlignType } from '../Table.types';
 

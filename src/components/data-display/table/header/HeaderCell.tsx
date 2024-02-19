@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
 import { tableClasses } from '../TableClasses';
+
 import { IHeaderCellProps } from './Header.types';
 import { HeaderSortIcon } from './HeaderSortIcon';
 

@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { DebouncedInput } from './DebouncedInput';
 import { IDebounceProps } from './DebouncedInput.types';
