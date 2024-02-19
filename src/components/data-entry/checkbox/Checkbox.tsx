@@ -140,8 +140,10 @@ export const Checkbox = React.forwardRef(function Checkbox(
             'aria-checked': 'mixed',
           })}
           onChange={disabled ? undefined : onChange}
+          data-color={color}
+          data-indeterminate={indeterminate}
         />
-        <span className={iconClass}>{icon}</span>
+        {/* <span className={iconClass}>{icon}</span> */}
       </span>
       {label && (
         <span className={classNames(classes.label, labelSlot.className)}>{label}</span>
