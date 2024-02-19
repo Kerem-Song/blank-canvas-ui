@@ -2,7 +2,7 @@ $ns: .bc;
 
 $(ns) {
   &-input-wrapped {
-    @apply inline-flex items-center rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] bg-white px-2;
+    @apply inline-flex items-center rounded-[var(--bc-rounded)] bg-white px-2;
     height: var(--bc-control-height);
 
     .bc-input-suffix-wrapper {

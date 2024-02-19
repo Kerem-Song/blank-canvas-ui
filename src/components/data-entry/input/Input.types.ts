@@ -67,6 +67,11 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   useFocus?: boolean;
 
   /**
+   * Input border 사용 여부
+   */
+  useBorder?: boolean;
+
+  /**
    * Input에서 Enter 입력 시 실행되는 함수
    * @param value
    * @returns
