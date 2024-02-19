@@ -153,7 +153,7 @@ function App() {
         <Table
           wrapClassName="max-h-[600px]"
           bordered
-          rounded
+          rounded={false}
           dataSource={tableSource}
           size="small"
           defaultSort={[{ path: 'a', direction: 'descending' }]}

@@ -4,7 +4,6 @@ $(ns)-wrap {
   /* wrap */
   & {
     @apply relative overflow-x-auto border bg-white;
-    border-radius: var(--bc-rounded);
   }
 
   $(ns)-text-align-left {
@@ -45,7 +44,13 @@ $(ns)-wrap {
         }
 
         $(ns)-sortable {
-          @apply cursor-pointer hover:bg-gray-200;
+          & {
+            @apply cursor-pointer selection:bg-transparent hover:bg-gray-200;
+          }
+
+          svg {
+            @apply fill-[var(--bc-primary-color-main)] stroke-[var(--bc-primary-color-main)] stroke-[4];
+          }
         }
       }
     }
@@ -57,7 +62,7 @@ $(ns)-wrap {
         }
 
         &[aria-selected='true'] {
-          @apply bg-gray-150;
+          @apply bg-[var(--bc-primary-color-light)];
         }
 
         td {
@@ -105,6 +110,9 @@ $(ns)-wrap-border {
   }
 }
 
+$(ns)-wrap-rounded {
+  @apply rounded-[var(--bc-rounded)];
+}
 $(ns)-size-normal {
   $(ns)-empty {
     @apply text-sm;
