@@ -1,11 +1,11 @@
-import '@styles/link.css';
-
+import * as React from 'react';
 import { OverridableComponent } from '@models/types/OverridableComponent';
 import classNames from 'classnames';
-import * as React from 'react';
 
 import { LinkProps, LinkTypeMap } from './Link.types';
 import { linkClasses as classes } from './linkClasses';
+
+import '@styles/link.css';
 
 export const Link = React.forwardRef(function Link<
   RootComponentType extends React.ElementType,

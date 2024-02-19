@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Carousel } from './Carousel';
 import { ICarouselProps } from './Carousel.types';

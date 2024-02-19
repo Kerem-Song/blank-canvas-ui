@@ -1,7 +1,7 @@
+import { Link as ReactRouterLink, Outlet, useLocation } from 'react-router-dom';
 import { Card } from '@components/data-display/card/Card';
 import { Meta, StoryObj } from '@storybook/react';
 import classNames from 'classnames';
-import { Link as ReactRouterLink, Outlet, useLocation } from 'react-router-dom';
 import {
   reactRouterOutlets,
   reactRouterParameters,

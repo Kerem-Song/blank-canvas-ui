@@ -1,5 +1,5 @@
-import { Input } from '@components/data-entry/input/Input';
 import { forwardRef, useDeferredValue, useMemo, useState } from 'react';
+import { Input } from '@components/data-entry/input/Input';
 
 import { IDebounceProps } from './DebouncedInput.types';
 

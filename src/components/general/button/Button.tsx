@@ -1,11 +1,11 @@
-import '../../../styles/button.css';
-
+import React, { useRef, useState } from 'react';
 import { composeRef } from '@modules/utils/composeRef/composeRef';
 import classNames from 'classnames';
-import React, { useRef, useState } from 'react';
 
 import { ButtonProps, ButtonTypeMap, ExtendButton } from './Button.types';
 import { buttonClasses as classes } from './buttonClasses';
+
+import '../../../styles/button.css';
 
 export const Button = React.forwardRef(function Button<
   RootComponentType extends React.ElementType,

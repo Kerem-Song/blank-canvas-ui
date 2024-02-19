@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { AnyObject } from '@models';
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 
 import { Tag } from '..';
-import { Table } from '.';
+
 import { ITableProps } from './Table.types';
+import { Table } from '.';
 
 const meta: Meta<ITableProps<AnyObject>> = {
   title: 'components/data-display/Table',

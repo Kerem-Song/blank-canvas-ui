@@ -1,6 +1,6 @@
+import React from 'react';
 import { Button } from '@components/general/button';
 import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
-import React from 'react';
 
 import { Modal } from './Modal';
 import { modalClasses } from './ModalClasses';

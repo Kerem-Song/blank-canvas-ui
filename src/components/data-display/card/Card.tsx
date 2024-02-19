@@ -1,11 +1,11 @@
-import 'react-loading-skeleton/dist/skeleton.css';
-
-import classNames from 'classnames';
 import { forwardRef } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import classNames from 'classnames';
 
 import { ICardProps } from './Card.types';
 import { cardClasses } from './CardClasses';
+
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const Card = forwardRef<HTMLDivElement, ICardProps>((args, ref) => {
   const {

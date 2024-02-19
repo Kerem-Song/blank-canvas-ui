@@ -1,5 +1,5 @@
-import { Flex } from '@components/layout/flex';
 import { forwardRef } from 'react';
+import { Flex } from '@components/layout/flex';
 
 import { Radio } from './Radio';
 import { radioClasses } from './RadioClasses';

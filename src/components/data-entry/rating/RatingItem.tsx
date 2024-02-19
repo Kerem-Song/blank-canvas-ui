@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React, { useId } from 'react';
+import classNames from 'classnames';
 
 import { IconContainerProps } from './Rating.types';
 import { RatingClasses } from './ratingClasses';

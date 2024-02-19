@@ -1,5 +1,5 @@
-import { toArray } from '@modules/utils';
 import React from 'react';
+import { toArray } from '@modules/utils';
 
 import { ColumnsType } from '../Table.types';
 

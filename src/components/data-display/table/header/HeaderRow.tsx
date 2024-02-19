@@ -1,6 +1,7 @@
 import { AnyObject } from '@models';
 
 import { useHeaderInfo } from '../hooks/useHeaderInfo';
+
 import { IHeaderRowProps } from './Header.types';
 import { HeaderCell } from './HeaderCell';
 

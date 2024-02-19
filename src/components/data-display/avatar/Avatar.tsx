@@ -1,14 +1,14 @@
-import '@styles/avatar.css';
-
+import * as React from 'react';
 import AvatarFallbackIcon from '@assets/icons/ic_avatar.svg?react';
 import { OverridableComponent } from '@models/types/OverridableComponent';
 import classNames from 'classnames';
-import * as React from 'react';
 
 import { AvatarProps, AvatarTypeMap } from './Avatar.types';
 import { avatarClasses as classes } from './avatarClasses';
 import AvatarGroupContext from './AvatarGroupContext';
 import { useLoaded } from './useLoaded';
+
+import '@styles/avatar.css';
 
 export const Avatar = React.forwardRef(function Avatar<
   RootComponentType extends React.ElementType,

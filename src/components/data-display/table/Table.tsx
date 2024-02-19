@@ -1,10 +1,10 @@
+import React, { ReactElement, Ref } from 'react';
 import { Flex, Pagination, Spin } from '@components';
 import { AnyObject } from '@models';
 import classNames from 'classnames';
-import React, { ReactElement, Ref } from 'react';
 
-import { BodyRow } from './body';
 import { TableColGroup } from './col-group/ColGroup';
+import { BodyRow } from './body';
 import { HeaderRow } from './header';
 import { convertChildrenToColumns, usePagenation, useSortDataSource } from './hooks';
 import { ColumnsType, IColumn, ITableProps } from './Table.types';

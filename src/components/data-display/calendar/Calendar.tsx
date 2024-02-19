@@ -1,15 +1,16 @@
-import classNames from 'classnames';
-import dayjs from 'dayjs';
 import { useState } from 'react';
-import { calendarClasses } from './CalendarClasses';
-import { Button } from '@components';
 import {
   IcArrowLeft,
   IcArrowLeftDouble,
   IcArrowRight,
   IcArrowRightDouble,
 } from '@assets/icons';
+import { Button } from '@components';
+import classNames from 'classnames';
+import dayjs from 'dayjs';
+
 import { ICalendarProps } from './Calendar.types';
+import { calendarClasses } from './CalendarClasses';
 
 const weeks = [0, 1, 2, 3, 4, 5];
 
