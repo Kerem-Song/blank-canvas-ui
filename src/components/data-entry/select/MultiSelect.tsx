@@ -47,9 +47,7 @@ function MultiSelectFunc<T extends AnyObject>(
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
   const [tmpList, setTmpList] =
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
-  const [currentValue, setCurrentValue] = useState<any>(
-    defaultValue ? (Array.isArray(defaultValue) ? defaultValue : [defaultValue]) : [],
-  );
+  const [currentValue, setCurrentValue] = useState<string[]>([]);
   const [showOptions, setShowOptions] = useState<boolean>(defaultOpen ?? false);
   const [hoverText, setHoverText] = useState<string>(''); //색칠...
   const [searchKeyword, setSearchKeyword] = useState<string>('');
@@ -282,6 +280,10 @@ function MultiSelectFunc<T extends AnyObject>(
           setHoverText('');
         }
       }
+      if (defaultValue) {
+        const label: string = options?.filter((x) => x.value === defaultValue)[0].label;
+        setCurrentValue([label]);
+      }
     } else {
       const key = displayLabel ?? 'label';
       const valueKey = valuePath ?? 'value';
@@ -293,6 +295,10 @@ function MultiSelectFunc<T extends AnyObject>(
 
       setList(temp);
       setTmpList(temp);
+      if (defaultValue) {
+        const label: string = temp!.filter((x) => x.value === defaultValue)[0].label;
+        setCurrentValue([label]);
+      }
       setHoverText(temp && temp.length > 0 ? temp[0].label : '');
     }
   }, []);
@@ -459,7 +465,7 @@ function MultiSelectFunc<T extends AnyObject>(
                       currentValue.length > 0 &&
                       currentValue.includes(x.label)
                       ? selectedClass(x.label)
-                      : { [selectClasses.list.item]: x.label === currentValue },
+                      : { [selectClasses.list.item]: x.label === currentValue[0] },
                     { [selectClasses.list.hover]: x.label === hoverText },
                     selectClasses.list.overflow,
                   )}
