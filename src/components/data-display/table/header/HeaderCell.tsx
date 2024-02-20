@@ -18,7 +18,7 @@ export const HeaderCell = ({
   return (
     <th
       className={classNames(tableClasses['text-align'][align ?? 'left'], {
-        [tableClasses.sortable]: sortable,
+        [tableClasses.sortable.root]: sortable,
       })}
       colSpan={colSpan}
       rowSpan={rowSpan}
