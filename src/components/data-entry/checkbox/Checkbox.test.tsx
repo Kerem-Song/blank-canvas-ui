@@ -116,20 +116,20 @@ describe('prop: label', () => {
   });
 });
 
-describe('prop: size', () => {
-  it('className이 적용됩니다.', () => {
-    const { container, rerender } = render(<Checkbox size="sm" />);
+// describe('prop: size', () => {
+//   it('className이 적용됩니다.', () => {
+//     const { container, rerender } = render(<Checkbox size="sm" />);
 
-    expect(
-      (container.firstChild as HTMLElement).classList.contains(classes.sizeSmall),
-    ).toBeTruthy();
+//     expect(
+//       (container.firstChild as HTMLElement).classList.contains(classes.sizeSmall),
+//     ).toBeTruthy();
 
-    rerender(<Checkbox size="lg" />);
-    expect(
-      (container.firstChild as HTMLElement).classList.contains(classes.sizeLarge),
-    ).toBeTruthy();
-  });
-});
+//     rerender(<Checkbox size="lg" />);
+//     expect(
+//       (container.firstChild as HTMLElement).classList.contains(classes.sizeLarge),
+//     ).toBeTruthy();
+//   });
+// });
 
 describe('prop: color', () => {
   it('className이 적용됩니다.', () => {

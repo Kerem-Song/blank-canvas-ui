@@ -26,9 +26,9 @@ const meta: Meta<CheckboxGroupProps> = {
     color: {
       control: 'select',
     },
-    size: {
-      control: 'select',
-    },
+    // size: {
+    //   control: 'select',
+    // },
     onChange: { action: 'onChange' },
   },
 };
@@ -49,7 +49,7 @@ export const Default: Story = {
     readOnly: false,
     required: false,
     color: 'primary',
-    size: 'md',
+    // size: 'md',
     defaultValue: ['Apple'],
     options: [
       { label: 'Apple', value: 'Apple' },
@@ -81,7 +81,7 @@ export const Controlled: Story = {
     readOnly: false,
     required: false,
     color: 'primary',
-    size: 'md',
+    // size: 'md',
     options: [
       { label: 'Apple', value: 'Apple' },
       { label: 'Pear', value: 'Pear' },
