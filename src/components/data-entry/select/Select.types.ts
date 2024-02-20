@@ -111,6 +111,9 @@ export interface ISelectProp<T extends object>
    * @type boolean
    */
   filterOption?: boolean;
+  preSuffixIcon?: ReactNode;
+  useBorder?: boolean;
+  useFocus?: boolean;
 }
 
 export interface IMultipleSelectProp<T extends object>
@@ -123,4 +126,5 @@ export interface IMultipleSelectProp<T extends object>
    */
   defaultValue?: string | Array<string | T>;
   limitNumber?: number;
+  isCheckbox?: boolean;
 }

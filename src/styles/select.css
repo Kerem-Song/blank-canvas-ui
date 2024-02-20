@@ -45,7 +45,7 @@ $(ns) {
         @apply cursor-pointer;
       }
       &-overflow {
-        @apply overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];
+        @apply flex items-center overflow-hidden text-ellipsis whitespace-nowrap px-[8px] py-[5px];
       }
       &-hover {
         @apply rounded-[var(--bc-rounded)] bg-neutral-100;
@@ -84,13 +84,16 @@ $(ns) {
         }
       }
       &-icon {
-        @apply mr-[4px] flex h-full w-[16px] cursor-pointer items-center;
-      }
-      &-icon-disabled {
-        @apply mr-[8px] cursor-not-allowed;
+        @apply mr-[8px] flex h-full w-[16px] cursor-pointer items-center;
+        &-prefix {
+          @apply ml-[4px] flex items-center;
+        }
+        &-disabled {
+          @apply mr-[8px] cursor-not-allowed;
+        }
       }
       &-inputArea {
-        @apply ml-[2px] flex;
+        @apply ml-[2px] flex items-center;
         input {
           @apply inline-block h-full w-[1px] border-0 p-0;
         }

@@ -33,6 +33,9 @@ function SelectFunc<T extends AnyObject>(
     items,
     selectWidth = 150,
     isError,
+    preSuffixIcon,
+    useBorder,
+    useFocus,
     className,
     style,
     filterOption = false,
@@ -305,7 +308,9 @@ function SelectFunc<T extends AnyObject>(
         onClick={iconClick}
       >
         <Input
+          style={{ ...style }}
           {...inputProps}
+          customPrefix={preSuffixIcon}
           ref={(current) => {
             if (ref) {
               if (typeof ref === 'function') {
@@ -329,6 +334,8 @@ function SelectFunc<T extends AnyObject>(
           className={classNames({ [selectClasses.disabled]: disabled })}
           value={currentValue}
           isError={isError}
+          useBorder={useBorder}
+          useFocus={useFocus}
           suffix={
             suffixIcon ? (
               <div
