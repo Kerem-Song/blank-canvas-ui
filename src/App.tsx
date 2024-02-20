@@ -11,6 +11,7 @@ import {
   Modal,
   Radio,
   RadioGroup,
+  Select,
   Switch,
   Textarea,
   TextAreaWithTitleCounter,
@@ -301,6 +302,29 @@ function App() {
         <Textarea />
         <input placeholder="asdf" readOnly={true} />
       </div>
+      <div className="flex items-center justify-start rounded-[var(--bc-rounded)] border">
+        <Select
+          options={items}
+          className="border-none"
+          useBorder={false}
+          useFocus={false}
+        />
+        <Input
+          showCount
+          maxLength={10}
+          isSearch
+          className="border-none"
+          useFocus={false}
+          useBorder={false}
+          isError={true}
+        />
+      </div>
+      <Input
+        showCount
+        maxLength={10}
+        isSearch
+        customPrefix={<Select options={items} useFocus={false} useBorder={false} />}
+      />
     </>
   );
 }

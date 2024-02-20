@@ -8,6 +8,8 @@ import { AnyObject } from '@models/types/AnyObject';
 import { remUtil } from '@modules/utils/rem';
 import classNames from 'classnames';
 
+import { Checkbox } from '../checkbox/Checkbox';
+
 import { IMultipleSelectProp } from './Select.types';
 import { selectClasses } from './SelectClasses';
 
@@ -34,6 +36,8 @@ function MultiSelectFunc<T extends AnyObject>(
     selectWidth = 150,
     isError,
     limitNumber,
+    isCheckbox,
+    preSuffixIcon,
     className,
     style,
     ...inputProps
@@ -260,12 +264,16 @@ function MultiSelectFunc<T extends AnyObject>(
     inputRef.current?.focus();
   };
 
-  useOutsideClick(selectRef, () => {
-    setInputFocus(false);
-    setShowOptions(false);
-    setSearchKeyword('');
-    setList(tmpList);
-  });
+  useOutsideClick(
+    selectRef,
+    () => {
+      setInputFocus(false);
+      setShowOptions(false);
+      setSearchKeyword('');
+      setList(tmpList);
+    },
+    'mousedown',
+  );
 
   useEffect(() => {
     if (options) {
@@ -347,6 +355,9 @@ function MultiSelectFunc<T extends AnyObject>(
         className={classNames(selectClassName, className, 'group')}
       >
         <div className={classNames(selectClasses.multiSelect.tag.area)}>
+          <span className={classNames(selectClasses.multiSelect.icon.prefix)}>
+            {preSuffixIcon}
+          </span>
           {Array.isArray(currentValue) && currentValue.length > 0 ? (
             currentValue.map((x: string) => (
               <span key={x} className={classNames(selectClasses.multiSelect.tag.root)}>
@@ -470,6 +481,7 @@ function MultiSelectFunc<T extends AnyObject>(
                     selectClasses.list.overflow,
                   )}
                 >
+                  {isCheckbox && <Checkbox checked={currentValue.includes(x.label)} />}
                   {x.label}
                 </li>
               ) : (
@@ -482,7 +494,7 @@ function MultiSelectFunc<T extends AnyObject>(
                   }}
                   className={classNames(disabledLiClassName)}
                 >
-                  {x.label}-
+                  {x.label}
                 </li>
               );
             })
@@ -491,6 +503,7 @@ function MultiSelectFunc<T extends AnyObject>(
               role="option"
               onClick={(e) => {
                 e.stopPropagation();
+                e.preventDefault();
               }}
             >
               No data

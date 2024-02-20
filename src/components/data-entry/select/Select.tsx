@@ -33,6 +33,9 @@ function SelectFunc<T extends AnyObject>(
     items,
     selectWidth = 150,
     isError,
+    preSuffixIcon,
+    useBorder,
+    useFocus,
     className,
     style,
     filterOption = false,
@@ -266,11 +269,16 @@ function SelectFunc<T extends AnyObject>(
     }
   }, []);
 
-  useOutsideClick(selectRef, () => {
-    setShowOptions(false);
-    setCurrentValue(selectedValue);
-    inputRef.current?.blur();
-  });
+  useOutsideClick(
+    selectRef,
+    () => {
+      popperUpdate();
+      setShowOptions(false);
+      setCurrentValue(selectedValue);
+      inputRef.current?.blur();
+    },
+    'mousedown',
+  );
 
   useEffect(() => {
     setInit(true);
@@ -306,6 +314,7 @@ function SelectFunc<T extends AnyObject>(
       >
         <Input
           {...inputProps}
+          customPrefix={preSuffixIcon}
           ref={(current) => {
             if (ref) {
               if (typeof ref === 'function') {
@@ -329,6 +338,8 @@ function SelectFunc<T extends AnyObject>(
           className={classNames({ [selectClasses.disabled]: disabled })}
           value={currentValue}
           isError={isError}
+          useBorder={useBorder}
+          useFocus={useFocus}
           suffix={
             suffixIcon ? (
               <div
@@ -406,11 +417,12 @@ function SelectFunc<T extends AnyObject>(
                     e.stopPropagation();
                     e.preventDefault();
                     setShowOptions(true);
+                    inputRef.current?.focus();
                   }}
                   style={{ cursor: 'not-allowed' }}
                   className={classNames(disabledLiClassName)}
                 >
-                  {x.label}-
+                  {x.label}
                 </li>
               );
             })
@@ -419,6 +431,9 @@ function SelectFunc<T extends AnyObject>(
               role="option"
               onClick={(e) => {
                 e.stopPropagation();
+                e.preventDefault();
+                setShowOptions(true);
+                inputRef.current?.focus();
               }}
               style={{ cursor: 'not-allowed' }}
             >

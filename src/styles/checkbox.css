@@ -1,30 +1,74 @@
 $prefix: bc;
 $ns: .$(prefix)-checkbox;
 
-/* prettier-ignore */
 $(ns) {
-
   /* wrapper */
   &-wrapper {
-    @apply inline-flex items-center relative cursor-pointer;
+    @apply relative inline-flex cursor-pointer items-center;
   }
 
   /* checkbox */
   &-checkbox {
-    @apply inline-flex items-center justify-center relative p-1 m-0 border-0 box-border bg-transparent text-[(var(--bc-text-color))] select-none align-middle appearance-none no-underline cursor-pointer;
+    @apply relative m-0 box-border inline-flex cursor-pointer select-none appearance-none items-center justify-center border-0 bg-transparent p-1 align-middle text-[(var(--bc-text-color))] no-underline;
 
+    input {
+      @apply border-[1px] border-solid border-[var(--bc-border-color)];
+    }
     /* input */
-    $(ns)-input[type=checkbox] {
-      @apply absolute w-[1em] h-[1em] m-0 p-0 rounded-sm cursor-[inherit] appearance-none outline-offset-0 bg-white;
+    $(ns)-input[type='checkbox'] {
+      @apply relative m-0 h-16pxr w-16pxr cursor-[inherit] appearance-none rounded-[var(--bc-rounded-sm)] border-[length:var(--bc-border-width)] bg-white p-0 outline-offset-0;
       /* focus-visible:input-focus; */
+      &:checked {
+        &:disabled {
+          @apply opacity-20;
+        }
+        &[data-color='primary'] {
+          @apply border-[var(--bc-primary-color-main)] bg-[var(--bc-primary-color-main)];
+        }
+
+        &[data-color='secondary'] {
+          @apply border-[var(--bc-secondary-color-main)] bg-[var(--bc-secondary-color-main)];
+        }
+
+        &[data-color='success'] {
+          @apply border-[var(--bc-success-color-main)] bg-[var(--bc-success-color-main)];
+        }
+
+        &[data-color='error'] {
+          @apply border-[var(--bc-error-color-main)] bg-[var(--bc-error-color-main)];
+        }
+
+        &[data-color='info'] {
+          @apply border-[var(--bc-info-color-main)] bg-[var(--bc-info-color-main)];
+        }
+
+        &[data-color='warning'] {
+          @apply border-[var(--bc-warning-color-main)] bg-[var(--bc-warning-color-main)];
+        }
+
+        &[data-color='dark'] {
+          @apply border-[var(--bc-dark-color-main)] bg-[var(--bc-dark-color-main)];
+        }
+        &::after {
+          @apply absolute left-[15%] top-[-45%] content-[url('@icons/ic_checkbox_checked.svg')];
+        }
+      }
+
+      &[data-indeterminate='true'] {
+        @apply border-[var(--bc-primarycolor-main)] bg-[var(--bc-primary-color-main)];
+
+        &::after {
+          @apply absolute left-[15%] top-[-70%] content-[url('@icons/ic_checkbox_indeterminate.svg')];
+        }
+      }
     }
 
     svg {
-      @apply fill-current inline-block w-[1em] h-[1em] select-none; 
+      @apply flex h-max w-max select-none fill-current;
     }
 
     &:has(.use-icon) {
-      $(ns)-input[type=checkbox] {
+      $(ns)-input[type='checkbox'] {
         @apply bg-transparent;
       }
     }
@@ -32,7 +76,7 @@ $(ns) {
 
   /* size */
   &-wrapper {
-    &$(ns)-sm {
+    /* &$(ns)-sm {
       $(ns)-checkbox {
         input {
           @apply text-lg;
@@ -46,16 +90,16 @@ $(ns) {
       $(ns)-label {
         @apply text-sm;
       }
-    }
+    } */
 
     &$(ns)-md {
       $(ns)-checkbox {
         input {
-          @apply text-xl;
+          @apply text-[16px];
         }
 
         svg {
-          @apply text-3xl;
+          @apply text-[16px];
         }
       }
 
@@ -64,7 +108,7 @@ $(ns) {
       }
     }
 
-    &$(ns)-lg {
+    /* &$(ns)-lg {
       $(ns)-checkbox {
         input {
           @apply text-2xl;
@@ -78,16 +122,15 @@ $(ns) {
       $(ns)-label {
         @apply text-lg;
       }
-    }
+    } */
   }
 
   /* color */
   &-wrapper:where($(ns)-checked, $(ns)-indeterminate):not($(ns)-disabled) {
-
     /* default */
-    $(ns)-checkbox {
-      @apply text-[(var(--bc-text-color))];
-    }
+    /* $(ns)-checkbox {
+     @apply text-[(var(--bc-text-color))];
+    } */
 
     /* primary */
     &$(ns)-primary $(ns)-checkbox {
@@ -135,7 +178,7 @@ $(ns) {
     @apply cursor-not-allowed;
 
     $(ns)-checkbox {
-      @apply text-[var(--bc-disable-border-color)] cursor-not-allowed;
+      @apply cursor-not-allowed text-[var(--bc-disable-border-color)];
     }
 
     $(ns)-label {

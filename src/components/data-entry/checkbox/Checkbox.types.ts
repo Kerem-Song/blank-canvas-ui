@@ -80,11 +80,11 @@ export interface CheckboxProps
     input?: React.ComponentPropsWithRef<'input'>;
     label?: React.ComponentPropsWithRef<'span'>;
   };
-  /**
-   * 구성 요소의 크기입니다.
-   * @default 'md'
-   */
-  size?: 'sm' | 'md' | 'lg';
+  // /**
+  //  * 구성 요소의 크기입니다.
+  //  * @default 'md'
+  //  */
+  // size?: 'sm' | 'md' | 'lg';
   /**
    * 구성 요소의 값입니다. DOM API는 이를 문자열로 변환합니다.
    * 브라우저는 "on"을 기본값으로 사용합니다.
