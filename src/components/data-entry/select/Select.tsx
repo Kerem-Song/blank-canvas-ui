@@ -308,7 +308,6 @@ function SelectFunc<T extends AnyObject>(
         onClick={iconClick}
       >
         <Input
-          style={{ ...style }}
           {...inputProps}
           customPrefix={preSuffixIcon}
           ref={(current) => {
