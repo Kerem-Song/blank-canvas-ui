@@ -78,12 +78,14 @@ function SelectFunc<T extends AnyObject>(
 
   const onChangeCurrentValue = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
+    e.preventDefault();
     const text = e.target as HTMLElement;
     findUserValue(text.innerText);
     setCurrentValue(text.innerText);
     setList(tmpList);
     setShowOptions((pre) => !pre);
     setSelectedValue(text.innerText);
+    inputRef.current?.focus();
   };
 
   const findUserValue = (val: string) => {
@@ -103,7 +105,6 @@ function SelectFunc<T extends AnyObject>(
         item.label.toLowerCase().includes(text),
       );
       setList(searchList);
-
       if (selectedValue !== '' && selectedValue.toLowerCase().includes(text)) {
         setHoverText(selectedValue);
       } else {
@@ -273,9 +274,9 @@ function SelectFunc<T extends AnyObject>(
     selectRef,
     () => {
       popperUpdate();
-      setShowOptions(false);
-      setCurrentValue(selectedValue);
       inputRef.current?.blur();
+      setCurrentValue(selectedValue);
+      setShowOptions(false);
     },
     'mousedown',
   );
@@ -335,11 +336,12 @@ function SelectFunc<T extends AnyObject>(
           onKeyDown={handleKeyArrow}
           disabled={disabled}
           readOnly={!filterOption || disabled}
-          className={classNames({ [selectClasses.disabled]: disabled })}
+          className={classNames({ [selectClasses.disabled]: disabled }, 'group')}
           value={currentValue}
           isError={isError}
           useBorder={useBorder}
           useFocus={useFocus}
+          onBlur={() => setShowOptions(false)}
           suffix={
             suffixIcon ? (
               <div
@@ -389,7 +391,7 @@ function SelectFunc<T extends AnyObject>(
                 <li
                   role="option"
                   key={x.label}
-                  onClick={onChangeCurrentValue}
+                  onMouseDown={onChangeCurrentValue}
                   onMouseEnter={(e) => {
                     setHoverText(e.currentTarget.innerText);
                     setIndexNum(idx);
@@ -413,7 +415,7 @@ function SelectFunc<T extends AnyObject>(
                 <li
                   key={x.label}
                   role="option"
-                  onClick={(e) => {
+                  onMouseDown={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                     setShowOptions(true);
@@ -429,7 +431,7 @@ function SelectFunc<T extends AnyObject>(
           ) : (
             <li
               role="option"
-              onClick={(e) => {
+              onMouseDown={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
                 setShowOptions(true);
