@@ -28,6 +28,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     suffix,
     direction = 'inside',
     useFocus = true,
+    useBorder = true,
     onPressEnter,
     onPressEsc,
     onSearch,
@@ -88,8 +89,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     useFocus && !args.disabled
       ? 'focus-within:ring-2 ring-[var(--bc-primary-color-light)] focus-within:border-[var(--bc-primary-color-main)]'
       : '',
+    useBorder && 'border-[length:var(--bc-border-width)]',
     {
-      invalid: isError,
+      invalid: isError && useBorder,
     },
   );
 
@@ -133,17 +135,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
         data-disabled={args.disabled}
       >
         {customPrefix}
-      </div>
-      <div className="grow">{input}</div>
-      <div className={inputClasses.suffixWrapper}>
-        {showCount && direction === 'inside' ? (
-          <span className={inputClasses.count}>
-            <>
-              {textLength}
-              {args.maxLength ? `/${args.maxLength}` : undefined}
-            </>
-          </span>
-        ) : null}
         {isSearch ? (
           <>
             <Button
@@ -165,6 +156,18 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
             </Button>
           </>
         ) : null}
+      </div>
+      <div className="grow">{input}</div>
+      <div className={inputClasses.suffixWrapper}>
+        {showCount && direction === 'inside' ? (
+          <span className={inputClasses.count}>
+            <>
+              {textLength}
+              {args.maxLength ? `/${args.maxLength}` : undefined}
+            </>
+          </span>
+        ) : null}
+
         {isClearable && (isShowAlwaysClear || textLength) && !isSearch ? (
           <Button
             className={inputClasses.button.root}

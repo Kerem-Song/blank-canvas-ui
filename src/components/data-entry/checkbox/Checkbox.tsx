@@ -33,7 +33,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
     id: idOverride,
     name: nameProp,
     slotProps = {},
-    size = 'md',
+    // size = 'md',
     readOnly = false,
     required = false,
     label,
@@ -80,9 +80,9 @@ export const Checkbox = React.forwardRef(function Checkbox(
       [classes.colorWarning]: color === 'warning',
       [classes.colorDark]: color === 'dark',
       // size
-      [classes.sizeSmall]: size === 'sm',
-      [classes.sizeMedium]: size === 'md',
-      [classes.sizeLarge]: size === 'lg',
+      // [classes.sizeSmall]: size === 'sm',
+      // [classes.sizeMedium]: size === 'md',
+      // [classes.sizeLarge]: size === 'lg',
     },
     rootSlot.className,
   );
@@ -140,8 +140,10 @@ export const Checkbox = React.forwardRef(function Checkbox(
             'aria-checked': 'mixed',
           })}
           onChange={disabled ? undefined : onChange}
+          data-color={color}
+          data-indeterminate={indeterminate}
         />
-        <span className={iconClass}>{icon}</span>
+        {/* <span className={iconClass}>{icon}</span> */}
       </span>
       {label && (
         <span className={classNames(classes.label, labelSlot.className)}>{label}</span>

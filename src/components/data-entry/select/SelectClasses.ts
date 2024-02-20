@@ -40,6 +40,7 @@ const classes = {
     icon: {
       root: '',
       disabled: 'disabled',
+      prefix: 'prefix',
     },
   },
 };

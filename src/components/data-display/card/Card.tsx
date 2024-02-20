@@ -39,6 +39,7 @@ export const Card = forwardRef<HTMLDivElement, ICardProps>((args, ref) => {
 
   const bodyClassName = classNames(cardClasses.body, {
     [cardClasses.small]: size === 'small',
+    [cardClasses.rounded]: rounded,
   });
 
   return (
