@@ -16,8 +16,13 @@ $(ns) {
     }
 
     .bc-input-prefix-wrapper {
+      @apply flex items-center;
       &[data-disabled='true'] {
         @apply pointer-events-none cursor-not-allowed;
+      }
+
+      .bc-input-wrapped {
+        @apply max-h-36pxr;
       }
     }
 

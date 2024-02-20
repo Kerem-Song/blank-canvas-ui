@@ -303,7 +303,12 @@ function App() {
         <input placeholder="asdf" readOnly={true} />
       </div>
       <div className="flex items-center justify-start rounded-[var(--bc-rounded)] border">
-        <Select options={items} className="border-none" />
+        <Select
+          options={items}
+          className="border-none"
+          useBorder={false}
+          useFocus={false}
+        />
         <Input
           showCount
           maxLength={10}
@@ -314,6 +319,12 @@ function App() {
           isError={true}
         />
       </div>
+      <Input
+        showCount
+        maxLength={10}
+        isSearch
+        customPrefix={<Select options={items} useFocus={false} useBorder={false} />}
+      />
     </>
   );
 }
