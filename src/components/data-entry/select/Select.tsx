@@ -266,11 +266,16 @@ function SelectFunc<T extends AnyObject>(
     }
   }, []);
 
-  useOutsideClick(selectRef, () => {
-    setShowOptions(false);
-    setCurrentValue(selectedValue);
-    inputRef.current?.blur();
-  });
+  useOutsideClick(
+    selectRef,
+    () => {
+      popperUpdate();
+      setShowOptions(false);
+      setCurrentValue(selectedValue);
+      inputRef.current?.blur();
+    },
+    'mousedown',
+  );
 
   useEffect(() => {
     setInit(true);
@@ -406,11 +411,12 @@ function SelectFunc<T extends AnyObject>(
                     e.stopPropagation();
                     e.preventDefault();
                     setShowOptions(true);
+                    inputRef.current?.focus();
                   }}
                   style={{ cursor: 'not-allowed' }}
                   className={classNames(disabledLiClassName)}
                 >
-                  {x.label}-
+                  {x.label}
                 </li>
               );
             })
@@ -419,6 +425,9 @@ function SelectFunc<T extends AnyObject>(
               role="option"
               onClick={(e) => {
                 e.stopPropagation();
+                e.preventDefault();
+                setShowOptions(true);
+                inputRef.current?.focus();
               }}
               style={{ cursor: 'not-allowed' }}
             >

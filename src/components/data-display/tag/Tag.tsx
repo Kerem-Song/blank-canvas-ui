@@ -33,6 +33,7 @@ export const Tag = forwardRef<HTMLSpanElement, ITagProps>((args, ref) => {
         setShowOptions(false);
       }
     },
+    'click',
     true,
   );
 
