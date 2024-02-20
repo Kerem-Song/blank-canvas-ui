@@ -1,5 +1,4 @@
 import { forwardRef, useRef, useState } from 'react';
-import { useOutsideClick } from '@hooks/useOutsideClick';
 import classNames from 'classnames';
 
 import { ITagProps } from './Tag.types';
@@ -11,8 +10,8 @@ export const Tag = forwardRef<HTMLSpanElement, ITagProps>((args, ref) => {
     color,
     closeIcon,
     bordered = true,
-    onClose,
     children,
+    onClose,
     style,
     className,
     visible,
@@ -21,21 +20,6 @@ export const Tag = forwardRef<HTMLSpanElement, ITagProps>((args, ref) => {
   const [showOptions, setShowOptions] = useState<boolean>(true);
 
   const closeRef = useRef<HTMLSpanElement>(null);
-
-  useOutsideClick(
-    closeRef,
-    (e) => {
-      if (e!.defaultPrevented) {
-        return;
-      }
-      const temp = e!.target as HTMLElement;
-      if (closeRef.current && closeRef.current.contains(temp)) {
-        setShowOptions(false);
-      }
-    },
-    'click',
-    true,
-  );
 
   const rootClassName = classNames(tagClasses.root, {
     [tagClasses.option.bordered]: bordered,
@@ -74,7 +58,10 @@ export const Tag = forwardRef<HTMLSpanElement, ITagProps>((args, ref) => {
           <span
             {...props}
             className={classNames(closeClassName)}
-            onClick={onClose}
+            onClick={(e) => {
+              setShowOptions(false);
+              onClose?.(e);
+            }}
             ref={closeRef}
             style={{
               color: color ? 'white' : 'auto',
