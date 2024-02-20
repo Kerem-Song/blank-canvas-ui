@@ -5,25 +5,26 @@ import { useEffect } from 'react';
 export function useOutsideClick(
   ref: any,
   action: (e?: Event) => void,
-  condition?: boolean,
+  mouseEvent: string = 'click',
 ) {
   useEffect(() => {
-    if (condition) {
-      document.addEventListener('click', (e: Event) => {
-        action(e);
-      });
-    } else {
-      document.addEventListener('click', (e) => {
+    const controller = new AbortController();
+
+    document.addEventListener(
+      mouseEvent,
+      (e) => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         if (ref.current && !ref.current.contains(e.target)) {
           action();
         }
-      });
-    }
+      },
+      { signal: controller.signal },
+    );
 
     return () => {
       // Unbind the event listener on clean up
-      document.removeEventListener('click', action);
+      //document.removeEventListener('click', action);
+      controller.abort();
     };
-  }, [action, ref, condition]);
+  }, [action, ref]);
 }

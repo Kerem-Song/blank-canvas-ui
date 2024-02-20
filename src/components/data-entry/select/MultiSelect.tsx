@@ -264,12 +264,16 @@ function MultiSelectFunc<T extends AnyObject>(
     inputRef.current?.focus();
   };
 
-  useOutsideClick(selectRef, () => {
-    setInputFocus(false);
-    setShowOptions(false);
-    setSearchKeyword('');
-    setList(tmpList);
-  });
+  useOutsideClick(
+    selectRef,
+    () => {
+      setInputFocus(false);
+      setShowOptions(false);
+      setSearchKeyword('');
+      setList(tmpList);
+    },
+    'mousedown',
+  );
 
   useEffect(() => {
     if (options) {
@@ -499,6 +503,7 @@ function MultiSelectFunc<T extends AnyObject>(
               role="option"
               onClick={(e) => {
                 e.stopPropagation();
+                e.preventDefault();
               }}
             >
               No data
