@@ -42,16 +42,16 @@ export const Default: Story = {
     color: {
       control: 'select',
     },
-    size: {
-      control: 'select',
-    },
+    // size: {
+    //   control: 'select',
+    // },
   },
   args: {
     indeterminate: false,
     label: 'checkbox',
     readOnly: false,
     required: false,
-    size: 'md',
+    // size: 'md',
     color: 'primary',
   },
 };
@@ -80,17 +80,17 @@ export const Label: Story = {
   },
 };
 
-export const Size: Story = {
-  render: () => {
-    return (
-      <>
-        <Checkbox defaultChecked size="sm" />
-        <Checkbox defaultChecked size="md" />
-        <Checkbox defaultChecked size="lg" />
-      </>
-    );
-  },
-};
+// export const Size: Story = {
+//   render: () => {
+//     return (
+//       <>
+//         <Checkbox defaultChecked size="sm" />
+//         <Checkbox defaultChecked size="md" />
+//         <Checkbox defaultChecked size="lg" />
+//       </>
+//     );
+//   },
+// };
 
 export const Color: Story = {
   render: () => {
@@ -158,12 +158,12 @@ export const Icon: Story = {
     return (
       <>
         <Checkbox
-          size="lg"
+          // size="lg"
           uncheckedIcon={<HeartBorderIcon />}
           checkedIcon={<HeartIcon />}
         />
         <Checkbox
-          size="lg"
+          // size="lg"
           uncheckedIcon={<BookmarkBorderIcon />}
           checkedIcon={<BookmarkIcon />}
         />

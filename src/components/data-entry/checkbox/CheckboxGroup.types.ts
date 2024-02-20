@@ -20,7 +20,7 @@ export interface CheckboxGroupProps
     | 'uncheckedIcon'
     | 'readOnly'
     | 'required'
-    | 'size'
+    // | 'size'
     | 'color'
     | 'slotProps'
   > {

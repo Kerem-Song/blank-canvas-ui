@@ -30,7 +30,7 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
     slotProps = {},
     className,
     color = 'primary',
-    size = 'md',
+    // size = 'md',
     style,
     options = [],
     onChange,
@@ -69,7 +69,7 @@ export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
       readOnly={'readOnly' in option ? option.readOnly : readOnly}
       required={'required' in option ? option.required : required}
       color={color}
-      size={size}
+      // size={size}
       slotProps={{
         root: option.slotProps?.root || slotProps.root,
         checkbox: option.slotProps?.checkbox || slotProps.checkbox,
