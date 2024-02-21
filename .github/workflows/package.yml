@@ -32,7 +32,7 @@ jobs:
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Ensure access
-        run: npm whoami --registry https://npm.pkg.github.com/
+        run: yarn npm whoami --scope lunasoft-org
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -52,16 +52,20 @@ jobs:
 
       - name: Yarn install
         run: |
-          export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
-          yarn set version 4.0.2
+          yarn config
           yarn
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Yarn build
-        run: |
-          export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
-          yarn build
+        run: yarn build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Yarn publish
-        run: |
-          export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
-          yarn npm publish
+        run: yarn npm publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
