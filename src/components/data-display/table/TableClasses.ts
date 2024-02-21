@@ -13,7 +13,7 @@ const classes = {
     normal: 'normal',
     small: 'small',
   },
-  sortable: 'sortable',
+  sortable: { root: '', svg: 'svg' },
   empty: 'empty',
   loading: 'loading',
 };

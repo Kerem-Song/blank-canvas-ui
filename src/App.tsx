@@ -325,6 +325,7 @@ function App() {
         isSearch
         customPrefix={<Select options={items} useFocus={false} useBorder={false} />}
       />
+      <Select options={items} />
     </>
   );
 }

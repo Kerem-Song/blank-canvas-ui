@@ -2,6 +2,7 @@ import { IcSortAsc, IcSortDesc, IcSortNone } from '@assets/icons';
 import { Path } from 'object-path';
 
 import { ISortInfo } from '../Table.types';
+import { tableClasses } from '../TableClasses';
 
 export interface IHeaderSortIconProps {
   sortable?: boolean;
@@ -19,12 +20,12 @@ export const HeaderSortIcon = ({ sortable, path, sortInfo }: IHeaderSortIconProp
     <span className="absolute top-[50%] translate-y-[-50%]">
       {sort ? (
         sort.direction === 'ascending' ? (
-          <IcSortAsc />
+          <IcSortAsc className={tableClasses.sortable.svg} />
         ) : (
-          <IcSortDesc />
+          <IcSortDesc className={tableClasses.sortable.svg} />
         )
       ) : (
-        <IcSortNone />
+        <IcSortNone className={tableClasses.sortable.svg} />
       )}
     </span>
   );

@@ -48,7 +48,7 @@ $(ns)-wrap {
             @apply cursor-pointer selection:bg-transparent hover:bg-gray-200;
           }
 
-          svg {
+          &-svg {
             @apply fill-[var(--bc-primary-color-main)] stroke-[var(--bc-primary-color-main)] stroke-[4];
           }
         }

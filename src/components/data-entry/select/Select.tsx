@@ -78,12 +78,14 @@ function SelectFunc<T extends AnyObject>(
 
   const onChangeCurrentValue = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
+    e.preventDefault();
     const text = e.target as HTMLElement;
     findUserValue(text.innerText);
     setCurrentValue(text.innerText);
     setList(tmpList);
     setShowOptions((pre) => !pre);
     setSelectedValue(text.innerText);
+    inputRef.current?.focus();
   };
 
   const findUserValue = (val: string) => {
@@ -103,7 +105,6 @@ function SelectFunc<T extends AnyObject>(
         item.label.toLowerCase().includes(text),
       );
       setList(searchList);
-
       if (selectedValue !== '' && selectedValue.toLowerCase().includes(text)) {
         setHoverText(selectedValue);
       } else {
@@ -200,7 +201,6 @@ function SelectFunc<T extends AnyObject>(
           setSelectedValue(hoverText);
           findUserValue(hoverText);
         }
-
         break;
       case 'Backspace':
         setShowOptions(true);
@@ -218,7 +218,9 @@ function SelectFunc<T extends AnyObject>(
     void update?.();
   };
 
-  const iconClick = () => {
+  const iconClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (!disabled) {
       if (!showOptions) {
         popperUpdate();
@@ -226,13 +228,13 @@ function SelectFunc<T extends AnyObject>(
 
         setList(tmpList);
         setPlaceholderText(selectedValue);
-
-        setCurrentValue('');
+        // setCurrentValue('');
       } else {
         if (list && list?.length === tmpList?.length) {
-          setShowOptions(false);
+          // setShowOptions(false);
           setCurrentValue(selectedValue);
         }
+        setShowOptions(false);
       }
     }
   };
@@ -269,11 +271,17 @@ function SelectFunc<T extends AnyObject>(
     }
   }, []);
 
-  useOutsideClick(selectRef, () => {
-    setShowOptions(false);
-    setCurrentValue(selectedValue);
-    inputRef.current?.blur();
-  });
+  useOutsideClick(
+    selectRef,
+    () => {
+      popperUpdate();
+      inputRef.current?.blur();
+      // console.log(selectedValue);
+      // setCurrentValue(selectedValue);
+      setShowOptions(false);
+    },
+    'mousedown',
+  );
 
   useEffect(() => {
     setInit(true);
@@ -297,7 +305,7 @@ function SelectFunc<T extends AnyObject>(
   );
 
   return (
-    <div className={classNames(rootClassName)} ref={selectRef} onClick={iconClick}>
+    <div className={classNames(rootClassName)} ref={selectRef}>
       <div
         ref={referenceElement}
         style={{
@@ -330,15 +338,15 @@ function SelectFunc<T extends AnyObject>(
           onKeyDown={handleKeyArrow}
           disabled={disabled}
           readOnly={!filterOption || disabled}
-          className={classNames({ [selectClasses.disabled]: disabled })}
+          className={classNames({ [selectClasses.disabled]: disabled }, 'group')}
           value={currentValue}
           isError={isError}
           useBorder={useBorder}
           useFocus={useFocus}
+          onBlur={() => setShowOptions(false)}
           suffix={
             suffixIcon ? (
               <div
-                onClick={iconClick}
                 className={classNames(
                   disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
                 )}
@@ -347,7 +355,12 @@ function SelectFunc<T extends AnyObject>(
               </div>
             ) : (
               <div
-                onClick={iconClick}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('test');
+                  setShowOptions((pre) => !pre);
+                }}
                 className={classNames(
                   disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
                 )}
@@ -384,7 +397,7 @@ function SelectFunc<T extends AnyObject>(
                 <li
                   role="option"
                   key={x.label}
-                  onClick={onChangeCurrentValue}
+                  onMouseDown={onChangeCurrentValue}
                   onMouseEnter={(e) => {
                     setHoverText(e.currentTarget.innerText);
                     setIndexNum(idx);
@@ -408,23 +421,27 @@ function SelectFunc<T extends AnyObject>(
                 <li
                   key={x.label}
                   role="option"
-                  onClick={(e) => {
+                  onMouseDown={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                     setShowOptions(true);
+                    inputRef.current?.focus();
                   }}
                   style={{ cursor: 'not-allowed' }}
                   className={classNames(disabledLiClassName)}
                 >
-                  {x.label}-
+                  {x.label}
                 </li>
               );
             })
           ) : (
             <li
               role="option"
-              onClick={(e) => {
+              onMouseDown={(e) => {
                 e.stopPropagation();
+                e.preventDefault();
+                // setShowOptions(true);
+                // inputRef.current?.focus();
               }}
               style={{ cursor: 'not-allowed' }}
             >

@@ -93,15 +93,6 @@ export const onClose: Story = {
         >
           close TAG
         </Tag>
-
-        <Tag
-          closeIcon={true}
-          onClose={(e) => {
-            e.preventDefault();
-          }}
-        >
-          Prevent Default
-        </Tag>
       </Flex>
     );
   },
