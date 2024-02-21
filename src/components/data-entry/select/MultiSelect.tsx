@@ -89,9 +89,13 @@ function MultiSelectFunc<T extends AnyObject>(
     e.preventDefault();
     const text = (e.target as HTMLElement).innerText;
     onChangeValue(text);
-    setInputFocus(true);
+    setShowOptions(true);
     inputRef.current?.focus();
   };
+
+  useEffect(() => {
+    console.log(showOptions);
+  }, [showOptions]);
 
   const findUserValue = (value: string[]) => {
     const result: string[] = [];
@@ -212,7 +216,9 @@ function MultiSelectFunc<T extends AnyObject>(
         break;
     }
   };
-  const iconClick = () => {
+  const iconClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (!disabled) {
       if (!showOptions) {
         setShowOptions(true);
@@ -269,6 +275,7 @@ function MultiSelectFunc<T extends AnyObject>(
   useOutsideClick(
     selectRef,
     () => {
+      popperUpdate();
       setInputFocus(false);
       setShowOptions(false);
       setSearchKeyword('');
@@ -346,7 +353,12 @@ function MultiSelectFunc<T extends AnyObject>(
     <div
       className={classNames(rootClassName, focusClassName)}
       ref={selectRef}
-      onClick={iconClick}
+      onMouseDown={(e) => {
+        {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }}
     >
       <div
         ref={referenceDiv}
@@ -354,6 +366,7 @@ function MultiSelectFunc<T extends AnyObject>(
           ...style,
           minWidth: width,
         }}
+        onClick={iconClick}
         className={classNames(selectClassName, className, 'group')}
       >
         <div className={classNames(selectClasses.multiSelect.tag.area)}>
@@ -395,7 +408,10 @@ function MultiSelectFunc<T extends AnyObject>(
                 inputRef.current = current;
               }}
               onFocus={() => setInputFocus(true)}
-              onBlur={() => setInputFocus(false)}
+              onBlur={() => {
+                setInputFocus(false);
+                setShowOptions(false);
+              }}
               disabled={disabled}
               onChange={inputOnChange}
               onKeyDown={handleKeyArrow}
@@ -446,7 +462,7 @@ function MultiSelectFunc<T extends AnyObject>(
             minWidth: width,
             visibility:
               open === undefined
-                ? inputFocus && init
+                ? showOptions && init
                   ? 'visible'
                   : 'hidden'
                 : open && init
