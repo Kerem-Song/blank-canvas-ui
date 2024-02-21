@@ -355,12 +355,6 @@ function SelectFunc<T extends AnyObject>(
               </div>
             ) : (
               <div
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  console.log('test');
-                  setShowOptions((pre) => !pre);
-                }}
                 className={classNames(
                   disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
                 )}
