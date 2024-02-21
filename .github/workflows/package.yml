@@ -15,11 +15,33 @@ jobs:
         run: echo "::set-output name=version::${GITHUB_REF#refs/tags/package.}"
 
       - uses: actions/checkout@v3
+        with:
+          ref: package.${{steps.tempver.outputs.version}}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update package version
+        run: npm version ${{ steps.tempver.outputs.version }} --no-git-tag-version
+
+      - name: Commit updated package version
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore: Update package version'
+          branch: main
+
+      - name: Update Git tag
+        run: |
+          git tag ${{ github.ref_name }} -f
+          git push origin ${{ github.ref_name }} -f
 
       - name: Yarn install
         run: |
           export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
           yarn set version 4.0.2
+          yarn config
           yarn
 
       - name: Yarn build
