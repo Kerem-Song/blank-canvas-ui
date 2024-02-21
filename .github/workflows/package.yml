@@ -52,7 +52,7 @@ jobs:
       - name: Yarn install
         run: |
           export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
-          yarn set version 4.0.2
+          yarn set version 4.1.0
           yarn
 
       - name: Yarn build
