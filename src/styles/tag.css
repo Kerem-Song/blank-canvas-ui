@@ -1,7 +1,7 @@
 $ns: .bc;
 $(ns) {
   &-tag {
-    @apply h-fit text-center rounded py-px ps-1 pe-1 bg-gray-100 text-xs text-slate-500;
+    @apply h-fit rounded bg-gray-100 py-px pe-1 ps-1 text-center text-xs text-slate-500;
     &-option {
       &-pd {
         @apply px-1;
@@ -10,7 +10,7 @@ $(ns) {
         @apply inline-block;
       }
       &-icon {
-        @apply inline-block pr-1 pl-0 align-text-bottom;
+        @apply inline-block pl-0 pr-1 align-text-bottom;
 
         img {
           @apply w-4 align-middle;
@@ -19,7 +19,7 @@ $(ns) {
     }
 
     &-option-close {
-      @apply text-10pxr pl-1 cursor-pointer align-bottom;
+      @apply cursor-pointer pl-1 text-10pxr;
     }
     &-option-hidden {
       @apply hidden;

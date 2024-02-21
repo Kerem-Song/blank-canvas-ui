@@ -124,22 +124,13 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const wrappedInput = (
     <div
       className={inputWrapClassName}
+      onClick={() => !args.disabled && inputRef.current?.focus()}
       onMouseDown={(e) => {
         e.preventDefault();
         e.stopPropagation();
       }}
-      onClick={(e) => {
-        !args.disabled && inputRef.current?.focus();
-      }}
     >
-      <div
-        className={inputClasses.prefixWrapper}
-        // onClick={(e) => {
-        //   !args.disabled && inputRef.current?.focus();
-        //   args.disabled && e.preventDefault();
-        // }}
-        data-disabled={args.disabled}
-      >
+      <div className={inputClasses.prefixWrapper} data-disabled={args.disabled}>
         {customPrefix}
         {isSearch ? (
           <>
@@ -193,14 +184,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
             <div className={inputClasses.button.clear} />
           </Button>
         ) : null}
-        <div
-          className="suffix"
-          // onClick={(e) => {
-          //   !args.disabled && inputRef.current?.focus();
-          //   args.disabled && e.preventDefault();
-          // }}
-          data-disabled={args.disabled}
-        >
+        <div className="suffix" data-disabled={args.disabled}>
           {suffix}
         </div>
       </div>
