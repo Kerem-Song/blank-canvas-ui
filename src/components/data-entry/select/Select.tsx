@@ -201,7 +201,6 @@ function SelectFunc<T extends AnyObject>(
           setSelectedValue(hoverText);
           findUserValue(hoverText);
         }
-
         break;
       case 'Backspace':
         setShowOptions(true);
@@ -219,7 +218,9 @@ function SelectFunc<T extends AnyObject>(
     void update?.();
   };
 
-  const iconClick = () => {
+  const iconClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (!disabled) {
       if (!showOptions) {
         popperUpdate();
@@ -227,13 +228,13 @@ function SelectFunc<T extends AnyObject>(
 
         setList(tmpList);
         setPlaceholderText(selectedValue);
-
-        setCurrentValue('');
+        // setCurrentValue('');
       } else {
         if (list && list?.length === tmpList?.length) {
-          setShowOptions(false);
+          // setShowOptions(false);
           setCurrentValue(selectedValue);
         }
+        setShowOptions(false);
       }
     }
   };
@@ -275,7 +276,8 @@ function SelectFunc<T extends AnyObject>(
     () => {
       popperUpdate();
       inputRef.current?.blur();
-      setCurrentValue(selectedValue);
+      // console.log(selectedValue);
+      // setCurrentValue(selectedValue);
       setShowOptions(false);
     },
     'mousedown',
@@ -303,7 +305,7 @@ function SelectFunc<T extends AnyObject>(
   );
 
   return (
-    <div className={classNames(rootClassName)} ref={selectRef} onClick={iconClick}>
+    <div className={classNames(rootClassName)} ref={selectRef}>
       <div
         ref={referenceElement}
         style={{
@@ -345,7 +347,6 @@ function SelectFunc<T extends AnyObject>(
           suffix={
             suffixIcon ? (
               <div
-                onClick={iconClick}
                 className={classNames(
                   disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
                 )}
@@ -354,7 +355,6 @@ function SelectFunc<T extends AnyObject>(
               </div>
             ) : (
               <div
-                onClick={iconClick}
                 className={classNames(
                   disabled ? selectClasses.icon.disabled : selectClasses.icon.root,
                 )}
@@ -434,8 +434,8 @@ function SelectFunc<T extends AnyObject>(
               onMouseDown={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                setShowOptions(true);
-                inputRef.current?.focus();
+                // setShowOptions(true);
+                // inputRef.current?.focus();
               }}
               style={{ cursor: 'not-allowed' }}
             >
