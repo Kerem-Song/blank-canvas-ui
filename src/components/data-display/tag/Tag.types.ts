@@ -29,6 +29,7 @@ export interface ITagProps extends React.HTMLAttributes<HTMLSpanElement> {
    * @type (e)=>void
    */
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
+
   /**
    * component를 전달
    * @type React.ReactNode | React.ReactNode[]
