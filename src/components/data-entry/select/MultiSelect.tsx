@@ -86,8 +86,10 @@ function MultiSelectFunc<T extends AnyObject>(
 
   const onChangeCurrentValue = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
+    e.preventDefault();
     const text = (e.target as HTMLElement).innerText;
     onChangeValue(text);
+    setInputFocus(true);
     inputRef.current?.focus();
   };
 
@@ -393,6 +395,7 @@ function MultiSelectFunc<T extends AnyObject>(
                 inputRef.current = current;
               }}
               onFocus={() => setInputFocus(true)}
+              onBlur={() => setInputFocus(false)}
               disabled={disabled}
               onChange={inputOnChange}
               onKeyDown={handleKeyArrow}
@@ -443,7 +446,7 @@ function MultiSelectFunc<T extends AnyObject>(
             minWidth: width,
             visibility:
               open === undefined
-                ? showOptions && init
+                ? inputFocus && init
                   ? 'visible'
                   : 'hidden'
                 : open && init
@@ -460,9 +463,7 @@ function MultiSelectFunc<T extends AnyObject>(
                 <li
                   role="option"
                   key={x.label}
-                  onClick={(e) => {
-                    onChangeCurrentValue(e);
-                  }}
+                  onMouseDown={onChangeCurrentValue}
                   onMouseEnter={(e) => {
                     setHoverText(e.currentTarget.innerText);
                     setIndexNum(idx);
@@ -488,7 +489,7 @@ function MultiSelectFunc<T extends AnyObject>(
                 <li
                   key={x.label}
                   role="option"
-                  onClick={(e) => {
+                  onMouseDown={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                   }}
@@ -501,7 +502,7 @@ function MultiSelectFunc<T extends AnyObject>(
           ) : (
             <li
               role="option"
-              onClick={(e) => {
+              onMouseDown={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
               }}
