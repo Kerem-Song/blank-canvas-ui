@@ -51,19 +51,17 @@ jobs:
           git push origin ${{ github.ref_name }} -f
 
       - name: Yarn install
-        run: yarn
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
+          yarn set version 4.0.2
+          yarn
 
       - name: Yarn build
-        run: yarn build
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
+          yarn build
 
       - name: Yarn publish
-        run: yarn npm publish
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
+          yarn npm publish
