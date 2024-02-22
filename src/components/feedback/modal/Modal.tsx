@@ -9,7 +9,14 @@ import { IModalProps } from './Modal.types';
 import { modalClasses } from './ModalClasses';
 
 export const Modal = (modalInfo: IModalProps) => {
-  const { className, style, children, size = 'sm', ...modalProps } = modalInfo;
+  const {
+    className,
+    style,
+    children,
+    size = 'sm',
+    useDim = false,
+    ...modalProps
+  } = modalInfo;
 
   const rootClassName = classNames(
     modalClasses.root,
@@ -21,6 +28,11 @@ export const Modal = (modalInfo: IModalProps) => {
       [modalClasses.size.xLarge]: size === 'xl',
     },
     className,
+  );
+
+  const overlayClassname = classNames(
+    modalInfo.overalyClassName,
+    useDim && 'bc-modal-overlay',
   );
 
   const handleCancel = () => {
@@ -46,7 +58,7 @@ export const Modal = (modalInfo: IModalProps) => {
       appElement={document.body}
       className={rootClassName}
       isOpen={modalInfo.isOpen}
-      overlayClassName={modalInfo.overalyClassName}
+      overlayClassName={overlayClassname}
       shouldCloseOnOverlayClick={modalInfo.shouldCloseOnOverlayClick}
       shouldCloseOnEsc={modalInfo.shouldCloseOnEsc}
       onRequestClose={() => {

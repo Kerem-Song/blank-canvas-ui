@@ -55,3 +55,7 @@ $(ns) {
     }
   }
 }
+
+.ReactModal__Overlay--after-open {
+  @apply z-999 flex;
+}
