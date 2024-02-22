@@ -3,8 +3,8 @@ import { attachPrefixClasses } from '@modules/utils/generatePrefixClasses/genera
 const classes = {
   root: '',
   titleCounterWrapper: 'title-counter-wrapper',
-  normal: 'normal',
-  wrapped: 'wrapped',
+  normal: { root: '', sm: 'sm', md: 'md', lg: 'lg' },
+  wrapped: { root: '', sm: 'sm', md: 'md', lg: 'lg' },
   button: {
     root: '',
     search: 'search',

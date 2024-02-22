@@ -29,6 +29,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
     direction = 'inside',
     useFocus = true,
     useBorder = true,
+    controlSize = 'md',
     onPressEnter,
     onPressEsc,
     onSearch,
@@ -78,20 +79,30 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((args, ref) => {
   const inputClassName = classNames(
     wrappingType
       ? ''
-      : `${args.className ?? ''} ${inputClasses.normal} ${useFocus ? 'focus:ring-2 ring-[var(--bc-primary-color-light)] focus:border-[var(--bc-primary-color-main)]' : ''} `,
+      : `${args.className ?? ''} ${inputClasses.normal.root} ${useFocus ? 'focus:ring-2 ring-[var(--bc-primary-color-light)] focus:border-[var(--bc-primary-color-main)]' : ''} `,
     {
       invalid: isError,
+    },
+    {
+      [inputClasses.normal.sm]: controlSize === 'sm',
+      [inputClasses.normal.md]: controlSize === 'md',
+      [inputClasses.normal.lg]: controlSize === 'lg',
     },
   );
 
   const inputWrapClassName = classNames(
-    wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped}` : '',
+    wrappingType ? `${args.className ?? ''} ${inputClasses.wrapped.root}` : '',
     useFocus && !args.disabled
       ? 'focus-within:ring-2 ring-[var(--bc-primary-color-light)] focus-within:border-[var(--bc-primary-color-main)]'
       : '',
     useBorder && 'border-[length:var(--bc-border-width)]',
     {
       invalid: isError && useBorder,
+    },
+    {
+      [inputClasses.wrapped.sm]: controlSize === 'sm',
+      [inputClasses.wrapped.md]: controlSize === 'md',
+      [inputClasses.wrapped.lg]: controlSize === 'lg',
     },
   );
 

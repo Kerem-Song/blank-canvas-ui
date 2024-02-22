@@ -3,7 +3,18 @@ $ns: .bc;
 $(ns) {
   &-input-wrapped {
     @apply inline-flex items-center rounded-[var(--bc-rounded)] bg-white px-2;
-    height: var(--bc-control-height);
+
+    &-sm {
+      @apply text-[length:var(--bc-font-size-sm)];
+    }
+
+    &-md {
+      @apply text-[length:var(--bc-font-size-md)];
+    }
+
+    &-lg {
+      @apply text-[length:var(--bc-font-size-lg)];
+    }
 
     .bc-input-suffix-wrapper {
       @apply flex items-center pl-[var(--bc-control-gap)] text-end;
@@ -51,7 +62,18 @@ $(ns) {
 
   &-input-normal {
     @apply rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] px-2;
-    height: var(--bc-control-height);
+
+    &-sm {
+      @apply text-[length:var(--bc-font-size-sm)];
+    }
+
+    &-md {
+      @apply text-[length:var(--bc-font-size-md)];
+    }
+
+    &-lg {
+      @apply text-[length:var(--bc-font-size-lg)];
+    }
 
     &.invalid {
       @apply border-[var(--bc-error-color-main)] ring-2 ring-[var(--bc-error-color-light)];

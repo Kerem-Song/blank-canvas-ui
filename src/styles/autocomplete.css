@@ -14,6 +14,17 @@ $(ns) {
 
     &-list {
       @apply flex h-32pxr w-138pxr items-center gap-8pxr rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] border-white px-8pxr py-12pxr;
+      &-sm {
+        @apply text-[length:var(--bc-font-size-sm)];
+      }
+
+      &-md {
+        @apply text-[length:var(--bc-font-size-md)];
+      }
+
+      &-lg {
+        @apply text-[length:var(--bc-font-size-lg)];
+      }
 
       &:hover {
         @apply bg-blue-100;
