@@ -61,8 +61,15 @@ export interface IModalProps extends HTMLAttributes<HTMLDivElement> {
 
   /**
    * 화면 뒷쪽 dim처리 사용 여부
+   * @default false
    */
   useDim?: boolean;
+
+  /**
+   * Devider 위치
+   * @default 'top'
+   */
+  dividerDirection?: 'top' | 'bottom' | 'all' | 'none';
 
   /**
    * 모달이 열린 후 실행되어야 할 함수

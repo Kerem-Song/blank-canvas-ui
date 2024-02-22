@@ -15,6 +15,7 @@ export const Modal = (modalInfo: IModalProps) => {
     children,
     size = 'sm',
     useDim = false,
+    dividerDirection = 'bottom',
     ...modalProps
   } = modalInfo;
 
@@ -80,12 +81,17 @@ export const Modal = (modalInfo: IModalProps) => {
           />
         ) : null}
       </div>
-      <Divider style={{ margin: 0 }} />
+      {dividerDirection === 'top' || dividerDirection === 'all' ? (
+        <Divider style={{ margin: 0 }} />
+      ) : null}
       <div className={modalClasses.content}>{modalInfo.description}</div>
       {children ? (
         <div className={modalClasses.children}>{modalInfo.children}</div>
       ) : null}
-      <Flex justify="end" gap={8} style={{ padding: '0 20px 20px 20px' }}>
+      {dividerDirection === 'bottom' || dividerDirection === 'all' ? (
+        <Divider style={{ margin: 0 }} />
+      ) : null}
+      <Flex justify="end" gap={8} style={{ padding: '12px' }}>
         {modalInfo.cancelButton ? (
           <Button className={modalClasses.btn.cancel} onClick={handleCancel}>
             {modalInfo.cancelButton}
