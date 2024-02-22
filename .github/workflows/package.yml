@@ -41,7 +41,6 @@ jobs:
         run: |
           export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} 
           yarn set version 4.0.2
-          yarn config
           yarn
 
       - name: Yarn build
