@@ -1,8 +1,9 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
 
 export interface ISelectProp<T extends object>
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> {
   onChange?: (value: string | null) => void;
+  value?: string;
   /**
    * select의 선 표시 여부
    * @default false
