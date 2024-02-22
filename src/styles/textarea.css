@@ -24,6 +24,13 @@ $(ns) {
       }
     }
 
+    .bc-textarea-inside-wrapper {
+      @apply flex items-end justify-between;
+
+      .bc-textarea-children {
+        @apply text-left;
+      }
+    }
     &.inside {
       @apply block border-[length:var(--bc-border-width)] border-[var(--bc-border-color)] bg-white text-right;
 
