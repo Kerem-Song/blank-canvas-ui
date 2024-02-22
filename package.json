@@ -30,8 +30,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest",
-    "prepublish": "yarn build"
+    "test": "vitest"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
