@@ -23,6 +23,7 @@ TailwindCss
   --bc-rounded: 8px;
   --bc-rounded-lg: 12px;
 
+  --bc-control-height-sm: 24px;
   --bc-control-height: 32px;
   --bc-control-height-lg: 38px;
   --bc-control-gap: 4px;

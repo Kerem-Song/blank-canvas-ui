@@ -3,17 +3,19 @@ $ns: .bc;
 $(ns) {
   &-input-wrapped {
     @apply inline-flex items-center rounded-[var(--bc-rounded)] bg-white px-2;
-
+    input {
+      @apply h-[calc(var(--bc-control-height)-4px)];
+    }
     &-sm {
-      @apply text-[length:var(--bc-font-size-sm)];
+      @apply h-[var(--bc-control-height)] text-[length:var(--bc-font-size-xs)];
     }
 
     &-md {
-      @apply text-[length:var(--bc-font-size-md)];
+      @apply h-[var(--bc-control-height)] text-[length:var(--bc-font-size-sm)];
     }
 
     &-lg {
-      @apply text-[length:var(--bc-font-size-lg)];
+      @apply h-[var(--bc-control-height-lg)] text-[length:var(--bc-font-size-lg)];
     }
 
     .bc-input-suffix-wrapper {
@@ -64,15 +66,15 @@ $(ns) {
     @apply rounded-[var(--bc-rounded)] border-[length:var(--bc-border-width)] px-2;
 
     &-sm {
-      @apply text-[length:var(--bc-font-size-sm)];
+      @apply h-[var(--bc-control-height)] text-[length:var(--bc-font-size-sm)];
     }
 
     &-md {
-      @apply text-[length:var(--bc-font-size-md)];
+      @apply h-[var(--bc-control-height)] text-[length:var(--bc-font-size-md)];
     }
 
     &-lg {
-      @apply text-[length:var(--bc-font-size-lg)];
+      @apply h-[var(--bc-control-height-lg)] text-[length:var(--bc-font-size-lg)];
     }
 
     &.invalid {
