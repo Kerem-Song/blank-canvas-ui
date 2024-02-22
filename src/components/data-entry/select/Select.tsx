@@ -50,7 +50,7 @@ function SelectFunc<T extends AnyObject>(
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
   const [tmpList, setTmpList] =
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
-  const [currentValue, setCurrentValue] = useState<string>(value ?? '');
+  const [currentValue, setCurrentValue] = useState<string>('');
   // const [placeholderText, setPlaceholderText] = useState(placeholder ?? '');
   // const [selectedValue, setSelectedValue] = useState<string>('');
   const [showOptions, setShowOptions] = useState<boolean>(defaultOpen ?? false);
@@ -115,8 +115,8 @@ function SelectFunc<T extends AnyObject>(
   }, [currentValue]);
 
   useEffect(() => {
-    const findValue = list?.filter((x) => x.value === value)[0].label;
-    setCurrentValue(findValue ?? '');
+    const findValue = tmpList?.filter((x) => x.value === value)[0];
+    setCurrentValue(findValue?.label ?? '');
   }, [value]);
 
   const handleKeyArrow = (e: React.KeyboardEvent) => {
@@ -128,7 +128,7 @@ function SelectFunc<T extends AnyObject>(
           setShowOptions((pre) => !pre);
           popperUpdate();
           // setPlaceholderText(currentValue);
-          setCurrentValue('');
+          // setCurrentValue('');
           setList(tmpList);
           break;
         }
@@ -157,7 +157,7 @@ function SelectFunc<T extends AnyObject>(
           setShowOptions((pre) => !pre);
           popperUpdate();
           // setPlaceholderText(currentValue);
-          setCurrentValue('');
+          // setCurrentValue('');
           setList(tmpList);
           break;
         }
@@ -257,6 +257,11 @@ function SelectFunc<T extends AnyObject>(
         setCurrentValue(label);
         // setSelectedValue(label);
       }
+      if (value) {
+        const label = options?.filter((x) => x.value === value)[0].label;
+        setCurrentValue(label);
+        // setSelectedValue(label);
+      }
     } else {
       const key = displayLabel ?? 'label';
       const valueKey = valuePath ?? 'value';
@@ -271,6 +276,10 @@ function SelectFunc<T extends AnyObject>(
         const label = temp?.filter((x) => x.value === defaultValue)[0].label;
         setCurrentValue(label ?? '');
         // setSelectedValue(label ?? '');
+      }
+      if (value) {
+        const label = temp?.filter((x) => x.value === value)[0].label;
+        setCurrentValue(label ?? '');
       }
 
       setHoverText(temp?.length ? temp[0].label : '');
