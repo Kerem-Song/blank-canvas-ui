@@ -3,30 +3,25 @@ $ns: .bc;
 $(ns) {
   &-radio-container {
     @apply flex cursor-pointer items-center gap-[var(--bc-control-gap)];
-    input[type='radio'] {
-      @apply appearance-none rounded-full bg-white shadow-[0_0_0_1px] shadow-[var(--bc-primary-color-main)];
-
-      &:checked {
-        @apply border-[3px] border-white bg-[var(--bc-primary-color-main)] shadow-[0_0_0_1px] shadow-[var(--bc-primary-color-main)];
-      }
-    }
 
     .bc-radio {
-      @apply h-14pxr w-14pxr;
-
+      @apply h-14pxr w-14pxr appearance-none rounded-full border-[3px] border-white bg-white shadow-[0_0_0_1px] shadow-[var(--bc-primary-color-main)];
+      &:checked {
+        @apply bg-[var(--bc-primary-color-main)] shadow-[var(--bc-primary-color-main)];
+      }
       &.invalid {
-        @apply border-[3px] border-white bg-white shadow-[0_0_0_1px] shadow-[var(--bc-error-color-main)];
+        @apply shadow-[var(--bc-error-color-main)];
 
         &:checked {
-          @apply border-[3px] border-white bg-[var(--bc-error-color-main)] shadow-[0_0_0_1px] shadow-[var(--bc-error-color-main)];
+          @apply bg-[var(--bc-error-color-main)] shadow-[var(--bc-error-color-main)];
         }
       }
 
       &:disabled {
-        @apply border-[3px] border-white bg-white shadow-[0_0_0_1px] shadow-[var(--bc-disable-border-color)];
+        @apply shadow-[var(--bc-disable-border-color)];
 
         &:checked {
-          @apply border-[3px] border-white bg-[var(--bc-disable-background)] shadow-[0_0_0_1px] shadow-[var(--bc-disable-background)];
+          @apply bg-[var(--bc-disable-background)] shadow-[var(--bc-disable-background)];
         }
       }
     }
