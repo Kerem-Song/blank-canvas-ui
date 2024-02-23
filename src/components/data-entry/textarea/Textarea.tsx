@@ -6,7 +6,7 @@ import { ITextareaProps } from './Textarea.types';
 import { textareaClasses } from './TextareaClasses';
 
 export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, ref) => {
-  const { style, readOnly, isError, direction, ...inputProps } = args;
+  const { style, readOnly, isError, direction, controlSize = 'md', ...inputProps } = args;
 
   const handleTextArea = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -21,6 +21,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((args, r
     args.className,
     {
       invalid: isError,
+    },
+    {
+      [textareaClasses.size.sm]: controlSize === 'sm',
+      [textareaClasses.size.md]: controlSize === 'md',
+      [textareaClasses.size.lg]: controlSize === 'lg',
     },
   );
 

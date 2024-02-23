@@ -11,6 +11,20 @@ $(ns) {
     &-border:focus {
       @apply border-[length:var(--bc-border-width)] border-[var(--bc-primary-color-main)] ring-2 ring-[var(--bc-primary-color-light)];
     }
+
+    &-size {
+      &-sm {
+        @apply text-[length:var(--bc-font-size-xs)];
+      }
+
+      &-md {
+        @apply text-[length:var(--bc-font-size-sm)];
+      }
+
+      &-lg {
+        @apply text-[length:var(--bc-font-size-lg)];
+      }
+    }
   }
 
   &-textarea-title-counter-wrapper {

@@ -32,10 +32,19 @@ export interface ITextareaProps extends InputHTMLAttributes<HTMLTextAreaElement>
    */
   isError?: boolean;
 
-
   /**
    * Input에서 노출되는 title과 counter의 위치(label은 값이 없을 경우 노출되지 않음)
    * @type "top" | "bottom" | "inside"
    */
   direction?: 'top' | 'bottom' | 'inside';
+
+  /**
+   * Input 높이 조절
+   * sm: 미정
+   * md: 32px
+   * lg: 38px
+   * @default md
+   * @type "sm" | "md" | "lg"
+   */
+  controlSize?: 'sm' | 'md' | 'lg';
 }

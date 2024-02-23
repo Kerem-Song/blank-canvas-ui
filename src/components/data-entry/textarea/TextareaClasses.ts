@@ -9,6 +9,7 @@ const classes = {
   label: 'label',
   children: 'children',
   insideWrapper: 'inside-wrapper',
+  size: { root: '', sm: 'sm', md: 'md', lg: 'lg' },
 } as const;
 
 export const textareaClasses = attachPrefixClasses(classes, 'textarea', true);
