@@ -2,6 +2,16 @@ import { InputHTMLAttributes, ReactNode } from 'react';
 
 export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
+   * Input 높이 조절
+   * sm: 미정
+   * md: 32px
+   * lg: 38px
+   * @default md
+   * @type "sm" | "md" | "lg"
+   */
+  controlSize?: 'sm' | 'md' | 'lg';
+
+  /**
    * 숫자 카운터의 최대 길이('showCount' true일때만 확인 가능)
    *
    */

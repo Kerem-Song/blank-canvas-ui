@@ -16,7 +16,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
   const focusedElement = useRef<HTMLDivElement>(null);
   const [focusedItem, setFocusedItem] = useState<T>();
 
-  const { items, displayName, isError, className } = args;
+  const { items, displayName, isError, className, controlSize = 'md' } = args;
 
   const rootClassName = classNames(autoCompleteClasses.root, {}, className);
 
@@ -120,6 +120,7 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
           disabled={args.isDisabled}
           placeholder={args.placeholder}
           ref={inputElement}
+          controlSize={controlSize}
           onPressEnter={() => {
             if (showPopper) {
               if (focusedItem) {
@@ -159,6 +160,9 @@ export const Autocomplete = <T extends object>(args: AutocompleteProps<T>) => {
           const focused = item === focusedItem;
           const itemClassName = classNames(autoCompleteClasses.list.root, {
             [autoCompleteClasses.list.focused]: focused,
+            [autoCompleteClasses.list.sm]: controlSize === 'sm',
+            [autoCompleteClasses.list.md]: controlSize === 'md',
+            [autoCompleteClasses.list.lg]: controlSize === 'lg',
           });
 
           return (

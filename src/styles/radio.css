@@ -2,13 +2,27 @@ $ns: .bc;
 
 $(ns) {
   &-radio-container {
-    @apply items-center cursor-pointer;
+    @apply flex cursor-pointer items-center gap-[var(--bc-control-gap)];
 
     .bc-radio {
-      @apply appearance-none w-16pxr h-16pxr bg-[url('@icons/ic_radio_default.svg')] bg-center bg-no-repeat mr-[rem(4)] checked:bg-[url('@icons/ic_radio_enabled.svg')];
-
+      @apply h-14pxr w-14pxr appearance-none rounded-full border-[3px] border-white bg-white shadow-[0_0_0_1px] shadow-[var(--bc-primary-color-main)];
+      &:checked {
+        @apply bg-[var(--bc-primary-color-main)] shadow-[var(--bc-primary-color-main)];
+      }
       &.invalid {
-        @apply bg-[var(--bc-error-color-main)];
+        @apply shadow-[var(--bc-error-color-main)];
+
+        &:checked {
+          @apply bg-[var(--bc-error-color-main)] shadow-[var(--bc-error-color-main)];
+        }
+      }
+
+      &:disabled {
+        @apply shadow-[var(--bc-disable-border-color)];
+
+        &:checked {
+          @apply bg-[var(--bc-disable-background)] shadow-[var(--bc-disable-background)];
+        }
       }
     }
   }

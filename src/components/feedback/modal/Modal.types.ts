@@ -47,7 +47,7 @@ export interface IModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * overlay영역 class name
    */
-  overalyClassName: string;
+  overalyClassName?: string;
 
   /**
    * overlay영역 클릭 시 모달의 닫힘 여부
@@ -58,6 +58,18 @@ export interface IModalProps extends HTMLAttributes<HTMLDivElement> {
    * 키보드 esc 누를 시 모달의 닫힘 여부
    */
   shouldCloseOnEsc?: boolean;
+
+  /**
+   * 화면 뒷쪽 dim처리 사용 여부
+   * @default false
+   */
+  useDim?: boolean;
+
+  /**
+   * Devider 위치
+   * @default 'top'
+   */
+  dividerDirection?: 'top' | 'bottom' | 'all' | 'none';
 
   /**
    * 모달이 열린 후 실행되어야 할 함수

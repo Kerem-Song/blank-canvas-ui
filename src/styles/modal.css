@@ -23,7 +23,7 @@ $(ns) {
     }
 
     &-title {
-      @apply flex items-center justify-between px-20pxr py-14pxr font-bold;
+      @apply flex items-center justify-between px-24pxr py-12pxr font-bold;
 
       .bc-modal-btn-esc {
         @apply h-10pxr w-10pxr bg-[url('@icons/ic_search_delete.svg')] bg-center bg-no-repeat;
@@ -35,7 +35,7 @@ $(ns) {
     }
 
     &-content {
-      @apply p-20pxr text-13pxr font-medium;
+      @apply px-24pxr pb-12pxr text-13pxr font-medium;
     }
 
     &-children {
@@ -54,4 +54,8 @@ $(ns) {
       @apply fixed inset-0 z-999 flex bg-gray-950 bg-opacity-50;
     }
   }
+}
+
+.ReactModal__Overlay--after-open {
+  @apply z-999 flex;
 }

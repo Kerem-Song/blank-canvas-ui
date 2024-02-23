@@ -5,6 +5,8 @@ import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
+import libCss from 'vite-plugin-libcss';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -31,7 +33,7 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
   },
-  plugins: [react(), dts(), tsconfigPaths(), svgr()],
+  plugins: [react(), dts(), tsconfigPaths(), svgr(), libCss()],
   test: {
     globals: true,
     environment: 'jsdom',

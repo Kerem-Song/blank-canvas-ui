@@ -7,6 +7,8 @@ const classes = {
   titleCounterWrapper: 'title-counter-wrapper',
   counter: 'counter',
   label: 'label',
+  children: 'children',
+  insideWrapper: 'inside-wrapper',
 } as const;
 
 export const textareaClasses = attachPrefixClasses(classes, 'textarea', true);

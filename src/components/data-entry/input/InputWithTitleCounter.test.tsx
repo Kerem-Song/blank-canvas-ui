@@ -7,7 +7,7 @@ describe('<InputWithTitleCounter />', () => {
   it('렌더링 체크', () => {
     render(<InputWithTitleCounter name="test" />);
     const input = screen.getByRole('textbox');
-    expect(input.classList.contains(inputClasses.normal)).toBeTruthy();
+    expect(input.classList.contains(inputClasses.normal.root)).toBeTruthy();
   });
 
   it('placeholder 체크', () => {

@@ -9,7 +9,15 @@ import { IModalProps } from './Modal.types';
 import { modalClasses } from './ModalClasses';
 
 export const Modal = (modalInfo: IModalProps) => {
-  const { className, style, children, size = 'sm', ...modalProps } = modalInfo;
+  const {
+    className,
+    style,
+    children,
+    size = 'sm',
+    useDim = false,
+    dividerDirection = 'bottom',
+    ...modalProps
+  } = modalInfo;
 
   const rootClassName = classNames(
     modalClasses.root,
@@ -21,6 +29,11 @@ export const Modal = (modalInfo: IModalProps) => {
       [modalClasses.size.xLarge]: size === 'xl',
     },
     className,
+  );
+
+  const overlayClassname = classNames(
+    modalInfo.overalyClassName,
+    useDim && 'bc-modal-overlay',
   );
 
   const handleCancel = () => {
@@ -46,7 +59,7 @@ export const Modal = (modalInfo: IModalProps) => {
       appElement={document.body}
       className={rootClassName}
       isOpen={modalInfo.isOpen}
-      overlayClassName={modalInfo.overalyClassName}
+      overlayClassName={overlayClassname}
       shouldCloseOnOverlayClick={modalInfo.shouldCloseOnOverlayClick}
       shouldCloseOnEsc={modalInfo.shouldCloseOnEsc}
       onRequestClose={() => {
@@ -68,12 +81,17 @@ export const Modal = (modalInfo: IModalProps) => {
           />
         ) : null}
       </div>
-      <Divider style={{ margin: 0 }} />
+      {dividerDirection === 'top' || dividerDirection === 'all' ? (
+        <Divider style={{ margin: 0 }} />
+      ) : null}
       <div className={modalClasses.content}>{modalInfo.description}</div>
       {children ? (
         <div className={modalClasses.children}>{modalInfo.children}</div>
       ) : null}
-      <Flex justify="end" gap={8} style={{ padding: '0 20px 20px 20px' }}>
+      {dividerDirection === 'bottom' || dividerDirection === 'all' ? (
+        <Divider style={{ margin: 0 }} />
+      ) : null}
+      <Flex justify="end" gap={8} style={{ padding: '12px' }}>
         {modalInfo.cancelButton ? (
           <Button className={modalClasses.btn.cancel} onClick={handleCancel}>
             {modalInfo.cancelButton}

@@ -18,6 +18,7 @@ export const TextAreaWithTitleCounter = forwardRef<
     readOnly,
     isError,
     direction,
+    children,
     ...inputProps
   } = args;
   const [count, setCount] = useState<number>();
@@ -74,11 +75,15 @@ export const TextAreaWithTitleCounter = forwardRef<
           style={style}
           direction={direction}
         />
+
         {showCount && direction === 'inside' ? (
-          <p className={`${textareaClasses.counter} ${direction}`}>
-            {count || 0}
-            {`/${args.maxLength}`}
-          </p>
+          <div className={textareaClasses.insideWrapper}>
+            <div className={textareaClasses.children}>{children}</div>
+            <p className={`${textareaClasses.counter} ${direction}`}>
+              {count || 0}
+              {`/${args.maxLength}`}
+            </p>
+          </div>
         ) : null}
       </div>
       {direction === 'bottom' ? (

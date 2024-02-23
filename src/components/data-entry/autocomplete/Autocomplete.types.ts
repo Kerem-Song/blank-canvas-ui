@@ -17,4 +17,13 @@ export interface AutocompleteProps<T extends object> {
   error?: any;
   isError?: boolean;
   className?: string;
+  /**
+   * Input 높이 조절
+   * sm: 미정
+   * md: 32px
+   * lg: 38px
+   * @default md
+   * @type "sm" | "md" | "lg"
+   */
+  controlSize?: 'sm' | 'md' | 'lg';
 }

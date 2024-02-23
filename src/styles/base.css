@@ -17,8 +17,16 @@ textarea {
   --bc-rounded: 8px;
   --bc-rounded-lg: 12px;
 
-  --bc-control-height: 38px;
+  --bc-control-height-sm: 24px;
+  --bc-control-height: 32px;
+  --bc-control-height-lg: 38px;
   --bc-control-gap: 4px;
+
+  --bc-font-size-xs: 13px;
+  --bc-font-size-sm: 14px;
+  --bc-font-size-md: 16px;
+  --bc-font-size-lg: 18px;
+  --bc-font-size-xl: 20px;
 
   --bc-primary-color-main: #4478ff;
   --bc-primary-color-light: #a1bbff;
