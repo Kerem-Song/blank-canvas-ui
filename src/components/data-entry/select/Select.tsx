@@ -51,8 +51,6 @@ function SelectFunc<T extends AnyObject>(
   const [tmpList, setTmpList] =
     useState<Array<{ label: string; value: string; disabled?: boolean }>>();
   const [currentValue, setCurrentValue] = useState<string>('');
-  // const [placeholderText, setPlaceholderText] = useState(placeholder ?? '');
-  // const [selectedValue, setSelectedValue] = useState<string>('');
   const [showOptions, setShowOptions] = useState<boolean>(defaultOpen ?? false);
   const [hoverText, setHoverText] = useState('');
   const [indexNum, setIndexNum] = useState<number>(0);
@@ -85,39 +83,18 @@ function SelectFunc<T extends AnyObject>(
     setCurrentValue(text.innerText);
     setList(tmpList);
     setShowOptions((pre) => !pre);
-    // setSelectedValue(text.innerText);
     inputRef.current?.focus();
   };
 
   const findUserValue = (val: string) => {
-    const value = list?.filter((x) => x.label === val)[0].value;
-    onChange?.(value ?? null);
+    const findValue = list?.filter((x) => x.label === val)[0].value;
+    onChange?.(findValue ?? null);
   };
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(e.target.value);
     setShowOptions(true);
   };
-
-  useEffect(() => {
-    if (inputRef) {
-      const text = inputRef.current?.value.toLowerCase() ?? '';
-      const searchList = tmpList?.filter((item) =>
-        item.label.toLowerCase().includes(text),
-      );
-      setList(searchList);
-      if (currentValue !== '' && currentValue.toLowerCase().includes(text)) {
-        setHoverText(currentValue);
-      } else {
-        setHoverText(searchList && searchList?.length > 0 ? searchList[0].label : '');
-      }
-    }
-  }, [currentValue]);
-
-  useEffect(() => {
-    const findValue = tmpList?.filter((x) => x.value === value)[0];
-    setCurrentValue(findValue?.label ?? '');
-  }, [value]);
 
   const handleKeyArrow = (e: React.KeyboardEvent) => {
     let flag = false;
@@ -127,8 +104,6 @@ function SelectFunc<T extends AnyObject>(
         if (!showOptions) {
           setShowOptions((pre) => !pre);
           popperUpdate();
-          // setPlaceholderText(currentValue);
-          // setCurrentValue('');
           setList(tmpList);
           break;
         }
@@ -156,8 +131,6 @@ function SelectFunc<T extends AnyObject>(
         if (!showOptions) {
           setShowOptions((pre) => !pre);
           popperUpdate();
-          // setPlaceholderText(currentValue);
-          // setCurrentValue('');
           setList(tmpList);
           break;
         }
@@ -185,9 +158,7 @@ function SelectFunc<T extends AnyObject>(
 
         if (currentValue === '' || !showOptions) {
           setShowOptions(false);
-          // setCurrentValue(selectedValue);
         } else {
-          // setCurrentValue('');
           setShowOptions(true);
         }
 
@@ -200,11 +171,9 @@ function SelectFunc<T extends AnyObject>(
 
         if (!showOptions) {
           setList(tmpList);
-          // setCurrentValue(selectedValue);
           findUserValue(currentValue);
         } else {
           setCurrentValue(hoverText);
-          // setSelectedValue(hoverText);
           findUserValue(hoverText);
         }
         break;
@@ -212,9 +181,6 @@ function SelectFunc<T extends AnyObject>(
         setShowOptions(true);
         break;
       case 'Tab':
-        // if (!disabled) {
-        //   setCurrentValue(selectedValue);
-        // }
         setShowOptions(false);
         break;
     }
@@ -231,37 +197,61 @@ function SelectFunc<T extends AnyObject>(
       if (!showOptions) {
         popperUpdate();
         setShowOptions(true);
-
         setList(tmpList);
-        // setPlaceholderText(selectedValue);
-        // setCurrentValue('');
       } else {
-        // if (list && list?.length === tmpList?.length) {
-        //   // setShowOptions(false);
-        //   setCurrentValue(selectedValue);
-        // }
         setShowOptions(false);
       }
     }
   };
 
+  useOutsideClick(
+    selectRef,
+    () => {
+      popperUpdate();
+      inputRef.current?.blur();
+      setShowOptions(false);
+    },
+    'mousedown',
+  );
+
+  useEffect(() => {
+    if (inputRef) {
+      const text = inputRef.current?.value.toLowerCase() ?? '';
+      const searchList = tmpList?.filter((item) =>
+        item.label.toLowerCase().includes(text),
+      );
+      setList(searchList);
+      if (
+        currentValue !== '' &&
+        currentValue.toLowerCase() === text &&
+        searchList!.length > 0
+      ) {
+        setHoverText(currentValue);
+      } else {
+        setHoverText(
+          searchList && searchList?.length > 0
+            ? searchList[0].label
+            : tmpList && tmpList?.length > 0
+              ? tmpList[0].label
+              : '',
+        );
+      }
+    }
+  }, [currentValue]);
   useEffect(() => {
     if (options) {
       setList(options);
       setTmpList(options);
-      if (hoverText === '') {
-        setHoverText(options.length > 0 ? options[0].label : '');
-      }
+
       if (defaultValue) {
-        const label = options?.filter((x) => x.value === defaultValue)[0].label;
-        setCurrentValue(label);
-        // setSelectedValue(label);
+        const findValue = options?.filter((x) => x.value === defaultValue)[0];
+        setCurrentValue(findValue ? findValue.label : defaultValue);
       }
       if (value) {
-        const label = options?.filter((x) => x.value === value)[0].label;
-        setCurrentValue(label);
-        // setSelectedValue(label);
+        const findValue = options?.filter((x) => x.value === value)[0];
+        setCurrentValue(findValue ? findValue.label : value);
       }
+      setHoverText(options.length > 0 ? options[0].label : '');
     } else {
       const key = displayLabel ?? 'label';
       const valueKey = valuePath ?? 'value';
@@ -269,34 +259,27 @@ function SelectFunc<T extends AnyObject>(
         label: x[key],
         value: x[valueKey],
         disabled: x['disabled'],
-      }));
+      })) as Array<{ label: string; value: string; disabled?: boolean }>;
       setList(temp);
       setTmpList(temp);
       if (defaultValue) {
-        const label = temp?.filter((x) => x.value === defaultValue)[0].label;
-        setCurrentValue(label ?? '');
-        // setSelectedValue(label ?? '');
+        const findValue = temp?.filter((x) => x.value === defaultValue)[0];
+        setCurrentValue(findValue ? findValue.label : defaultValue);
       }
       if (value) {
-        const label = temp?.filter((x) => x.value === value)[0].label;
-        setCurrentValue(label ?? '');
+        const findValue = temp?.filter((x) => x.value === value)[0];
+        setCurrentValue(findValue ? findValue.label : value);
       }
-
       setHoverText(temp?.length ? temp[0].label : '');
     }
   }, []);
-
-  useOutsideClick(
-    selectRef,
-    () => {
-      popperUpdate();
-      inputRef.current?.blur();
-      // console.log(selectedValue);
-      // setCurrentValue(selectedValue);
-      setShowOptions(false);
-    },
-    'mousedown',
-  );
+  useEffect(() => {
+    if (init) {
+      const findValue = tmpList?.filter((x) => x.value === value)[0];
+      setCurrentValue(findValue?.label ?? value ?? '');
+      setHoverText(findValue?.label ?? tmpList![0].label);
+    }
+  }, [value]);
 
   useEffect(() => {
     setInit(true);
@@ -331,7 +314,6 @@ function SelectFunc<T extends AnyObject>(
         onClick={iconClick}
       >
         <Input
-          style={{ color: 'gray' }}
           {...inputProps}
           customPrefix={preSuffixIcon}
           ref={(current) => {
@@ -348,13 +330,14 @@ function SelectFunc<T extends AnyObject>(
           onClick={iconClick}
           placeholder={placeholder}
           type="text"
-          onChange={(e) => {
-            inputOnChange(e);
-          }}
+          onChange={inputOnChange}
           onKeyDown={handleKeyArrow}
           disabled={disabled}
           readOnly={!filterOption || disabled}
-          className={classNames({ [selectClasses.disabled]: disabled }, 'group')}
+          className={classNames(
+            { [selectClasses.disabled]: disabled },
+            showOptions ? 'text-slate-400	' : 'text-black	',
+          )}
           value={currentValue}
           isError={isError}
           useBorder={useBorder}
@@ -418,9 +401,6 @@ function SelectFunc<T extends AnyObject>(
                   }}
                   className={classNames(
                     { [selectClasses.list.item]: x.label === currentValue },
-                    // currentValue === '' && placeholderText
-                    //   ? { [selectClasses.list.item]: x.label === placeholderText }
-                    //   : undefined,
                     { [selectClasses.list.hover]: x.label === hoverText },
                     selectClasses.list.overflow,
                   )}
@@ -434,10 +414,7 @@ function SelectFunc<T extends AnyObject>(
                   onMouseDown={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
-                    // setShowOptions(true);
-                    // inputRef.current?.focus();
                   }}
-                  // style={{ cursor: 'not-allowed' }}
                   className={classNames(disabledLiClassName)}
                 >
                   {x.label}
@@ -450,10 +427,7 @@ function SelectFunc<T extends AnyObject>(
               onMouseDown={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                // setShowOptions(true);
-                // inputRef.current?.focus();
               }}
-              // className={classNames(selectClasses.sel)}
               style={{ cursor: 'not-allowed' }}
             >
               No data

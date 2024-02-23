@@ -30,7 +30,9 @@ export const Col = forwardRef<HTMLDivElement, IColProps>((args, ref) => {
         order,
       }}
     >
-      <div style={{ ...style }}>{children}</div>
+      <div style={{ ...style }} className={classNames('h-full')}>
+        {children}
+      </div>
     </div>
   );
 });
